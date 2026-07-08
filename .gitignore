@@ -10,9 +10,11 @@ data/raw/*.zip
 # Generated processed outputs
 data/processed/**
 
-# Track only the runtime game-ready dataset
+# Track selected 2016 generated outputs for the prototype and rating review
 !data/processed/2016/
 !data/processed/2016/draft_player_seasons.json
+!data/processed/2016/rated_player_seasons.json
+!data/processed/2016/ratings_review.json
 
 # Python
 __pycache__/
