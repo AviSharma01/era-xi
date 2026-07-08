@@ -60,6 +60,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 14,
@@ -142,6 +144,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 12,
@@ -223,7 +227,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 8,
@@ -303,7 +309,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 4,
@@ -386,7 +394,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 5,
@@ -468,7 +478,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batting_all_rounder",
+    "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 10,
@@ -550,6 +562,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 14,
@@ -632,6 +646,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 3,
@@ -711,7 +727,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 8,
@@ -794,7 +812,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 4,
@@ -877,6 +897,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 8,
@@ -959,6 +981,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 13,
@@ -1043,6 +1067,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 10,
@@ -1122,7 +1148,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 4,
@@ -1206,6 +1234,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 6,
@@ -1289,6 +1319,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 14,
@@ -1369,7 +1401,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batter",
+    "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 5,
@@ -1450,6 +1484,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 12,
@@ -1531,6 +1567,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 4,
@@ -1614,6 +1652,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 13,
@@ -1696,6 +1736,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 16,
@@ -1779,7 +1821,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "bowler",
+    "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 15,
@@ -1863,6 +1907,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 12,
@@ -1944,6 +1990,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 14,
@@ -2028,7 +2076,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 4,
@@ -2112,7 +2162,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batter",
+    "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 5,
@@ -2193,7 +2245,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batter",
+    "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 7,
@@ -2274,6 +2328,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 16,
@@ -2355,6 +2411,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 16,
@@ -2438,6 +2496,8 @@
     "positionBasis": "role_fallback",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 2,
@@ -2517,7 +2577,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 7,
@@ -2599,6 +2661,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 15,
@@ -2679,6 +2743,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 7,
@@ -2758,7 +2824,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 6,
@@ -2838,7 +2906,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batting_all_rounder",
+    "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 15,
@@ -2920,7 +2990,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "bowler",
+    "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 14,
@@ -3004,6 +3076,8 @@
     "positionBasis": "role_fallback",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 2,
@@ -3086,6 +3160,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 14,
@@ -3167,6 +3243,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 3,
@@ -3248,7 +3326,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batting_all_rounder",
+    "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 11,
@@ -3331,6 +3411,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 7,
@@ -3414,6 +3496,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 6,
@@ -3493,7 +3577,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 5,
@@ -3579,7 +3665,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 5,
@@ -3661,7 +3749,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batting_all_rounder",
+    "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 14,
@@ -3744,6 +3834,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 7,
@@ -3823,7 +3915,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 3,
@@ -3906,6 +4000,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 14,
@@ -3990,6 +4086,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 7,
@@ -4069,7 +4167,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 2,
@@ -4152,7 +4252,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 5,
@@ -4233,6 +4335,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 2,
@@ -4313,6 +4417,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 6,
@@ -4393,6 +4499,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 14,
@@ -4475,6 +4583,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 12,
@@ -4561,6 +4671,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 12,
@@ -4644,6 +4756,8 @@
     "positionBasis": "role_fallback",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 4,
@@ -4725,6 +4839,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 4,
@@ -4808,6 +4924,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 2,
@@ -4890,6 +5008,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 15,
@@ -4970,6 +5090,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 5,
@@ -5050,7 +5172,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 4,
@@ -5134,6 +5258,8 @@
     "positionBasis": "role_fallback",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 2,
@@ -5217,6 +5343,8 @@
     "positionBasis": "role_fallback",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 3,
@@ -5297,6 +5425,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 10,
@@ -5378,6 +5508,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 12,
@@ -5464,6 +5596,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 12,
@@ -5545,6 +5679,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 4,
@@ -5627,6 +5763,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 15,
@@ -5710,6 +5848,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 15,
@@ -5793,6 +5933,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 11,
@@ -5875,7 +6017,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "bowler",
+    "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 10,
@@ -5956,6 +6100,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 9,
@@ -6037,7 +6183,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batting_all_rounder",
+    "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 15,
@@ -6119,6 +6267,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 13,
@@ -6201,6 +6351,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batting_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batting_all_rounder",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 11,
@@ -6280,7 +6432,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "bowler",
+    "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 14,
@@ -6362,6 +6516,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 14,
@@ -6442,6 +6598,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 14,
@@ -6522,7 +6680,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batting_all_rounder",
+    "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 13,
@@ -6604,6 +6764,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 12,
@@ -6686,6 +6848,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 3,
@@ -6767,6 +6931,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 14,
@@ -6848,6 +7014,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 4,
@@ -6930,6 +7098,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 10,
@@ -7009,7 +7179,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 3,
@@ -7092,6 +7264,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 14,
@@ -7172,6 +7346,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 11,
@@ -7252,6 +7428,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 5,
@@ -7335,6 +7513,8 @@
     "positionBasis": "role_fallback",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 9,
@@ -7417,6 +7597,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 14,
@@ -7496,7 +7678,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 3,
@@ -7580,6 +7764,8 @@
     "positionBasis": "role_fallback",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 2,
@@ -7662,6 +7848,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 6,
@@ -7743,6 +7931,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 6,
@@ -7823,6 +8013,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 4,
@@ -7909,6 +8101,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 4,
@@ -7989,6 +8183,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 2,
@@ -8069,6 +8265,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 4,
@@ -8149,6 +8347,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 10,
@@ -8228,7 +8428,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 3,
@@ -8315,6 +8517,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 14,
@@ -8400,6 +8604,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 12,
@@ -8480,6 +8686,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 2,
@@ -8561,6 +8769,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 14,
@@ -8642,6 +8852,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 10,
@@ -8725,6 +8937,8 @@
     "positionBasis": "role_fallback",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 4,
@@ -8808,6 +9022,8 @@
     "positionBasis": "role_fallback",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 2,
@@ -8889,6 +9105,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 8,
@@ -8977,6 +9195,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 10,
@@ -9059,6 +9279,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 6,
@@ -9139,6 +9361,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 16,
@@ -9220,7 +9444,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batting_all_rounder",
+    "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 10,
@@ -9301,6 +9527,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 9,
@@ -9381,6 +9609,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 5,
@@ -9463,7 +9693,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 8,
@@ -9548,6 +9780,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 14,
@@ -9628,6 +9862,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 4,
@@ -9707,7 +9943,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 4,
@@ -9787,7 +10025,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 4,
@@ -9871,6 +10111,8 @@
     "positionBasis": "role_fallback",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 9,
@@ -9952,6 +10194,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 5,
@@ -10033,6 +10277,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 16,
@@ -10113,7 +10359,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 14,
@@ -10195,6 +10443,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 11,
@@ -10278,6 +10528,8 @@
     "positionBasis": "role_fallback",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 4,
@@ -10359,6 +10611,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 3,
@@ -10440,7 +10694,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batting_all_rounder",
+    "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 16,
@@ -10521,6 +10777,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 8,
@@ -10604,6 +10862,8 @@
     "positionBasis": "role_fallback",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 13,
@@ -10684,6 +10944,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 4,
@@ -10764,6 +11026,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 8,
@@ -10844,6 +11108,8 @@
     "positionBasis": "observed",
     "positionConfidence": "low",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 3,
@@ -10927,6 +11193,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 17,
@@ -11010,6 +11278,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 14,
@@ -11090,7 +11360,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 4,
@@ -11171,7 +11443,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 7,
@@ -11254,6 +11528,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 17,
@@ -11335,6 +11611,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batting_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batting_all_rounder",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 17,
@@ -11416,6 +11694,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 7,
@@ -11497,6 +11777,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 6,
@@ -11576,7 +11858,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "low",
-    "seasonRole": "batter",
+    "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "secondary",
     "displayedStats": {
       "matches": 5,
@@ -11658,6 +11942,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "bowling_all_rounder",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowling_all_rounder",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 17,
@@ -11741,6 +12027,8 @@
     "positionBasis": "role_fallback",
     "positionConfidence": "low",
     "seasonRole": "bowler",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "bowler",
     "bowlingOptionStrength": "frontline",
     "displayedStats": {
       "matches": 16,
@@ -11821,6 +12109,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "wicketkeeper_batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "wicketkeeper_batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 17,
@@ -11903,6 +12193,8 @@
     "positionBasis": "observed",
     "positionConfidence": "medium",
     "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "none",
     "displayedStats": {
       "matches": 17,
@@ -11982,7 +12274,9 @@
     ],
     "positionBasis": "observed",
     "positionConfidence": "medium",
-    "seasonRole": "batting_all_rounder",
+    "seasonRole": "batter",
+    "seasonRoleSource": "derived",
+    "derivedSeasonRole": "batter",
     "bowlingOptionStrength": "part_time",
     "displayedStats": {
       "matches": 10,

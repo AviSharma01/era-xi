@@ -147,6 +147,95 @@ class DraftDataTests(unittest.TestCase):
         self.assertEqual(draft[0]["naturalPositions"], [])
         self.assertEqual(draft[0]["acceptablePositions"], [])
 
+    def test_small_bowling_usage_does_not_turn_batter_into_all_rounder(self) -> None:
+        item = player_season(
+            runs=240,
+            inningsBatted=10,
+            ballsFaced=180,
+            wickets=2,
+            legalBallsBowled=42,
+            runsConceded=60,
+        )
+        draft, _ = build_draft_dataset([item], {})
+        self.assertEqual(draft[0]["seasonRole"], "batter")
+        self.assertEqual(draft[0]["bowlingOptionStrength"], "part_time")
+
+    def test_meaningful_bowling_can_make_batting_all_rounder(self) -> None:
+        item = player_season(
+            runs=240,
+            inningsBatted=10,
+            ballsFaced=180,
+            wickets=3,
+            legalBallsBowled=72,
+            runsConceded=70,
+        )
+        draft, _ = build_draft_dataset([item], {})
+        self.assertEqual(draft[0]["seasonRole"], "batting_all_rounder")
+
+    def test_limited_batting_does_not_turn_bowler_into_all_rounder(self) -> None:
+        item = player_season(
+            inningsBatted=2,
+            runs=12,
+            ballsFaced=18,
+            wickets=10,
+            legalBallsBowled=200,
+            runsConceded=240,
+        )
+        draft, _ = build_draft_dataset([item], {})
+        self.assertEqual(draft[0]["seasonRole"], "bowler")
+
+    def test_meaningful_batting_can_make_bowling_all_rounder(self) -> None:
+        item = player_season(
+            inningsBatted=4,
+            runs=75,
+            ballsFaced=50,
+            wickets=10,
+            legalBallsBowled=200,
+            runsConceded=240,
+        )
+        draft, _ = build_draft_dataset([item], {})
+        self.assertEqual(draft[0]["seasonRole"], "bowling_all_rounder")
+
+    def test_repeated_lower_order_batting_alone_does_not_make_bowling_all_rounder(self) -> None:
+        item = player_season(
+            inningsBatted=5,
+            runs=30,
+            ballsFaced=35,
+            wickets=10,
+            legalBallsBowled=200,
+            runsConceded=240,
+        )
+        draft, _ = build_draft_dataset([item], {})
+        self.assertEqual(draft[0]["seasonRole"], "bowler")
+
+    def test_wicketkeeper_status_remains_preserved_with_bowling_usage(self) -> None:
+        item = player_season(
+            runs=260,
+            inningsBatted=10,
+            ballsFaced=190,
+            wickets=3,
+            legalBallsBowled=60,
+            runsConceded=80,
+        )
+        draft, _ = build_draft_dataset([item], {"player": ManualOverride(wicketkeeper=True)})
+        self.assertEqual(draft[0]["seasonRole"], "wicketkeeper_batter")
+        self.assertTrue(draft[0]["isWicketkeeper"])
+
+    def test_manual_season_role_override_takes_precedence(self) -> None:
+        item = player_season(
+            runs=260,
+            inningsBatted=10,
+            ballsFaced=190,
+            wickets=0,
+            legalBallsBowled=0,
+            runsConceded=0,
+        )
+        draft, review = build_draft_dataset([item], {"player": ManualOverride(season_role="bowler")})
+        self.assertEqual(draft[0]["seasonRole"], "bowler")
+        self.assertEqual(draft[0]["derivedSeasonRole"], "batter")
+        self.assertEqual(draft[0]["seasonRoleSource"], "manual")
+        self.assertEqual(len(review["manualSeasonRoleOverrides"]), 1)
+
     def test_observed_positions_get_observed_basis(self) -> None:
         item = player_season(
             inningsBatted=4,

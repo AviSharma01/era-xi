@@ -30,6 +30,18 @@ FRONTLINE_BOWLER_MIN_BALLS = 180
 FRONTLINE_BOWLER_MIN_WICKETS = 8
 SECONDARY_BOWLER_MIN_BALLS = 60
 SECONDARY_BOWLER_MIN_WICKETS = 3
+MEANINGFUL_BOWLING_MIN_BALLS = 60
+MEANINGFUL_BOWLING_MIN_WICKETS = 3
+MEANINGFUL_BATTING_MIN_BALLS = 20
+MEANINGFUL_BATTING_MIN_RUNS = 20
+MEANINGFUL_BATTING_MIN_INNINGS = 3
+GENUINE_BATTING_ALL_ROUNDER_MIN_BALLS_WITH_WICKETS = 72
+GENUINE_BATTING_ALL_ROUNDER_MIN_WICKETS = 3
+GENUINE_BATTING_ALL_ROUNDER_MIN_BALLS = 120
+GENUINE_BOWLING_ALL_ROUNDER_MIN_RUNS = 75
+GENUINE_BOWLING_ALL_ROUNDER_MIN_BALLS_FACED = 50
+GENUINE_BOWLING_ALL_ROUNDER_MIN_INNINGS = 4
+ALL_ROUNDER_SUPPORT_POSITION_GROUPS = {"6", "7", "8"}
 BATTER_MIN_RUNS = 180
 BATTER_MIN_INNINGS = 8
 ALL_ROUNDER_MIN_RUNS = 120
@@ -42,6 +54,7 @@ class ManualOverride:
     country: str | None = None
     wicketkeeper: bool | None = None
     overseas: bool | None = None
+    season_role: str | None = None
 
 
 @dataclass(frozen=True)
@@ -69,6 +82,7 @@ def load_manual_overrides(path: Path) -> dict[str, ManualOverride]:
             country=values.get("country"),
             wicketkeeper=values.get("wicketkeeper"),
             overseas=values.get("overseas"),
+            season_role=values.get("seasonRole") or values.get("role"),
         )
     return overrides
 
@@ -103,6 +117,7 @@ def load_player_metadata_with_validation(path: Path) -> LoadedPlayerMetadata:
         country = row.get("country")
         is_wicketkeeper = row.get("isWicketkeeper")
         is_overseas = row.get("isOverseas")
+        season_role_value = row.get("seasonRole")
         if country is not None and (not isinstance(country, str) or not country.strip()):
             invalid_rows.append(
                 {"rowIndex": index, "playerId": player_id, "field": "country", "value": country, "reason": "country must be a non-empty string or null"}
@@ -118,10 +133,28 @@ def load_player_metadata_with_validation(path: Path) -> LoadedPlayerMetadata:
                 {"rowIndex": index, "playerId": player_id, "field": "isOverseas", "value": is_overseas, "reason": "isOverseas must be true, false, or null"}
             )
             is_overseas = None
+        if season_role_value is not None and season_role_value not in {
+            "batter",
+            "wicketkeeper_batter",
+            "batting_all_rounder",
+            "bowling_all_rounder",
+            "bowler",
+        }:
+            invalid_rows.append(
+                {
+                    "rowIndex": index,
+                    "playerId": player_id,
+                    "field": "seasonRole",
+                    "value": season_role_value,
+                    "reason": "seasonRole must be a supported role or null",
+                }
+            )
+            season_role_value = None
         overrides[player_id] = ManualOverride(
             country=country,
             wicketkeeper=is_wicketkeeper,
             overseas=is_overseas,
+            season_role=season_role_value,
         )
     return LoadedPlayerMetadata(
         overrides=overrides,
@@ -140,6 +173,7 @@ def merge_manual_overrides(*sources: dict[str, ManualOverride]) -> dict[str, Man
                 country=override.country if override.country is not None else current.country,
                 wicketkeeper=override.wicketkeeper if override.wicketkeeper is not None else current.wicketkeeper,
                 overseas=override.overseas if override.overseas is not None else current.overseas,
+                season_role=override.season_role if override.season_role is not None else current.season_role,
             )
     return merged
 
@@ -223,18 +257,62 @@ def is_batting_contributor(player_season: dict[str, Any]) -> bool:
     return player_season["runs"] >= BATTER_MIN_RUNS or player_season["inningsBatted"] >= BATTER_MIN_INNINGS
 
 
+def has_meaningful_bowling(player_season: dict[str, Any]) -> bool:
+    return (
+        player_season["legalBallsBowled"] >= MEANINGFUL_BOWLING_MIN_BALLS
+        or player_season["wickets"] >= MEANINGFUL_BOWLING_MIN_WICKETS
+    )
+
+
+def has_meaningful_batting(player_season: dict[str, Any]) -> bool:
+    return (
+        player_season["ballsFaced"] >= MEANINGFUL_BATTING_MIN_BALLS
+        or player_season["runs"] >= MEANINGFUL_BATTING_MIN_RUNS
+        or player_season["inningsBatted"] >= MEANINGFUL_BATTING_MIN_INNINGS
+    )
+
+
+def has_genuine_batting_all_rounder_bowling(player_season: dict[str, Any]) -> bool:
+    return (
+        player_season["legalBallsBowled"] >= GENUINE_BATTING_ALL_ROUNDER_MIN_BALLS_WITH_WICKETS
+        and player_season["wickets"] >= GENUINE_BATTING_ALL_ROUNDER_MIN_WICKETS
+    ) or player_season["legalBallsBowled"] >= GENUINE_BATTING_ALL_ROUNDER_MIN_BALLS
+
+
+def has_genuine_bowling_all_rounder_batting(player_season: dict[str, Any]) -> bool:
+    return (
+        player_season["runs"] >= GENUINE_BOWLING_ALL_ROUNDER_MIN_RUNS
+        and player_season["ballsFaced"] >= GENUINE_BOWLING_ALL_ROUNDER_MIN_BALLS_FACED
+        and player_season["inningsBatted"] >= GENUINE_BOWLING_ALL_ROUNDER_MIN_INNINGS
+    )
+
+
+def has_all_rounder_support_positions(grouped_counts: dict[str, int]) -> bool:
+    return any(grouped_counts.get(group, 0) > 0 for group in ALL_ROUNDER_SUPPORT_POSITION_GROUPS)
+
+
 def season_role(player_season: dict[str, Any], is_wicketkeeper: bool, bowling_strength: str) -> str:
-    batting = is_batting_contributor(player_season)
-    all_round_batting = player_season["runs"] >= ALL_ROUNDER_MIN_RUNS
-    if is_wicketkeeper and batting:
-        return "wicketkeeper_batter"
-    if bowling_strength == "frontline":
-        if all_round_batting:
+    batting_primary = is_batting_contributor(player_season) or (
+        player_season["runs"] > 0 and bowling_strength not in {"frontline", "secondary"}
+    )
+    meaningful_bowling = has_meaningful_bowling(player_season)
+    genuine_batting_all_rounder_bowling = has_genuine_batting_all_rounder_bowling(player_season)
+    genuine_bowling_all_rounder_batting = has_genuine_bowling_all_rounder_batting(player_season)
+    bowling_primary = bowling_strength == "frontline" or (meaningful_bowling and not batting_primary)
+
+    if batting_primary and not bowling_primary:
+        if is_wicketkeeper:
+            return "wicketkeeper_batter"
+        if genuine_batting_all_rounder_bowling:
+            return "batting_all_rounder"
+        return "batter"
+    if bowling_primary:
+        if genuine_bowling_all_rounder_batting:
             return "bowling_all_rounder"
         return "bowler"
-    if bowling_strength in {"secondary", "part_time"} and batting:
-        return "batting_all_rounder"
-    if batting or player_season["runs"] > 0:
+    if is_wicketkeeper and batting_primary:
+        return "wicketkeeper_batter"
+    if player_season["runs"] > 0:
         return "batter"
     return "bowler"
 
@@ -279,6 +357,8 @@ def build_draft_dataset(
         "lowConfidencePositions": [],
         "ambiguousSeasonRoles": [],
         "twoMatchEligiblePlayerSeasons": [],
+        "manualSeasonRoleOverrides": [],
+        "bowlingAllRoundersWithoutPositionSixToEightEvidence": [],
     }
 
     for player_season in eligible:
@@ -297,7 +377,9 @@ def build_draft_dataset(
         country = override.country
         country_source = "manual" if override.country is not None else "unknown"
         bowling_strength = bowling_option_strength(player_season)
-        role = season_role(player_season, wicketkeeper_status is True, bowling_strength)
+        derived_role = season_role(player_season, wicketkeeper_status is True, bowling_strength)
+        role = override.season_role or derived_role
+        role_source = "manual" if override.season_role is not None else "derived"
         natural_positions, acceptable_positions, position_basis = derive_positions(
             grouped_counts,
             player_season["inningsBatted"],
@@ -312,6 +394,8 @@ def build_draft_dataset(
             "positionBasis": position_basis,
             "positionConfidence": confidence,
             "seasonRole": role,
+            "seasonRoleSource": role_source,
+            "derivedSeasonRole": derived_role,
             "bowlingOptionStrength": bowling_strength,
             "displayedStats": displayed_stats(player_season),
             "country": country,
@@ -347,6 +431,22 @@ def build_draft_dataset(
             )
         if player_season["matchesPlayed"] == 2:
             review["twoMatchEligiblePlayerSeasons"].append(review_entry(player_season))
+        if override.season_role is not None:
+            review["manualSeasonRoleOverrides"].append(
+                {
+                    **review_entry(player_season),
+                    "manualSeasonRole": override.season_role,
+                    "derivedSeasonRole": derived_role,
+                }
+            )
+        if role == "bowling_all_rounder" and not has_all_rounder_support_positions(grouped_counts):
+            review["bowlingAllRoundersWithoutPositionSixToEightEvidence"].append(
+                {
+                    **review_entry(player_season),
+                    "seasonRole": role,
+                    "battingPositionGroupCounts": grouped_counts,
+                }
+            )
 
     draft_players.sort(key=lambda item: (item["season"], item["franchise"], item["name"], item["playerId"]))
     for key, values in review.items():
@@ -395,6 +495,10 @@ def prepare_draft_outputs(
         "lowConfidencePositions": len(review["lowConfidencePositions"]),
         "ambiguousSeasonRoles": len(review["ambiguousSeasonRoles"]),
         "twoMatchEligiblePlayerSeasons": len(review["twoMatchEligiblePlayerSeasons"]),
+        "manualSeasonRoleOverrides": len(review["manualSeasonRoleOverrides"]),
+        "bowlingAllRoundersWithoutPositionSixToEightEvidence": len(
+            review["bowlingAllRoundersWithoutPositionSixToEightEvidence"]
+        ),
         "manualMetadataRowsLoaded": player_metadata.rows_loaded,
         "manualMetadataRowsMatched": matched_metadata_rows,
         "manualMetadataUnmatchedRows": len(unmatched_metadata_rows),
