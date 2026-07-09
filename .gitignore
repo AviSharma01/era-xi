@@ -16,6 +16,14 @@ data/processed/**
 !data/processed/2016/rated_player_seasons.json
 !data/processed/2016/ratings_review.json
 
+# Local rating-model explainability artifacts
+docs/RATING_MODEL.md
+docs/assets/rating_distribution.png
+docs/assets/raw_score_to_rating.png
+docs/assets/ratings_by_role.png
+docs/assets/tier_coverage.png
+docs/assets/rating_analysis_summary.json
+
 # Python
 __pycache__/
 *.py[cod]
