@@ -13,6 +13,10 @@ export type DisplayedStats = {
   economy: number | null;
 };
 
+export type Tier = "S" | "A" | "B" | "C" | "D";
+export type TierAdjustment = "franchise_coverage" | null;
+export type RatingConfidence = "high" | "medium" | "low";
+
 export type DraftPlayerSeason = {
   id: string;
   playerId: string;
@@ -32,6 +36,13 @@ export type DraftPlayerSeason = {
   country: string;
   isOverseas: boolean;
   isWicketkeeper: boolean;
+  battingRating: number | null;
+  bowlingRating: number | null;
+  baseRating: number;
+  ratingConfidence: RatingConfidence;
+  absoluteTier: Tier;
+  draftTier: Tier;
+  tierAdjustment: TierAdjustment;
 };
 
 export type DraftSlot = {
@@ -71,7 +82,7 @@ export function createClassicDraftState(): ClassicDraftState {
 
 export function loadDraftPool(raw: unknown): DraftPool {
   if (!Array.isArray(raw)) {
-    throw new Error("draft_player_seasons.json must contain an array.");
+    throw new Error("rated_player_seasons.json must contain an array.");
   }
 
   const players = raw.map(validatePlayerSeason).filter((player) => player.draftEligible);
@@ -307,6 +318,13 @@ function validatePlayerSeason(value: unknown, index: number): DraftPlayerSeason 
     country: requiredString(value, "country", index),
     isOverseas: requiredBoolean(value, "isOverseas", index),
     isWicketkeeper: requiredBoolean(value, "isWicketkeeper", index),
+    battingRating: optionalRating(value, "battingRating", index),
+    bowlingRating: optionalRating(value, "bowlingRating", index),
+    baseRating: requiredBaseRating(value, index),
+    ratingConfidence: requiredRatingConfidence(value, index),
+    absoluteTier: requiredTier(value, "absoluteTier", index),
+    draftTier: requiredTier(value, "draftTier", index),
+    tierAdjustment: optionalTierAdjustment(value, index),
   };
 
   return player;
@@ -347,7 +365,26 @@ function requiredNumber(value: Record<string, unknown>, field: string, index: nu
   return fieldValue;
 }
 
+function requiredBaseRating(value: Record<string, unknown>, index: number): number {
+  const fieldValue = requiredNumber(value, "baseRating", index);
+  if (fieldValue < 30 || fieldValue > 83) {
+    throw new Error(`Player season at index ${index} must include baseRating within 30..83.`);
+  }
+  return fieldValue;
+}
+
 function optionalNumber(value: Record<string, unknown>, field: string, index: number): number | null {
+  const fieldValue = value[field];
+  if (fieldValue === null) {
+    return null;
+  }
+  if (typeof fieldValue !== "number" || !Number.isFinite(fieldValue)) {
+    throw new Error(`Player season at index ${index} must include numeric or null field ${field}.`);
+  }
+  return fieldValue;
+}
+
+function optionalRating(value: Record<string, unknown>, field: string, index: number): number | null {
   const fieldValue = value[field];
   if (fieldValue === null) {
     return null;
@@ -378,6 +415,30 @@ function requiredPositions(value: Record<string, unknown>, field: string, index:
     throw new Error(`Player season at index ${index} has an invalid batting position in ${field}.`);
   }
   return positions;
+}
+
+function requiredTier(value: Record<string, unknown>, field: string, index: number): Tier {
+  const fieldValue = value[field];
+  if (fieldValue === "S" || fieldValue === "A" || fieldValue === "B" || fieldValue === "C" || fieldValue === "D") {
+    return fieldValue;
+  }
+  throw new Error(`Player season at index ${index} must include tier field ${field} as S, A, B, C or D.`);
+}
+
+function requiredRatingConfidence(value: Record<string, unknown>, index: number): RatingConfidence {
+  const fieldValue = value.ratingConfidence;
+  if (fieldValue === "high" || fieldValue === "medium" || fieldValue === "low") {
+    return fieldValue;
+  }
+  throw new Error(`Player season at index ${index} must include ratingConfidence as high, medium or low.`);
+}
+
+function optionalTierAdjustment(value: Record<string, unknown>, index: number): TierAdjustment {
+  const fieldValue = value.tierAdjustment;
+  if (fieldValue === null || fieldValue === "franchise_coverage") {
+    return fieldValue;
+  }
+  throw new Error(`Player season at index ${index} must include tierAdjustment as franchise_coverage or null.`);
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

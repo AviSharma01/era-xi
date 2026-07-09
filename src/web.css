@@ -71,7 +71,8 @@ button:disabled {
 }
 
 .controls button,
-.restart-button {
+.restart-button,
+.reveal-button {
   padding: 8px 12px;
 }
 
@@ -234,10 +235,58 @@ button:disabled {
   background: #e7eef8;
 }
 
+.drafted-mini-card-revealed {
+  border-width: 2px;
+}
+
+.tier-s {
+  background: #fff4cc;
+  border-color: #b7791f;
+}
+
+.tier-a {
+  background: #e7f7ee;
+  border-color: #1f7a3f;
+}
+
+.tier-b {
+  background: #e7eef8;
+  border-color: #2563eb;
+}
+
+.tier-c {
+  background: #f1f5f9;
+  border-color: #64748b;
+}
+
+.tier-d {
+  background: #f8eeee;
+  border-color: #9f3a38;
+}
+
+.revealed-rating-line {
+  font-weight: 700;
+}
+
 .confirm-button:not(:disabled) {
   border-color: #1f7a3f;
 }
 
-.completed-list {
-  margin-top: 0;
+.completed-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.team-summary {
+  border: 1px solid #d4d8de;
+  background: #ffffff;
+  margin-top: 22px;
+  padding: 12px;
+}
+
+.team-summary h2,
+.team-summary p {
+  margin: 0 0 8px;
 }

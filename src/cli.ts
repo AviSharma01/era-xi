@@ -24,7 +24,7 @@ import {
 
 const DATA_PATH = resolve(
   dirname(fileURLToPath(import.meta.url)),
-  "../data/processed/2016/draft_player_seasons.json",
+  "../data/processed/2016/rated_player_seasons.json",
 );
 
 async function main(): Promise<void> {

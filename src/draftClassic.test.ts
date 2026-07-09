@@ -22,6 +22,40 @@ test("loadDraftPool validates game-ready wicketkeeper and overseas metadata", ()
   assert.equal(pool.players[1]?.isOverseas, true);
 });
 
+test("loadDraftPool validates and preserves rated player-season fields", () => {
+  const pool = loadDraftPool([
+    player({
+      id: "rated",
+      playerId: "rated",
+      battingRating: 75.678,
+      bowlingRating: null,
+      baseRating: 69.6,
+      ratingConfidence: "high",
+      absoluteTier: "A",
+      draftTier: "S",
+      tierAdjustment: "franchise_coverage",
+    }),
+  ]);
+
+  assert.equal(pool.players[0]?.battingRating, 75.678);
+  assert.equal(pool.players[0]?.bowlingRating, null);
+  assert.equal(pool.players[0]?.baseRating, 69.6);
+  assert.equal(pool.players[0]?.absoluteTier, "A");
+  assert.equal(pool.players[0]?.draftTier, "S");
+  assert.equal(pool.players[0]?.tierAdjustment, "franchise_coverage");
+});
+
+test("loadDraftPool rejects baseRating outside generated rating bounds", () => {
+  assert.throws(
+    () => loadDraftPool([player({ baseRating: 83.1 })]),
+    /baseRating within 30\.\.83/,
+  );
+  assert.throws(
+    () => loadDraftPool([player({ baseRating: 29.9 })]),
+    /baseRating within 30\.\.83/,
+  );
+});
+
 test("a fifth overseas player is illegal", () => {
   const state = createClassicDraftState();
   state.slots = [1, 2, 3, 4].map((position) => ({
@@ -168,6 +202,13 @@ function player(overrides: Partial<DraftPlayerSeason>): DraftPlayerSeason {
     country: "India",
     isOverseas: false,
     isWicketkeeper: false,
+    battingRating: 50,
+    bowlingRating: null,
+    baseRating: 50,
+    ratingConfidence: "medium",
+    absoluteTier: "C",
+    draftTier: "C",
+    tierAdjustment: null,
     ...overrides,
   };
 }

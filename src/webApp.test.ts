@@ -74,6 +74,108 @@ test("start new draft resets completed UI without a page refresh", () => {
   assert.match(root.textContent ?? "", /Ready to start/);
 });
 
+test("ratings and tiers stay hidden during drafting", () => {
+  const { root } = setupDom();
+  createClassicDraftApp({ root, pool: loadDraftPool([promotedPlayer()]), seed: "hidden-draft" });
+  click(button(root, "Spin"));
+  click(squadRow(root, "Promoted Star"));
+
+  assertNoRatedLeakage(root);
+  assert.equal(root.querySelector(".tier-s"), null);
+});
+
+test("completed XI starts unrevealed with neutral cards", () => {
+  const { root } = setupDom();
+  const pool = loadDraftPool([promotedPlayer(), ...players()]);
+  createClassicDraftApp({ root, pool, seed: "completed-hidden", initialState: createCompletedState(pool.players) });
+
+  assert.match(root.textContent ?? "", /Completed XI/);
+  assert.doesNotMatch(root.textContent ?? "", /Choose a player from the spun squad/);
+  assert.equal(button(root, "Reveal Team").disabled, false);
+  assertNoRatedLeakage(root);
+  assert.equal(root.querySelector(".tier-s"), null);
+});
+
+test("reveal exposes draft tier and base rating with draft-tier styling", () => {
+  const { root } = setupDom();
+  const pool = loadDraftPool([promotedPlayer(), ...players()]);
+  createClassicDraftApp({ root, pool, seed: "reveal", initialState: createCompletedState(pool.players) });
+
+  click(button(root, "Reveal Team"));
+
+  assert.match(slotButton(root, 1).textContent ?? "", /S Tier · Rating 69\.6/);
+  assert.ok(slotButton(root, 1).classList.contains("tier-s"));
+  assert.equal(slotButton(root, 1).classList.contains("tier-a"), false);
+});
+
+test("absolute tier and coverage promotion are available in details after reveal without changing base rating", () => {
+  const { root } = setupDom();
+  const pool = loadDraftPool([promotedPlayer(), ...players()]);
+  createClassicDraftApp({ root, pool, seed: "coverage-details", initialState: createCompletedState(pool.players) });
+
+  click(slotButton(root, 1));
+  assert.doesNotMatch(detailsText(root), /Base rating|Draft tier|Absolute tier|Coverage promotion|Rating confidence|69\.6/);
+
+  click(button(root, "Reveal Team"));
+
+  assert.match(detailsText(root), /Base rating: 69\.6/);
+  assert.match(detailsText(root), /Draft tier: S/);
+  assert.match(detailsText(root), /Absolute tier: A/);
+  assert.match(detailsText(root), /Tier adjustment: Coverage promotion/);
+  assert.match(detailsText(root), /Rating note: Base rating remains unchanged/);
+  assert.match(detailsText(root), /Batting rating: 75\.7/);
+  assert.match(detailsText(root), /Rating confidence: high/);
+  assert.doesNotMatch(detailsText(root), /boost/i);
+});
+
+test("team summary uses only confirmed XI facts", () => {
+  const { root } = setupDom();
+  const summaryPlayers = [
+    player({ id: "s", playerId: "s", name: "S Player", draftTier: "S", absoluteTier: "S", baseRating: 80, naturalPositions: [1], acceptablePositions: [1], bowlingOptionStrength: "frontline", isWicketkeeper: true }),
+    player({ id: "a", playerId: "a", name: "A Player", draftTier: "A", absoluteTier: "A", baseRating: 70, naturalPositions: [2], acceptablePositions: [2], bowlingOptionStrength: "secondary", isOverseas: true }),
+    player({ id: "b", playerId: "b", name: "B Player", draftTier: "B", absoluteTier: "B", baseRating: 60, naturalPositions: [3], acceptablePositions: [4], bowlingOptionStrength: "part_time" }),
+    player({ id: "c", playerId: "c", name: "C Player", draftTier: "C", absoluteTier: "C", baseRating: 50, naturalPositions: [4], acceptablePositions: [5] }),
+    player({ id: "d", playerId: "d", name: "D Player", draftTier: "D", absoluteTier: "D", baseRating: 40, naturalPositions: [5], acceptablePositions: [6] }),
+    player({ id: "c2", playerId: "c2", name: "C Two", draftTier: "C", absoluteTier: "C", baseRating: 50, naturalPositions: [6], acceptablePositions: [6] }),
+    player({ id: "d2", playerId: "d2", name: "D Two", draftTier: "D", absoluteTier: "D", baseRating: 40, naturalPositions: [7], acceptablePositions: [7] }),
+    player({ id: "b2", playerId: "b2", name: "B Two", draftTier: "B", absoluteTier: "B", baseRating: 60, naturalPositions: [8], acceptablePositions: [8] }),
+    player({ id: "a2", playerId: "a2", name: "A Two", draftTier: "A", absoluteTier: "A", baseRating: 70, naturalPositions: [9], acceptablePositions: [9], isOverseas: true }),
+    player({ id: "s2", playerId: "s2", name: "S Two", draftTier: "S", absoluteTier: "S", baseRating: 80, naturalPositions: [10], acceptablePositions: [10] }),
+    player({ id: "d3", playerId: "d3", name: "D Three", draftTier: "D", absoluteTier: "D", baseRating: 40, naturalPositions: [1], acceptablePositions: [2], isOverseas: true }),
+  ];
+  const pool = loadDraftPool(summaryPlayers);
+  createClassicDraftApp({ root, pool, seed: "summary", initialState: createCompletedState(summaryPlayers) });
+
+  click(button(root, "Reveal Team"));
+  const text = root.textContent ?? "";
+
+  assert.match(text, /Average player rating: 58\.2/);
+  assert.match(text, /Tiers: 2 S · 2 A · 2 B · 2 C · 3 D/);
+  assert.match(text, /Position fit: 10 natural · 0 acceptable · 1 out of position/);
+  assert.match(text, /Overseas: 3\/4/);
+  assert.match(text, /Wicketkeeper: Yes/);
+  assert.match(text, /Bowling options: 3/);
+  assert.match(text, /Bowling breakdown: 1 frontline · 1 secondary · 1 part-time/);
+  assert.doesNotMatch(text, /out_of_position|part_time/);
+});
+
+test("start new draft clears reveal and transient UI state", () => {
+  const { root } = setupDom();
+  const pool = loadDraftPool([promotedPlayer(), ...players()]);
+  const app = createClassicDraftApp({ root, pool, seed: "restart-reveal", initialState: createCompletedState(pool.players) });
+
+  click(slotButton(root, 1));
+  click(button(root, "Reveal Team"));
+  assert.match(detailsText(root), /Base rating: 69\.6/);
+
+  click(button(root, "Start New Draft"));
+
+  assert.equal(app.getState().slots.length, 0);
+  assert.equal(app.getState().currentSquadKey, null);
+  assert.match(root.textContent ?? "", /Ready to start/);
+  assert.doesNotMatch(root.textContent ?? "", /Reveal Team|Base rating|Draft tier|69\.6/);
+});
+
 test("squad row selection opens and replaces active details without changing confirmed state", () => {
   const { root } = setupDom();
   const app = createClassicDraftApp({ root, pool: loadDraftPool(players()), seed: "details" });
@@ -274,6 +376,11 @@ function detailsText(root: HTMLElement): string {
   return root.querySelector(".active-details")?.textContent ?? "";
 }
 
+function assertNoRatedLeakage(root: HTMLElement): void {
+  const text = root.textContent ?? "";
+  assert.doesNotMatch(text, /Base rating|Draft tier|Absolute tier|Coverage promotion|Rating confidence|69\.6|75\.7/);
+}
+
 function createCompletedState(playerPool: DraftPlayerSeason[]): ClassicDraftState {
   return {
     ...createClassicDraftState(),
@@ -385,6 +492,21 @@ function rolePlayers(): DraftPlayerSeason[] {
   ];
 }
 
+function promotedPlayer(): DraftPlayerSeason {
+  return player({
+    id: "promoted",
+    playerId: "promoted",
+    name: "Promoted Star",
+    battingRating: 75.7,
+    bowlingRating: null,
+    baseRating: 69.6,
+    ratingConfidence: "high",
+    absoluteTier: "A",
+    draftTier: "S",
+    tierAdjustment: "franchise_coverage",
+  });
+}
+
 function stats(overrides: Partial<DraftPlayerSeason["displayedStats"]>): DraftPlayerSeason["displayedStats"] {
   return {
     matches: 1,
@@ -432,6 +554,13 @@ function player(overrides: Partial<DraftPlayerSeason>): DraftPlayerSeason {
     country: "India",
     isOverseas: false,
     isWicketkeeper: false,
+    battingRating: 50,
+    bowlingRating: null,
+    baseRating: 50,
+    ratingConfidence: "medium",
+    absoluteTier: "C",
+    draftTier: "C",
+    tierAdjustment: null,
     ...overrides,
   };
 }

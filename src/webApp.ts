@@ -3,6 +3,7 @@ import {
   type ClassicDraftState,
   type DraftPlayerSeason,
   type DraftPool,
+  type Tier,
   createClassicDraftState,
   createSeededRandom,
   getCurrentSquad,
@@ -30,6 +31,7 @@ export type ClassicDraftApp = {
 
 type SquadFilter = "all" | "batters" | "wicketkeepers" | "all-rounders" | "bowlers";
 type ActiveDetails = { source: "squad"; playerId: string } | { source: "drafted"; position: BattingPosition };
+type RevealState = "hidden" | "revealed";
 
 type TemporaryUiState = {
   activeDetails: ActiveDetails | null;
@@ -45,6 +47,7 @@ type SquadGroup = {
 };
 
 const POSITIONS: BattingPosition[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const TIER_ORDER: Tier[] = ["S", "A", "B", "C", "D"];
 const SQUAD_GROUPS: SquadGroup[] = [
   { filter: "batters", heading: "Batters", roles: ["batter"], sortMetric: "runs" },
   { filter: "wicketkeepers", heading: "Wicketkeepers", roles: ["wicketkeeper_batter"], sortMetric: "runs" },
@@ -55,6 +58,7 @@ const SQUAD_GROUPS: SquadGroup[] = [
 export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicDraftApp {
   const random = createSeededRandom(options.seed ?? Date.now().toString());
   let state = options.initialState ?? createClassicDraftState();
+  let revealState: RevealState = "hidden";
   let squadFilter: SquadFilter = "all";
   let temporaryState: TemporaryUiState = {
     activeDetails: null,
@@ -83,7 +87,7 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     shell.append(renderHeader(), renderCounters(), renderMessage());
 
     if (state.completed) {
-      shell.append(renderCompletedDraft());
+      shell.append(renderCompletedDraft(), renderActiveDetails());
     } else {
       shell.append(renderControls(), renderDraftBoard(), renderActiveDetails(), renderSquad());
     }
@@ -134,6 +138,9 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
   }
 
   function selectionPrompt(): string {
+    if (state.completed) {
+      return revealState === "revealed" ? "Team revealed." : "XI complete. Reveal the team when ready.";
+    }
     if (state.currentSquadKey === null) {
       return "Ready to start.";
     }
@@ -240,9 +247,9 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
 
       if (active?.source === "squad" && temporaryState.pendingPosition === position) {
         slotButton.classList.add("slot-pending");
-        slotButton.textContent = `${position}. Pending ${active.player.name} - ${formatPositionFit(active.player, position)}`;
+        slotButton.textContent = `${position}. Pending ${active.player.name} - ${formatPositionFitLabel(formatPositionFit(active.player, position))}`;
       } else if (active?.source === "squad") {
-        slotButton.textContent = `${position}. Open - ${formatPositionFit(active.player, position)}`;
+        slotButton.textContent = `${position}. Open - ${formatPositionFitLabel(formatPositionFit(active.player, position))}`;
       } else {
         slotButton.disabled = true;
         slotButton.textContent = `${position}. Open`;
@@ -264,14 +271,23 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     });
     slotButton.className = "slot slot-locked drafted-mini-card";
     slotButton.dataset.position = String(position);
+    if (revealState === "revealed") {
+      slotButton.classList.add("drafted-mini-card-revealed", tierClass(player.draftTier));
+    }
 
     const title = element("strong");
     title.textContent = `${position}. ${player.name}`;
     const badges = element("span", "player-badges");
     badges.textContent = formatBadges(player).join(" · ");
     const fit = element("span");
-    fit.textContent = formatPositionFit(player, position);
-    slotButton.append(title, badges, fit);
+    fit.textContent = formatPositionFitLabel(formatPositionFit(player, position));
+    slotButton.append(title, badges);
+    if (revealState === "revealed") {
+      const rating = element("span", "revealed-rating-line");
+      rating.textContent = `${player.draftTier} Tier · Rating ${formatOneDecimal(player.baseRating)}`;
+      slotButton.append(rating);
+    }
+    slotButton.append(fit);
     return slotButton;
   }
 
@@ -311,9 +327,9 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     section.append(heading, name, meta, badges);
 
     if (active.source === "drafted") {
-      section.append(detailLine("Confirmed position", String(active.position)), detailLine("Position fit", formatPositionFit(active.player, active.position)));
+      section.append(detailLine("Confirmed position", String(active.position)), detailLine("Position fit", formatPositionFitLabel(formatPositionFit(active.player, active.position))));
     } else if (temporaryState.pendingPosition !== null) {
-      section.append(detailLine("Pending position", String(temporaryState.pendingPosition)), detailLine("Pending fit", formatPositionFit(active.player, temporaryState.pendingPosition)));
+      section.append(detailLine("Pending position", String(temporaryState.pendingPosition)), detailLine("Pending fit", formatPositionFitLabel(formatPositionFit(active.player, temporaryState.pendingPosition))));
     }
 
     section.append(
@@ -321,6 +337,24 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
       detailLine("Matches", String(active.player.displayedStats.matches)),
       detailLine("Batting", formatFullBattingStats(active.player)),
     );
+
+    if (active.source === "drafted" && revealState === "revealed") {
+      section.append(
+        detailLine("Base rating", formatOneDecimal(active.player.baseRating)),
+        detailLine("Draft tier", active.player.draftTier),
+        detailLine("Absolute tier", active.player.absoluteTier),
+      );
+      if (active.player.tierAdjustment === "franchise_coverage") {
+        section.append(detailLine("Tier adjustment", "Coverage promotion"), detailLine("Rating note", "Base rating remains unchanged"));
+      }
+      if (active.player.battingRating !== null) {
+        section.append(detailLine("Batting rating", formatOneDecimal(active.player.battingRating)));
+      }
+      if (active.player.bowlingRating !== null) {
+        section.append(detailLine("Bowling rating", formatOneDecimal(active.player.bowlingRating)));
+      }
+      section.append(detailLine("Rating confidence", active.player.ratingConfidence));
+    }
 
     const bowling = formatFullBowlingStats(active.player);
     if (bowling) {
@@ -444,23 +478,68 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     const section = element("section", "completed");
     const heading = element("h2");
     heading.textContent = "Completed XI";
-    const list = element("ol", "completed-list");
+    const slots = element("div", "slots completed-slots");
 
     for (const position of POSITIONS) {
       const slot = state.slots.find((candidate) => candidate.position === position);
-      const item = element("li");
-      item.textContent = slot ? `${slot.player.name} (${slot.player.franchise} ${slot.player.season})` : "Open";
-      list.append(item);
+      if (slot) {
+        slots.append(renderDraftedSlot(position, slot.player));
+        continue;
+      }
+      const open = element("div", "slot");
+      open.textContent = `${position}. Open`;
+      slots.append(open);
+    }
+
+    const actions = element("div", "completed-actions");
+    if (revealState === "hidden") {
+      const reveal = button("Reveal Team", () => {
+        revealState = "revealed";
+        temporaryState.error = null;
+        render();
+      });
+      reveal.className = "reveal-button";
+      actions.append(reveal);
     }
 
     const restart = button("Start New Draft", () => {
       state = createClassicDraftState();
+      revealState = "hidden";
       clearTemporaryState();
       render();
     });
     restart.className = "restart-button";
+    actions.append(restart);
 
-    section.append(heading, list, restart);
+    section.append(heading, slots, actions);
+    if (revealState === "revealed") {
+      section.append(renderTeamSummary());
+    }
+    return section;
+  }
+
+  function renderTeamSummary(): HTMLElement {
+    const summary = calculateTeamSummary(state);
+    const section = element("section", "team-summary");
+    const heading = element("h2");
+    heading.textContent = "Team Summary";
+    section.append(
+      heading,
+      detailLine("Average player rating", formatOneDecimal(summary.averageBaseRating)),
+      detailLine("Tiers", TIER_ORDER.map((tier) => `${summary.tierCounts[tier]} ${tier}`).join(" · ")),
+      detailLine(
+        "Position fit",
+        `${summary.positionFitCounts.natural} natural · ${summary.positionFitCounts.acceptable} acceptable · ${summary.positionFitCounts.out_of_position} out of position`,
+      ),
+      detailLine("Overseas", `${summary.overseasCount}/4`),
+      detailLine("Wicketkeeper", summary.hasWicketkeeper ? "Yes" : "Missing"),
+      detailLine("Bowling options", String(summary.bowlingOptionsCount)),
+    );
+
+    const bowlingBreakdown = ["frontline", "secondary", "part_time"]
+      .map((strength) => `${summary.bowlingBreakdown[strength] ?? 0} ${formatBowlingStrengthLabel(strength)}`)
+      .join(" · ");
+    section.append(detailLine("Bowling breakdown", bowlingBreakdown));
     return section;
   }
 
@@ -483,13 +562,14 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     getState: () => state,
     setStateForTest: (nextState: ClassicDraftState) => {
       state = nextState;
+      revealState = "hidden";
       clearTemporaryState();
       render();
     },
   };
 }
 
-function formatPositionFit(player: DraftPlayerSeason, position: BattingPosition): string {
+function formatPositionFit(player: DraftPlayerSeason, position: BattingPosition): "natural" | "acceptable" | "out_of_position" {
   const fit = getPositionFit(player, position);
   if (fit === "preferred") {
     return "natural";
@@ -497,7 +577,51 @@ function formatPositionFit(player: DraftPlayerSeason, position: BattingPosition)
   if (fit === "acceptable") {
     return "acceptable";
   }
-  return "out of position";
+  return "out_of_position";
+}
+
+function formatPositionFitLabel(fit: "natural" | "acceptable" | "out_of_position"): string {
+  return fit === "out_of_position" ? "out of position" : fit;
+}
+
+function formatBowlingStrengthLabel(strength: string): string {
+  return strength === "part_time" ? "part-time" : strength;
+}
+
+function calculateTeamSummary(state: ClassicDraftState): {
+  averageBaseRating: number;
+  tierCounts: Record<Tier, number>;
+  positionFitCounts: Record<"natural" | "acceptable" | "out_of_position", number>;
+  overseasCount: number;
+  hasWicketkeeper: boolean;
+  bowlingOptionsCount: number;
+  bowlingBreakdown: Record<string, number>;
+} {
+  const tierCounts: Record<Tier, number> = { S: 0, A: 0, B: 0, C: 0, D: 0 };
+  const positionFitCounts = { natural: 0, acceptable: 0, out_of_position: 0 };
+  const bowlingBreakdown: Record<string, number> = { frontline: 0, secondary: 0, part_time: 0 };
+  let ratingTotal = 0;
+  let bowlingOptionsCount = 0;
+
+  for (const slot of state.slots) {
+    ratingTotal += slot.player.baseRating;
+    tierCounts[slot.player.draftTier] += 1;
+    positionFitCounts[formatPositionFit(slot.player, slot.position)] += 1;
+    if (slot.player.bowlingOptionStrength !== "none") {
+      bowlingOptionsCount += 1;
+      bowlingBreakdown[slot.player.bowlingOptionStrength] = (bowlingBreakdown[slot.player.bowlingOptionStrength] ?? 0) + 1;
+    }
+  }
+
+  return {
+    averageBaseRating: state.slots.length > 0 ? ratingTotal / state.slots.length : 0,
+    tierCounts,
+    positionFitCounts,
+    overseasCount: getOverseasCount(state),
+    hasWicketkeeper: hasWicketkeeper(state),
+    bowlingOptionsCount,
+    bowlingBreakdown,
+  };
 }
 
 function getVisibleSquadGroups(
@@ -625,6 +749,10 @@ function detailLine(label: string, value: string): HTMLElement {
 
 function formatOneDecimal(value: number): string {
   return value.toFixed(1);
+}
+
+function tierClass(tier: Tier): string {
+  return `tier-${tier.toLowerCase()}`;
 }
 
 function formatPositions(positions: BattingPosition[]): string {
