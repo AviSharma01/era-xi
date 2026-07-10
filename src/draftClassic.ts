@@ -16,6 +16,7 @@ export type DisplayedStats = {
 export type Tier = "S" | "A" | "B" | "C" | "D";
 export type TierAdjustment = "franchise_coverage" | null;
 export type RatingConfidence = "high" | "medium" | "low";
+export type PositionFit = "natural" | "acceptable" | "out_of_position";
 
 export type DraftPlayerSeason = {
   id: string;
@@ -226,14 +227,22 @@ export function hasWicketkeeper(state: ClassicDraftState): boolean {
   return state.slots.some((slot) => slot.player.isWicketkeeper);
 }
 
-export function getPositionFit(player: DraftPlayerSeason, position: BattingPosition): "preferred" | "acceptable" | "unusual" {
-  if (player.preferredBattingPositions.includes(position) || player.naturalPositions.includes(position)) {
-    return "preferred";
+export function getPositionFit(player: DraftPlayerSeason, position: BattingPosition): PositionFit {
+  if (
+    player.preferredBattingPositions.includes(position) ||
+    player.naturalPositions.includes(position) ||
+    (isOpenerPosition(position) && player.naturalPositions.some(isOpenerPosition))
+  ) {
+    return "natural";
   }
   if (player.acceptablePositions.includes(position)) {
     return "acceptable";
   }
-  return "unusual";
+  return "out_of_position";
+}
+
+function isOpenerPosition(position: BattingPosition): boolean {
+  return position === 1 || position === 2;
 }
 
 export function createSeededRandom(seed: string): () => number {

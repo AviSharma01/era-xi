@@ -103,7 +103,7 @@ test("reveal exposes draft tier and base rating with draft-tier styling", () => 
 
   click(button(root, "Reveal Team"));
 
-  assert.match(slotButton(root, 1).textContent ?? "", /S Tier · Rating 69\.6/);
+  assert.match(slotButton(root, 1).textContent ?? "", /S Tier · Base 69\.6 · Effective 69\.6/);
   assert.ok(slotButton(root, 1).classList.contains("tier-s"));
   assert.equal(slotButton(root, 1).classList.contains("tier-a"), false);
 });
@@ -123,7 +123,13 @@ test("absolute tier and coverage promotion are available in details after reveal
   assert.match(detailsText(root), /Absolute tier: A/);
   assert.match(detailsText(root), /Tier adjustment: Coverage promotion/);
   assert.match(detailsText(root), /Rating note: Base rating remains unchanged/);
-  assert.match(detailsText(root), /Batting rating: 75\.7/);
+  assert.match(detailsText(root), /Position distance: 0/);
+  assert.match(detailsText(root), /Fit multiplier: 1\.00/);
+  assert.match(detailsText(root), /Effective batting rating: 75\.7/);
+  assert.match(detailsText(root), /Bowling rating: -/);
+  assert.match(detailsText(root), /Batting position penalty: 0\.0/);
+  assert.match(detailsText(root), /Effective player rating: 69\.6/);
+  assert.match(detailsText(root), /Generated batting rating: 75\.7/);
   assert.match(detailsText(root), /Rating confidence: high/);
   assert.doesNotMatch(detailsText(root), /boost/i);
 });
@@ -149,7 +155,16 @@ test("team summary uses only confirmed XI facts", () => {
   click(button(root, "Reveal Team"));
   const text = root.textContent ?? "";
 
-  assert.match(text, /Average player rating: 58\.2/);
+  assert.match(text, /Overall team rating: 39\.7/);
+  assert.match(text, /Batting composite: 49\.4/);
+  assert.match(text, /Bowling composite: 30\.0/);
+  assert.match(text, /Batting strength: 50\.0/);
+  assert.match(text, /Bowling strength: 30\.0/);
+  assert.match(text, /Batting depth: 47\.0/);
+  assert.match(text, /Bowling depth: 30\.0/);
+  assert.match(text, /Average base rating: 58\.2/);
+  assert.match(text, /Average effective player rating: 57\.3/);
+  assert.match(text, /Fit rating: 78\.2/);
   assert.match(text, /Tiers: 2 S · 2 A · 2 B · 2 C · 3 D/);
   assert.match(text, /Position fit: 10 natural · 0 acceptable · 1 out of position/);
   assert.match(text, /Overseas: 3\/4/);
@@ -378,7 +393,7 @@ function detailsText(root: HTMLElement): string {
 
 function assertNoRatedLeakage(root: HTMLElement): void {
   const text = root.textContent ?? "";
-  assert.doesNotMatch(text, /Base rating|Draft tier|Absolute tier|Coverage promotion|Rating confidence|69\.6|75\.7/);
+  assert.doesNotMatch(text, /Base rating|Draft tier|Absolute tier|Coverage promotion|Rating confidence|Effective player rating|Overall team rating|69\.6|75\.7/);
 }
 
 function createCompletedState(playerPool: DraftPlayerSeason[]): ClassicDraftState {

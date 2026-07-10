@@ -16,6 +16,11 @@ import {
   spinFranchiseSeason,
   useVoluntaryRespin,
 } from "./draftClassic.js";
+import {
+  type EvaluatedPlayerContribution,
+  type TeamEvaluation,
+  evaluateCompletedTeam,
+} from "./teamEvaluation.js";
 
 type ClassicDraftAppOptions = {
   root: HTMLElement;
@@ -247,9 +252,9 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
 
       if (active?.source === "squad" && temporaryState.pendingPosition === position) {
         slotButton.classList.add("slot-pending");
-        slotButton.textContent = `${position}. Pending ${active.player.name} - ${formatPositionFitLabel(formatPositionFit(active.player, position))}`;
+        slotButton.textContent = `${position}. Pending ${active.player.name} - ${formatPositionFitLabel(getPositionFit(active.player, position))}`;
       } else if (active?.source === "squad") {
-        slotButton.textContent = `${position}. Open - ${formatPositionFitLabel(formatPositionFit(active.player, position))}`;
+        slotButton.textContent = `${position}. Open - ${formatPositionFitLabel(getPositionFit(active.player, position))}`;
       } else {
         slotButton.disabled = true;
         slotButton.textContent = `${position}. Open`;
@@ -263,6 +268,7 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
   }
 
   function renderDraftedSlot(position: BattingPosition, player: DraftPlayerSeason): HTMLElement {
+    const contribution = revealState === "revealed" ? getRevealedContribution(position) : null;
     const slotButton = button("", () => {
       temporaryState.activeDetails = { source: "drafted", position };
       temporaryState.pendingPosition = null;
@@ -280,12 +286,21 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     const badges = element("span", "player-badges");
     badges.textContent = formatBadges(player).join(" · ");
     const fit = element("span");
-    fit.textContent = formatPositionFitLabel(formatPositionFit(player, position));
+    fit.textContent = contribution
+      ? `Fit ${formatPositionFitLabel(contribution.positionFit)} · distance ${contribution.positionDistance} · x${formatMultiplier(contribution.positionFitMultiplier)}`
+      : formatPositionFitLabel(getPositionFit(player, position));
     slotButton.append(title, badges);
-    if (revealState === "revealed") {
+    if (contribution) {
       const rating = element("span", "revealed-rating-line");
-      rating.textContent = `${player.draftTier} Tier · Rating ${formatOneDecimal(player.baseRating)}`;
+      rating.textContent = `${player.draftTier} Tier · Base ${formatOneDecimal(player.baseRating)} · Effective ${formatOneDecimal(contribution.effectivePlayerRating)}`;
+      const components = element("span", "revealed-rating-line");
+      components.textContent = [
+        `Bat ${formatNullableRating(contribution.effectiveBattingRating)}`,
+        `Bowl ${formatNullableRating(contribution.bowlingContribution)}`,
+        `Penalty ${formatOneDecimal(contribution.battingPenalty)}`,
+      ].join(" · ");
       slotButton.append(rating);
+      slotButton.append(components);
     }
     slotButton.append(fit);
     return slotButton;
@@ -327,9 +342,9 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     section.append(heading, name, meta, badges);
 
     if (active.source === "drafted") {
-      section.append(detailLine("Confirmed position", String(active.position)), detailLine("Position fit", formatPositionFitLabel(formatPositionFit(active.player, active.position))));
+      section.append(detailLine("Confirmed position", String(active.position)), detailLine("Position fit", formatPositionFitLabel(getPositionFit(active.player, active.position))));
     } else if (temporaryState.pendingPosition !== null) {
-      section.append(detailLine("Pending position", String(temporaryState.pendingPosition)), detailLine("Pending fit", formatPositionFitLabel(formatPositionFit(active.player, temporaryState.pendingPosition))));
+      section.append(detailLine("Pending position", String(temporaryState.pendingPosition)), detailLine("Pending fit", formatPositionFitLabel(getPositionFit(active.player, temporaryState.pendingPosition))));
     }
 
     section.append(
@@ -338,21 +353,23 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
       detailLine("Batting", formatFullBattingStats(active.player)),
     );
 
-    if (active.source === "drafted" && revealState === "revealed") {
+    const contribution = active.source === "drafted" && revealState === "revealed" ? getRevealedContribution(active.position) : null;
+    if (contribution) {
       section.append(
         detailLine("Base rating", formatOneDecimal(active.player.baseRating)),
+        detailLine("Position distance", String(contribution.positionDistance)),
+        detailLine("Fit multiplier", formatMultiplier(contribution.positionFitMultiplier)),
+        detailLine("Effective batting rating", formatNullableRating(contribution.effectiveBattingRating)),
+        detailLine("Bowling rating", formatNullableRating(contribution.bowlingContribution)),
+        detailLine("Batting position penalty", formatOneDecimal(contribution.battingPenalty)),
+        detailLine("Effective player rating", formatOneDecimal(contribution.effectivePlayerRating)),
         detailLine("Draft tier", active.player.draftTier),
         detailLine("Absolute tier", active.player.absoluteTier),
       );
       if (active.player.tierAdjustment === "franchise_coverage") {
         section.append(detailLine("Tier adjustment", "Coverage promotion"), detailLine("Rating note", "Base rating remains unchanged"));
       }
-      if (active.player.battingRating !== null) {
-        section.append(detailLine("Batting rating", formatOneDecimal(active.player.battingRating)));
-      }
-      if (active.player.bowlingRating !== null) {
-        section.append(detailLine("Bowling rating", formatOneDecimal(active.player.bowlingRating)));
-      }
+      section.append(detailLine("Generated batting rating", formatNullableRating(active.player.battingRating)));
       section.append(detailLine("Rating confidence", active.player.ratingConfidence));
     }
 
@@ -519,13 +536,22 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
   }
 
   function renderTeamSummary(): HTMLElement {
-    const summary = calculateTeamSummary(state);
+    const summary = evaluateCompletedTeam(state);
     const section = element("section", "team-summary");
     const heading = element("h2");
     heading.textContent = "Team Summary";
     section.append(
       heading,
-      detailLine("Average player rating", formatOneDecimal(summary.averageBaseRating)),
+      detailLine("Overall team rating", formatOneDecimal(summary.overallTeamRating)),
+      detailLine("Batting composite", formatOneDecimal(summary.battingComposite)),
+      detailLine("Bowling composite", formatOneDecimal(summary.bowlingComposite)),
+      detailLine("Batting strength", formatOneDecimal(summary.battingStrength)),
+      detailLine("Bowling strength", formatOneDecimal(summary.bowlingStrength)),
+      detailLine("Batting depth", formatOneDecimal(summary.battingDepth)),
+      detailLine("Bowling depth", formatOneDecimal(summary.bowlingDepth)),
+      detailLine("Average base rating", formatOneDecimal(summary.averageBaseRating)),
+      detailLine("Average effective player rating", formatOneDecimal(summary.averageEffectivePlayerRating)),
+      detailLine("Fit rating", formatOneDecimal(summary.fitRating)),
       detailLine("Tiers", TIER_ORDER.map((tier) => `${summary.tierCounts[tier]} ${tier}`).join(" · ")),
       detailLine(
         "Position fit",
@@ -533,11 +559,11 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
       ),
       detailLine("Overseas", `${summary.overseasCount}/4`),
       detailLine("Wicketkeeper", summary.hasWicketkeeper ? "Yes" : "Missing"),
-      detailLine("Bowling options", String(summary.bowlingOptionsCount)),
+      detailLine("Bowling options", String(Object.values(summary.bowlingOptionCounts).reduce((total, count) => total + count, 0))),
     );
 
     const bowlingBreakdown = ["frontline", "secondary", "part_time"]
-      .map((strength) => `${summary.bowlingBreakdown[strength] ?? 0} ${formatBowlingStrengthLabel(strength)}`)
+      .map((strength) => `${summary.bowlingOptionCounts[strength as keyof TeamEvaluation["bowlingOptionCounts"]]} ${formatBowlingStrengthLabel(strength)}`)
       .join(" · ");
     section.append(detailLine("Bowling breakdown", bowlingBreakdown));
     return section;
@@ -556,6 +582,13 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     return player ? { source: "squad", player } : null;
   }
 
+  function getRevealedContribution(position: BattingPosition): EvaluatedPlayerContribution | null {
+    if (!state.completed) {
+      return null;
+    }
+    return evaluateCompletedTeam(state).players.find((player) => player.slot.position === position) ?? null;
+  }
+
   render();
 
   return {
@@ -569,59 +602,12 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
   };
 }
 
-function formatPositionFit(player: DraftPlayerSeason, position: BattingPosition): "natural" | "acceptable" | "out_of_position" {
-  const fit = getPositionFit(player, position);
-  if (fit === "preferred") {
-    return "natural";
-  }
-  if (fit === "acceptable") {
-    return "acceptable";
-  }
-  return "out_of_position";
-}
-
 function formatPositionFitLabel(fit: "natural" | "acceptable" | "out_of_position"): string {
   return fit === "out_of_position" ? "out of position" : fit;
 }
 
 function formatBowlingStrengthLabel(strength: string): string {
   return strength === "part_time" ? "part-time" : strength;
-}
-
-function calculateTeamSummary(state: ClassicDraftState): {
-  averageBaseRating: number;
-  tierCounts: Record<Tier, number>;
-  positionFitCounts: Record<"natural" | "acceptable" | "out_of_position", number>;
-  overseasCount: number;
-  hasWicketkeeper: boolean;
-  bowlingOptionsCount: number;
-  bowlingBreakdown: Record<string, number>;
-} {
-  const tierCounts: Record<Tier, number> = { S: 0, A: 0, B: 0, C: 0, D: 0 };
-  const positionFitCounts = { natural: 0, acceptable: 0, out_of_position: 0 };
-  const bowlingBreakdown: Record<string, number> = { frontline: 0, secondary: 0, part_time: 0 };
-  let ratingTotal = 0;
-  let bowlingOptionsCount = 0;
-
-  for (const slot of state.slots) {
-    ratingTotal += slot.player.baseRating;
-    tierCounts[slot.player.draftTier] += 1;
-    positionFitCounts[formatPositionFit(slot.player, slot.position)] += 1;
-    if (slot.player.bowlingOptionStrength !== "none") {
-      bowlingOptionsCount += 1;
-      bowlingBreakdown[slot.player.bowlingOptionStrength] = (bowlingBreakdown[slot.player.bowlingOptionStrength] ?? 0) + 1;
-    }
-  }
-
-  return {
-    averageBaseRating: state.slots.length > 0 ? ratingTotal / state.slots.length : 0,
-    tierCounts,
-    positionFitCounts,
-    overseasCount: getOverseasCount(state),
-    hasWicketkeeper: hasWicketkeeper(state),
-    bowlingOptionsCount,
-    bowlingBreakdown,
-  };
 }
 
 function getVisibleSquadGroups(
@@ -749,6 +735,14 @@ function detailLine(label: string, value: string): HTMLElement {
 
 function formatOneDecimal(value: number): string {
   return value.toFixed(1);
+}
+
+function formatMultiplier(value: number): string {
+  return value.toFixed(2);
+}
+
+function formatNullableRating(value: number | null): string {
+  return value === null ? "-" : formatOneDecimal(value);
 }
 
 function tierClass(tier: Tier): string {

@@ -4,6 +4,7 @@ import {
   type DraftPlayerSeason,
   createSeededRandom,
   createClassicDraftState,
+  getPositionFit,
   isLegalPlayerSelection,
   loadDraftPool,
   pickPlayer,
@@ -54,6 +55,19 @@ test("loadDraftPool rejects baseRating outside generated rating bounds", () => {
     () => loadDraftPool([player({ baseRating: 29.9 })]),
     /baseRating within 30\.\.83/,
   );
+});
+
+test("position fit uses team-evaluation labels", () => {
+  const draftPlayer = player({
+    preferredBattingPositions: [1],
+    naturalPositions: [1, 3],
+    acceptablePositions: [1, 2, 3, 4],
+  });
+
+  assert.equal(getPositionFit(draftPlayer, 1), "natural");
+  assert.equal(getPositionFit(draftPlayer, 2), "natural");
+  assert.equal(getPositionFit(draftPlayer, 4), "acceptable");
+  assert.equal(getPositionFit(draftPlayer, 5), "out_of_position");
 });
 
 test("a fifth overseas player is illegal", () => {
