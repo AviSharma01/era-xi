@@ -20,6 +20,7 @@ import {
   evaluateCompletedTeam,
   evaluatePlayerContribution,
 } from "./teamEvaluation.js";
+import { type BoostedTeamEvaluationV1, applyTeamBoostsV1 } from "./teamBoostV1.js";
 
 type ValidationXI = {
   label: string;
@@ -37,6 +38,7 @@ type EvaluatedCase = {
   scenario: "assigned" | "best reasonable";
   state: ClassicDraftState;
   evaluation: TeamEvaluation;
+  boostedEvaluation: BoostedTeamEvaluationV1;
   arrays: ContributingArrays;
 };
 
@@ -143,7 +145,7 @@ const VALIDATION_XIS: readonly ValidationXI[] = [
   },
 ];
 
-export function runTeamEvaluationValidation(): void {
+export function runTeamEvaluationValidation(includeBoosts = process.argv.includes("--boosts")): void {
   const players = loadCanonicalPlayers();
   const cases = VALIDATION_XIS.flatMap((xi) => {
     const assigned = evaluateCase(xi.label, "assigned", createState(xi.assigned, players));
@@ -163,12 +165,14 @@ export function runTeamEvaluationValidation(): void {
     verifyCase(assigned);
     verifyCase(bestReasonable);
     assert.deepEqual(assigned.evaluation, evaluateCompletedTeam(assigned.state));
+    assert.deepEqual(assigned.boostedEvaluation, applyTeamBoostsV1(assigned.evaluation));
     verifyBowlingUnchanged(assigned.state.slots, bestReasonable.state.slots);
     verifyNaturalPlacementHasNoBattingPenalty(bestReasonable);
   }
   verifyDistanceMultiplierMonotonicity(players);
 
-  printReport(cases);
+  verifyExpectedBoostBehavior(cases);
+  printReport(cases, includeBoosts);
 }
 
 function loadCanonicalPlayers(): Map<string, DraftPlayerSeason> {
@@ -210,8 +214,29 @@ function evaluateCase(label: string, scenario: EvaluatedCase["scenario"], state:
     scenario,
     state,
     evaluation,
+    boostedEvaluation: applyTeamBoostsV1(evaluation),
     arrays: getContributingArrays(evaluation),
   };
+}
+
+function verifyExpectedBoostBehavior(cases: readonly EvaluatedCase[]): void {
+  const expectedByCase: Record<string, readonly string[]> = {
+    "Elite balanced XI|assigned": ["strong_opening_pair", "sufficient_bowling_coverage", "balanced_construction"],
+    "Elite balanced XI|best reasonable": ["strong_opening_pair", "sufficient_bowling_coverage", "balanced_construction"],
+    "Batting-heavy and bowling-weak XI|assigned": ["strong_opening_pair"],
+    "Batting-heavy and bowling-weak XI|best reasonable": ["strong_opening_pair"],
+    "Bowling-heavy and batting-weak XI|assigned": ["sufficient_bowling_coverage"],
+    "Bowling-heavy and batting-weak XI|best reasonable": ["sufficient_bowling_coverage"],
+    "XI with multiple out-of-position specialist batters|assigned": [],
+    "XI with multiple out-of-position specialist batters|best reasonable": ["strong_opening_pair"],
+    "Star-heavy XI with poor depth|assigned": ["strong_opening_pair"],
+    "Star-heavy XI with poor depth|best reasonable": ["strong_opening_pair"],
+  };
+  for (const result of cases) {
+    const boostIds = result.boostedEvaluation.appliedBoosts.map((boost) => boost.id);
+    const key = `${result.label}|${result.scenario}`;
+    assert.deepEqual(boostIds, expectedByCase[key], `${key} has unexpected Boost V1 behavior`);
+  }
 }
 
 function verifyCase(result: EvaluatedCase): void {
@@ -384,7 +409,7 @@ function isShortageFloor(value: number | "SHORTAGE_FLOOR"): boolean {
   return value === "SHORTAGE_FLOOR";
 }
 
-function printReport(cases: readonly EvaluatedCase[]): void {
+function printReport(cases: readonly EvaluatedCase[], includeBoosts: boolean): void {
   console.log("# Team Evaluation V1 deterministic validation");
   console.log(`Shortage floor: ${AGGREGATE_SHORTAGE_FLOOR}`);
   for (const xi of VALIDATION_XIS) {
@@ -393,13 +418,13 @@ function printReport(cases: readonly EvaluatedCase[]): void {
     for (const scenario of ["assigned", "best reasonable"] as const) {
       const result = cases.find((candidate) => candidate.label === xi.label && candidate.scenario === scenario);
       assert.ok(result);
-      printCase(result);
+      printCase(result, includeBoosts);
     }
   }
   console.log("\nAll validation assertions passed.");
 }
 
-function printCase(result: EvaluatedCase): void {
+function printCase(result: EvaluatedCase, includeBoosts: boolean): void {
   const { evaluation } = result;
   console.log(`\n### ${result.scenario}`);
   console.log(
@@ -449,6 +474,16 @@ function printCase(result: EvaluatedCase): void {
   console.log(`batting depth positions 7-11: ${formatArray(result.arrays.battingDepthPositionsSevenToEleven)}`);
   console.log(`sixth and seventh bowling depth: ${formatArray(result.arrays.sixthAndSeventhBowlingDepth)}`);
   console.log(`shortage floors inserted: ${JSON.stringify(result.arrays.shortageFloorsInserted)}`);
+  if (includeBoosts) {
+    const boosted = result.boostedEvaluation;
+    const boostLabels = boosted.appliedBoosts.map((boost) => boost.label).join(", ") || "none";
+    console.log(
+      `Boost V1: overall=${fmt(evaluation.overallTeamRating)} -> ${fmt(boosted.adjustedOverallTeamRating)}` +
+        ` | battingComposite=${fmt(evaluation.battingComposite)} -> ${fmt(boosted.adjustedBattingComposite)}` +
+        ` | bowlingComposite=${fmt(evaluation.bowlingComposite)} -> ${fmt(boosted.adjustedBowlingComposite)}`,
+    );
+    console.log(`Boost V1 applied: ${boostLabels}`);
+  }
 }
 
 function formatArray(values: ReadonlyArray<number | "SHORTAGE_FLOOR">): string {
