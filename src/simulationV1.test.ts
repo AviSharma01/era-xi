@@ -12,11 +12,13 @@ import {
 import { evaluateCompletedTeam } from "./teamEvaluation.js";
 import { applyTeamBoostsV1 } from "./teamBoostV1.js";
 import {
+  type AccumulatedUserPlayerStats,
   FRANCHISES_2016,
   SIMULATION_V1_LEAGUE_CONSTANTS,
   createLeagueComposition,
   generateDoubleRoundRobinSchedule,
   simulateLeagueV1,
+  simulatePlayoffsV1,
 } from "./simulationV1.js";
 
 const pool = loadDraftPool(
@@ -308,6 +310,135 @@ test("materially stronger teams outperform weak teams across broad seed samples"
   assert.ok(strongWins / meetings > 0.75, `strong-team win rate was ${strongWins / meetings}`);
 });
 
+test("match-core extraction preserves the fixed pre-playoff league result", () => {
+  const result = simulateLeagueV1({ seed: "simulation-v1-milestone-2-review", ...simulationFixture() });
+  assert.deepEqual(result.matches[0], {
+    matchId: "league-r01-m01",
+    round: 1,
+    leg: 1,
+    homeTeamId: "user",
+    awayTeamId: "sunrisers-hyderabad",
+    innings: [
+      { teamId: "user", runs: 146, wickets: 5, balls: 120, allOut: false },
+      { teamId: "sunrisers-hyderabad", runs: 147, wickets: 3, balls: 90, allOut: false },
+    ],
+    winnerTeamId: "sunrisers-hyderabad",
+    loserTeamId: "user",
+    resultType: "wickets",
+    margin: 7,
+  });
+});
+
+test("non-qualified users return no simulated playoffs and unchanged combined totals", () => {
+  const fixture = simulationFixture();
+  const leagueResult = simulateLeagueV1({ seed: "simulation-v1-milestone-2-review", ...fixture });
+  assert.ok(!leagueResult.userQualified);
+  const before = structuredClone({ leagueResult, ...fixture });
+  const playoffs = simulatePlayoffsV1({ leagueResult, ...fixture });
+
+  assert.equal(playoffs.qualified, false);
+  assert.equal(playoffs.championTeamId, null);
+  assert.equal(playoffs.userOutcome, "not_qualified");
+  assert.deepEqual(playoffs.matches, []);
+  assert.deepEqual(playoffs.userMatchSummaries, []);
+  assert.ok(playoffs.playoffPlayerStats.every((player) =>
+    player.matches === 0 && player.runs === 0 && player.wickets === 0));
+  assert.deepEqual(playoffs.combinedSeasonPlayerStats, leagueResult.accumulatedUserPlayerStats);
+  assert.deepEqual({ leagueResult, ...fixture }, before);
+});
+
+test("qualified playoffs propagate the complete IPL bracket and reconcile user statistics", () => {
+  const fixture = simulationFixture();
+  const leagueResult = qualifiedLeagueResult(fixture, "qualified-bracket", 1);
+  const playoffs = simulatePlayoffsV1({ leagueResult, ...fixture });
+  assert.equal(playoffs.qualified, true);
+  assert.equal(playoffs.matches.length, 4);
+  assert.deepEqual(playoffs.matches.map((match) => match.stage), [
+    "qualifier_1", "eliminator", "qualifier_2", "final",
+  ]);
+  const [qualifierOne, eliminator, qualifierTwo, final] = playoffs.matches;
+  assert.deepEqual(
+    [qualifierTwo!.firstBattingTeamId, qualifierTwo!.chasingTeamId],
+    [qualifierOne!.loserTeamId, eliminator!.winnerTeamId],
+  );
+  assert.deepEqual(
+    [final!.firstBattingTeamId, final!.chasingTeamId],
+    [qualifierOne!.winnerTeamId, qualifierTwo!.winnerTeamId],
+  );
+  assert.equal(playoffs.championTeamId, final!.winnerTeamId);
+  assert.ok(playoffs.userMatchSummaries.length >= 2 && playoffs.userMatchSummaries.length <= 3);
+  assert.ok(!playoffs.matches.some((match) => "opponentPlayerStats" in match));
+  for (const match of playoffs.matches) {
+    if (match.resultType === "wickets") assert.equal(match.innings[1].runs, match.innings[0].runs + 1);
+  }
+  for (const summary of playoffs.userMatchSummaries) {
+    assert.equal(summary.playerRuns.reduce((total, player) => total + player.runs, 0), summary.userInnings.runs);
+    assert.ok(summary.playerWickets.reduce((total, player) => total + player.wickets, 0) <= summary.opponentInnings.wickets);
+  }
+  for (const player of playoffs.playoffPlayerStats) {
+    assert.equal(player.matches, playoffs.userMatchSummaries.length);
+    const combinedPlayer: AccumulatedUserPlayerStats =
+      playoffs.combinedSeasonPlayerStats.find((candidate) => candidate.playerSeasonId === player.playerSeasonId)!;
+    const league = leagueResult.accumulatedUserPlayerStats.find((candidate) => candidate.playerSeasonId === player.playerSeasonId)!;
+    assert.equal(combinedPlayer.matches, league.matches + player.matches);
+    assert.equal(combinedPlayer.runs, league.runs + player.runs);
+    assert.equal(combinedPlayer.wickets, league.wickets + player.wickets);
+  }
+  assert.deepEqual(playoffs, simulatePlayoffsV1({ leagueResult, ...fixture }));
+});
+
+test("top-four user routes expose only valid terminal playoff outcomes", () => {
+  const fixture = simulationFixture();
+  for (const position of [1, 2, 3, 4] as const) {
+    const leagueResult = qualifiedLeagueResult(fixture, `route-${position}`, position);
+    const playoffs = simulatePlayoffsV1({ leagueResult, ...fixture });
+    assert.ok(playoffs.qualified);
+    const stages = playoffs.userMatchSummaries.map((summary) => summary.stage);
+    if (position <= 2) {
+      assert.equal(stages[0], "qualifier_1");
+      assert.ok(!stages.includes("eliminator"));
+      assert.ok(["eliminated_in_qualifier_2", "runner_up", "champion"].includes(playoffs.userOutcome));
+    } else {
+      assert.equal(stages[0], "eliminator");
+      assert.ok(!stages.includes("qualifier_1"));
+      assert.ok(["eliminated_in_eliminator", "eliminated_in_qualifier_2", "runner_up", "champion"].includes(playoffs.userOutcome));
+    }
+  }
+});
+
+test("a controlled seed set can produce different playoff outcomes", () => {
+  const fixture = simulationFixture();
+  const champions = new Set<string>();
+  const outcomes = new Set<string>();
+  for (const seed of ["playoff-a", "playoff-b", "playoff-c", "playoff-d", "playoff-e", "playoff-f"]) {
+    const leagueResult = qualifiedLeagueResult(fixture, seed, 1);
+    const playoffs = simulatePlayoffsV1({ leagueResult, ...fixture });
+    champions.add(playoffs.championTeamId!);
+    outcomes.add(playoffs.userOutcome);
+  }
+  assert.ok(champions.size > 1 || outcomes.size > 1);
+});
+
+test("playoff validation rejects inconsistent qualification and XI inputs", () => {
+  const fixture = simulationFixture();
+  const leagueResult = qualifiedLeagueResult(fixture, "invalid-playoffs", 1);
+  assert.throws(
+    () => simulatePlayoffsV1({
+      leagueResult: { ...leagueResult, userQualified: false },
+      ...fixture,
+    }),
+    /qualification/,
+  );
+  assert.throws(
+    () => simulatePlayoffsV1({
+      leagueResult,
+      ...fixture,
+      userState: { ...fixture.userState, slots: fixture.userState.slots.slice(0, 10) },
+    }),
+    /completed user XI/,
+  );
+});
+
 function simulationFixture() {
   const profiles = buildOpponentStrengthProfiles2016(pool);
   const teams = createLeagueComposition("delhi-daredevils", profiles);
@@ -315,4 +446,25 @@ function simulationFixture() {
   const userState = buildCuratedOpponentState2016(pool, CURATED_OPPONENT_XIS_2016[0]);
   const userBoostedEvaluation = applyTeamBoostsV1(evaluateCompletedTeam(userState));
   return { teams, schedule, userState, userBoostedEvaluation };
+}
+
+function qualifiedLeagueResult(
+  fixture: ReturnType<typeof simulationFixture>,
+  seed: string,
+  userPosition: 1 | 2 | 3 | 4,
+) {
+  const original = simulateLeagueV1({ seed, ...fixture });
+  const currentUserPosition = original.userRecord.tablePosition;
+  const pointsTable = original.pointsTable.map((row) => {
+    let position = row.position;
+    if (row.teamId === "user") position = userPosition;
+    else if (row.position === userPosition) position = currentUserPosition;
+    return { ...row, position, qualified: position <= 4 };
+  }).sort((left, right) => left.position - right.position);
+  return {
+    ...original,
+    pointsTable,
+    userRecord: { ...original.userRecord, tablePosition: userPosition },
+    userQualified: true,
+  };
 }

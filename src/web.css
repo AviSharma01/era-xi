@@ -279,6 +279,130 @@ button:disabled {
   margin-top: 14px;
 }
 
+.team-summary,
+.boost-summary,
+.season-setup,
+.league-progress,
+.season-results {
+  border-top: 1px solid #d4d8de;
+  margin-top: 22px;
+  padding-top: 16px;
+}
+
+.team-summary h2,
+.boost-summary h2,
+.season-setup h2,
+.league-progress h2,
+.season-results h2 {
+  margin: 0 0 10px;
+}
+
+.boost-headline {
+  font-weight: 700;
+}
+
+.boost-line {
+  margin: 6px 0;
+}
+
+.season-setup {
+  display: grid;
+  gap: 8px;
+  max-width: 520px;
+}
+
+.begin-season-button {
+  box-sizing: border-box;
+  font: inherit;
+  padding: 8px;
+}
+
+.league-progress-segments {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(20px, 1fr));
+  gap: 4px;
+}
+
+.league-progress-segment {
+  align-items: center;
+  background: #d4d8de;
+  border: 1px solid #9aa5b1;
+  display: flex;
+  font-size: 0.75rem;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 28px;
+}
+
+.league-progress-win {
+  background: #d9f2e3;
+  border-color: #1f7a3f;
+  color: #14532d;
+}
+
+.league-progress-loss {
+  background: #f3dddd;
+  border-color: #9f3a38;
+  color: #7f1d1d;
+}
+
+.final-table {
+  overflow-x: auto;
+}
+
+.final-table table {
+  border-collapse: collapse;
+  min-width: 620px;
+  width: 100%;
+}
+
+.final-table th,
+.final-table td {
+  border: 1px solid #d4d8de;
+  padding: 7px;
+  text-align: left;
+}
+
+.final-table tr[data-team-id="user"] {
+  background: #e7eef8;
+  font-weight: 700;
+}
+
+.league-user-summary,
+.playoff-results,
+.playoff-match {
+  margin-top: 18px;
+}
+
+.season-leaders ol {
+  margin-top: 6px;
+}
+
+.playoff-match {
+  border: 1px solid #d4d8de;
+  padding: 10px;
+}
+
+.playoff-match h3,
+.playoff-match p {
+  margin: 0 0 6px;
+}
+
+.playoff-champion,
+.season-outcome {
+  font-weight: 700;
+}
+
+.playoff-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.playoff-actions button {
+  padding: 8px 12px;
+}
+
 .team-summary {
   border: 1px solid #d4d8de;
   background: #ffffff;

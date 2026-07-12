@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { JSDOM } from "jsdom";
 import {
   type BattingPosition,
@@ -9,6 +10,16 @@ import {
   loadDraftPool,
 } from "./draftClassic.js";
 import { createClassicDraftApp } from "./webApp.js";
+import {
+  CURATED_OPPONENT_XIS_2016,
+  buildCuratedOpponentState2016,
+  buildOpponentStrengthProfiles2016,
+} from "./opponentProfiles2016.js";
+import {
+  type LeagueSimulationResult,
+  simulateLeagueV1,
+  simulatePlayoffsV1,
+} from "./simulationV1.js";
 
 test("renders ready state from a loaded draft pool", () => {
   const { root } = setupDom();
@@ -340,6 +351,189 @@ test("all-rounder squad rows show zero wickets", () => {
   assert.match(squadRow(root, "All Round One").textContent ?? "", /Bowl 0 wkts/);
 });
 
+test("reveal shows Boost V1 and offers Begin League without a replacement selector", () => {
+  const { root } = setupDom();
+  const pool = loadDraftPool([promotedPlayer(), ...players()]);
+  createClassicDraftApp({ root, pool, seed: "web-season-setup", initialState: createCompletedState(pool.players) });
+
+  assert.equal(root.querySelector(".season-setup"), null);
+  click(button(root, "Reveal Team"));
+
+  assert.match(root.querySelector(".boost-summary")?.textContent ?? "", /Team Boosts/);
+  assert.match(root.querySelector(".boost-summary")?.textContent ?? "", /team-construction boost/i);
+  assert.equal(root.querySelector("#replacement-franchise"), null);
+  assert.equal(button(root, "Begin League").disabled, false);
+});
+
+test("season is precomputed once and progress reveals stored W-L results without score totals", () => {
+  const { root } = setupDom();
+  const fixture = canonicalWebFixture();
+  const callbacks: (() => void)[] = [];
+  let leagueCalls = 0;
+  let playoffCalls = 0;
+  let replacedFranchiseId: string | null = null;
+  createClassicDraftApp({
+    root,
+    pool: fixture.pool,
+    seed: "web-progress",
+    initialState: fixture.state,
+    scheduleProgressStep: (callback) => callbacks.push(callback),
+    simulationServices: {
+      buildProfiles: buildOpponentStrengthProfiles2016,
+      simulateLeague: (input) => {
+        leagueCalls += 1;
+        replacedFranchiseId = input.teams.find((team) => team.teamId === "user")?.replacedFranchiseId ?? null;
+        return simulateLeagueV1(input);
+      },
+      simulatePlayoffs: (input) => { playoffCalls += 1; return simulatePlayoffsV1(input); },
+    },
+  });
+  click(button(root, "Reveal Team"));
+  click(button(root, "Begin League"));
+
+  assert.equal(leagueCalls, 1);
+  assert.equal(playoffCalls, 1);
+  assert.equal(replacedFranchiseId, "delhi-daredevils");
+  assert.equal(root.querySelectorAll(".league-progress-segment").length, 14);
+  assert.ok([...root.querySelectorAll(".league-progress-segment")].every((segment) => segment.textContent === ""));
+
+  callbacks.shift()!();
+  assert.match(root.querySelector(".league-progress-segment")?.textContent ?? "", /^[WL]$/);
+  assert.ok([...root.querySelectorAll(".league-progress-segment")].every((segment) => ["", "W", "L"].includes(segment.textContent ?? "")));
+  assert.equal(leagueCalls, 1);
+  assert.equal(playoffCalls, 1);
+
+  flushCallbacks(callbacks);
+  assert.match(root.textContent ?? "", /Final Points Table/);
+  assert.equal(root.querySelectorAll(".final-table tbody tr").length, 8);
+  assert.match(root.textContent ?? "", /Top 3 run scorers/);
+  assert.match(root.textContent ?? "", /Top 3 wicket takers/);
+  assert.equal(leagueCalls, 1);
+  assert.equal(playoffCalls, 1);
+  assert.equal(root.querySelector(".league-progress-status")?.textContent, "14/14 league matches complete");
+  assert.match(root.querySelector('[data-team-id="user"]')?.textContent ?? "", /Your XI/);
+  assert.doesNotMatch(root.querySelector(".league-progress-segments")?.textContent ?? "", /\d+\/\d+/);
+  assert.doesNotMatch(root.textContent ?? "", /DA Warner|V Kohli|BB McCullum/);
+});
+
+test("internal replacement slot is deterministic for the same app seed", () => {
+  const captureReplacement = (): string | null => {
+    const { root } = setupDom();
+    const fixture = canonicalWebFixture();
+    let replacement: string | null = null;
+    createClassicDraftApp({
+      root,
+      pool: fixture.pool,
+      seed: "same-internal-slot",
+      initialState: fixture.state,
+      scheduleProgressStep: () => undefined,
+      simulationServices: {
+        buildProfiles: buildOpponentStrengthProfiles2016,
+        simulateLeague: (input) => {
+          replacement = input.teams.find((team) => team.teamId === "user")?.replacedFranchiseId ?? null;
+          return simulateLeagueV1(input);
+        },
+        simulatePlayoffs: simulatePlayoffsV1,
+      },
+    });
+    click(button(root, "Reveal Team"));
+    click(button(root, "Begin League"));
+    return replacement;
+  };
+  assert.equal(captureReplacement(), "delhi-daredevils");
+  assert.equal(captureReplacement(), "delhi-daredevils");
+});
+
+test("non-qualified and qualified season endings render only the permitted playoff detail", () => {
+  const nonQualified = runControlledSeason(false);
+  assert.match(nonQualified.root.textContent ?? "", /Season ended — missed playoffs/);
+  assert.doesNotMatch(nonQualified.root.textContent ?? "", /Champion:/);
+  assert.equal(nonQualified.root.querySelector(".playoff-results"), null);
+  assert.equal(nonQualified.root.querySelector(".awards"), null);
+
+  const qualified = runControlledSeason(true);
+  assert.equal(qualified.root.querySelectorAll(".playoff-match").length, 0);
+  assert.match(qualified.root.textContent ?? "", /Qualifier 1 pending/);
+  assert.doesNotMatch(qualified.root.textContent ?? "", /Champion:/);
+  click(button(qualified.root, "Simulate Playoff Match"));
+  assert.equal(qualified.root.querySelectorAll(".playoff-match").length, 1);
+  assert.match(qualified.root.querySelector(".playoff-toss")?.textContent ?? "", /Toss: .* won the toss and chose to (bat|bowl)\./);
+  assert.match(qualified.root.textContent ?? "", /(Qualifier 2|Final) pending/);
+  assert.doesNotMatch(qualified.root.textContent ?? "", /Champion:/);
+  click(button(qualified.root, "Progress to End"));
+  assert.match(qualified.root.textContent ?? "", /Qualifier 1/);
+  assert.match(qualified.root.textContent ?? "", /Your outcome:/);
+  assert.ok(qualified.root.querySelectorAll(".playoff-match").length >= 2);
+  assert.ok([...qualified.root.querySelectorAll(".playoff-match")].every((match) => match.textContent?.includes("Your XI")));
+  assert.doesNotMatch(qualified.root.querySelector(".playoff-results")?.textContent ?? "", /\d+\/\d+|\(\d+\.\d+\)/);
+  assert.doesNotMatch(qualified.root.textContent ?? "", /DA Warner|V Kohli|BB McCullum/);
+  assert.equal(qualified.root.querySelector(".awards"), null);
+});
+
+test("cosmetic playoff toss is deterministic for the same stored season", () => {
+  const first = runControlledSeason(true);
+  const second = runControlledSeason(true);
+  click(button(first.root, "Simulate Playoff Match"));
+  click(button(second.root, "Simulate Playoff Match"));
+  assert.equal(
+    first.root.querySelector(".playoff-toss")?.textContent,
+    second.root.querySelector(".playoff-toss")?.textContent,
+  );
+});
+
+test("an Eliminator loss ends the visible playoff path immediately", () => {
+  const { root } = runPlayoffRoute(0, 3);
+  assert.match(root.textContent ?? "", /Eliminator pending/);
+  click(button(root, "Simulate Playoff Match"));
+  assert.equal(root.querySelectorAll(".playoff-match").length, 1);
+  assert.match(root.textContent ?? "", /Eliminated in the Eliminator/);
+  assert.deepEqual(playoffStageHeadings(root), ["Eliminator"]);
+  assert.doesNotMatch(root.querySelector(".playoff-results")?.textContent ?? "", /Qualifier 1|Qualifier 2|Final|Champion:/);
+  assert.equal(findButton(root, "Simulate Playoff Match"), null);
+});
+
+test("a Qualifier 1 loss continues to Qualifier 2 and stops after elimination", () => {
+  const { root } = runPlayoffRoute(0, 1);
+  assert.match(root.textContent ?? "", /Qualifier 1 pending/);
+  click(button(root, "Simulate Playoff Match"));
+  assert.match(root.textContent ?? "", /Qualifier 2 pending/);
+  assert.doesNotMatch(root.textContent ?? "", /Your outcome:/);
+  click(button(root, "Simulate Playoff Match"));
+  assert.equal(root.querySelectorAll(".playoff-match").length, 2);
+  assert.match(root.textContent ?? "", /Eliminated in Qualifier 2/);
+  assert.deepEqual(playoffStageHeadings(root), ["Qualifier 1", "Qualifier 2"]);
+  assert.doesNotMatch(root.querySelector(".playoff-results")?.textContent ?? "", /Eliminator|Final|Champion:/);
+});
+
+test("a Final loss shows runner-up and the known champion", () => {
+  const { root } = runPlayoffRoute(2, 1);
+  click(button(root, "Simulate Playoff Match"));
+  assert.match(root.textContent ?? "", /Final pending/);
+  click(button(root, "Simulate Playoff Match"));
+  assert.equal(root.querySelectorAll(".playoff-match").length, 2);
+  assert.match(root.textContent ?? "", /Runner-up/);
+  assert.match(root.textContent ?? "", /Champion:/);
+  assert.doesNotMatch(root.textContent ?? "", /Eliminator|Qualifier 2/);
+});
+
+test("restarting during progress prevents queued callbacks from restoring season results", () => {
+  const { root } = setupDom();
+  const fixture = canonicalWebFixture();
+  const callbacks: (() => void)[] = [];
+  createClassicDraftApp({
+    root, pool: fixture.pool, seed: "restart-progress", initialState: fixture.state,
+    scheduleProgressStep: (callback) => callbacks.push(callback),
+  });
+  click(button(root, "Reveal Team"));
+  click(button(root, "Begin League"));
+  click(button(root, "Start New Draft"));
+  flushCallbacks(callbacks);
+
+  assert.match(root.textContent ?? "", /Ready to start/);
+  assert.equal(root.querySelector(".league-progress"), null);
+  assert.equal(root.querySelector(".season-results"), null);
+});
+
 function setupDom(): { root: HTMLElement } {
   const dom = new JSDOM("<!doctype html><main id=\"app\"></main>");
   globalThis.document = dom.window.document;
@@ -348,14 +542,99 @@ function setupDom(): { root: HTMLElement } {
   return { root: dom.window.document.querySelector<HTMLElement>("#app")! };
 }
 
+function canonicalWebFixture() {
+  const pool = loadDraftPool(
+    JSON.parse(readFileSync("data/processed/2016/rated_player_seasons.json", "utf8")) as unknown,
+  );
+  return {
+    pool,
+    state: buildCuratedOpponentState2016(pool, CURATED_OPPONENT_XIS_2016[0]),
+  };
+}
+
+function flushCallbacks(callbacks: (() => void)[]): void {
+  while (callbacks.length > 0) callbacks.shift()!();
+}
+
+function runControlledSeason(qualified: boolean): { root: HTMLElement } {
+  const { root } = setupDom();
+  const fixture = canonicalWebFixture();
+  const callbacks: (() => void)[] = [];
+  createClassicDraftApp({
+    root,
+    pool: fixture.pool,
+    seed: qualified ? "qualified-web" : "non-qualified-web",
+    initialState: fixture.state,
+    scheduleProgressStep: (callback) => callbacks.push(callback),
+    simulationServices: {
+      buildProfiles: buildOpponentStrengthProfiles2016,
+      simulateLeague: (input) => moveUserInTable(simulateLeagueV1(input), qualified ? 1 : 8),
+      simulatePlayoffs: simulatePlayoffsV1,
+    },
+  });
+  click(button(root, "Reveal Team"));
+  click(button(root, "Begin League"));
+  flushCallbacks(callbacks);
+  return { root };
+}
+
+function runPlayoffRoute(seedIndex: number, position: 1 | 3): { root: HTMLElement } {
+  const { root } = setupDom();
+  const fixture = canonicalWebFixture();
+  const callbacks: (() => void)[] = [];
+  createClassicDraftApp({
+    root,
+    pool: fixture.pool,
+    seed: `route-web-${seedIndex}-${position}`,
+    initialState: fixture.state,
+    scheduleProgressStep: (callback) => callbacks.push(callback),
+    simulationServices: {
+      buildProfiles: buildOpponentStrengthProfiles2016,
+      simulateLeague: (input) => moveUserInTable(
+        simulateLeagueV1({ ...input, seed: `route-find-${seedIndex}` }),
+        position,
+      ),
+      simulatePlayoffs: simulatePlayoffsV1,
+    },
+  });
+  click(button(root, "Reveal Team"));
+  click(button(root, "Begin League"));
+  flushCallbacks(callbacks);
+  return { root };
+}
+
+function moveUserInTable(result: LeagueSimulationResult, position: number): LeagueSimulationResult {
+  const previousPosition = result.userRecord.tablePosition;
+  const pointsTable = result.pointsTable.map((row) => {
+    let nextPosition = row.position;
+    if (row.teamId === "user") nextPosition = position;
+    else if (row.position === position) nextPosition = previousPosition;
+    return { ...row, position: nextPosition, qualified: nextPosition <= 4 };
+  }).sort((left, right) => left.position - right.position);
+  return {
+    ...result,
+    pointsTable,
+    userRecord: { ...result.userRecord, tablePosition: position },
+    userQualified: position <= 4,
+  };
+}
+
 function click(node: HTMLButtonElement): void {
   node.click();
 }
 
 function button(root: HTMLElement, label: string): HTMLButtonElement {
-  const found = [...root.querySelectorAll("button")].find((node) => node.textContent === label);
+  const found = findButton(root, label);
   assert.ok(found, `Expected button ${label}`);
-  return found as HTMLButtonElement;
+  return found;
+}
+
+function findButton(root: HTMLElement, label: string): HTMLButtonElement | null {
+  return [...root.querySelectorAll<HTMLButtonElement>("button")].find((node) => node.textContent === label) ?? null;
+}
+
+function playoffStageHeadings(root: HTMLElement): string[] {
+  return [...root.querySelectorAll<HTMLElement>(".playoff-match h3")].map((heading) => heading.textContent ?? "");
 }
 
 function squadRow(root: HTMLElement, name: string): HTMLButtonElement {

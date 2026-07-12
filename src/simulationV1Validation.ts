@@ -9,9 +9,11 @@ import {
 import { evaluateCompletedTeam } from "./teamEvaluation.js";
 import { applyTeamBoostsV1 } from "./teamBoostV1.js";
 import {
+  type LeagueSimulationResult,
   createLeagueComposition,
   generateDoubleRoundRobinSchedule,
   simulateLeagueV1,
+  simulatePlayoffsV1,
 } from "./simulationV1.js";
 
 export function runSimulationV1Validation(): void {
@@ -213,6 +215,108 @@ export function runSimulationV1Validation(): void {
   }
   console.log("  Invariants: determinism, schedule, 112 points, user stats, wicket credit, and immutability passed");
   console.log("\nSimulation V1 Milestone 2 validation passed.");
+
+  const nonQualifiedPlayoffs = simulatePlayoffsV1({ leagueResult: result, ...inputs });
+  assert.equal(nonQualifiedPlayoffs.qualified, false);
+  assert.equal(nonQualifiedPlayoffs.championTeamId, null);
+  assert.deepEqual(nonQualifiedPlayoffs.matches, []);
+  assert.deepEqual(nonQualifiedPlayoffs.combinedSeasonPlayerStats, result.accumulatedUserPlayerStats);
+  console.log("\nPlayoff early-return review");
+  console.log(
+    `  Position ${nonQualifiedPlayoffs.leaguePosition}: ${nonQualifiedPlayoffs.userOutcome}; ` +
+    "no playoff matches or champion simulated",
+  );
+
+  const qualifiedLeague = moveUserToQualifiedPosition(result, 1);
+  const playoffInputs = { leagueResult: qualifiedLeague, ...inputs };
+  const playoffSnapshot = structuredClone(playoffInputs);
+  const qualifiedPlayoffs = simulatePlayoffsV1(playoffInputs);
+  assert.ok(qualifiedPlayoffs.qualified);
+  assert.deepEqual(qualifiedPlayoffs, simulatePlayoffsV1(playoffInputs));
+  assert.deepEqual(playoffInputs, playoffSnapshot);
+  assert.equal(qualifiedPlayoffs.matches.length, 4);
+  const [qualifierOne, eliminator, qualifierTwo, final] = qualifiedPlayoffs.matches;
+  assert.deepEqual(
+    [qualifierTwo!.firstBattingTeamId, qualifierTwo!.chasingTeamId],
+    [qualifierOne!.loserTeamId, eliminator!.winnerTeamId],
+  );
+  assert.deepEqual(
+    [final!.firstBattingTeamId, final!.chasingTeamId],
+    [qualifierOne!.winnerTeamId, qualifierTwo!.winnerTeamId],
+  );
+  assert.equal(qualifiedPlayoffs.championTeamId, final!.winnerTeamId);
+  assert.ok(qualifiedPlayoffs.matches.every((match) =>
+    match.resultType !== "wickets" || match.innings[1].runs === match.innings[0].runs + 1));
+  assert.ok(qualifiedPlayoffs.userMatchSummaries.every((summary) =>
+    summary.playerRuns.reduce((total, player) => total + player.runs, 0) === summary.userInnings.runs));
+  assert.ok(qualifiedPlayoffs.userMatchSummaries.every((summary) =>
+    summary.playerWickets.reduce((total, player) => total + player.wickets, 0) <= summary.opponentInnings.wickets));
+  assert.ok(qualifiedPlayoffs.combinedSeasonPlayerStats.every((combined) => {
+    const league = qualifiedLeague.accumulatedUserPlayerStats.find((player) =>
+      player.playerSeasonId === combined.playerSeasonId)!;
+    const playoff = qualifiedPlayoffs.playoffPlayerStats.find((player) =>
+      player.playerSeasonId === combined.playerSeasonId)!;
+    return combined.matches === league.matches + playoff.matches &&
+      combined.runs === league.runs + playoff.runs &&
+      combined.wickets === league.wickets + playoff.wickets;
+  }));
+
+  console.log("\nQualified playoff review (user placed first in controlled table)");
+  for (const match of qualifiedPlayoffs.matches) {
+    const [first, chase] = match.innings;
+    console.log(
+      `  ${match.stage}: ${first.teamId} ${formatInnings(first)}; ${chase.teamId} ${formatInnings(chase)} — ` +
+      `${match.winnerTeamId} won`,
+    );
+  }
+  console.log(`  Champion: ${qualifiedPlayoffs.championTeamId}`);
+  console.log(`  User outcome: ${qualifiedPlayoffs.userOutcome}`);
+  console.log(`  User playoff matches: ${qualifiedPlayoffs.userMatchSummaries.length}`);
+  console.log("  User playoff player totals:");
+  for (const player of qualifiedPlayoffs.playoffPlayerStats.filter((player) => player.runs > 0 || player.wickets > 0)) {
+    console.log(`    ${player.playerName}: ${player.runs} runs, ${player.wickets} wickets`);
+  }
+
+  const playoffSamples = 200;
+  let qualifiedSeasons = 0;
+  let userPlayoffMatches = 0;
+  const championCounts = new Map<string, number>();
+  const outcomeCounts = new Map<string, number>();
+  const controlledChampions = new Set<string>();
+  for (let index = 0; index < playoffSamples; index += 1) {
+    const sampleLeague = simulateLeagueV1({ seed: `playoff-distribution-${index}`, ...inputs });
+    const samplePlayoffs = simulatePlayoffsV1({ leagueResult: sampleLeague, ...inputs });
+    outcomeCounts.set(samplePlayoffs.userOutcome, (outcomeCounts.get(samplePlayoffs.userOutcome) ?? 0) + 1);
+    if (samplePlayoffs.qualified) {
+      qualifiedSeasons += 1;
+      userPlayoffMatches += samplePlayoffs.userMatchSummaries.length;
+      championCounts.set(
+        samplePlayoffs.championTeamId,
+        (championCounts.get(samplePlayoffs.championTeamId) ?? 0) + 1,
+      );
+    }
+    if (index < 8) {
+      const controlled = simulatePlayoffsV1({
+        leagueResult: moveUserToQualifiedPosition(sampleLeague, 1),
+        ...inputs,
+      });
+      if (controlled.championTeamId) controlledChampions.add(controlled.championTeamId);
+    }
+  }
+  assert.ok(controlledChampions.size > 1);
+  assert.ok(qualifiedSeasons >= 0 && qualifiedSeasons <= playoffSamples);
+  assert.ok(userPlayoffMatches >= qualifiedSeasons && userPlayoffMatches <= qualifiedSeasons * 3);
+  console.log(`\nPlayoff distribution review (${playoffSamples} seeds)`);
+  console.log(`  User qualified: ${qualifiedSeasons}/${playoffSamples}`);
+  console.log(
+    `  Average user playoff matches when qualified: ` +
+    `${qualifiedSeasons === 0 ? "n/a" : (userPlayoffMatches / qualifiedSeasons).toFixed(2)}`,
+  );
+  console.log(`  Champion teams observed: ${championCounts.size}`);
+  console.log(`  User outcomes: ${[...outcomeCounts].map(([outcome, count]) => `${outcome}=${count}`).join(", ")}`);
+  console.log(`  Controlled seed variation champions: ${[...controlledChampions].join(", ")}`);
+  console.log("  Invariants: bracket propagation, determinism, user stats, wicket credit, and immutability passed");
+  console.log("\nSimulation V1 Milestone 3 validation passed.");
 }
 
 function formatStrength(strength: { battingComposite: number; bowlingComposite: number; overallTeamRating: number }): string {
@@ -225,6 +329,25 @@ function formatDelta(value: number): string {
 
 function formatInnings(innings: { runs: number; wickets: number; balls: number }): string {
   return `${innings.runs}/${innings.wickets} (${Math.floor(innings.balls / 6)}.${innings.balls % 6})`;
+}
+
+function moveUserToQualifiedPosition(
+  result: LeagueSimulationResult,
+  userPosition: 1 | 2 | 3 | 4,
+): LeagueSimulationResult {
+  const previousPosition = result.userRecord.tablePosition;
+  const pointsTable = result.pointsTable.map((row) => {
+    let position = row.position;
+    if (row.teamId === "user") position = userPosition;
+    else if (row.position === userPosition) position = previousPosition;
+    return { ...row, position, qualified: position <= 4 };
+  }).sort((left, right) => left.position - right.position);
+  return {
+    ...result,
+    pointsTable,
+    userRecord: { ...result.userRecord, tablePosition: userPosition },
+    userQualified: true,
+  };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

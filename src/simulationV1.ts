@@ -157,6 +157,66 @@ export type SimulateLeagueV1Input = {
   userBoostedEvaluation: BoostedTeamEvaluationV1;
 };
 
+export type PlayoffStage = "qualifier_1" | "eliminator" | "qualifier_2" | "final";
+
+export type UserPlayoffOutcome =
+  | "not_qualified"
+  | "eliminated_in_eliminator"
+  | "eliminated_in_qualifier_2"
+  | "runner_up"
+  | "champion";
+
+export type PlayoffMatchResult = {
+  matchId: string;
+  stage: PlayoffStage;
+  firstBattingTeamId: SimulationTeamId;
+  chasingTeamId: SimulationTeamId;
+  innings: readonly [InningsSummary, InningsSummary];
+  winnerTeamId: SimulationTeamId;
+  loserTeamId: SimulationTeamId;
+  resultType: "runs" | "wickets" | "super_over";
+  margin: number | null;
+};
+
+export type UserPlayoffMatchSummary = {
+  matchId: string;
+  stage: PlayoffStage;
+  opponentTeamId: Franchise2016Id;
+  result: "W" | "L";
+  userInnings: InningsSummary;
+  opponentInnings: InningsSummary;
+  playerRuns: readonly { playerSeasonId: string; runs: number }[];
+  playerWickets: readonly { playerSeasonId: string; wickets: number }[];
+};
+
+export type SimulatePlayoffsV1Input = {
+  leagueResult: LeagueSimulationResult;
+  teams: readonly LeagueTeam[];
+  userState: ClassicDraftState;
+  userBoostedEvaluation: BoostedTeamEvaluationV1;
+};
+
+type PlayoffSimulationResultBase = {
+  leaguePosition: number;
+  matches: readonly PlayoffMatchResult[];
+  userMatchSummaries: readonly UserPlayoffMatchSummary[];
+  playoffPlayerStats: readonly AccumulatedUserPlayerStats[];
+  combinedSeasonPlayerStats: readonly AccumulatedUserPlayerStats[];
+};
+
+export type PlayoffSimulationResult =
+  | PlayoffSimulationResultBase & {
+      qualified: false;
+      championTeamId: null;
+      userOutcome: "not_qualified";
+    }
+  | PlayoffSimulationResultBase & {
+      qualified: true;
+      leaguePosition: 1 | 2 | 3 | 4;
+      championTeamId: SimulationTeamId;
+      userOutcome: Exclude<UserPlayoffOutcome, "not_qualified">;
+    };
+
 export function isFranchise2016Id(value: string): value is Franchise2016Id {
   return FRANCHISES_2016.some((franchise) => franchise.id === value);
 }
@@ -231,14 +291,7 @@ export function generateDoubleRoundRobinSchedule(teams: readonly LeagueTeam[]): 
 export function simulateLeagueV1(input: SimulateLeagueV1Input): LeagueSimulationResult {
   validateSimulationInput(input);
   const seed = String(input.seed);
-  const strengths = new Map<SimulationTeamId, TeamStrengthSnapshot>();
-  for (const team of input.teams) {
-    strengths.set(team.teamId, team.teamId === "user" ? {
-      battingComposite: input.userBoostedEvaluation.adjustedBattingComposite,
-      bowlingComposite: input.userBoostedEvaluation.adjustedBowlingComposite,
-      overallTeamRating: input.userBoostedEvaluation.adjustedOverallTeamRating,
-    } : team.opponentProfile.adjustedStrength);
-  }
+  const strengths = buildStrengthMap(input.teams, input.userBoostedEvaluation);
 
   const matches = input.schedule.map((match) => simulateMatch(seed, match, strengths));
   const pointsTable = buildPointsTable(input.teams, matches);
@@ -268,22 +321,120 @@ export function simulateLeagueV1(input: SimulateLeagueV1Input): LeagueSimulation
   };
 }
 
+export function simulatePlayoffsV1(input: SimulatePlayoffsV1Input): PlayoffSimulationResult {
+  const userRow = validatePlayoffInput(input);
+  const emptyPlayoffStats = accumulateUserStats([], input.userState);
+  if (!userRow.qualified) {
+    return {
+      qualified: false,
+      leaguePosition: userRow.position,
+      championTeamId: null,
+      userOutcome: "not_qualified",
+      matches: [],
+      userMatchSummaries: [],
+      playoffPlayerStats: emptyPlayoffStats,
+      combinedSeasonPlayerStats: combineUserStats(
+        input.leagueResult.accumulatedUserPlayerStats,
+        emptyPlayoffStats,
+      ),
+    };
+  }
+
+  const seed = input.leagueResult.seed;
+  const strengths = buildStrengthMap(input.teams, input.userBoostedEvaluation);
+  const ranked = [...input.leagueResult.pointsTable].sort((left, right) => left.position - right.position);
+  const qualifierOne = simulatePlayoffMatch(
+    seed, "qualifier_1", "playoff-qualifier-1", ranked[0]!.teamId, ranked[1]!.teamId, strengths,
+  );
+  const eliminator = simulatePlayoffMatch(
+    seed, "eliminator", "playoff-eliminator", ranked[2]!.teamId, ranked[3]!.teamId, strengths,
+  );
+  const qualifierTwo = simulatePlayoffMatch(
+    seed, "qualifier_2", "playoff-qualifier-2",
+    qualifierOne.loserTeamId, eliminator.winnerTeamId, strengths,
+  );
+  const final = simulatePlayoffMatch(
+    seed, "final", "playoff-final", qualifierOne.winnerTeamId, qualifierTwo.winnerTeamId, strengths,
+  );
+  const matches = [qualifierOne, eliminator, qualifierTwo, final];
+  const userMatchSummaries = matches
+    .filter((match) => match.firstBattingTeamId === "user" || match.chasingTeamId === "user")
+    .map((match) => buildUserPlayoffMatchSummary(seed, match, input.userBoostedEvaluation));
+  const playoffPlayerStats = accumulateUserStats(userMatchSummaries, input.userState);
+  return {
+    qualified: true,
+    leaguePosition: userRow.position as 1 | 2 | 3 | 4,
+    championTeamId: final.winnerTeamId,
+    userOutcome: deriveUserPlayoffOutcome(matches),
+    matches,
+    userMatchSummaries,
+    playoffPlayerStats,
+    combinedSeasonPlayerStats: combineUserStats(
+      input.leagueResult.accumulatedUserPlayerStats,
+      playoffPlayerStats,
+    ),
+  };
+}
+
+type CoreMatchResult = Pick<
+  LeagueMatchResult,
+  "innings" | "winnerTeamId" | "loserTeamId" | "resultType" | "margin"
+>;
+
 function simulateMatch(
   seed: string,
   match: ScheduledLeagueMatch,
   strengths: ReadonlyMap<SimulationTeamId, TeamStrengthSnapshot>,
 ): LeagueMatchResult {
-  const firstStrength = requiredStrength(strengths, match.homeTeamId);
-  const chaseStrength = requiredStrength(strengths, match.awayTeamId);
-  const first = simulateUnconstrainedInnings(seed, match.id, "first", match.homeTeamId, firstStrength, chaseStrength);
-  const rawChase = simulateUnconstrainedInnings(seed, match.id, "chase", match.awayTeamId, chaseStrength, firstStrength);
+  return {
+    matchId: match.id,
+    round: match.round,
+    leg: match.leg,
+    homeTeamId: match.homeTeamId,
+    awayTeamId: match.awayTeamId,
+    ...simulateMatchCore(seed, match.id, match.homeTeamId, match.awayTeamId, strengths),
+  };
+}
+
+function simulatePlayoffMatch(
+  seed: string,
+  stage: PlayoffStage,
+  matchIdValue: string,
+  firstBattingTeamId: SimulationTeamId,
+  chasingTeamId: SimulationTeamId,
+  strengths: ReadonlyMap<SimulationTeamId, TeamStrengthSnapshot>,
+): PlayoffMatchResult {
+  return {
+    matchId: matchIdValue,
+    stage,
+    firstBattingTeamId,
+    chasingTeamId,
+    ...simulateMatchCore(seed, matchIdValue, firstBattingTeamId, chasingTeamId, strengths),
+  };
+}
+
+function simulateMatchCore(
+  seed: string,
+  matchIdValue: string,
+  firstBattingTeamId: SimulationTeamId,
+  chasingTeamId: SimulationTeamId,
+  strengths: ReadonlyMap<SimulationTeamId, TeamStrengthSnapshot>,
+): CoreMatchResult {
+  const firstStrength = requiredStrength(strengths, firstBattingTeamId);
+  const chaseStrength = requiredStrength(strengths, chasingTeamId);
+  const first = simulateUnconstrainedInnings(
+    seed, matchIdValue, "first", firstBattingTeamId, firstStrength, chaseStrength,
+  );
+  const rawChase = simulateUnconstrainedInnings(
+    seed, matchIdValue, "chase", chasingTeamId, chaseStrength, firstStrength,
+  );
   const targetRuns = first.runs + 1;
   let chase: InningsSummary;
   if (rawChase.runs >= targetRuns) {
     const excess = rawChase.runs - targetRuns;
-    const finishReduction = Math.min(29, Math.round(excess * 0.7 + randomFor(seed, match.id, "chase-balls") * 12));
+    const finishReduction = Math.min(29, Math.round(excess * 0.7 + randomFor(seed, matchIdValue, "chase-balls") * 12));
     chase = {
-      teamId: match.awayTeamId,
+      teamId: chasingTeamId,
       runs: targetRuns,
       wickets: Math.min(rawChase.wickets, 9),
       balls: SIMULATION_V1_MATCH_CONSTANTS.maximumBalls - 1 - finishReduction,
@@ -297,29 +448,24 @@ function simulateMatch(
   let resultType: LeagueMatchResult["resultType"];
   let margin: number | null;
   if (chase.runs > first.runs) {
-    winnerTeamId = match.awayTeamId;
+    winnerTeamId = chasingTeamId;
     resultType = "wickets";
     margin = 10 - chase.wickets;
   } else if (chase.runs < first.runs) {
-    winnerTeamId = match.homeTeamId;
+    winnerTeamId = firstBattingTeamId;
     resultType = "runs";
     margin = first.runs - chase.runs;
   } else {
     const firstWeight = firstStrength.overallTeamRating;
     const threshold = firstWeight / (firstWeight + chaseStrength.overallTeamRating);
-    winnerTeamId = randomFor(seed, match.id, "super-over") < threshold ? match.homeTeamId : match.awayTeamId;
+    winnerTeamId = randomFor(seed, matchIdValue, "super-over") < threshold ? firstBattingTeamId : chasingTeamId;
     resultType = "super_over";
     margin = null;
   }
   return {
-    matchId: match.id,
-    round: match.round,
-    leg: match.leg,
-    homeTeamId: match.homeTeamId,
-    awayTeamId: match.awayTeamId,
     innings: [first, chase],
     winnerTeamId,
-    loserTeamId: winnerTeamId === match.homeTeamId ? match.awayTeamId : match.homeTeamId,
+    loserTeamId: winnerTeamId === firstBattingTeamId ? chasingTeamId : firstBattingTeamId,
     resultType,
     margin,
   };
@@ -410,13 +556,50 @@ function buildUserMatchSummary(
   const userInnings = match.innings.find((innings) => innings.teamId === "user")!;
   const opponentInnings = match.innings.find((innings) => innings.teamId !== "user")!;
   const opponentTeamId = opponentInnings.teamId as Franchise2016Id;
+  const allocations = buildUserPlayerAllocations(seed, match.matchId, userInnings, opponentInnings, evaluation);
+  return {
+    matchId: match.matchId,
+    round: match.round,
+    opponentTeamId,
+    result: match.winnerTeamId === "user" ? "W" : "L",
+    userInnings,
+    opponentInnings,
+    ...allocations,
+  };
+}
+
+function buildUserPlayoffMatchSummary(
+  seed: string,
+  match: PlayoffMatchResult,
+  evaluation: BoostedTeamEvaluationV1,
+): UserPlayoffMatchSummary {
+  const userInnings = match.innings.find((innings) => innings.teamId === "user")!;
+  const opponentInnings = match.innings.find((innings) => innings.teamId !== "user")!;
+  return {
+    matchId: match.matchId,
+    stage: match.stage,
+    opponentTeamId: opponentInnings.teamId as Franchise2016Id,
+    result: match.winnerTeamId === "user" ? "W" : "L",
+    userInnings,
+    opponentInnings,
+    ...buildUserPlayerAllocations(seed, match.matchId, userInnings, opponentInnings, evaluation),
+  };
+}
+
+function buildUserPlayerAllocations(
+  seed: string,
+  matchIdValue: string,
+  userInnings: InningsSummary,
+  opponentInnings: InningsSummary,
+  evaluation: BoostedTeamEvaluationV1,
+): Pick<UserMatchSummary, "playerRuns" | "playerWickets"> {
   const battingWeights = evaluation.baseTeamEvaluation.players.map((contribution, index) =>
     (contribution.effectiveBattingRating === null
       ? 0.2
       : Math.exp((contribution.effectiveBattingRating - 55) / 20)) * BATTING_ORDER_EXPOSURE[index]!,
   );
   const playerRuns = allocateUnits(
-    userInnings.runs, battingWeights, seed, match.matchId, "user-runs",
+    userInnings.runs, battingWeights, seed, matchIdValue, "user-runs",
   ).map((runs, index) => ({
     playerSeasonId: evaluation.baseTeamEvaluation.players[index]!.slot.player.id, runs,
   }));
@@ -428,25 +611,16 @@ function buildUserMatchSummary(
   let creditedWickets = 0;
   if (eligibleBowlers.some((weight) => weight > 0)) {
     for (let index = 0; index < opponentInnings.wickets; index += 1) {
-      if (randomFor(seed, match.matchId, `user-wicket-credit-${index}`) <
+      if (randomFor(seed, matchIdValue, `user-wicket-credit-${index}`) <
           SIMULATION_V1_MATCH_CONSTANTS.bowlerCreditedWicketProbability) creditedWickets += 1;
     }
   }
   const playerWickets = allocateUnits(
-    creditedWickets, eligibleBowlers, seed, match.matchId, "user-wickets",
+    creditedWickets, eligibleBowlers, seed, matchIdValue, "user-wickets",
   ).map((wickets, index) => ({
     playerSeasonId: evaluation.baseTeamEvaluation.players[index]!.slot.player.id, wickets,
   }));
-  return {
-    matchId: match.matchId,
-    round: match.round,
-    opponentTeamId,
-    result: match.winnerTeamId === "user" ? "W" : "L",
-    userInnings,
-    opponentInnings,
-    playerRuns,
-    playerWickets,
-  };
+  return { playerRuns, playerWickets };
 }
 
 function allocateUnits(
@@ -472,7 +646,7 @@ function allocateUnits(
 }
 
 function accumulateUserStats(
-  summaries: readonly UserMatchSummary[],
+  summaries: readonly Pick<UserMatchSummary, "playerRuns" | "playerWickets">[],
   state: ClassicDraftState,
 ): AccumulatedUserPlayerStats[] {
   const byId = new Map(state.slots.map((slot) => [slot.player.id, {
@@ -488,6 +662,37 @@ function accumulateUserStats(
     for (const value of summary.playerWickets) byId.get(value.playerSeasonId)!.wickets += value.wickets;
   }
   return state.slots.map((slot) => byId.get(slot.player.id)!);
+}
+
+function combineUserStats(
+  leagueStats: readonly AccumulatedUserPlayerStats[],
+  playoffStats: readonly AccumulatedUserPlayerStats[],
+): AccumulatedUserPlayerStats[] {
+  const playoffById = new Map(playoffStats.map((player) => [player.playerSeasonId, player]));
+  return leagueStats.map((leaguePlayer) => {
+    const playoffPlayer = playoffById.get(leaguePlayer.playerSeasonId);
+    if (!playoffPlayer) throw new Error(`Missing playoff statistics for ${leaguePlayer.playerSeasonId}.`);
+    return {
+      ...leaguePlayer,
+      matches: leaguePlayer.matches + playoffPlayer.matches,
+      runs: leaguePlayer.runs + playoffPlayer.runs,
+      wickets: leaguePlayer.wickets + playoffPlayer.wickets,
+    };
+  });
+}
+
+function deriveUserPlayoffOutcome(
+  matches: readonly PlayoffMatchResult[],
+): Exclude<UserPlayoffOutcome, "not_qualified"> {
+  const final = matches.find((match) => match.stage === "final")!;
+  if (final.winnerTeamId === "user") return "champion";
+  if (final.firstBattingTeamId === "user" || final.chasingTeamId === "user") return "runner_up";
+  const qualifierTwo = matches.find((match) => match.stage === "qualifier_2")!;
+  if ((qualifierTwo.firstBattingTeamId === "user" || qualifierTwo.chasingTeamId === "user") &&
+      qualifierTwo.loserTeamId === "user") return "eliminated_in_qualifier_2";
+  const eliminator = matches.find((match) => match.stage === "eliminator")!;
+  if (eliminator.loserTeamId === "user") return "eliminated_in_eliminator";
+  throw new Error("Unable to derive the qualified user's playoff outcome.");
 }
 
 function compareRunScorers(left: AccumulatedUserPlayerStats, right: AccumulatedUserPlayerStats): number {
@@ -529,6 +734,56 @@ function validateSimulationInput(input: SimulateLeagueV1Input): void {
   if ([...teamIds].some((id) => appearances.get(id) !== SIMULATION_V1_LEAGUE_CONSTANTS.matchesPerTeam)) {
     throw new Error("Every Simulation V1 team must play exactly 14 matches.");
   }
+}
+
+function validatePlayoffInput(input: SimulatePlayoffsV1Input): PointsTableRow {
+  validateScheduleTeams(input.teams);
+  if (!input.userState.completed || input.userState.slots.length !== 11) {
+    throw new Error("Simulation V1 playoffs require a completed user XI.");
+  }
+  const stateIds = input.userState.slots.map((slot) => slot.player.id);
+  const evaluationIds = input.userBoostedEvaluation.baseTeamEvaluation.players.map((player) => player.slot.player.id);
+  if (stateIds.length !== evaluationIds.length || stateIds.some((id, index) => id !== evaluationIds[index])) {
+    throw new Error("The user Boost V1 evaluation must belong to the supplied XI.");
+  }
+  const table = input.leagueResult.pointsTable;
+  const positions = table.map((row) => row.position).sort((left, right) => left - right);
+  const expectedPositions = Array.from({ length: SIMULATION_V1_LEAGUE_CONSTANTS.teams }, (_, index) => index + 1);
+  if (table.length !== SIMULATION_V1_LEAGUE_CONSTANTS.teams ||
+      JSON.stringify(positions) !== JSON.stringify(expectedPositions)) {
+    throw new Error("Simulation V1 playoffs require a complete uniquely ranked points table.");
+  }
+  const teamIds = [...input.teams.map((team) => team.teamId)].sort();
+  const tableIds = [...table.map((row) => row.teamId)].sort();
+  if (JSON.stringify(teamIds) !== JSON.stringify(tableIds)) {
+    throw new Error("Playoff table team IDs must match the supplied league composition.");
+  }
+  const userRow = table.find((row) => row.teamId === "user");
+  if (!userRow || userRow.qualified !== input.leagueResult.userQualified ||
+      userRow.position !== input.leagueResult.userRecord.tablePosition ||
+      userRow.qualified !== (userRow.position <= SIMULATION_V1_MATCH_CONSTANTS.qualificationPlaces)) {
+    throw new Error("Playoff qualification must agree with the league result and table position.");
+  }
+  const leaguePlayerIds = input.leagueResult.accumulatedUserPlayerStats.map((player) => player.playerSeasonId);
+  if (leaguePlayerIds.length !== stateIds.length || leaguePlayerIds.some((id, index) => id !== stateIds[index])) {
+    throw new Error("League player statistics must belong to the supplied user XI.");
+  }
+  return userRow;
+}
+
+function buildStrengthMap(
+  teams: readonly LeagueTeam[],
+  evaluation: BoostedTeamEvaluationV1,
+): Map<SimulationTeamId, TeamStrengthSnapshot> {
+  const strengths = new Map<SimulationTeamId, TeamStrengthSnapshot>();
+  for (const team of teams) {
+    strengths.set(team.teamId, team.teamId === "user" ? {
+      battingComposite: evaluation.adjustedBattingComposite,
+      bowlingComposite: evaluation.adjustedBowlingComposite,
+      overallTeamRating: evaluation.adjustedOverallTeamRating,
+    } : team.opponentProfile.adjustedStrength);
+  }
+  return strengths;
 }
 
 function requiredStrength(

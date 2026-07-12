@@ -21,12 +21,34 @@ import {
   type TeamEvaluation,
   evaluateCompletedTeam,
 } from "./teamEvaluation.js";
+import {
+  type BoostedTeamEvaluationV1,
+  applyTeamBoostsV1,
+} from "./teamBoostV1.js";
+import { buildOpponentStrengthProfiles2016 } from "./opponentProfiles2016.js";
+import {
+  type Franchise2016Id,
+  type LeagueSimulationResult,
+  type PlayoffSimulationResult,
+  createLeagueComposition,
+  generateDoubleRoundRobinSchedule,
+  simulateLeagueV1,
+  simulatePlayoffsV1,
+} from "./simulationV1.js";
+
+type SimulationServices = {
+  buildProfiles: typeof buildOpponentStrengthProfiles2016;
+  simulateLeague: typeof simulateLeagueV1;
+  simulatePlayoffs: typeof simulatePlayoffsV1;
+};
 
 type ClassicDraftAppOptions = {
   root: HTMLElement;
   pool: DraftPool;
   seed?: string;
   initialState?: ClassicDraftState;
+  scheduleProgressStep?: (callback: () => void) => void;
+  simulationServices?: SimulationServices;
 };
 
 export type ClassicDraftApp = {
@@ -37,6 +59,24 @@ export type ClassicDraftApp = {
 type SquadFilter = "all" | "batters" | "wicketkeepers" | "all-rounders" | "bowlers";
 type ActiveDetails = { source: "squad"; playerId: string } | { source: "drafted"; position: BattingPosition };
 type RevealState = "hidden" | "revealed";
+
+type RevealedTeamState = {
+  evaluation: TeamEvaluation;
+  boostedEvaluation: BoostedTeamEvaluationV1;
+};
+
+type PrecomputedSeason = {
+  replacementFranchiseId: Franchise2016Id;
+  seed: string;
+  leagueResult: LeagueSimulationResult;
+  playoffResult: PlayoffSimulationResult;
+};
+
+type SeasonUiState =
+  | { phase: "setup" }
+  | { phase: "league_progress"; season: PrecomputedSeason; revealedUserLeagueMatches: number }
+  | { phase: "playoff_progress"; season: PrecomputedSeason; revealedPlayoffMatches: number }
+  | { phase: "complete"; season: PrecomputedSeason };
 
 type TemporaryUiState = {
   activeDetails: ActiveDetails | null;
@@ -52,6 +92,7 @@ type SquadGroup = {
 };
 
 const POSITIONS: BattingPosition[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const V1_REPLACEMENT_FRANCHISE_ID: Franchise2016Id = "delhi-daredevils";
 const TIER_ORDER: Tier[] = ["S", "A", "B", "C", "D"];
 const SQUAD_GROUPS: SquadGroup[] = [
   { filter: "batters", heading: "Batters", roles: ["batter"], sortMetric: "runs" },
@@ -61,9 +102,20 @@ const SQUAD_GROUPS: SquadGroup[] = [
 ];
 
 export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicDraftApp {
-  const random = createSeededRandom(options.seed ?? Date.now().toString());
+  const appSeed = options.seed ?? Date.now().toString();
+  const random = createSeededRandom(appSeed);
+  const services: SimulationServices = options.simulationServices ?? {
+    buildProfiles: buildOpponentStrengthProfiles2016,
+    simulateLeague: simulateLeagueV1,
+    simulatePlayoffs: simulatePlayoffsV1,
+  };
+  const scheduleProgressStep = options.scheduleProgressStep ?? ((callback: () => void) => {
+    setTimeout(callback, 150);
+  });
   let state = options.initialState ?? createClassicDraftState();
   let revealState: RevealState = "hidden";
+  let revealedTeam: RevealedTeamState | null = null;
+  let seasonUiState: SeasonUiState = { phase: "setup" };
   let squadFilter: SquadFilter = "all";
   let temporaryState: TemporaryUiState = {
     activeDetails: null,
@@ -511,6 +563,8 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     const actions = element("div", "completed-actions");
     if (revealState === "hidden") {
       const reveal = button("Reveal Team", () => {
+        const evaluation = evaluateCompletedTeam(state);
+        revealedTeam = { evaluation, boostedEvaluation: applyTeamBoostsV1(evaluation) };
         revealState = "revealed";
         temporaryState.error = null;
         render();
@@ -522,6 +576,8 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     const restart = button("Start New Draft", () => {
       state = createClassicDraftState();
       revealState = "hidden";
+      revealedTeam = null;
+      seasonUiState = { phase: "setup" };
       clearTemporaryState();
       render();
     });
@@ -530,13 +586,13 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
 
     section.append(heading, slots, actions);
     if (revealState === "revealed") {
-      section.append(renderTeamSummary());
+      section.append(renderTeamSummary(), renderBoostSummary(), renderSeasonSection());
     }
     return section;
   }
 
   function renderTeamSummary(): HTMLElement {
-    const summary = evaluateCompletedTeam(state);
+    const summary = revealedTeam?.evaluation ?? evaluateCompletedTeam(state);
     const section = element("section", "team-summary");
     const heading = element("h2");
     heading.textContent = "Team Summary";
@@ -569,6 +625,270 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     return section;
   }
 
+  function renderBoostSummary(): HTMLElement {
+    const boosted = requiredRevealedTeam().boostedEvaluation;
+    const base = boosted.baseTeamEvaluation;
+    const section = element("section", "boost-summary");
+    const heading = element("h2");
+    heading.textContent = "Team Boosts";
+    const headline = element("p", "boost-headline");
+    headline.textContent = boosted.boostSummaryForUI.headline;
+    section.append(
+      heading,
+      headline,
+      detailLine("Batting composite", `${formatOneDecimal(base.battingComposite)} → ${formatOneDecimal(boosted.adjustedBattingComposite)}`),
+      detailLine("Bowling composite", `${formatOneDecimal(base.bowlingComposite)} → ${formatOneDecimal(boosted.adjustedBowlingComposite)}`),
+      detailLine("Overall team rating", `${formatOneDecimal(base.overallTeamRating)} → ${formatOneDecimal(boosted.adjustedOverallTeamRating)}`),
+      detailLine("Overall uplift", `+${formatOneDecimal(boosted.boostSummaryForUI.totalOverallEffect)}`),
+    );
+    for (const line of boosted.boostSummaryForUI.lines) {
+      const item = element("p", "boost-line");
+      item.textContent = line;
+      section.append(item);
+    }
+    return section;
+  }
+
+  function renderSeasonSection(): HTMLElement {
+    if (seasonUiState.phase === "setup") return renderSeasonSetup();
+    if (seasonUiState.phase === "league_progress") return renderLeagueProgress(seasonUiState);
+    if (seasonUiState.phase === "playoff_progress") return renderPlayoffProgress(seasonUiState);
+    return renderCompletedSeason(seasonUiState.season);
+  }
+
+  function renderSeasonSetup(): HTMLElement {
+    if (seasonUiState.phase !== "setup") throw new Error("Season setup rendered outside setup state.");
+    const section = element("section", "season-setup");
+    const heading = element("h2");
+    heading.textContent = "2016 Season";
+    const explanation = element("p");
+    explanation.textContent = "Your XI will enter the deterministic 2016 league season.";
+    const begin = button("Begin League", beginSeason);
+    begin.className = "begin-season-button";
+    section.append(heading, explanation, begin);
+    return section;
+  }
+
+  function beginSeason(): void {
+    if (seasonUiState.phase !== "setup") return;
+    try {
+      const replacementFranchiseId = V1_REPLACEMENT_FRANCHISE_ID;
+      const boostedEvaluation = requiredRevealedTeam().boostedEvaluation;
+      const profiles = services.buildProfiles(options.pool);
+      const teams = createLeagueComposition(replacementFranchiseId, profiles);
+      const schedule = generateDoubleRoundRobinSchedule(teams);
+      const seed = `web-season-v1|${appSeed}|2016|${replacementFranchiseId}`;
+      const leagueResult = services.simulateLeague({
+        seed, teams, schedule, userState: state, userBoostedEvaluation: boostedEvaluation,
+      });
+      const playoffResult = services.simulatePlayoffs({
+        leagueResult, teams, userState: state, userBoostedEvaluation: boostedEvaluation,
+      });
+      const season: PrecomputedSeason = { replacementFranchiseId, seed, leagueResult, playoffResult };
+      seasonUiState = { phase: "league_progress", season, revealedUserLeagueMatches: 0 };
+      temporaryState.error = null;
+      render();
+      scheduleNextProgressStep(season);
+    } catch (error) {
+      setError(error);
+      render();
+    }
+  }
+
+  function scheduleNextProgressStep(season: PrecomputedSeason): void {
+    scheduleProgressStep(() => {
+      if (seasonUiState.phase !== "league_progress" || seasonUiState.season !== season) return;
+      const nextCount = seasonUiState.revealedUserLeagueMatches + 1;
+      if (nextCount >= season.leagueResult.userMatchSummaries.length) {
+        seasonUiState = season.playoffResult.qualified
+          ? { phase: "playoff_progress", season, revealedPlayoffMatches: 0 }
+          : { phase: "complete", season };
+        render();
+        return;
+      }
+      seasonUiState = { phase: "league_progress", season, revealedUserLeagueMatches: nextCount };
+      render();
+      scheduleNextProgressStep(season);
+    });
+  }
+
+  function renderLeagueProgress(progress: Extract<SeasonUiState, { phase: "league_progress" }>): HTMLElement {
+    return renderLeagueProgressForSeason(progress.season, progress.revealedUserLeagueMatches);
+  }
+
+  function renderLeagueProgressForSeason(season: PrecomputedSeason, revealedCount: number): HTMLElement {
+    const section = element("section", "league-progress");
+    const heading = element("h2");
+    heading.textContent = "League Progress";
+    const status = element("p", "league-progress-status");
+    status.textContent = `${revealedCount}/14 league matches complete`;
+    const segments = element("div", "league-progress-segments");
+    segments.setAttribute("aria-label", "User league match progress");
+    season.leagueResult.userMatchSummaries.forEach((summary, index) => {
+      const segment = element("span", "league-progress-segment");
+      if (index < revealedCount) {
+        segment.classList.add(summary.result === "W" ? "league-progress-win" : "league-progress-loss");
+        segment.textContent = summary.result;
+        segment.setAttribute("aria-label", `League match ${index + 1}: ${summary.result === "W" ? "win" : "loss"}`);
+      } else {
+        segment.textContent = "";
+        segment.setAttribute("aria-label", `League match ${index + 1}: pending`);
+      }
+      segments.append(segment);
+    });
+    section.append(heading, status, segments);
+    return section;
+  }
+
+  function renderCompletedSeason(season: PrecomputedSeason): HTMLElement {
+    const section = element("section", "season-results");
+    section.append(
+      renderLeagueProgressForSeason(season, season.leagueResult.userMatchSummaries.length),
+      renderFinalTable(season.leagueResult),
+      renderLeagueUserSummary(season.leagueResult),
+    );
+    if (!season.playoffResult.qualified) {
+      const ended = element("h2", "season-outcome");
+      ended.textContent = "Season ended — missed playoffs";
+      section.append(ended);
+    } else {
+      section.append(renderPlayoffs(season, season.playoffResult.matches.length, true));
+    }
+    return section;
+  }
+
+  function renderFinalTable(league: LeagueSimulationResult): HTMLElement {
+    const section = element("section", "final-table");
+    const heading = element("h2");
+    heading.textContent = "Final Points Table";
+    const table = document.createElement("table");
+    const header = document.createElement("tr");
+    for (const value of ["Pos", "Team", "P", "W", "L", "Pts", "NRR", "Q"]) {
+      const cell = document.createElement("th"); cell.textContent = value; header.append(cell);
+    }
+    const head = document.createElement("thead"); head.append(header); table.append(head);
+    const body = document.createElement("tbody");
+    for (const row of league.pointsTable) {
+      const tr = document.createElement("tr");
+      tr.dataset.teamId = row.teamId;
+      for (const value of [row.position, row.teamId === "user" ? "Your XI" : row.displayName, row.played, row.won, row.lost, row.points,
+        `${row.netRunRate >= 0 ? "+" : ""}${row.netRunRate.toFixed(3)}`, row.qualified ? "Yes" : "—"]) {
+        const cell = document.createElement("td"); cell.textContent = String(value); tr.append(cell);
+      }
+      body.append(tr);
+    }
+    table.append(body); section.append(heading, table); return section;
+  }
+
+  function renderLeagueUserSummary(league: LeagueSimulationResult): HTMLElement {
+    const section = element("section", "league-user-summary");
+    const heading = element("h2"); heading.textContent = "Your League Season";
+    section.append(
+      heading,
+      detailLine("Record", `${league.userRecord.won}-${league.userRecord.lost}`),
+      detailLine("Table position", String(league.userRecord.tablePosition)),
+      detailLine("Playoff status", league.userQualified ? "Qualified" : "Missed playoffs"),
+      renderLeaders("Top 3 run scorers", league.topRunScorers, "runs"),
+      renderLeaders("Top 3 wicket takers", league.topWicketTakers, "wickets"),
+    );
+    return section;
+  }
+
+  function renderLeaders(
+    headingText: string,
+    players: readonly { playerName: string; runs: number; wickets: number }[],
+    statistic: "runs" | "wickets",
+  ): HTMLElement {
+    const section = element("section", "season-leaders");
+    const heading = element("h3"); heading.textContent = headingText; section.append(heading);
+    const list = document.createElement("ol");
+    for (const player of players) {
+      const item = document.createElement("li");
+      item.textContent = `${player.playerName}: ${player[statistic]} ${statistic}`;
+      list.append(item);
+    }
+    section.append(list); return section;
+  }
+
+  function renderPlayoffProgress(
+    progress: Extract<SeasonUiState, { phase: "playoff_progress" }>,
+  ): HTMLElement {
+    const section = element("section", "season-results");
+    section.append(
+      renderLeagueProgressForSeason(progress.season, progress.season.leagueResult.userMatchSummaries.length),
+      renderFinalTable(progress.season.leagueResult),
+      renderLeagueUserSummary(progress.season.leagueResult),
+      renderPlayoffs(progress.season, progress.revealedPlayoffMatches, false),
+    );
+    return section;
+  }
+
+  function renderPlayoffs(season: PrecomputedSeason, revealedCount: number, showOutcome: boolean): HTMLElement {
+    const playoffs = season.playoffResult;
+    if (!playoffs.qualified) throw new Error("Qualified playoff rendering requires playoff matches.");
+    const section = element("section", "playoff-results");
+    const heading = element("h2"); heading.textContent = "Playoffs"; section.append(heading);
+    const teamNames = new Map(season.leagueResult.pointsTable.map((row) => [row.teamId, row.displayName]));
+    teamNames.set("user", "Your XI");
+    const userPath = playoffs.matches.filter((match) =>
+      match.firstBattingTeamId === "user" || match.chasingTeamId === "user");
+    userPath.slice(0, revealedCount).forEach((match) => {
+      const row = element("div", "playoff-match");
+      const title = element("h3"); title.textContent = formatPlayoffStage(match.stage);
+      const result = element("p");
+      const opponentTeamId = match.firstBattingTeamId === "user" ? match.chasingTeamId : match.firstBattingTeamId;
+      result.textContent = match.winnerTeamId === "user"
+        ? `Your XI defeated ${teamNames.get(opponentTeamId)} ${formatMatchResult(match)}`
+        : `${teamNames.get(opponentTeamId)} defeated Your XI ${formatMatchResult(match)}`;
+      const toss = element("p", "playoff-toss");
+      toss.textContent = formatCosmeticToss(season.seed, match, teamNames);
+      row.append(title, toss, result);
+      const userSummary = playoffs.userMatchSummaries.find((summary) => summary.matchId === match.matchId);
+      if (userSummary) {
+        const compact = element("p", "user-playoff-summary");
+        compact.textContent = userSummary.result === "W" ? "Result: Win" : "Result: Loss";
+        row.append(compact);
+      }
+      section.append(row);
+    });
+    if (revealedCount < userPath.length) {
+      const pending = element("p", "playoff-pending");
+      pending.textContent = `${formatPlayoffStage(userPath[revealedCount]!.stage)} pending`;
+      const simulate = button("Simulate Playoff Match", () => {
+        if (seasonUiState.phase !== "playoff_progress" || seasonUiState.season !== season) return;
+        const nextCount = seasonUiState.revealedPlayoffMatches + 1;
+        seasonUiState = nextCount >= userPath.length
+          ? { phase: "complete", season }
+          : { phase: "playoff_progress", season, revealedPlayoffMatches: nextCount };
+        render();
+      });
+      const finish = button("Progress to End", () => {
+        if (seasonUiState.phase !== "playoff_progress" || seasonUiState.season !== season) return;
+        seasonUiState = { phase: "complete", season };
+        render();
+      });
+      const actions = element("div", "playoff-actions");
+      actions.append(simulate, finish);
+      section.append(pending, actions);
+    }
+    if (showOutcome) {
+      if (playoffs.userOutcome === "champion" || playoffs.userOutcome === "runner_up") {
+        const champion = element("p", "playoff-champion");
+        champion.textContent = `Champion: ${teamNames.get(playoffs.championTeamId)}`;
+        section.append(champion);
+      }
+      const outcome = element("p", "season-outcome");
+      outcome.textContent = `Your outcome: ${formatUserPlayoffOutcome(playoffs.userOutcome)}`;
+      section.append(outcome);
+    }
+    return section;
+  }
+
+  function requiredRevealedTeam(): RevealedTeamState {
+    if (!revealedTeam) throw new Error("Reveal the completed team before beginning the season.");
+    return revealedTeam;
+  }
+
   function getActiveDetailsPlayer(): ({ source: "squad"; player: DraftPlayerSeason } | { source: "drafted"; player: DraftPlayerSeason; position: BattingPosition }) | null {
     const activeDetails = temporaryState.activeDetails;
     if (!activeDetails) {
@@ -586,7 +906,7 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     if (!state.completed) {
       return null;
     }
-    return evaluateCompletedTeam(state).players.find((player) => player.slot.position === position) ?? null;
+    return revealedTeam?.evaluation.players.find((player) => player.slot.position === position) ?? null;
   }
 
   render();
@@ -596,6 +916,8 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     setStateForTest: (nextState: ClassicDraftState) => {
       state = nextState;
       revealState = "hidden";
+      revealedTeam = null;
+      seasonUiState = { phase: "setup" };
       clearTemporaryState();
       render();
     },
@@ -604,6 +926,58 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
 
 function formatPositionFitLabel(fit: "natural" | "acceptable" | "out_of_position"): string {
   return fit === "out_of_position" ? "out of position" : fit;
+}
+
+function formatPlayoffStage(stage: "qualifier_1" | "eliminator" | "qualifier_2" | "final"): string {
+  const labels = {
+    qualifier_1: "Qualifier 1",
+    eliminator: "Eliminator",
+    qualifier_2: "Qualifier 2",
+    final: "Final",
+  } as const;
+  return labels[stage];
+}
+
+function formatUserPlayoffOutcome(
+  outcome: "eliminated_in_eliminator" | "eliminated_in_qualifier_2" | "runner_up" | "champion",
+): string {
+  const labels = {
+    eliminated_in_eliminator: "Eliminated in the Eliminator",
+    eliminated_in_qualifier_2: "Eliminated in Qualifier 2",
+    runner_up: "Runner-up",
+    champion: "IPL Champion",
+  } as const;
+  return labels[outcome];
+}
+
+function formatMatchResult(match: {
+  resultType: "runs" | "wickets" | "super_over";
+  margin: number | null;
+}): string {
+  if (match.resultType === "super_over") return "in a Super Over";
+  const unit = match.resultType === "runs" ? "run" : "wicket";
+  return `by ${match.margin} ${unit}${match.margin === 1 ? "" : "s"}`;
+}
+
+function formatCosmeticToss(
+  seed: string,
+  match: { matchId: string; firstBattingTeamId: string; chasingTeamId: string },
+  teamNames: ReadonlyMap<string, string>,
+): string {
+  const tossWinner = stableWebHash(`${seed}|playoff-toss|${match.matchId}`) % 2 === 0
+    ? match.firstBattingTeamId
+    : match.chasingTeamId;
+  const choice = tossWinner === match.firstBattingTeamId ? "bat" : "bowl";
+  return `Toss: ${teamNames.get(tossWinner) ?? tossWinner} won the toss and chose to ${choice}.`;
+}
+
+function stableWebHash(value: string): number {
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
 }
 
 function formatBowlingStrengthLabel(strength: string): string {
