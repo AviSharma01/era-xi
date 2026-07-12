@@ -1,4 +1,5 @@
-import type { TeamBoostV1Id, TEAM_BOOST_V1_VERSION } from "./teamBoostV1.js";
+import type { BattingPosition, ClassicDraftState } from "./draftClassic.js";
+import type { BoostedTeamEvaluationV1, TeamBoostV1Id, TEAM_BOOST_V1_VERSION } from "./teamBoostV1.js";
 
 export const SIMULATION_V1_VERSION = "simulation-v1" as const;
 
@@ -60,6 +61,101 @@ export const SIMULATION_V1_LEAGUE_CONSTANTS = {
   matchesPerTeam: 14,
   totalMatches: 56,
 } as const;
+
+export const SIMULATION_V1_MATCH_CONSTANTS = {
+  baselineRuns: 165,
+  runsPerRatingPoint: 1.25,
+  inningsRunStandardDeviation: 18,
+  minimumRuns: 75,
+  maximumRuns: 240,
+  baselineWickets: 6,
+  wicketsPerBowlingAdvantagePoint: 0.12,
+  wicketStandardDeviation: 1.6,
+  minimumCompletedInningsBalls: 90,
+  maximumBalls: 120,
+  bowlerCreditedWicketProbability: 0.88,
+  pointsPerWin: 2,
+  qualificationPlaces: 4,
+  nrrPrecisionForDisplay: 3,
+} as const;
+
+export type InningsSummary = {
+  teamId: SimulationTeamId;
+  runs: number;
+  wickets: number;
+  balls: number;
+  allOut: boolean;
+};
+
+export type LeagueMatchResult = {
+  matchId: string;
+  round: number;
+  leg: 1 | 2;
+  homeTeamId: SimulationTeamId;
+  awayTeamId: SimulationTeamId;
+  innings: readonly [InningsSummary, InningsSummary];
+  winnerTeamId: SimulationTeamId;
+  loserTeamId: SimulationTeamId;
+  resultType: "runs" | "wickets" | "super_over";
+  margin: number | null;
+};
+
+export type UserMatchSummary = {
+  matchId: string;
+  round: number;
+  opponentTeamId: Franchise2016Id;
+  result: "W" | "L";
+  userInnings: InningsSummary;
+  opponentInnings: InningsSummary;
+  playerRuns: readonly { playerSeasonId: string; runs: number }[];
+  playerWickets: readonly { playerSeasonId: string; wickets: number }[];
+};
+
+export type AccumulatedUserPlayerStats = {
+  playerSeasonId: string;
+  playerName: string;
+  battingPosition: BattingPosition;
+  matches: number;
+  runs: number;
+  wickets: number;
+};
+
+export type PointsTableRow = {
+  position: number;
+  teamId: SimulationTeamId;
+  displayName: string;
+  played: number;
+  won: number;
+  lost: number;
+  points: number;
+  runsFor: number;
+  ballsFacedForNrr: number;
+  runsAgainst: number;
+  ballsBowledForNrr: number;
+  netRunRate: number;
+  qualified: boolean;
+};
+
+export type LeagueSimulationResult = {
+  version: typeof SIMULATION_V1_VERSION;
+  seed: string;
+  matches: readonly LeagueMatchResult[];
+  pointsTable: readonly PointsTableRow[];
+  userMatchSummaries: readonly UserMatchSummary[];
+  userRecord: { played: number; won: number; lost: number; points: number; tablePosition: number };
+  accumulatedUserPlayerStats: readonly AccumulatedUserPlayerStats[];
+  topRunScorers: readonly AccumulatedUserPlayerStats[];
+  topWicketTakers: readonly AccumulatedUserPlayerStats[];
+  userQualified: boolean;
+};
+
+export type SimulateLeagueV1Input = {
+  seed: string | number;
+  teams: readonly LeagueTeam[];
+  schedule: readonly ScheduledLeagueMatch[];
+  userState: ClassicDraftState;
+  userBoostedEvaluation: BoostedTeamEvaluationV1;
+};
 
 export function isFranchise2016Id(value: string): value is Franchise2016Id {
   return FRANCHISES_2016.some((franchise) => franchise.id === value);
@@ -130,6 +226,350 @@ export function generateDoubleRoundRobinSchedule(teams: readonly LeagueTeam[]): 
     };
   });
   return [...firstLeg, ...secondLeg];
+}
+
+export function simulateLeagueV1(input: SimulateLeagueV1Input): LeagueSimulationResult {
+  validateSimulationInput(input);
+  const seed = String(input.seed);
+  const strengths = new Map<SimulationTeamId, TeamStrengthSnapshot>();
+  for (const team of input.teams) {
+    strengths.set(team.teamId, team.teamId === "user" ? {
+      battingComposite: input.userBoostedEvaluation.adjustedBattingComposite,
+      bowlingComposite: input.userBoostedEvaluation.adjustedBowlingComposite,
+      overallTeamRating: input.userBoostedEvaluation.adjustedOverallTeamRating,
+    } : team.opponentProfile.adjustedStrength);
+  }
+
+  const matches = input.schedule.map((match) => simulateMatch(seed, match, strengths));
+  const pointsTable = buildPointsTable(input.teams, matches);
+  const userMatchSummaries = matches
+    .filter((match) => match.homeTeamId === "user" || match.awayTeamId === "user")
+    .map((match) => buildUserMatchSummary(seed, match, input.userBoostedEvaluation));
+  const accumulatedUserPlayerStats = accumulateUserStats(userMatchSummaries, input.userState);
+  const userRow = pointsTable.find((row) => row.teamId === "user");
+  if (!userRow) throw new Error("Simulation V1 table is missing the user team.");
+  return {
+    version: SIMULATION_V1_VERSION,
+    seed,
+    matches,
+    pointsTable,
+    userMatchSummaries,
+    userRecord: {
+      played: userRow.played,
+      won: userRow.won,
+      lost: userRow.lost,
+      points: userRow.points,
+      tablePosition: userRow.position,
+    },
+    accumulatedUserPlayerStats,
+    topRunScorers: [...accumulatedUserPlayerStats].sort(compareRunScorers).slice(0, 3),
+    topWicketTakers: [...accumulatedUserPlayerStats].sort(compareWicketTakers).slice(0, 3),
+    userQualified: userRow.qualified,
+  };
+}
+
+function simulateMatch(
+  seed: string,
+  match: ScheduledLeagueMatch,
+  strengths: ReadonlyMap<SimulationTeamId, TeamStrengthSnapshot>,
+): LeagueMatchResult {
+  const firstStrength = requiredStrength(strengths, match.homeTeamId);
+  const chaseStrength = requiredStrength(strengths, match.awayTeamId);
+  const first = simulateUnconstrainedInnings(seed, match.id, "first", match.homeTeamId, firstStrength, chaseStrength);
+  const rawChase = simulateUnconstrainedInnings(seed, match.id, "chase", match.awayTeamId, chaseStrength, firstStrength);
+  const targetRuns = first.runs + 1;
+  let chase: InningsSummary;
+  if (rawChase.runs >= targetRuns) {
+    const excess = rawChase.runs - targetRuns;
+    const finishReduction = Math.min(29, Math.round(excess * 0.7 + randomFor(seed, match.id, "chase-balls") * 12));
+    chase = {
+      teamId: match.awayTeamId,
+      runs: targetRuns,
+      wickets: Math.min(rawChase.wickets, 9),
+      balls: SIMULATION_V1_MATCH_CONSTANTS.maximumBalls - 1 - finishReduction,
+      allOut: false,
+    };
+  } else {
+    chase = { ...rawChase, runs: Math.min(rawChase.runs, first.runs) };
+  }
+
+  let winnerTeamId: SimulationTeamId;
+  let resultType: LeagueMatchResult["resultType"];
+  let margin: number | null;
+  if (chase.runs > first.runs) {
+    winnerTeamId = match.awayTeamId;
+    resultType = "wickets";
+    margin = 10 - chase.wickets;
+  } else if (chase.runs < first.runs) {
+    winnerTeamId = match.homeTeamId;
+    resultType = "runs";
+    margin = first.runs - chase.runs;
+  } else {
+    const firstWeight = firstStrength.overallTeamRating;
+    const threshold = firstWeight / (firstWeight + chaseStrength.overallTeamRating);
+    winnerTeamId = randomFor(seed, match.id, "super-over") < threshold ? match.homeTeamId : match.awayTeamId;
+    resultType = "super_over";
+    margin = null;
+  }
+  return {
+    matchId: match.id,
+    round: match.round,
+    leg: match.leg,
+    homeTeamId: match.homeTeamId,
+    awayTeamId: match.awayTeamId,
+    innings: [first, chase],
+    winnerTeamId,
+    loserTeamId: winnerTeamId === match.homeTeamId ? match.awayTeamId : match.homeTeamId,
+    resultType,
+    margin,
+  };
+}
+
+function simulateUnconstrainedInnings(
+  seed: string,
+  matchIdValue: string,
+  domain: "first" | "chase",
+  teamId: SimulationTeamId,
+  batting: TeamStrengthSnapshot,
+  opposition: TeamStrengthSnapshot,
+): InningsSummary {
+  const constants = SIMULATION_V1_MATCH_CONSTANTS;
+  const expectedRuns = constants.baselineRuns +
+    constants.runsPerRatingPoint * (batting.battingComposite - opposition.bowlingComposite);
+  const runs = clampInteger(
+    Math.round(expectedRuns + normalFor(seed, matchIdValue, `${domain}-runs`) * constants.inningsRunStandardDeviation),
+    constants.minimumRuns,
+    constants.maximumRuns,
+  );
+  const expectedWickets = constants.baselineWickets +
+    constants.wicketsPerBowlingAdvantagePoint * (opposition.bowlingComposite - batting.battingComposite);
+  const wickets = clampInteger(
+    Math.round(expectedWickets + normalFor(seed, matchIdValue, `${domain}-wickets`) * constants.wicketStandardDeviation),
+    0,
+    10,
+  );
+  const allOut = wickets === 10;
+  const balls = allOut
+    ? constants.minimumCompletedInningsBalls + Math.floor(
+      randomFor(seed, matchIdValue, `${domain}-all-out-balls`) *
+      (constants.maximumBalls - constants.minimumCompletedInningsBalls),
+    )
+    : constants.maximumBalls;
+  return { teamId, runs, wickets, balls, allOut };
+}
+
+function buildPointsTable(teams: readonly LeagueTeam[], matches: readonly LeagueMatchResult[]): PointsTableRow[] {
+  const rows = new Map<SimulationTeamId, Omit<PointsTableRow, "position" | "netRunRate" | "qualified">>();
+  for (const team of teams) {
+    rows.set(team.teamId, {
+      teamId: team.teamId, displayName: team.displayName, played: 0, won: 0, lost: 0, points: 0,
+      runsFor: 0, ballsFacedForNrr: 0, runsAgainst: 0, ballsBowledForNrr: 0,
+    });
+  }
+  for (const match of matches) {
+    const [first, second] = match.innings;
+    updateTableInnings(rows, first, second);
+    updateTableInnings(rows, second, first);
+    const winner = rows.get(match.winnerTeamId)!;
+    const loser = rows.get(match.loserTeamId)!;
+    winner.played += 1; winner.won += 1; winner.points += SIMULATION_V1_MATCH_CONSTANTS.pointsPerWin;
+    loser.played += 1; loser.lost += 1;
+  }
+  const ranked = [...rows.values()].map((row) => ({
+    ...row,
+    netRunRate: row.runsFor * 6 / row.ballsFacedForNrr - row.runsAgainst * 6 / row.ballsBowledForNrr,
+  })).sort((left, right) =>
+    right.points - left.points || right.netRunRate - left.netRunRate || right.won - left.won ||
+    left.teamId.localeCompare(right.teamId),
+  );
+  return ranked.map((row, index) => ({
+    ...row, position: index + 1, qualified: index < SIMULATION_V1_MATCH_CONSTANTS.qualificationPlaces,
+  }));
+}
+
+function updateTableInnings(
+  rows: Map<SimulationTeamId, Omit<PointsTableRow, "position" | "netRunRate" | "qualified">>,
+  innings: InningsSummary,
+  opposition: InningsSummary,
+): void {
+  const row = rows.get(innings.teamId)!;
+  row.runsFor += innings.runs;
+  row.ballsFacedForNrr += innings.allOut ? SIMULATION_V1_MATCH_CONSTANTS.maximumBalls : innings.balls;
+  row.runsAgainst += opposition.runs;
+  row.ballsBowledForNrr += opposition.allOut ? SIMULATION_V1_MATCH_CONSTANTS.maximumBalls : opposition.balls;
+}
+
+const BATTING_ORDER_EXPOSURE = [1.45, 1.4, 1.25, 1.1, 0.95, 0.8, 0.65, 0.5, 0.38, 0.28, 0.22] as const;
+const BOWLING_ROLE_WEIGHT: Readonly<Record<string, number>> = { frontline: 1, secondary: 0.55, part_time: 0.2 };
+
+function buildUserMatchSummary(
+  seed: string,
+  match: LeagueMatchResult,
+  evaluation: BoostedTeamEvaluationV1,
+): UserMatchSummary {
+  const userInnings = match.innings.find((innings) => innings.teamId === "user")!;
+  const opponentInnings = match.innings.find((innings) => innings.teamId !== "user")!;
+  const opponentTeamId = opponentInnings.teamId as Franchise2016Id;
+  const battingWeights = evaluation.baseTeamEvaluation.players.map((contribution, index) =>
+    (contribution.effectiveBattingRating === null
+      ? 0.2
+      : Math.exp((contribution.effectiveBattingRating - 55) / 20)) * BATTING_ORDER_EXPOSURE[index]!,
+  );
+  const playerRuns = allocateUnits(
+    userInnings.runs, battingWeights, seed, match.matchId, "user-runs",
+  ).map((runs, index) => ({
+    playerSeasonId: evaluation.baseTeamEvaluation.players[index]!.slot.player.id, runs,
+  }));
+  const eligibleBowlers = evaluation.baseTeamEvaluation.players.map((contribution) => {
+    const rating = contribution.slot.player.bowlingRating;
+    const roleWeight = BOWLING_ROLE_WEIGHT[contribution.slot.player.bowlingOptionStrength] ?? 0;
+    return rating === null ? 0 : Math.exp((rating - 55) / 18) * roleWeight;
+  });
+  let creditedWickets = 0;
+  if (eligibleBowlers.some((weight) => weight > 0)) {
+    for (let index = 0; index < opponentInnings.wickets; index += 1) {
+      if (randomFor(seed, match.matchId, `user-wicket-credit-${index}`) <
+          SIMULATION_V1_MATCH_CONSTANTS.bowlerCreditedWicketProbability) creditedWickets += 1;
+    }
+  }
+  const playerWickets = allocateUnits(
+    creditedWickets, eligibleBowlers, seed, match.matchId, "user-wickets",
+  ).map((wickets, index) => ({
+    playerSeasonId: evaluation.baseTeamEvaluation.players[index]!.slot.player.id, wickets,
+  }));
+  return {
+    matchId: match.matchId,
+    round: match.round,
+    opponentTeamId,
+    result: match.winnerTeamId === "user" ? "W" : "L",
+    userInnings,
+    opponentInnings,
+    playerRuns,
+    playerWickets,
+  };
+}
+
+function allocateUnits(
+  total: number,
+  weights: readonly number[],
+  seed: string,
+  matchIdValue: string,
+  domain: string,
+): number[] {
+  const allocated = weights.map(() => 0);
+  const weightTotal = weights.reduce((sum, weight) => sum + weight, 0);
+  if (weightTotal <= 0) return allocated;
+  for (let unit = 0; unit < total; unit += 1) {
+    let draw = randomFor(seed, matchIdValue, `${domain}-${unit}`) * weightTotal;
+    let selected = weights.length - 1;
+    for (let index = 0; index < weights.length; index += 1) {
+      draw -= weights[index]!;
+      if (draw < 0) { selected = index; break; }
+    }
+    allocated[selected]! += 1;
+  }
+  return allocated;
+}
+
+function accumulateUserStats(
+  summaries: readonly UserMatchSummary[],
+  state: ClassicDraftState,
+): AccumulatedUserPlayerStats[] {
+  const byId = new Map(state.slots.map((slot) => [slot.player.id, {
+    playerSeasonId: slot.player.id,
+    playerName: slot.player.name,
+    battingPosition: slot.position,
+    matches: summaries.length,
+    runs: 0,
+    wickets: 0,
+  }]));
+  for (const summary of summaries) {
+    for (const value of summary.playerRuns) byId.get(value.playerSeasonId)!.runs += value.runs;
+    for (const value of summary.playerWickets) byId.get(value.playerSeasonId)!.wickets += value.wickets;
+  }
+  return state.slots.map((slot) => byId.get(slot.player.id)!);
+}
+
+function compareRunScorers(left: AccumulatedUserPlayerStats, right: AccumulatedUserPlayerStats): number {
+  return right.runs - left.runs || right.wickets - left.wickets ||
+    left.battingPosition - right.battingPosition || left.playerSeasonId.localeCompare(right.playerSeasonId);
+}
+
+function compareWicketTakers(left: AccumulatedUserPlayerStats, right: AccumulatedUserPlayerStats): number {
+  return right.wickets - left.wickets || right.runs - left.runs ||
+    left.battingPosition - right.battingPosition || left.playerSeasonId.localeCompare(right.playerSeasonId);
+}
+
+function validateSimulationInput(input: SimulateLeagueV1Input): void {
+  validateScheduleTeams(input.teams);
+  if (!input.userState.completed || input.userState.slots.length !== 11) {
+    throw new Error("Simulation V1 requires a completed user XI.");
+  }
+  const stateIds = input.userState.slots.map((slot) => slot.player.id);
+  const evaluationIds = input.userBoostedEvaluation.baseTeamEvaluation.players.map((player) => player.slot.player.id);
+  if (stateIds.length !== evaluationIds.length || stateIds.some((id, index) => id !== evaluationIds[index])) {
+    throw new Error("The user Boost V1 evaluation must belong to the supplied XI.");
+  }
+  if (input.schedule.length !== SIMULATION_V1_LEAGUE_CONSTANTS.totalMatches ||
+      new Set(input.schedule.map((match) => match.id)).size !== input.schedule.length) {
+    throw new Error("Simulation V1 requires the complete unique 56-match schedule.");
+  }
+  if (JSON.stringify(input.schedule) !== JSON.stringify(generateDoubleRoundRobinSchedule(input.teams))) {
+    throw new Error("Simulation V1 requires the existing deterministic double round-robin schedule.");
+  }
+  const teamIds = new Set(input.teams.map((team) => team.teamId));
+  const appearances = new Map<SimulationTeamId, number>();
+  for (const match of input.schedule) {
+    if (!teamIds.has(match.homeTeamId) || !teamIds.has(match.awayTeamId) || match.homeTeamId === match.awayTeamId) {
+      throw new Error(`Invalid teams in scheduled match ${match.id}.`);
+    }
+    appearances.set(match.homeTeamId, (appearances.get(match.homeTeamId) ?? 0) + 1);
+    appearances.set(match.awayTeamId, (appearances.get(match.awayTeamId) ?? 0) + 1);
+  }
+  if ([...teamIds].some((id) => appearances.get(id) !== SIMULATION_V1_LEAGUE_CONSTANTS.matchesPerTeam)) {
+    throw new Error("Every Simulation V1 team must play exactly 14 matches.");
+  }
+}
+
+function requiredStrength(
+  strengths: ReadonlyMap<SimulationTeamId, TeamStrengthSnapshot>,
+  teamId: SimulationTeamId,
+): TeamStrengthSnapshot {
+  const strength = strengths.get(teamId);
+  if (!strength) throw new Error(`Missing strength for ${teamId}.`);
+  return strength;
+}
+
+function normalFor(seed: string, matchIdValue: string, domain: string): number {
+  const first = Math.max(Number.EPSILON, randomFor(seed, matchIdValue, `${domain}-normal-a`));
+  const second = randomFor(seed, matchIdValue, `${domain}-normal-b`);
+  return Math.sqrt(-2 * Math.log(first)) * Math.cos(2 * Math.PI * second);
+}
+
+function randomFor(seed: string, matchIdValue: string, domain: string): number {
+  return mulberry32(hash32(`${SIMULATION_V1_VERSION}|${seed}|${matchIdValue}|${domain}`))();
+}
+
+function hash32(value: string): number {
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
+function mulberry32(seed: number): () => number {
+  return () => {
+    let value = seed += 0x6d2b79f5;
+    value = Math.imul(value ^ value >>> 15, value | 1);
+    value ^= value + Math.imul(value ^ value >>> 7, value | 61);
+    return ((value ^ value >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+function clampInteger(value: number, minimum: number, maximum: number): number {
+  return Math.min(Math.max(value, minimum), maximum);
 }
 
 function validateScheduleTeams(teams: readonly LeagueTeam[]): void {

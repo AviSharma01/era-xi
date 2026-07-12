@@ -9,11 +9,14 @@ import {
   buildOpponentStrengthProfiles2016,
   type CuratedOpponentXi2016,
 } from "./opponentProfiles2016.js";
+import { evaluateCompletedTeam } from "./teamEvaluation.js";
+import { applyTeamBoostsV1 } from "./teamBoostV1.js";
 import {
   FRANCHISES_2016,
   SIMULATION_V1_LEAGUE_CONSTANTS,
   createLeagueComposition,
   generateDoubleRoundRobinSchedule,
+  simulateLeagueV1,
 } from "./simulationV1.js";
 
 const pool = loadDraftPool(
@@ -183,3 +186,133 @@ test("league composition and schedule reject invalid inputs", () => {
   assert.throws(() => generateDoubleRoundRobinSchedule(teams.map((team, index) => index === 1 ? teams[0] : team)), /unique/);
   assert.throws(() => generateDoubleRoundRobinSchedule(teams.map((team) => team.teamId === "user" ? teams[1] : team)), /unique|user/);
 });
+
+test("league simulation is deterministic and consumes the schedule exactly once", () => {
+  const fixture = simulationFixture();
+  const before = structuredClone({
+    teams: fixture.teams,
+    schedule: fixture.schedule,
+    userState: fixture.userState,
+    userBoostedEvaluation: fixture.userBoostedEvaluation,
+  });
+  const first = simulateLeagueV1({ seed: "deterministic-season", ...fixture });
+  const second = simulateLeagueV1({ seed: "deterministic-season", ...fixture });
+  const different = simulateLeagueV1({ seed: "different-season", ...fixture });
+
+  assert.deepEqual(first, second);
+  assert.notDeepEqual(first.matches, different.matches);
+  assert.deepEqual(first.matches.map((match) => match.matchId), fixture.schedule.map((match) => match.id));
+  assert.equal(new Set(first.matches.map((match) => match.matchId)).size, 56);
+  assert.deepEqual({
+    teams: fixture.teams,
+    schedule: fixture.schedule,
+    userState: fixture.userState,
+    userBoostedEvaluation: fixture.userBoostedEvaluation,
+  }, before);
+});
+
+test("league results, points table, chases, and qualification satisfy invariants", () => {
+  const result = simulateLeagueV1({ seed: "table-invariants", ...simulationFixture() });
+  assert.equal(result.matches.length, 56);
+  assert.equal(result.pointsTable.length, 8);
+  assert.equal(result.pointsTable.reduce((total, row) => total + row.points, 0), 112);
+  assert.equal(result.pointsTable.reduce((total, row) => total + row.won, 0), 56);
+  assert.equal(result.pointsTable.reduce((total, row) => total + row.lost, 0), 56);
+  assert.deepEqual(result.pointsTable.map((row) => row.position), [1, 2, 3, 4, 5, 6, 7, 8]);
+  assert.equal(result.pointsTable.filter((row) => row.qualified).length, 4);
+  for (const row of result.pointsTable) {
+    assert.equal(row.played, 14);
+    assert.equal(row.played, row.won + row.lost);
+    assert.equal(row.points, row.won * 2);
+    assert.equal(row.qualified, row.position <= 4);
+    assert.ok(Number.isFinite(row.netRunRate));
+  }
+  for (const match of result.matches) {
+    const [first, chase] = match.innings;
+    for (const innings of match.innings) {
+      assert.ok(innings.runs >= 75 && innings.runs <= 241);
+      assert.ok(innings.wickets >= 0 && innings.wickets <= 10);
+      assert.ok(innings.balls >= 90 && innings.balls <= 120);
+      assert.equal(innings.allOut, innings.wickets === 10);
+    }
+    if (match.resultType === "wickets") {
+      assert.equal(chase.runs, first.runs + 1);
+      assert.ok(chase.balls < 120);
+      assert.ok(chase.wickets <= 9);
+    }
+  }
+  const userRow = result.pointsTable.find((row) => row.teamId === "user")!;
+  assert.equal(result.userQualified, userRow.qualified);
+  assert.equal(result.userRecord.tablePosition, userRow.position);
+});
+
+test("user player runs and wickets reconcile without opponent player statistics", () => {
+  const fixture = simulationFixture();
+  const result = simulateLeagueV1({ seed: "user-stat-reconciliation", ...fixture });
+  assert.equal(result.userMatchSummaries.length, 14);
+  assert.equal(result.accumulatedUserPlayerStats.length, 11);
+  assert.equal(result.topRunScorers.length, 3);
+  assert.equal(result.topWicketTakers.length, 3);
+  for (const summary of result.userMatchSummaries) {
+    assert.equal(summary.playerRuns.reduce((total, player) => total + player.runs, 0), summary.userInnings.runs);
+    assert.ok(summary.playerWickets.reduce((total, player) => total + player.wickets, 0) <= summary.opponentInnings.wickets);
+    assert.ok(!("opponentPlayerStats" in summary));
+  }
+  for (const accumulated of result.accumulatedUserPlayerStats) {
+    assert.equal(accumulated.matches, 14);
+    assert.equal(
+      accumulated.runs,
+      result.userMatchSummaries.reduce((total, summary) =>
+        total + summary.playerRuns.find((player) => player.playerSeasonId === accumulated.playerSeasonId)!.runs, 0),
+    );
+    assert.equal(
+      accumulated.wickets,
+      result.userMatchSummaries.reduce((total, summary) =>
+        total + summary.playerWickets.find((player) => player.playerSeasonId === accumulated.playerSeasonId)!.wickets, 0),
+    );
+    const player = fixture.userState.slots.find((slot) => slot.player.id === accumulated.playerSeasonId)!.player;
+    if (player.bowlingRating === null || !["frontline", "secondary", "part_time"].includes(player.bowlingOptionStrength)) {
+      assert.equal(accumulated.wickets, 0);
+    }
+  }
+});
+
+test("materially stronger teams outperform weak teams across broad seed samples", () => {
+  const fixture = simulationFixture();
+  const strongId = "gujarat-lions";
+  const weakId = "kings-xi-punjab";
+  const teams = fixture.teams.map((team) => {
+    if (team.teamId === "user" || (team.teamId !== strongId && team.teamId !== weakId)) return team;
+    const rating = team.teamId === strongId ? 80 : 40;
+    return {
+      ...team,
+      opponentProfile: {
+        ...team.opponentProfile,
+        adjustedStrength: { battingComposite: rating, bowlingComposite: rating, overallTeamRating: rating },
+      },
+    };
+  });
+  let strongWins = 0;
+  let meetings = 0;
+  for (let seed = 0; seed < 200; seed += 1) {
+    const result = simulateLeagueV1({ seed: `strength-${seed}`, ...fixture, teams });
+    for (const match of result.matches) {
+      if (new Set([match.homeTeamId, match.awayTeamId]).has(strongId) &&
+          new Set([match.homeTeamId, match.awayTeamId]).has(weakId)) {
+        meetings += 1;
+        if (match.winnerTeamId === strongId) strongWins += 1;
+      }
+    }
+  }
+  assert.equal(meetings, 400);
+  assert.ok(strongWins / meetings > 0.75, `strong-team win rate was ${strongWins / meetings}`);
+});
+
+function simulationFixture() {
+  const profiles = buildOpponentStrengthProfiles2016(pool);
+  const teams = createLeagueComposition("delhi-daredevils", profiles);
+  const schedule = generateDoubleRoundRobinSchedule(teams);
+  const userState = buildCuratedOpponentState2016(pool, CURATED_OPPONENT_XIS_2016[0]);
+  const userBoostedEvaluation = applyTeamBoostsV1(evaluateCompletedTeam(userState));
+  return { teams, schedule, userState, userBoostedEvaluation };
+}
