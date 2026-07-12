@@ -9,7 +9,8 @@
     "dev:web": "vite --host 127.0.0.1",
     "start:classic": "npm run build && node dist/cli.js",
     "validate:team-evaluation": "npm run build && node dist/teamEvaluationValidation.js --boosts",
-    "test": "npm run build && node --test dist/draftClassic.test.js dist/teamEvaluation.test.js dist/teamBoostV1.test.js dist/webApp.test.js",
+    "validate:simulation-v1": "npm run build && node dist/simulationV1Validation.js",
+    "test": "npm run build && node --test dist/draftClassic.test.js dist/teamEvaluation.test.js dist/teamBoostV1.test.js dist/simulationV1.test.js dist/webApp.test.js",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
