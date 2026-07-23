@@ -25,6 +25,11 @@ import {
   type BoostedTeamEvaluationV1,
   applyTeamBoostsV1,
 } from "./teamBoostV1.js";
+import {
+  type DraftRoomUiState,
+  createDraftRoomUiState,
+  renderDraftRoom,
+} from "./draftRoom.js";
 import { buildOpponentStrengthProfiles2016 } from "./opponentProfiles2016.js";
 import {
   type Franchise2016Id,
@@ -56,8 +61,6 @@ export type ClassicDraftApp = {
   setStateForTest: (nextState: ClassicDraftState) => void;
 };
 
-type SquadFilter = "all" | "batters" | "wicketkeepers" | "all-rounders" | "bowlers";
-type ActiveDetails = { source: "squad"; playerId: string } | { source: "drafted"; position: BattingPosition };
 type RevealState = "hidden" | "revealed";
 
 type RevealedTeamState = {
@@ -78,28 +81,9 @@ type SeasonUiState =
   | { phase: "playoff_progress"; season: PrecomputedSeason; revealedPlayoffMatches: number }
   | { phase: "complete"; season: PrecomputedSeason };
 
-type TemporaryUiState = {
-  activeDetails: ActiveDetails | null;
-  pendingPosition: BattingPosition | null;
-  error: string | null;
-};
-
-type SquadGroup = {
-  filter: Exclude<SquadFilter, "all">;
-  heading: string;
-  roles: string[];
-  sortMetric: "runs" | "wickets";
-};
-
 const POSITIONS: BattingPosition[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const V1_REPLACEMENT_FRANCHISE_ID: Franchise2016Id = "delhi-daredevils";
 const TIER_ORDER: Tier[] = ["S", "A", "B", "C", "D"];
-const SQUAD_GROUPS: SquadGroup[] = [
-  { filter: "batters", heading: "Batters", roles: ["batter"], sortMetric: "runs" },
-  { filter: "wicketkeepers", heading: "Wicketkeepers", roles: ["wicketkeeper_batter"], sortMetric: "runs" },
-  { filter: "all-rounders", heading: "All-Rounders", roles: ["batting_all_rounder", "bowling_all_rounder"], sortMetric: "runs" },
-  { filter: "bowlers", heading: "Bowlers", roles: ["bowler"], sortMetric: "wickets" },
-];
 
 export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicDraftApp {
   const appSeed = options.seed ?? Date.now().toString();
@@ -116,19 +100,10 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
   let revealState: RevealState = "hidden";
   let revealedTeam: RevealedTeamState | null = null;
   let seasonUiState: SeasonUiState = { phase: "setup" };
-  let squadFilter: SquadFilter = "all";
-  let temporaryState: TemporaryUiState = {
-    activeDetails: null,
-    pendingPosition: null,
-    error: null,
-  };
+  let temporaryState: DraftRoomUiState = createDraftRoomUiState();
 
   function clearTemporaryState(): void {
-    temporaryState = {
-      activeDetails: null,
-      pendingPosition: null,
-      error: null,
-    };
+    temporaryState = createDraftRoomUiState();
   }
 
   function setError(error: unknown): void {
@@ -141,114 +116,67 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
 
   function renderApp(): HTMLElement {
     const shell = element("section", "app-shell");
-    shell.append(renderHeader(), renderCounters(), renderMessage());
-
-    if (state.completed) {
+    if (state.completed && revealState === "revealed") {
       shell.append(renderCompletedDraft(), renderActiveDetails());
     } else {
-      shell.append(renderControls(), renderDraftBoard(), renderActiveDetails(), renderSquad());
+      shell.append(renderDraftRoom({
+        state,
+        pool: options.pool,
+        uiState: temporaryState,
+        actions: {
+          spin: () => {
+            try {
+              state = spinFranchiseSeason(options.pool, state, random);
+              clearTemporaryState();
+            } catch (error) {
+              setError(error);
+            }
+            render();
+          },
+          respin: () => {
+            try {
+              state = useVoluntaryRespin(options.pool, state, random);
+              clearTemporaryState();
+            } catch (error) {
+              setError(error);
+            }
+            render();
+          },
+          setFilter: (filter) => {
+            temporaryState.squadFilter = filter;
+            render();
+          },
+          selectPlayer: (playerId) => {
+            const current = temporaryState.activeDetails;
+            if (current?.source !== "squad" || current.playerId !== playerId) {
+              temporaryState.pendingPosition = null;
+            }
+            temporaryState.activeDetails = { source: "squad", playerId };
+            temporaryState.error = null;
+            render();
+          },
+          selectPosition: handleOpenPositionClick,
+          openDraftedPlayer: (position) => {
+            temporaryState.activeDetails = { source: "drafted", position };
+            temporaryState.pendingPosition = null;
+            temporaryState.error = null;
+            render();
+          },
+          confirmPick,
+          revealTeam,
+        },
+      }));
     }
 
     return shell;
   }
 
-  function renderHeader(): HTMLElement {
-    const header = element("header", "page-header");
-    const title = element("h1");
-    title.textContent = "2016 Classic Draft";
-    const subtitle = element("p");
-    subtitle.textContent = "Spin a franchise-season, inspect a player, preview a batting slot, then confirm the pick.";
-    header.append(title, subtitle);
-    return header;
-  }
-
-  function renderCounters(): HTMLElement {
-    const counters = element("section", "counters");
-    counters.setAttribute("aria-label", "Draft counters");
-    counters.append(
-      renderCounter("Drafted", `${state.slots.length}/11`),
-      renderCounter("Overseas", `${getOverseasCount(state)}/4`),
-      renderCounter("Wicketkeeper", hasWicketkeeper(state) ? "confirmed" : "needed"),
-      renderCounter("Respin", state.respinsRemaining > 0 ? "available" : "used"),
-    );
-    return counters;
-  }
-
-  function renderCounter(label: string, value: string): HTMLElement {
-    const counter = element("div", "counter");
-    const labelNode = element("span", "counter-label");
-    labelNode.textContent = label;
-    const valueNode = element("strong");
-    valueNode.textContent = value;
-    counter.append(labelNode, valueNode);
-    return counter;
-  }
-
-  function renderMessage(): HTMLElement {
-    const message = element("p", "message");
-    message.setAttribute("role", "status");
-    message.textContent = temporaryState.error ?? selectionPrompt();
-    if (temporaryState.error) {
-      message.classList.add("message-error");
-    }
-    return message;
-  }
-
-  function selectionPrompt(): string {
-    if (state.completed) {
-      return revealState === "revealed" ? "Team revealed." : "XI complete. Reveal the team when ready.";
-    }
-    if (state.currentSquadKey === null) {
-      return "Ready to start.";
-    }
-    const active = getActiveDetailsPlayer();
-    if (active?.source === "drafted") {
-      return `Viewing ${active.player.name} in confirmed position ${active.position}.`;
-    }
-    if (active?.source === "squad" && temporaryState.pendingPosition) {
-      return `Previewing ${active.player.name} at position ${temporaryState.pendingPosition}. Confirm to draft.`;
-    }
-    if (active?.source === "squad") {
-      return `Inspecting ${active.player.name}. Click an open batting slot to preview.`;
-    }
-    return "Choose a player from the spun squad.";
-  }
-
-  function renderControls(): HTMLElement {
-    const controls = element("section", "controls");
-    const spinButton = button("Spin", () => {
-      try {
-        state = spinFranchiseSeason(options.pool, state, random);
-        clearTemporaryState();
-      } catch (error) {
-        setError(error);
-      }
-      render();
-    });
-    spinButton.disabled = state.currentSquadKey !== null;
-
-    const respinButton = button("Respin", () => {
-      try {
-        state = useVoluntaryRespin(options.pool, state, random);
-        clearTemporaryState();
-      } catch (error) {
-        setError(error);
-      }
-      render();
-    });
-    respinButton.disabled = state.currentSquadKey === null || state.respinsRemaining < 1;
-
-    const confirmButton = button("Confirm Pick", () => {
-      confirmPick();
-    });
-    confirmButton.className = "confirm-button";
-    confirmButton.disabled = !canConfirmPick();
-
-    const squad = element("strong", "current-spin");
-    squad.textContent = formatCurrentSpin(state.currentSquadKey);
-
-    controls.append(spinButton, respinButton, confirmButton, squad);
-    return controls;
+  function revealTeam(): void {
+    const evaluation = evaluateCompletedTeam(state);
+    revealedTeam = { evaluation, boostedEvaluation: applyTeamBoostsV1(evaluation) };
+    revealState = "revealed";
+    temporaryState.error = null;
+    render();
   }
 
   function confirmPick(): void {
@@ -261,62 +189,13 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     }
 
     try {
-      state = pickPlayer(options.pool, state, active.player.id, pendingPosition, random);
+      state = pickPlayer(options.pool, state, active.player.id, pendingPosition);
       clearTemporaryState();
     } catch (error) {
       clearTemporaryState();
       setError(error);
     }
     render();
-  }
-
-  function canConfirmPick(): boolean {
-    const active = getActiveDetailsPlayer();
-    const pendingPosition = temporaryState.pendingPosition;
-    if (active?.source !== "squad" || pendingPosition === null) {
-      return false;
-    }
-    if (!getOpenPositions(state).includes(pendingPosition)) {
-      return false;
-    }
-    return isLegalPlayerSelection(state, active.player).ok;
-  }
-
-  function renderDraftBoard(): HTMLElement {
-    const section = element("section", "draft-board");
-    const heading = element("h2");
-    heading.textContent = "Batting XI";
-    const slots = element("div", "slots");
-    const active = getActiveDetailsPlayer();
-
-    for (const position of POSITIONS) {
-      const slot = state.slots.find((candidate) => candidate.position === position);
-      if (slot) {
-        slots.append(renderDraftedSlot(position, slot.player));
-        continue;
-      }
-
-      const slotButton = button("", () => {
-        handleOpenPositionClick(position);
-      });
-      slotButton.className = "slot";
-      slotButton.dataset.position = String(position);
-
-      if (active?.source === "squad" && temporaryState.pendingPosition === position) {
-        slotButton.classList.add("slot-pending");
-        slotButton.textContent = `${position}. Pending ${active.player.name} - ${formatPositionFitLabel(getPositionFit(active.player, position))}`;
-      } else if (active?.source === "squad") {
-        slotButton.textContent = `${position}. Open - ${formatPositionFitLabel(getPositionFit(active.player, position))}`;
-      } else {
-        slotButton.disabled = true;
-        slotButton.textContent = `${position}. Open`;
-      }
-
-      slots.append(slotButton);
-    }
-
-    section.append(heading, slots);
-    return section;
   }
 
   function renderDraftedSlot(position: BattingPosition, player: DraftPlayerSeason): HTMLElement {
@@ -447,100 +326,6 @@ export function createClassicDraftApp(options: ClassicDraftAppOptions): ClassicD
     }
 
     return section;
-  }
-
-  function renderSquad(): HTMLElement {
-    const section = element("section", "squad");
-    const heading = element("h2");
-    heading.textContent = "Current Squad";
-    section.append(heading);
-
-    const squad = getCurrentSquad(options.pool, state);
-    if (state.currentSquadKey === null) {
-      const empty = element("p", "empty-state");
-      empty.textContent = "Spin to reveal a franchise-season squad.";
-      section.append(empty);
-      return section;
-    }
-
-    section.append(renderSquadFilters());
-
-    const groups = getVisibleSquadGroups(squad, squadFilter);
-    for (const group of groups) {
-      const groupSection = element("section", "squad-group");
-      const groupHeading = element("h3");
-      groupHeading.textContent = group.heading;
-      const rows = element("div", "squad-list");
-      for (const player of group.players) {
-        rows.append(renderSquadRow(player));
-      }
-      groupSection.append(groupHeading, rows);
-      section.append(groupSection);
-    }
-    return section;
-  }
-
-  function renderSquadFilters(): HTMLElement {
-    const filters = element("div", "squad-filters");
-    filters.setAttribute("aria-label", "Squad role filters");
-    const filterOptions: { filter: SquadFilter; label: string }[] = [
-      { filter: "all", label: "All" },
-      { filter: "batters", label: "Batters" },
-      { filter: "wicketkeepers", label: "Wicketkeepers" },
-      { filter: "all-rounders", label: "All-Rounders" },
-      { filter: "bowlers", label: "Bowlers" },
-    ];
-
-    for (const option of filterOptions) {
-      const filterButton = button(option.label, () => {
-        squadFilter = option.filter;
-        render();
-      });
-      filterButton.className = "squad-filter";
-      filterButton.dataset.filter = option.filter;
-      filterButton.setAttribute("aria-pressed", String(option.filter === squadFilter));
-      if (option.filter === squadFilter) {
-        filterButton.classList.add("squad-filter-active");
-      }
-      filters.append(filterButton);
-    }
-
-    return filters;
-  }
-
-  function renderSquadRow(player: DraftPlayerSeason): HTMLElement {
-    const legality = isLegalPlayerSelection(state, player);
-    const row = button("", () => {
-      const currentActive = temporaryState.activeDetails;
-      if (currentActive?.source !== "squad" || currentActive.playerId !== player.id) {
-        temporaryState.pendingPosition = null;
-      }
-      temporaryState.activeDetails = { source: "squad", playerId: player.id };
-      temporaryState.error = null;
-      render();
-    });
-    row.className = "squad-row";
-    row.dataset.playerId = player.id;
-    if (temporaryState.activeDetails?.source === "squad" && temporaryState.activeDetails.playerId === player.id) {
-      row.classList.add("squad-row-active");
-    }
-
-    const name = element("strong", "player-name");
-    name.textContent = player.name;
-    const badges = element("span", "player-badges");
-    badges.textContent = formatBadges(player).join(" · ");
-    const stats = element("span", "player-stat-line");
-    stats.textContent = formatSquadRowStats(player);
-    const positions = element("span");
-    positions.textContent = `Natural: ${formatPositions(player.naturalPositions)}`;
-    row.append(name, badges, stats, positions);
-
-    if (!legality.ok) {
-      const reason = element("span", "unavailable-reason");
-      reason.textContent = legality.reason;
-      row.append(reason);
-    }
-    return row;
   }
 
   function renderCompletedDraft(): HTMLElement {
@@ -984,32 +769,6 @@ function formatBowlingStrengthLabel(strength: string): string {
   return strength === "part_time" ? "part-time" : strength;
 }
 
-function getVisibleSquadGroups(
-  squad: DraftPlayerSeason[],
-  squadFilter: SquadFilter,
-): { heading: string; players: DraftPlayerSeason[] }[] {
-  const groups = squadFilter === "all" ? SQUAD_GROUPS : SQUAD_GROUPS.filter((group) => group.filter === squadFilter);
-  return groups.flatMap((group) => {
-    const players = squad
-      .filter((player) => group.roles.includes(player.seasonRole))
-      .sort((left, right) => comparePlayers(left, right, group.sortMetric));
-    return players.length > 0 ? [{ heading: group.heading, players }] : [];
-  });
-}
-
-function comparePlayers(left: DraftPlayerSeason, right: DraftPlayerSeason, metric: "runs" | "wickets"): number {
-  const leftMetric = metric === "runs" ? left.displayedStats.runs : left.displayedStats.wickets;
-  const rightMetric = metric === "runs" ? right.displayedStats.runs : right.displayedStats.wickets;
-  if (rightMetric !== leftMetric) {
-    return rightMetric - leftMetric;
-  }
-  return left.name.localeCompare(right.name);
-}
-
-function formatCurrentSpin(currentSquadKey: string | null): string {
-  return currentSquadKey?.replace(/^2016\s+/, "") ?? "No franchise-season spun";
-}
-
 function formatBadges(player: DraftPlayerSeason): string[] {
   const badges: string[] = [];
   if (player.seasonRole === "bowler") {
@@ -1027,45 +786,6 @@ function formatBadges(player: DraftPlayerSeason): string[] {
     badges.push("OVERSEAS");
   }
   return badges;
-}
-
-function formatSquadRowStats(player: DraftPlayerSeason): string {
-  if (player.seasonRole === "bowler") {
-    return formatBowlingStats(player, "Wkts", false) ?? "";
-  }
-  if (player.seasonRole === "batting_all_rounder" || player.seasonRole === "bowling_all_rounder") {
-    return [formatBattingStats(player, "Bat"), formatBowlingStats(player, "Bowl", true)].filter(Boolean).join(" / ");
-  }
-  return formatBattingStats(player, "Runs") ?? "";
-}
-
-function formatBattingStats(player: DraftPlayerSeason, firstLabel: "Runs" | "Bat"): string | null {
-  const stats = player.displayedStats;
-  if (firstLabel === "Bat" && stats.runs === 0 && stats.ballsFaced === 0 && stats.inningsBatted === 0) {
-    return null;
-  }
-  const parts = [`${firstLabel} ${stats.runs}`];
-  if (stats.battingAverage !== null) {
-    parts.push(`Avg ${formatOneDecimal(stats.battingAverage)}`);
-  }
-  if (stats.strikeRate !== null) {
-    parts.push(`SR ${formatOneDecimal(stats.strikeRate)}`);
-  }
-  return parts.join(" | ");
-}
-
-function formatBowlingStats(player: DraftPlayerSeason, firstLabel: "Wkts" | "Bowl", showZeroWickets: boolean): string | null {
-  const stats = player.displayedStats;
-  const parts: string[] = [];
-  if (firstLabel === "Wkts") {
-    parts.push(`Wkts ${stats.wickets}`);
-  } else if (stats.wickets > 0 || showZeroWickets) {
-    parts.push(`Bowl ${stats.wickets} wkts`);
-  }
-  if (stats.economy !== null) {
-    parts.push(`Econ ${formatOneDecimal(stats.economy)}`);
-  }
-  return parts.length > 0 ? parts.join(" | ") : null;
 }
 
 function formatFullBattingStats(player: DraftPlayerSeason): string {

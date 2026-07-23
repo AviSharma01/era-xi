@@ -27,16 +27,55 @@ test("renders ready state from a loaded draft pool", () => {
 
   assert.match(root.textContent ?? "", /Ready to start/);
   assert.equal(button(root, "Spin").disabled, false);
+  assert.equal(root.querySelector(".available-players"), null);
+  assert.equal(root.querySelector(".selected-player-detail"), null);
+  assert.match(root.querySelector(".page-header p")?.textContent ?? "", /^Pick 1 of 11$/);
+  assert.doesNotMatch(root.textContent ?? "", /Ratings and tiers hidden/i);
 });
 
-test("spin renders the current squad", () => {
+test("renders the approved left and right Draft Room structure", () => {
+  const { root } = setupDom();
+  createClassicDraftApp({ root, pool: loadDraftPool(players()), seed: "structure" });
+
+  const leftHeadings = [...root.querySelectorAll(".draft-room-left > section > h2")]
+    .map((heading) => heading.textContent);
+  const rightHeadings = [...root.querySelectorAll(".draft-room-right > section > h2")]
+    .map((heading) => heading.textContent);
+
+  assert.deepEqual(leftHeadings, [
+    "Current Franchise",
+    "Spin / Respin",
+  ]);
+  assert.deepEqual(rightHeadings, ["Playing XI", "Team Building Guide"]);
+});
+
+test("transient Draft Room panels follow the spin, selection, preview, and confirm flow", () => {
   const { root } = setupDom();
   createClassicDraftApp({ root, pool: loadDraftPool(players()), seed: "spin" });
 
+  assert.equal(root.querySelector(".available-players"), null);
+  assert.equal(root.querySelector(".selected-player-detail"), null);
+
   click(button(root, "Spin"));
 
-  assert.match(root.textContent ?? "", /Current Squad/);
+  assert.notEqual(root.querySelector(".available-players"), null);
+  assert.equal(root.querySelector(".selected-player-detail"), null);
   assert.match(root.textContent ?? "", /WK Batter/);
+
+  click(squadRow(root, "WK Batter"));
+  assert.notEqual(root.querySelector(".selected-player-detail"), null);
+
+  click(slotButton(root, 4));
+  assert.match(root.querySelector(".selected-player-detail")?.textContent ?? "", /Preview position:\s*4/);
+
+  click(button(root, "Confirm Pick"));
+  assert.equal(root.querySelector(".available-players"), null);
+  assert.equal(root.querySelector(".selected-player-detail"), null);
+  assert.match(root.querySelector(".current-spin")?.textContent ?? "", /Ready for next spin/);
+
+  click(button(root, "Spin"));
+  assert.notEqual(root.querySelector(".available-players"), null);
+  assert.equal(root.querySelector(".selected-player-detail"), null);
 });
 
 test("selecting a player and open slot creates provisional placement before confirmation", () => {
@@ -48,12 +87,62 @@ test("selecting a player and open slot creates provisional placement before conf
   click(slotButton(root, 4));
 
   assert.equal(app.getState().slots.length, 0);
-  assert.match(slotButton(root, 4).textContent ?? "", /Pending WK Batter/);
+  assert.match(slotButton(root, 4).textContent ?? "", /Preview WK Batter/);
 
   click(button(root, "Confirm Pick"));
 
   assert.equal(app.getState().slots[0]?.position, 4);
+  assert.equal(app.getState().currentSquadKey, null);
   assert.match(slotButton(root, 4).textContent ?? "", /4\. WK Batter/);
+  assert.equal(root.querySelectorAll(".squad-row").length, 0);
+  assert.equal(button(root, "Spin").disabled, false);
+});
+
+test("selected players expose all approved fit labels on open slots", () => {
+  const { root } = setupDom();
+  createClassicDraftApp({ root, pool: loadDraftPool(players()), seed: "fit-labels" });
+  click(button(root, "Spin"));
+  click(squadRow(root, "WK Batter"));
+
+  assert.match(slotButton(root, 4).textContent ?? "", /Natural/);
+  assert.match(slotButton(root, 3).textContent ?? "", /Acceptable/);
+  assert.match(slotButton(root, 2).textContent ?? "", /Out of Position/);
+  assert.match(slotButton(root, 11).textContent ?? "", /Severely Out of Position/);
+});
+
+test("illegal players are disabled with concise visible reasons", () => {
+  const { root } = setupDom();
+  const pool = loadDraftPool(players());
+  const initialState = createClassicDraftState();
+  initialState.currentSquadKey = "2016 Team A";
+  initialState.slots = [1, 2, 3, 4].map((position) => ({
+    position: position as 1 | 2 | 3 | 4,
+    player: player({
+      id: `locked-overseas-${position}`,
+      playerId: `locked-overseas-${position}`,
+      isOverseas: true,
+    }),
+  }));
+  createClassicDraftApp({ root, pool, seed: "illegal-row", initialState });
+
+  const illegal = squadRow(root, "Overseas Batter");
+  assert.equal(illegal.disabled, true);
+  assert.match(illegal.textContent ?? "", /Overseas limit reached/);
+});
+
+test("Team Building Guide exposes draft-visible facts without rated results", () => {
+  const { root } = setupDom();
+  createClassicDraftApp({
+    root,
+    pool: loadDraftPool([promotedPlayer(), ...players()]),
+    seed: "guide-hidden",
+  });
+  click(button(root, "Spin"));
+
+  const guide = root.querySelector(".team-building-guide")?.textContent ?? "";
+  assert.match(guide, /Overseas|Wicketkeeper|Position fit|Bowling coverage/);
+  assert.match(guide, /may unlock team boosts after ratings are revealed/i);
+  assert.doesNotMatch(guide, /Base rating|Draft tier|Overall team rating|69\.6|75\.7/);
 });
 
 test("respin clears selected and error state while consuming the engine respin", () => {
@@ -68,7 +157,7 @@ test("respin clears selected and error state while consuming the engine respin",
 
   assert.equal(app.getState().respinsRemaining, 0);
   assert.doesNotMatch(root.textContent ?? "", /Previewing WK Batter/);
-  assert.match(root.textContent ?? "", /Respinused/);
+  assert.match(root.textContent ?? "", /0 respin remaining/);
 });
 
 test("start new draft resets completed UI without a page refresh", () => {
@@ -78,6 +167,7 @@ test("start new draft resets completed UI without a page refresh", () => {
   const app = createClassicDraftApp({ root, pool, seed: "restart", initialState: completed });
 
   assert.match(root.textContent ?? "", /Completed XI/);
+  click(button(root, "Reveal Team"));
   click(button(root, "Start New Draft"));
 
   assert.equal(app.getState().slots.length, 0);
@@ -103,6 +193,13 @@ test("completed XI starts unrevealed with neutral cards", () => {
   assert.match(root.textContent ?? "", /Completed XI/);
   assert.doesNotMatch(root.textContent ?? "", /Choose a player from the spun squad/);
   assert.equal(button(root, "Reveal Team").disabled, false);
+  assert.deepEqual(
+    [...root.querySelectorAll<HTMLButtonElement>(".controls button")].map((node) => node.textContent),
+    ["Reveal Team"],
+  );
+  assert.equal(root.querySelector(".available-players"), null);
+  assert.equal(root.querySelector(".selected-player-detail"), null);
+  assert.match(root.querySelector(".page-header p")?.textContent ?? "", /^Pick 11 of 11$/);
   assertNoRatedLeakage(root);
   assert.equal(root.querySelector(".tier-s"), null);
 });
@@ -222,7 +319,7 @@ test("confirm pick is disabled until selectable player and open position are cho
   createClassicDraftApp({ root, pool: loadDraftPool(players()), seed: "confirm-disabled" });
   click(button(root, "Spin"));
 
-  assert.equal(button(root, "Confirm Pick").disabled, true);
+  assert.equal(root.querySelector(".confirm-button"), null);
 
   click(squadRow(root, "WK Batter"));
   assert.equal(button(root, "Confirm Pick").disabled, true);
@@ -238,16 +335,16 @@ test("changing active player clears pending placement and disables confirmation"
 
   click(squadRow(root, "WK Batter"));
   click(slotButton(root, 4));
-  assert.match(slotButton(root, 4).textContent ?? "", /Pending WK Batter/);
+  assert.match(slotButton(root, 4).textContent ?? "", /Preview WK Batter/);
   assert.equal(button(root, "Confirm Pick").disabled, false);
 
   click(squadRow(root, "Frontline Bowler"));
   assert.match(detailsText(root), /Frontline Bowler/);
-  assert.doesNotMatch(slotButton(root, 4).textContent ?? "", /Pending/);
+  assert.doesNotMatch(slotButton(root, 4).textContent ?? "", /Preview/);
   assert.equal(button(root, "Confirm Pick").disabled, true);
 
   click(slotButton(root, 10));
-  assert.match(slotButton(root, 10).textContent ?? "", /Pending Frontline Bowler/);
+  assert.match(slotButton(root, 10).textContent ?? "", /Preview Frontline Bowler/);
   assert.equal(button(root, "Confirm Pick").disabled, false);
 });
 
@@ -261,8 +358,8 @@ test("changing pending position for the same player moves provisional placement 
   click(slotButton(root, 5));
 
   assert.equal(app.getState().slots.length, 0);
-  assert.doesNotMatch(slotButton(root, 4).textContent ?? "", /Pending/);
-  assert.match(slotButton(root, 5).textContent ?? "", /Pending WK Batter/);
+  assert.doesNotMatch(slotButton(root, 4).textContent ?? "", /Preview/);
+  assert.match(slotButton(root, 5).textContent ?? "", /Preview WK Batter/);
   assert.equal(button(root, "Confirm Pick").disabled, false);
 });
 

@@ -17,6 +17,14 @@ export type Tier = "S" | "A" | "B" | "C" | "D";
 export type TierAdjustment = "franchise_coverage" | null;
 export type RatingConfidence = "high" | "medium" | "low";
 export type PositionFit = "natural" | "acceptable" | "out_of_position";
+export type SelectionBlockReason =
+  | "draft_complete"
+  | "duplicate_player"
+  | "overseas_limit"
+  | "wicketkeeper_required";
+export type SelectionLegality =
+  | { ok: true }
+  | { ok: false; code: SelectionBlockReason; reason: string };
 
 export type DraftPlayerSeason = {
   id: string;
@@ -159,24 +167,36 @@ export function getLegalPlayers(pool: DraftPool, state: ClassicDraftState): Draf
 export function isLegalPlayerSelection(
   state: ClassicDraftState,
   player: DraftPlayerSeason,
-): { ok: true } | { ok: false; reason: string } {
+): SelectionLegality {
   if (state.completed) {
-    return { ok: false, reason: "The XI is already complete." };
+    return { ok: false, code: "draft_complete", reason: "The XI is already complete." };
   }
 
   if (state.slots.some((slot) => slot.player.playerId === player.playerId)) {
-    return { ok: false, reason: "That player is already locked in this XI." };
+    return {
+      ok: false,
+      code: "duplicate_player",
+      reason: "That player is already locked in this XI.",
+    };
   }
 
   const overseasAfterPick = getOverseasCount(state) + (player.isOverseas ? 1 : 0);
   if (overseasAfterPick > MAX_OVERSEAS) {
-    return { ok: false, reason: `The XI cannot include more than ${MAX_OVERSEAS} overseas players.` };
+    return {
+      ok: false,
+      code: "overseas_limit",
+      reason: `The XI cannot include more than ${MAX_OVERSEAS} overseas players.`,
+    };
   }
 
   const hasWicketkeeperAfterPick = hasWicketkeeper(state) || player.isWicketkeeper;
   const openSlotsAfterPick = XI_SIZE - state.slots.length - 1;
   if (!hasWicketkeeperAfterPick && openSlotsAfterPick === 0) {
-    return { ok: false, reason: "A completed XI must include a wicketkeeper." };
+    return {
+      ok: false,
+      code: "wicketkeeper_required",
+      reason: "A completed XI must include a wicketkeeper.",
+    };
   }
 
   return { ok: true };
@@ -187,7 +207,6 @@ export function pickPlayer(
   state: ClassicDraftState,
   playerSeasonId: string,
   position: BattingPosition,
-  random = Math.random,
 ): ClassicDraftState {
   ensureDraftOpen(state);
   if (state.currentSquadKey === null) {
@@ -212,11 +231,11 @@ export function pickPlayer(
   const nextState: ClassicDraftState = {
     ...state,
     slots,
-    currentSquadKey: completed ? state.currentSquadKey : null,
+    currentSquadKey: null,
     completed,
   };
 
-  return completed ? nextState : spinFranchiseSeason(pool, nextState, random);
+  return nextState;
 }
 
 export function getOverseasCount(state: ClassicDraftState): number {

@@ -90,7 +90,8 @@ function handlePick(
     throw new Error("That player number is not in the current spun squad.");
   }
 
-  return pickPlayer(pool, state, player.id, position, random);
+  const picked = pickPlayer(pool, state, player.id, position);
+  return picked.completed ? picked : spinFranchiseSeason(pool, picked, random);
 }
 
 function renderDraftRound(pool: ReturnType<typeof loadDraftPool>, state: ClassicDraftState): void {

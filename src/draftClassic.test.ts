@@ -4,6 +4,7 @@ import {
   type DraftPlayerSeason,
   createSeededRandom,
   createClassicDraftState,
+  getCurrentSquad,
   getPositionFit,
   isLegalPlayerSelection,
   loadDraftPool,
@@ -79,7 +80,11 @@ test("a fifth overseas player is illegal", () => {
 
   assert.deepEqual(
     isLegalPlayerSelection(state, player({ id: "extra", playerId: "extra", isOverseas: true })),
-    { ok: false, reason: "The XI cannot include more than 4 overseas players." },
+    {
+      ok: false,
+      code: "overseas_limit",
+      reason: "The XI cannot include more than 4 overseas players.",
+    },
   );
 });
 
@@ -92,7 +97,11 @@ test("the final XI slot cannot be filled without a wicketkeeper", () => {
 
   assert.deepEqual(
     isLegalPlayerSelection(state, player({ id: "non-wk", playerId: "non-wk", isWicketkeeper: false })),
-    { ok: false, reason: "A completed XI must include a wicketkeeper." },
+    {
+      ok: false,
+      code: "wicketkeeper_required",
+      reason: "A completed XI must include a wicketkeeper.",
+    },
   );
   assert.deepEqual(isLegalPlayerSelection(state, player({ id: "wk", playerId: "wk", isWicketkeeper: true })), { ok: true });
 });
@@ -104,14 +113,38 @@ test("picked players lock into their batting position and cannot be duplicated",
   ]);
   const random = () => 0;
   const spun = spinFranchiseSeason(pool, createClassicDraftState(), random);
-  const picked = pickPlayer(pool, spun, "wk-season", 4, random);
+  const picked = pickPlayer(pool, spun, "wk-season", 4);
 
   assert.equal(picked.slots[0]?.position, 4);
   assert.equal(picked.slots[0]?.player.id, "wk-season");
+  assert.equal(picked.currentSquadKey, null);
   assert.deepEqual(
     isLegalPlayerSelection(picked, player({ id: "duplicate-season", playerId: "same-player" })),
-    { ok: false, reason: "That player is already locked in this XI." },
+    {
+      ok: false,
+      code: "duplicate_player",
+      reason: "That player is already locked in this XI.",
+    },
   );
+});
+
+test("a confirmed pick waits for an explicit deterministic next spin", () => {
+  const pool = loadDraftPool([
+    player({ id: "a1", playerId: "a1", franchise: "Team A", isWicketkeeper: true }),
+    player({ id: "b1", playerId: "b1", franchise: "Team B", isWicketkeeper: true }),
+    player({ id: "c1", playerId: "c1", franchise: "Team C", isWicketkeeper: true }),
+  ]);
+
+  function sequence(): string[] {
+    const random = createSeededRandom("manual-next-spin");
+    const first = spinFranchiseSeason(pool, createClassicDraftState(), random);
+    const picked = pickPlayer(pool, first, getCurrentSquad(pool, first)[0]!.id, 1);
+    assert.equal(picked.currentSquadKey, null);
+    const second = spinFranchiseSeason(pool, picked, random);
+    return [first.currentSquadKey!, second.currentSquadKey!];
+  }
+
+  assert.deepEqual(sequence(), sequence());
 });
 
 test("spins do not repeat a franchise from the previous two displayed franchises when alternatives exist", () => {
