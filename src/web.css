@@ -1251,3 +1251,793 @@ body:has(.draft-room),
     grid-column: auto;
   }
 }
+
+/* Completed XI reveal. */
+html:has(.completed-team-screen),
+body:has(.completed-team-screen),
+#app:has(.completed-team-screen),
+.app-shell:has(.completed-team-screen) {
+  background: #0b0e11;
+}
+
+.app-shell:has(.completed-team-screen) {
+  min-height: 100vh;
+}
+
+.completed-team-screen {
+  --reveal-surface: #14181d;
+  --reveal-surface-raised: #1a1f25;
+  --reveal-border: #343a41;
+  --reveal-border-strong: #4a5159;
+  --reveal-text: #f2ede2;
+  --reveal-muted: #aaa397;
+  --reveal-faint: #747b83;
+  --reveal-gold: #d4b35f;
+  --reveal-gold-bright: #e2c777;
+  color: var(--reveal-text);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0 auto;
+  max-width: 1180px;
+  min-width: 0;
+  width: 100%;
+}
+
+.completed-team-header {
+  align-items: end;
+  border-bottom: 1px solid var(--reveal-border);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+}
+
+.completed-team-header h1 {
+  color: var(--reveal-text);
+  font-family: "Arial Narrow", "Roboto Condensed", "Segoe UI", sans-serif;
+  font-size: clamp(1.45rem, 2vw, 1.85rem);
+  letter-spacing: 0.035em;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.completed-team-header p {
+  color: var(--reveal-gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.completed-team-layout {
+  display: grid;
+  gap: 18px;
+  grid-template-areas:
+    "rating"
+    "xi"
+    "boosts"
+    "action";
+  min-width: 0;
+}
+
+.completed-team-sidebar {
+  display: contents;
+}
+
+.completed-team-panel {
+  align-self: start;
+  background: var(--reveal-surface);
+  border: 1px solid var(--reveal-border);
+  border-radius: 4px;
+  min-width: 0;
+  padding: 16px;
+}
+
+.completed-team-panel h2 {
+  color: var(--reveal-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  margin: 0 0 13px;
+  text-transform: uppercase;
+}
+
+.completed-playing-xi {
+  grid-area: xi;
+  padding: 16px 18px;
+}
+
+.completed-team-rating {
+  grid-area: rating;
+}
+
+.completed-team-boosts {
+  grid-area: boosts;
+}
+
+.completed-xi-table,
+.completed-xi-body {
+  min-width: 0;
+  width: 100%;
+}
+
+.completed-xi-body {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.completed-xi-grid {
+  align-items: center;
+  display: grid;
+  gap: 8px;
+  grid-template-columns:
+    minmax(150px, 1.55fr)
+    48px
+    minmax(125px, 1fr)
+    minmax(112px, 0.9fr)
+    94px;
+  min-width: 0;
+}
+
+.completed-xi-header {
+  border-bottom: 1px solid var(--reveal-border-strong);
+  color: var(--reveal-muted);
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  min-height: 34px;
+  padding: 0 18px;
+  text-transform: uppercase;
+}
+
+.completed-xi-row {
+  border-bottom: 1px solid var(--reveal-border);
+  min-height: 56px;
+  padding: 8px 18px;
+}
+
+.completed-xi-row:last-child {
+  border-bottom: 0;
+}
+
+.completed-xi-row > * {
+  min-width: 0;
+}
+
+.completed-xi-player-name {
+  color: var(--reveal-text);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.completed-xi-slot,
+.completed-xi-role,
+.completed-xi-fit {
+  text-align: center;
+}
+
+.completed-xi-role,
+.completed-xi-fit {
+  color: var(--reveal-muted);
+  font-size: 0.78rem;
+}
+
+.completed-xi-rating {
+  color: var(--reveal-gold-bright);
+  font-weight: 800;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.completed-xi-fit-natural {
+  color: var(--reveal-gold);
+}
+
+.completed-xi-fit-acceptable {
+  color: #b4ad62;
+}
+
+.completed-xi-fit-out_of_position {
+  color: #dd8b3d;
+}
+
+.team-rating-label {
+  color: var(--reveal-muted);
+  font-size: 0.75rem;
+}
+
+.team-rating-metrics {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) repeat(2, minmax(0, 1fr));
+}
+
+.team-rating-metric {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  padding: 3px 12px;
+}
+
+.team-rating-metric:first-child {
+  padding-left: 0;
+}
+
+.team-rating-metric + .team-rating-metric {
+  border-left: 1px solid var(--reveal-border);
+}
+
+.team-rating-metric strong {
+  color: var(--reveal-text);
+  font-size: 1rem;
+}
+
+.team-rating-metric-overall strong {
+  color: var(--reveal-gold-bright);
+  font-family: "Arial Narrow", "Roboto Condensed", "Segoe UI", sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.boost-state-list {
+  display: grid;
+  gap: 7px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.boost-state {
+  align-items: center;
+  background: #11151a;
+  border: 1px solid var(--reveal-border);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  min-height: 40px;
+  padding: 8px 10px;
+}
+
+.boost-state-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  min-width: 0;
+}
+
+.boost-state-value {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.boost-state-active {
+  border-left: 3px solid var(--reveal-gold);
+}
+
+.boost-state-active .boost-state-value {
+  color: var(--reveal-gold-bright);
+}
+
+.boost-state-inactive {
+  color: var(--reveal-faint);
+}
+
+.boost-state-inactive .boost-state-value {
+  color: var(--reveal-faint);
+}
+
+.completed-team-action {
+  align-items: center;
+  display: grid;
+  gap: 9px;
+  grid-area: action;
+  justify-items: center;
+  padding-top: 14px;
+}
+
+.completed-team-error {
+  color: #ec7a7a;
+  margin: 0;
+  text-align: center;
+}
+
+.completed-team-screen .begin-season-button {
+  background: var(--reveal-gold);
+  border: 1px solid var(--reveal-gold);
+  border-radius: 3px;
+  color: #15120b;
+  font-weight: 800;
+  min-height: 44px;
+  min-width: 220px;
+  padding: 10px 24px;
+}
+
+.completed-team-screen .begin-season-button:hover {
+  background: var(--reveal-gold-bright);
+  border-color: var(--reveal-gold-bright);
+}
+
+.completed-team-screen .begin-season-button:focus-visible {
+  outline: 2px solid var(--reveal-gold-bright);
+  outline-offset: 3px;
+}
+
+@keyframes completed-team-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.season-run-screen {
+  color: var(--reveal-text);
+  margin: 0 auto;
+  max-width: 1180px;
+  min-width: 0;
+  width: 100%;
+}
+
+.completed-team-screen-quiet .completed-team-header,
+.completed-team-screen-quiet .completed-team-panel {
+  border-color: #292f35;
+}
+
+.completed-team-screen-quiet .completed-team-header h1,
+.completed-team-screen-quiet .completed-team-panel h2 {
+  color: var(--reveal-muted);
+}
+
+.season-run-stage {
+  background: var(--reveal-surface, #14181d);
+  border: 1px solid var(--reveal-border, #343a41);
+  border-radius: 4px;
+  color: var(--reveal-text, #f2ede2);
+  margin-top: 26px;
+  min-width: 0;
+  padding: 20px;
+  scroll-margin-top: 20px;
+}
+
+.season-run-stage > h2 {
+  color: var(--reveal-text, #f2ede2);
+  font-family: "Arial Narrow", "Roboto Condensed", "Segoe UI", sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.045em;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+.season-run-stage-quiet {
+  border-color: #292f35;
+}
+
+.season-run-stage-quiet > h2 {
+  color: var(--reveal-muted, #aaa397);
+}
+
+.season-run-stage-opening {
+  animation: season-stage-open 220ms ease-out both;
+  transform-origin: top center;
+}
+
+@keyframes season-stage-open {
+  from {
+    opacity: 0;
+    transform: translateY(-5px) scaleY(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+.league-stage-summary {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 16px;
+}
+
+.league-stage-metric {
+  border-left: 1px solid var(--reveal-border, #343a41);
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: 4px 14px;
+}
+
+.league-stage-metric:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.league-stage-metric span {
+  color: var(--reveal-muted, #aaa397);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.league-stage-metric strong {
+  font-size: 0.92rem;
+  overflow-wrap: anywhere;
+}
+
+.season-run-screen .league-progress-segments {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+}
+
+.season-run-screen .league-progress-segment {
+  align-items: center;
+  background: #101419;
+  border: 1px solid var(--reveal-border, #343a41);
+  color: var(--reveal-muted, #aaa397);
+  display: flex;
+  font-size: 0.7rem;
+  font-weight: 800;
+  justify-content: center;
+  min-height: 28px;
+}
+
+.season-run-screen .league-progress-win {
+  border-color: #8b7a43;
+  color: var(--reveal-gold-bright, #e2c777);
+}
+
+.season-run-screen .league-progress-loss {
+  border-color: #704040;
+  color: #dc8a8a;
+}
+
+.league-stage-completed {
+  border-top: 1px solid var(--reveal-border, #343a41);
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.season-run-screen .final-table,
+.league-leaders {
+  min-width: 0;
+}
+
+.season-run-screen .final-table h3,
+.league-leaders > h3,
+.playoff-current-match h3,
+.playoff-match h3 {
+  color: var(--reveal-muted, #aaa397);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.season-run-screen .final-table table {
+  border-collapse: collapse;
+  font-size: 0.76rem;
+  width: 100%;
+}
+
+.season-run-screen .final-table th,
+.season-run-screen .final-table td {
+  border-bottom: 1px solid #292f35;
+  padding: 7px 6px;
+  text-align: center;
+}
+
+.season-run-screen .final-table .standings-team {
+  text-align: left;
+}
+
+.season-run-screen .final-table tr[data-team-id="user"] {
+  color: var(--reveal-gold-bright, #e2c777);
+  font-weight: 700;
+}
+
+.league-leaders-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.season-leaders h4 {
+  color: var(--reveal-faint, #747b83);
+  font-size: 0.68rem;
+  margin: 0 0 7px;
+  text-transform: uppercase;
+}
+
+.season-leaders ol {
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
+.season-leaders li {
+  border-bottom: 1px solid #292f35;
+  display: flex;
+  font-size: 0.76rem;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+.season-leaders li strong {
+  color: var(--reveal-gold, #d4b35f);
+  white-space: nowrap;
+}
+
+.season-stage-action {
+  border-top: 1px solid var(--reveal-border, #343a41);
+  margin-top: 20px;
+  padding-top: 18px;
+  text-align: center;
+}
+
+.season-primary-action,
+.season-secondary-action {
+  border-radius: 3px;
+  font-weight: 800;
+  min-height: 42px;
+  padding: 9px 20px;
+}
+
+.season-primary-action {
+  background: var(--reveal-gold, #d4b35f);
+  border: 1px solid var(--reveal-gold, #d4b35f);
+  color: #15120b;
+}
+
+.season-secondary-action {
+  background: transparent;
+  border: 1px solid var(--reveal-border-strong, #4a5159);
+  color: var(--reveal-muted, #aaa397);
+}
+
+.playoff-journey {
+  display: grid;
+  gap: 8px;
+}
+
+.season-run-screen .playoff-match,
+.playoff-current-match {
+  background: #101419;
+  border: 1px solid #292f35;
+  padding: 12px 14px;
+}
+
+.season-run-screen .playoff-match p,
+.playoff-current-match p {
+  color: var(--reveal-muted, #aaa397);
+  font-size: 0.78rem;
+  margin: 4px 0 0;
+}
+
+.season-run-screen .playoff-result {
+  color: var(--reveal-text, #f2ede2);
+  font-weight: 800;
+}
+
+.playoff-current-match {
+  border-color: #8b7a43;
+  margin-top: 10px;
+}
+
+.playoff-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.season-terminal-outcome {
+  border-top: 1px solid #8b7a43;
+  margin-top: 20px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.season-terminal-outcome > span {
+  color: var(--reveal-muted, #aaa397);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.season-terminal-outcome .season-outcome {
+  color: var(--reveal-gold-bright, #e2c777);
+  font-family: "Arial Narrow", "Roboto Condensed", "Segoe UI", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  letter-spacing: 0.035em;
+  margin: 7px 0 16px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1100px) {
+  .completed-team-layout {
+    align-items: start;
+    grid-template-areas:
+      "xi sidebar"
+      "action action";
+    grid-template-columns: minmax(0, 68fr) minmax(280px, 32fr);
+    gap: 22px;
+  }
+
+  .completed-team-sidebar {
+    align-self: start;
+    display: grid;
+    gap: 16px;
+    grid-area: sidebar;
+    grid-auto-rows: max-content;
+    min-width: 0;
+  }
+
+  .completed-team-sidebar > * {
+    grid-area: auto;
+  }
+}
+
+@media (max-width: 899px) {
+  .league-stage-completed {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 719px) {
+  .completed-team-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 12px;
+    padding-bottom: 11px;
+  }
+
+  .completed-team-panel,
+  .completed-playing-xi {
+    padding: 12px;
+  }
+
+  .completed-xi-header {
+    display: none;
+  }
+
+  .completed-xi-row {
+    gap: 4px 8px;
+    grid-template-areas:
+      "player player rating"
+      "slot role fit";
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    min-height: 64px;
+    padding: 9px 8px;
+  }
+
+  .completed-xi-player {
+    grid-area: player;
+  }
+
+  .completed-xi-slot {
+    grid-area: slot;
+  }
+
+  .completed-xi-role {
+    grid-area: role;
+  }
+
+  .completed-xi-fit {
+    grid-area: fit;
+  }
+
+  .completed-xi-rating {
+    grid-area: rating;
+  }
+
+  .completed-xi-slot,
+  .completed-xi-role,
+  .completed-xi-fit {
+    font-size: 0.72rem;
+    text-align: left;
+  }
+
+  .completed-xi-slot::before {
+    content: "Slot ";
+    color: var(--reveal-faint);
+  }
+
+  .completed-xi-role {
+    border-left: 1px solid var(--reveal-border-strong);
+    padding-left: 8px;
+  }
+
+  .completed-xi-fit {
+    text-align: right;
+  }
+
+  .completed-team-action {
+    padding-top: 8px;
+  }
+
+  .completed-team-screen .begin-season-button {
+    width: 100%;
+  }
+
+  .team-rating-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .team-rating-metric-overall {
+    border-bottom: 1px solid var(--reveal-border);
+    grid-column: 1 / -1;
+    padding: 0 0 10px;
+  }
+
+  .team-rating-metric:nth-child(2) {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .team-rating-metric:nth-child(3) {
+    padding-right: 0;
+  }
+
+  .season-run-stage {
+    margin-top: 18px;
+    padding: 14px 12px;
+  }
+
+  .league-stage-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 12px;
+  }
+
+  .league-stage-metric:nth-child(odd) {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .season-run-screen .league-progress-segments {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+
+  .standings-mobile-optional {
+    display: none;
+  }
+
+  .season-run-screen .final-table th,
+  .season-run-screen .final-table td {
+    padding: 7px 3px;
+  }
+
+  .playoff-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .season-terminal-outcome .restart-button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .completed-team-screen,
+  .season-run-stage-opening {
+    animation: none;
+  }
+}
