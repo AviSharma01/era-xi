@@ -15,3 +15,10 @@ A historical IPL drafting game inspired by EraBall. Spin a franchise-season, cho
 ```bash
 npm install
 npm run dev:web
+```
+
+## Data Attribution
+
+Historical match data and player identifiers are sourced from Cricsheet. See
+[DATA_ATTRIBUTION.md](DATA_ATTRIBUTION.md) for provenance, licensing, and
+redistribution notes.

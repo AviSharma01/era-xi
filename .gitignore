@@ -10,6 +10,10 @@ data/raw/*.zip
 # Generated processed outputs
 data/processed/**
 
+# Large, reproducible Cricsheet audit details
+data/audit/cricsheet-ipl/v1/source_manifest.jsonl
+data/audit/cricsheet-ipl/v1/match_innings_anomalies.json
+
 # Track selected 2016 generated outputs for the prototype and rating review
 !data/processed/2016/
 !data/processed/2016/draft_player_seasons.json
