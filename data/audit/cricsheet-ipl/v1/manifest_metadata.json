@@ -1,0 +1,15 @@
+{
+  "archiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+  "canonicalProvenanceExcludes": [
+    "filesystem modification times",
+    "absolute paths",
+    "generation timestamps"
+  ],
+  "entryCount": 1243,
+  "entryOrdering": "parsed numeric matchId, then relativeSourcePath",
+  "entrySerialization": "UTF-8 JSON with sorted keys, compact separators, ensure_ascii=false, newline terminated",
+  "hashAlgorithm": "SHA-256",
+  "hashMaterial": "Concatenated canonical manifest entry bytes before the self-referential archiveManifestHash field is added to rendered JSONL lines",
+  "reportType": "manifestMetadata",
+  "schemaVersion": "cricsheet-ipl-archive-audit/v1"
+}

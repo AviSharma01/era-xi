@@ -1,0 +1,742 @@
+{
+  "archiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+  "auditOnlyDisplayYearMappings": {
+    "2007/08": 2008,
+    "2009/10": 2010,
+    "2020/21": 2020
+  },
+  "editionCount": 19,
+  "reportType": "seasonCoverage",
+  "schemaVersion": "cricsheet-ipl-archive-audit/v1",
+  "seasons": [
+    {
+      "dateRange": {
+        "first": "2008-04-18",
+        "last": "2008-06-01"
+      },
+      "inferredEditionDisplayYear": 2008,
+      "matches": 58,
+      "normalInnings": 116,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Deccan Chargers",
+        "Delhi Daredevils",
+        "Kings XI Punjab",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore"
+      ],
+      "rawVenues": [
+        "Dr DY Patil Sports Academy",
+        "Eden Gardens",
+        "Feroz Shah Kotla",
+        "M Chinnaswamy Stadium",
+        "MA Chidambaram Stadium, Chepauk",
+        "Punjab Cricket Association Stadium, Mohali",
+        "Rajiv Gandhi International Stadium, Uppal",
+        "Sawai Mansingh Stadium",
+        "Wankhede Stadium"
+      ],
+      "sourceFiles": 58,
+      "sourceSeason": "2007/08",
+      "superOverInnings": 0,
+      "uniquePlayerRegistryIds": 163,
+      "uniqueRawTeamNames": 8,
+      "uniqueRawVenues": 9
+    },
+    {
+      "dateRange": {
+        "first": "2009-04-18",
+        "last": "2009-05-24"
+      },
+      "inferredEditionDisplayYear": 2009,
+      "matches": 57,
+      "normalInnings": 114,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Deccan Chargers",
+        "Delhi Daredevils",
+        "Kings XI Punjab",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore"
+      ],
+      "rawVenues": [
+        "Buffalo Park",
+        "De Beers Diamond Oval",
+        "Kingsmead",
+        "New Wanderers Stadium",
+        "Newlands",
+        "OUTsurance Oval",
+        "St George's Park",
+        "SuperSport Park"
+      ],
+      "sourceFiles": 57,
+      "sourceSeason": "2009",
+      "superOverInnings": 2,
+      "uniquePlayerRegistryIds": 165,
+      "uniqueRawTeamNames": 8,
+      "uniqueRawVenues": 8
+    },
+    {
+      "dateRange": {
+        "first": "2010-03-12",
+        "last": "2010-04-25"
+      },
+      "inferredEditionDisplayYear": 2010,
+      "matches": 60,
+      "normalInnings": 120,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Deccan Chargers",
+        "Delhi Daredevils",
+        "Kings XI Punjab",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore"
+      ],
+      "rawVenues": [
+        "Barabati Stadium",
+        "Brabourne Stadium",
+        "Brabourne Stadium, Mumbai",
+        "Dr DY Patil Sports Academy",
+        "Eden Gardens",
+        "Feroz Shah Kotla",
+        "Himachal Pradesh Cricket Association Stadium",
+        "M Chinnaswamy Stadium",
+        "MA Chidambaram Stadium, Chepauk",
+        "Punjab Cricket Association Stadium, Mohali",
+        "Sardar Patel Stadium, Motera",
+        "Sawai Mansingh Stadium",
+        "Vidarbha Cricket Association Stadium, Jamtha"
+      ],
+      "sourceFiles": 60,
+      "sourceSeason": "2009/10",
+      "superOverInnings": 2,
+      "uniquePlayerRegistryIds": 181,
+      "uniqueRawTeamNames": 8,
+      "uniqueRawVenues": 13
+    },
+    {
+      "dateRange": {
+        "first": "2011-04-08",
+        "last": "2011-05-28"
+      },
+      "inferredEditionDisplayYear": 2011,
+      "matches": 73,
+      "normalInnings": 145,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Deccan Chargers",
+        "Delhi Daredevils",
+        "Kings XI Punjab",
+        "Kochi Tuskers Kerala",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Pune Warriors",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore"
+      ],
+      "rawVenues": [
+        "Dr DY Patil Sports Academy",
+        "Eden Gardens",
+        "Feroz Shah Kotla",
+        "Himachal Pradesh Cricket Association Stadium",
+        "Holkar Cricket Stadium",
+        "M Chinnaswamy Stadium",
+        "MA Chidambaram Stadium, Chepauk",
+        "Nehru Stadium",
+        "Punjab Cricket Association Stadium, Mohali",
+        "Rajiv Gandhi International Stadium, Uppal",
+        "Sawai Mansingh Stadium",
+        "Wankhede Stadium"
+      ],
+      "sourceFiles": 73,
+      "sourceSeason": "2011",
+      "superOverInnings": 0,
+      "uniquePlayerRegistryIds": 199,
+      "uniqueRawTeamNames": 10,
+      "uniqueRawVenues": 12
+    },
+    {
+      "dateRange": {
+        "first": "2012-04-04",
+        "last": "2012-05-27"
+      },
+      "inferredEditionDisplayYear": 2012,
+      "matches": 74,
+      "normalInnings": 148,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Deccan Chargers",
+        "Delhi Daredevils",
+        "Kings XI Punjab",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Pune Warriors",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore"
+      ],
+      "rawVenues": [
+        "Barabati Stadium",
+        "Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium",
+        "Eden Gardens",
+        "Feroz Shah Kotla",
+        "Himachal Pradesh Cricket Association Stadium",
+        "M Chinnaswamy Stadium",
+        "MA Chidambaram Stadium, Chepauk",
+        "Punjab Cricket Association Stadium, Mohali",
+        "Rajiv Gandhi International Stadium, Uppal",
+        "Sawai Mansingh Stadium",
+        "Subrata Roy Sahara Stadium",
+        "Wankhede Stadium"
+      ],
+      "sourceFiles": 74,
+      "sourceSeason": "2012",
+      "superOverInnings": 0,
+      "uniquePlayerRegistryIds": 190,
+      "uniqueRawTeamNames": 9,
+      "uniqueRawVenues": 12
+    },
+    {
+      "dateRange": {
+        "first": "2013-04-03",
+        "last": "2013-05-26"
+      },
+      "inferredEditionDisplayYear": 2013,
+      "matches": 76,
+      "normalInnings": 152,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Delhi Daredevils",
+        "Kings XI Punjab",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Pune Warriors",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Eden Gardens",
+        "Feroz Shah Kotla",
+        "Himachal Pradesh Cricket Association Stadium",
+        "JSCA International Stadium Complex",
+        "M Chinnaswamy Stadium",
+        "MA Chidambaram Stadium, Chepauk",
+        "Maharashtra Cricket Association Stadium",
+        "Punjab Cricket Association Stadium, Mohali",
+        "Rajiv Gandhi International Stadium, Uppal",
+        "Sawai Mansingh Stadium",
+        "Shaheed Veer Narayan Singh International Stadium",
+        "Subrata Roy Sahara Stadium",
+        "Wankhede Stadium"
+      ],
+      "sourceFiles": 76,
+      "sourceSeason": "2013",
+      "superOverInnings": 4,
+      "uniquePlayerRegistryIds": 198,
+      "uniqueRawTeamNames": 9,
+      "uniqueRawVenues": 13
+    },
+    {
+      "dateRange": {
+        "first": "2014-04-16",
+        "last": "2014-06-01"
+      },
+      "inferredEditionDisplayYear": 2014,
+      "matches": 60,
+      "normalInnings": 120,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Delhi Daredevils",
+        "Kings XI Punjab",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Barabati Stadium",
+        "Brabourne Stadium",
+        "Dubai International Cricket Stadium",
+        "Eden Gardens",
+        "Feroz Shah Kotla",
+        "JSCA International Stadium Complex",
+        "M Chinnaswamy Stadium",
+        "Punjab Cricket Association Stadium, Mohali",
+        "Rajiv Gandhi International Stadium, Uppal",
+        "Sardar Patel Stadium, Motera",
+        "Sharjah Cricket Stadium",
+        "Sheikh Zayed Stadium",
+        "Wankhede Stadium"
+      ],
+      "sourceFiles": 60,
+      "sourceSeason": "2014",
+      "superOverInnings": 2,
+      "uniquePlayerRegistryIds": 152,
+      "uniqueRawTeamNames": 8,
+      "uniqueRawVenues": 13
+    },
+    {
+      "dateRange": {
+        "first": "2015-04-08",
+        "last": "2015-05-24"
+      },
+      "inferredEditionDisplayYear": 2015,
+      "matches": 59,
+      "normalInnings": 117,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Delhi Daredevils",
+        "Kings XI Punjab",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Brabourne Stadium",
+        "Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium",
+        "Eden Gardens",
+        "Feroz Shah Kotla",
+        "JSCA International Stadium Complex",
+        "M Chinnaswamy Stadium",
+        "MA Chidambaram Stadium, Chepauk",
+        "Maharashtra Cricket Association Stadium",
+        "Punjab Cricket Association Stadium, Mohali",
+        "Rajiv Gandhi International Stadium, Uppal",
+        "Sardar Patel Stadium, Motera",
+        "Shaheed Veer Narayan Singh International Stadium",
+        "Wankhede Stadium"
+      ],
+      "sourceFiles": 59,
+      "sourceSeason": "2015",
+      "superOverInnings": 2,
+      "uniquePlayerRegistryIds": 145,
+      "uniqueRawTeamNames": 8,
+      "uniqueRawVenues": 13
+    },
+    {
+      "dateRange": {
+        "first": "2016-04-09",
+        "last": "2016-05-29"
+      },
+      "inferredEditionDisplayYear": 2016,
+      "matches": 60,
+      "normalInnings": 120,
+      "rawTeamNames": [
+        "Delhi Daredevils",
+        "Gujarat Lions",
+        "Kings XI Punjab",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Rising Pune Supergiants",
+        "Royal Challengers Bangalore",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium",
+        "Eden Gardens",
+        "Feroz Shah Kotla",
+        "Green Park",
+        "M Chinnaswamy Stadium",
+        "Maharashtra Cricket Association Stadium",
+        "Punjab Cricket Association IS Bindra Stadium, Mohali",
+        "Rajiv Gandhi International Stadium, Uppal",
+        "Saurashtra Cricket Association Stadium",
+        "Shaheed Veer Narayan Singh International Stadium",
+        "Wankhede Stadium"
+      ],
+      "sourceFiles": 60,
+      "sourceSeason": "2016",
+      "superOverInnings": 0,
+      "uniquePlayerRegistryIds": 159,
+      "uniqueRawTeamNames": 8,
+      "uniqueRawVenues": 11
+    },
+    {
+      "dateRange": {
+        "first": "2017-04-05",
+        "last": "2017-05-21"
+      },
+      "inferredEditionDisplayYear": 2017,
+      "matches": 59,
+      "normalInnings": 118,
+      "rawTeamNames": [
+        "Delhi Daredevils",
+        "Gujarat Lions",
+        "Kings XI Punjab",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Rising Pune Supergiant",
+        "Royal Challengers Bangalore",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Eden Gardens",
+        "Feroz Shah Kotla",
+        "Green Park",
+        "Holkar Cricket Stadium",
+        "M Chinnaswamy Stadium",
+        "M.Chinnaswamy Stadium",
+        "Maharashtra Cricket Association Stadium",
+        "Punjab Cricket Association IS Bindra Stadium, Mohali",
+        "Rajiv Gandhi International Stadium, Uppal",
+        "Saurashtra Cricket Association Stadium",
+        "Wankhede Stadium"
+      ],
+      "sourceFiles": 59,
+      "sourceSeason": "2017",
+      "superOverInnings": 2,
+      "uniquePlayerRegistryIds": 161,
+      "uniqueRawTeamNames": 8,
+      "uniqueRawVenues": 11
+    },
+    {
+      "dateRange": {
+        "first": "2018-04-07",
+        "last": "2018-05-27"
+      },
+      "inferredEditionDisplayYear": 2018,
+      "matches": 60,
+      "normalInnings": 120,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Delhi Daredevils",
+        "Kings XI Punjab",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Arun Jaitley Stadium",
+        "Eden Gardens",
+        "Holkar Cricket Stadium",
+        "M.Chinnaswamy Stadium",
+        "MA Chidambaram Stadium",
+        "Maharashtra Cricket Association Stadium",
+        "Punjab Cricket Association IS Bindra Stadium",
+        "Rajiv Gandhi International Stadium",
+        "Sawai Mansingh Stadium",
+        "Wankhede Stadium"
+      ],
+      "sourceFiles": 60,
+      "sourceSeason": "2018",
+      "superOverInnings": 0,
+      "uniquePlayerRegistryIds": 149,
+      "uniqueRawTeamNames": 8,
+      "uniqueRawVenues": 10
+    },
+    {
+      "dateRange": {
+        "first": "2019-03-23",
+        "last": "2019-05-12"
+      },
+      "inferredEditionDisplayYear": 2019,
+      "matches": 60,
+      "normalInnings": 120,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Delhi Capitals",
+        "Kings XI Punjab",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Arun Jaitley Stadium",
+        "Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium",
+        "Eden Gardens",
+        "M.Chinnaswamy Stadium",
+        "MA Chidambaram Stadium",
+        "Punjab Cricket Association IS Bindra Stadium",
+        "Rajiv Gandhi International Stadium",
+        "Sawai Mansingh Stadium",
+        "Wankhede Stadium"
+      ],
+      "sourceFiles": 60,
+      "sourceSeason": "2019",
+      "superOverInnings": 4,
+      "uniquePlayerRegistryIds": 162,
+      "uniqueRawTeamNames": 8,
+      "uniqueRawVenues": 9
+    },
+    {
+      "dateRange": {
+        "first": "2020-09-19",
+        "last": "2020-11-10"
+      },
+      "inferredEditionDisplayYear": 2020,
+      "matches": 60,
+      "normalInnings": 120,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Delhi Capitals",
+        "Kings XI Punjab",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Dubai International Cricket Stadium",
+        "Sharjah Cricket Stadium",
+        "Sheikh Zayed Stadium"
+      ],
+      "sourceFiles": 60,
+      "sourceSeason": "2020/21",
+      "superOverInnings": 10,
+      "uniquePlayerRegistryIds": 151,
+      "uniqueRawTeamNames": 8,
+      "uniqueRawVenues": 3
+    },
+    {
+      "dateRange": {
+        "first": "2021-04-09",
+        "last": "2021-10-15"
+      },
+      "inferredEditionDisplayYear": 2021,
+      "matches": 60,
+      "normalInnings": 120,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Delhi Capitals",
+        "Kolkata Knight Riders",
+        "Mumbai Indians",
+        "Punjab Kings",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Arun Jaitley Stadium, Delhi",
+        "Dubai International Cricket Stadium",
+        "MA Chidambaram Stadium, Chepauk, Chennai",
+        "Narendra Modi Stadium, Ahmedabad",
+        "Sharjah Cricket Stadium",
+        "Wankhede Stadium, Mumbai",
+        "Zayed Cricket Stadium, Abu Dhabi"
+      ],
+      "sourceFiles": 60,
+      "sourceSeason": "2021",
+      "superOverInnings": 2,
+      "uniquePlayerRegistryIds": 168,
+      "uniqueRawTeamNames": 8,
+      "uniqueRawVenues": 7
+    },
+    {
+      "dateRange": {
+        "first": "2022-03-26",
+        "last": "2022-05-29"
+      },
+      "inferredEditionDisplayYear": 2022,
+      "matches": 74,
+      "normalInnings": 148,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Delhi Capitals",
+        "Gujarat Titans",
+        "Kolkata Knight Riders",
+        "Lucknow Super Giants",
+        "Mumbai Indians",
+        "Punjab Kings",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Brabourne Stadium, Mumbai",
+        "Dr DY Patil Sports Academy, Mumbai",
+        "Eden Gardens, Kolkata",
+        "Maharashtra Cricket Association Stadium, Pune",
+        "Narendra Modi Stadium, Ahmedabad",
+        "Wankhede Stadium, Mumbai"
+      ],
+      "sourceFiles": 74,
+      "sourceSeason": "2022",
+      "superOverInnings": 0,
+      "uniquePlayerRegistryIds": 190,
+      "uniqueRawTeamNames": 10,
+      "uniqueRawVenues": 6
+    },
+    {
+      "dateRange": {
+        "first": "2023-03-31",
+        "last": "2023-05-29"
+      },
+      "inferredEditionDisplayYear": 2023,
+      "matches": 74,
+      "normalInnings": 147,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Delhi Capitals",
+        "Gujarat Titans",
+        "Kolkata Knight Riders",
+        "Lucknow Super Giants",
+        "Mumbai Indians",
+        "Punjab Kings",
+        "Rajasthan Royals",
+        "Royal Challengers Bangalore",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Arun Jaitley Stadium, Delhi",
+        "Barsapara Cricket Stadium, Guwahati",
+        "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+        "Eden Gardens, Kolkata",
+        "Himachal Pradesh Cricket Association Stadium, Dharamsala",
+        "M Chinnaswamy Stadium, Bengaluru",
+        "MA Chidambaram Stadium, Chepauk, Chennai",
+        "Narendra Modi Stadium, Ahmedabad",
+        "Punjab Cricket Association IS Bindra Stadium, Mohali, Chandigarh",
+        "Rajiv Gandhi International Stadium, Uppal, Hyderabad",
+        "Sawai Mansingh Stadium, Jaipur",
+        "Wankhede Stadium, Mumbai"
+      ],
+      "sourceFiles": 74,
+      "sourceSeason": "2023",
+      "superOverInnings": 0,
+      "uniquePlayerRegistryIds": 209,
+      "uniqueRawTeamNames": 10,
+      "uniqueRawVenues": 12
+    },
+    {
+      "dateRange": {
+        "first": "2024-03-22",
+        "last": "2024-05-26"
+      },
+      "inferredEditionDisplayYear": 2024,
+      "matches": 71,
+      "normalInnings": 142,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Delhi Capitals",
+        "Gujarat Titans",
+        "Kolkata Knight Riders",
+        "Lucknow Super Giants",
+        "Mumbai Indians",
+        "Punjab Kings",
+        "Rajasthan Royals",
+        "Royal Challengers Bengaluru",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Arun Jaitley Stadium, Delhi",
+        "Barsapara Cricket Stadium, Guwahati",
+        "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+        "Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium, Visakhapatnam",
+        "Eden Gardens, Kolkata",
+        "Himachal Pradesh Cricket Association Stadium, Dharamsala",
+        "M Chinnaswamy Stadium, Bengaluru",
+        "MA Chidambaram Stadium, Chepauk, Chennai",
+        "Maharaja Yadavindra Singh International Cricket Stadium, Mullanpur",
+        "Narendra Modi Stadium, Ahmedabad",
+        "Rajiv Gandhi International Stadium, Uppal, Hyderabad",
+        "Sawai Mansingh Stadium, Jaipur",
+        "Wankhede Stadium, Mumbai"
+      ],
+      "sourceFiles": 71,
+      "sourceSeason": "2024",
+      "superOverInnings": 0,
+      "uniquePlayerRegistryIds": 208,
+      "uniqueRawTeamNames": 10,
+      "uniqueRawVenues": 13
+    },
+    {
+      "dateRange": {
+        "first": "2025-03-22",
+        "last": "2025-06-03"
+      },
+      "inferredEditionDisplayYear": 2025,
+      "matches": 74,
+      "normalInnings": 146,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Delhi Capitals",
+        "Gujarat Titans",
+        "Kolkata Knight Riders",
+        "Lucknow Super Giants",
+        "Mumbai Indians",
+        "Punjab Kings",
+        "Rajasthan Royals",
+        "Royal Challengers Bengaluru",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Arun Jaitley Stadium, Delhi",
+        "Barsapara Cricket Stadium, Guwahati",
+        "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+        "Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium, Visakhapatnam",
+        "Eden Gardens, Kolkata",
+        "Himachal Pradesh Cricket Association Stadium, Dharamsala",
+        "M Chinnaswamy Stadium, Bengaluru",
+        "MA Chidambaram Stadium, Chepauk, Chennai",
+        "Maharaja Yadavindra Singh International Cricket Stadium, Mullanpur",
+        "Maharaja Yadavindra Singh International Cricket Stadium, New Chandigarh",
+        "Narendra Modi Stadium, Ahmedabad",
+        "Rajiv Gandhi International Stadium, Uppal, Hyderabad",
+        "Sawai Mansingh Stadium, Jaipur",
+        "Wankhede Stadium, Mumbai"
+      ],
+      "sourceFiles": 74,
+      "sourceSeason": "2025",
+      "superOverInnings": 2,
+      "uniquePlayerRegistryIds": 202,
+      "uniqueRawTeamNames": 10,
+      "uniqueRawVenues": 14
+    },
+    {
+      "dateRange": {
+        "first": "2026-03-28",
+        "last": "2026-05-31"
+      },
+      "inferredEditionDisplayYear": 2026,
+      "matches": 74,
+      "normalInnings": 147,
+      "rawTeamNames": [
+        "Chennai Super Kings",
+        "Delhi Capitals",
+        "Gujarat Titans",
+        "Kolkata Knight Riders",
+        "Lucknow Super Giants",
+        "Mumbai Indians",
+        "Punjab Kings",
+        "Rajasthan Royals",
+        "Royal Challengers Bengaluru",
+        "Sunrisers Hyderabad"
+      ],
+      "rawVenues": [
+        "Arun Jaitley Stadium, Delhi",
+        "Barsapara Cricket Stadium, Guwahati",
+        "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+        "Eden Gardens, Kolkata",
+        "Himachal Pradesh Cricket Association Stadium, Dharamsala",
+        "M Chinnaswamy Stadium, Bengaluru",
+        "MA Chidambaram Stadium, Chepauk, Chennai",
+        "Maharaja Yadavindra Singh International Cricket Stadium, New Chandigarh",
+        "Narendra Modi Stadium, Ahmedabad",
+        "Rajiv Gandhi International Stadium, Uppal, Hyderabad",
+        "Sawai Mansingh Stadium, Jaipur",
+        "Shaheed Veer Narayan Singh International Stadium, Raipur",
+        "Wankhede Stadium, Mumbai"
+      ],
+      "sourceFiles": 74,
+      "sourceSeason": "2026",
+      "superOverInnings": 2,
+      "uniquePlayerRegistryIds": 202,
+      "uniqueRawTeamNames": 10,
+      "uniqueRawVenues": 13
+    }
+  ]
+}

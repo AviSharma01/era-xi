@@ -1,0 +1,161 @@
+{
+  "archiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+  "baselineDiscrepancyCount": 0,
+  "expectedBaselineComparisons": [
+    {
+      "actual": 1243,
+      "expected": 1243,
+      "explanation": null,
+      "matches": true,
+      "metric": "numericMatchFiles"
+    },
+    {
+      "actual": 19,
+      "expected": 19,
+      "explanation": null,
+      "matches": true,
+      "metric": "iplEditions"
+    },
+    {
+      "actual": 2480,
+      "expected": 2480,
+      "explanation": null,
+      "matches": true,
+      "metric": "normalInnings"
+    },
+    {
+      "actual": 34,
+      "expected": 34,
+      "explanation": null,
+      "matches": true,
+      "metric": "superOverInnings"
+    },
+    {
+      "actual": 9,
+      "expected": 9,
+      "explanation": null,
+      "matches": true,
+      "metric": "noResults"
+    },
+    {
+      "actual": 23,
+      "expected": 23,
+      "explanation": null,
+      "matches": true,
+      "metric": "dlResults"
+    },
+    {
+      "actual": 16,
+      "expected": 16,
+      "explanation": null,
+      "matches": true,
+      "metric": "eliminatorResolvedTies"
+    },
+    {
+      "actual": 557,
+      "expected": 557,
+      "explanation": null,
+      "matches": true,
+      "metric": "impactPlayerReplacements"
+    },
+    {
+      "actual": 6,
+      "expected": 6,
+      "explanation": null,
+      "matches": true,
+      "metric": "concussionSubstitutes"
+    },
+    {
+      "actual": 51,
+      "expected": 51,
+      "explanation": null,
+      "matches": true,
+      "metric": "injuryRoleReplacements"
+    },
+    {
+      "actual": 10,
+      "expected": 10,
+      "explanation": null,
+      "matches": true,
+      "metric": "excludedBowlerRoleReplacements"
+    },
+    {
+      "actual": 227,
+      "expected": 227,
+      "explanation": null,
+      "matches": true,
+      "metric": "substituteFieldingEvents"
+    },
+    {
+      "actual": 60,
+      "expected": 60,
+      "explanation": null,
+      "matches": true,
+      "metric": "uniqueRawVenueStrings"
+    },
+    {
+      "actual": 37,
+      "expected": 37,
+      "explanation": null,
+      "matches": true,
+      "metric": "uniqueRawCityStrings"
+    },
+    {
+      "actual": 91,
+      "expected": 91,
+      "explanation": null,
+      "matches": true,
+      "metric": "duplicateLegacyPlayerSeasonIds"
+    },
+    {
+      "actual": 7,
+      "expected": 7,
+      "explanation": null,
+      "matches": true,
+      "metric": "duplicateLegacyFranchiseSeasonIds"
+    }
+  ],
+  "headlineCounts": {
+    "concussionSubstitutes": 6,
+    "deliveries": 295732,
+    "dlResults": 23,
+    "duplicateLegacyFranchiseSeasonIds": 7,
+    "duplicateLegacyPlayerSeasonIds": 91,
+    "eliminatorResolvedTies": 16,
+    "excludedBowlerRoleReplacements": 10,
+    "impactPlayerReplacements": 557,
+    "injuryRoleReplacements": 51,
+    "iplEditions": 19,
+    "legalDeliveries": 284630,
+    "noResults": 9,
+    "normalInnings": 2480,
+    "numericMatchFiles": 1243,
+    "substituteFieldingEvents": 227,
+    "superOverInnings": 34,
+    "tiedMatches": 16,
+    "uniquePlayerRegistryIds": 809,
+    "uniqueRawCityStrings": 37,
+    "uniqueRawTeamStrings": 19,
+    "uniqueRawVenueStrings": 60,
+    "wicketEvents": 14705
+  },
+  "reportType": "globalAuditSummary",
+  "schemaVersion": "cricsheet-ipl-archive-audit/v1",
+  "validation": {
+    "fatalErrorCount": 0,
+    "status": "passed_with_observations",
+    "warningCategories": [
+      "one-normal-innings matches",
+      "matches with more than two innings",
+      "multi-date matches",
+      "miscounted overs",
+      "missing city metadata",
+      "missing player-of-match metadata",
+      "display names shared by multiple registry IDs",
+      "registry IDs observed under multiple display names",
+      "delivery participants absent from official participant lists"
+    ],
+    "warningCategoryCount": 9,
+    "warningItemCount": 293
+  }
+}

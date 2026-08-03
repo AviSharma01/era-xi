@@ -1,0 +1,160 @@
+{
+  "archiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+  "creationDateAvailability": {
+    "missing": 0,
+    "present": 1243
+  },
+  "eventNumberStageUsage": {
+    "matchNumberOnly": 1169,
+    "stageOnly": 74
+  },
+  "keyShapes": {
+    "info": [
+      {
+        "count": 1183,
+        "keys": [
+          "balls_per_over",
+          "city",
+          "dates",
+          "event",
+          "gender",
+          "match_type",
+          "officials",
+          "outcome",
+          "overs",
+          "player_of_match",
+          "players",
+          "registry",
+          "season",
+          "team_type",
+          "teams",
+          "toss",
+          "venue"
+        ]
+      },
+      {
+        "count": 9,
+        "keys": [
+          "balls_per_over",
+          "city",
+          "dates",
+          "event",
+          "gender",
+          "match_type",
+          "officials",
+          "outcome",
+          "overs",
+          "players",
+          "registry",
+          "season",
+          "team_type",
+          "teams",
+          "toss",
+          "venue"
+        ]
+      },
+      {
+        "count": 51,
+        "keys": [
+          "balls_per_over",
+          "dates",
+          "event",
+          "gender",
+          "match_type",
+          "officials",
+          "outcome",
+          "overs",
+          "player_of_match",
+          "players",
+          "registry",
+          "season",
+          "team_type",
+          "teams",
+          "toss",
+          "venue"
+        ]
+      }
+    ],
+    "innings": [
+      {
+        "count": 6,
+        "keys": [
+          "absent_hurt",
+          "overs",
+          "powerplays",
+          "target",
+          "team"
+        ]
+      },
+      {
+        "count": 5,
+        "keys": [
+          "miscounted_overs",
+          "overs",
+          "powerplays",
+          "target",
+          "team"
+        ]
+      },
+      {
+        "count": 3,
+        "keys": [
+          "miscounted_overs",
+          "overs",
+          "powerplays",
+          "team"
+        ]
+      },
+      {
+        "count": 1226,
+        "keys": [
+          "overs",
+          "powerplays",
+          "target",
+          "team"
+        ]
+      },
+      {
+        "count": 1240,
+        "keys": [
+          "overs",
+          "powerplays",
+          "team"
+        ]
+      },
+      {
+        "count": 34,
+        "keys": [
+          "overs",
+          "super_over",
+          "team"
+        ]
+      }
+    ],
+    "topLevel": [
+      {
+        "count": 1243,
+        "keys": [
+          "info",
+          "innings",
+          "meta"
+        ]
+      }
+    ]
+  },
+  "observedDataVersions": {
+    "1.2.0": 1243
+  },
+  "observedRevisions": {
+    "1": 784,
+    "2": 357,
+    "3": 97,
+    "4": 5
+  },
+  "reportType": "schemaRevisionCoverage",
+  "schemaVersion": "cricsheet-ipl-archive-audit/v1",
+  "structuralFailureCount": 0,
+  "supportedDataVersions": [
+    "1.2.0"
+  ]
+}
