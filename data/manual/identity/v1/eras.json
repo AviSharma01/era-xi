@@ -1,0 +1,7 @@
+[
+  {"eraId":"era-foundation","label":"Foundation Era","seasonIds":["ipl-2008","ipl-2009","ipl-2010"],"status":"provisional","description":"The first three IPL editions.","notes":[]},
+  {"eraId":"era-expansion","label":"Expansion Era","seasonIds":["ipl-2011","ipl-2012","ipl-2013"],"status":"provisional","description":"The provisional expansion-era grouping.","notes":[]},
+  {"eraId":"era-transition","label":"Transition Era","seasonIds":["ipl-2014","ipl-2015","ipl-2016","ipl-2017"],"status":"provisional","description":"The provisional transition-era grouping.","notes":[]},
+  {"eraId":"era-modern-pre-impact","label":"Modern Pre-Impact Era","seasonIds":["ipl-2018","ipl-2019","ipl-2020","ipl-2021","ipl-2022"],"status":"provisional","description":"Modern IPL seasons before the Impact Player era.","notes":[]},
+  {"eraId":"era-impact","label":"Impact Era","seasonIds":["ipl-2023","ipl-2024","ipl-2025","ipl-2026"],"status":"provisional","description":"Completed editions in the provisional Impact Player era.","notes":["Later editions are added only through an explicit registry update."]}
+]

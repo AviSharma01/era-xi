@@ -1,0 +1,32 @@
+{
+  "acceptedArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+  "allowedIdentityStatuses": [
+    "canonical",
+    "provisional"
+  ],
+  "allowedReviewStatuses": [
+    "approved",
+    "review_required"
+  ],
+  "idPolicy": "Canonical IDs are frozen opaque identifiers. They must never be regenerated from or changed with display names.",
+  "ingestionSafetyPolicy": {
+    "knownRegistryReviewMetadata": "non_blocking_for_exact_overlay_backed_resolution",
+    "runtimeReviewRequired": "reject_before_ingestion",
+    "safeResolutionStatuses": [
+      "canonical",
+      "provisional"
+    ]
+  },
+  "legacyMetadataOverlay": {
+    "confidence": "unknown",
+    "overlayId": "legacy-2016-player-metadata",
+    "path": "data/manual/player_metadata_template.json",
+    "supportedFields": [
+      "country",
+      "isOverseas",
+      "isWicketkeeper"
+    ]
+  },
+  "registryVersion": "ipl-identities-v1",
+  "schemaVersion": "1.0.0"
+}

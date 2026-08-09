@@ -1,0 +1,21 @@
+[
+  {"seasonId":"ipl-2008","displayYear":2008,"sourceSeasons":["2007/08"],"notes":[]},
+  {"seasonId":"ipl-2009","displayYear":2009,"sourceSeasons":["2009"],"notes":["The accepted archive records this edition at South African venues."]},
+  {"seasonId":"ipl-2010","displayYear":2010,"sourceSeasons":["2009/10"],"notes":[]},
+  {"seasonId":"ipl-2011","displayYear":2011,"sourceSeasons":["2011"],"notes":[]},
+  {"seasonId":"ipl-2012","displayYear":2012,"sourceSeasons":["2012"],"notes":[]},
+  {"seasonId":"ipl-2013","displayYear":2013,"sourceSeasons":["2013"],"notes":[]},
+  {"seasonId":"ipl-2014","displayYear":2014,"sourceSeasons":["2014"],"notes":["The accepted archive records matches in India and the United Arab Emirates."]},
+  {"seasonId":"ipl-2015","displayYear":2015,"sourceSeasons":["2015"],"notes":[]},
+  {"seasonId":"ipl-2016","displayYear":2016,"sourceSeasons":["2016"],"notes":[]},
+  {"seasonId":"ipl-2017","displayYear":2017,"sourceSeasons":["2017"],"notes":[]},
+  {"seasonId":"ipl-2018","displayYear":2018,"sourceSeasons":["2018"],"notes":[]},
+  {"seasonId":"ipl-2019","displayYear":2019,"sourceSeasons":["2019"],"notes":[]},
+  {"seasonId":"ipl-2020","displayYear":2020,"sourceSeasons":["2020/21"],"notes":["The accepted archive records this edition entirely at United Arab Emirates venues."]},
+  {"seasonId":"ipl-2021","displayYear":2021,"sourceSeasons":["2021"],"notes":["The accepted archive records matches in India and the United Arab Emirates across April to October."]},
+  {"seasonId":"ipl-2022","displayYear":2022,"sourceSeasons":["2022"],"notes":["The accepted archive records league venues concentrated in Maharashtra before matches in Kolkata and Ahmedabad."]},
+  {"seasonId":"ipl-2023","displayYear":2023,"sourceSeasons":["2023"],"notes":["First edition in the provisional Impact Era configuration."]},
+  {"seasonId":"ipl-2024","displayYear":2024,"sourceSeasons":["2024"],"notes":[]},
+  {"seasonId":"ipl-2025","displayYear":2025,"sourceSeasons":["2025"],"notes":[]},
+  {"seasonId":"ipl-2026","displayYear":2026,"sourceSeasons":["2026"],"notes":[]}
+]

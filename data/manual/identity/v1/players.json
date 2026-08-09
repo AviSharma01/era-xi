@@ -1,0 +1,38 @@
+{
+  "canonicalNameOverrides": {
+    "12314277": "Arshad Khan",
+    "21d4e29b": "Navdeep Saini",
+    "d7423da1": "Salil Arora"
+  },
+  "duplicateDisplayNameReviews": [
+    {
+      "displayName": "Harmeet Singh",
+      "notes": "The two Cricsheet registry IDs remain separate canonical people; later metadata should provide user-facing disambiguation.",
+      "playerIds": [
+        "0bf15e52",
+        "2a72fd4f"
+      ],
+      "reviewStatus": "review_required"
+    }
+  ],
+  "metadataOverlayContract": {
+    "baseFields": [
+      "country",
+      "isWicketkeeper",
+      "battingHand",
+      "bowlingStyle"
+    ],
+    "key": "playerId",
+    "requiredProvenanceFields": [
+      "metadataSource",
+      "confidence"
+    ],
+    "seasonOverrideFields": [
+      "isOverseas",
+      "isWicketkeeper",
+      "battingHand",
+      "bowlingStyle"
+    ],
+    "seasonOverrideKey": "seasonId"
+  }
+}
