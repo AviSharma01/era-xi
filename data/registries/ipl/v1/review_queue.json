@@ -1,0 +1,90 @@
+{
+  "items": [
+    {
+      "category": "duplicate_player_display_name",
+      "details": {
+        "displayName": "Harmeet Singh",
+        "notes": "The two Cricsheet registry IDs remain separate canonical people; later metadata should provide user-facing disambiguation."
+      },
+      "entityIds": [
+        "0bf15e52",
+        "2a72fd4f"
+      ],
+      "itemId": "player-duplicate-display-name-0bf15e52-2a72fd4f",
+      "reviewStatus": "review_required"
+    },
+    {
+      "category": "event_only_player_participation",
+      "details": {
+        "canonicalDisplayName": "Subhransu Senapati",
+        "eventObservations": 1
+      },
+      "entityId": "0edcb652",
+      "itemId": "player-event-only-0edcb652",
+      "reviewStatus": "review_required"
+    },
+    {
+      "category": "event_only_player_participation",
+      "details": {
+        "canonicalDisplayName": "AV Wankhade",
+        "eventObservations": 1
+      },
+      "entityId": "5708d0b6",
+      "itemId": "player-event-only-5708d0b6",
+      "reviewStatus": "review_required"
+    },
+    {
+      "category": "event_only_player_participation",
+      "details": {
+        "canonicalDisplayName": "B Aparajith",
+        "eventObservations": 1
+      },
+      "entityId": "5b627626",
+      "itemId": "player-event-only-5b627626",
+      "reviewStatus": "review_required"
+    },
+    {
+      "category": "event_only_player_participation",
+      "details": {
+        "canonicalDisplayName": "Sonu Yadav",
+        "eventObservations": 1
+      },
+      "entityId": "6ab96cc2",
+      "itemId": "player-event-only-6ab96cc2",
+      "reviewStatus": "review_required"
+    },
+    {
+      "category": "event_only_player_participation",
+      "details": {
+        "canonicalDisplayName": "Milind Kumar",
+        "eventObservations": 1
+      },
+      "entityId": "b4296080",
+      "itemId": "player-event-only-b4296080",
+      "reviewStatus": "review_required"
+    },
+    {
+      "category": "event_only_player_participation",
+      "details": {
+        "canonicalDisplayName": "Tanay Thyagarajan",
+        "eventObservations": 2
+      },
+      "entityId": "f1809c03",
+      "itemId": "player-event-only-f1809c03",
+      "reviewStatus": "review_required"
+    },
+    {
+      "category": "event_only_player_participation",
+      "details": {
+        "canonicalDisplayName": "JM Cox",
+        "eventObservations": 1
+      },
+      "entityId": "ff154ecd",
+      "itemId": "player-event-only-ff154ecd",
+      "reviewStatus": "review_required"
+    }
+  ],
+  "registryVersion": "ipl-identities-v1",
+  "schemaVersion": "1.0.0",
+  "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7"
+}

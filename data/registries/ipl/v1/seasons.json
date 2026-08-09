@@ -1,0 +1,342 @@
+{
+  "registryVersion": "ipl-identities-v1",
+  "schemaVersion": "1.0.0",
+  "seasons": [
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2008,
+      "editionOrder": 1,
+      "endDate": "2008-06-01",
+      "eraIds": [
+        "era-foundation"
+      ],
+      "notes": [],
+      "seasonId": "ipl-2008",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2007/08"
+      ],
+      "startDate": "2008-04-18",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2009,
+      "editionOrder": 2,
+      "endDate": "2009-05-24",
+      "eraIds": [
+        "era-foundation"
+      ],
+      "notes": [
+        "The accepted archive records this edition at South African venues."
+      ],
+      "seasonId": "ipl-2009",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2009"
+      ],
+      "startDate": "2009-04-18",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2010,
+      "editionOrder": 3,
+      "endDate": "2010-04-25",
+      "eraIds": [
+        "era-foundation"
+      ],
+      "notes": [],
+      "seasonId": "ipl-2010",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2009/10"
+      ],
+      "startDate": "2010-03-12",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2011,
+      "editionOrder": 4,
+      "endDate": "2011-05-28",
+      "eraIds": [
+        "era-expansion"
+      ],
+      "notes": [],
+      "seasonId": "ipl-2011",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2011"
+      ],
+      "startDate": "2011-04-08",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2012,
+      "editionOrder": 5,
+      "endDate": "2012-05-27",
+      "eraIds": [
+        "era-expansion"
+      ],
+      "notes": [],
+      "seasonId": "ipl-2012",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2012"
+      ],
+      "startDate": "2012-04-04",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2013,
+      "editionOrder": 6,
+      "endDate": "2013-05-26",
+      "eraIds": [
+        "era-expansion"
+      ],
+      "notes": [],
+      "seasonId": "ipl-2013",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2013"
+      ],
+      "startDate": "2013-04-03",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2014,
+      "editionOrder": 7,
+      "endDate": "2014-06-01",
+      "eraIds": [
+        "era-transition"
+      ],
+      "notes": [
+        "The accepted archive records matches in India and the United Arab Emirates."
+      ],
+      "seasonId": "ipl-2014",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2014"
+      ],
+      "startDate": "2014-04-16",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2015,
+      "editionOrder": 8,
+      "endDate": "2015-05-24",
+      "eraIds": [
+        "era-transition"
+      ],
+      "notes": [],
+      "seasonId": "ipl-2015",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2015"
+      ],
+      "startDate": "2015-04-08",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2016,
+      "editionOrder": 9,
+      "endDate": "2016-05-29",
+      "eraIds": [
+        "era-transition"
+      ],
+      "notes": [],
+      "seasonId": "ipl-2016",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2016"
+      ],
+      "startDate": "2016-04-09",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2017,
+      "editionOrder": 10,
+      "endDate": "2017-05-21",
+      "eraIds": [
+        "era-transition"
+      ],
+      "notes": [],
+      "seasonId": "ipl-2017",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2017"
+      ],
+      "startDate": "2017-04-05",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2018,
+      "editionOrder": 11,
+      "endDate": "2018-05-27",
+      "eraIds": [
+        "era-modern-pre-impact"
+      ],
+      "notes": [],
+      "seasonId": "ipl-2018",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2018"
+      ],
+      "startDate": "2018-04-07",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2019,
+      "editionOrder": 12,
+      "endDate": "2019-05-12",
+      "eraIds": [
+        "era-modern-pre-impact"
+      ],
+      "notes": [],
+      "seasonId": "ipl-2019",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2019"
+      ],
+      "startDate": "2019-03-23",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2020,
+      "editionOrder": 13,
+      "endDate": "2020-11-10",
+      "eraIds": [
+        "era-modern-pre-impact"
+      ],
+      "notes": [
+        "The accepted archive records this edition entirely at United Arab Emirates venues."
+      ],
+      "seasonId": "ipl-2020",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2020/21"
+      ],
+      "startDate": "2020-09-19",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2021,
+      "editionOrder": 14,
+      "endDate": "2021-10-15",
+      "eraIds": [
+        "era-modern-pre-impact"
+      ],
+      "notes": [
+        "The accepted archive records matches in India and the United Arab Emirates across April to October."
+      ],
+      "seasonId": "ipl-2021",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2021"
+      ],
+      "startDate": "2021-04-09",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2022,
+      "editionOrder": 15,
+      "endDate": "2022-05-29",
+      "eraIds": [
+        "era-modern-pre-impact"
+      ],
+      "notes": [
+        "The accepted archive records league venues concentrated in Maharashtra before matches in Kolkata and Ahmedabad."
+      ],
+      "seasonId": "ipl-2022",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2022"
+      ],
+      "startDate": "2022-03-26",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2023,
+      "editionOrder": 16,
+      "endDate": "2023-05-29",
+      "eraIds": [
+        "era-impact"
+      ],
+      "notes": [
+        "First edition in the provisional Impact Era configuration."
+      ],
+      "seasonId": "ipl-2023",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2023"
+      ],
+      "startDate": "2023-03-31",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2024,
+      "editionOrder": 17,
+      "endDate": "2024-05-26",
+      "eraIds": [
+        "era-impact"
+      ],
+      "notes": [],
+      "seasonId": "ipl-2024",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2024"
+      ],
+      "startDate": "2024-03-22",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2025,
+      "editionOrder": 18,
+      "endDate": "2025-06-03",
+      "eraIds": [
+        "era-impact"
+      ],
+      "notes": [],
+      "seasonId": "ipl-2025",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2025"
+      ],
+      "startDate": "2025-03-22",
+      "status": "canonical"
+    },
+    {
+      "archiveCoverageStatus": "accepted_baseline",
+      "displayYear": 2026,
+      "editionOrder": 19,
+      "endDate": "2026-05-31",
+      "eraIds": [
+        "era-impact"
+      ],
+      "notes": [],
+      "seasonId": "ipl-2026",
+      "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+      "sourceSeasons": [
+        "2026"
+      ],
+      "startDate": "2026-03-28",
+      "status": "canonical"
+    }
+  ],
+  "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7"
+}

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "eras": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "eraId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "label": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "notes": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "seasonIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "status": {
+            "enum": [
+              "provisional",
+              "approved"
+            ],
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "eraId",
+          "label",
+          "seasonIds",
+          "status",
+          "description",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "registryVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "sourceArchiveManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "registryVersion",
+    "sourceArchiveManifestHash",
+    "eras"
+  ],
+  "title": "IPL eras registry",
+  "type": "object"
+}

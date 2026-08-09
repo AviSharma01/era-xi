@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "canonicalDisplayName": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "duplicateDisplayName": {
+      "type": "boolean"
+    },
+    "firstObservedSeasonId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "identityStatus": {
+      "enum": [
+        "canonical"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "lastObservedSeasonId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "metadataOverlayRefs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "confidence": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "overlayId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "supportedFields": {
+            "items": {
+              "enum": [
+                "country",
+                "isOverseas",
+                "isWicketkeeper",
+                "battingHand",
+                "bowlingStyle"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "overlayId",
+          "path",
+          "playerId",
+          "confidence",
+          "supportedFields"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "notes": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "observedAliases": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "provenance": {
+            "additionalProperties": false,
+            "properties": {
+              "eventObservationsOutsideOfficialLists": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "category": {
+                      "enum": [
+                        "fielder"
+                      ],
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "matchId": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "seasonId": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "sourcePath": {
+                      "minLength": 1,
+                      "pattern": "[^/]+\\.json",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "matchId",
+                    "seasonId",
+                    "sourcePath",
+                    "category"
+                  ],
+                  "type": "object"
+                },
+                "minItems": 0,
+                "type": "array"
+              },
+              "officialParticipantObservations": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "matchId": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "seasonId": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "sourcePath": {
+                      "minLength": 1,
+                      "pattern": "[^/]+\\.json",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "matchId",
+                    "seasonId",
+                    "sourcePath"
+                  ],
+                  "type": "object"
+                },
+                "minItems": 0,
+                "type": "array"
+              }
+            },
+            "required": [
+              "officialParticipantObservations",
+              "eventObservationsOutsideOfficialLists"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "name",
+          "provenance"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "participationBasis": {
+      "enum": [
+        "official_participant",
+        "event_only"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "registryVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reviewStatus": {
+      "enum": [
+        "approved",
+        "review_required"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "sourceArchiveManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "registryVersion",
+    "sourceArchiveManifestHash",
+    "playerId",
+    "canonicalDisplayName",
+    "observedAliases",
+    "firstObservedSeasonId",
+    "lastObservedSeasonId",
+    "participationBasis",
+    "identityStatus",
+    "reviewStatus",
+    "duplicateDisplayName",
+    "metadataOverlayRefs",
+    "notes"
+  ],
+  "title": "Canonical IPL player JSONL row",
+  "type": "object"
+}

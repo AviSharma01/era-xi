@@ -1,0 +1,672 @@
+{
+  "registryVersion": "ipl-identities-v1",
+  "schemaVersion": "1.0.0",
+  "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+  "teams": [
+    {
+      "activeSeasonIds": [
+        "ipl-2008",
+        "ipl-2009",
+        "ipl-2010",
+        "ipl-2011",
+        "ipl-2012",
+        "ipl-2013",
+        "ipl-2014",
+        "ipl-2015",
+        "ipl-2018",
+        "ipl-2019",
+        "ipl-2020",
+        "ipl-2021",
+        "ipl-2022",
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ],
+      "canonicalName": "Chennai Super Kings",
+      "franchiseId": "franchise-chennai-super-kings",
+      "relationships": [],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2008",
+            "ipl-2009",
+            "ipl-2010",
+            "ipl-2011",
+            "ipl-2012",
+            "ipl-2013",
+            "ipl-2014",
+            "ipl-2015",
+            "ipl-2018",
+            "ipl-2019",
+            "ipl-2020",
+            "ipl-2021",
+            "ipl-2022",
+            "ipl-2023",
+            "ipl-2024",
+            "ipl-2025",
+            "ipl-2026"
+          ],
+          "sourceTeamName": "Chennai Super Kings"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-chennai-super-kings"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2008",
+        "ipl-2009",
+        "ipl-2010",
+        "ipl-2011",
+        "ipl-2012"
+      ],
+      "canonicalName": "Deccan Chargers",
+      "franchiseId": "franchise-deccan-chargers",
+      "relationships": [
+        {
+          "relatedTeamId": "team-sunrisers-hyderabad",
+          "relationshipType": "competition_successor"
+        }
+      ],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2008",
+            "ipl-2009",
+            "ipl-2010",
+            "ipl-2011",
+            "ipl-2012"
+          ],
+          "sourceTeamName": "Deccan Chargers"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-deccan-chargers"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2019",
+        "ipl-2020",
+        "ipl-2021",
+        "ipl-2022",
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ],
+      "canonicalName": "Delhi Capitals",
+      "franchiseId": "franchise-delhi",
+      "relationships": [
+        {
+          "relatedTeamId": "team-delhi-daredevils",
+          "relationshipType": "renamed_from"
+        }
+      ],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2019",
+            "ipl-2020",
+            "ipl-2021",
+            "ipl-2022",
+            "ipl-2023",
+            "ipl-2024",
+            "ipl-2025",
+            "ipl-2026"
+          ],
+          "sourceTeamName": "Delhi Capitals"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-delhi-capitals"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2008",
+        "ipl-2009",
+        "ipl-2010",
+        "ipl-2011",
+        "ipl-2012",
+        "ipl-2013",
+        "ipl-2014",
+        "ipl-2015",
+        "ipl-2016",
+        "ipl-2017",
+        "ipl-2018"
+      ],
+      "canonicalName": "Delhi Daredevils",
+      "franchiseId": "franchise-delhi",
+      "relationships": [
+        {
+          "relatedTeamId": "team-delhi-capitals",
+          "relationshipType": "rename"
+        }
+      ],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2008",
+            "ipl-2009",
+            "ipl-2010",
+            "ipl-2011",
+            "ipl-2012",
+            "ipl-2013",
+            "ipl-2014",
+            "ipl-2015",
+            "ipl-2016",
+            "ipl-2017",
+            "ipl-2018"
+          ],
+          "sourceTeamName": "Delhi Daredevils"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-delhi-daredevils"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2016",
+        "ipl-2017"
+      ],
+      "canonicalName": "Gujarat Lions",
+      "franchiseId": "franchise-gujarat-lions",
+      "relationships": [],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2016",
+            "ipl-2017"
+          ],
+          "sourceTeamName": "Gujarat Lions"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-gujarat-lions"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2022",
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ],
+      "canonicalName": "Gujarat Titans",
+      "franchiseId": "franchise-gujarat-titans",
+      "relationships": [],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2022",
+            "ipl-2023",
+            "ipl-2024",
+            "ipl-2025",
+            "ipl-2026"
+          ],
+          "sourceTeamName": "Gujarat Titans"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-gujarat-titans"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2008",
+        "ipl-2009",
+        "ipl-2010",
+        "ipl-2011",
+        "ipl-2012",
+        "ipl-2013",
+        "ipl-2014",
+        "ipl-2015",
+        "ipl-2016",
+        "ipl-2017",
+        "ipl-2018",
+        "ipl-2019",
+        "ipl-2020"
+      ],
+      "canonicalName": "Kings XI Punjab",
+      "franchiseId": "franchise-punjab",
+      "relationships": [
+        {
+          "relatedTeamId": "team-punjab-kings",
+          "relationshipType": "rename"
+        }
+      ],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2008",
+            "ipl-2009",
+            "ipl-2010",
+            "ipl-2011",
+            "ipl-2012",
+            "ipl-2013",
+            "ipl-2014",
+            "ipl-2015",
+            "ipl-2016",
+            "ipl-2017",
+            "ipl-2018",
+            "ipl-2019",
+            "ipl-2020"
+          ],
+          "sourceTeamName": "Kings XI Punjab"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-kings-xi-punjab"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2011"
+      ],
+      "canonicalName": "Kochi Tuskers Kerala",
+      "franchiseId": "franchise-kochi-tuskers-kerala",
+      "relationships": [],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2011"
+          ],
+          "sourceTeamName": "Kochi Tuskers Kerala"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-kochi-tuskers-kerala"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2008",
+        "ipl-2009",
+        "ipl-2010",
+        "ipl-2011",
+        "ipl-2012",
+        "ipl-2013",
+        "ipl-2014",
+        "ipl-2015",
+        "ipl-2016",
+        "ipl-2017",
+        "ipl-2018",
+        "ipl-2019",
+        "ipl-2020",
+        "ipl-2021",
+        "ipl-2022",
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ],
+      "canonicalName": "Kolkata Knight Riders",
+      "franchiseId": "franchise-kolkata-knight-riders",
+      "relationships": [],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2008",
+            "ipl-2009",
+            "ipl-2010",
+            "ipl-2011",
+            "ipl-2012",
+            "ipl-2013",
+            "ipl-2014",
+            "ipl-2015",
+            "ipl-2016",
+            "ipl-2017",
+            "ipl-2018",
+            "ipl-2019",
+            "ipl-2020",
+            "ipl-2021",
+            "ipl-2022",
+            "ipl-2023",
+            "ipl-2024",
+            "ipl-2025",
+            "ipl-2026"
+          ],
+          "sourceTeamName": "Kolkata Knight Riders"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-kolkata-knight-riders"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2022",
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ],
+      "canonicalName": "Lucknow Super Giants",
+      "franchiseId": "franchise-lucknow-super-giants",
+      "relationships": [],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2022",
+            "ipl-2023",
+            "ipl-2024",
+            "ipl-2025",
+            "ipl-2026"
+          ],
+          "sourceTeamName": "Lucknow Super Giants"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-lucknow-super-giants"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2008",
+        "ipl-2009",
+        "ipl-2010",
+        "ipl-2011",
+        "ipl-2012",
+        "ipl-2013",
+        "ipl-2014",
+        "ipl-2015",
+        "ipl-2016",
+        "ipl-2017",
+        "ipl-2018",
+        "ipl-2019",
+        "ipl-2020",
+        "ipl-2021",
+        "ipl-2022",
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ],
+      "canonicalName": "Mumbai Indians",
+      "franchiseId": "franchise-mumbai-indians",
+      "relationships": [],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2008",
+            "ipl-2009",
+            "ipl-2010",
+            "ipl-2011",
+            "ipl-2012",
+            "ipl-2013",
+            "ipl-2014",
+            "ipl-2015",
+            "ipl-2016",
+            "ipl-2017",
+            "ipl-2018",
+            "ipl-2019",
+            "ipl-2020",
+            "ipl-2021",
+            "ipl-2022",
+            "ipl-2023",
+            "ipl-2024",
+            "ipl-2025",
+            "ipl-2026"
+          ],
+          "sourceTeamName": "Mumbai Indians"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-mumbai-indians"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2011",
+        "ipl-2012",
+        "ipl-2013"
+      ],
+      "canonicalName": "Pune Warriors",
+      "franchiseId": "franchise-pune-warriors",
+      "relationships": [],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2011",
+            "ipl-2012",
+            "ipl-2013"
+          ],
+          "sourceTeamName": "Pune Warriors"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-pune-warriors"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2021",
+        "ipl-2022",
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ],
+      "canonicalName": "Punjab Kings",
+      "franchiseId": "franchise-punjab",
+      "relationships": [
+        {
+          "relatedTeamId": "team-kings-xi-punjab",
+          "relationshipType": "renamed_from"
+        }
+      ],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2021",
+            "ipl-2022",
+            "ipl-2023",
+            "ipl-2024",
+            "ipl-2025",
+            "ipl-2026"
+          ],
+          "sourceTeamName": "Punjab Kings"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-punjab-kings"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2008",
+        "ipl-2009",
+        "ipl-2010",
+        "ipl-2011",
+        "ipl-2012",
+        "ipl-2013",
+        "ipl-2014",
+        "ipl-2015",
+        "ipl-2018",
+        "ipl-2019",
+        "ipl-2020",
+        "ipl-2021",
+        "ipl-2022",
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ],
+      "canonicalName": "Rajasthan Royals",
+      "franchiseId": "franchise-rajasthan-royals",
+      "relationships": [],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2008",
+            "ipl-2009",
+            "ipl-2010",
+            "ipl-2011",
+            "ipl-2012",
+            "ipl-2013",
+            "ipl-2014",
+            "ipl-2015",
+            "ipl-2018",
+            "ipl-2019",
+            "ipl-2020",
+            "ipl-2021",
+            "ipl-2022",
+            "ipl-2023",
+            "ipl-2024",
+            "ipl-2025",
+            "ipl-2026"
+          ],
+          "sourceTeamName": "Rajasthan Royals"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-rajasthan-royals"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2016",
+        "ipl-2017"
+      ],
+      "canonicalName": "Rising Pune Supergiant",
+      "franchiseId": "franchise-rising-pune",
+      "relationships": [],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2016"
+          ],
+          "sourceTeamName": "Rising Pune Supergiants"
+        },
+        {
+          "seasonIds": [
+            "ipl-2017"
+          ],
+          "sourceTeamName": "Rising Pune Supergiant"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-rising-pune-supergiant"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2008",
+        "ipl-2009",
+        "ipl-2010",
+        "ipl-2011",
+        "ipl-2012",
+        "ipl-2013",
+        "ipl-2014",
+        "ipl-2015",
+        "ipl-2016",
+        "ipl-2017",
+        "ipl-2018",
+        "ipl-2019",
+        "ipl-2020",
+        "ipl-2021",
+        "ipl-2022",
+        "ipl-2023"
+      ],
+      "canonicalName": "Royal Challengers Bangalore",
+      "franchiseId": "franchise-royal-challengers",
+      "relationships": [
+        {
+          "relatedTeamId": "team-royal-challengers-bengaluru",
+          "relationshipType": "rename"
+        }
+      ],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2008",
+            "ipl-2009",
+            "ipl-2010",
+            "ipl-2011",
+            "ipl-2012",
+            "ipl-2013",
+            "ipl-2014",
+            "ipl-2015",
+            "ipl-2016",
+            "ipl-2017",
+            "ipl-2018",
+            "ipl-2019",
+            "ipl-2020",
+            "ipl-2021",
+            "ipl-2022",
+            "ipl-2023"
+          ],
+          "sourceTeamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-royal-challengers-bangalore"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ],
+      "canonicalName": "Royal Challengers Bengaluru",
+      "franchiseId": "franchise-royal-challengers",
+      "relationships": [
+        {
+          "relatedTeamId": "team-royal-challengers-bangalore",
+          "relationshipType": "renamed_from"
+        }
+      ],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2024",
+            "ipl-2025",
+            "ipl-2026"
+          ],
+          "sourceTeamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-royal-challengers-bengaluru"
+    },
+    {
+      "activeSeasonIds": [
+        "ipl-2013",
+        "ipl-2014",
+        "ipl-2015",
+        "ipl-2016",
+        "ipl-2017",
+        "ipl-2018",
+        "ipl-2019",
+        "ipl-2020",
+        "ipl-2021",
+        "ipl-2022",
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ],
+      "canonicalName": "Sunrisers Hyderabad",
+      "franchiseId": "franchise-sunrisers-hyderabad",
+      "relationships": [
+        {
+          "relatedTeamId": "team-deccan-chargers",
+          "relationshipType": "competition_predecessor"
+        }
+      ],
+      "sourceAliases": [
+        {
+          "seasonIds": [
+            "ipl-2013",
+            "ipl-2014",
+            "ipl-2015",
+            "ipl-2016",
+            "ipl-2017",
+            "ipl-2018",
+            "ipl-2019",
+            "ipl-2020",
+            "ipl-2021",
+            "ipl-2022",
+            "ipl-2023",
+            "ipl-2024",
+            "ipl-2025",
+            "ipl-2026"
+          ],
+          "sourceTeamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "status": "canonical",
+      "teamId": "team-sunrisers-hyderabad"
+    }
+  ]
+}

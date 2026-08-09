@@ -1,0 +1,286 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "playerObservations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "eventObservationsOutsideOfficialLists": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "matchedBy": {
+            "enum": [
+              "exact_player_id_and_alias"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "observedName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "officialParticipantObservations": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "canonical",
+              "review_required"
+            ],
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "playerId",
+          "observedName",
+          "officialParticipantObservations",
+          "eventObservationsOutsideOfficialLists",
+          "status",
+          "matchedBy"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "registryVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "seasonObservations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "matchedBy": {
+            "enum": [
+              "exact_source_season"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceSeason": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "canonical"
+            ],
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "sourceSeason",
+          "seasonId",
+          "status",
+          "matchedBy"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "sourceArchiveManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "summary": {
+      "additionalProperties": false,
+      "properties": {
+        "archiveMatchObservationsResolved": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "eventObservationsOutsideOfficialListsResolved": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "eventOnlyPlayerIdsResolved": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "fatalResolutionErrors": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "officialParticipantPlayerIdsResolved": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "playerAliasObservationsResolved": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rawVenueStringsResolved": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "seasonObservationsResolved": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "teamSeasonObservationsResolved": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unresolvedRegistryReferences": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "venueContextObservationsResolved": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "fatalResolutionErrors",
+        "archiveMatchObservationsResolved",
+        "seasonObservationsResolved",
+        "teamSeasonObservationsResolved",
+        "playerAliasObservationsResolved",
+        "officialParticipantPlayerIdsResolved",
+        "eventOnlyPlayerIdsResolved",
+        "eventObservationsOutsideOfficialListsResolved",
+        "unresolvedRegistryReferences",
+        "venueContextObservationsResolved",
+        "rawVenueStringsResolved"
+      ],
+      "type": "object"
+    },
+    "teamObservations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "franchiseId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "matchedBy": {
+            "enum": [
+              "exact_source_team_alias_and_season"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceTeamName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "canonical"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "sourceTeamName",
+          "seasonId",
+          "teamId",
+          "franchiseId",
+          "status",
+          "matchedBy"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "venueObservations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "city": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "matchedBy": {
+            "enum": [
+              "exact_source_venue_alias_with_observed_context"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceVenue": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "canonical",
+              "provisional",
+              "review_required"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "venueId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "venueSiteId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "sourceVenue",
+          "city",
+          "seasonId",
+          "venueId",
+          "venueSiteId",
+          "status",
+          "matchedBy"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "registryVersion",
+    "sourceArchiveManifestHash",
+    "summary",
+    "seasonObservations",
+    "teamObservations",
+    "playerObservations",
+    "venueObservations"
+  ],
+  "title": "Identity resolution coverage report",
+  "type": "object"
+}

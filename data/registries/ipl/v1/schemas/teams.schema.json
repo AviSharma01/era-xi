@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "registryVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "sourceArchiveManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "teams": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "activeSeasonIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "canonicalName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "franchiseId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "relationships": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "relatedTeamId": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "relationshipType": {
+                  "enum": [
+                    "rename",
+                    "renamed_from",
+                    "competition_successor",
+                    "competition_predecessor"
+                  ],
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "relatedTeamId",
+                "relationshipType"
+              ],
+              "type": "object"
+            },
+            "minItems": 0,
+            "type": "array"
+          },
+          "sourceAliases": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "seasonIds": {
+                  "items": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                "sourceTeamName": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "sourceTeamName",
+                "seasonIds"
+              ],
+              "type": "object"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "status": {
+            "enum": [
+              "canonical"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "teamId",
+          "canonicalName",
+          "franchiseId",
+          "sourceAliases",
+          "activeSeasonIds",
+          "relationships",
+          "status"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "registryVersion",
+    "sourceArchiveManifestHash",
+    "teams"
+  ],
+  "title": "IPL teams registry",
+  "type": "object"
+}

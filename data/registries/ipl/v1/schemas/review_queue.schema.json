@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "items": {
+      "items": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "category": {
+                "const": "duplicate_player_display_name"
+              },
+              "details": {
+                "additionalProperties": false,
+                "properties": {
+                  "displayName": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "notes": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "displayName",
+                  "notes"
+                ],
+                "type": "object"
+              },
+              "entityIds": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "minItems": 2,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "itemId": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "reviewStatus": {
+                "enum": [
+                  "review_required"
+                ],
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "itemId",
+              "category",
+              "entityIds",
+              "reviewStatus",
+              "details"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "category": {
+                "const": "event_only_player_participation"
+              },
+              "details": {
+                "additionalProperties": false,
+                "properties": {
+                  "canonicalDisplayName": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "eventObservations": {
+                    "minimum": 1,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "canonicalDisplayName",
+                  "eventObservations"
+                ],
+                "type": "object"
+              },
+              "entityId": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "itemId": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "reviewStatus": {
+                "enum": [
+                  "review_required"
+                ],
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "itemId",
+              "category",
+              "entityId",
+              "reviewStatus",
+              "details"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "category": {
+                "const": "provisional_venue_mapping"
+              },
+              "details": {
+                "additionalProperties": false,
+                "properties": {
+                  "notes": {
+                    "items": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "minItems": 0,
+                    "type": "array",
+                    "uniqueItems": true
+                  },
+                  "sourceAliases": {
+                    "items": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "minItems": 1,
+                    "type": "array",
+                    "uniqueItems": true
+                  }
+                },
+                "required": [
+                  "sourceAliases",
+                  "notes"
+                ],
+                "type": "object"
+              },
+              "entityId": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "itemId": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "reviewStatus": {
+                "enum": [
+                  "review_required"
+                ],
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "itemId",
+              "category",
+              "entityId",
+              "reviewStatus",
+              "details"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "registryVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "sourceArchiveManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "registryVersion",
+    "sourceArchiveManifestHash",
+    "items"
+  ],
+  "title": "Identity review queue",
+  "type": "object"
+}

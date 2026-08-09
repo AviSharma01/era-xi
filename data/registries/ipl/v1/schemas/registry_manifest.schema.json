@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "counts": {
+      "additionalProperties": false,
+      "properties": {
+        "eras": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "eventOnlyPlayerIds": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "franchises": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "officialParticipantPlayerIds": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "players": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rawTeamNames": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rawVenueStrings": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "reviewQueueItems": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "seasons": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "teams": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "venueSites": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "venueVersions": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "seasons",
+        "rawTeamNames",
+        "teams",
+        "franchises",
+        "officialParticipantPlayerIds",
+        "eventOnlyPlayerIds",
+        "players",
+        "rawVenueStrings",
+        "venueVersions",
+        "venueSites",
+        "eras",
+        "reviewQueueItems"
+      ],
+      "type": "object"
+    },
+    "generatedFiles": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "enum": [
+              "eras.json",
+              "franchises.json",
+              "players.jsonl",
+              "resolution_report.json",
+              "review_queue.json",
+              "schemas/eras.schema.json",
+              "schemas/franchises.schema.json",
+              "schemas/players.schema.json",
+              "schemas/registry_manifest.schema.json",
+              "schemas/resolution_report.schema.json",
+              "schemas/review_queue.schema.json",
+              "schemas/seasons.schema.json",
+              "schemas/teams.schema.json",
+              "schemas/venues.schema.json",
+              "seasons.json",
+              "teams.json",
+              "venues.json"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes"
+        ],
+        "type": "object"
+      },
+      "maxItems": 17,
+      "minItems": 17,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "registryAggregateHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "registryVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "sourceArchiveManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "registryVersion",
+    "sourceArchiveManifestHash",
+    "counts",
+    "generatedFiles",
+    "registryAggregateHash"
+  ],
+  "title": "Identity registry manifest",
+  "type": "object"
+}

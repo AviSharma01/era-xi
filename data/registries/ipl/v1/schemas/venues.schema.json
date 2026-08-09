@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "registryVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "sourceArchiveManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "venues": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "activeSeasonIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "canonicalCity": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "canonicalName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "country": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "notes": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "relationships": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "relatedVenueId": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "relationshipType": {
+                  "enum": [
+                    "rebuilt_as",
+                    "rebuilt_from"
+                  ],
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "relatedVenueId",
+                "relationshipType"
+              ],
+              "type": "object"
+            },
+            "minItems": 0,
+            "type": "array"
+          },
+          "reviewStatus": {
+            "enum": [
+              "approved",
+              "review_required"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceAliases": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "hasMissingCityObservations": {
+                  "type": "boolean"
+                },
+                "observedCities": {
+                  "items": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "minItems": 0,
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                "seasonIds": {
+                  "items": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                "sourceMatchIds": {
+                  "items": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                "sourcePaths": {
+                  "items": {
+                    "minLength": 1,
+                    "pattern": "[^/]+\\.json",
+                    "type": "string"
+                  },
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                "sourceVenue": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "sourceVenue",
+                "observedCities",
+                "hasMissingCityObservations",
+                "seasonIds",
+                "sourceMatchIds",
+                "sourcePaths"
+              ],
+              "type": "object"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "sourceMatchIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "status": {
+            "enum": [
+              "canonical",
+              "provisional"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "venueId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "venueSiteId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "venueId",
+          "venueSiteId",
+          "canonicalName",
+          "canonicalCity",
+          "country",
+          "sourceAliases",
+          "activeSeasonIds",
+          "sourceMatchIds",
+          "status",
+          "reviewStatus",
+          "relationships",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "registryVersion",
+    "sourceArchiveManifestHash",
+    "venues"
+  ],
+  "title": "IPL venues registry",
+  "type": "object"
+}

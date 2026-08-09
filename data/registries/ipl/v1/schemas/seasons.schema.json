@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "registryVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "seasons": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "archiveCoverageStatus": {
+            "enum": [
+              "accepted_baseline"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "displayYear": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "editionOrder": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "endDate": {
+            "minLength": 1,
+            "pattern": "\\d{4}-\\d{2}-\\d{2}",
+            "type": "string"
+          },
+          "eraIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "notes": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceArchiveManifestHash": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "sourceSeasons": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "startDate": {
+            "minLength": 1,
+            "pattern": "\\d{4}-\\d{2}-\\d{2}",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "canonical"
+            ],
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "seasonId",
+          "displayYear",
+          "sourceSeasons",
+          "startDate",
+          "endDate",
+          "editionOrder",
+          "archiveCoverageStatus",
+          "sourceArchiveManifestHash",
+          "eraIds",
+          "notes",
+          "status"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "sourceArchiveManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "registryVersion",
+    "sourceArchiveManifestHash",
+    "seasons"
+  ],
+  "title": "IPL seasons registry",
+  "type": "object"
+}

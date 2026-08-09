@@ -1,0 +1,107 @@
+{
+  "counts": {
+    "eras": 5,
+    "eventOnlyPlayerIds": 7,
+    "franchises": 15,
+    "officialParticipantPlayerIds": 809,
+    "players": 816,
+    "rawTeamNames": 19,
+    "rawVenueStrings": 60,
+    "reviewQueueItems": 8,
+    "seasons": 19,
+    "teams": 18,
+    "venueSites": 36,
+    "venueVersions": 37
+  },
+  "generatedFiles": [
+    {
+      "path": "eras.json",
+      "sha256": "bad0d8e31a1b880d315f473d39007795032cd4a70e0ab5ad5a8d0d0cc556e819",
+      "sizeBytes": 1778
+    },
+    {
+      "path": "franchises.json",
+      "sha256": "267fb11b83d4c6f6462d4665655683582b46e184922b3c507b254111f9ed2de5",
+      "sizeBytes": 7753
+    },
+    {
+      "path": "players.jsonl",
+      "sha256": "78b10ab71a2ecf33c318476280997f5898bcaa074b2d0a4fd183a88d543a2988",
+      "sizeBytes": 2510889
+    },
+    {
+      "path": "resolution_report.json",
+      "sha256": "56264bb019bae6b4b90ec17a5cf9f9eac362cae3604a4e71160c938d36d59a45",
+      "sizeBytes": 317511
+    },
+    {
+      "path": "review_queue.json",
+      "sha256": "c929c177e9ac14e37ef2c09d3feb0377fcf6995227964c70db51fd7b51bef1b3",
+      "sizeBytes": 2663
+    },
+    {
+      "path": "schemas/eras.schema.json",
+      "sha256": "ef51b79219458d077d36ec253578555bc62036395da46d1d2dec3b5b39a23804",
+      "sizeBytes": 1805
+    },
+    {
+      "path": "schemas/franchises.schema.json",
+      "sha256": "e70193f90413bde247492bfb7e749cd74116114f0bdda62f27e98745a7d170fe",
+      "sizeBytes": 2513
+    },
+    {
+      "path": "schemas/players.schema.json",
+      "sha256": "bd0c0c6ecd5472baf82da7b36560ce39ebdf8578029af6a3f7477bdb0e75b7bd",
+      "sizeBytes": 5688
+    },
+    {
+      "path": "schemas/registry_manifest.schema.json",
+      "sha256": "b2abf3ffeecf9853cf36f8947098f4eee895e92f585591baa4a272ba742332da",
+      "sizeBytes": 3601
+    },
+    {
+      "path": "schemas/resolution_report.schema.json",
+      "sha256": "1c8111f131ca8941a6f75f552917dc6a4ec89f6e3b6ee30364d34ff0b8511727",
+      "sizeBytes": 6893
+    },
+    {
+      "path": "schemas/review_queue.schema.json",
+      "sha256": "054acdafbc888a6887cec9eaa421a4abe7007ce452d0b4cb2245db779af8210a",
+      "sizeBytes": 5288
+    },
+    {
+      "path": "schemas/seasons.schema.json",
+      "sha256": "7b1f79c86ce34f6f4deb6a6b651a4f0e8d62797c9ebdd0f0664a54532f6f4788",
+      "sizeBytes": 2782
+    },
+    {
+      "path": "schemas/teams.schema.json",
+      "sha256": "87302812d10880d7b3323515368b72f0e9b82a18e35a896b6ad3462fcbd47578",
+      "sizeBytes": 3216
+    },
+    {
+      "path": "schemas/venues.schema.json",
+      "sha256": "56e06db4fb96f919bbec7f88931ddbf31e15f89fc57a315f906f9fd53daacd83",
+      "sizeBytes": 5259
+    },
+    {
+      "path": "seasons.json",
+      "sha256": "2b84c11ad652046e93e0e1c1a69619ad70e5bc06b5ca36bf2b12023670aa7385",
+      "sizeBytes": 9603
+    },
+    {
+      "path": "teams.json",
+      "sha256": "9040100af9315cbd54ab0a9fa653221b79eb376412b555668a9e531af28ce764",
+      "sizeBytes": 15434
+    },
+    {
+      "path": "venues.json",
+      "sha256": "7290738ea9ce34f67b3e16bd90510f458f345f0ffe77eef46cae8670cbe75933",
+      "sizeBytes": 130611
+    }
+  ],
+  "registryAggregateHash": "9b23cafe4c2020b43fec7a3d80a13152270164b216ccd5cea3a1b552428ecac7",
+  "registryVersion": "ipl-identities-v1",
+  "schemaVersion": "1.0.0",
+  "sourceArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7"
+}
