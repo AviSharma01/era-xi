@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "counts": {
+      "additionalProperties": false,
+      "properties": {
+        "concussionSubstitutes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "deliveries": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "impactPlayerReplacements": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "matches": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "normalInnings": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "reviews": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "roleReplacements": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "substituteFieldingEvents": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "superOverInnings": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "matches",
+        "normalInnings",
+        "superOverInnings",
+        "deliveries",
+        "impactPlayerReplacements",
+        "concussionSubstitutes",
+        "roleReplacements",
+        "substituteFieldingEvents",
+        "reviews"
+      ],
+      "type": "object"
+    },
+    "datasetVersion": {
+      "const": "cricsheet-ipl-normalized/v1"
+    },
+    "identityRegistryAggregateHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "identityRegistryVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "matchFiles": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "deliveries": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "matchId": {
+            "minLength": 1,
+            "pattern": "[0-9]+",
+            "type": "string"
+          },
+          "normalInnings": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "sourceFileSha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "superOverInnings": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "matchId",
+          "seasonId",
+          "sourceFileSha256",
+          "sha256",
+          "sizeBytes",
+          "normalInnings",
+          "superOverInnings",
+          "deliveries"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "normalizationManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "normalizedMatchAggregateHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "schemaFiles": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes"
+        ],
+        "type": "object"
+      },
+      "minItems": 3,
+      "type": "array"
+    },
+    "schemaVersion": {
+      "const": "cricsheet-ipl-normalization-manifest/v1"
+    },
+    "seasonCounts": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "deliveries": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "matches": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "normalInnings": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "superOverInnings": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "seasonId",
+          "matches",
+          "normalInnings",
+          "superOverInnings",
+          "deliveries"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "sourceArchiveManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "datasetVersion",
+    "sourceArchiveManifestHash",
+    "identityRegistryVersion",
+    "identityRegistryAggregateHash",
+    "counts",
+    "seasonCounts",
+    "matchFiles",
+    "schemaFiles",
+    "normalizedMatchAggregateHash",
+    "normalizationManifestHash"
+  ],
+  "title": "IPL normalization manifest",
+  "type": "object"
+}

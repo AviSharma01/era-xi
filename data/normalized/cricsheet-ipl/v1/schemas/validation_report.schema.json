@@ -1,0 +1,459 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "checks": {
+      "additionalProperties": false,
+      "properties": {
+        "duplicateMatchIds": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "extrasReconciliationFailures": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "identityFailures": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legalityFailures": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "runReconciliationFailures": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "schemaFailures": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "sourceProvenanceFailures": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "targetFailures": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "teamConsistencyFailures": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "wicketSemanticFailures": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "sourceProvenanceFailures",
+        "identityFailures",
+        "schemaFailures",
+        "runReconciliationFailures",
+        "extrasReconciliationFailures",
+        "legalityFailures",
+        "wicketSemanticFailures",
+        "teamConsistencyFailures",
+        "targetFailures",
+        "duplicateMatchIds"
+      ],
+      "type": "object"
+    },
+    "counts": {
+      "additionalProperties": false,
+      "properties": {
+        "concussionSubstitutes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "deliveries": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "impactPlayerReplacements": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "matches": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "newIngestionUnsafeReviews": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "normalInnings": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "reviews": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "roleReplacements": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "substituteFieldingEvents": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "superOverInnings": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unresolvedIdentities": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "matches",
+        "normalInnings",
+        "superOverInnings",
+        "deliveries",
+        "impactPlayerReplacements",
+        "concussionSubstitutes",
+        "roleReplacements",
+        "substituteFieldingEvents",
+        "reviews",
+        "unresolvedIdentities",
+        "newIngestionUnsafeReviews"
+      ],
+      "type": "object"
+    },
+    "datasetVersion": {
+      "const": "cricsheet-ipl-normalized/v1"
+    },
+    "dismissalKinds": {
+      "additionalProperties": false,
+      "properties": {
+        "bowled": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "caught": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "caught and bowled": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "hit wicket": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "lbw": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "obstructing the field": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "retired hurt": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "retired out": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "run out": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "stumped": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "bowled",
+        "caught",
+        "caught and bowled",
+        "hit wicket",
+        "lbw",
+        "obstructing the field",
+        "retired hurt",
+        "retired out",
+        "run out",
+        "stumped"
+      ],
+      "type": "object"
+    },
+    "errors": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "location": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "matchId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "message": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "relatedEntityIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "severity": {
+            "enum": [
+              "warning",
+              "error"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourcePath": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "severity",
+          "code",
+          "matchId",
+          "sourcePath",
+          "location",
+          "relatedEntityIds",
+          "message"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "extrasOccurrences": {
+      "additionalProperties": false,
+      "properties": {
+        "byes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legbyes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "noballs": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "penalty": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "wides": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "byes",
+        "legbyes",
+        "noballs",
+        "penalty",
+        "wides"
+      ],
+      "type": "object"
+    },
+    "normalizationManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": "cricsheet-ipl-normalization-report/v1"
+    },
+    "sizeReport": {
+      "additionalProperties": false,
+      "properties": {
+        "averageMatchBytes": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "manifestBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "matchCorpusHumanSize": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "matchCorpusLogicalBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "matchFileCount": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "maximumMatchBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "medianMatchBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "minimumMatchBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "outputTreeAllocatedBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "outputTreeAllocatedHumanSize": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "outputTreeLogicalBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "schemaBundleBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "summaryBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "validationReportBytes": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "matchFileCount",
+        "matchCorpusLogicalBytes",
+        "matchCorpusHumanSize",
+        "minimumMatchBytes",
+        "medianMatchBytes",
+        "averageMatchBytes",
+        "maximumMatchBytes",
+        "schemaBundleBytes",
+        "manifestBytes",
+        "validationReportBytes",
+        "summaryBytes",
+        "outputTreeLogicalBytes",
+        "outputTreeAllocatedBytes",
+        "outputTreeAllocatedHumanSize"
+      ],
+      "type": "object"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "passed_with_warnings"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "warningCount": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "warnings": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "location": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "matchId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "message": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "relatedEntityIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "severity": {
+            "enum": [
+              "warning",
+              "error"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourcePath": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "severity",
+          "code",
+          "matchId",
+          "sourcePath",
+          "location",
+          "relatedEntityIds",
+          "message"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "datasetVersion",
+    "normalizationManifestHash",
+    "status",
+    "counts",
+    "checks",
+    "dismissalKinds",
+    "extrasOccurrences",
+    "sizeReport",
+    "warningCount",
+    "warnings",
+    "errors"
+  ],
+  "title": "IPL normalization validation report",
+  "type": "object"
+}

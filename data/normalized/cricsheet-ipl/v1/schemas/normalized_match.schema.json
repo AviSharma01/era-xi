@@ -1,0 +1,1602 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "competition": {
+      "additionalProperties": false,
+      "properties": {
+        "ballsPerOver": {
+          "const": 6
+        },
+        "gender": {
+          "const": "male"
+        },
+        "matchType": {
+          "const": "T20"
+        },
+        "scheduledOvers": {
+          "const": 20
+        },
+        "teamType": {
+          "const": "club"
+        }
+      },
+      "required": [
+        "matchType",
+        "gender",
+        "teamType",
+        "scheduledOvers",
+        "ballsPerOver"
+      ],
+      "type": "object"
+    },
+    "datasetVersion": {
+      "const": "cricsheet-ipl-normalized/v1"
+    },
+    "dates": {
+      "items": {
+        "minLength": 1,
+        "pattern": "\\d{4}-\\d{2}-\\d{2}",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "event": {
+      "additionalProperties": false,
+      "properties": {
+        "matchNumber": {
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "stage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "matchNumber",
+        "stage"
+      ],
+      "type": "object"
+    },
+    "innings": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "absentHurt": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "playerId": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceName": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "playerId",
+                "sourceName"
+              ],
+              "type": "object"
+            },
+            "minItems": 0,
+            "type": "array"
+          },
+          "battingTeamId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "bowlingTeamId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "inningsIndex": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "inningsKind": {
+            "enum": [
+              "normal",
+              "super_over"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "miscountedOvers": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "balls": {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "sourceOverNumber": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "umpire": {
+                  "oneOf": [
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "sourceName": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "sourcePersonRegistryId": {
+                          "minLength": 1,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "sourceName",
+                        "sourcePersonRegistryId"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "sourceOverNumber",
+                "balls",
+                "umpire"
+              ],
+              "type": "object"
+            },
+            "minItems": 0,
+            "type": "array"
+          },
+          "overs": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "deliveries": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "actualDelivery": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "batter": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "playerId": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "sourceName": {
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "playerId",
+                          "sourceName"
+                        ],
+                        "type": "object"
+                      },
+                      "bowler": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "playerId": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "sourceName": {
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "playerId",
+                          "sourceName"
+                        ],
+                        "type": "object"
+                      },
+                      "countsAsBatterBall": {
+                        "type": "boolean"
+                      },
+                      "extras": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "byes": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "legByes": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "noBalls": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "penalty": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "wides": {
+                            "minimum": 0,
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "byes",
+                          "legByes",
+                          "noBalls",
+                          "penalty",
+                          "wides"
+                        ],
+                        "type": "object"
+                      },
+                      "isBowlerLegalDelivery": {
+                        "type": "boolean"
+                      },
+                      "nonStriker": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "playerId": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "sourceName": {
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "playerId",
+                          "sourceName"
+                        ],
+                        "type": "object"
+                      },
+                      "replacements": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "match": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "in": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "playerId": {
+                                      "minLength": 1,
+                                      "type": "string"
+                                    },
+                                    "sourceName": {
+                                      "minLength": 1,
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "playerId",
+                                    "sourceName"
+                                  ],
+                                  "type": "object"
+                                },
+                                "out": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "playerId": {
+                                      "minLength": 1,
+                                      "type": "string"
+                                    },
+                                    "sourceName": {
+                                      "minLength": 1,
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "playerId",
+                                    "sourceName"
+                                  ],
+                                  "type": "object"
+                                },
+                                "reason": {
+                                  "enum": [
+                                    "impact_player",
+                                    "concussion_substitute"
+                                  ],
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "sourceTeamName": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "teamId": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "in",
+                                "out",
+                                "sourceTeamName",
+                                "teamId",
+                                "reason"
+                              ],
+                              "type": "object"
+                            },
+                            "minItems": 0,
+                            "type": "array"
+                          },
+                          "role": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "in": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "playerId": {
+                                      "minLength": 1,
+                                      "type": "string"
+                                    },
+                                    "sourceName": {
+                                      "minLength": 1,
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "playerId",
+                                    "sourceName"
+                                  ],
+                                  "type": "object"
+                                },
+                                "out": {
+                                  "oneOf": [
+                                    {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "playerId": {
+                                          "minLength": 1,
+                                          "type": "string"
+                                        },
+                                        "sourceName": {
+                                          "minLength": 1,
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "playerId",
+                                        "sourceName"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                },
+                                "reason": {
+                                  "enum": [
+                                    "injury",
+                                    "excluded - high full pitched balls"
+                                  ],
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "role": {
+                                  "enum": [
+                                    "batter",
+                                    "bowler"
+                                  ],
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "teamBasis": {
+                                  "enum": [
+                                    "innings_batting_team",
+                                    "innings_bowling_team"
+                                  ],
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "teamId": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "in",
+                                "out",
+                                "role",
+                                "reason",
+                                "teamId",
+                                "teamBasis"
+                              ],
+                              "type": "object"
+                            },
+                            "minItems": 0,
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "match",
+                          "role"
+                        ],
+                        "type": "object"
+                      },
+                      "review": {
+                        "oneOf": [
+                          {
+                            "additionalProperties": false,
+                            "properties": {
+                              "batter": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "playerId": {
+                                    "minLength": 1,
+                                    "type": "string"
+                                  },
+                                  "sourceName": {
+                                    "minLength": 1,
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "playerId",
+                                  "sourceName"
+                                ],
+                                "type": "object"
+                              },
+                              "decision": {
+                                "enum": [
+                                  "struck down",
+                                  "upheld"
+                                ],
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "reviewingTeamId": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "sourceReviewingTeamName": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "umpire": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "sourceName": {
+                                    "minLength": 1,
+                                    "type": "string"
+                                  },
+                                  "sourcePersonRegistryId": {
+                                    "minLength": 1,
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "sourceName",
+                                  "sourcePersonRegistryId"
+                                ],
+                                "type": "object"
+                              },
+                              "umpiresCall": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "sourceReviewingTeamName",
+                              "reviewingTeamId",
+                              "batter",
+                              "decision",
+                              "type",
+                              "umpire",
+                              "umpiresCall"
+                            ],
+                            "type": "object"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "runs": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "batter": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "extras": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "nonBoundary": {
+                            "type": "boolean"
+                          },
+                          "total": {
+                            "minimum": 0,
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "batter",
+                          "extras",
+                          "total",
+                          "nonBoundary"
+                        ],
+                        "type": "object"
+                      },
+                      "sourceDeliveryIndex": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "wickets": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "countsAsBatterDismissal": {
+                              "type": "boolean"
+                            },
+                            "creditedToBowler": {
+                              "type": "boolean"
+                            },
+                            "fielders": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "isSubstitute": {
+                                    "type": "boolean"
+                                  },
+                                  "playerId": {
+                                    "minLength": 1,
+                                    "type": "string"
+                                  },
+                                  "sourceName": {
+                                    "minLength": 1,
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "playerId",
+                                  "sourceName",
+                                  "isSubstitute"
+                                ],
+                                "type": "object"
+                              },
+                              "minItems": 0,
+                              "type": "array"
+                            },
+                            "kind": {
+                              "enum": [
+                                "bowled",
+                                "caught",
+                                "caught and bowled",
+                                "hit wicket",
+                                "lbw",
+                                "obstructing the field",
+                                "retired hurt",
+                                "retired out",
+                                "run out",
+                                "stumped"
+                              ],
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "playerOut": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "playerId": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "sourceName": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "playerId",
+                                "sourceName"
+                              ],
+                              "type": "object"
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "playerOut",
+                            "fielders",
+                            "countsAsBatterDismissal",
+                            "creditedToBowler"
+                          ],
+                          "type": "object"
+                        },
+                        "minItems": 0,
+                        "type": "array"
+                      }
+                    },
+                    "required": [
+                      "sourceDeliveryIndex",
+                      "actualDelivery",
+                      "batter",
+                      "nonStriker",
+                      "bowler",
+                      "runs",
+                      "extras",
+                      "isBowlerLegalDelivery",
+                      "countsAsBatterBall",
+                      "wickets",
+                      "review",
+                      "replacements"
+                    ],
+                    "type": "object"
+                  },
+                  "minItems": 0,
+                  "type": "array"
+                },
+                "sourceOverIndex": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "sourceOverNumber": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "sourceOverIndex",
+                "sourceOverNumber",
+                "deliveries"
+              ],
+              "type": "object"
+            },
+            "minItems": 0,
+            "type": "array"
+          },
+          "powerplays": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "from": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "to": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "type": {
+                  "enum": [
+                    "mandatory"
+                  ],
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "from",
+                "to",
+                "type"
+              ],
+              "type": "object"
+            },
+            "minItems": 0,
+            "type": "array"
+          },
+          "sourceBattingTeamName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "target": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "overs": {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "runs": {
+                    "minimum": 1,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "overs",
+                  "runs"
+                ],
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "totals": {
+            "additionalProperties": false,
+            "properties": {
+              "batterBallsFaced": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "batterDismissals": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "bowlerCreditedWickets": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "bowlerLegalDeliveries": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "deliveryRecords": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "runs": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "wicketEvents": {
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "runs",
+              "deliveryRecords",
+              "bowlerLegalDeliveries",
+              "batterBallsFaced",
+              "wicketEvents",
+              "batterDismissals",
+              "bowlerCreditedWickets"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "inningsIndex",
+          "sourceBattingTeamName",
+          "battingTeamId",
+          "bowlingTeamId",
+          "inningsKind",
+          "target",
+          "powerplays",
+          "absentHurt",
+          "miscountedOvers",
+          "overs",
+          "totals"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "matchId": {
+      "minLength": 1,
+      "pattern": "[0-9]+",
+      "type": "string"
+    },
+    "officials": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "people": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "sourceName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourcePersonRegistryId": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "sourceName",
+                "sourcePersonRegistryId"
+              ],
+              "type": "object"
+            },
+            "minItems": 0,
+            "type": "array"
+          },
+          "role": {
+            "enum": [
+              "match_referees",
+              "reserve_umpires",
+              "tv_umpires",
+              "umpires"
+            ],
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "role",
+          "people"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "outcome": {
+      "additionalProperties": false,
+      "properties": {
+        "eliminatorWinnerTeamId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "margin": {
+          "oneOf": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "runs",
+                    "wickets"
+                  ],
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "value": {
+                  "minimum": 1,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "kind",
+                "value"
+              ],
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "resultType": {
+          "enum": [
+            "win",
+            "tie",
+            "no_result"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "sourceEliminatorWinnerTeamName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sourceResult": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sourceWinnerTeamName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "winnerTeamId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "resultType",
+        "sourceResult",
+        "sourceWinnerTeamName",
+        "winnerTeamId",
+        "sourceEliminatorWinnerTeamName",
+        "eliminatorWinnerTeamId",
+        "method",
+        "margin"
+      ],
+      "type": "object"
+    },
+    "participants": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "canonicalDisplayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "evidence": {
+            "additionalProperties": false,
+            "properties": {
+              "absentHurtInningsIndexes": {
+                "items": {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "minItems": 0,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "battingInningsIndexes": {
+                "items": {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "minItems": 0,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "bowlingInningsIndexes": {
+                "items": {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "minItems": 0,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "fieldingInningsIndexes": {
+                "items": {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "minItems": 0,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "matchReplacementIn": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "inningsIndex": {
+                      "minimum": 1,
+                      "type": "integer"
+                    },
+                    "itemIndex": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sourceDeliveryIndex": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sourceOverNumber": {
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "inningsIndex",
+                    "sourceOverNumber",
+                    "sourceDeliveryIndex",
+                    "itemIndex"
+                  ],
+                  "type": "object"
+                },
+                "minItems": 0,
+                "type": "array"
+              },
+              "matchReplacementOut": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "inningsIndex": {
+                      "minimum": 1,
+                      "type": "integer"
+                    },
+                    "itemIndex": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sourceDeliveryIndex": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sourceOverNumber": {
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "inningsIndex",
+                    "sourceOverNumber",
+                    "sourceDeliveryIndex",
+                    "itemIndex"
+                  ],
+                  "type": "object"
+                },
+                "minItems": 0,
+                "type": "array"
+              },
+              "playerOfMatch": {
+                "type": "boolean"
+              },
+              "reviews": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "inningsIndex": {
+                      "minimum": 1,
+                      "type": "integer"
+                    },
+                    "itemIndex": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sourceDeliveryIndex": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sourceOverNumber": {
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "inningsIndex",
+                    "sourceOverNumber",
+                    "sourceDeliveryIndex",
+                    "itemIndex"
+                  ],
+                  "type": "object"
+                },
+                "minItems": 0,
+                "type": "array"
+              },
+              "roleReplacementIn": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "inningsIndex": {
+                      "minimum": 1,
+                      "type": "integer"
+                    },
+                    "itemIndex": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sourceDeliveryIndex": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sourceOverNumber": {
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "inningsIndex",
+                    "sourceOverNumber",
+                    "sourceDeliveryIndex",
+                    "itemIndex"
+                  ],
+                  "type": "object"
+                },
+                "minItems": 0,
+                "type": "array"
+              },
+              "roleReplacementOut": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "inningsIndex": {
+                      "minimum": 1,
+                      "type": "integer"
+                    },
+                    "itemIndex": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sourceDeliveryIndex": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sourceOverNumber": {
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "inningsIndex",
+                    "sourceOverNumber",
+                    "sourceDeliveryIndex",
+                    "itemIndex"
+                  ],
+                  "type": "object"
+                },
+                "minItems": 0,
+                "type": "array"
+              },
+              "substituteFielding": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "inningsIndex": {
+                      "minimum": 1,
+                      "type": "integer"
+                    },
+                    "itemIndex": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sourceDeliveryIndex": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sourceOverNumber": {
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "inningsIndex",
+                    "sourceOverNumber",
+                    "sourceDeliveryIndex",
+                    "itemIndex"
+                  ],
+                  "type": "object"
+                },
+                "minItems": 0,
+                "type": "array"
+              }
+            },
+            "required": [
+              "battingInningsIndexes",
+              "bowlingInningsIndexes",
+              "fieldingInningsIndexes",
+              "substituteFielding",
+              "absentHurtInningsIndexes",
+              "reviews",
+              "matchReplacementIn",
+              "matchReplacementOut",
+              "roleReplacementIn",
+              "roleReplacementOut",
+              "playerOfMatch"
+            ],
+            "type": "object"
+          },
+          "observedSourceNames": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "officialListIndex": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "registryParticipationBasis": {
+            "enum": [
+              "official_participant",
+              "event_only"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "resolution": {
+            "additionalProperties": false,
+            "properties": {
+              "matchedBy": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "registryReviewStatus": {
+                "enum": [
+                  "approved",
+                  "review_required"
+                ],
+                "minLength": 1,
+                "type": "string"
+              },
+              "requiresNewReview": {
+                "const": false
+              },
+              "status": {
+                "enum": [
+                  "canonical",
+                  "provisional"
+                ],
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "status",
+              "matchedBy",
+              "registryReviewStatus",
+              "requiresNewReview"
+            ],
+            "type": "object"
+          },
+          "sourceListStatus": {
+            "enum": [
+              "official_listed",
+              "event_only"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "playerId",
+          "canonicalDisplayName",
+          "teamId",
+          "observedSourceNames",
+          "registryParticipationBasis",
+          "resolution",
+          "sourceListStatus",
+          "officialListIndex",
+          "evidence"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "playerOfMatch": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceName": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "playerId",
+          "sourceName"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "identityRegistryAggregateHash": {
+          "minLength": 1,
+          "pattern": "[0-9a-f]{64}",
+          "type": "string"
+        },
+        "identityRegistryVersion": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "relativeSourcePath": {
+          "minLength": 1,
+          "pattern": "[^/]+\\.json",
+          "type": "string"
+        },
+        "sourceArchiveManifestHash": {
+          "minLength": 1,
+          "pattern": "[0-9a-f]{64}",
+          "type": "string"
+        },
+        "sourceArchiveSchemaVersion": {
+          "const": "cricsheet-ipl-archive-audit/v1"
+        },
+        "sourceFileSha256": {
+          "minLength": 1,
+          "pattern": "[0-9a-f]{64}",
+          "type": "string"
+        },
+        "sourceMatchId": {
+          "minLength": 1,
+          "pattern": "[0-9]+",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sourceMatchId",
+        "relativeSourcePath",
+        "sourceFileSha256",
+        "sourceArchiveSchemaVersion",
+        "sourceArchiveManifestHash",
+        "identityRegistryVersion",
+        "identityRegistryAggregateHash"
+      ],
+      "type": "object"
+    },
+    "schemaVersion": {
+      "const": "cricsheet-ipl-normalized-match/v1"
+    },
+    "season": {
+      "additionalProperties": false,
+      "properties": {
+        "seasonId": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sourceSeason": {
+          "oneOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "minimum": 0,
+              "type": "integer"
+            }
+          ]
+        },
+        "sourceSeasonKey": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "sourceSeason",
+        "sourceSeasonKey",
+        "seasonId"
+      ],
+      "type": "object"
+    },
+    "sourceMeta": {
+      "additionalProperties": false,
+      "properties": {
+        "created": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "dataVersion": {
+          "const": "1.2.0"
+        },
+        "revision": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "dataVersion",
+        "revision",
+        "created"
+      ],
+      "type": "object"
+    },
+    "teams": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "franchiseId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceTeamName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "sourceTeamName",
+          "teamId",
+          "franchiseId"
+        ],
+        "type": "object"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "toss": {
+      "additionalProperties": false,
+      "properties": {
+        "decision": {
+          "enum": [
+            "bat",
+            "field"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "sourceWinnerTeamName": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "winnerTeamId": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "sourceWinnerTeamName",
+        "winnerTeamId",
+        "decision"
+      ],
+      "type": "object"
+    },
+    "venue": {
+      "additionalProperties": false,
+      "properties": {
+        "canonicalCity": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "canonicalName": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "country": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "resolution": {
+          "additionalProperties": false,
+          "properties": {
+            "evidenceRefs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "recordId": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "registry": {
+                    "enum": [
+                      "venues"
+                    ],
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "sourceAlias": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "registry",
+                  "recordId",
+                  "sourceAlias"
+                ],
+                "type": "object"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            "matchedBy": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "registryReviewStatus": {
+              "enum": [
+                "approved",
+                "review_required"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "requiresNewReview": {
+              "const": false
+            },
+            "status": {
+              "enum": [
+                "canonical",
+                "provisional"
+              ],
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "matchedBy",
+            "registryReviewStatus",
+            "requiresNewReview",
+            "evidenceRefs"
+          ],
+          "type": "object"
+        },
+        "sourceCity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sourceVenue": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "venueId": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "venueSiteId": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "sourceVenue",
+        "sourceCity",
+        "venueId",
+        "venueSiteId",
+        "canonicalName",
+        "canonicalCity",
+        "country",
+        "resolution"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "datasetVersion",
+    "matchId",
+    "provenance",
+    "sourceMeta",
+    "competition",
+    "season",
+    "dates",
+    "event",
+    "teams",
+    "venue",
+    "toss",
+    "outcome",
+    "playerOfMatch",
+    "officials",
+    "participants",
+    "innings"
+  ],
+  "title": "Canonical normalized IPL match",
+  "type": "object"
+}

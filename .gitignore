@@ -7,6 +7,9 @@ docs/*.md
 data/raw/cricsheet/
 data/raw/*.zip
 
+# Reproducible Stage 3 normalized match corpus (manifests/reports/schemas remain reviewable)
+data/normalized/cricsheet-ipl/v1/ipl-*/
+
 # Generated processed outputs
 data/processed/**
 
