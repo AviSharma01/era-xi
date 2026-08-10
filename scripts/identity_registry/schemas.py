@@ -458,7 +458,10 @@ def build_resolution_result_schema() -> dict[str, Any]:
             {"sourceVenue": _string(), "city": _nullable_string(), "seasonId": _string()},
         ),
         source_alias_evidence,
-        {"venueId": _string(), "venueSiteId": _string()},
+        {
+            "venueId": _string(), "venueSiteId": _string(), "canonicalName": _string(),
+            "canonicalCity": _string(), "country": _string(),
+        },
     )
     return {"$schema": SCHEMA_DRAFT, "title": "Identity resolver result", "oneOf": [season, team, player, venue]}
 
@@ -512,6 +515,7 @@ def validate_instance(instance: Any, schema: dict[str, Any], path: str = "$") ->
         "array": lambda value: isinstance(value, list),
         "string": lambda value: isinstance(value, str),
         "integer": lambda value: isinstance(value, int) and not isinstance(value, bool),
+        "number": lambda value: isinstance(value, (int, float)) and not isinstance(value, bool),
         "boolean": lambda value: isinstance(value, bool),
         "null": lambda value: value is None,
     }
@@ -529,8 +533,10 @@ def validate_instance(instance: Any, schema: dict[str, Any], path: str = "$") ->
             raise SchemaValidationError(f"{path} is shorter than minLength")
         if "pattern" in schema and re.fullmatch(schema["pattern"], instance) is None:
             raise SchemaValidationError(f"{path} does not match {schema['pattern']!r}")
-    if isinstance(instance, int) and not isinstance(instance, bool) and instance < schema.get("minimum", instance):
+    if isinstance(instance, (int, float)) and not isinstance(instance, bool) and instance < schema.get("minimum", instance):
         raise SchemaValidationError(f"{path} is below minimum {schema['minimum']}")
+    if isinstance(instance, (int, float)) and not isinstance(instance, bool) and instance > schema.get("maximum", instance):
+        raise SchemaValidationError(f"{path} is above maximum {schema['maximum']}")
     if expected_type == "array":
         if len(instance) < schema.get("minItems", 0):
             raise SchemaValidationError(f"{path} has fewer than {schema['minItems']} items")

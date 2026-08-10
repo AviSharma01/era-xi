@@ -114,12 +114,15 @@ class IdentityResolver:
             expected_registry_aggregate_hash=expected_registry_aggregate_hash,
             expected_source_archive_manifest_hash=expected_source_archive_manifest_hash,
         )
-        return cls(
+        resolver = cls(
             seasons=verified["seasons"],
             teams=verified["teams"],
             players=verified["players"],
             venues=verified["venues"],
         )
+        resolver.registry_aggregate_hash = verified["manifest"]["registryAggregateHash"]
+        resolver.source_archive_manifest_hash = verified["manifest"]["sourceArchiveManifestHash"]
+        return resolver
 
     def resolve_source_season(self, source_season: str) -> dict[str, Any]:
         source = {"sourceSeason": source_season}
@@ -225,6 +228,9 @@ class IdentityResolver:
             "id": venue["venueId"],
             "venueId": venue["venueId"],
             "venueSiteId": venue["venueSiteId"],
+            "canonicalName": venue.get("canonicalName", source_venue),
+            "canonicalCity": venue.get("canonicalCity", city or "Unknown"),
+            "country": venue.get("country", "Unknown"),
             "status": status,
             "matchedBy": matched_by,
             "source": source,

@@ -8,8 +8,8 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any, Iterable
 
-from scripts.cricsheet_audit.reporting import calculate_manifest_hash
-from scripts.cricsheet_audit.scanner import ArchiveScan, scan_archive
+from scripts.cricsheet_audit.integrity import load_verified_archive
+from scripts.cricsheet_audit.scanner import ArchiveScan
 
 from .schemas import SchemaValidationError, build_schema_documents, validate_instance
 
@@ -45,14 +45,6 @@ def compact_json_bytes(value: Any) -> bytes:
     return (json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
 
 
-def _without_envelope(report: dict[str, Any]) -> dict[str, Any]:
-    return {
-        key: value
-        for key, value in report.items()
-        if key not in {"schemaVersion", "reportType", "archiveManifestHash"}
-    }
-
-
 def _assert_unique(values: Iterable[str], label: str) -> None:
     values = list(values)
     duplicates = sorted({value for value in values if values.count(value) > 1})
@@ -74,36 +66,24 @@ def _load_and_verify_archive(
     audit_dir: Path,
     policy: dict[str, Any],
 ) -> tuple[ArchiveScan, str, dict[str, Any], dict[str, Any], dict[str, Any]]:
-    manifest_metadata = load_json(audit_dir / "manifest_metadata.json")
-    season_report = load_json(audit_dir / "season_coverage.json")
-    identity_report = load_json(audit_dir / "participant_identity_observations.json")
-    inventory_report = load_json(audit_dir / "raw_name_inventories.json")
-
-    expected_hashes = {
-        policy.get("acceptedArchiveManifestHash"),
-        manifest_metadata.get("archiveManifestHash"),
-        season_report.get("archiveManifestHash"),
-        identity_report.get("archiveManifestHash"),
-        inventory_report.get("archiveManifestHash"),
-    }
-    if len(expected_hashes) != 1 or None in expected_hashes:
-        raise RegistryBuildError(f"Stage 1 manifest hash disagreement: {sorted(str(value) for value in expected_hashes)}")
-    expected_hash = next(iter(expected_hashes))
-
-    scan = scan_archive(raw_dir)
-    actual_hash = calculate_manifest_hash(scan.manifest_entries)
-    if actual_hash != expected_hash:
-        raise RegistryBuildError(
-            f"Archive manifest drift: expected {expected_hash}, recomputed {actual_hash}"
+    expected_hash = policy.get("acceptedArchiveManifestHash")
+    if not isinstance(expected_hash, str):
+        raise RegistryBuildError("Registry policy is missing acceptedArchiveManifestHash")
+    try:
+        verified = load_verified_archive(
+            raw_dir,
+            audit_dir,
+            expected_archive_manifest_hash=expected_hash,
         )
-
-    if list(scan.season_coverage.values()) != season_report.get("seasons"):
-        raise RegistryBuildError("Recomputed season coverage differs from the committed Stage 1 report")
-    if scan.identity != _without_envelope(identity_report):
-        raise RegistryBuildError("Recomputed participant identities differ from the committed Stage 1 report")
-    if scan.inventories != _without_envelope(inventory_report):
-        raise RegistryBuildError("Recomputed raw identity inventories differ from the committed Stage 1 report")
-    return scan, actual_hash, season_report, identity_report, inventory_report
+    except ValueError as error:
+        raise RegistryBuildError(str(error)) from error
+    return (
+        verified.scan,
+        verified.manifest_hash,
+        verified.season_report,
+        verified.identity_report,
+        verified.inventory_report,
+    )
 
 
 def _season_maps(
