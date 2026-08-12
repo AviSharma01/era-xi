@@ -1,0 +1,1342 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "batting": {
+      "additionalProperties": false,
+      "properties": {
+        "innings": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "inningsObservations": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "entry": {
+                "additionalProperties": false,
+                "properties": {
+                  "actualDelivery": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "legalBallsBefore": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "sourceDeliveryIndex": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "sourceOverNumber": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "teamDismissalsBefore": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "teamRunsBefore": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "sourceOverNumber",
+                  "sourceDeliveryIndex",
+                  "actualDelivery",
+                  "teamRunsBefore",
+                  "teamDismissalsBefore",
+                  "legalBallsBefore"
+                ],
+                "type": "object"
+              },
+              "inningsIndex": {
+                "minimum": 1,
+                "type": "integer"
+              },
+              "matchId": {
+                "minLength": 1,
+                "pattern": "[0-9]+",
+                "type": "string"
+              },
+              "officialPowerplay": {
+                "additionalProperties": false,
+                "properties": {
+                  "balls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "boundaryBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "dismissals": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "dotBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "fours": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "runs": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "sixes": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "runs",
+                  "balls",
+                  "dismissals",
+                  "fours",
+                  "sixes",
+                  "boundaryBalls",
+                  "dotBalls"
+                ],
+                "type": "object"
+              },
+              "phases": {
+                "additionalProperties": false,
+                "properties": {
+                  "death": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "balls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "boundaryBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "dismissals": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "dotBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "fours": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "runs": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "sixes": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "runs",
+                      "balls",
+                      "dismissals",
+                      "fours",
+                      "sixes",
+                      "boundaryBalls",
+                      "dotBalls"
+                    ],
+                    "type": "object"
+                  },
+                  "middle": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "balls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "boundaryBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "dismissals": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "dotBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "fours": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "runs": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "sixes": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "runs",
+                      "balls",
+                      "dismissals",
+                      "fours",
+                      "sixes",
+                      "boundaryBalls",
+                      "dotBalls"
+                    ],
+                    "type": "object"
+                  },
+                  "powerplay": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "balls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "boundaryBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "dismissals": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "dotBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "fours": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "runs": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "sixes": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "runs",
+                      "balls",
+                      "dismissals",
+                      "fours",
+                      "sixes",
+                      "boundaryBalls",
+                      "dotBalls"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "powerplay",
+                  "middle",
+                  "death"
+                ],
+                "type": "object"
+              },
+              "position": {
+                "maximum": 11,
+                "minimum": 1,
+                "type": "integer"
+              },
+              "totals": {
+                "additionalProperties": false,
+                "properties": {
+                  "balls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "boundaryBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "dismissals": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "dotBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "fours": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "runs": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "sixes": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "runs",
+                  "balls",
+                  "dismissals",
+                  "fours",
+                  "sixes",
+                  "boundaryBalls",
+                  "dotBalls"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "matchId",
+              "inningsIndex",
+              "position",
+              "entry",
+              "totals",
+              "phases",
+              "officialPowerplay"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "officialPowerplay": {
+          "additionalProperties": false,
+          "properties": {
+            "balls": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "boundaryBalls": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "dismissals": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "dotBalls": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "fours": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "runs": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "sixes": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "runs",
+            "balls",
+            "dismissals",
+            "fours",
+            "sixes",
+            "boundaryBalls",
+            "dotBalls"
+          ],
+          "type": "object"
+        },
+        "phases": {
+          "additionalProperties": false,
+          "properties": {
+            "death": {
+              "additionalProperties": false,
+              "properties": {
+                "balls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "boundaryBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "dismissals": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "dotBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "fours": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "runs": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "sixes": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "runs",
+                "balls",
+                "dismissals",
+                "fours",
+                "sixes",
+                "boundaryBalls",
+                "dotBalls"
+              ],
+              "type": "object"
+            },
+            "middle": {
+              "additionalProperties": false,
+              "properties": {
+                "balls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "boundaryBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "dismissals": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "dotBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "fours": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "runs": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "sixes": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "runs",
+                "balls",
+                "dismissals",
+                "fours",
+                "sixes",
+                "boundaryBalls",
+                "dotBalls"
+              ],
+              "type": "object"
+            },
+            "powerplay": {
+              "additionalProperties": false,
+              "properties": {
+                "balls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "boundaryBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "dismissals": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "dotBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "fours": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "runs": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "sixes": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "runs",
+                "balls",
+                "dismissals",
+                "fours",
+                "sixes",
+                "boundaryBalls",
+                "dotBalls"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "powerplay",
+            "middle",
+            "death"
+          ],
+          "type": "object"
+        },
+        "positionCounts": {
+          "additionalProperties": false,
+          "properties": {
+            "1": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "10": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "11": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "2": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "3": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "4": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "5": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "6": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "7": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "8": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "9": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11"
+          ],
+          "type": "object"
+        },
+        "rates": {
+          "additionalProperties": false,
+          "properties": {
+            "average": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "boundaryBallRate": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "dotBallRate": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "strikeRate": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "average",
+            "strikeRate",
+            "boundaryBallRate",
+            "dotBallRate"
+          ],
+          "type": "object"
+        },
+        "totals": {
+          "additionalProperties": false,
+          "properties": {
+            "balls": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "boundaryBalls": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "dismissals": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "dotBalls": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "fours": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "runs": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "sixes": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "runs",
+            "balls",
+            "dismissals",
+            "fours",
+            "sixes",
+            "boundaryBalls",
+            "dotBalls"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "innings",
+        "totals",
+        "phases",
+        "officialPowerplay",
+        "inningsObservations",
+        "positionCounts",
+        "rates"
+      ],
+      "type": "object"
+    },
+    "bowling": {
+      "additionalProperties": false,
+      "properties": {
+        "innings": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "inningsObservations": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "inningsIndex": {
+                "minimum": 1,
+                "type": "integer"
+              },
+              "matchId": {
+                "minLength": 1,
+                "pattern": "[0-9]+",
+                "type": "string"
+              },
+              "officialPowerplay": {
+                "additionalProperties": false,
+                "properties": {
+                  "creditedWickets": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "deliveryRecords": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "dotBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "legalBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "runsConceded": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "deliveryRecords",
+                  "legalBalls",
+                  "runsConceded",
+                  "creditedWickets",
+                  "dotBalls"
+                ],
+                "type": "object"
+              },
+              "phases": {
+                "additionalProperties": false,
+                "properties": {
+                  "death": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "creditedWickets": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "deliveryRecords": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "dotBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "legalBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "runsConceded": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "deliveryRecords",
+                      "legalBalls",
+                      "runsConceded",
+                      "creditedWickets",
+                      "dotBalls"
+                    ],
+                    "type": "object"
+                  },
+                  "middle": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "creditedWickets": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "deliveryRecords": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "dotBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "legalBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "runsConceded": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "deliveryRecords",
+                      "legalBalls",
+                      "runsConceded",
+                      "creditedWickets",
+                      "dotBalls"
+                    ],
+                    "type": "object"
+                  },
+                  "powerplay": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "creditedWickets": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "deliveryRecords": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "dotBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "legalBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "runsConceded": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "deliveryRecords",
+                      "legalBalls",
+                      "runsConceded",
+                      "creditedWickets",
+                      "dotBalls"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "powerplay",
+                  "middle",
+                  "death"
+                ],
+                "type": "object"
+              },
+              "totals": {
+                "additionalProperties": false,
+                "properties": {
+                  "creditedWickets": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "deliveryRecords": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "dotBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "legalBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "runsConceded": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "deliveryRecords",
+                  "legalBalls",
+                  "runsConceded",
+                  "creditedWickets",
+                  "dotBalls"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "matchId",
+              "inningsIndex",
+              "totals",
+              "phases",
+              "officialPowerplay"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "matches": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "officialPowerplay": {
+          "additionalProperties": false,
+          "properties": {
+            "creditedWickets": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "deliveryRecords": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "dotBalls": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "legalBalls": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "runsConceded": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "deliveryRecords",
+            "legalBalls",
+            "runsConceded",
+            "creditedWickets",
+            "dotBalls"
+          ],
+          "type": "object"
+        },
+        "phases": {
+          "additionalProperties": false,
+          "properties": {
+            "death": {
+              "additionalProperties": false,
+              "properties": {
+                "creditedWickets": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "deliveryRecords": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "dotBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "legalBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "runsConceded": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "deliveryRecords",
+                "legalBalls",
+                "runsConceded",
+                "creditedWickets",
+                "dotBalls"
+              ],
+              "type": "object"
+            },
+            "middle": {
+              "additionalProperties": false,
+              "properties": {
+                "creditedWickets": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "deliveryRecords": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "dotBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "legalBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "runsConceded": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "deliveryRecords",
+                "legalBalls",
+                "runsConceded",
+                "creditedWickets",
+                "dotBalls"
+              ],
+              "type": "object"
+            },
+            "powerplay": {
+              "additionalProperties": false,
+              "properties": {
+                "creditedWickets": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "deliveryRecords": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "dotBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "legalBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "runsConceded": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "deliveryRecords",
+                "legalBalls",
+                "runsConceded",
+                "creditedWickets",
+                "dotBalls"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "powerplay",
+            "middle",
+            "death"
+          ],
+          "type": "object"
+        },
+        "rates": {
+          "additionalProperties": false,
+          "properties": {
+            "dotBallRate": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "economyPerSixBalls": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "legalBallsPerBowlingMatch": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "strikeRate": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "economyPerSixBalls",
+            "strikeRate",
+            "dotBallRate",
+            "legalBallsPerBowlingMatch"
+          ],
+          "type": "object"
+        },
+        "totals": {
+          "additionalProperties": false,
+          "properties": {
+            "creditedWickets": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "deliveryRecords": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "dotBalls": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "legalBalls": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "runsConceded": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "deliveryRecords",
+            "legalBalls",
+            "runsConceded",
+            "creditedWickets",
+            "dotBalls"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "innings",
+        "totals",
+        "phases",
+        "officialPowerplay",
+        "inningsObservations",
+        "matches",
+        "rates"
+      ],
+      "type": "object"
+    },
+    "canonicalDisplayName": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "datasetVersion": {
+      "const": "cricsheet-ipl-analytics/v1"
+    },
+    "fielding": {
+      "additionalProperties": false,
+      "properties": {
+        "catches": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "caughtAndBowled": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "runOutInvolvements": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "stumpings": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "substituteFieldingEvents": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "catches",
+        "caughtAndBowled",
+        "stumpings",
+        "runOutInvolvements",
+        "substituteFieldingEvents"
+      ],
+      "type": "object"
+    },
+    "franchiseId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "observedSourceNames": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "participation": {
+      "additionalProperties": false,
+      "properties": {
+        "documentedInvolvementMatchCount": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "matchContributions": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "eventOnly": {
+                "type": "boolean"
+              },
+              "matchId": {
+                "minLength": 1,
+                "pattern": "[0-9]+",
+                "type": "string"
+              },
+              "normalBattingInnings": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "normalBowlingInnings": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "officialListed": {
+                "type": "boolean"
+              },
+              "recordedActions": {
+                "items": {
+                  "enum": [
+                    "batting",
+                    "bowling",
+                    "fielding",
+                    "substitute_fielding",
+                    "absent_hurt",
+                    "review",
+                    "match_replacement_in",
+                    "match_replacement_out",
+                    "role_replacement_in",
+                    "role_replacement_out",
+                    "player_of_match"
+                  ],
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "recordedFieldingOnly": {
+                "type": "boolean"
+              },
+              "replacementEvents": {
+                "additionalProperties": false,
+                "properties": {
+                  "concussionIn": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "concussionOut": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "impactIn": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "impactOut": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "roleIn": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "roleOut": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "impactIn",
+                  "impactOut",
+                  "concussionIn",
+                  "concussionOut",
+                  "roleIn",
+                  "roleOut"
+                ],
+                "type": "object"
+              },
+              "superOverAction": {
+                "type": "boolean"
+              },
+              "superOverEvents": {
+                "additionalProperties": false,
+                "properties": {
+                  "concussionIn": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "concussionOut": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "impactIn": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "impactOut": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "roleIn": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "roleOut": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "substituteFielding": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "impactIn",
+                  "impactOut",
+                  "concussionIn",
+                  "concussionOut",
+                  "roleIn",
+                  "roleOut",
+                  "substituteFielding"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "matchId",
+              "officialListed",
+              "eventOnly",
+              "recordedActions",
+              "recordedFieldingOnly",
+              "normalBattingInnings",
+              "normalBowlingInnings",
+              "superOverAction",
+              "replacementEvents",
+              "superOverEvents"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "officialListMatchCount": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "recordedActionMatchCount": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "officialListMatchCount",
+        "recordedActionMatchCount",
+        "documentedInvolvementMatchCount",
+        "matchContributions"
+      ],
+      "type": "object"
+    },
+    "playerId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerTeamSeasonId": {
+      "minLength": 1,
+      "pattern": "pts:[^:]+:[^:]+:[^:]+",
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": "cricsheet-ipl-player-team-season/v1"
+    },
+    "seasonId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "teamId": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "datasetVersion",
+    "playerTeamSeasonId",
+    "playerId",
+    "canonicalDisplayName",
+    "seasonId",
+    "teamId",
+    "franchiseId",
+    "observedSourceNames",
+    "participation",
+    "batting",
+    "bowling",
+    "fielding"
+  ],
+  "type": "object"
+}

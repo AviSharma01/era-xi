@@ -1,0 +1,801 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "cohort": {
+      "enum": [
+        "standard",
+        "adjusted",
+        "incomplete_or_no_result"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "datasetVersion": {
+      "const": "cricsheet-ipl-analytics/v1"
+    },
+    "dates": {
+      "items": {
+        "minLength": 1,
+        "pattern": "\\d{4}-\\d{2}-\\d{2}",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "hasRevisedTarget": {
+      "type": "boolean"
+    },
+    "isDls": {
+      "type": "boolean"
+    },
+    "matchId": {
+      "minLength": 1,
+      "pattern": "[0-9]+",
+      "type": "string"
+    },
+    "normalInnings": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "absentHurtCount": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "battingTeamId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "bowlingTeamId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "hasMiscountedOvers": {
+            "type": "boolean"
+          },
+          "inningsIndex": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "inningsOrder": {
+            "enum": [
+              "first",
+              "chase"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "officialPowerplay": {
+            "additionalProperties": false,
+            "properties": {
+              "batterBalls": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "batterRuns": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "battingDotBalls": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "boundaryBalls": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "bowlingDotBalls": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "creditedWickets": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "deliveryRecords": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "dismissals": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "extras": {
+                "additionalProperties": false,
+                "properties": {
+                  "byes": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "legByes": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "noBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "penalty": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "wides": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "byes",
+                  "legByes",
+                  "noBalls",
+                  "penalty",
+                  "wides"
+                ],
+                "type": "object"
+              },
+              "fours": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "innings": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "legalBalls": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "runs": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "sixes": {
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "innings",
+              "runs",
+              "batterRuns",
+              "deliveryRecords",
+              "legalBalls",
+              "batterBalls",
+              "dismissals",
+              "creditedWickets",
+              "fours",
+              "sixes",
+              "boundaryBalls",
+              "battingDotBalls",
+              "bowlingDotBalls",
+              "extras"
+            ],
+            "type": "object"
+          },
+          "phases": {
+            "additionalProperties": false,
+            "properties": {
+              "death": {
+                "additionalProperties": false,
+                "properties": {
+                  "batterBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "batterRuns": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "battingDotBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "boundaryBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "bowlingDotBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "creditedWickets": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "deliveryRecords": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "dismissals": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "extras": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "byes": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "legByes": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "noBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "penalty": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "wides": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "byes",
+                      "legByes",
+                      "noBalls",
+                      "penalty",
+                      "wides"
+                    ],
+                    "type": "object"
+                  },
+                  "fours": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "innings": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "legalBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "runs": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "sixes": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "innings",
+                  "runs",
+                  "batterRuns",
+                  "deliveryRecords",
+                  "legalBalls",
+                  "batterBalls",
+                  "dismissals",
+                  "creditedWickets",
+                  "fours",
+                  "sixes",
+                  "boundaryBalls",
+                  "battingDotBalls",
+                  "bowlingDotBalls",
+                  "extras"
+                ],
+                "type": "object"
+              },
+              "middle": {
+                "additionalProperties": false,
+                "properties": {
+                  "batterBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "batterRuns": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "battingDotBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "boundaryBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "bowlingDotBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "creditedWickets": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "deliveryRecords": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "dismissals": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "extras": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "byes": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "legByes": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "noBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "penalty": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "wides": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "byes",
+                      "legByes",
+                      "noBalls",
+                      "penalty",
+                      "wides"
+                    ],
+                    "type": "object"
+                  },
+                  "fours": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "innings": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "legalBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "runs": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "sixes": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "innings",
+                  "runs",
+                  "batterRuns",
+                  "deliveryRecords",
+                  "legalBalls",
+                  "batterBalls",
+                  "dismissals",
+                  "creditedWickets",
+                  "fours",
+                  "sixes",
+                  "boundaryBalls",
+                  "battingDotBalls",
+                  "bowlingDotBalls",
+                  "extras"
+                ],
+                "type": "object"
+              },
+              "powerplay": {
+                "additionalProperties": false,
+                "properties": {
+                  "batterBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "batterRuns": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "battingDotBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "boundaryBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "bowlingDotBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "creditedWickets": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "deliveryRecords": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "dismissals": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "extras": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "byes": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "legByes": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "noBalls": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "penalty": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "wides": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "byes",
+                      "legByes",
+                      "noBalls",
+                      "penalty",
+                      "wides"
+                    ],
+                    "type": "object"
+                  },
+                  "fours": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "innings": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "legalBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "runs": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "sixes": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "innings",
+                  "runs",
+                  "batterRuns",
+                  "deliveryRecords",
+                  "legalBalls",
+                  "batterBalls",
+                  "dismissals",
+                  "creditedWickets",
+                  "fours",
+                  "sixes",
+                  "boundaryBalls",
+                  "battingDotBalls",
+                  "bowlingDotBalls",
+                  "extras"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "powerplay",
+              "middle",
+              "death"
+            ],
+            "type": "object"
+          },
+          "scheduledQuotaBalls": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "target": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "overs": {
+                    "type": "number"
+                  },
+                  "runs": {
+                    "minimum": 1,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "overs",
+                  "runs"
+                ],
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "targetQuotaBalls": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "totals": {
+            "additionalProperties": false,
+            "properties": {
+              "batterBalls": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "batterRuns": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "battingDotBalls": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "boundaryBalls": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "bowlingDotBalls": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "creditedWickets": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "deliveryRecords": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "dismissals": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "extras": {
+                "additionalProperties": false,
+                "properties": {
+                  "byes": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "legByes": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "noBalls": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "penalty": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "wides": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "byes",
+                  "legByes",
+                  "noBalls",
+                  "penalty",
+                  "wides"
+                ],
+                "type": "object"
+              },
+              "fours": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "innings": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "legalBalls": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "runs": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "sixes": {
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "innings",
+              "runs",
+              "batterRuns",
+              "deliveryRecords",
+              "legalBalls",
+              "batterBalls",
+              "dismissals",
+              "creditedWickets",
+              "fours",
+              "sixes",
+              "boundaryBalls",
+              "battingDotBalls",
+              "bowlingDotBalls",
+              "extras"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "inningsIndex",
+          "inningsOrder",
+          "battingTeamId",
+          "bowlingTeamId",
+          "target",
+          "scheduledQuotaBalls",
+          "targetQuotaBalls",
+          "absentHurtCount",
+          "hasMiscountedOvers",
+          "totals",
+          "phases",
+          "officialPowerplay"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "normalizedMatchSha256": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "outcome": {
+      "additionalProperties": false,
+      "properties": {
+        "eliminatorWinnerTeamId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "resultType": {
+          "enum": [
+            "win",
+            "tie",
+            "no_result"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "winnerTeamId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "resultType",
+        "winnerTeamId",
+        "eliminatorWinnerTeamId",
+        "method"
+      ],
+      "type": "object"
+    },
+    "schemaVersion": {
+      "const": "cricsheet-ipl-match-summary/v1"
+    },
+    "seasonId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "stage": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "superOverInnings": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "teams": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "franchiseId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "teamId",
+          "franchiseId"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "venue": {
+      "additionalProperties": false,
+      "properties": {
+        "canonicalCity": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "canonicalName": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "country": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "venueId": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "venueSiteId": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "venueId",
+        "venueSiteId",
+        "canonicalName",
+        "canonicalCity",
+        "country"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "datasetVersion",
+    "matchId",
+    "normalizedMatchSha256",
+    "seasonId",
+    "dates",
+    "stage",
+    "cohort",
+    "isDls",
+    "hasRevisedTarget",
+    "superOverInnings",
+    "venue",
+    "teams",
+    "outcome",
+    "normalInnings"
+  ],
+  "type": "object"
+}

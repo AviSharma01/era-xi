@@ -1,0 +1,87 @@
+{
+  "analyticalDataAggregateHash": "f00e556fc4c99b0db434ad25c074971ad8149b3b525b36fa6618cd54b608b51e",
+  "analyticalManifestHash": "f437d9e03c1f1749b5a0b8b8c06a41e80c8f2d18e3d43d791b054014acf5998c",
+  "artifacts": [
+    {
+      "path": "match_summaries.jsonl",
+      "rows": 1243,
+      "schemaVersion": "cricsheet-ipl-match-summary/v1",
+      "sha256": "389827acfea133281206a0a86d8d7f32816d33338ee98f57d062f55d914938eb",
+      "sizeBytes": 5234796
+    },
+    {
+      "path": "player_team_seasons.jsonl",
+      "rows": 3392,
+      "schemaVersion": "cricsheet-ipl-player-team-season/v1",
+      "sha256": "acb768156e8c26802a18a130a39c66f6c1277cab06b90ec429f73b32acb90c4b",
+      "sizeBytes": 40767784
+    },
+    {
+      "path": "team_seasons.jsonl",
+      "rows": 166,
+      "schemaVersion": "cricsheet-ipl-team-season/v1",
+      "sha256": "1f66e5256d3d60aefb0c59288a699492b69841faf38923e63bb26e0ab442dae6",
+      "sizeBytes": 827999
+    },
+    {
+      "path": "season_environments.jsonl",
+      "rows": 19,
+      "schemaVersion": "cricsheet-ipl-season-environment/v1",
+      "sha256": "f5447b51db98e47e22425cab2923deeced5ef4fd2a87a462111a5afa26700a96",
+      "sizeBytes": 294735
+    },
+    {
+      "path": "venue_season_environments.jsonl",
+      "rows": 198,
+      "schemaVersion": "cricsheet-ipl-venue-season-environment/v1",
+      "sha256": "713c93e25486776e84cba105ad3b3bdc700229fca5d91ef8fb8e0b37de051bdf",
+      "sizeBytes": 2038448
+    }
+  ],
+  "datasetVersion": "cricsheet-ipl-analytics/v1",
+  "phaseDefinitionVersion": "ipl-fixed-phases/v1",
+  "schemaFiles": [
+    {
+      "path": "schemas/analytical_manifest.schema.json",
+      "sha256": "68f72547eb0b894d58216f6d8ad495ac7901e1908a8d95ea14db993d4b9fa9cd",
+      "sizeBytes": 3069
+    },
+    {
+      "path": "schemas/match_summary.schema.json",
+      "sha256": "731aa5c41e00cd9381048e6cc4884d9840f77e3f64604c4b350e99e3b8148630",
+      "sizeBytes": 21967
+    },
+    {
+      "path": "schemas/player_team_season.schema.json",
+      "sha256": "17f61c6e98fa60fe030bf41909657d386da01940ae62b437456ec1b1e6dbdf39",
+      "sizeBytes": 37755
+    },
+    {
+      "path": "schemas/season_environment.schema.json",
+      "sha256": "c2da2eb33669e9f23df77cdeaafcb8aadceb01405bb5e8531bf4f4efa95f6f3c",
+      "sizeBytes": 108123
+    },
+    {
+      "path": "schemas/team_season.schema.json",
+      "sha256": "4375ec3c6bec70fe689d4b47ca3adb86b4e3caeb45f62c7eccb6d0fa8a79a305",
+      "sizeBytes": 31079
+    },
+    {
+      "path": "schemas/validation_report.schema.json",
+      "sha256": "53a719657b5c0ac5dd8652d7beb72ddc924d80497de97b7f7d9233f7c66340bb",
+      "sizeBytes": 56850
+    },
+    {
+      "path": "schemas/venue_season_environment.schema.json",
+      "sha256": "e6b16c08509d2eb6fb0097306e3442909ace40167e592fdce85c60da0996ae84",
+      "sizeBytes": 109325
+    }
+  ],
+  "schemaVersion": "cricsheet-ipl-analytics-manifest/v1",
+  "stage1ArchiveManifestHash": "c61f75f3facac0f72e126fd611cdf6afed7da875d628ae62338cba1d5380cbf7",
+  "stage2RegistryAggregateHash": "9b23cafe4c2020b43fec7a3d80a13152270164b216ccd5cea3a1b552428ecac7",
+  "stage2RegistryVersion": "ipl-identities-v1",
+  "stage3DatasetVersion": "cricsheet-ipl-normalized/v1",
+  "stage3NormalizationManifestHash": "005da3be0fb64f946c869a8ab97cd9ea7e0c00e2e49f1bfb3d1c07e7726d6cec",
+  "stage3NormalizedMatchAggregateHash": "fb6a14f439124d57a8a39ff1c58a90ca0e5393e7d0a428b29f785600bea6eaaa"
+}

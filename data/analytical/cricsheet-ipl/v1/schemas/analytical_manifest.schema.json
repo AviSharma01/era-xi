@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "analyticalDataAggregateHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "analyticalManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "artifacts": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rows": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "schemaVersion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "schemaVersion",
+          "rows",
+          "sizeBytes",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "datasetVersion": {
+      "const": "cricsheet-ipl-analytics/v1"
+    },
+    "phaseDefinitionVersion": {
+      "const": "ipl-fixed-phases/v1"
+    },
+    "schemaFiles": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sizeBytes",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schemaVersion": {
+      "const": "cricsheet-ipl-analytics-manifest/v1"
+    },
+    "stage1ArchiveManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "stage2RegistryAggregateHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "stage2RegistryVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "stage3DatasetVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "stage3NormalizationManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "stage3NormalizedMatchAggregateHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "datasetVersion",
+    "phaseDefinitionVersion",
+    "stage1ArchiveManifestHash",
+    "stage2RegistryVersion",
+    "stage2RegistryAggregateHash",
+    "stage3DatasetVersion",
+    "stage3NormalizationManifestHash",
+    "stage3NormalizedMatchAggregateHash",
+    "artifacts",
+    "schemaFiles",
+    "analyticalDataAggregateHash",
+    "analyticalManifestHash"
+  ],
+  "type": "object"
+}

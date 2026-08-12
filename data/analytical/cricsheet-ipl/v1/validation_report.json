@@ -1,0 +1,8922 @@
+{
+  "analyticalManifestHash": "f437d9e03c1f1749b5a0b8b8c06a41e80c8f2d18e3d43d791b054014acf5998c",
+  "baselineComparisons": [
+    {
+      "actual": 1243,
+      "baseline": 1243,
+      "dataset": "matchSummaries",
+      "explanation": null,
+      "matches": true
+    },
+    {
+      "actual": 3392,
+      "baseline": 3392,
+      "dataset": "playerTeamSeasons",
+      "explanation": null,
+      "matches": true
+    },
+    {
+      "actual": 166,
+      "baseline": 166,
+      "dataset": "teamSeasons",
+      "explanation": null,
+      "matches": true
+    },
+    {
+      "actual": 19,
+      "baseline": 19,
+      "dataset": "seasonEnvironments",
+      "explanation": null,
+      "matches": true
+    },
+    {
+      "actual": 198,
+      "baseline": 198,
+      "dataset": "venueSeasonEnvironments",
+      "explanation": null,
+      "matches": true
+    }
+  ],
+  "counts": {
+    "normalInnings": 2480,
+    "provenanceFailures": 0,
+    "reconciliationFailures": 0,
+    "schemaFailures": 0,
+    "superOverInningsExcluded": 34
+  },
+  "datasetVersion": "cricsheet-ipl-analytics/v1",
+  "distributions": {
+    "environment": {
+      "matchCohorts": {
+        "adjusted": 33,
+        "incomplete_or_no_result": 9,
+        "standard": 1201
+      },
+      "smallVenueSeasons": 60,
+      "teamSeasonMatchCounts": {
+        "average": 14.975904,
+        "count": 166,
+        "histogram": [
+          {
+            "count": 1,
+            "value": 12
+          },
+          {
+            "count": 8,
+            "value": 13
+          },
+          {
+            "count": 75,
+            "value": 14
+          },
+          {
+            "count": 19,
+            "value": 15
+          },
+          {
+            "count": 43,
+            "value": 16
+          },
+          {
+            "count": 14,
+            "value": 17
+          },
+          {
+            "count": 5,
+            "value": 18
+          },
+          {
+            "count": 1,
+            "value": 19
+          }
+        ],
+        "maximum": 19,
+        "median": 14.0,
+        "minimum": 12
+      },
+      "teamSeasons": 166,
+      "venueSampleBands": {
+        "five_to_nine": 124,
+        "single_match": 4,
+        "ten_plus": 14,
+        "two_to_four": 56
+      },
+      "venueSeasonMatchCounts": {
+        "average": 6.277778,
+        "count": 198,
+        "histogram": [
+          {
+            "count": 4,
+            "value": 1
+          },
+          {
+            "count": 25,
+            "value": 2
+          },
+          {
+            "count": 12,
+            "value": 3
+          },
+          {
+            "count": 19,
+            "value": 4
+          },
+          {
+            "count": 14,
+            "value": 5
+          },
+          {
+            "count": 16,
+            "value": 6
+          },
+          {
+            "count": 61,
+            "value": 7
+          },
+          {
+            "count": 23,
+            "value": 8
+          },
+          {
+            "count": 10,
+            "value": 9
+          },
+          {
+            "count": 4,
+            "value": 10
+          },
+          {
+            "count": 2,
+            "value": 12
+          },
+          {
+            "count": 2,
+            "value": 13
+          },
+          {
+            "count": 1,
+            "value": 15
+          },
+          {
+            "count": 1,
+            "value": 16
+          },
+          {
+            "count": 1,
+            "value": 20
+          },
+          {
+            "count": 1,
+            "value": 21
+          },
+          {
+            "count": 1,
+            "value": 22
+          },
+          {
+            "count": 1,
+            "value": 26
+          }
+        ],
+        "maximum": 26,
+        "median": 7.0,
+        "minimum": 1
+      },
+      "venueSeasons": 198
+    },
+    "evidenceEventCounts": {
+      "absentHurtParticipantMatches": 6,
+      "concussionSubstitutes": 6,
+      "impactReplacements": 557,
+      "roleReplacements": 61,
+      "substituteFieldingEvents": 227
+    },
+    "evidenceProfileCounts": {
+      "absentHurtProfiles": 6,
+      "concussionProfiles": 12,
+      "eventOnlyProfiles": 158,
+      "impactProfiles": 388,
+      "roleReplacementProfiles": 105,
+      "substituteFieldingProfiles": 158
+    },
+    "participation": {
+      "allSeasons": {
+        "documentedInvolvementMatchCount": {
+          "average": 8.285967,
+          "count": 3392,
+          "histogram": [
+            {
+              "count": 352,
+              "value": 1
+            },
+            {
+              "count": 275,
+              "value": 2
+            },
+            {
+              "count": 246,
+              "value": 3
+            },
+            {
+              "count": 208,
+              "value": 4
+            },
+            {
+              "count": 190,
+              "value": 5
+            },
+            {
+              "count": 177,
+              "value": 6
+            },
+            {
+              "count": 167,
+              "value": 7
+            },
+            {
+              "count": 166,
+              "value": 8
+            },
+            {
+              "count": 137,
+              "value": 9
+            },
+            {
+              "count": 156,
+              "value": 10
+            },
+            {
+              "count": 155,
+              "value": 11
+            },
+            {
+              "count": 157,
+              "value": 12
+            },
+            {
+              "count": 202,
+              "value": 13
+            },
+            {
+              "count": 360,
+              "value": 14
+            },
+            {
+              "count": 154,
+              "value": 15
+            },
+            {
+              "count": 191,
+              "value": 16
+            },
+            {
+              "count": 75,
+              "value": 17
+            },
+            {
+              "count": 20,
+              "value": 18
+            },
+            {
+              "count": 4,
+              "value": 19
+            }
+          ],
+          "maximum": 19,
+          "median": 8.0,
+          "minimum": 1
+        },
+        "officialListMatchCount": {
+          "average": 8.227889,
+          "count": 3392,
+          "histogram": [
+            {
+              "count": 38,
+              "value": 0
+            },
+            {
+              "count": 342,
+              "value": 1
+            },
+            {
+              "count": 272,
+              "value": 2
+            },
+            {
+              "count": 242,
+              "value": 3
+            },
+            {
+              "count": 201,
+              "value": 4
+            },
+            {
+              "count": 192,
+              "value": 5
+            },
+            {
+              "count": 173,
+              "value": 6
+            },
+            {
+              "count": 167,
+              "value": 7
+            },
+            {
+              "count": 163,
+              "value": 8
+            },
+            {
+              "count": 139,
+              "value": 9
+            },
+            {
+              "count": 149,
+              "value": 10
+            },
+            {
+              "count": 155,
+              "value": 11
+            },
+            {
+              "count": 153,
+              "value": 12
+            },
+            {
+              "count": 202,
+              "value": 13
+            },
+            {
+              "count": 362,
+              "value": 14
+            },
+            {
+              "count": 153,
+              "value": 15
+            },
+            {
+              "count": 190,
+              "value": 16
+            },
+            {
+              "count": 75,
+              "value": 17
+            },
+            {
+              "count": 20,
+              "value": 18
+            },
+            {
+              "count": 4,
+              "value": 19
+            }
+          ],
+          "maximum": 19,
+          "median": 8.0,
+          "minimum": 0
+        },
+        "recordedActionMatchCount": {
+          "average": 8.090212,
+          "count": 3392,
+          "histogram": [
+            {
+              "count": 7,
+              "value": 0
+            },
+            {
+              "count": 357,
+              "value": 1
+            },
+            {
+              "count": 286,
+              "value": 2
+            },
+            {
+              "count": 250,
+              "value": 3
+            },
+            {
+              "count": 214,
+              "value": 4
+            },
+            {
+              "count": 191,
+              "value": 5
+            },
+            {
+              "count": 180,
+              "value": 6
+            },
+            {
+              "count": 168,
+              "value": 7
+            },
+            {
+              "count": 173,
+              "value": 8
+            },
+            {
+              "count": 136,
+              "value": 9
+            },
+            {
+              "count": 158,
+              "value": 10
+            },
+            {
+              "count": 162,
+              "value": 11
+            },
+            {
+              "count": 163,
+              "value": 12
+            },
+            {
+              "count": 227,
+              "value": 13
+            },
+            {
+              "count": 329,
+              "value": 14
+            },
+            {
+              "count": 145,
+              "value": 15
+            },
+            {
+              "count": 164,
+              "value": 16
+            },
+            {
+              "count": 66,
+              "value": 17
+            },
+            {
+              "count": 12,
+              "value": 18
+            },
+            {
+              "count": 4,
+              "value": 19
+            }
+          ],
+          "maximum": 19,
+          "median": 8.0,
+          "minimum": 0
+        }
+      },
+      "gapDistributions": {
+        "documentedMinusOfficial": {
+          "average": 0.058078,
+          "count": 3392,
+          "histogram": [
+            {
+              "count": 3234,
+              "value": 0
+            },
+            {
+              "count": 129,
+              "value": 1
+            },
+            {
+              "count": 21,
+              "value": 2
+            },
+            {
+              "count": 7,
+              "value": 3
+            },
+            {
+              "count": 1,
+              "value": 5
+            }
+          ],
+          "maximum": 5,
+          "median": 0.0,
+          "minimum": 0
+        },
+        "documentedMinusRecorded": {
+          "average": 0.195755,
+          "count": 3392,
+          "histogram": [
+            {
+              "count": 2927,
+              "value": 0
+            },
+            {
+              "count": 343,
+              "value": 1
+            },
+            {
+              "count": 73,
+              "value": 2
+            },
+            {
+              "count": 32,
+              "value": 3
+            },
+            {
+              "count": 12,
+              "value": 4
+            },
+            {
+              "count": 2,
+              "value": 5
+            },
+            {
+              "count": 2,
+              "value": 6
+            },
+            {
+              "count": 1,
+              "value": 9
+            }
+          ],
+          "maximum": 9,
+          "median": 0.0,
+          "minimum": 0
+        },
+        "officialMinusRecorded": {
+          "average": 0.137677,
+          "count": 3392,
+          "histogram": [
+            {
+              "count": 1,
+              "value": -5
+            },
+            {
+              "count": 6,
+              "value": -3
+            },
+            {
+              "count": 19,
+              "value": -2
+            },
+            {
+              "count": 114,
+              "value": -1
+            },
+            {
+              "count": 2800,
+              "value": 0
+            },
+            {
+              "count": 337,
+              "value": 1
+            },
+            {
+              "count": 68,
+              "value": 2
+            },
+            {
+              "count": 30,
+              "value": 3
+            },
+            {
+              "count": 12,
+              "value": 4
+            },
+            {
+              "count": 2,
+              "value": 5
+            },
+            {
+              "count": 2,
+              "value": 6
+            },
+            {
+              "count": 1,
+              "value": 9
+            }
+          ],
+          "maximum": 9,
+          "median": 0.0,
+          "minimum": -5
+        }
+      },
+      "impactEra": {
+        "documentedInvolvementMatchCount": {
+          "average": 8.474251,
+          "count": 835,
+          "histogram": [
+            {
+              "count": 80,
+              "value": 1
+            },
+            {
+              "count": 77,
+              "value": 2
+            },
+            {
+              "count": 56,
+              "value": 3
+            },
+            {
+              "count": 45,
+              "value": 4
+            },
+            {
+              "count": 35,
+              "value": 5
+            },
+            {
+              "count": 38,
+              "value": 6
+            },
+            {
+              "count": 42,
+              "value": 7
+            },
+            {
+              "count": 47,
+              "value": 8
+            },
+            {
+              "count": 31,
+              "value": 9
+            },
+            {
+              "count": 43,
+              "value": 10
+            },
+            {
+              "count": 36,
+              "value": 11
+            },
+            {
+              "count": 37,
+              "value": 12
+            },
+            {
+              "count": 54,
+              "value": 13
+            },
+            {
+              "count": 116,
+              "value": 14
+            },
+            {
+              "count": 44,
+              "value": 15
+            },
+            {
+              "count": 37,
+              "value": 16
+            },
+            {
+              "count": 12,
+              "value": 17
+            },
+            {
+              "count": 5,
+              "value": 18
+            }
+          ],
+          "maximum": 18,
+          "median": 8,
+          "minimum": 1
+        },
+        "officialListMatchCount": {
+          "average": 8.394012,
+          "count": 835,
+          "histogram": [
+            {
+              "count": 14,
+              "value": 0
+            },
+            {
+              "count": 76,
+              "value": 1
+            },
+            {
+              "count": 73,
+              "value": 2
+            },
+            {
+              "count": 56,
+              "value": 3
+            },
+            {
+              "count": 43,
+              "value": 4
+            },
+            {
+              "count": 36,
+              "value": 5
+            },
+            {
+              "count": 38,
+              "value": 6
+            },
+            {
+              "count": 43,
+              "value": 7
+            },
+            {
+              "count": 44,
+              "value": 8
+            },
+            {
+              "count": 32,
+              "value": 9
+            },
+            {
+              "count": 40,
+              "value": 10
+            },
+            {
+              "count": 38,
+              "value": 11
+            },
+            {
+              "count": 34,
+              "value": 12
+            },
+            {
+              "count": 54,
+              "value": 13
+            },
+            {
+              "count": 116,
+              "value": 14
+            },
+            {
+              "count": 44,
+              "value": 15
+            },
+            {
+              "count": 37,
+              "value": 16
+            },
+            {
+              "count": 12,
+              "value": 17
+            },
+            {
+              "count": 5,
+              "value": 18
+            }
+          ],
+          "maximum": 18,
+          "median": 8,
+          "minimum": 0
+        },
+        "recordedActionMatchCount": {
+          "average": 8.262275,
+          "count": 835,
+          "histogram": [
+            {
+              "count": 1,
+              "value": 0
+            },
+            {
+              "count": 82,
+              "value": 1
+            },
+            {
+              "count": 79,
+              "value": 2
+            },
+            {
+              "count": 54,
+              "value": 3
+            },
+            {
+              "count": 46,
+              "value": 4
+            },
+            {
+              "count": 37,
+              "value": 5
+            },
+            {
+              "count": 40,
+              "value": 6
+            },
+            {
+              "count": 42,
+              "value": 7
+            },
+            {
+              "count": 46,
+              "value": 8
+            },
+            {
+              "count": 34,
+              "value": 9
+            },
+            {
+              "count": 41,
+              "value": 10
+            },
+            {
+              "count": 47,
+              "value": 11
+            },
+            {
+              "count": 38,
+              "value": 12
+            },
+            {
+              "count": 68,
+              "value": 13
+            },
+            {
+              "count": 100,
+              "value": 14
+            },
+            {
+              "count": 41,
+              "value": 15
+            },
+            {
+              "count": 27,
+              "value": 16
+            },
+            {
+              "count": 10,
+              "value": 17
+            },
+            {
+              "count": 2,
+              "value": 18
+            }
+          ],
+          "maximum": 18,
+          "median": 8,
+          "minimum": 0
+        }
+      },
+      "impactEraIntersections": {
+        "officialAndRecorded": 6832,
+        "officialOnly": 177,
+        "recordedOnly": 67
+      },
+      "matchContributionIntersections": {
+        "officialAndRecorded": 27245,
+        "officialOnly": 664,
+        "recordedOnly": 197
+      },
+      "perSeason": [
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 7.889571,
+            "count": 163,
+            "histogram": [
+              {
+                "count": 12,
+                "value": 1
+              },
+              {
+                "count": 9,
+                "value": 2
+              },
+              {
+                "count": 13,
+                "value": 3
+              },
+              {
+                "count": 17,
+                "value": 4
+              },
+              {
+                "count": 12,
+                "value": 5
+              },
+              {
+                "count": 11,
+                "value": 6
+              },
+              {
+                "count": 9,
+                "value": 7
+              },
+              {
+                "count": 7,
+                "value": 8
+              },
+              {
+                "count": 12,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 10,
+                "value": 11
+              },
+              {
+                "count": 1,
+                "value": 12
+              },
+              {
+                "count": 15,
+                "value": 13
+              },
+              {
+                "count": 12,
+                "value": 14
+              },
+              {
+                "count": 9,
+                "value": 15
+              },
+              {
+                "count": 6,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 7,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 7.828221,
+            "count": 163,
+            "histogram": [
+              {
+                "count": 12,
+                "value": 1
+              },
+              {
+                "count": 11,
+                "value": 2
+              },
+              {
+                "count": 13,
+                "value": 3
+              },
+              {
+                "count": 16,
+                "value": 4
+              },
+              {
+                "count": 11,
+                "value": 5
+              },
+              {
+                "count": 12,
+                "value": 6
+              },
+              {
+                "count": 9,
+                "value": 7
+              },
+              {
+                "count": 8,
+                "value": 8
+              },
+              {
+                "count": 10,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 10,
+                "value": 11
+              },
+              {
+                "count": 1,
+                "value": 12
+              },
+              {
+                "count": 15,
+                "value": 13
+              },
+              {
+                "count": 13,
+                "value": 14
+              },
+              {
+                "count": 8,
+                "value": 15
+              },
+              {
+                "count": 6,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 7,
+            "minimum": 1
+          },
+          "recordedActionMatchCount": {
+            "average": 7.625767,
+            "count": 163,
+            "histogram": [
+              {
+                "count": 2,
+                "value": 0
+              },
+              {
+                "count": 10,
+                "value": 1
+              },
+              {
+                "count": 11,
+                "value": 2
+              },
+              {
+                "count": 15,
+                "value": 3
+              },
+              {
+                "count": 17,
+                "value": 4
+              },
+              {
+                "count": 10,
+                "value": 5
+              },
+              {
+                "count": 11,
+                "value": 6
+              },
+              {
+                "count": 8,
+                "value": 7
+              },
+              {
+                "count": 9,
+                "value": 8
+              },
+              {
+                "count": 10,
+                "value": 9
+              },
+              {
+                "count": 12,
+                "value": 10
+              },
+              {
+                "count": 7,
+                "value": 11
+              },
+              {
+                "count": 4,
+                "value": 12
+              },
+              {
+                "count": 13,
+                "value": 13
+              },
+              {
+                "count": 12,
+                "value": 14
+              },
+              {
+                "count": 10,
+                "value": 15
+              },
+              {
+                "count": 2,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 7,
+            "minimum": 0
+          },
+          "seasonId": "ipl-2008"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 7.618182,
+            "count": 165,
+            "histogram": [
+              {
+                "count": 15,
+                "value": 1
+              },
+              {
+                "count": 17,
+                "value": 2
+              },
+              {
+                "count": 11,
+                "value": 3
+              },
+              {
+                "count": 10,
+                "value": 4
+              },
+              {
+                "count": 16,
+                "value": 5
+              },
+              {
+                "count": 5,
+                "value": 6
+              },
+              {
+                "count": 7,
+                "value": 7
+              },
+              {
+                "count": 15,
+                "value": 8
+              },
+              {
+                "count": 10,
+                "value": 9
+              },
+              {
+                "count": 5,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 7,
+                "value": 12
+              },
+              {
+                "count": 17,
+                "value": 13
+              },
+              {
+                "count": 9,
+                "value": 14
+              },
+              {
+                "count": 6,
+                "value": 15
+              },
+              {
+                "count": 6,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 8,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 7.6,
+            "count": 165,
+            "histogram": [
+              {
+                "count": 15,
+                "value": 1
+              },
+              {
+                "count": 18,
+                "value": 2
+              },
+              {
+                "count": 10,
+                "value": 3
+              },
+              {
+                "count": 10,
+                "value": 4
+              },
+              {
+                "count": 16,
+                "value": 5
+              },
+              {
+                "count": 5,
+                "value": 6
+              },
+              {
+                "count": 8,
+                "value": 7
+              },
+              {
+                "count": 14,
+                "value": 8
+              },
+              {
+                "count": 11,
+                "value": 9
+              },
+              {
+                "count": 4,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 7,
+                "value": 12
+              },
+              {
+                "count": 17,
+                "value": 13
+              },
+              {
+                "count": 9,
+                "value": 14
+              },
+              {
+                "count": 6,
+                "value": 15
+              },
+              {
+                "count": 6,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 8,
+            "minimum": 1
+          },
+          "recordedActionMatchCount": {
+            "average": 7.4,
+            "count": 165,
+            "histogram": [
+              {
+                "count": 17,
+                "value": 1
+              },
+              {
+                "count": 16,
+                "value": 2
+              },
+              {
+                "count": 12,
+                "value": 3
+              },
+              {
+                "count": 12,
+                "value": 4
+              },
+              {
+                "count": 13,
+                "value": 5
+              },
+              {
+                "count": 5,
+                "value": 6
+              },
+              {
+                "count": 12,
+                "value": 7
+              },
+              {
+                "count": 15,
+                "value": 8
+              },
+              {
+                "count": 6,
+                "value": 9
+              },
+              {
+                "count": 4,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 8,
+                "value": 12
+              },
+              {
+                "count": 17,
+                "value": 13
+              },
+              {
+                "count": 10,
+                "value": 14
+              },
+              {
+                "count": 5,
+                "value": 15
+              },
+              {
+                "count": 4,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 7,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2009"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 7.342541,
+            "count": 181,
+            "histogram": [
+              {
+                "count": 24,
+                "value": 1
+              },
+              {
+                "count": 13,
+                "value": 2
+              },
+              {
+                "count": 18,
+                "value": 3
+              },
+              {
+                "count": 11,
+                "value": 4
+              },
+              {
+                "count": 13,
+                "value": 5
+              },
+              {
+                "count": 12,
+                "value": 6
+              },
+              {
+                "count": 13,
+                "value": 7
+              },
+              {
+                "count": 10,
+                "value": 8
+              },
+              {
+                "count": 5,
+                "value": 9
+              },
+              {
+                "count": 7,
+                "value": 10
+              },
+              {
+                "count": 8,
+                "value": 11
+              },
+              {
+                "count": 5,
+                "value": 12
+              },
+              {
+                "count": 8,
+                "value": 13
+              },
+              {
+                "count": 17,
+                "value": 14
+              },
+              {
+                "count": 4,
+                "value": 15
+              },
+              {
+                "count": 13,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 6,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 7.292818,
+            "count": 181,
+            "histogram": [
+              {
+                "count": 26,
+                "value": 1
+              },
+              {
+                "count": 12,
+                "value": 2
+              },
+              {
+                "count": 17,
+                "value": 3
+              },
+              {
+                "count": 12,
+                "value": 4
+              },
+              {
+                "count": 12,
+                "value": 5
+              },
+              {
+                "count": 13,
+                "value": 6
+              },
+              {
+                "count": 14,
+                "value": 7
+              },
+              {
+                "count": 8,
+                "value": 8
+              },
+              {
+                "count": 5,
+                "value": 9
+              },
+              {
+                "count": 9,
+                "value": 10
+              },
+              {
+                "count": 6,
+                "value": 11
+              },
+              {
+                "count": 5,
+                "value": 12
+              },
+              {
+                "count": 8,
+                "value": 13
+              },
+              {
+                "count": 17,
+                "value": 14
+              },
+              {
+                "count": 4,
+                "value": 15
+              },
+              {
+                "count": 13,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 6,
+            "minimum": 1
+          },
+          "recordedActionMatchCount": {
+            "average": 7.160221,
+            "count": 181,
+            "histogram": [
+              {
+                "count": 2,
+                "value": 0
+              },
+              {
+                "count": 22,
+                "value": 1
+              },
+              {
+                "count": 15,
+                "value": 2
+              },
+              {
+                "count": 17,
+                "value": 3
+              },
+              {
+                "count": 13,
+                "value": 4
+              },
+              {
+                "count": 14,
+                "value": 5
+              },
+              {
+                "count": 10,
+                "value": 6
+              },
+              {
+                "count": 13,
+                "value": 7
+              },
+              {
+                "count": 11,
+                "value": 8
+              },
+              {
+                "count": 4,
+                "value": 9
+              },
+              {
+                "count": 6,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 7,
+                "value": 12
+              },
+              {
+                "count": 5,
+                "value": 13
+              },
+              {
+                "count": 17,
+                "value": 14
+              },
+              {
+                "count": 6,
+                "value": 15
+              },
+              {
+                "count": 10,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 6,
+            "minimum": 0
+          },
+          "seasonId": "ipl-2010"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.024876,
+            "count": 201,
+            "histogram": [
+              {
+                "count": 24,
+                "value": 1
+              },
+              {
+                "count": 16,
+                "value": 2
+              },
+              {
+                "count": 11,
+                "value": 3
+              },
+              {
+                "count": 12,
+                "value": 4
+              },
+              {
+                "count": 14,
+                "value": 5
+              },
+              {
+                "count": 18,
+                "value": 6
+              },
+              {
+                "count": 8,
+                "value": 7
+              },
+              {
+                "count": 8,
+                "value": 8
+              },
+              {
+                "count": 4,
+                "value": 9
+              },
+              {
+                "count": 9,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 11,
+                "value": 12
+              },
+              {
+                "count": 13,
+                "value": 13
+              },
+              {
+                "count": 21,
+                "value": 14
+              },
+              {
+                "count": 10,
+                "value": 15
+              },
+              {
+                "count": 13,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 7,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 7.99005,
+            "count": 201,
+            "histogram": [
+              {
+                "count": 2,
+                "value": 0
+              },
+              {
+                "count": 22,
+                "value": 1
+              },
+              {
+                "count": 18,
+                "value": 2
+              },
+              {
+                "count": 10,
+                "value": 3
+              },
+              {
+                "count": 11,
+                "value": 4
+              },
+              {
+                "count": 14,
+                "value": 5
+              },
+              {
+                "count": 18,
+                "value": 6
+              },
+              {
+                "count": 9,
+                "value": 7
+              },
+              {
+                "count": 7,
+                "value": 8
+              },
+              {
+                "count": 4,
+                "value": 9
+              },
+              {
+                "count": 10,
+                "value": 10
+              },
+              {
+                "count": 8,
+                "value": 11
+              },
+              {
+                "count": 11,
+                "value": 12
+              },
+              {
+                "count": 13,
+                "value": 13
+              },
+              {
+                "count": 21,
+                "value": 14
+              },
+              {
+                "count": 10,
+                "value": 15
+              },
+              {
+                "count": 13,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 7,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 7.721393,
+            "count": 201,
+            "histogram": [
+              {
+                "count": 25,
+                "value": 1
+              },
+              {
+                "count": 15,
+                "value": 2
+              },
+              {
+                "count": 13,
+                "value": 3
+              },
+              {
+                "count": 15,
+                "value": 4
+              },
+              {
+                "count": 18,
+                "value": 5
+              },
+              {
+                "count": 16,
+                "value": 6
+              },
+              {
+                "count": 5,
+                "value": 7
+              },
+              {
+                "count": 8,
+                "value": 8
+              },
+              {
+                "count": 6,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 6,
+                "value": 11
+              },
+              {
+                "count": 10,
+                "value": 12
+              },
+              {
+                "count": 18,
+                "value": 13
+              },
+              {
+                "count": 20,
+                "value": 14
+              },
+              {
+                "count": 9,
+                "value": 15
+              },
+              {
+                "count": 9,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 6,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2011"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.581152,
+            "count": 191,
+            "histogram": [
+              {
+                "count": 23,
+                "value": 1
+              },
+              {
+                "count": 12,
+                "value": 2
+              },
+              {
+                "count": 10,
+                "value": 3
+              },
+              {
+                "count": 14,
+                "value": 4
+              },
+              {
+                "count": 9,
+                "value": 5
+              },
+              {
+                "count": 11,
+                "value": 6
+              },
+              {
+                "count": 9,
+                "value": 7
+              },
+              {
+                "count": 10,
+                "value": 8
+              },
+              {
+                "count": 11,
+                "value": 9
+              },
+              {
+                "count": 7,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 11,
+                "value": 12
+              },
+              {
+                "count": 6,
+                "value": 13
+              },
+              {
+                "count": 10,
+                "value": 14
+              },
+              {
+                "count": 12,
+                "value": 15
+              },
+              {
+                "count": 11,
+                "value": 16
+              },
+              {
+                "count": 10,
+                "value": 17
+              },
+              {
+                "count": 6,
+                "value": 18
+              }
+            ],
+            "maximum": 18,
+            "median": 8,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 8.52356,
+            "count": 191,
+            "histogram": [
+              {
+                "count": 1,
+                "value": 0
+              },
+              {
+                "count": 23,
+                "value": 1
+              },
+              {
+                "count": 12,
+                "value": 2
+              },
+              {
+                "count": 11,
+                "value": 3
+              },
+              {
+                "count": 13,
+                "value": 4
+              },
+              {
+                "count": 9,
+                "value": 5
+              },
+              {
+                "count": 12,
+                "value": 6
+              },
+              {
+                "count": 7,
+                "value": 7
+              },
+              {
+                "count": 10,
+                "value": 8
+              },
+              {
+                "count": 12,
+                "value": 9
+              },
+              {
+                "count": 6,
+                "value": 10
+              },
+              {
+                "count": 10,
+                "value": 11
+              },
+              {
+                "count": 10,
+                "value": 12
+              },
+              {
+                "count": 6,
+                "value": 13
+              },
+              {
+                "count": 10,
+                "value": 14
+              },
+              {
+                "count": 12,
+                "value": 15
+              },
+              {
+                "count": 11,
+                "value": 16
+              },
+              {
+                "count": 10,
+                "value": 17
+              },
+              {
+                "count": 6,
+                "value": 18
+              }
+            ],
+            "maximum": 18,
+            "median": 8,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 8.329843,
+            "count": 191,
+            "histogram": [
+              {
+                "count": 1,
+                "value": 0
+              },
+              {
+                "count": 22,
+                "value": 1
+              },
+              {
+                "count": 13,
+                "value": 2
+              },
+              {
+                "count": 11,
+                "value": 3
+              },
+              {
+                "count": 16,
+                "value": 4
+              },
+              {
+                "count": 6,
+                "value": 5
+              },
+              {
+                "count": 10,
+                "value": 6
+              },
+              {
+                "count": 12,
+                "value": 7
+              },
+              {
+                "count": 10,
+                "value": 8
+              },
+              {
+                "count": 12,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 8,
+                "value": 11
+              },
+              {
+                "count": 11,
+                "value": 12
+              },
+              {
+                "count": 8,
+                "value": 13
+              },
+              {
+                "count": 9,
+                "value": 14
+              },
+              {
+                "count": 8,
+                "value": 15
+              },
+              {
+                "count": 12,
+                "value": 16
+              },
+              {
+                "count": 10,
+                "value": 17
+              },
+              {
+                "count": 4,
+                "value": 18
+              }
+            ],
+            "maximum": 18,
+            "median": 8,
+            "minimum": 0
+          },
+          "seasonId": "ipl-2012"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.422111,
+            "count": 199,
+            "histogram": [
+              {
+                "count": 24,
+                "value": 1
+              },
+              {
+                "count": 23,
+                "value": 2
+              },
+              {
+                "count": 21,
+                "value": 3
+              },
+              {
+                "count": 10,
+                "value": 4
+              },
+              {
+                "count": 7,
+                "value": 5
+              },
+              {
+                "count": 8,
+                "value": 6
+              },
+              {
+                "count": 6,
+                "value": 7
+              },
+              {
+                "count": 7,
+                "value": 8
+              },
+              {
+                "count": 5,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 8,
+                "value": 11
+              },
+              {
+                "count": 8,
+                "value": 12
+              },
+              {
+                "count": 10,
+                "value": 13
+              },
+              {
+                "count": 7,
+                "value": 14
+              },
+              {
+                "count": 6,
+                "value": 15
+              },
+              {
+                "count": 19,
+                "value": 16
+              },
+              {
+                "count": 9,
+                "value": 17
+              },
+              {
+                "count": 9,
+                "value": 18
+              },
+              {
+                "count": 4,
+                "value": 19
+              }
+            ],
+            "maximum": 19,
+            "median": 8,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 8.40201,
+            "count": 199,
+            "histogram": [
+              {
+                "count": 1,
+                "value": 0
+              },
+              {
+                "count": 24,
+                "value": 1
+              },
+              {
+                "count": 23,
+                "value": 2
+              },
+              {
+                "count": 21,
+                "value": 3
+              },
+              {
+                "count": 9,
+                "value": 4
+              },
+              {
+                "count": 7,
+                "value": 5
+              },
+              {
+                "count": 8,
+                "value": 6
+              },
+              {
+                "count": 6,
+                "value": 7
+              },
+              {
+                "count": 7,
+                "value": 8
+              },
+              {
+                "count": 5,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 8,
+                "value": 11
+              },
+              {
+                "count": 8,
+                "value": 12
+              },
+              {
+                "count": 10,
+                "value": 13
+              },
+              {
+                "count": 7,
+                "value": 14
+              },
+              {
+                "count": 6,
+                "value": 15
+              },
+              {
+                "count": 19,
+                "value": 16
+              },
+              {
+                "count": 9,
+                "value": 17
+              },
+              {
+                "count": 9,
+                "value": 18
+              },
+              {
+                "count": 4,
+                "value": 19
+              }
+            ],
+            "maximum": 19,
+            "median": 8,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 8.231156,
+            "count": 199,
+            "histogram": [
+              {
+                "count": 1,
+                "value": 0
+              },
+              {
+                "count": 23,
+                "value": 1
+              },
+              {
+                "count": 25,
+                "value": 2
+              },
+              {
+                "count": 21,
+                "value": 3
+              },
+              {
+                "count": 9,
+                "value": 4
+              },
+              {
+                "count": 7,
+                "value": 5
+              },
+              {
+                "count": 7,
+                "value": 6
+              },
+              {
+                "count": 8,
+                "value": 7
+              },
+              {
+                "count": 8,
+                "value": 8
+              },
+              {
+                "count": 5,
+                "value": 9
+              },
+              {
+                "count": 9,
+                "value": 10
+              },
+              {
+                "count": 10,
+                "value": 11
+              },
+              {
+                "count": 3,
+                "value": 12
+              },
+              {
+                "count": 11,
+                "value": 13
+              },
+              {
+                "count": 6,
+                "value": 14
+              },
+              {
+                "count": 9,
+                "value": 15
+              },
+              {
+                "count": 17,
+                "value": 16
+              },
+              {
+                "count": 10,
+                "value": 17
+              },
+              {
+                "count": 6,
+                "value": 18
+              },
+              {
+                "count": 4,
+                "value": 19
+              }
+            ],
+            "maximum": 19,
+            "median": 7,
+            "minimum": 0
+          },
+          "seasonId": "ipl-2013"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.660131,
+            "count": 153,
+            "histogram": [
+              {
+                "count": 16,
+                "value": 1
+              },
+              {
+                "count": 10,
+                "value": 2
+              },
+              {
+                "count": 11,
+                "value": 3
+              },
+              {
+                "count": 10,
+                "value": 4
+              },
+              {
+                "count": 9,
+                "value": 5
+              },
+              {
+                "count": 3,
+                "value": 6
+              },
+              {
+                "count": 5,
+                "value": 7
+              },
+              {
+                "count": 7,
+                "value": 8
+              },
+              {
+                "count": 9,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 8,
+                "value": 12
+              },
+              {
+                "count": 10,
+                "value": 13
+              },
+              {
+                "count": 15,
+                "value": 14
+              },
+              {
+                "count": 6,
+                "value": 15
+              },
+              {
+                "count": 13,
+                "value": 16
+              },
+              {
+                "count": 4,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 9,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 8.627451,
+            "count": 153,
+            "histogram": [
+              {
+                "count": 1,
+                "value": 0
+              },
+              {
+                "count": 15,
+                "value": 1
+              },
+              {
+                "count": 10,
+                "value": 2
+              },
+              {
+                "count": 13,
+                "value": 3
+              },
+              {
+                "count": 9,
+                "value": 4
+              },
+              {
+                "count": 8,
+                "value": 5
+              },
+              {
+                "count": 3,
+                "value": 6
+              },
+              {
+                "count": 5,
+                "value": 7
+              },
+              {
+                "count": 8,
+                "value": 8
+              },
+              {
+                "count": 8,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 8,
+                "value": 12
+              },
+              {
+                "count": 10,
+                "value": 13
+              },
+              {
+                "count": 15,
+                "value": 14
+              },
+              {
+                "count": 6,
+                "value": 15
+              },
+              {
+                "count": 13,
+                "value": 16
+              },
+              {
+                "count": 4,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 9,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 8.470588,
+            "count": 153,
+            "histogram": [
+              {
+                "count": 16,
+                "value": 1
+              },
+              {
+                "count": 12,
+                "value": 2
+              },
+              {
+                "count": 9,
+                "value": 3
+              },
+              {
+                "count": 12,
+                "value": 4
+              },
+              {
+                "count": 7,
+                "value": 5
+              },
+              {
+                "count": 4,
+                "value": 6
+              },
+              {
+                "count": 5,
+                "value": 7
+              },
+              {
+                "count": 8,
+                "value": 8
+              },
+              {
+                "count": 9,
+                "value": 9
+              },
+              {
+                "count": 9,
+                "value": 10
+              },
+              {
+                "count": 7,
+                "value": 11
+              },
+              {
+                "count": 10,
+                "value": 12
+              },
+              {
+                "count": 10,
+                "value": 13
+              },
+              {
+                "count": 17,
+                "value": 14
+              },
+              {
+                "count": 4,
+                "value": 15
+              },
+              {
+                "count": 11,
+                "value": 16
+              },
+              {
+                "count": 3,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 9,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2014"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.917808,
+            "count": 146,
+            "histogram": [
+              {
+                "count": 14,
+                "value": 1
+              },
+              {
+                "count": 11,
+                "value": 2
+              },
+              {
+                "count": 6,
+                "value": 3
+              },
+              {
+                "count": 14,
+                "value": 4
+              },
+              {
+                "count": 6,
+                "value": 5
+              },
+              {
+                "count": 6,
+                "value": 6
+              },
+              {
+                "count": 7,
+                "value": 7
+              },
+              {
+                "count": 2,
+                "value": 8
+              },
+              {
+                "count": 5,
+                "value": 9
+              },
+              {
+                "count": 7,
+                "value": 10
+              },
+              {
+                "count": 6,
+                "value": 11
+              },
+              {
+                "count": 4,
+                "value": 12
+              },
+              {
+                "count": 16,
+                "value": 13
+              },
+              {
+                "count": 24,
+                "value": 14
+              },
+              {
+                "count": 5,
+                "value": 15
+              },
+              {
+                "count": 8,
+                "value": 16
+              },
+              {
+                "count": 5,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 10.0,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 8.890411,
+            "count": 146,
+            "histogram": [
+              {
+                "count": 1,
+                "value": 0
+              },
+              {
+                "count": 13,
+                "value": 1
+              },
+              {
+                "count": 11,
+                "value": 2
+              },
+              {
+                "count": 7,
+                "value": 3
+              },
+              {
+                "count": 13,
+                "value": 4
+              },
+              {
+                "count": 6,
+                "value": 5
+              },
+              {
+                "count": 7,
+                "value": 6
+              },
+              {
+                "count": 6,
+                "value": 7
+              },
+              {
+                "count": 2,
+                "value": 8
+              },
+              {
+                "count": 6,
+                "value": 9
+              },
+              {
+                "count": 6,
+                "value": 10
+              },
+              {
+                "count": 6,
+                "value": 11
+              },
+              {
+                "count": 4,
+                "value": 12
+              },
+              {
+                "count": 16,
+                "value": 13
+              },
+              {
+                "count": 24,
+                "value": 14
+              },
+              {
+                "count": 5,
+                "value": 15
+              },
+              {
+                "count": 8,
+                "value": 16
+              },
+              {
+                "count": 5,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 10.0,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 8.712329,
+            "count": 146,
+            "histogram": [
+              {
+                "count": 14,
+                "value": 1
+              },
+              {
+                "count": 12,
+                "value": 2
+              },
+              {
+                "count": 7,
+                "value": 3
+              },
+              {
+                "count": 14,
+                "value": 4
+              },
+              {
+                "count": 5,
+                "value": 5
+              },
+              {
+                "count": 6,
+                "value": 6
+              },
+              {
+                "count": 6,
+                "value": 7
+              },
+              {
+                "count": 4,
+                "value": 8
+              },
+              {
+                "count": 4,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 6,
+                "value": 11
+              },
+              {
+                "count": 8,
+                "value": 12
+              },
+              {
+                "count": 16,
+                "value": 13
+              },
+              {
+                "count": 20,
+                "value": 14
+              },
+              {
+                "count": 4,
+                "value": 15
+              },
+              {
+                "count": 8,
+                "value": 16
+              },
+              {
+                "count": 4,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 10.0,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2015"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.275,
+            "count": 160,
+            "histogram": [
+              {
+                "count": 12,
+                "value": 1
+              },
+              {
+                "count": 11,
+                "value": 2
+              },
+              {
+                "count": 10,
+                "value": 3
+              },
+              {
+                "count": 19,
+                "value": 4
+              },
+              {
+                "count": 11,
+                "value": 5
+              },
+              {
+                "count": 9,
+                "value": 6
+              },
+              {
+                "count": 8,
+                "value": 7
+              },
+              {
+                "count": 7,
+                "value": 8
+              },
+              {
+                "count": 4,
+                "value": 9
+              },
+              {
+                "count": 10,
+                "value": 10
+              },
+              {
+                "count": 5,
+                "value": 11
+              },
+              {
+                "count": 9,
+                "value": 12
+              },
+              {
+                "count": 5,
+                "value": 13
+              },
+              {
+                "count": 20,
+                "value": 14
+              },
+              {
+                "count": 7,
+                "value": 15
+              },
+              {
+                "count": 7,
+                "value": 16
+              },
+              {
+                "count": 6,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 7.5,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 8.25,
+            "count": 160,
+            "histogram": [
+              {
+                "count": 1,
+                "value": 0
+              },
+              {
+                "count": 12,
+                "value": 1
+              },
+              {
+                "count": 10,
+                "value": 2
+              },
+              {
+                "count": 10,
+                "value": 3
+              },
+              {
+                "count": 20,
+                "value": 4
+              },
+              {
+                "count": 11,
+                "value": 5
+              },
+              {
+                "count": 8,
+                "value": 6
+              },
+              {
+                "count": 8,
+                "value": 7
+              },
+              {
+                "count": 7,
+                "value": 8
+              },
+              {
+                "count": 4,
+                "value": 9
+              },
+              {
+                "count": 10,
+                "value": 10
+              },
+              {
+                "count": 5,
+                "value": 11
+              },
+              {
+                "count": 9,
+                "value": 12
+              },
+              {
+                "count": 5,
+                "value": 13
+              },
+              {
+                "count": 20,
+                "value": 14
+              },
+              {
+                "count": 7,
+                "value": 15
+              },
+              {
+                "count": 7,
+                "value": 16
+              },
+              {
+                "count": 6,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 7.5,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 8.1,
+            "count": 160,
+            "histogram": [
+              {
+                "count": 13,
+                "value": 1
+              },
+              {
+                "count": 11,
+                "value": 2
+              },
+              {
+                "count": 13,
+                "value": 3
+              },
+              {
+                "count": 16,
+                "value": 4
+              },
+              {
+                "count": 11,
+                "value": 5
+              },
+              {
+                "count": 9,
+                "value": 6
+              },
+              {
+                "count": 7,
+                "value": 7
+              },
+              {
+                "count": 9,
+                "value": 8
+              },
+              {
+                "count": 4,
+                "value": 9
+              },
+              {
+                "count": 9,
+                "value": 10
+              },
+              {
+                "count": 5,
+                "value": 11
+              },
+              {
+                "count": 12,
+                "value": 12
+              },
+              {
+                "count": 5,
+                "value": 13
+              },
+              {
+                "count": 18,
+                "value": 14
+              },
+              {
+                "count": 6,
+                "value": 15
+              },
+              {
+                "count": 8,
+                "value": 16
+              },
+              {
+                "count": 4,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 7.5,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2016"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 7.993902,
+            "count": 164,
+            "histogram": [
+              {
+                "count": 17,
+                "value": 1
+              },
+              {
+                "count": 12,
+                "value": 2
+              },
+              {
+                "count": 15,
+                "value": 3
+              },
+              {
+                "count": 8,
+                "value": 4
+              },
+              {
+                "count": 8,
+                "value": 5
+              },
+              {
+                "count": 14,
+                "value": 6
+              },
+              {
+                "count": 10,
+                "value": 7
+              },
+              {
+                "count": 5,
+                "value": 8
+              },
+              {
+                "count": 5,
+                "value": 9
+              },
+              {
+                "count": 7,
+                "value": 10
+              },
+              {
+                "count": 8,
+                "value": 11
+              },
+              {
+                "count": 15,
+                "value": 12
+              },
+              {
+                "count": 8,
+                "value": 13
+              },
+              {
+                "count": 20,
+                "value": 14
+              },
+              {
+                "count": 3,
+                "value": 15
+              },
+              {
+                "count": 6,
+                "value": 16
+              },
+              {
+                "count": 3,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 7.0,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 7.914634,
+            "count": 164,
+            "histogram": [
+              {
+                "count": 3,
+                "value": 0
+              },
+              {
+                "count": 17,
+                "value": 1
+              },
+              {
+                "count": 11,
+                "value": 2
+              },
+              {
+                "count": 14,
+                "value": 3
+              },
+              {
+                "count": 8,
+                "value": 4
+              },
+              {
+                "count": 9,
+                "value": 5
+              },
+              {
+                "count": 13,
+                "value": 6
+              },
+              {
+                "count": 9,
+                "value": 7
+              },
+              {
+                "count": 5,
+                "value": 8
+              },
+              {
+                "count": 5,
+                "value": 9
+              },
+              {
+                "count": 7,
+                "value": 10
+              },
+              {
+                "count": 8,
+                "value": 11
+              },
+              {
+                "count": 15,
+                "value": 12
+              },
+              {
+                "count": 8,
+                "value": 13
+              },
+              {
+                "count": 20,
+                "value": 14
+              },
+              {
+                "count": 3,
+                "value": 15
+              },
+              {
+                "count": 6,
+                "value": 16
+              },
+              {
+                "count": 3,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 7.0,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 7.835366,
+            "count": 164,
+            "histogram": [
+              {
+                "count": 19,
+                "value": 1
+              },
+              {
+                "count": 12,
+                "value": 2
+              },
+              {
+                "count": 14,
+                "value": 3
+              },
+              {
+                "count": 7,
+                "value": 4
+              },
+              {
+                "count": 9,
+                "value": 5
+              },
+              {
+                "count": 14,
+                "value": 6
+              },
+              {
+                "count": 10,
+                "value": 7
+              },
+              {
+                "count": 6,
+                "value": 8
+              },
+              {
+                "count": 5,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 7,
+                "value": 11
+              },
+              {
+                "count": 15,
+                "value": 12
+              },
+              {
+                "count": 10,
+                "value": 13
+              },
+              {
+                "count": 18,
+                "value": 14
+              },
+              {
+                "count": 1,
+                "value": 15
+              },
+              {
+                "count": 7,
+                "value": 16
+              },
+              {
+                "count": 2,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 7.0,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2017"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.81457,
+            "count": 151,
+            "histogram": [
+              {
+                "count": 15,
+                "value": 1
+              },
+              {
+                "count": 7,
+                "value": 2
+              },
+              {
+                "count": 6,
+                "value": 3
+              },
+              {
+                "count": 10,
+                "value": 4
+              },
+              {
+                "count": 6,
+                "value": 5
+              },
+              {
+                "count": 15,
+                "value": 6
+              },
+              {
+                "count": 11,
+                "value": 7
+              },
+              {
+                "count": 5,
+                "value": 8
+              },
+              {
+                "count": 7,
+                "value": 9
+              },
+              {
+                "count": 6,
+                "value": 10
+              },
+              {
+                "count": 7,
+                "value": 11
+              },
+              {
+                "count": 6,
+                "value": 12
+              },
+              {
+                "count": 9,
+                "value": 13
+              },
+              {
+                "count": 16,
+                "value": 14
+              },
+              {
+                "count": 10,
+                "value": 15
+              },
+              {
+                "count": 11,
+                "value": 16
+              },
+              {
+                "count": 4,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 9,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 8.741722,
+            "count": 151,
+            "histogram": [
+              {
+                "count": 2,
+                "value": 0
+              },
+              {
+                "count": 14,
+                "value": 1
+              },
+              {
+                "count": 6,
+                "value": 2
+              },
+              {
+                "count": 7,
+                "value": 3
+              },
+              {
+                "count": 10,
+                "value": 4
+              },
+              {
+                "count": 7,
+                "value": 5
+              },
+              {
+                "count": 14,
+                "value": 6
+              },
+              {
+                "count": 10,
+                "value": 7
+              },
+              {
+                "count": 6,
+                "value": 8
+              },
+              {
+                "count": 8,
+                "value": 9
+              },
+              {
+                "count": 4,
+                "value": 10
+              },
+              {
+                "count": 7,
+                "value": 11
+              },
+              {
+                "count": 6,
+                "value": 12
+              },
+              {
+                "count": 9,
+                "value": 13
+              },
+              {
+                "count": 16,
+                "value": 14
+              },
+              {
+                "count": 10,
+                "value": 15
+              },
+              {
+                "count": 11,
+                "value": 16
+              },
+              {
+                "count": 4,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 8.655629,
+            "count": 151,
+            "histogram": [
+              {
+                "count": 15,
+                "value": 1
+              },
+              {
+                "count": 7,
+                "value": 2
+              },
+              {
+                "count": 6,
+                "value": 3
+              },
+              {
+                "count": 10,
+                "value": 4
+              },
+              {
+                "count": 9,
+                "value": 5
+              },
+              {
+                "count": 15,
+                "value": 6
+              },
+              {
+                "count": 9,
+                "value": 7
+              },
+              {
+                "count": 6,
+                "value": 8
+              },
+              {
+                "count": 8,
+                "value": 9
+              },
+              {
+                "count": 5,
+                "value": 10
+              },
+              {
+                "count": 7,
+                "value": 11
+              },
+              {
+                "count": 7,
+                "value": 12
+              },
+              {
+                "count": 8,
+                "value": 13
+              },
+              {
+                "count": 17,
+                "value": 14
+              },
+              {
+                "count": 7,
+                "value": 15
+              },
+              {
+                "count": 11,
+                "value": 16
+              },
+              {
+                "count": 4,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2018"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.084848,
+            "count": 165,
+            "histogram": [
+              {
+                "count": 19,
+                "value": 1
+              },
+              {
+                "count": 14,
+                "value": 2
+              },
+              {
+                "count": 14,
+                "value": 3
+              },
+              {
+                "count": 11,
+                "value": 4
+              },
+              {
+                "count": 9,
+                "value": 5
+              },
+              {
+                "count": 5,
+                "value": 6
+              },
+              {
+                "count": 7,
+                "value": 7
+              },
+              {
+                "count": 8,
+                "value": 8
+              },
+              {
+                "count": 7,
+                "value": 9
+              },
+              {
+                "count": 7,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 11,
+                "value": 12
+              },
+              {
+                "count": 9,
+                "value": 13
+              },
+              {
+                "count": 14,
+                "value": 14
+              },
+              {
+                "count": 5,
+                "value": 15
+              },
+              {
+                "count": 11,
+                "value": 16
+              },
+              {
+                "count": 5,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 8.0,
+            "count": 165,
+            "histogram": [
+              {
+                "count": 3,
+                "value": 0
+              },
+              {
+                "count": 19,
+                "value": 1
+              },
+              {
+                "count": 13,
+                "value": 2
+              },
+              {
+                "count": 15,
+                "value": 3
+              },
+              {
+                "count": 9,
+                "value": 4
+              },
+              {
+                "count": 10,
+                "value": 5
+              },
+              {
+                "count": 3,
+                "value": 6
+              },
+              {
+                "count": 7,
+                "value": 7
+              },
+              {
+                "count": 8,
+                "value": 8
+              },
+              {
+                "count": 7,
+                "value": 9
+              },
+              {
+                "count": 7,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 11,
+                "value": 12
+              },
+              {
+                "count": 9,
+                "value": 13
+              },
+              {
+                "count": 14,
+                "value": 14
+              },
+              {
+                "count": 5,
+                "value": 15
+              },
+              {
+                "count": 11,
+                "value": 16
+              },
+              {
+                "count": 5,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 7.90303,
+            "count": 165,
+            "histogram": [
+              {
+                "count": 20,
+                "value": 1
+              },
+              {
+                "count": 13,
+                "value": 2
+              },
+              {
+                "count": 16,
+                "value": 3
+              },
+              {
+                "count": 10,
+                "value": 4
+              },
+              {
+                "count": 10,
+                "value": 5
+              },
+              {
+                "count": 8,
+                "value": 6
+              },
+              {
+                "count": 5,
+                "value": 7
+              },
+              {
+                "count": 7,
+                "value": 8
+              },
+              {
+                "count": 8,
+                "value": 9
+              },
+              {
+                "count": 5,
+                "value": 10
+              },
+              {
+                "count": 10,
+                "value": 11
+              },
+              {
+                "count": 10,
+                "value": 12
+              },
+              {
+                "count": 14,
+                "value": 13
+              },
+              {
+                "count": 8,
+                "value": 14
+              },
+              {
+                "count": 6,
+                "value": 15
+              },
+              {
+                "count": 10,
+                "value": 16
+              },
+              {
+                "count": 5,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2019"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.544872,
+            "count": 156,
+            "histogram": [
+              {
+                "count": 17,
+                "value": 1
+              },
+              {
+                "count": 11,
+                "value": 2
+              },
+              {
+                "count": 15,
+                "value": 3
+              },
+              {
+                "count": 4,
+                "value": 4
+              },
+              {
+                "count": 10,
+                "value": 5
+              },
+              {
+                "count": 5,
+                "value": 6
+              },
+              {
+                "count": 11,
+                "value": 7
+              },
+              {
+                "count": 6,
+                "value": 8
+              },
+              {
+                "count": 6,
+                "value": 9
+              },
+              {
+                "count": 6,
+                "value": 10
+              },
+              {
+                "count": 5,
+                "value": 11
+              },
+              {
+                "count": 8,
+                "value": 12
+              },
+              {
+                "count": 7,
+                "value": 13
+              },
+              {
+                "count": 21,
+                "value": 14
+              },
+              {
+                "count": 10,
+                "value": 15
+              },
+              {
+                "count": 10,
+                "value": 16
+              },
+              {
+                "count": 4,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8.0,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 8.461538,
+            "count": 156,
+            "histogram": [
+              {
+                "count": 5,
+                "value": 0
+              },
+              {
+                "count": 16,
+                "value": 1
+              },
+              {
+                "count": 9,
+                "value": 2
+              },
+              {
+                "count": 13,
+                "value": 3
+              },
+              {
+                "count": 4,
+                "value": 4
+              },
+              {
+                "count": 10,
+                "value": 5
+              },
+              {
+                "count": 5,
+                "value": 6
+              },
+              {
+                "count": 11,
+                "value": 7
+              },
+              {
+                "count": 6,
+                "value": 8
+              },
+              {
+                "count": 6,
+                "value": 9
+              },
+              {
+                "count": 6,
+                "value": 10
+              },
+              {
+                "count": 5,
+                "value": 11
+              },
+              {
+                "count": 8,
+                "value": 12
+              },
+              {
+                "count": 7,
+                "value": 13
+              },
+              {
+                "count": 22,
+                "value": 14
+              },
+              {
+                "count": 10,
+                "value": 15
+              },
+              {
+                "count": 9,
+                "value": 16
+              },
+              {
+                "count": 4,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8.0,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 8.378205,
+            "count": 156,
+            "histogram": [
+              {
+                "count": 17,
+                "value": 1
+              },
+              {
+                "count": 12,
+                "value": 2
+              },
+              {
+                "count": 16,
+                "value": 3
+              },
+              {
+                "count": 3,
+                "value": 4
+              },
+              {
+                "count": 11,
+                "value": 5
+              },
+              {
+                "count": 6,
+                "value": 6
+              },
+              {
+                "count": 10,
+                "value": 7
+              },
+              {
+                "count": 6,
+                "value": 8
+              },
+              {
+                "count": 5,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 4,
+                "value": 11
+              },
+              {
+                "count": 7,
+                "value": 12
+              },
+              {
+                "count": 9,
+                "value": 13
+              },
+              {
+                "count": 19,
+                "value": 14
+              },
+              {
+                "count": 11,
+                "value": 15
+              },
+              {
+                "count": 8,
+                "value": 16
+              },
+              {
+                "count": 4,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8.0,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2020"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 7.755814,
+            "count": 172,
+            "histogram": [
+              {
+                "count": 28,
+                "value": 1
+              },
+              {
+                "count": 8,
+                "value": 2
+              },
+              {
+                "count": 18,
+                "value": 3
+              },
+              {
+                "count": 9,
+                "value": 4
+              },
+              {
+                "count": 11,
+                "value": 5
+              },
+              {
+                "count": 4,
+                "value": 6
+              },
+              {
+                "count": 8,
+                "value": 7
+              },
+              {
+                "count": 10,
+                "value": 8
+              },
+              {
+                "count": 8,
+                "value": 9
+              },
+              {
+                "count": 10,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 7,
+                "value": 12
+              },
+              {
+                "count": 4,
+                "value": 13
+              },
+              {
+                "count": 13,
+                "value": 14
+              },
+              {
+                "count": 10,
+                "value": 15
+              },
+              {
+                "count": 9,
+                "value": 16
+              },
+              {
+                "count": 6,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 7.5,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 7.674419,
+            "count": 172,
+            "histogram": [
+              {
+                "count": 4,
+                "value": 0
+              },
+              {
+                "count": 25,
+                "value": 1
+              },
+              {
+                "count": 11,
+                "value": 2
+              },
+              {
+                "count": 15,
+                "value": 3
+              },
+              {
+                "count": 9,
+                "value": 4
+              },
+              {
+                "count": 10,
+                "value": 5
+              },
+              {
+                "count": 4,
+                "value": 6
+              },
+              {
+                "count": 8,
+                "value": 7
+              },
+              {
+                "count": 11,
+                "value": 8
+              },
+              {
+                "count": 9,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 7,
+                "value": 12
+              },
+              {
+                "count": 4,
+                "value": 13
+              },
+              {
+                "count": 13,
+                "value": 14
+              },
+              {
+                "count": 10,
+                "value": 15
+              },
+              {
+                "count": 9,
+                "value": 16
+              },
+              {
+                "count": 6,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 7.5,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 7.651163,
+            "count": 172,
+            "histogram": [
+              {
+                "count": 29,
+                "value": 1
+              },
+              {
+                "count": 8,
+                "value": 2
+              },
+              {
+                "count": 17,
+                "value": 3
+              },
+              {
+                "count": 10,
+                "value": 4
+              },
+              {
+                "count": 10,
+                "value": 5
+              },
+              {
+                "count": 5,
+                "value": 6
+              },
+              {
+                "count": 8,
+                "value": 7
+              },
+              {
+                "count": 10,
+                "value": 8
+              },
+              {
+                "count": 8,
+                "value": 9
+              },
+              {
+                "count": 11,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 5,
+                "value": 12
+              },
+              {
+                "count": 5,
+                "value": 13
+              },
+              {
+                "count": 14,
+                "value": 14
+              },
+              {
+                "count": 10,
+                "value": 15
+              },
+              {
+                "count": 9,
+                "value": 16
+              },
+              {
+                "count": 4,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 7.0,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2021"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.610526,
+            "count": 190,
+            "histogram": [
+              {
+                "count": 12,
+                "value": 1
+              },
+              {
+                "count": 24,
+                "value": 2
+              },
+              {
+                "count": 11,
+                "value": 3
+              },
+              {
+                "count": 4,
+                "value": 4
+              },
+              {
+                "count": 14,
+                "value": 5
+              },
+              {
+                "count": 13,
+                "value": 6
+              },
+              {
+                "count": 6,
+                "value": 7
+              },
+              {
+                "count": 12,
+                "value": 8
+              },
+              {
+                "count": 8,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 8,
+                "value": 11
+              },
+              {
+                "count": 9,
+                "value": 12
+              },
+              {
+                "count": 11,
+                "value": 13
+              },
+              {
+                "count": 25,
+                "value": 14
+              },
+              {
+                "count": 7,
+                "value": 15
+              },
+              {
+                "count": 11,
+                "value": 16
+              },
+              {
+                "count": 7,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8.0,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 8.568421,
+            "count": 190,
+            "histogram": [
+              {
+                "count": 13,
+                "value": 1
+              },
+              {
+                "count": 24,
+                "value": 2
+              },
+              {
+                "count": 10,
+                "value": 3
+              },
+              {
+                "count": 5,
+                "value": 4
+              },
+              {
+                "count": 16,
+                "value": 5
+              },
+              {
+                "count": 10,
+                "value": 6
+              },
+              {
+                "count": 7,
+                "value": 7
+              },
+              {
+                "count": 12,
+                "value": 8
+              },
+              {
+                "count": 7,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 8,
+                "value": 11
+              },
+              {
+                "count": 9,
+                "value": 12
+              },
+              {
+                "count": 11,
+                "value": 13
+              },
+              {
+                "count": 25,
+                "value": 14
+              },
+              {
+                "count": 7,
+                "value": 15
+              },
+              {
+                "count": 11,
+                "value": 16
+              },
+              {
+                "count": 7,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8.0,
+            "minimum": 1
+          },
+          "recordedActionMatchCount": {
+            "average": 8.521053,
+            "count": 190,
+            "histogram": [
+              {
+                "count": 13,
+                "value": 1
+              },
+              {
+                "count": 25,
+                "value": 2
+              },
+              {
+                "count": 9,
+                "value": 3
+              },
+              {
+                "count": 4,
+                "value": 4
+              },
+              {
+                "count": 14,
+                "value": 5
+              },
+              {
+                "count": 14,
+                "value": 6
+              },
+              {
+                "count": 8,
+                "value": 7
+              },
+              {
+                "count": 10,
+                "value": 8
+              },
+              {
+                "count": 8,
+                "value": 9
+              },
+              {
+                "count": 7,
+                "value": 10
+              },
+              {
+                "count": 11,
+                "value": 11
+              },
+              {
+                "count": 8,
+                "value": 12
+              },
+              {
+                "count": 10,
+                "value": 13
+              },
+              {
+                "count": 24,
+                "value": 14
+              },
+              {
+                "count": 8,
+                "value": 15
+              },
+              {
+                "count": 11,
+                "value": 16
+              },
+              {
+                "count": 6,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8.0,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2022"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.262673,
+            "count": 217,
+            "histogram": [
+              {
+                "count": 23,
+                "value": 1
+              },
+              {
+                "count": 21,
+                "value": 2
+              },
+              {
+                "count": 14,
+                "value": 3
+              },
+              {
+                "count": 12,
+                "value": 4
+              },
+              {
+                "count": 8,
+                "value": 5
+              },
+              {
+                "count": 11,
+                "value": 6
+              },
+              {
+                "count": 11,
+                "value": 7
+              },
+              {
+                "count": 15,
+                "value": 8
+              },
+              {
+                "count": 11,
+                "value": 9
+              },
+              {
+                "count": 9,
+                "value": 10
+              },
+              {
+                "count": 10,
+                "value": 11
+              },
+              {
+                "count": 7,
+                "value": 12
+              },
+              {
+                "count": 9,
+                "value": 13
+              },
+              {
+                "count": 30,
+                "value": 14
+              },
+              {
+                "count": 6,
+                "value": 15
+              },
+              {
+                "count": 15,
+                "value": 16
+              },
+              {
+                "count": 5,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 8.147465,
+            "count": 217,
+            "histogram": [
+              {
+                "count": 8,
+                "value": 0
+              },
+              {
+                "count": 17,
+                "value": 1
+              },
+              {
+                "count": 20,
+                "value": 2
+              },
+              {
+                "count": 15,
+                "value": 3
+              },
+              {
+                "count": 12,
+                "value": 4
+              },
+              {
+                "count": 10,
+                "value": 5
+              },
+              {
+                "count": 10,
+                "value": 6
+              },
+              {
+                "count": 10,
+                "value": 7
+              },
+              {
+                "count": 13,
+                "value": 8
+              },
+              {
+                "count": 11,
+                "value": 9
+              },
+              {
+                "count": 10,
+                "value": 10
+              },
+              {
+                "count": 9,
+                "value": 11
+              },
+              {
+                "count": 7,
+                "value": 12
+              },
+              {
+                "count": 9,
+                "value": 13
+              },
+              {
+                "count": 30,
+                "value": 14
+              },
+              {
+                "count": 6,
+                "value": 15
+              },
+              {
+                "count": 15,
+                "value": 16
+              },
+              {
+                "count": 5,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 8.092166,
+            "count": 217,
+            "histogram": [
+              {
+                "count": 23,
+                "value": 1
+              },
+              {
+                "count": 22,
+                "value": 2
+              },
+              {
+                "count": 13,
+                "value": 3
+              },
+              {
+                "count": 13,
+                "value": 4
+              },
+              {
+                "count": 8,
+                "value": 5
+              },
+              {
+                "count": 10,
+                "value": 6
+              },
+              {
+                "count": 13,
+                "value": 7
+              },
+              {
+                "count": 15,
+                "value": 8
+              },
+              {
+                "count": 10,
+                "value": 9
+              },
+              {
+                "count": 9,
+                "value": 10
+              },
+              {
+                "count": 14,
+                "value": 11
+              },
+              {
+                "count": 6,
+                "value": 12
+              },
+              {
+                "count": 11,
+                "value": 13
+              },
+              {
+                "count": 29,
+                "value": 14
+              },
+              {
+                "count": 8,
+                "value": 15
+              },
+              {
+                "count": 9,
+                "value": 16
+              },
+              {
+                "count": 4,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2023"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.205742,
+            "count": 209,
+            "histogram": [
+              {
+                "count": 19,
+                "value": 1
+              },
+              {
+                "count": 25,
+                "value": 2
+              },
+              {
+                "count": 14,
+                "value": 3
+              },
+              {
+                "count": 12,
+                "value": 4
+              },
+              {
+                "count": 10,
+                "value": 5
+              },
+              {
+                "count": 5,
+                "value": 6
+              },
+              {
+                "count": 9,
+                "value": 7
+              },
+              {
+                "count": 10,
+                "value": 8
+              },
+              {
+                "count": 8,
+                "value": 9
+              },
+              {
+                "count": 15,
+                "value": 10
+              },
+              {
+                "count": 10,
+                "value": 11
+              },
+              {
+                "count": 9,
+                "value": 12
+              },
+              {
+                "count": 12,
+                "value": 13
+              },
+              {
+                "count": 34,
+                "value": 14
+              },
+              {
+                "count": 11,
+                "value": 15
+              },
+              {
+                "count": 6,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 9,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 8.129187,
+            "count": 209,
+            "histogram": [
+              {
+                "count": 1,
+                "value": 0
+              },
+              {
+                "count": 21,
+                "value": 1
+              },
+              {
+                "count": 24,
+                "value": 2
+              },
+              {
+                "count": 13,
+                "value": 3
+              },
+              {
+                "count": 12,
+                "value": 4
+              },
+              {
+                "count": 9,
+                "value": 5
+              },
+              {
+                "count": 5,
+                "value": 6
+              },
+              {
+                "count": 12,
+                "value": 7
+              },
+              {
+                "count": 8,
+                "value": 8
+              },
+              {
+                "count": 10,
+                "value": 9
+              },
+              {
+                "count": 12,
+                "value": 10
+              },
+              {
+                "count": 11,
+                "value": 11
+              },
+              {
+                "count": 8,
+                "value": 12
+              },
+              {
+                "count": 12,
+                "value": 13
+              },
+              {
+                "count": 34,
+                "value": 14
+              },
+              {
+                "count": 11,
+                "value": 15
+              },
+              {
+                "count": 6,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 8,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 8.052632,
+            "count": 209,
+            "histogram": [
+              {
+                "count": 20,
+                "value": 1
+              },
+              {
+                "count": 24,
+                "value": 2
+              },
+              {
+                "count": 14,
+                "value": 3
+              },
+              {
+                "count": 13,
+                "value": 4
+              },
+              {
+                "count": 9,
+                "value": 5
+              },
+              {
+                "count": 5,
+                "value": 6
+              },
+              {
+                "count": 10,
+                "value": 7
+              },
+              {
+                "count": 10,
+                "value": 8
+              },
+              {
+                "count": 9,
+                "value": 9
+              },
+              {
+                "count": 15,
+                "value": 10
+              },
+              {
+                "count": 14,
+                "value": 11
+              },
+              {
+                "count": 7,
+                "value": 12
+              },
+              {
+                "count": 17,
+                "value": 13
+              },
+              {
+                "count": 28,
+                "value": 14
+              },
+              {
+                "count": 10,
+                "value": 15
+              },
+              {
+                "count": 4,
+                "value": 16
+              }
+            ],
+            "maximum": 16,
+            "median": 8,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2024"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.692683,
+            "count": 205,
+            "histogram": [
+              {
+                "count": 22,
+                "value": 1
+              },
+              {
+                "count": 17,
+                "value": 2
+              },
+              {
+                "count": 11,
+                "value": 3
+              },
+              {
+                "count": 12,
+                "value": 4
+              },
+              {
+                "count": 10,
+                "value": 5
+              },
+              {
+                "count": 11,
+                "value": 6
+              },
+              {
+                "count": 9,
+                "value": 7
+              },
+              {
+                "count": 8,
+                "value": 8
+              },
+              {
+                "count": 5,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 6,
+                "value": 11
+              },
+              {
+                "count": 12,
+                "value": 12
+              },
+              {
+                "count": 19,
+                "value": 13
+              },
+              {
+                "count": 26,
+                "value": 14
+              },
+              {
+                "count": 19,
+                "value": 15
+              },
+              {
+                "count": 4,
+                "value": 16
+              },
+              {
+                "count": 1,
+                "value": 17
+              },
+              {
+                "count": 5,
+                "value": 18
+              }
+            ],
+            "maximum": 18,
+            "median": 9,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 8.634146,
+            "count": 205,
+            "histogram": [
+              {
+                "count": 3,
+                "value": 0
+              },
+              {
+                "count": 22,
+                "value": 1
+              },
+              {
+                "count": 15,
+                "value": 2
+              },
+              {
+                "count": 12,
+                "value": 3
+              },
+              {
+                "count": 11,
+                "value": 4
+              },
+              {
+                "count": 10,
+                "value": 5
+              },
+              {
+                "count": 10,
+                "value": 6
+              },
+              {
+                "count": 9,
+                "value": 7
+              },
+              {
+                "count": 8,
+                "value": 8
+              },
+              {
+                "count": 5,
+                "value": 9
+              },
+              {
+                "count": 8,
+                "value": 10
+              },
+              {
+                "count": 7,
+                "value": 11
+              },
+              {
+                "count": 11,
+                "value": 12
+              },
+              {
+                "count": 19,
+                "value": 13
+              },
+              {
+                "count": 26,
+                "value": 14
+              },
+              {
+                "count": 19,
+                "value": 15
+              },
+              {
+                "count": 4,
+                "value": 16
+              },
+              {
+                "count": 1,
+                "value": 17
+              },
+              {
+                "count": 5,
+                "value": 18
+              }
+            ],
+            "maximum": 18,
+            "median": 9,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 8.380488,
+            "count": 205,
+            "histogram": [
+              {
+                "count": 1,
+                "value": 0
+              },
+              {
+                "count": 22,
+                "value": 1
+              },
+              {
+                "count": 18,
+                "value": 2
+              },
+              {
+                "count": 10,
+                "value": 3
+              },
+              {
+                "count": 13,
+                "value": 4
+              },
+              {
+                "count": 11,
+                "value": 5
+              },
+              {
+                "count": 10,
+                "value": 6
+              },
+              {
+                "count": 9,
+                "value": 7
+              },
+              {
+                "count": 9,
+                "value": 8
+              },
+              {
+                "count": 7,
+                "value": 9
+              },
+              {
+                "count": 6,
+                "value": 10
+              },
+              {
+                "count": 8,
+                "value": 11
+              },
+              {
+                "count": 14,
+                "value": 12
+              },
+              {
+                "count": 21,
+                "value": 13
+              },
+              {
+                "count": 26,
+                "value": 14
+              },
+              {
+                "count": 13,
+                "value": 15
+              },
+              {
+                "count": 4,
+                "value": 16
+              },
+              {
+                "count": 1,
+                "value": 17
+              },
+              {
+                "count": 2,
+                "value": 18
+              }
+            ],
+            "maximum": 18,
+            "median": 8,
+            "minimum": 0
+          },
+          "seasonId": "ipl-2025"
+        },
+        {
+          "documentedInvolvementMatchCount": {
+            "average": 8.754902,
+            "count": 204,
+            "histogram": [
+              {
+                "count": 16,
+                "value": 1
+              },
+              {
+                "count": 14,
+                "value": 2
+              },
+              {
+                "count": 17,
+                "value": 3
+              },
+              {
+                "count": 9,
+                "value": 4
+              },
+              {
+                "count": 7,
+                "value": 5
+              },
+              {
+                "count": 11,
+                "value": 6
+              },
+              {
+                "count": 13,
+                "value": 7
+              },
+              {
+                "count": 14,
+                "value": 8
+              },
+              {
+                "count": 7,
+                "value": 9
+              },
+              {
+                "count": 11,
+                "value": 10
+              },
+              {
+                "count": 10,
+                "value": 11
+              },
+              {
+                "count": 9,
+                "value": 12
+              },
+              {
+                "count": 14,
+                "value": 13
+              },
+              {
+                "count": 26,
+                "value": 14
+              },
+              {
+                "count": 8,
+                "value": 15
+              },
+              {
+                "count": 12,
+                "value": 16
+              },
+              {
+                "count": 6,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 9.0,
+            "minimum": 1
+          },
+          "officialListMatchCount": {
+            "average": 8.686275,
+            "count": 204,
+            "histogram": [
+              {
+                "count": 2,
+                "value": 0
+              },
+              {
+                "count": 16,
+                "value": 1
+              },
+              {
+                "count": 14,
+                "value": 2
+              },
+              {
+                "count": 16,
+                "value": 3
+              },
+              {
+                "count": 8,
+                "value": 4
+              },
+              {
+                "count": 7,
+                "value": 5
+              },
+              {
+                "count": 13,
+                "value": 6
+              },
+              {
+                "count": 12,
+                "value": 7
+              },
+              {
+                "count": 15,
+                "value": 8
+              },
+              {
+                "count": 6,
+                "value": 9
+              },
+              {
+                "count": 10,
+                "value": 10
+              },
+              {
+                "count": 11,
+                "value": 11
+              },
+              {
+                "count": 8,
+                "value": 12
+              },
+              {
+                "count": 14,
+                "value": 13
+              },
+              {
+                "count": 26,
+                "value": 14
+              },
+              {
+                "count": 8,
+                "value": 15
+              },
+              {
+                "count": 12,
+                "value": 16
+              },
+              {
+                "count": 6,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8.0,
+            "minimum": 0
+          },
+          "recordedActionMatchCount": {
+            "average": 8.539216,
+            "count": 204,
+            "histogram": [
+              {
+                "count": 17,
+                "value": 1
+              },
+              {
+                "count": 15,
+                "value": 2
+              },
+              {
+                "count": 17,
+                "value": 3
+              },
+              {
+                "count": 7,
+                "value": 4
+              },
+              {
+                "count": 9,
+                "value": 5
+              },
+              {
+                "count": 15,
+                "value": 6
+              },
+              {
+                "count": 10,
+                "value": 7
+              },
+              {
+                "count": 12,
+                "value": 8
+              },
+              {
+                "count": 8,
+                "value": 9
+              },
+              {
+                "count": 11,
+                "value": 10
+              },
+              {
+                "count": 11,
+                "value": 11
+              },
+              {
+                "count": 11,
+                "value": 12
+              },
+              {
+                "count": 19,
+                "value": 13
+              },
+              {
+                "count": 17,
+                "value": 14
+              },
+              {
+                "count": 10,
+                "value": 15
+              },
+              {
+                "count": 10,
+                "value": 16
+              },
+              {
+                "count": 5,
+                "value": 17
+              }
+            ],
+            "maximum": 17,
+            "median": 8.5,
+            "minimum": 1
+          },
+          "seasonId": "ipl-2026"
+        }
+      ],
+      "preImpact": {
+        "documentedInvolvementMatchCount": {
+          "average": 8.224482,
+          "count": 2557,
+          "histogram": [
+            {
+              "count": 272,
+              "value": 1
+            },
+            {
+              "count": 198,
+              "value": 2
+            },
+            {
+              "count": 190,
+              "value": 3
+            },
+            {
+              "count": 163,
+              "value": 4
+            },
+            {
+              "count": 155,
+              "value": 5
+            },
+            {
+              "count": 139,
+              "value": 6
+            },
+            {
+              "count": 125,
+              "value": 7
+            },
+            {
+              "count": 119,
+              "value": 8
+            },
+            {
+              "count": 106,
+              "value": 9
+            },
+            {
+              "count": 113,
+              "value": 10
+            },
+            {
+              "count": 119,
+              "value": 11
+            },
+            {
+              "count": 120,
+              "value": 12
+            },
+            {
+              "count": 148,
+              "value": 13
+            },
+            {
+              "count": 244,
+              "value": 14
+            },
+            {
+              "count": 110,
+              "value": 15
+            },
+            {
+              "count": 154,
+              "value": 16
+            },
+            {
+              "count": 63,
+              "value": 17
+            },
+            {
+              "count": 15,
+              "value": 18
+            },
+            {
+              "count": 4,
+              "value": 19
+            }
+          ],
+          "maximum": 19,
+          "median": 8,
+          "minimum": 1
+        },
+        "officialListMatchCount": {
+          "average": 8.173641,
+          "count": 2557,
+          "histogram": [
+            {
+              "count": 24,
+              "value": 0
+            },
+            {
+              "count": 266,
+              "value": 1
+            },
+            {
+              "count": 199,
+              "value": 2
+            },
+            {
+              "count": 186,
+              "value": 3
+            },
+            {
+              "count": 158,
+              "value": 4
+            },
+            {
+              "count": 156,
+              "value": 5
+            },
+            {
+              "count": 135,
+              "value": 6
+            },
+            {
+              "count": 124,
+              "value": 7
+            },
+            {
+              "count": 119,
+              "value": 8
+            },
+            {
+              "count": 107,
+              "value": 9
+            },
+            {
+              "count": 109,
+              "value": 10
+            },
+            {
+              "count": 117,
+              "value": 11
+            },
+            {
+              "count": 119,
+              "value": 12
+            },
+            {
+              "count": 148,
+              "value": 13
+            },
+            {
+              "count": 246,
+              "value": 14
+            },
+            {
+              "count": 109,
+              "value": 15
+            },
+            {
+              "count": 153,
+              "value": 16
+            },
+            {
+              "count": 63,
+              "value": 17
+            },
+            {
+              "count": 15,
+              "value": 18
+            },
+            {
+              "count": 4,
+              "value": 19
+            }
+          ],
+          "maximum": 19,
+          "median": 8,
+          "minimum": 0
+        },
+        "recordedActionMatchCount": {
+          "average": 8.034024,
+          "count": 2557,
+          "histogram": [
+            {
+              "count": 6,
+              "value": 0
+            },
+            {
+              "count": 275,
+              "value": 1
+            },
+            {
+              "count": 207,
+              "value": 2
+            },
+            {
+              "count": 196,
+              "value": 3
+            },
+            {
+              "count": 168,
+              "value": 4
+            },
+            {
+              "count": 154,
+              "value": 5
+            },
+            {
+              "count": 140,
+              "value": 6
+            },
+            {
+              "count": 126,
+              "value": 7
+            },
+            {
+              "count": 127,
+              "value": 8
+            },
+            {
+              "count": 102,
+              "value": 9
+            },
+            {
+              "count": 117,
+              "value": 10
+            },
+            {
+              "count": 115,
+              "value": 11
+            },
+            {
+              "count": 125,
+              "value": 12
+            },
+            {
+              "count": 159,
+              "value": 13
+            },
+            {
+              "count": 229,
+              "value": 14
+            },
+            {
+              "count": 104,
+              "value": 15
+            },
+            {
+              "count": 137,
+              "value": 16
+            },
+            {
+              "count": 56,
+              "value": 17
+            },
+            {
+              "count": 10,
+              "value": 18
+            },
+            {
+              "count": 4,
+              "value": 19
+            }
+          ],
+          "maximum": 19,
+          "median": 8,
+          "minimum": 0
+        }
+      },
+      "preImpactIntersections": {
+        "officialAndRecorded": 20413,
+        "officialOnly": 487,
+        "recordedOnly": 130
+      }
+    },
+    "representativeProfileIds": {
+      "eventOnlyEvidence": "pts:faa7365d:ipl-2019:team-chennai-super-kings",
+      "impactEvidence": "pts:740742ef:ipl-2025:team-mumbai-indians",
+      "mixedUsage": "pts:86dc8f2e:ipl-2010:team-royal-challengers-bangalore",
+      "smallSample": "pts:012829ff:ipl-2014:team-chennai-super-kings",
+      "stumpingEvidence": "pts:2b6e6dec:ipl-2009:team-deccan-chargers",
+      "substantialBatting": "pts:ba607b88:ipl-2016:team-royal-challengers-bangalore",
+      "substantialBowling": "pts:8b5b6769:ipl-2013:team-mumbai-indians"
+    },
+    "samples": {
+      "battingBalls": {
+        "average": 84.223467,
+        "count": 3392,
+        "histogram": [
+          {
+            "count": 435,
+            "value": 0
+          },
+          {
+            "count": 105,
+            "value": 1
+          },
+          {
+            "count": 110,
+            "value": 2
+          },
+          {
+            "count": 82,
+            "value": 3
+          },
+          {
+            "count": 81,
+            "value": 4
+          },
+          {
+            "count": 73,
+            "value": 5
+          },
+          {
+            "count": 60,
+            "value": 6
+          },
+          {
+            "count": 65,
+            "value": 7
+          },
+          {
+            "count": 57,
+            "value": 8
+          },
+          {
+            "count": 55,
+            "value": 9
+          },
+          {
+            "count": 41,
+            "value": 10
+          },
+          {
+            "count": 40,
+            "value": 11
+          },
+          {
+            "count": 47,
+            "value": 12
+          },
+          {
+            "count": 44,
+            "value": 13
+          },
+          {
+            "count": 38,
+            "value": 14
+          },
+          {
+            "count": 41,
+            "value": 15
+          },
+          {
+            "count": 34,
+            "value": 16
+          },
+          {
+            "count": 35,
+            "value": 17
+          },
+          {
+            "count": 28,
+            "value": 18
+          },
+          {
+            "count": 27,
+            "value": 19
+          },
+          {
+            "count": 19,
+            "value": 20
+          },
+          {
+            "count": 26,
+            "value": 21
+          },
+          {
+            "count": 22,
+            "value": 22
+          },
+          {
+            "count": 17,
+            "value": 23
+          },
+          {
+            "count": 24,
+            "value": 24
+          },
+          {
+            "count": 19,
+            "value": 25
+          },
+          {
+            "count": 32,
+            "value": 26
+          },
+          {
+            "count": 27,
+            "value": 27
+          },
+          {
+            "count": 11,
+            "value": 28
+          },
+          {
+            "count": 21,
+            "value": 29
+          },
+          {
+            "count": 18,
+            "value": 30
+          },
+          {
+            "count": 23,
+            "value": 31
+          },
+          {
+            "count": 11,
+            "value": 32
+          },
+          {
+            "count": 18,
+            "value": 33
+          },
+          {
+            "count": 12,
+            "value": 34
+          },
+          {
+            "count": 9,
+            "value": 35
+          },
+          {
+            "count": 8,
+            "value": 36
+          },
+          {
+            "count": 9,
+            "value": 37
+          },
+          {
+            "count": 13,
+            "value": 38
+          },
+          {
+            "count": 21,
+            "value": 39
+          },
+          {
+            "count": 16,
+            "value": 40
+          },
+          {
+            "count": 16,
+            "value": 41
+          },
+          {
+            "count": 4,
+            "value": 42
+          },
+          {
+            "count": 12,
+            "value": 43
+          },
+          {
+            "count": 9,
+            "value": 44
+          },
+          {
+            "count": 6,
+            "value": 45
+          },
+          {
+            "count": 16,
+            "value": 46
+          },
+          {
+            "count": 15,
+            "value": 47
+          },
+          {
+            "count": 7,
+            "value": 48
+          },
+          {
+            "count": 14,
+            "value": 49
+          },
+          {
+            "count": 6,
+            "value": 50
+          },
+          {
+            "count": 9,
+            "value": 51
+          },
+          {
+            "count": 13,
+            "value": 52
+          },
+          {
+            "count": 17,
+            "value": 53
+          },
+          {
+            "count": 10,
+            "value": 54
+          },
+          {
+            "count": 4,
+            "value": 55
+          },
+          {
+            "count": 6,
+            "value": 56
+          },
+          {
+            "count": 13,
+            "value": 57
+          },
+          {
+            "count": 8,
+            "value": 58
+          },
+          {
+            "count": 14,
+            "value": 59
+          },
+          {
+            "count": 8,
+            "value": 60
+          },
+          {
+            "count": 5,
+            "value": 61
+          },
+          {
+            "count": 11,
+            "value": 62
+          },
+          {
+            "count": 11,
+            "value": 63
+          },
+          {
+            "count": 6,
+            "value": 64
+          },
+          {
+            "count": 6,
+            "value": 65
+          },
+          {
+            "count": 8,
+            "value": 66
+          },
+          {
+            "count": 6,
+            "value": 67
+          },
+          {
+            "count": 6,
+            "value": 68
+          },
+          {
+            "count": 9,
+            "value": 69
+          },
+          {
+            "count": 7,
+            "value": 70
+          },
+          {
+            "count": 7,
+            "value": 71
+          },
+          {
+            "count": 5,
+            "value": 72
+          },
+          {
+            "count": 10,
+            "value": 73
+          },
+          {
+            "count": 6,
+            "value": 74
+          },
+          {
+            "count": 12,
+            "value": 75
+          },
+          {
+            "count": 7,
+            "value": 76
+          },
+          {
+            "count": 8,
+            "value": 77
+          },
+          {
+            "count": 8,
+            "value": 78
+          },
+          {
+            "count": 8,
+            "value": 79
+          },
+          {
+            "count": 7,
+            "value": 80
+          },
+          {
+            "count": 10,
+            "value": 81
+          },
+          {
+            "count": 3,
+            "value": 82
+          },
+          {
+            "count": 4,
+            "value": 83
+          },
+          {
+            "count": 9,
+            "value": 84
+          },
+          {
+            "count": 8,
+            "value": 85
+          },
+          {
+            "count": 9,
+            "value": 86
+          },
+          {
+            "count": 3,
+            "value": 87
+          },
+          {
+            "count": 12,
+            "value": 88
+          },
+          {
+            "count": 2,
+            "value": 89
+          },
+          {
+            "count": 3,
+            "value": 90
+          },
+          {
+            "count": 6,
+            "value": 91
+          },
+          {
+            "count": 4,
+            "value": 92
+          },
+          {
+            "count": 8,
+            "value": 93
+          },
+          {
+            "count": 9,
+            "value": 94
+          },
+          {
+            "count": 7,
+            "value": 95
+          },
+          {
+            "count": 6,
+            "value": 96
+          },
+          {
+            "count": 4,
+            "value": 97
+          },
+          {
+            "count": 11,
+            "value": 98
+          },
+          {
+            "count": 4,
+            "value": 99
+          },
+          {
+            "count": 8,
+            "value": 100
+          },
+          {
+            "count": 5,
+            "value": 101
+          },
+          {
+            "count": 7,
+            "value": 102
+          },
+          {
+            "count": 1,
+            "value": 103
+          },
+          {
+            "count": 4,
+            "value": 104
+          },
+          {
+            "count": 6,
+            "value": 105
+          },
+          {
+            "count": 7,
+            "value": 106
+          },
+          {
+            "count": 4,
+            "value": 107
+          },
+          {
+            "count": 5,
+            "value": 108
+          },
+          {
+            "count": 6,
+            "value": 109
+          },
+          {
+            "count": 3,
+            "value": 110
+          },
+          {
+            "count": 5,
+            "value": 111
+          },
+          {
+            "count": 5,
+            "value": 112
+          },
+          {
+            "count": 8,
+            "value": 113
+          },
+          {
+            "count": 7,
+            "value": 114
+          },
+          {
+            "count": 5,
+            "value": 115
+          },
+          {
+            "count": 4,
+            "value": 116
+          },
+          {
+            "count": 7,
+            "value": 117
+          },
+          {
+            "count": 7,
+            "value": 118
+          },
+          {
+            "count": 6,
+            "value": 119
+          },
+          {
+            "count": 11,
+            "value": 120
+          },
+          {
+            "count": 7,
+            "value": 121
+          },
+          {
+            "count": 4,
+            "value": 122
+          },
+          {
+            "count": 7,
+            "value": 123
+          },
+          {
+            "count": 4,
+            "value": 124
+          },
+          {
+            "count": 4,
+            "value": 125
+          },
+          {
+            "count": 6,
+            "value": 126
+          },
+          {
+            "count": 2,
+            "value": 127
+          },
+          {
+            "count": 4,
+            "value": 128
+          },
+          {
+            "count": 5,
+            "value": 129
+          },
+          {
+            "count": 5,
+            "value": 130
+          },
+          {
+            "count": 7,
+            "value": 131
+          },
+          {
+            "count": 9,
+            "value": 132
+          },
+          {
+            "count": 6,
+            "value": 133
+          },
+          {
+            "count": 7,
+            "value": 134
+          },
+          {
+            "count": 4,
+            "value": 135
+          },
+          {
+            "count": 1,
+            "value": 136
+          },
+          {
+            "count": 3,
+            "value": 137
+          },
+          {
+            "count": 9,
+            "value": 138
+          },
+          {
+            "count": 4,
+            "value": 139
+          },
+          {
+            "count": 5,
+            "value": 140
+          },
+          {
+            "count": 8,
+            "value": 141
+          },
+          {
+            "count": 3,
+            "value": 142
+          },
+          {
+            "count": 7,
+            "value": 143
+          },
+          {
+            "count": 6,
+            "value": 144
+          },
+          {
+            "count": 3,
+            "value": 145
+          },
+          {
+            "count": 3,
+            "value": 146
+          },
+          {
+            "count": 3,
+            "value": 147
+          },
+          {
+            "count": 4,
+            "value": 148
+          },
+          {
+            "count": 4,
+            "value": 149
+          },
+          {
+            "count": 2,
+            "value": 150
+          },
+          {
+            "count": 3,
+            "value": 151
+          },
+          {
+            "count": 8,
+            "value": 152
+          },
+          {
+            "count": 3,
+            "value": 153
+          },
+          {
+            "count": 5,
+            "value": 154
+          },
+          {
+            "count": 1,
+            "value": 155
+          },
+          {
+            "count": 8,
+            "value": 156
+          },
+          {
+            "count": 5,
+            "value": 157
+          },
+          {
+            "count": 5,
+            "value": 158
+          },
+          {
+            "count": 3,
+            "value": 159
+          },
+          {
+            "count": 4,
+            "value": 160
+          },
+          {
+            "count": 4,
+            "value": 161
+          },
+          {
+            "count": 4,
+            "value": 162
+          },
+          {
+            "count": 8,
+            "value": 163
+          },
+          {
+            "count": 6,
+            "value": 164
+          },
+          {
+            "count": 6,
+            "value": 165
+          },
+          {
+            "count": 5,
+            "value": 166
+          },
+          {
+            "count": 5,
+            "value": 167
+          },
+          {
+            "count": 2,
+            "value": 168
+          },
+          {
+            "count": 6,
+            "value": 169
+          },
+          {
+            "count": 8,
+            "value": 170
+          },
+          {
+            "count": 9,
+            "value": 171
+          },
+          {
+            "count": 4,
+            "value": 172
+          },
+          {
+            "count": 2,
+            "value": 173
+          },
+          {
+            "count": 3,
+            "value": 174
+          },
+          {
+            "count": 4,
+            "value": 175
+          },
+          {
+            "count": 2,
+            "value": 176
+          },
+          {
+            "count": 10,
+            "value": 177
+          },
+          {
+            "count": 6,
+            "value": 178
+          },
+          {
+            "count": 4,
+            "value": 179
+          },
+          {
+            "count": 5,
+            "value": 180
+          },
+          {
+            "count": 5,
+            "value": 181
+          },
+          {
+            "count": 1,
+            "value": 182
+          },
+          {
+            "count": 7,
+            "value": 183
+          },
+          {
+            "count": 8,
+            "value": 184
+          },
+          {
+            "count": 5,
+            "value": 185
+          },
+          {
+            "count": 5,
+            "value": 186
+          },
+          {
+            "count": 2,
+            "value": 187
+          },
+          {
+            "count": 5,
+            "value": 188
+          },
+          {
+            "count": 2,
+            "value": 189
+          },
+          {
+            "count": 5,
+            "value": 190
+          },
+          {
+            "count": 3,
+            "value": 191
+          },
+          {
+            "count": 4,
+            "value": 192
+          },
+          {
+            "count": 3,
+            "value": 193
+          },
+          {
+            "count": 2,
+            "value": 194
+          },
+          {
+            "count": 2,
+            "value": 195
+          },
+          {
+            "count": 3,
+            "value": 196
+          },
+          {
+            "count": 6,
+            "value": 197
+          },
+          {
+            "count": 6,
+            "value": 198
+          },
+          {
+            "count": 4,
+            "value": 199
+          },
+          {
+            "count": 3,
+            "value": 200
+          },
+          {
+            "count": 2,
+            "value": 201
+          },
+          {
+            "count": 2,
+            "value": 202
+          },
+          {
+            "count": 6,
+            "value": 203
+          },
+          {
+            "count": 1,
+            "value": 204
+          },
+          {
+            "count": 3,
+            "value": 205
+          },
+          {
+            "count": 2,
+            "value": 206
+          },
+          {
+            "count": 3,
+            "value": 207
+          },
+          {
+            "count": 3,
+            "value": 208
+          },
+          {
+            "count": 3,
+            "value": 209
+          },
+          {
+            "count": 7,
+            "value": 210
+          },
+          {
+            "count": 2,
+            "value": 211
+          },
+          {
+            "count": 5,
+            "value": 212
+          },
+          {
+            "count": 4,
+            "value": 213
+          },
+          {
+            "count": 1,
+            "value": 214
+          },
+          {
+            "count": 4,
+            "value": 215
+          },
+          {
+            "count": 4,
+            "value": 216
+          },
+          {
+            "count": 4,
+            "value": 217
+          },
+          {
+            "count": 5,
+            "value": 218
+          },
+          {
+            "count": 3,
+            "value": 219
+          },
+          {
+            "count": 2,
+            "value": 220
+          },
+          {
+            "count": 7,
+            "value": 221
+          },
+          {
+            "count": 2,
+            "value": 222
+          },
+          {
+            "count": 5,
+            "value": 223
+          },
+          {
+            "count": 3,
+            "value": 224
+          },
+          {
+            "count": 3,
+            "value": 226
+          },
+          {
+            "count": 3,
+            "value": 227
+          },
+          {
+            "count": 3,
+            "value": 228
+          },
+          {
+            "count": 2,
+            "value": 229
+          },
+          {
+            "count": 2,
+            "value": 230
+          },
+          {
+            "count": 4,
+            "value": 231
+          },
+          {
+            "count": 3,
+            "value": 232
+          },
+          {
+            "count": 5,
+            "value": 233
+          },
+          {
+            "count": 2,
+            "value": 234
+          },
+          {
+            "count": 5,
+            "value": 235
+          },
+          {
+            "count": 8,
+            "value": 236
+          },
+          {
+            "count": 5,
+            "value": 237
+          },
+          {
+            "count": 2,
+            "value": 238
+          },
+          {
+            "count": 3,
+            "value": 239
+          },
+          {
+            "count": 5,
+            "value": 240
+          },
+          {
+            "count": 2,
+            "value": 241
+          },
+          {
+            "count": 1,
+            "value": 242
+          },
+          {
+            "count": 3,
+            "value": 243
+          },
+          {
+            "count": 1,
+            "value": 244
+          },
+          {
+            "count": 1,
+            "value": 245
+          },
+          {
+            "count": 5,
+            "value": 246
+          },
+          {
+            "count": 2,
+            "value": 247
+          },
+          {
+            "count": 3,
+            "value": 248
+          },
+          {
+            "count": 4,
+            "value": 249
+          },
+          {
+            "count": 3,
+            "value": 250
+          },
+          {
+            "count": 2,
+            "value": 251
+          },
+          {
+            "count": 3,
+            "value": 252
+          },
+          {
+            "count": 5,
+            "value": 253
+          },
+          {
+            "count": 2,
+            "value": 254
+          },
+          {
+            "count": 2,
+            "value": 255
+          },
+          {
+            "count": 4,
+            "value": 256
+          },
+          {
+            "count": 5,
+            "value": 257
+          },
+          {
+            "count": 1,
+            "value": 258
+          },
+          {
+            "count": 4,
+            "value": 259
+          },
+          {
+            "count": 3,
+            "value": 260
+          },
+          {
+            "count": 5,
+            "value": 261
+          },
+          {
+            "count": 1,
+            "value": 262
+          },
+          {
+            "count": 4,
+            "value": 263
+          },
+          {
+            "count": 5,
+            "value": 264
+          },
+          {
+            "count": 1,
+            "value": 265
+          },
+          {
+            "count": 3,
+            "value": 266
+          },
+          {
+            "count": 4,
+            "value": 267
+          },
+          {
+            "count": 1,
+            "value": 268
+          },
+          {
+            "count": 2,
+            "value": 270
+          },
+          {
+            "count": 4,
+            "value": 271
+          },
+          {
+            "count": 2,
+            "value": 272
+          },
+          {
+            "count": 5,
+            "value": 273
+          },
+          {
+            "count": 1,
+            "value": 274
+          },
+          {
+            "count": 5,
+            "value": 275
+          },
+          {
+            "count": 3,
+            "value": 276
+          },
+          {
+            "count": 2,
+            "value": 277
+          },
+          {
+            "count": 8,
+            "value": 278
+          },
+          {
+            "count": 3,
+            "value": 279
+          },
+          {
+            "count": 7,
+            "value": 280
+          },
+          {
+            "count": 1,
+            "value": 281
+          },
+          {
+            "count": 4,
+            "value": 282
+          },
+          {
+            "count": 5,
+            "value": 283
+          },
+          {
+            "count": 2,
+            "value": 285
+          },
+          {
+            "count": 3,
+            "value": 286
+          },
+          {
+            "count": 5,
+            "value": 287
+          },
+          {
+            "count": 4,
+            "value": 288
+          },
+          {
+            "count": 2,
+            "value": 289
+          },
+          {
+            "count": 1,
+            "value": 290
+          },
+          {
+            "count": 3,
+            "value": 291
+          },
+          {
+            "count": 1,
+            "value": 292
+          },
+          {
+            "count": 5,
+            "value": 293
+          },
+          {
+            "count": 4,
+            "value": 294
+          },
+          {
+            "count": 4,
+            "value": 295
+          },
+          {
+            "count": 1,
+            "value": 296
+          },
+          {
+            "count": 3,
+            "value": 297
+          },
+          {
+            "count": 4,
+            "value": 298
+          },
+          {
+            "count": 5,
+            "value": 299
+          },
+          {
+            "count": 1,
+            "value": 300
+          },
+          {
+            "count": 3,
+            "value": 301
+          },
+          {
+            "count": 5,
+            "value": 302
+          },
+          {
+            "count": 4,
+            "value": 303
+          },
+          {
+            "count": 2,
+            "value": 304
+          },
+          {
+            "count": 4,
+            "value": 305
+          },
+          {
+            "count": 1,
+            "value": 306
+          },
+          {
+            "count": 3,
+            "value": 307
+          },
+          {
+            "count": 2,
+            "value": 308
+          },
+          {
+            "count": 3,
+            "value": 309
+          },
+          {
+            "count": 4,
+            "value": 310
+          },
+          {
+            "count": 1,
+            "value": 311
+          },
+          {
+            "count": 3,
+            "value": 312
+          },
+          {
+            "count": 3,
+            "value": 313
+          },
+          {
+            "count": 4,
+            "value": 314
+          },
+          {
+            "count": 4,
+            "value": 315
+          },
+          {
+            "count": 2,
+            "value": 317
+          },
+          {
+            "count": 2,
+            "value": 318
+          },
+          {
+            "count": 3,
+            "value": 319
+          },
+          {
+            "count": 3,
+            "value": 320
+          },
+          {
+            "count": 1,
+            "value": 321
+          },
+          {
+            "count": 1,
+            "value": 322
+          },
+          {
+            "count": 2,
+            "value": 323
+          },
+          {
+            "count": 2,
+            "value": 324
+          },
+          {
+            "count": 5,
+            "value": 325
+          },
+          {
+            "count": 2,
+            "value": 326
+          },
+          {
+            "count": 2,
+            "value": 327
+          },
+          {
+            "count": 2,
+            "value": 328
+          },
+          {
+            "count": 3,
+            "value": 330
+          },
+          {
+            "count": 2,
+            "value": 331
+          },
+          {
+            "count": 2,
+            "value": 332
+          },
+          {
+            "count": 5,
+            "value": 333
+          },
+          {
+            "count": 1,
+            "value": 334
+          },
+          {
+            "count": 1,
+            "value": 335
+          },
+          {
+            "count": 2,
+            "value": 336
+          },
+          {
+            "count": 2,
+            "value": 337
+          },
+          {
+            "count": 1,
+            "value": 338
+          },
+          {
+            "count": 2,
+            "value": 339
+          },
+          {
+            "count": 2,
+            "value": 340
+          },
+          {
+            "count": 4,
+            "value": 341
+          },
+          {
+            "count": 3,
+            "value": 342
+          },
+          {
+            "count": 2,
+            "value": 343
+          },
+          {
+            "count": 1,
+            "value": 344
+          },
+          {
+            "count": 3,
+            "value": 345
+          },
+          {
+            "count": 1,
+            "value": 346
+          },
+          {
+            "count": 1,
+            "value": 348
+          },
+          {
+            "count": 2,
+            "value": 350
+          },
+          {
+            "count": 1,
+            "value": 353
+          },
+          {
+            "count": 2,
+            "value": 354
+          },
+          {
+            "count": 1,
+            "value": 355
+          },
+          {
+            "count": 1,
+            "value": 356
+          },
+          {
+            "count": 1,
+            "value": 358
+          },
+          {
+            "count": 3,
+            "value": 359
+          },
+          {
+            "count": 1,
+            "value": 360
+          },
+          {
+            "count": 1,
+            "value": 362
+          },
+          {
+            "count": 1,
+            "value": 363
+          },
+          {
+            "count": 2,
+            "value": 364
+          },
+          {
+            "count": 2,
+            "value": 365
+          },
+          {
+            "count": 1,
+            "value": 367
+          },
+          {
+            "count": 1,
+            "value": 368
+          },
+          {
+            "count": 1,
+            "value": 370
+          },
+          {
+            "count": 2,
+            "value": 371
+          },
+          {
+            "count": 2,
+            "value": 373
+          },
+          {
+            "count": 2,
+            "value": 375
+          },
+          {
+            "count": 1,
+            "value": 376
+          },
+          {
+            "count": 1,
+            "value": 377
+          },
+          {
+            "count": 1,
+            "value": 378
+          },
+          {
+            "count": 3,
+            "value": 379
+          },
+          {
+            "count": 1,
+            "value": 380
+          },
+          {
+            "count": 1,
+            "value": 381
+          },
+          {
+            "count": 2,
+            "value": 382
+          },
+          {
+            "count": 1,
+            "value": 383
+          },
+          {
+            "count": 5,
+            "value": 384
+          },
+          {
+            "count": 2,
+            "value": 386
+          },
+          {
+            "count": 1,
+            "value": 387
+          },
+          {
+            "count": 1,
+            "value": 389
+          },
+          {
+            "count": 1,
+            "value": 390
+          },
+          {
+            "count": 1,
+            "value": 392
+          },
+          {
+            "count": 1,
+            "value": 394
+          },
+          {
+            "count": 1,
+            "value": 395
+          },
+          {
+            "count": 1,
+            "value": 398
+          },
+          {
+            "count": 1,
+            "value": 400
+          },
+          {
+            "count": 2,
+            "value": 402
+          },
+          {
+            "count": 3,
+            "value": 407
+          },
+          {
+            "count": 1,
+            "value": 409
+          },
+          {
+            "count": 3,
+            "value": 411
+          },
+          {
+            "count": 1,
+            "value": 412
+          },
+          {
+            "count": 2,
+            "value": 413
+          },
+          {
+            "count": 1,
+            "value": 414
+          },
+          {
+            "count": 2,
+            "value": 416
+          },
+          {
+            "count": 1,
+            "value": 417
+          },
+          {
+            "count": 1,
+            "value": 419
+          },
+          {
+            "count": 1,
+            "value": 421
+          },
+          {
+            "count": 1,
+            "value": 425
+          },
+          {
+            "count": 2,
+            "value": 427
+          },
+          {
+            "count": 1,
+            "value": 429
+          },
+          {
+            "count": 1,
+            "value": 433
+          },
+          {
+            "count": 1,
+            "value": 438
+          },
+          {
+            "count": 1,
+            "value": 439
+          },
+          {
+            "count": 2,
+            "value": 441
+          },
+          {
+            "count": 1,
+            "value": 449
+          },
+          {
+            "count": 1,
+            "value": 451
+          },
+          {
+            "count": 1,
+            "value": 452
+          },
+          {
+            "count": 1,
+            "value": 453
+          },
+          {
+            "count": 1,
+            "value": 454
+          },
+          {
+            "count": 1,
+            "value": 455
+          },
+          {
+            "count": 1,
+            "value": 456
+          },
+          {
+            "count": 3,
+            "value": 457
+          },
+          {
+            "count": 2,
+            "value": 458
+          },
+          {
+            "count": 1,
+            "value": 460
+          },
+          {
+            "count": 2,
+            "value": 466
+          },
+          {
+            "count": 1,
+            "value": 471
+          },
+          {
+            "count": 1,
+            "value": 475
+          },
+          {
+            "count": 2,
+            "value": 479
+          },
+          {
+            "count": 2,
+            "value": 481
+          },
+          {
+            "count": 1,
+            "value": 486
+          },
+          {
+            "count": 1,
+            "value": 488
+          },
+          {
+            "count": 1,
+            "value": 494
+          },
+          {
+            "count": 1,
+            "value": 516
+          },
+          {
+            "count": 1,
+            "value": 518
+          },
+          {
+            "count": 1,
+            "value": 560
+          },
+          {
+            "count": 1,
+            "value": 564
+          },
+          {
+            "count": 1,
+            "value": 566
+          },
+          {
+            "count": 1,
+            "value": 579
+          },
+          {
+            "count": 1,
+            "value": 640
+          }
+        ],
+        "maximum": 640,
+        "median": 29.0,
+        "minimum": 0
+      },
+      "battingInnings": {
+        "average": 5.634139,
+        "count": 3392,
+        "histogram": [
+          {
+            "count": 405,
+            "value": 0
+          },
+          {
+            "count": 509,
+            "value": 1
+          },
+          {
+            "count": 417,
+            "value": 2
+          },
+          {
+            "count": 276,
+            "value": 3
+          },
+          {
+            "count": 213,
+            "value": 4
+          },
+          {
+            "count": 186,
+            "value": 5
+          },
+          {
+            "count": 138,
+            "value": 6
+          },
+          {
+            "count": 154,
+            "value": 7
+          },
+          {
+            "count": 120,
+            "value": 8
+          },
+          {
+            "count": 104,
+            "value": 9
+          },
+          {
+            "count": 105,
+            "value": 10
+          },
+          {
+            "count": 130,
+            "value": 11
+          },
+          {
+            "count": 115,
+            "value": 12
+          },
+          {
+            "count": 155,
+            "value": 13
+          },
+          {
+            "count": 163,
+            "value": 14
+          },
+          {
+            "count": 78,
+            "value": 15
+          },
+          {
+            "count": 88,
+            "value": 16
+          },
+          {
+            "count": 29,
+            "value": 17
+          },
+          {
+            "count": 5,
+            "value": 18
+          },
+          {
+            "count": 2,
+            "value": 19
+          }
+        ],
+        "maximum": 19,
+        "median": 4.0,
+        "minimum": 0
+      },
+      "battingPositionAppearances": {
+        "1": 2480,
+        "10": 658,
+        "11": 388,
+        "2": 2480,
+        "3": 2457,
+        "4": 2398,
+        "5": 2262,
+        "6": 2022,
+        "7": 1686,
+        "8": 1323,
+        "9": 957
+      },
+      "bowlingInnings": {
+        "average": 4.333726,
+        "count": 3392,
+        "histogram": [
+          {
+            "count": 1192,
+            "value": 0
+          },
+          {
+            "count": 347,
+            "value": 1
+          },
+          {
+            "count": 248,
+            "value": 2
+          },
+          {
+            "count": 187,
+            "value": 3
+          },
+          {
+            "count": 162,
+            "value": 4
+          },
+          {
+            "count": 159,
+            "value": 5
+          },
+          {
+            "count": 133,
+            "value": 6
+          },
+          {
+            "count": 107,
+            "value": 7
+          },
+          {
+            "count": 102,
+            "value": 8
+          },
+          {
+            "count": 96,
+            "value": 9
+          },
+          {
+            "count": 87,
+            "value": 10
+          },
+          {
+            "count": 83,
+            "value": 11
+          },
+          {
+            "count": 95,
+            "value": 12
+          },
+          {
+            "count": 98,
+            "value": 13
+          },
+          {
+            "count": 141,
+            "value": 14
+          },
+          {
+            "count": 61,
+            "value": 15
+          },
+          {
+            "count": 64,
+            "value": 16
+          },
+          {
+            "count": 25,
+            "value": 17
+          },
+          {
+            "count": 4,
+            "value": 18
+          },
+          {
+            "count": 1,
+            "value": 19
+          }
+        ],
+        "maximum": 19,
+        "median": 2.0,
+        "minimum": 0
+      },
+      "bowlingLegalBalls": {
+        "average": 83.863502,
+        "count": 3392,
+        "histogram": [
+          {
+            "count": 1192,
+            "value": 0
+          },
+          {
+            "count": 7,
+            "value": 1
+          },
+          {
+            "count": 3,
+            "value": 2
+          },
+          {
+            "count": 1,
+            "value": 3
+          },
+          {
+            "count": 4,
+            "value": 4
+          },
+          {
+            "count": 2,
+            "value": 5
+          },
+          {
+            "count": 86,
+            "value": 6
+          },
+          {
+            "count": 2,
+            "value": 7
+          },
+          {
+            "count": 3,
+            "value": 8
+          },
+          {
+            "count": 1,
+            "value": 9
+          },
+          {
+            "count": 4,
+            "value": 10
+          },
+          {
+            "count": 2,
+            "value": 11
+          },
+          {
+            "count": 112,
+            "value": 12
+          },
+          {
+            "count": 4,
+            "value": 13
+          },
+          {
+            "count": 2,
+            "value": 14
+          },
+          {
+            "count": 2,
+            "value": 15
+          },
+          {
+            "count": 2,
+            "value": 16
+          },
+          {
+            "count": 4,
+            "value": 17
+          },
+          {
+            "count": 91,
+            "value": 18
+          },
+          {
+            "count": 1,
+            "value": 19
+          },
+          {
+            "count": 5,
+            "value": 20
+          },
+          {
+            "count": 3,
+            "value": 21
+          },
+          {
+            "count": 1,
+            "value": 22
+          },
+          {
+            "count": 3,
+            "value": 23
+          },
+          {
+            "count": 128,
+            "value": 24
+          },
+          {
+            "count": 2,
+            "value": 25
+          },
+          {
+            "count": 1,
+            "value": 26
+          },
+          {
+            "count": 2,
+            "value": 28
+          },
+          {
+            "count": 2,
+            "value": 29
+          },
+          {
+            "count": 45,
+            "value": 30
+          },
+          {
+            "count": 2,
+            "value": 31
+          },
+          {
+            "count": 2,
+            "value": 32
+          },
+          {
+            "count": 2,
+            "value": 33
+          },
+          {
+            "count": 2,
+            "value": 34
+          },
+          {
+            "count": 1,
+            "value": 35
+          },
+          {
+            "count": 53,
+            "value": 36
+          },
+          {
+            "count": 6,
+            "value": 37
+          },
+          {
+            "count": 2,
+            "value": 38
+          },
+          {
+            "count": 1,
+            "value": 39
+          },
+          {
+            "count": 2,
+            "value": 40
+          },
+          {
+            "count": 5,
+            "value": 41
+          },
+          {
+            "count": 64,
+            "value": 42
+          },
+          {
+            "count": 2,
+            "value": 43
+          },
+          {
+            "count": 1,
+            "value": 44
+          },
+          {
+            "count": 3,
+            "value": 46
+          },
+          {
+            "count": 3,
+            "value": 47
+          },
+          {
+            "count": 53,
+            "value": 48
+          },
+          {
+            "count": 2,
+            "value": 49
+          },
+          {
+            "count": 4,
+            "value": 51
+          },
+          {
+            "count": 2,
+            "value": 52
+          },
+          {
+            "count": 2,
+            "value": 53
+          },
+          {
+            "count": 36,
+            "value": 54
+          },
+          {
+            "count": 2,
+            "value": 55
+          },
+          {
+            "count": 2,
+            "value": 56
+          },
+          {
+            "count": 1,
+            "value": 57
+          },
+          {
+            "count": 2,
+            "value": 58
+          },
+          {
+            "count": 2,
+            "value": 59
+          },
+          {
+            "count": 50,
+            "value": 60
+          },
+          {
+            "count": 6,
+            "value": 61
+          },
+          {
+            "count": 3,
+            "value": 62
+          },
+          {
+            "count": 1,
+            "value": 63
+          },
+          {
+            "count": 4,
+            "value": 65
+          },
+          {
+            "count": 44,
+            "value": 66
+          },
+          {
+            "count": 5,
+            "value": 67
+          },
+          {
+            "count": 4,
+            "value": 68
+          },
+          {
+            "count": 3,
+            "value": 70
+          },
+          {
+            "count": 4,
+            "value": 71
+          },
+          {
+            "count": 53,
+            "value": 72
+          },
+          {
+            "count": 2,
+            "value": 73
+          },
+          {
+            "count": 1,
+            "value": 74
+          },
+          {
+            "count": 3,
+            "value": 76
+          },
+          {
+            "count": 3,
+            "value": 77
+          },
+          {
+            "count": 15,
+            "value": 78
+          },
+          {
+            "count": 4,
+            "value": 79
+          },
+          {
+            "count": 1,
+            "value": 80
+          },
+          {
+            "count": 1,
+            "value": 82
+          },
+          {
+            "count": 1,
+            "value": 83
+          },
+          {
+            "count": 42,
+            "value": 84
+          },
+          {
+            "count": 4,
+            "value": 85
+          },
+          {
+            "count": 2,
+            "value": 86
+          },
+          {
+            "count": 3,
+            "value": 87
+          },
+          {
+            "count": 1,
+            "value": 88
+          },
+          {
+            "count": 4,
+            "value": 89
+          },
+          {
+            "count": 32,
+            "value": 90
+          },
+          {
+            "count": 2,
+            "value": 91
+          },
+          {
+            "count": 1,
+            "value": 92
+          },
+          {
+            "count": 1,
+            "value": 93
+          },
+          {
+            "count": 2,
+            "value": 94
+          },
+          {
+            "count": 1,
+            "value": 95
+          },
+          {
+            "count": 36,
+            "value": 96
+          },
+          {
+            "count": 1,
+            "value": 97
+          },
+          {
+            "count": 3,
+            "value": 98
+          },
+          {
+            "count": 2,
+            "value": 99
+          },
+          {
+            "count": 4,
+            "value": 100
+          },
+          {
+            "count": 3,
+            "value": 101
+          },
+          {
+            "count": 27,
+            "value": 102
+          },
+          {
+            "count": 3,
+            "value": 104
+          },
+          {
+            "count": 5,
+            "value": 105
+          },
+          {
+            "count": 2,
+            "value": 106
+          },
+          {
+            "count": 3,
+            "value": 107
+          },
+          {
+            "count": 18,
+            "value": 108
+          },
+          {
+            "count": 4,
+            "value": 109
+          },
+          {
+            "count": 2,
+            "value": 110
+          },
+          {
+            "count": 1,
+            "value": 112
+          },
+          {
+            "count": 5,
+            "value": 113
+          },
+          {
+            "count": 25,
+            "value": 114
+          },
+          {
+            "count": 2,
+            "value": 116
+          },
+          {
+            "count": 1,
+            "value": 117
+          },
+          {
+            "count": 2,
+            "value": 118
+          },
+          {
+            "count": 6,
+            "value": 119
+          },
+          {
+            "count": 28,
+            "value": 120
+          },
+          {
+            "count": 2,
+            "value": 121
+          },
+          {
+            "count": 1,
+            "value": 123
+          },
+          {
+            "count": 2,
+            "value": 124
+          },
+          {
+            "count": 2,
+            "value": 125
+          },
+          {
+            "count": 20,
+            "value": 126
+          },
+          {
+            "count": 2,
+            "value": 127
+          },
+          {
+            "count": 1,
+            "value": 128
+          },
+          {
+            "count": 2,
+            "value": 129
+          },
+          {
+            "count": 2,
+            "value": 130
+          },
+          {
+            "count": 1,
+            "value": 131
+          },
+          {
+            "count": 26,
+            "value": 132
+          },
+          {
+            "count": 4,
+            "value": 134
+          },
+          {
+            "count": 1,
+            "value": 135
+          },
+          {
+            "count": 2,
+            "value": 136
+          },
+          {
+            "count": 3,
+            "value": 137
+          },
+          {
+            "count": 18,
+            "value": 138
+          },
+          {
+            "count": 3,
+            "value": 139
+          },
+          {
+            "count": 3,
+            "value": 140
+          },
+          {
+            "count": 3,
+            "value": 141
+          },
+          {
+            "count": 2,
+            "value": 142
+          },
+          {
+            "count": 4,
+            "value": 143
+          },
+          {
+            "count": 20,
+            "value": 144
+          },
+          {
+            "count": 3,
+            "value": 145
+          },
+          {
+            "count": 1,
+            "value": 147
+          },
+          {
+            "count": 3,
+            "value": 148
+          },
+          {
+            "count": 1,
+            "value": 149
+          },
+          {
+            "count": 13,
+            "value": 150
+          },
+          {
+            "count": 4,
+            "value": 151
+          },
+          {
+            "count": 2,
+            "value": 152
+          },
+          {
+            "count": 3,
+            "value": 153
+          },
+          {
+            "count": 1,
+            "value": 154
+          },
+          {
+            "count": 1,
+            "value": 155
+          },
+          {
+            "count": 18,
+            "value": 156
+          },
+          {
+            "count": 2,
+            "value": 157
+          },
+          {
+            "count": 1,
+            "value": 158
+          },
+          {
+            "count": 1,
+            "value": 160
+          },
+          {
+            "count": 2,
+            "value": 161
+          },
+          {
+            "count": 12,
+            "value": 162
+          },
+          {
+            "count": 5,
+            "value": 163
+          },
+          {
+            "count": 1,
+            "value": 164
+          },
+          {
+            "count": 3,
+            "value": 165
+          },
+          {
+            "count": 1,
+            "value": 166
+          },
+          {
+            "count": 1,
+            "value": 167
+          },
+          {
+            "count": 19,
+            "value": 168
+          },
+          {
+            "count": 3,
+            "value": 169
+          },
+          {
+            "count": 1,
+            "value": 170
+          },
+          {
+            "count": 4,
+            "value": 171
+          },
+          {
+            "count": 1,
+            "value": 172
+          },
+          {
+            "count": 9,
+            "value": 174
+          },
+          {
+            "count": 2,
+            "value": 175
+          },
+          {
+            "count": 2,
+            "value": 176
+          },
+          {
+            "count": 1,
+            "value": 177
+          },
+          {
+            "count": 2,
+            "value": 178
+          },
+          {
+            "count": 14,
+            "value": 180
+          },
+          {
+            "count": 2,
+            "value": 181
+          },
+          {
+            "count": 1,
+            "value": 182
+          },
+          {
+            "count": 3,
+            "value": 183
+          },
+          {
+            "count": 2,
+            "value": 184
+          },
+          {
+            "count": 18,
+            "value": 186
+          },
+          {
+            "count": 4,
+            "value": 187
+          },
+          {
+            "count": 1,
+            "value": 188
+          },
+          {
+            "count": 2,
+            "value": 189
+          },
+          {
+            "count": 2,
+            "value": 190
+          },
+          {
+            "count": 5,
+            "value": 191
+          },
+          {
+            "count": 11,
+            "value": 192
+          },
+          {
+            "count": 2,
+            "value": 193
+          },
+          {
+            "count": 2,
+            "value": 194
+          },
+          {
+            "count": 1,
+            "value": 197
+          },
+          {
+            "count": 11,
+            "value": 198
+          },
+          {
+            "count": 3,
+            "value": 199
+          },
+          {
+            "count": 2,
+            "value": 201
+          },
+          {
+            "count": 1,
+            "value": 202
+          },
+          {
+            "count": 1,
+            "value": 203
+          },
+          {
+            "count": 14,
+            "value": 204
+          },
+          {
+            "count": 4,
+            "value": 206
+          },
+          {
+            "count": 4,
+            "value": 209
+          },
+          {
+            "count": 13,
+            "value": 210
+          },
+          {
+            "count": 1,
+            "value": 211
+          },
+          {
+            "count": 1,
+            "value": 212
+          },
+          {
+            "count": 6,
+            "value": 213
+          },
+          {
+            "count": 2,
+            "value": 214
+          },
+          {
+            "count": 1,
+            "value": 215
+          },
+          {
+            "count": 11,
+            "value": 216
+          },
+          {
+            "count": 1,
+            "value": 218
+          },
+          {
+            "count": 3,
+            "value": 219
+          },
+          {
+            "count": 1,
+            "value": 220
+          },
+          {
+            "count": 1,
+            "value": 221
+          },
+          {
+            "count": 8,
+            "value": 222
+          },
+          {
+            "count": 2,
+            "value": 224
+          },
+          {
+            "count": 2,
+            "value": 225
+          },
+          {
+            "count": 1,
+            "value": 226
+          },
+          {
+            "count": 3,
+            "value": 227
+          },
+          {
+            "count": 17,
+            "value": 228
+          },
+          {
+            "count": 3,
+            "value": 229
+          },
+          {
+            "count": 2,
+            "value": 230
+          },
+          {
+            "count": 2,
+            "value": 231
+          },
+          {
+            "count": 3,
+            "value": 233
+          },
+          {
+            "count": 14,
+            "value": 234
+          },
+          {
+            "count": 2,
+            "value": 235
+          },
+          {
+            "count": 3,
+            "value": 237
+          },
+          {
+            "count": 1,
+            "value": 238
+          },
+          {
+            "count": 2,
+            "value": 239
+          },
+          {
+            "count": 9,
+            "value": 240
+          },
+          {
+            "count": 5,
+            "value": 241
+          },
+          {
+            "count": 1,
+            "value": 242
+          },
+          {
+            "count": 1,
+            "value": 244
+          },
+          {
+            "count": 1,
+            "value": 245
+          },
+          {
+            "count": 15,
+            "value": 246
+          },
+          {
+            "count": 2,
+            "value": 247
+          },
+          {
+            "count": 4,
+            "value": 248
+          },
+          {
+            "count": 1,
+            "value": 249
+          },
+          {
+            "count": 1,
+            "value": 250
+          },
+          {
+            "count": 2,
+            "value": 251
+          },
+          {
+            "count": 14,
+            "value": 252
+          },
+          {
+            "count": 4,
+            "value": 253
+          },
+          {
+            "count": 1,
+            "value": 254
+          },
+          {
+            "count": 5,
+            "value": 255
+          },
+          {
+            "count": 5,
+            "value": 256
+          },
+          {
+            "count": 1,
+            "value": 257
+          },
+          {
+            "count": 10,
+            "value": 258
+          },
+          {
+            "count": 1,
+            "value": 259
+          },
+          {
+            "count": 3,
+            "value": 261
+          },
+          {
+            "count": 3,
+            "value": 262
+          },
+          {
+            "count": 5,
+            "value": 263
+          },
+          {
+            "count": 16,
+            "value": 264
+          },
+          {
+            "count": 2,
+            "value": 265
+          },
+          {
+            "count": 2,
+            "value": 266
+          },
+          {
+            "count": 1,
+            "value": 267
+          },
+          {
+            "count": 4,
+            "value": 268
+          },
+          {
+            "count": 4,
+            "value": 269
+          },
+          {
+            "count": 8,
+            "value": 270
+          },
+          {
+            "count": 1,
+            "value": 272
+          },
+          {
+            "count": 4,
+            "value": 273
+          },
+          {
+            "count": 3,
+            "value": 274
+          },
+          {
+            "count": 2,
+            "value": 275
+          },
+          {
+            "count": 12,
+            "value": 276
+          },
+          {
+            "count": 3,
+            "value": 277
+          },
+          {
+            "count": 2,
+            "value": 278
+          },
+          {
+            "count": 1,
+            "value": 279
+          },
+          {
+            "count": 7,
+            "value": 280
+          },
+          {
+            "count": 2,
+            "value": 281
+          },
+          {
+            "count": 12,
+            "value": 282
+          },
+          {
+            "count": 2,
+            "value": 283
+          },
+          {
+            "count": 4,
+            "value": 284
+          },
+          {
+            "count": 3,
+            "value": 286
+          },
+          {
+            "count": 2,
+            "value": 287
+          },
+          {
+            "count": 15,
+            "value": 288
+          },
+          {
+            "count": 2,
+            "value": 290
+          },
+          {
+            "count": 2,
+            "value": 291
+          },
+          {
+            "count": 15,
+            "value": 294
+          },
+          {
+            "count": 2,
+            "value": 295
+          },
+          {
+            "count": 1,
+            "value": 296
+          },
+          {
+            "count": 4,
+            "value": 297
+          },
+          {
+            "count": 4,
+            "value": 298
+          },
+          {
+            "count": 21,
+            "value": 300
+          },
+          {
+            "count": 2,
+            "value": 301
+          },
+          {
+            "count": 4,
+            "value": 302
+          },
+          {
+            "count": 2,
+            "value": 303
+          },
+          {
+            "count": 3,
+            "value": 304
+          },
+          {
+            "count": 1,
+            "value": 305
+          },
+          {
+            "count": 11,
+            "value": 306
+          },
+          {
+            "count": 1,
+            "value": 307
+          },
+          {
+            "count": 5,
+            "value": 308
+          },
+          {
+            "count": 2,
+            "value": 309
+          },
+          {
+            "count": 3,
+            "value": 310
+          },
+          {
+            "count": 2,
+            "value": 311
+          },
+          {
+            "count": 13,
+            "value": 312
+          },
+          {
+            "count": 1,
+            "value": 313
+          },
+          {
+            "count": 3,
+            "value": 314
+          },
+          {
+            "count": 3,
+            "value": 316
+          },
+          {
+            "count": 1,
+            "value": 317
+          },
+          {
+            "count": 9,
+            "value": 318
+          },
+          {
+            "count": 3,
+            "value": 319
+          },
+          {
+            "count": 4,
+            "value": 320
+          },
+          {
+            "count": 5,
+            "value": 321
+          },
+          {
+            "count": 2,
+            "value": 322
+          },
+          {
+            "count": 1,
+            "value": 323
+          },
+          {
+            "count": 13,
+            "value": 324
+          },
+          {
+            "count": 1,
+            "value": 325
+          },
+          {
+            "count": 3,
+            "value": 326
+          },
+          {
+            "count": 1,
+            "value": 329
+          },
+          {
+            "count": 8,
+            "value": 330
+          },
+          {
+            "count": 1,
+            "value": 333
+          },
+          {
+            "count": 1,
+            "value": 334
+          },
+          {
+            "count": 1,
+            "value": 335
+          },
+          {
+            "count": 7,
+            "value": 336
+          },
+          {
+            "count": 2,
+            "value": 338
+          },
+          {
+            "count": 1,
+            "value": 339
+          },
+          {
+            "count": 2,
+            "value": 341
+          },
+          {
+            "count": 10,
+            "value": 342
+          },
+          {
+            "count": 1,
+            "value": 343
+          },
+          {
+            "count": 1,
+            "value": 344
+          },
+          {
+            "count": 2,
+            "value": 346
+          },
+          {
+            "count": 1,
+            "value": 347
+          },
+          {
+            "count": 3,
+            "value": 348
+          },
+          {
+            "count": 2,
+            "value": 350
+          },
+          {
+            "count": 1,
+            "value": 353
+          },
+          {
+            "count": 5,
+            "value": 354
+          },
+          {
+            "count": 2,
+            "value": 355
+          },
+          {
+            "count": 1,
+            "value": 356
+          },
+          {
+            "count": 3,
+            "value": 358
+          },
+          {
+            "count": 3,
+            "value": 359
+          },
+          {
+            "count": 7,
+            "value": 360
+          },
+          {
+            "count": 1,
+            "value": 361
+          },
+          {
+            "count": 8,
+            "value": 366
+          },
+          {
+            "count": 1,
+            "value": 370
+          },
+          {
+            "count": 4,
+            "value": 372
+          },
+          {
+            "count": 1,
+            "value": 375
+          },
+          {
+            "count": 1,
+            "value": 377
+          },
+          {
+            "count": 5,
+            "value": 378
+          },
+          {
+            "count": 1,
+            "value": 379
+          },
+          {
+            "count": 1,
+            "value": 380
+          },
+          {
+            "count": 1,
+            "value": 383
+          },
+          {
+            "count": 4,
+            "value": 384
+          },
+          {
+            "count": 1,
+            "value": 386
+          },
+          {
+            "count": 1,
+            "value": 387
+          },
+          {
+            "count": 1,
+            "value": 388
+          },
+          {
+            "count": 1,
+            "value": 390
+          },
+          {
+            "count": 1,
+            "value": 392
+          },
+          {
+            "count": 1,
+            "value": 394
+          },
+          {
+            "count": 1,
+            "value": 395
+          },
+          {
+            "count": 3,
+            "value": 396
+          },
+          {
+            "count": 1,
+            "value": 399
+          },
+          {
+            "count": 2,
+            "value": 402
+          },
+          {
+            "count": 1,
+            "value": 407
+          },
+          {
+            "count": 3,
+            "value": 408
+          },
+          {
+            "count": 1,
+            "value": 420
+          }
+        ],
+        "maximum": 420,
+        "median": 30.0,
+        "minimum": 0
+      }
+    }
+  },
+  "errors": [],
+  "observations": [],
+  "schemaVersion": "cricsheet-ipl-analytics-report/v1",
+  "sizeReport": {
+    "analyticalDataBytes": 49163762,
+    "manifestBytes": 3391,
+    "outputTreeAllocatedBytes": 49754112,
+    "outputTreeAllocatedHumanSize": "47.45 MiB",
+    "outputTreeLogicalBytes": 49723137,
+    "schemaBundleBytes": 368168,
+    "summaryBytes": 1047,
+    "validationReportBytes": 186769
+  },
+  "status": "passed"
+}

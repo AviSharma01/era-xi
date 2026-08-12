@@ -1,0 +1,1916 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "analyticalManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "baselineComparisons": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "actual": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "baseline": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "dataset": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "explanation": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "matches": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "dataset",
+          "baseline",
+          "actual",
+          "matches",
+          "explanation"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "counts": {
+      "additionalProperties": false,
+      "properties": {
+        "normalInnings": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "provenanceFailures": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "reconciliationFailures": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "schemaFailures": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "superOverInningsExcluded": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "normalInnings",
+        "superOverInningsExcluded",
+        "schemaFailures",
+        "reconciliationFailures",
+        "provenanceFailures"
+      ],
+      "type": "object"
+    },
+    "datasetVersion": {
+      "const": "cricsheet-ipl-analytics/v1"
+    },
+    "distributions": {
+      "additionalProperties": false,
+      "properties": {
+        "environment": {
+          "additionalProperties": false,
+          "properties": {
+            "matchCohorts": {
+              "additionalProperties": false,
+              "properties": {
+                "adjusted": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "incomplete_or_no_result": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "standard": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "standard",
+                "adjusted",
+                "incomplete_or_no_result"
+              ],
+              "type": "object"
+            },
+            "smallVenueSeasons": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "teamSeasonMatchCounts": {
+              "additionalProperties": false,
+              "properties": {
+                "average": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "count": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "histogram": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "count": {
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "value": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "count"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "maximum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "median": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "minimum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "count",
+                "minimum",
+                "median",
+                "average",
+                "maximum",
+                "histogram"
+              ],
+              "type": "object"
+            },
+            "teamSeasons": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "venueSampleBands": {
+              "additionalProperties": false,
+              "properties": {
+                "five_to_nine": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "single_match": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "ten_plus": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "two_to_four": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "single_match",
+                "two_to_four",
+                "five_to_nine",
+                "ten_plus"
+              ],
+              "type": "object"
+            },
+            "venueSeasonMatchCounts": {
+              "additionalProperties": false,
+              "properties": {
+                "average": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "count": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "histogram": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "count": {
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "value": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "count"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "maximum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "median": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "minimum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "count",
+                "minimum",
+                "median",
+                "average",
+                "maximum",
+                "histogram"
+              ],
+              "type": "object"
+            },
+            "venueSeasons": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "teamSeasons",
+            "venueSeasons",
+            "smallVenueSeasons",
+            "teamSeasonMatchCounts",
+            "venueSeasonMatchCounts",
+            "venueSampleBands",
+            "matchCohorts"
+          ],
+          "type": "object"
+        },
+        "evidenceEventCounts": {
+          "additionalProperties": false,
+          "properties": {
+            "absentHurtParticipantMatches": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "concussionSubstitutes": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "impactReplacements": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "roleReplacements": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "substituteFieldingEvents": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "impactReplacements",
+            "concussionSubstitutes",
+            "roleReplacements",
+            "substituteFieldingEvents",
+            "absentHurtParticipantMatches"
+          ],
+          "type": "object"
+        },
+        "evidenceProfileCounts": {
+          "additionalProperties": false,
+          "properties": {
+            "absentHurtProfiles": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "concussionProfiles": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "eventOnlyProfiles": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "impactProfiles": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "roleReplacementProfiles": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "substituteFieldingProfiles": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "impactProfiles",
+            "concussionProfiles",
+            "roleReplacementProfiles",
+            "substituteFieldingProfiles",
+            "absentHurtProfiles",
+            "eventOnlyProfiles"
+          ],
+          "type": "object"
+        },
+        "participation": {
+          "additionalProperties": false,
+          "properties": {
+            "allSeasons": {
+              "additionalProperties": false,
+              "properties": {
+                "documentedInvolvementMatchCount": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "average": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "histogram": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "count": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "count"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "maximum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "median": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "minimum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "minimum",
+                    "median",
+                    "average",
+                    "maximum",
+                    "histogram"
+                  ],
+                  "type": "object"
+                },
+                "officialListMatchCount": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "average": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "histogram": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "count": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "count"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "maximum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "median": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "minimum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "minimum",
+                    "median",
+                    "average",
+                    "maximum",
+                    "histogram"
+                  ],
+                  "type": "object"
+                },
+                "recordedActionMatchCount": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "average": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "histogram": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "count": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "count"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "maximum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "median": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "minimum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "minimum",
+                    "median",
+                    "average",
+                    "maximum",
+                    "histogram"
+                  ],
+                  "type": "object"
+                }
+              },
+              "required": [
+                "officialListMatchCount",
+                "recordedActionMatchCount",
+                "documentedInvolvementMatchCount"
+              ],
+              "type": "object"
+            },
+            "gapDistributions": {
+              "additionalProperties": false,
+              "properties": {
+                "documentedMinusOfficial": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "average": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "histogram": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "count": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "count"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "maximum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "median": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "minimum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "minimum",
+                    "median",
+                    "average",
+                    "maximum",
+                    "histogram"
+                  ],
+                  "type": "object"
+                },
+                "documentedMinusRecorded": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "average": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "histogram": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "count": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "count"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "maximum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "median": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "minimum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "minimum",
+                    "median",
+                    "average",
+                    "maximum",
+                    "histogram"
+                  ],
+                  "type": "object"
+                },
+                "officialMinusRecorded": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "average": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "histogram": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "count": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "count"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "maximum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "median": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "minimum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "minimum",
+                    "median",
+                    "average",
+                    "maximum",
+                    "histogram"
+                  ],
+                  "type": "object"
+                }
+              },
+              "required": [
+                "documentedMinusOfficial",
+                "documentedMinusRecorded",
+                "officialMinusRecorded"
+              ],
+              "type": "object"
+            },
+            "impactEra": {
+              "additionalProperties": false,
+              "properties": {
+                "documentedInvolvementMatchCount": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "average": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "histogram": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "count": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "count"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "maximum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "median": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "minimum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "minimum",
+                    "median",
+                    "average",
+                    "maximum",
+                    "histogram"
+                  ],
+                  "type": "object"
+                },
+                "officialListMatchCount": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "average": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "histogram": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "count": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "count"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "maximum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "median": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "minimum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "minimum",
+                    "median",
+                    "average",
+                    "maximum",
+                    "histogram"
+                  ],
+                  "type": "object"
+                },
+                "recordedActionMatchCount": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "average": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "histogram": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "count": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "count"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "maximum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "median": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "minimum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "minimum",
+                    "median",
+                    "average",
+                    "maximum",
+                    "histogram"
+                  ],
+                  "type": "object"
+                }
+              },
+              "required": [
+                "officialListMatchCount",
+                "recordedActionMatchCount",
+                "documentedInvolvementMatchCount"
+              ],
+              "type": "object"
+            },
+            "impactEraIntersections": {
+              "additionalProperties": false,
+              "properties": {
+                "officialAndRecorded": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "officialOnly": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "recordedOnly": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "officialAndRecorded",
+                "officialOnly",
+                "recordedOnly"
+              ],
+              "type": "object"
+            },
+            "matchContributionIntersections": {
+              "additionalProperties": false,
+              "properties": {
+                "officialAndRecorded": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "officialOnly": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "recordedOnly": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "officialAndRecorded",
+                "officialOnly",
+                "recordedOnly"
+              ],
+              "type": "object"
+            },
+            "perSeason": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "documentedInvolvementMatchCount": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "average": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "count": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "histogram": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "count": {
+                              "minimum": 1,
+                              "type": "integer"
+                            },
+                            "value": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "value",
+                            "count"
+                          ],
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "maximum": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "median": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "minimum": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "count",
+                      "minimum",
+                      "median",
+                      "average",
+                      "maximum",
+                      "histogram"
+                    ],
+                    "type": "object"
+                  },
+                  "officialListMatchCount": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "average": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "count": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "histogram": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "count": {
+                              "minimum": 1,
+                              "type": "integer"
+                            },
+                            "value": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "value",
+                            "count"
+                          ],
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "maximum": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "median": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "minimum": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "count",
+                      "minimum",
+                      "median",
+                      "average",
+                      "maximum",
+                      "histogram"
+                    ],
+                    "type": "object"
+                  },
+                  "recordedActionMatchCount": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "average": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "count": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "histogram": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "count": {
+                              "minimum": 1,
+                              "type": "integer"
+                            },
+                            "value": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "value",
+                            "count"
+                          ],
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "maximum": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "median": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "minimum": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "count",
+                      "minimum",
+                      "median",
+                      "average",
+                      "maximum",
+                      "histogram"
+                    ],
+                    "type": "object"
+                  },
+                  "seasonId": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "seasonId",
+                  "officialListMatchCount",
+                  "recordedActionMatchCount",
+                  "documentedInvolvementMatchCount"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "preImpact": {
+              "additionalProperties": false,
+              "properties": {
+                "documentedInvolvementMatchCount": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "average": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "histogram": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "count": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "count"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "maximum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "median": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "minimum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "minimum",
+                    "median",
+                    "average",
+                    "maximum",
+                    "histogram"
+                  ],
+                  "type": "object"
+                },
+                "officialListMatchCount": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "average": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "histogram": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "count": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "count"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "maximum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "median": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "minimum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "minimum",
+                    "median",
+                    "average",
+                    "maximum",
+                    "histogram"
+                  ],
+                  "type": "object"
+                },
+                "recordedActionMatchCount": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "average": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "histogram": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "count": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "count"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "maximum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "median": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "minimum": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "minimum",
+                    "median",
+                    "average",
+                    "maximum",
+                    "histogram"
+                  ],
+                  "type": "object"
+                }
+              },
+              "required": [
+                "officialListMatchCount",
+                "recordedActionMatchCount",
+                "documentedInvolvementMatchCount"
+              ],
+              "type": "object"
+            },
+            "preImpactIntersections": {
+              "additionalProperties": false,
+              "properties": {
+                "officialAndRecorded": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "officialOnly": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "recordedOnly": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "officialAndRecorded",
+                "officialOnly",
+                "recordedOnly"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "allSeasons",
+            "perSeason",
+            "preImpact",
+            "impactEra",
+            "matchContributionIntersections",
+            "preImpactIntersections",
+            "impactEraIntersections",
+            "gapDistributions"
+          ],
+          "type": "object"
+        },
+        "representativeProfileIds": {
+          "additionalProperties": false,
+          "properties": {
+            "eventOnlyEvidence": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "impactEvidence": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "mixedUsage": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "smallSample": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "stumpingEvidence": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "substantialBatting": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "substantialBowling": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "substantialBatting",
+            "substantialBowling",
+            "mixedUsage",
+            "stumpingEvidence",
+            "impactEvidence",
+            "eventOnlyEvidence",
+            "smallSample"
+          ],
+          "type": "object"
+        },
+        "samples": {
+          "additionalProperties": false,
+          "properties": {
+            "battingBalls": {
+              "additionalProperties": false,
+              "properties": {
+                "average": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "count": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "histogram": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "count": {
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "value": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "count"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "maximum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "median": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "minimum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "count",
+                "minimum",
+                "median",
+                "average",
+                "maximum",
+                "histogram"
+              ],
+              "type": "object"
+            },
+            "battingInnings": {
+              "additionalProperties": false,
+              "properties": {
+                "average": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "count": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "histogram": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "count": {
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "value": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "count"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "maximum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "median": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "minimum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "count",
+                "minimum",
+                "median",
+                "average",
+                "maximum",
+                "histogram"
+              ],
+              "type": "object"
+            },
+            "battingPositionAppearances": {
+              "additionalProperties": false,
+              "properties": {
+                "1": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "10": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "11": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "2": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "3": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "4": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "5": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "6": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "7": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "8": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "9": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11"
+              ],
+              "type": "object"
+            },
+            "bowlingInnings": {
+              "additionalProperties": false,
+              "properties": {
+                "average": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "count": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "histogram": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "count": {
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "value": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "count"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "maximum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "median": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "minimum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "count",
+                "minimum",
+                "median",
+                "average",
+                "maximum",
+                "histogram"
+              ],
+              "type": "object"
+            },
+            "bowlingLegalBalls": {
+              "additionalProperties": false,
+              "properties": {
+                "average": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "count": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "histogram": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "count": {
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "value": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "count"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "maximum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "median": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "minimum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "count",
+                "minimum",
+                "median",
+                "average",
+                "maximum",
+                "histogram"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "battingInnings",
+            "battingBalls",
+            "bowlingInnings",
+            "bowlingLegalBalls",
+            "battingPositionAppearances"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "participation",
+        "samples",
+        "evidenceProfileCounts",
+        "evidenceEventCounts",
+        "environment",
+        "representativeProfileIds"
+      ],
+      "type": "object"
+    },
+    "errors": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "observations": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "schemaVersion": {
+      "const": "cricsheet-ipl-analytics-report/v1"
+    },
+    "sizeReport": {
+      "additionalProperties": false,
+      "properties": {
+        "analyticalDataBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "manifestBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "outputTreeAllocatedBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "outputTreeAllocatedHumanSize": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "outputTreeLogicalBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "schemaBundleBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "summaryBytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "validationReportBytes": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "analyticalDataBytes",
+        "schemaBundleBytes",
+        "manifestBytes",
+        "validationReportBytes",
+        "summaryBytes",
+        "outputTreeLogicalBytes",
+        "outputTreeAllocatedBytes",
+        "outputTreeAllocatedHumanSize"
+      ],
+      "type": "object"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "passed_with_observations"
+      ],
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "datasetVersion",
+    "analyticalManifestHash",
+    "status",
+    "baselineComparisons",
+    "counts",
+    "distributions",
+    "sizeReport",
+    "errors",
+    "observations"
+  ],
+  "type": "object"
+}
