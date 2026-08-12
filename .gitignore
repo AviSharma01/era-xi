@@ -10,6 +10,9 @@ data/raw/*.zip
 # Reproducible Stage 3 normalized match corpus (manifests/reports/schemas remain reviewable)
 data/normalized/cricsheet-ipl/v1/ipl-*/
 
+# Reproducible Stage 4 analytical JSONL corpus; schemas and reports remain tracked
+data/analytical/cricsheet-ipl/v1/*.jsonl
+
 # Generated processed outputs
 data/processed/**
 
