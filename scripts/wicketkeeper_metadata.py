@@ -26,12 +26,12 @@ VALIDATION_SCHEMA_VERSION = "ipl-wicketkeeper-metadata-validation/v1"
 
 EXPECTED_BASELINES = {
     "stumpingEvents": 388,
-    "capabilityPlayers": 55,
+    "capabilityPlayers": 102,
     "confirmedUsageProfiles": 169,
     "legacySupportedPositives": 16,
     "legacyUnverifiedPositives": 0,
-    "legacyConflictingNegatives": 6,
-    "legacyUnsupportedNegatives": 125,
+    "legacyConflictingNegatives": 7,
+    "legacyUnsupportedNegatives": 124,
 }
 
 
@@ -226,7 +226,10 @@ def build_output_schemas() -> dict[str, dict[str, Any]]:
         "seasonUsageItems": _array(usage_review), "legacyCapabilityCandidateItems": _array(capability_candidate),
         "closedSeasonUsageItems": _array(closed_usage_review),
         "closedCapabilityItems": _array(closed_capability_review),
-        "positiveDiscoveryScope": _object({"status": _string(enum=["PENDING_EXTERNAL_RESEARCH"]), "description": _string()}),
+        "positiveDiscoveryScope": _object({
+            "status": _string(enum=["FROZEN_WITH_DOCUMENTED_LIMITATIONS"]),
+            "description": _string(),
+        }),
     })
     comparison = _object({"metric": _string(), "expected": integer, "actual": integer, "matches": {"type": "boolean"}})
     validation_report = _object({
@@ -616,14 +619,21 @@ def build_wicketkeeper_metadata_files(
             "legacyCapabilityCandidates": len(legacy_candidates),
             "closedSeasonUsageReviews": len(closed_usage_items),
             "closedCapabilityReviews": len(closed_capability_items),
-            "positiveDiscoveryComplete": False,
+            "positiveDiscoveryComplete": True,
         },
         "seasonUsageItems": role_items, "legacyCapabilityCandidateItems": legacy_candidates,
         "closedSeasonUsageItems": closed_usage_items,
         "closedCapabilityItems": closed_capability_items,
         "positiveDiscoveryScope": {
-            "status": "PENDING_EXTERNAL_RESEARCH",
-            "description": "Discover additional keeper-capable IPL players from comprehensive positive role sources; do not review players to prove non-capability.",
+            "status": "FROZEN_WITH_DOCUMENTED_LIMITATIONS",
+            "description": (
+                "The positive keeper-capability population is frozen for the current 816-player "
+                "match-participant registry. Direct official role-labelled archives remain incomplete "
+                "for parts of 2008-2015, some historical IPL pages survive only through archived or "
+                "staging material, and zero-match contracted squad members are outside this registry. "
+                "Sunny Singh remains UNKNOWN because no reliable identity-matched positive evidence "
+                "was accepted. Absence of evidence is not canonical negative evidence."
+            ),
         },
     }
     try:
@@ -752,7 +762,10 @@ def build_wicketkeeper_metadata_files(
         f"- Unverified legacy capability candidates: {len(legacy_candidates)}",
         f"- Closed-unknown season-usage reviews: {len(closed_usage_items)}",
         f"- Closed-unknown capability reviews: {len(closed_capability_items)}",
-        "- Comprehensive positive keeper discovery remains incomplete.", "",
+        "- Positive keeper-capability discovery is frozen for the current 816-player match-participant registry.",
+        "- Archive limitations: direct official role-labelled coverage is incomplete for parts of 2008-2015; some historical IPL evidence survives only through archived or staging material.",
+        "- Registry limitation: zero-match contracted squad members are outside the current canonical population.",
+        "- Sunny Singh remains UNKNOWN because no reliable identity-matched positive evidence was accepted; UNKNOWN is not a canonical negative.", "",
         "## Compatibility", "",
         "- No live 2016 game-facing artifact or consumer is produced or modified by this builder.", "",
     ]

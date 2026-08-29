@@ -1,11 +1,11 @@
 # Canonical IPL Wicketkeeper Metadata v1
 
-Metadata manifest SHA-256: `4f8610be909fdbd14aae170a661977ad4fe638e21d7b0e8640b3b5a02c8c1484`
+Metadata manifest SHA-256: `13940e0db4059fca2a12fba17b3046255cf9984f52be935766592b09814882d8`
 
 ## Canonical confirmations
 
 - Stumping events: 388
-- Confirmed capability players: 55
+- Confirmed capability players: 102
 - Confirmed usage profiles: 169
 
 ## Automatic evidence
@@ -15,11 +15,14 @@ Metadata manifest SHA-256: `4f8610be909fdbd14aae170a661977ad4fe638e21d7b0e8640b3
 
 ## Review boundary
 
-- Season-usage review items: 176
+- Season-usage review items: 239
 - Unverified legacy capability candidates: 0
 - Closed-unknown season-usage reviews: 8
 - Closed-unknown capability reviews: 15
-- Comprehensive positive keeper discovery remains incomplete.
+- Positive keeper-capability discovery is frozen for the current 816-player match-participant registry.
+- Archive limitations: direct official role-labelled coverage is incomplete for parts of 2008-2015; some historical IPL evidence survives only through archived or staging material.
+- Registry limitation: zero-match contracted squad members are outside the current canonical population.
+- Sunny Singh remains UNKNOWN because no reliable identity-matched positive evidence was accepted; UNKNOWN is not a canonical negative.
 
 ## Compatibility
 

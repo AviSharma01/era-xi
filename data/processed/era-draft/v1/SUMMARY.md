@@ -1,6 +1,6 @@
 # Era Draft G2 Eligibility v1
 
-Eligibility manifest SHA-256: `753939cd4f96621a0d767e0103a9bcfc9ce328dccaeee8ce66ec0830e824c66e`
+Eligibility manifest SHA-256: `01a6b7bf1531f77f9bdcfee890921dd968be7f53f169f59e627a8c6221c2dbd5`
 
 ## Reconciliation
 

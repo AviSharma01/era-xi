@@ -196,7 +196,7 @@
         },
         "status": {
           "enum": [
-            "PENDING_EXTERNAL_RESEARCH"
+            "FROZEN_WITH_DOCUMENTED_LIMITATIONS"
           ],
           "minLength": 1,
           "type": "string"

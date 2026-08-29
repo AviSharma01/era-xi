@@ -1521,11 +1521,13 @@
       "stumpingEvidenceRefs": []
     },
     {
-      "canonicalCapabilityEvidenceRefs": [],
-      "canonicalCapabilityStatus": "UNKNOWN",
+      "canonicalCapabilityEvidenceRefs": [
+        "manual:ca-psp-handscomb-profile"
+      ],
+      "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "PSP Handscomb",
       "careerStumpings": 0,
-      "classification": "UNSUPPORTED_NEGATIVE",
+      "classification": "CONFLICTING_NEGATIVE",
       "ipl2016EvidenceRefs": [],
       "ipl2016Stumpings": 0,
       "legacyIsWicketkeeper": false,
@@ -2399,10 +2401,10 @@
   ],
   "schemaVersion": "ipl-wicketkeeper-legacy-migration/v1",
   "summary": {
-    "conflictingNegatives": 6,
+    "conflictingNegatives": 7,
     "rows": 147,
     "supportedPositives": 16,
-    "unsupportedNegatives": 125,
+    "unsupportedNegatives": 124,
     "unverifiedPositives": 0
   }
 }

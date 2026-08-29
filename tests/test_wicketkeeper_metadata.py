@@ -72,7 +72,7 @@ class WicketkeeperMetadataIntegrationTests(unittest.TestCase):
     def test_reconciliation_counts(self) -> None:
         self.assertEqual(self.report["status"], "passed")
         self.assertEqual(self.report["counts"]["stumpingEvents"], 388)
-        self.assertEqual(self.report["counts"]["capabilityPlayers"], 55)
+        self.assertEqual(self.report["counts"]["capabilityPlayers"], 102)
         self.assertEqual(self.report["counts"]["confirmedUsageProfiles"], 169)
         self.assertEqual(self.report["counts"]["automaticallyConfirmedCapabilityPlayers"], 49)
         self.assertEqual(self.report["counts"]["automaticallyConfirmedUsageProfiles"], 166)
@@ -106,6 +106,23 @@ class WicketkeeperMetadataIntegrationTests(unittest.TestCase):
             self.assertEqual(capabilities[player_id]["status"], "CONFIRMED")
             self.assertTrue(any(ref.startswith("manual:") for ref in capabilities[player_id]["evidenceRefs"]))
         manual = json.loads(Path("data/manual/wicketkeeper_metadata/v1/metadata.json").read_text())
+        capability_freeze_additions = {
+            "0404d43c", "0bacade8", "0c94f480", "0ed0cdbf", "0fa5042b", "1fc6ef83",
+            "25f7b7d6", "272d796e", "2eeb4370", "35f173a0", "39086549", "3a02626a",
+            "3d284ca3", "548516a6", "5748e866", "57ca01b3", "5bdcdb72", "5d1e7582",
+            "60aa2db3", "69d03465", "7050a1e7", "710dd98c", "75de770f", "7b679de5",
+            "8ac93ca2", "95a2ea61", "9a46c4e5", "9e7225b0", "ad3b6e95", "ada15e88",
+            "b0c772ee", "b63e358a", "bd54eef5", "bf74b130", "c2dd89ea", "cf59b3f0",
+            "d7423da1", "df5a6881", "e3851766", "eaa90ab4", "f0af99a7", "f12fe2a1",
+            "f21043a5", "f48cf4da", "f836b33d", "ff154ecd", "ff1e68fa",
+        }
+        self.assertEqual(len(capability_freeze_additions), 47)
+        self.assertTrue(capability_freeze_additions.issubset({
+            row["playerId"] for row in manual["capabilityConfirmations"]
+        }))
+        self.assertTrue(all(capabilities[player_id]["status"] == "CONFIRMED" for player_id in capability_freeze_additions))
+        self.assertEqual(len(manual["usageConfirmations"]), 3)
+        self.assertEqual(capabilities["30e37810"]["status"], "UNKNOWN")
         self.assertNotIn(
             "541f85c9", {row["playerId"] for row in manual["capabilityConfirmations"]},
         )
@@ -129,25 +146,31 @@ class WicketkeeperMetadataIntegrationTests(unittest.TestCase):
         report = json.loads((self.output / "legacy_migration_report.json").read_text())
         self.assertEqual(report["summary"], {
             "rows": 147, "supportedPositives": 16, "unverifiedPositives": 0,
-            "conflictingNegatives": 6, "unsupportedNegatives": 125,
+            "conflictingNegatives": 7, "unsupportedNegatives": 124,
         })
         conflicts = {row["canonicalDisplayName"]: row for row in report["rows"] if row["classification"] == "CONFLICTING_NEGATIVE"}
-        self.assertEqual(set(conflicts), {"AP Tare", "AT Rayudu", "Gurkeerat Singh", "KD Karthik", "KM Jadhav", "SN Khan"})
+        self.assertEqual(set(conflicts), {"AP Tare", "AT Rayudu", "Gurkeerat Singh", "KD Karthik", "KM Jadhav", "PSP Handscomb", "SN Khan"})
         self.assertEqual(conflicts["KD Karthik"]["ipl2016Stumpings"], 3)
         supported = {row["canonicalDisplayName"] for row in report["rows"] if row["classification"] == "SUPPORTED_POSITIVE"}
         self.assertTrue({"ER Dwivedi", "NS Naik"}.issubset(supported))
 
     def test_keeper_role_queue_is_separate_and_auditable(self) -> None:
         queue = json.loads((self.output / "keeper_role_review_queue.json").read_text())
-        self.assertEqual(queue["summary"]["seasonUsageReviews"], 176)
-        self.assertEqual(queue["summary"]["currentlyG2EligibleUsageReviews"], 176)
+        self.assertEqual(queue["summary"]["seasonUsageReviews"], 239)
+        self.assertEqual(queue["summary"]["currentlyG2EligibleUsageReviews"], 239)
         self.assertEqual(queue["summary"]["eligibilityCriticalOverlap"], 0)
         self.assertEqual(queue["summary"]["legacyCapabilityCandidates"], 0)
         self.assertEqual(queue["summary"]["closedSeasonUsageReviews"], 8)
         self.assertEqual(queue["summary"]["closedCapabilityReviews"], 15)
         self.assertTrue(all(row["reviewStatus"] == "CLOSED_UNKNOWN" for row in queue["closedSeasonUsageItems"]))
         self.assertTrue(all(row["reviewStatus"] == "CLOSED_UNKNOWN" for row in queue["closedCapabilityItems"]))
-        self.assertFalse(queue["summary"]["positiveDiscoveryComplete"])
+        self.assertTrue(queue["summary"]["positiveDiscoveryComplete"])
+        self.assertEqual(
+            queue["positiveDiscoveryScope"]["status"],
+            "FROZEN_WITH_DOCUMENTED_LIMITATIONS",
+        )
+        self.assertIn("2008-2015", queue["positiveDiscoveryScope"]["description"])
+        self.assertIn("Sunny Singh remains UNKNOWN", queue["positiveDiscoveryScope"]["description"])
 
     def test_build_is_byte_deterministic(self) -> None:
         second_files, second_report = build_wicketkeeper_metadata_files()
