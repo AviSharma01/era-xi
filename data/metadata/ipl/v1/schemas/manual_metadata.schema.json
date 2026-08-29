@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "capabilityConfirmations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "notes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "APPROVED"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "playerId",
+          "sourceIds",
+          "reviewStatus",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "reviewDispositions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "notes": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "scope": {
+            "enum": [
+              "PLAYER_CAPABILITY",
+              "PLAYER_TEAM_SEASON_USAGE"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceIdsReviewed": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "status": {
+            "enum": [
+              "CLOSED_UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "subjectId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "scope",
+          "subjectId",
+          "status",
+          "sourceIdsReviewed",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-wicketkeeper-manual/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "accessedDate": {
+            "minLength": 1,
+            "pattern": "\\d{4}-\\d{2}-\\d{2}",
+            "type": "string"
+          },
+          "locator": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "notes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "publisher": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "supports": {
+            "items": {
+              "enum": [
+                "PLAYER_CAPABILITY",
+                "PLAYER_TEAM_SEASON_USAGE"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "url": {
+            "minLength": 1,
+            "pattern": "https://.+",
+            "type": "string"
+          }
+        },
+        "required": [
+          "sourceId",
+          "publisher",
+          "title",
+          "url",
+          "accessedDate",
+          "locator",
+          "supports",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "usageConfirmations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "notes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "playerTeamSeasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "APPROVED"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "playerTeamSeasonId",
+          "sourceIds",
+          "reviewStatus",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "sources",
+    "capabilityConfirmations",
+    "usageConfirmations",
+    "reviewDispositions"
+  ],
+  "title": "Positive-only manual wicketkeeper metadata",
+  "type": "object"
+}

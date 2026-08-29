@@ -1,0 +1,109 @@
+{
+  "artifacts": [
+    {
+      "path": "stumping_evidence.jsonl",
+      "rows": 388,
+      "schemaVersion": "ipl-wicketkeeper-stumping-evidence/v1",
+      "sha256": "db16d3910a4efa474a077fae9fb3eb6705daf306f32d5bf9a908e545e12700b6",
+      "sizeBytes": 269263
+    },
+    {
+      "path": "player_capabilities.jsonl",
+      "rows": 816,
+      "schemaVersion": "ipl-wicketkeeper-capability/v1",
+      "sha256": "2f7f158840396d30ae941dc0559779ac8c03fe1b6211a4eecd0701ed7f612a1f",
+      "sizeBytes": 194425
+    },
+    {
+      "path": "player_team_season_usage.jsonl",
+      "rows": 3392,
+      "schemaVersion": "ipl-wicketkeeper-usage/v1",
+      "sha256": "e70779933bf2a36d383660c0fe19aac041a98bd4d87c89ea60c87305771356f6",
+      "sizeBytes": 1131725
+    },
+    {
+      "path": "legacy_migration_report.json",
+      "rows": 147,
+      "schemaVersion": "ipl-wicketkeeper-legacy-migration/v1",
+      "sha256": "554982be92ca5c60488750a3406d5ad98765f0fec02d585a5554697b35127b4b",
+      "sizeBytes": 64123
+    },
+    {
+      "path": "keeper_role_review_queue.json",
+      "rows": 169,
+      "schemaVersion": "ipl-wicketkeeper-review-queue/v1",
+      "sha256": "8e737b960081056669558e5d9a47ce688989b9ecf011de7e2d31c8b14180552b",
+      "sizeBytes": 95445
+    }
+  ],
+  "manualOverlaySha256": "3430d3a9f63b59d717c3f8def9cd47b7f6974384eff8d61d2119af47ff4f67ac",
+  "metadataAggregateHash": "59bdd90b90b62ae05e3ba75c7d118a7452938c538cb8e79fe1653325e443607a",
+  "metadataManifestHash": "8ffc6a3a08b0b92c643351a8435808d9b7305bd113963c2c713a8e6489231dd8",
+  "metadataVersion": "ipl-wicketkeeper-metadata/v1",
+  "schemaFiles": [
+    {
+      "path": "schemas/keeper_role_review_queue.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "73294faf6c9ffe83661d14589d1a4b68bee19cf8b2fec3482df43607892ebda3",
+      "sizeBytes": 5275
+    },
+    {
+      "path": "schemas/legacy_migration_report.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "2cf863083bd588d0bc4e0e7ae3cd53b036654df79760655ed6f7668ee1909111",
+      "sizeBytes": 3416
+    },
+    {
+      "path": "schemas/manual_metadata.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "eaa84a4f38a5348b00250a6f096a3412b7df545ef7a30176c01193d3a2b3a54a",
+      "sizeBytes": 4766
+    },
+    {
+      "path": "schemas/metadata_manifest.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "893d0c21c0a34a7ac688192c6ed1611745aa30e1b228ce8d4003d4e9a3198cb9",
+      "sizeBytes": 3718
+    },
+    {
+      "path": "schemas/player_capability.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "1d25a450f8ccb384025c6ae09331bb7e67dd978798b2937bb3a07df518d4fea8",
+      "sizeBytes": 1153
+    },
+    {
+      "path": "schemas/player_team_season_usage.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "fb75af6a268de07d98eb4b0808c4c93fff13e4fc20dfcb8bf282fa85ce5efa32",
+      "sizeBytes": 1436
+    },
+    {
+      "path": "schemas/stumping_evidence.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "b709fcdcc7d5196fd0958caec2907ff5186d2b4a0dec7fd246077f3f7d07eacd",
+      "sizeBytes": 2230
+    },
+    {
+      "path": "schemas/validation_report.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "8ec8d2fdeea82d0a59aab4a1cec96879ac82e76062669a1cfd35290595a9948f",
+      "sizeBytes": 3715
+    }
+  ],
+  "schemaVersion": "ipl-wicketkeeper-metadata-manifest/v1",
+  "stage2RegistryAggregateHash": "9b23cafe4c2020b43fec7a3d80a13152270164b216ccd5cea3a1b552428ecac7",
+  "stage2RegistryVersion": "ipl-identities-v1",
+  "stage3DatasetVersion": "cricsheet-ipl-normalized/v1",
+  "stage3NormalizationManifestHash": "005da3be0fb64f946c869a8ab97cd9ea7e0c00e2e49f1bfb3d1c07e7726d6cec",
+  "stage3NormalizedMatchAggregateHash": "fb6a14f439124d57a8a39ff1c58a90ca0e5393e7d0a428b29f785600bea6eaaa",
+  "stage4AnalyticalManifestHash": "f437d9e03c1f1749b5a0b8b8c06a41e80c8f2d18e3d43d791b054014acf5998c",
+  "stage4DatasetVersion": "cricsheet-ipl-analytics/v1"
+}

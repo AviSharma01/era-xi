@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifacts": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rows": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "schemaVersion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes",
+          "rows",
+          "schemaVersion"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "manualOverlaySha256": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "metadataAggregateHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "metadataManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "metadataVersion": {
+      "enum": [
+        "ipl-wicketkeeper-metadata/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaFiles": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rows": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "schemaVersion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes",
+          "rows",
+          "schemaVersion"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-wicketkeeper-metadata-manifest/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "stage2RegistryAggregateHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "stage2RegistryVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "stage3DatasetVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "stage3NormalizationManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "stage3NormalizedMatchAggregateHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "stage4AnalyticalManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "stage4DatasetVersion": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "metadataVersion",
+    "stage2RegistryVersion",
+    "stage2RegistryAggregateHash",
+    "stage3DatasetVersion",
+    "stage3NormalizationManifestHash",
+    "stage3NormalizedMatchAggregateHash",
+    "stage4DatasetVersion",
+    "stage4AnalyticalManifestHash",
+    "manualOverlaySha256",
+    "artifacts",
+    "schemaFiles",
+    "metadataAggregateHash",
+    "metadataManifestHash"
+  ],
+  "title": "Wicketkeeper metadata manifest",
+  "type": "object"
+}

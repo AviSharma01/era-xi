@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "baselineComparisons": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "actual": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "expected": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "matches": {
+            "type": "boolean"
+          },
+          "metric": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "metric",
+          "expected",
+          "actual",
+          "matches"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "counts": {
+      "additionalProperties": false,
+      "properties": {
+        "battingOrBowlingEligibleProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "eligibilityCriticalReviewCases": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "g2EligiblePlayers": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "g2EligibleProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "keeperOnlyAdmissions": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "playerTeamSeasons": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "playerTeamSeasons",
+        "g2EligibleProfiles",
+        "g2EligiblePlayers",
+        "battingOrBowlingEligibleProfiles",
+        "keeperOnlyAdmissions",
+        "eligibilityCriticalReviewCases"
+      ],
+      "type": "object"
+    },
+    "eligibilityManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "eligibilityVersion": {
+      "enum": [
+        "ipl-era-draft-eligibility/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "errors": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "exclusionReasonCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "NO_G2_ACTION_THRESHOLD": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "OFFICIAL_APPEARANCES_BELOW_2": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "NO_G2_ACTION_THRESHOLD",
+        "OFFICIAL_APPEARANCES_BELOW_2"
+      ],
+      "type": "object"
+    },
+    "keeperOnlyAdmissionIds": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "qualifyingReasonCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "BATTING_BALLS": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "BOWLING_LEGAL_BALLS": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "WICKETKEEPING_USAGE": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "BATTING_BALLS",
+        "BOWLING_LEGAL_BALLS",
+        "WICKETKEEPING_USAGE"
+      ],
+      "type": "object"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-eligibility-validation/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "passed"
+      ],
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "eligibilityVersion",
+    "eligibilityManifestHash",
+    "status",
+    "baselineComparisons",
+    "counts",
+    "qualifyingReasonCounts",
+    "exclusionReasonCounts",
+    "keeperOnlyAdmissionIds",
+    "errors"
+  ],
+  "title": "Era Draft eligibility validation",
+  "type": "object"
+}

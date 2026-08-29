@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "battingBalls": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "bowlingLegalBalls": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "canonicalDisplayName": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "eligibilityStatus": {
+      "enum": [
+        "ELIGIBLE",
+        "INELIGIBLE"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "eligibilityVersion": {
+      "enum": [
+        "ipl-era-draft-eligibility/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "exclusionReasons": {
+      "items": {
+        "enum": [
+          "OFFICIAL_APPEARANCES_BELOW_2",
+          "NO_G2_ACTION_THRESHOLD"
+        ],
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "officialAppearances": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "playerId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerTeamSeasonId": {
+      "minLength": 1,
+      "pattern": "pts:[^:]+:[^:]+:[^:]+",
+      "type": "string"
+    },
+    "qualifyingReasons": {
+      "items": {
+        "enum": [
+          "BATTING_BALLS",
+          "BOWLING_LEGAL_BALLS",
+          "WICKETKEEPING_USAGE"
+        ],
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-eligibility-row/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "seasonId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "teamId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "wicketkeepingUsageStatus": {
+      "enum": [
+        "CONFIRMED",
+        "UNKNOWN"
+      ],
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "eligibilityVersion",
+    "playerTeamSeasonId",
+    "playerId",
+    "canonicalDisplayName",
+    "seasonId",
+    "teamId",
+    "officialAppearances",
+    "battingBalls",
+    "bowlingLegalBalls",
+    "wicketkeepingUsageStatus",
+    "eligibilityStatus",
+    "qualifyingReasons",
+    "exclusionReasons"
+  ],
+  "title": "Era Draft G2 eligibility row",
+  "type": "object"
+}

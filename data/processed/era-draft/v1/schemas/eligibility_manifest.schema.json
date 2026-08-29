@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifacts": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rows": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "schemaVersion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes",
+          "rows",
+          "schemaVersion"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "eligibilityAggregateHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "eligibilityManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "eligibilityVersion": {
+      "enum": [
+        "ipl-era-draft-eligibility/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaFiles": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rows": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "schemaVersion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes",
+          "rows",
+          "schemaVersion"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-eligibility-manifest/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "stage4AnalyticalManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "stage4DatasetVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "wicketkeeperMetadataManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "wicketkeeperMetadataVersion": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "eligibilityVersion",
+    "stage4DatasetVersion",
+    "stage4AnalyticalManifestHash",
+    "wicketkeeperMetadataVersion",
+    "wicketkeeperMetadataManifestHash",
+    "artifacts",
+    "schemaFiles",
+    "eligibilityAggregateHash",
+    "eligibilityManifestHash"
+  ],
+  "title": "Era Draft eligibility manifest",
+  "type": "object"
+}

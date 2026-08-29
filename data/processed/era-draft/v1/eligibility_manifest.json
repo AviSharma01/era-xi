@@ -1,0 +1,56 @@
+{
+  "artifacts": [
+    {
+      "path": "eligibility.jsonl",
+      "rows": 3392,
+      "schemaVersion": "ipl-era-draft-eligibility-row/v1",
+      "sha256": "67fa50230b07e5a91d7b57c57b1d70e3173e7722ffe21768b7d403fdcc5428d0",
+      "sizeBytes": 1682855
+    },
+    {
+      "path": "eligibility_review_queue.json",
+      "rows": 22,
+      "schemaVersion": "ipl-era-draft-eligibility-review/v1",
+      "sha256": "11ba9d82b77c26bba83a3f50a8954eb9798b8f4099d2097f70fdc72ec7814cd0",
+      "sizeBytes": 12527
+    }
+  ],
+  "eligibilityAggregateHash": "d8e3b84a4fc361e0be67a930bdfbaba52bd5d6890a5f1e534d366a226384aeec",
+  "eligibilityManifestHash": "72e692e0fd1df85e2ef408ccc011959b42a29c7c1b644f2e950fc33281ee9cce",
+  "eligibilityVersion": "ipl-era-draft-eligibility/v1",
+  "schemaFiles": [
+    {
+      "path": "schemas/eligibility.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "4bdcd9c3c2867b5cb6d6ec321d2055bafb2e993e92153e8977486ff550468605",
+      "sizeBytes": 2294
+    },
+    {
+      "path": "schemas/eligibility_manifest.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "a2c270ec7c65f4b2bd50b10cfaabb0ba761db91153c4439f8f1ead15da93a4c7",
+      "sizeBytes": 3171
+    },
+    {
+      "path": "schemas/eligibility_review_queue.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "41f361900b795fd1bb8c0f3454c10a02eff5f64a4b07944d0458682aa8ee7192",
+      "sizeBytes": 3537
+    },
+    {
+      "path": "schemas/validation_report.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "82ece5291746da6b2d9ee361ff0c9e96e6acb3accd55b93ebd2a6404d0dddc55",
+      "sizeBytes": 3789
+    }
+  ],
+  "schemaVersion": "ipl-era-draft-eligibility-manifest/v1",
+  "stage4AnalyticalManifestHash": "f437d9e03c1f1749b5a0b8b8c06a41e80c8f2d18e3d43d791b054014acf5998c",
+  "stage4DatasetVersion": "cricsheet-ipl-analytics/v1",
+  "wicketkeeperMetadataManifestHash": "8ffc6a3a08b0b92c643351a8435808d9b7305bd113963c2c713a8e6489231dd8",
+  "wicketkeeperMetadataVersion": "ipl-wicketkeeper-metadata/v1"
+}

@@ -1,0 +1,41 @@
+{
+  "baselineComparisons": [
+    {
+      "actual": 2990,
+      "expected": 2990,
+      "matches": true,
+      "metric": "g2EligibleProfiles"
+    },
+    {
+      "actual": 22,
+      "expected": 22,
+      "matches": true,
+      "metric": "eligibilityCriticalReviewCases"
+    }
+  ],
+  "counts": {
+    "battingOrBowlingEligibleProfiles": 2989,
+    "eligibilityCriticalReviewCases": 22,
+    "g2EligiblePlayers": 726,
+    "g2EligibleProfiles": 2990,
+    "keeperOnlyAdmissions": 1,
+    "playerTeamSeasons": 3392
+  },
+  "eligibilityManifestHash": "72e692e0fd1df85e2ef408ccc011959b42a29c7c1b644f2e950fc33281ee9cce",
+  "eligibilityVersion": "ipl-era-draft-eligibility/v1",
+  "errors": [],
+  "exclusionReasonCounts": {
+    "NO_G2_ACTION_THRESHOLD": 22,
+    "OFFICIAL_APPEARANCES_BELOW_2": 380
+  },
+  "keeperOnlyAdmissionIds": [
+    "pts:0aadc906:ipl-2011:team-rajasthan-royals"
+  ],
+  "qualifyingReasonCounts": {
+    "BATTING_BALLS": 2415,
+    "BOWLING_LEGAL_BALLS": 1880,
+    "WICKETKEEPING_USAGE": 163
+  },
+  "schemaVersion": "ipl-era-draft-eligibility-validation/v1",
+  "status": "passed"
+}

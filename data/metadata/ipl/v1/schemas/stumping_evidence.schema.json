@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "actualDelivery": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidenceId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidenceType": {
+      "enum": [
+        "CRICSHEET_STUMPING"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "inningsIndex": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "isSubstitute": {
+      "type": "boolean"
+    },
+    "matchId": {
+      "minLength": 1,
+      "pattern": "[0-9]+",
+      "type": "string"
+    },
+    "metadataVersion": {
+      "enum": [
+        "ipl-wicketkeeper-metadata/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "normalizationManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "normalizedMatchSha256": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "playerId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerTeamSeasonId": {
+      "minLength": 1,
+      "pattern": "pts:[^:]+:[^:]+:[^:]+",
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-wicketkeeper-stumping-evidence/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "seasonId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "sourceDeliveryIndex": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "sourceName": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "sourceOverNumber": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "teamId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "wicketIndex": {
+      "minimum": 0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "metadataVersion",
+    "evidenceId",
+    "evidenceType",
+    "normalizationManifestHash",
+    "normalizedMatchSha256",
+    "matchId",
+    "seasonId",
+    "teamId",
+    "playerTeamSeasonId",
+    "playerId",
+    "sourceName",
+    "inningsIndex",
+    "sourceOverNumber",
+    "sourceDeliveryIndex",
+    "wicketIndex",
+    "actualDelivery",
+    "isSubstitute"
+  ],
+  "title": "Stumping evidence row",
+  "type": "object"
+}

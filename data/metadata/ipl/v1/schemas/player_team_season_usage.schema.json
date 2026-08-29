@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "canonicalDisplayName": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidenceRefs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "metadataVersion": {
+      "enum": [
+        "ipl-wicketkeeper-metadata/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerTeamSeasonId": {
+      "minLength": 1,
+      "pattern": "pts:[^:]+:[^:]+:[^:]+",
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-wicketkeeper-usage/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "seasonId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "CONFIRMED",
+        "UNKNOWN"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "stumpings": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "teamId": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "metadataVersion",
+    "playerTeamSeasonId",
+    "playerId",
+    "canonicalDisplayName",
+    "seasonId",
+    "teamId",
+    "status",
+    "stumpings",
+    "evidenceRefs"
+  ],
+  "title": "Wicketkeeping usage row",
+  "type": "object"
+}

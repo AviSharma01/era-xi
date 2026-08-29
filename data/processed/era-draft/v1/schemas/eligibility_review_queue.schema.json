@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "completionBoundary": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "eligibilityVersion": {
+      "enum": [
+        "ipl-era-draft-eligibility/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "items": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "battingBalls": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "bowlingLegalBalls": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "canonicalDisplayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "capabilityStatus": {
+            "enum": [
+              "CONFIRMED",
+              "UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "officialAppearances": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "overlapsKeeperRoleReview": {
+            "type": "boolean"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerTeamSeasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewPath": {
+            "enum": [
+              "SEASON_USAGE_ONLY",
+              "CAPABILITY_THEN_USAGE"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "PENDING"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "reviewId",
+          "reviewStatus",
+          "playerTeamSeasonId",
+          "playerId",
+          "canonicalDisplayName",
+          "seasonId",
+          "teamId",
+          "officialAppearances",
+          "battingBalls",
+          "bowlingLegalBalls",
+          "capabilityStatus",
+          "reviewPath",
+          "overlapsKeeperRoleReview"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-eligibility-review/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "scope": {
+      "enum": [
+        "G2_ELIGIBILITY_CRITICAL"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "summary": {
+      "additionalProperties": false,
+      "properties": {
+        "capabilityThenUsage": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "keeperRoleReviewOverlap": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "reviewCases": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "seasonUsageOnly": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "reviewCases",
+        "seasonUsageOnly",
+        "capabilityThenUsage",
+        "keeperRoleReviewOverlap"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "eligibilityVersion",
+    "scope",
+    "summary",
+    "items",
+    "completionBoundary"
+  ],
+  "title": "Era Draft eligibility review queue",
+  "type": "object"
+}

@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "baselineComparisons": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "actual": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "expected": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "matches": {
+            "type": "boolean"
+          },
+          "metric": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "metric",
+          "expected",
+          "actual",
+          "matches"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "counts": {
+      "additionalProperties": false,
+      "properties": {
+        "canonicalPlayers": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "capabilityPlayers": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "confirmedUsageBelowTwoOfficialAppearances": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "confirmedUsageProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "confirmedUsageWithAtLeastTwoOfficialAppearances": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "keeperRoleSeasonUsageReviews": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacyCapabilityCandidates": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacyConflictingNegatives": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacySupportedPositives": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacyUnsupportedNegatives": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacyUnverifiedPositives": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "playerTeamSeasons": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "stumpingEvents": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "substituteStumpingEvents": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "stumpingEvents",
+        "capabilityPlayers",
+        "confirmedUsageProfiles",
+        "legacySupportedPositives",
+        "legacyUnverifiedPositives",
+        "legacyConflictingNegatives",
+        "legacyUnsupportedNegatives",
+        "canonicalPlayers",
+        "playerTeamSeasons",
+        "confirmedUsageWithAtLeastTwoOfficialAppearances",
+        "confirmedUsageBelowTwoOfficialAppearances",
+        "substituteStumpingEvents",
+        "keeperRoleSeasonUsageReviews",
+        "legacyCapabilityCandidates"
+      ],
+      "type": "object"
+    },
+    "errors": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "metadataManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "metadataVersion": {
+      "enum": [
+        "ipl-wicketkeeper-metadata/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-wicketkeeper-metadata-validation/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "passed"
+      ],
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "metadataVersion",
+    "metadataManifestHash",
+    "status",
+    "baselineComparisons",
+    "counts",
+    "errors"
+  ],
+  "title": "Wicketkeeper metadata validation",
+  "type": "object"
+}

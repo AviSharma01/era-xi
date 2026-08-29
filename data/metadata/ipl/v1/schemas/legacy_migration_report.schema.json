@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "legacySourcePath": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "legacySourceSha256": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "metadataVersion": {
+      "enum": [
+        "ipl-wicketkeeper-metadata/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "rows": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "canonicalCapabilityStatus": {
+            "enum": [
+              "CONFIRMED",
+              "UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "canonicalDisplayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "careerStumpings": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "classification": {
+            "enum": [
+              "SUPPORTED_POSITIVE",
+              "UNVERIFIED_POSITIVE",
+              "CONFLICTING_NEGATIVE",
+              "UNSUPPORTED_NEGATIVE"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "ipl2016EvidenceRefs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "ipl2016Stumpings": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "legacyIsWicketkeeper": {
+            "type": "boolean"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "stumpingEvidenceRefs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "playerId",
+          "canonicalDisplayName",
+          "legacyIsWicketkeeper",
+          "classification",
+          "careerStumpings",
+          "stumpingEvidenceRefs",
+          "ipl2016Stumpings",
+          "ipl2016EvidenceRefs",
+          "canonicalCapabilityStatus"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-wicketkeeper-legacy-migration/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "summary": {
+      "additionalProperties": false,
+      "properties": {
+        "conflictingNegatives": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rows": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "supportedPositives": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unsupportedNegatives": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unverifiedPositives": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "rows",
+        "supportedPositives",
+        "unverifiedPositives",
+        "conflictingNegatives",
+        "unsupportedNegatives"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "metadataVersion",
+    "legacySourcePath",
+    "legacySourceSha256",
+    "summary",
+    "rows"
+  ],
+  "title": "Legacy keeper migration report",
+  "type": "object"
+}

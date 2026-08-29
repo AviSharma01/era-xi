@@ -1,0 +1,67 @@
+{
+  "baselineComparisons": [
+    {
+      "actual": 388,
+      "expected": 388,
+      "matches": true,
+      "metric": "stumpingEvents"
+    },
+    {
+      "actual": 49,
+      "expected": 49,
+      "matches": true,
+      "metric": "capabilityPlayers"
+    },
+    {
+      "actual": 166,
+      "expected": 166,
+      "matches": true,
+      "metric": "confirmedUsageProfiles"
+    },
+    {
+      "actual": 14,
+      "expected": 14,
+      "matches": true,
+      "metric": "legacySupportedPositives"
+    },
+    {
+      "actual": 2,
+      "expected": 2,
+      "matches": true,
+      "metric": "legacyUnverifiedPositives"
+    },
+    {
+      "actual": 5,
+      "expected": 5,
+      "matches": true,
+      "metric": "legacyConflictingNegatives"
+    },
+    {
+      "actual": 126,
+      "expected": 126,
+      "matches": true,
+      "metric": "legacyUnsupportedNegatives"
+    }
+  ],
+  "counts": {
+    "canonicalPlayers": 816,
+    "capabilityPlayers": 49,
+    "confirmedUsageBelowTwoOfficialAppearances": 3,
+    "confirmedUsageProfiles": 166,
+    "confirmedUsageWithAtLeastTwoOfficialAppearances": 163,
+    "keeperRoleSeasonUsageReviews": 167,
+    "legacyCapabilityCandidates": 2,
+    "legacyConflictingNegatives": 5,
+    "legacySupportedPositives": 14,
+    "legacyUnsupportedNegatives": 126,
+    "legacyUnverifiedPositives": 2,
+    "playerTeamSeasons": 3392,
+    "stumpingEvents": 388,
+    "substituteStumpingEvents": 1
+  },
+  "errors": [],
+  "metadataManifestHash": "8ffc6a3a08b0b92c643351a8435808d9b7305bd113963c2c713a8e6489231dd8",
+  "metadataVersion": "ipl-wicketkeeper-metadata/v1",
+  "schemaVersion": "ipl-wicketkeeper-metadata-validation/v1",
+  "status": "passed"
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "canonicalDisplayName": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidenceRefs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "metadataVersion": {
+      "enum": [
+        "ipl-wicketkeeper-metadata/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-wicketkeeper-capability/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "CONFIRMED",
+        "UNKNOWN"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "stumpingEvidenceCount": {
+      "minimum": 0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "metadataVersion",
+    "playerId",
+    "canonicalDisplayName",
+    "status",
+    "stumpingEvidenceCount",
+    "evidenceRefs"
+  ],
+  "title": "Wicketkeeper capability row",
+  "type": "object"
+}

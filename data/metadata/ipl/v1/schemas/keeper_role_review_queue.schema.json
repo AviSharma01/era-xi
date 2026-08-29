@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "legacyCapabilityCandidateItems": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "canonicalDisplayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "relatedOfficialAppearanceProfileIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "reviewId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "PENDING"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewType": {
+            "enum": [
+              "LEGACY_CAPABILITY_CANDIDATE"
+            ],
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "reviewId",
+          "reviewType",
+          "reviewStatus",
+          "playerId",
+          "canonicalDisplayName",
+          "relatedOfficialAppearanceProfileIds"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "metadataVersion": {
+      "enum": [
+        "ipl-wicketkeeper-metadata/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "positiveDiscoveryScope": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "PENDING_EXTERNAL_RESEARCH"
+          ],
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "description"
+      ],
+      "type": "object"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-wicketkeeper-review-queue/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "scope": {
+      "enum": [
+        "FULL_ERA_DRAFT_KEEPER_ROLE"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "seasonUsageItems": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "battingBalls": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "bowlingLegalBalls": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "canonicalDisplayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "currentlyG2EligibleByBattingOrBowling": {
+            "type": "boolean"
+          },
+          "officialAppearances": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "overlapsEligibilityCritical": {
+            "type": "boolean"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerTeamSeasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "PENDING"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewType": {
+            "enum": [
+              "SEASON_USAGE"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "reviewId",
+          "reviewType",
+          "reviewStatus",
+          "playerTeamSeasonId",
+          "playerId",
+          "canonicalDisplayName",
+          "seasonId",
+          "teamId",
+          "officialAppearances",
+          "battingBalls",
+          "bowlingLegalBalls",
+          "currentlyG2EligibleByBattingOrBowling",
+          "overlapsEligibilityCritical"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "summary": {
+      "additionalProperties": false,
+      "properties": {
+        "currentlyG2EligibleUsageReviews": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "eligibilityCriticalOverlap": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacyCapabilityCandidates": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "positiveDiscoveryComplete": {
+          "type": "boolean"
+        },
+        "seasonUsageReviews": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "seasonUsageReviews",
+        "currentlyG2EligibleUsageReviews",
+        "eligibilityCriticalOverlap",
+        "legacyCapabilityCandidates",
+        "positiveDiscoveryComplete"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "metadataVersion",
+    "scope",
+    "summary",
+    "seasonUsageItems",
+    "legacyCapabilityCandidateItems",
+    "positiveDiscoveryScope"
+  ],
+  "title": "Keeper role review queue",
+  "type": "object"
+}
