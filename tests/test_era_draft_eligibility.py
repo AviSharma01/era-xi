@@ -63,19 +63,27 @@ class EraDraftEligibilityIntegrationTests(unittest.TestCase):
         self.assertEqual(self.report["status"], "passed")
         self.assertEqual(self.report["counts"]["playerTeamSeasons"], 3392)
         self.assertEqual(self.report["counts"]["battingOrBowlingEligibleProfiles"], 2989)
-        self.assertEqual(self.report["counts"]["g2EligibleProfiles"], 2990)
-        self.assertEqual(self.report["counts"]["g2EligiblePlayers"], 726)
-        self.assertEqual(self.report["counts"]["keeperOnlyAdmissions"], 1)
-        self.assertEqual(self.report["keeperOnlyAdmissionIds"], ["pts:0aadc906:ipl-2011:team-rajasthan-royals"])
+        self.assertEqual(self.report["counts"]["g2EligibleProfiles"], 2992)
+        self.assertEqual(self.report["counts"]["g2EligiblePlayers"], 727)
+        self.assertEqual(self.report["counts"]["keeperOnlyAdmissions"], 3)
+        self.assertEqual(self.report["keeperOnlyAdmissionIds"], [
+            "pts:0aadc906:ipl-2011:team-rajasthan-royals",
+            "pts:541f85c9:ipl-2020:team-sunrisers-hyderabad",
+            "pts:622cc511:ipl-2008:team-kings-xi-punjab",
+        ])
 
     def test_eligibility_review_queue_is_exact_and_separate(self) -> None:
         queue = json.loads((self.output_dir / "eligibility_review_queue.json").read_text())
         self.assertEqual(queue["summary"], {
-            "reviewCases": 22, "seasonUsageOnly": 3,
-            "capabilityThenUsage": 19, "keeperRoleReviewOverlap": 3,
+            "reviewCases": 0, "seasonUsageOnly": 0,
+            "capabilityThenUsage": 0, "keeperRoleReviewOverlap": 0,
+            "closedUnknownCases": 20, "closedSeasonUsageOnly": 5,
+            "closedCapabilityThenUsage": 15, "closedKeeperRoleReviewOverlap": 5,
         })
         self.assertIn("does not complete", queue["completionBoundary"])
-        self.assertEqual(len({row["playerTeamSeasonId"] for row in queue["items"]}), 22)
+        self.assertEqual(queue["items"], [])
+        self.assertEqual(len({row["playerTeamSeasonId"] for row in queue["closedItems"]}), 20)
+        self.assertTrue(all(row["reviewStatus"] == "CLOSED_UNKNOWN" for row in queue["closedItems"]))
 
     def test_eligibility_build_is_byte_deterministic(self) -> None:
         second_files, second_report = build_era_draft_eligibility_files(metadata_dir=self.metadata_dir)

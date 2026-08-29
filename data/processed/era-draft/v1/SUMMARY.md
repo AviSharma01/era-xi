@@ -1,14 +1,16 @@
 # Era Draft G2 Eligibility v1
 
-Eligibility manifest SHA-256: `72e692e0fd1df85e2ef408ccc011959b42a29c7c1b644f2e950fc33281ee9cce`
+Eligibility manifest SHA-256: `753939cd4f96621a0d767e0103a9bcfc9ce328dccaeee8ce66ec0830e824c66e`
 
 ## Reconciliation
 
 - Player-team-seasons evaluated: 3392
-- G2 eligible profiles: 2990
+- G2 eligible profiles: 2992
 - Batting/bowling qualifiers: 2989
-- Keeper-only admissions: 1
-- Eligibility-critical review cases: 22
+- Keeper-only admissions: 3
+- Eligibility-critical review cases: 0
+
+- Closed-unknown reviewed cases: 20
 
 ## Boundary
 

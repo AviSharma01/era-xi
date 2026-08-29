@@ -2,6 +2,133 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
   "properties": {
+    "closedCapabilityItems": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "canonicalDisplayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "notes": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "CLOSED_UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewType": {
+            "enum": [
+              "PLAYER_CAPABILITY"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewedSourceRefs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "reviewId",
+          "reviewType",
+          "reviewStatus",
+          "playerId",
+          "canonicalDisplayName",
+          "reviewedSourceRefs",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "closedSeasonUsageItems": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "canonicalDisplayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "notes": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerTeamSeasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "CLOSED_UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewType": {
+            "enum": [
+              "SEASON_USAGE"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewedSourceRefs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "reviewId",
+          "reviewType",
+          "reviewStatus",
+          "playerTeamSeasonId",
+          "playerId",
+          "canonicalDisplayName",
+          "seasonId",
+          "teamId",
+          "reviewedSourceRefs",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
     "legacyCapabilityCandidateItems": {
       "items": {
         "additionalProperties": false,
@@ -178,6 +305,14 @@
     "summary": {
       "additionalProperties": false,
       "properties": {
+        "closedCapabilityReviews": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "closedSeasonUsageReviews": {
+          "minimum": 0,
+          "type": "integer"
+        },
         "currentlyG2EligibleUsageReviews": {
           "minimum": 0,
           "type": "integer"
@@ -203,6 +338,8 @@
         "currentlyG2EligibleUsageReviews",
         "eligibilityCriticalOverlap",
         "legacyCapabilityCandidates",
+        "closedSeasonUsageReviews",
+        "closedCapabilityReviews",
         "positiveDiscoveryComplete"
       ],
       "type": "object"
@@ -215,6 +352,8 @@
     "summary",
     "seasonUsageItems",
     "legacyCapabilityCandidateItems",
+    "closedSeasonUsageItems",
+    "closedCapabilityItems",
     "positiveDiscoveryScope"
   ],
   "title": "Keeper role review queue",

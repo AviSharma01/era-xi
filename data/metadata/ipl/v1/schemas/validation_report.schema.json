@@ -35,11 +35,27 @@
     "counts": {
       "additionalProperties": false,
       "properties": {
+        "automaticallyConfirmedCapabilityPlayers": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "automaticallyConfirmedUsageProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
         "canonicalPlayers": {
           "minimum": 0,
           "type": "integer"
         },
         "capabilityPlayers": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "closedCapabilityReviews": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "closedSeasonUsageReviews": {
           "minimum": 0,
           "type": "integer"
         },
@@ -105,8 +121,12 @@
         "confirmedUsageWithAtLeastTwoOfficialAppearances",
         "confirmedUsageBelowTwoOfficialAppearances",
         "substituteStumpingEvents",
+        "automaticallyConfirmedCapabilityPlayers",
+        "automaticallyConfirmedUsageProfiles",
         "keeperRoleSeasonUsageReviews",
-        "legacyCapabilityCandidates"
+        "legacyCapabilityCandidates",
+        "closedSeasonUsageReviews",
+        "closedCapabilityReviews"
       ],
       "type": "object"
     },

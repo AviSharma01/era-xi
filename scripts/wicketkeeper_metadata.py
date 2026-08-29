@@ -26,12 +26,12 @@ VALIDATION_SCHEMA_VERSION = "ipl-wicketkeeper-metadata-validation/v1"
 
 EXPECTED_BASELINES = {
     "stumpingEvents": 388,
-    "capabilityPlayers": 49,
-    "confirmedUsageProfiles": 166,
-    "legacySupportedPositives": 14,
-    "legacyUnverifiedPositives": 2,
-    "legacyConflictingNegatives": 5,
-    "legacyUnsupportedNegatives": 126,
+    "capabilityPlayers": 55,
+    "confirmedUsageProfiles": 169,
+    "legacySupportedPositives": 16,
+    "legacyUnverifiedPositives": 0,
+    "legacyConflictingNegatives": 6,
+    "legacyUnsupportedNegatives": 125,
 }
 
 
@@ -180,6 +180,7 @@ def build_output_schemas() -> dict[str, dict[str, Any]]:
         "playerId": _string(), "canonicalDisplayName": _string(), "legacyIsWicketkeeper": {"type": "boolean"},
         "classification": _string(enum=["SUPPORTED_POSITIVE", "UNVERIFIED_POSITIVE", "CONFLICTING_NEGATIVE", "UNSUPPORTED_NEGATIVE"]),
         "careerStumpings": integer, "stumpingEvidenceRefs": _array(_string(), unique=True),
+        "canonicalCapabilityEvidenceRefs": _array(_string(), unique=True),
         "ipl2016Stumpings": integer, "ipl2016EvidenceRefs": _array(_string(), unique=True),
         "canonicalCapabilityStatus": _string(enum=["CONFIRMED", "UNKNOWN"]),
     })
@@ -201,15 +202,30 @@ def build_output_schemas() -> dict[str, dict[str, Any]]:
         "reviewStatus": _string(enum=["PENDING"]), "playerId": _string(), "canonicalDisplayName": _string(),
         "relatedOfficialAppearanceProfileIds": _array(_string(), unique=True),
     })
+    closed_usage_review = _object({
+        "reviewId": _string(), "reviewType": _string(enum=["SEASON_USAGE"]),
+        "reviewStatus": _string(enum=["CLOSED_UNKNOWN"]), "playerTeamSeasonId": _string(),
+        "playerId": _string(), "canonicalDisplayName": _string(), "seasonId": _string(),
+        "teamId": _string(), "reviewedSourceRefs": _array(_string(), unique=True), "notes": _string(),
+    })
+    closed_capability_review = _object({
+        "reviewId": _string(), "reviewType": _string(enum=["PLAYER_CAPABILITY"]),
+        "reviewStatus": _string(enum=["CLOSED_UNKNOWN"]), "playerId": _string(),
+        "canonicalDisplayName": _string(), "reviewedSourceRefs": _array(_string(), unique=True),
+        "notes": _string(),
+    })
     role_queue = _object({
         "schemaVersion": _string(enum=[REVIEW_QUEUE_SCHEMA_VERSION]), "metadataVersion": _string(enum=[METADATA_VERSION]),
         "scope": _string(enum=["FULL_ERA_DRAFT_KEEPER_ROLE"]),
         "summary": _object({
             "seasonUsageReviews": integer, "currentlyG2EligibleUsageReviews": integer,
             "eligibilityCriticalOverlap": integer, "legacyCapabilityCandidates": integer,
+            "closedSeasonUsageReviews": integer, "closedCapabilityReviews": integer,
             "positiveDiscoveryComplete": {"type": "boolean"},
         }),
         "seasonUsageItems": _array(usage_review), "legacyCapabilityCandidateItems": _array(capability_candidate),
+        "closedSeasonUsageItems": _array(closed_usage_review),
+        "closedCapabilityItems": _array(closed_capability_review),
         "positiveDiscoveryScope": _object({"status": _string(enum=["PENDING_EXTERNAL_RESEARCH"]), "description": _string()}),
     })
     comparison = _object({"metric": _string(), "expected": integer, "actual": integer, "matches": {"type": "boolean"}})
@@ -222,7 +238,9 @@ def build_output_schemas() -> dict[str, dict[str, Any]]:
             "legacyUnverifiedPositives", "legacyConflictingNegatives", "legacyUnsupportedNegatives",
             "canonicalPlayers", "playerTeamSeasons", "confirmedUsageWithAtLeastTwoOfficialAppearances",
             "confirmedUsageBelowTwoOfficialAppearances", "substituteStumpingEvents",
+            "automaticallyConfirmedCapabilityPlayers", "automaticallyConfirmedUsageProfiles",
             "keeperRoleSeasonUsageReviews", "legacyCapabilityCandidates",
+            "closedSeasonUsageReviews", "closedCapabilityReviews",
         )}),
         "errors": _array(_string()),
     })
@@ -278,7 +296,16 @@ def _validate_manual_overlay(document: Any, schema: dict[str, Any]) -> dict[str,
                     raise WicketkeeperMetadataError(f"Unknown manual source ID {source_id} for {identity}")
                 if assertion_type not in source["supports"]:
                     raise WicketkeeperMetadataError(f"Manual source {source_id} does not support {assertion_type}")
+    disposition_seen: set[tuple[str, str]] = set()
     for disposition in document["reviewDispositions"]:
+        identity = (disposition["scope"], disposition["subjectId"])
+        if identity in disposition_seen:
+            raise WicketkeeperMetadataError(f"Duplicate manual review disposition: {identity}")
+        disposition_seen.add(identity)
+        if identity in seen:
+            raise WicketkeeperMetadataError(f"Manual confirmation conflicts with review disposition: {identity}")
+        if not disposition["sourceIdsReviewed"]:
+            raise WicketkeeperMetadataError(f"Review disposition requires reviewed provenance: {identity}")
         for source_id in disposition["sourceIdsReviewed"]:
             if source_id not in source_by_id:
                 raise WicketkeeperMetadataError(f"Review disposition references unknown source ID: {source_id}")
@@ -356,11 +383,23 @@ def build_wicketkeeper_metadata_files(
     pts_by_id = {row["playerTeamSeasonId"]: row for row in pts_rows}
     manual_capability = {row["playerId"]: row for row in manual["capabilityConfirmations"]}
     manual_usage = {row["playerTeamSeasonId"]: row for row in manual["usageConfirmations"]}
+    capability_dispositions = {
+        row["subjectId"]: row for row in manual["reviewDispositions"]
+        if row["scope"] == "PLAYER_CAPABILITY"
+    }
+    usage_dispositions = {
+        row["subjectId"]: row for row in manual["reviewDispositions"]
+        if row["scope"] == "PLAYER_TEAM_SEASON_USAGE"
+    }
     unknown_manual_players = sorted(set(manual_capability) - set(player_by_id))
     unknown_manual_usage = sorted(set(manual_usage) - set(pts_by_id))
-    if unknown_manual_players or unknown_manual_usage:
+    unknown_disposition_players = sorted(set(capability_dispositions) - set(player_by_id))
+    unknown_disposition_usage = sorted(set(usage_dispositions) - set(pts_by_id))
+    if unknown_manual_players or unknown_manual_usage or unknown_disposition_players or unknown_disposition_usage:
         raise WicketkeeperMetadataError(
-            f"Manual overlay references unknown IDs; players={unknown_manual_players}, usage={unknown_manual_usage}"
+            "Manual overlay references unknown IDs; "
+            f"players={unknown_manual_players}, usage={unknown_manual_usage}, "
+            f"dispositionPlayers={unknown_disposition_players}, dispositionUsage={unknown_disposition_usage}"
         )
 
     evidence: list[dict[str, Any]] = []
@@ -469,12 +508,13 @@ def build_wicketkeeper_metadata_files(
         if player_id not in player_by_id or not isinstance(row.get("isWicketkeeper"), bool):
             raise WicketkeeperMetadataError(f"Invalid legacy keeper row: {row}")
         refs = sorted(evidence_by_player[player_id])
+        canonical_refs = capability_by_id[player_id]["evidenceRefs"]
         legacy_value = row["isWicketkeeper"]
-        if legacy_value and refs:
+        if legacy_value and canonical_refs:
             classification = "SUPPORTED_POSITIVE"
         elif legacy_value:
             classification = "UNVERIFIED_POSITIVE"
-        elif refs:
+        elif canonical_refs:
             classification = "CONFLICTING_NEGATIVE"
         else:
             classification = "UNSUPPORTED_NEGATIVE"
@@ -487,6 +527,7 @@ def build_wicketkeeper_metadata_files(
             "playerId": player_id, "canonicalDisplayName": player_by_id[player_id]["canonicalDisplayName"],
             "legacyIsWicketkeeper": legacy_value, "classification": classification,
             "careerStumpings": len(refs), "stumpingEvidenceRefs": refs,
+            "canonicalCapabilityEvidenceRefs": canonical_refs,
             "ipl2016Stumpings": len(season_2016_refs), "ipl2016EvidenceRefs": season_2016_refs,
             "canonicalCapabilityStatus": capability_by_id[player_id]["status"],
         })
@@ -515,7 +556,11 @@ def build_wicketkeeper_metadata_files(
         if low_action:
             eligibility_ids.add(pts["playerTeamSeasonId"])
         capability = capability_by_id[pts["playerId"]]
-        if official >= 2 and capability["status"] == "CONFIRMED" and usage["status"] == "UNKNOWN":
+        if (
+            official >= 2 and capability["status"] == "CONFIRMED"
+            and usage["status"] == "UNKNOWN"
+            and pts["playerTeamSeasonId"] not in usage_dispositions
+        ):
             base_eligible = batting >= 6 or bowling >= 12
             role_items.append({
                 "reviewId": f"usage:{pts['playerTeamSeasonId']}", "reviewType": "SEASON_USAGE",
@@ -541,6 +586,26 @@ def build_wicketkeeper_metadata_files(
         })
     role_items.sort(key=lambda row: row["reviewId"])
     legacy_candidates.sort(key=lambda row: row["reviewId"])
+    closed_usage_items = []
+    for pts_id, disposition in sorted(usage_dispositions.items()):
+        pts = pts_by_id[pts_id]
+        closed_usage_items.append({
+            "reviewId": f"usage:{pts_id}", "reviewType": "SEASON_USAGE",
+            "reviewStatus": "CLOSED_UNKNOWN", "playerTeamSeasonId": pts_id,
+            "playerId": pts["playerId"], "canonicalDisplayName": pts["canonicalDisplayName"],
+            "seasonId": pts["seasonId"], "teamId": pts["teamId"],
+            "reviewedSourceRefs": _manual_refs(disposition["sourceIdsReviewed"]),
+            "notes": disposition["notes"],
+        })
+    closed_capability_items = []
+    for player_id, disposition in sorted(capability_dispositions.items()):
+        closed_capability_items.append({
+            "reviewId": f"capability:{player_id}", "reviewType": "PLAYER_CAPABILITY",
+            "reviewStatus": "CLOSED_UNKNOWN", "playerId": player_id,
+            "canonicalDisplayName": player_by_id[player_id]["canonicalDisplayName"],
+            "reviewedSourceRefs": _manual_refs(disposition["sourceIdsReviewed"]),
+            "notes": disposition["notes"],
+        })
     role_queue = {
         "schemaVersion": REVIEW_QUEUE_SCHEMA_VERSION, "metadataVersion": METADATA_VERSION,
         "scope": "FULL_ERA_DRAFT_KEEPER_ROLE",
@@ -549,9 +614,13 @@ def build_wicketkeeper_metadata_files(
             "currentlyG2EligibleUsageReviews": sum(row["currentlyG2EligibleByBattingOrBowling"] for row in role_items),
             "eligibilityCriticalOverlap": sum(row["overlapsEligibilityCritical"] for row in role_items),
             "legacyCapabilityCandidates": len(legacy_candidates),
+            "closedSeasonUsageReviews": len(closed_usage_items),
+            "closedCapabilityReviews": len(closed_capability_items),
             "positiveDiscoveryComplete": False,
         },
         "seasonUsageItems": role_items, "legacyCapabilityCandidateItems": legacy_candidates,
+        "closedSeasonUsageItems": closed_usage_items,
+        "closedCapabilityItems": closed_capability_items,
         "positiveDiscoveryScope": {
             "status": "PENDING_EXTERNAL_RESEARCH",
             "description": "Discover additional keeper-capable IPL players from comprehensive positive role sources; do not review players to prove non-capability.",
@@ -565,8 +634,8 @@ def build_wicketkeeper_metadata_files(
 
     actual = {
         "stumpingEvents": len(evidence),
-        "capabilityPlayers": sum(row["status"] == "CONFIRMED" and row["stumpingEvidenceCount"] > 0 for row in capabilities),
-        "confirmedUsageProfiles": sum(row["status"] == "CONFIRMED" and row["stumpings"] > 0 for row in usages),
+        "capabilityPlayers": sum(row["status"] == "CONFIRMED" for row in capabilities),
+        "confirmedUsageProfiles": sum(row["status"] == "CONFIRMED" for row in usages),
         "legacySupportedPositives": legacy_summary["supportedPositives"],
         "legacyUnverifiedPositives": legacy_summary["unverifiedPositives"],
         "legacyConflictingNegatives": legacy_summary["conflictingNegatives"],
@@ -608,7 +677,11 @@ def build_wicketkeeper_metadata_files(
         _artifact_entry("player_capabilities.jsonl", files["player_capabilities.jsonl"], CAPABILITY_SCHEMA_VERSION, len(capabilities)),
         _artifact_entry("player_team_season_usage.jsonl", files["player_team_season_usage.jsonl"], USAGE_SCHEMA_VERSION, len(usages)),
         _artifact_entry("legacy_migration_report.json", files["legacy_migration_report.json"], LEGACY_REPORT_SCHEMA_VERSION, len(legacy_results)),
-        _artifact_entry("keeper_role_review_queue.json", files["keeper_role_review_queue.json"], REVIEW_QUEUE_SCHEMA_VERSION, len(role_items) + len(legacy_candidates)),
+        _artifact_entry(
+            "keeper_role_review_queue.json", files["keeper_role_review_queue.json"],
+            REVIEW_QUEUE_SCHEMA_VERSION,
+            len(role_items) + len(legacy_candidates) + len(closed_usage_items) + len(closed_capability_items),
+        ),
     ]
     schema_entries = [
         _artifact_entry(path, content, "json-schema/2020-12", None)
@@ -648,8 +721,14 @@ def build_wicketkeeper_metadata_files(
                 and pts["participation"]["officialListMatchCount"] < 2 for pts in pts_rows
             ),
             "substituteStumpingEvents": sum(row["isSubstitute"] for row in evidence),
+            "automaticallyConfirmedCapabilityPlayers": sum(
+                row["stumpingEvidenceCount"] > 0 for row in capabilities
+            ),
+            "automaticallyConfirmedUsageProfiles": sum(row["stumpings"] > 0 for row in usages),
             "keeperRoleSeasonUsageReviews": len(role_items),
             "legacyCapabilityCandidates": len(legacy_candidates),
+            "closedSeasonUsageReviews": len(closed_usage_items),
+            "closedCapabilityReviews": len(closed_capability_items),
         },
         "errors": [],
     }
@@ -661,13 +740,18 @@ def build_wicketkeeper_metadata_files(
     summary = [
         "# Canonical IPL Wicketkeeper Metadata v1", "",
         f"Metadata manifest SHA-256: `{manifest['metadataManifestHash']}`", "",
-        "## Automatic evidence", "",
+        "## Canonical confirmations", "",
         f"- Stumping events: {actual['stumpingEvents']}",
         f"- Confirmed capability players: {actual['capabilityPlayers']}",
         f"- Confirmed usage profiles: {actual['confirmedUsageProfiles']}", "",
+        "## Automatic evidence", "",
+        f"- Automatically confirmed capability players: {sum(row['stumpingEvidenceCount'] > 0 for row in capabilities)}",
+        f"- Automatically confirmed usage profiles: {sum(row['stumpings'] > 0 for row in usages)}", "",
         "## Review boundary", "",
         f"- Season-usage review items: {len(role_items)}",
         f"- Unverified legacy capability candidates: {len(legacy_candidates)}",
+        f"- Closed-unknown season-usage reviews: {len(closed_usage_items)}",
+        f"- Closed-unknown capability reviews: {len(closed_capability_items)}",
         "- Comprehensive positive keeper discovery remains incomplete.", "",
         "## Compatibility", "",
         "- No live 2016 game-facing artifact or consumer is produced or modified by this builder.", "",

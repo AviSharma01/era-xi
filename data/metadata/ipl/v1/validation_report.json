@@ -7,60 +7,64 @@
       "metric": "stumpingEvents"
     },
     {
-      "actual": 49,
-      "expected": 49,
+      "actual": 55,
+      "expected": 55,
       "matches": true,
       "metric": "capabilityPlayers"
     },
     {
-      "actual": 166,
-      "expected": 166,
+      "actual": 169,
+      "expected": 169,
       "matches": true,
       "metric": "confirmedUsageProfiles"
     },
     {
-      "actual": 14,
-      "expected": 14,
+      "actual": 16,
+      "expected": 16,
       "matches": true,
       "metric": "legacySupportedPositives"
     },
     {
-      "actual": 2,
-      "expected": 2,
+      "actual": 0,
+      "expected": 0,
       "matches": true,
       "metric": "legacyUnverifiedPositives"
     },
     {
-      "actual": 5,
-      "expected": 5,
+      "actual": 6,
+      "expected": 6,
       "matches": true,
       "metric": "legacyConflictingNegatives"
     },
     {
-      "actual": 126,
-      "expected": 126,
+      "actual": 125,
+      "expected": 125,
       "matches": true,
       "metric": "legacyUnsupportedNegatives"
     }
   ],
   "counts": {
+    "automaticallyConfirmedCapabilityPlayers": 49,
+    "automaticallyConfirmedUsageProfiles": 166,
     "canonicalPlayers": 816,
-    "capabilityPlayers": 49,
+    "capabilityPlayers": 55,
+    "closedCapabilityReviews": 15,
+    "closedSeasonUsageReviews": 8,
     "confirmedUsageBelowTwoOfficialAppearances": 3,
-    "confirmedUsageProfiles": 166,
-    "confirmedUsageWithAtLeastTwoOfficialAppearances": 163,
-    "keeperRoleSeasonUsageReviews": 167,
-    "legacyCapabilityCandidates": 2,
-    "legacyConflictingNegatives": 5,
-    "legacySupportedPositives": 14,
-    "legacyUnsupportedNegatives": 126,
-    "legacyUnverifiedPositives": 2,
+    "confirmedUsageProfiles": 169,
+    "confirmedUsageWithAtLeastTwoOfficialAppearances": 166,
+    "keeperRoleSeasonUsageReviews": 176,
+    "legacyCapabilityCandidates": 0,
+    "legacyConflictingNegatives": 6,
+    "legacySupportedPositives": 16,
+    "legacyUnsupportedNegatives": 125,
+    "legacyUnverifiedPositives": 0,
     "playerTeamSeasons": 3392,
     "stumpingEvents": 388,
     "substituteStumpingEvents": 1
   },
   "errors": [],
-  "metadataManifestHash": "8ffc6a3a08b0b92c643351a8435808d9b7305bd113963c2c713a8e6489231dd8",
+  "metadataManifestHash": "4f8610be909fdbd14aae170a661977ad4fe638e21d7b0e8640b3b5a02c8c1484",
   "metadataVersion": "ipl-wicketkeeper-metadata/v1",
   "schemaVersion": "ipl-wicketkeeper-metadata-validation/v1",
   "status": "passed"

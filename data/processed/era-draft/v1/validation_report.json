@@ -1,40 +1,49 @@
 {
   "baselineComparisons": [
     {
-      "actual": 2990,
-      "expected": 2990,
+      "actual": 2992,
+      "expected": 2992,
       "matches": true,
       "metric": "g2EligibleProfiles"
     },
     {
-      "actual": 22,
-      "expected": 22,
+      "actual": 0,
+      "expected": 0,
       "matches": true,
       "metric": "eligibilityCriticalReviewCases"
+    },
+    {
+      "actual": 20,
+      "expected": 20,
+      "matches": true,
+      "metric": "closedUnknownReviewCases"
     }
   ],
   "counts": {
     "battingOrBowlingEligibleProfiles": 2989,
-    "eligibilityCriticalReviewCases": 22,
-    "g2EligiblePlayers": 726,
-    "g2EligibleProfiles": 2990,
-    "keeperOnlyAdmissions": 1,
+    "closedUnknownReviewCases": 20,
+    "eligibilityCriticalReviewCases": 0,
+    "g2EligiblePlayers": 727,
+    "g2EligibleProfiles": 2992,
+    "keeperOnlyAdmissions": 3,
     "playerTeamSeasons": 3392
   },
-  "eligibilityManifestHash": "72e692e0fd1df85e2ef408ccc011959b42a29c7c1b644f2e950fc33281ee9cce",
+  "eligibilityManifestHash": "753939cd4f96621a0d767e0103a9bcfc9ce328dccaeee8ce66ec0830e824c66e",
   "eligibilityVersion": "ipl-era-draft-eligibility/v1",
   "errors": [],
   "exclusionReasonCounts": {
-    "NO_G2_ACTION_THRESHOLD": 22,
+    "NO_G2_ACTION_THRESHOLD": 20,
     "OFFICIAL_APPEARANCES_BELOW_2": 380
   },
   "keeperOnlyAdmissionIds": [
-    "pts:0aadc906:ipl-2011:team-rajasthan-royals"
+    "pts:0aadc906:ipl-2011:team-rajasthan-royals",
+    "pts:541f85c9:ipl-2020:team-sunrisers-hyderabad",
+    "pts:622cc511:ipl-2008:team-kings-xi-punjab"
   ],
   "qualifyingReasonCounts": {
     "BATTING_BALLS": 2415,
     "BOWLING_LEGAL_BALLS": 1880,
-    "WICKETKEEPING_USAGE": 163
+    "WICKETKEEPING_USAGE": 166
   },
   "schemaVersion": "ipl-era-draft-eligibility-validation/v1",
   "status": "passed"

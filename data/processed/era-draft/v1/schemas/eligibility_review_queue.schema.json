@@ -2,6 +2,106 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
   "properties": {
+    "closedItems": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "battingBalls": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "bowlingLegalBalls": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "canonicalDisplayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "capabilityStatus": {
+            "enum": [
+              "CONFIRMED",
+              "UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "notes": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "officialAppearances": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "overlapsKeeperRoleReview": {
+            "type": "boolean"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerTeamSeasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewPath": {
+            "enum": [
+              "SEASON_USAGE_ONLY",
+              "CAPABILITY_THEN_USAGE"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "CLOSED_UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewedSourceRefs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "reviewId",
+          "reviewStatus",
+          "playerTeamSeasonId",
+          "playerId",
+          "canonicalDisplayName",
+          "seasonId",
+          "teamId",
+          "officialAppearances",
+          "battingBalls",
+          "bowlingLegalBalls",
+          "capabilityStatus",
+          "reviewPath",
+          "overlapsKeeperRoleReview",
+          "reviewedSourceRefs",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
     "completionBoundary": {
       "minLength": 1,
       "type": "string"
@@ -120,6 +220,22 @@
           "minimum": 0,
           "type": "integer"
         },
+        "closedCapabilityThenUsage": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "closedKeeperRoleReviewOverlap": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "closedSeasonUsageOnly": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "closedUnknownCases": {
+          "minimum": 0,
+          "type": "integer"
+        },
         "keeperRoleReviewOverlap": {
           "minimum": 0,
           "type": "integer"
@@ -137,7 +253,11 @@
         "reviewCases",
         "seasonUsageOnly",
         "capabilityThenUsage",
-        "keeperRoleReviewOverlap"
+        "keeperRoleReviewOverlap",
+        "closedUnknownCases",
+        "closedSeasonUsageOnly",
+        "closedCapabilityThenUsage",
+        "closedKeeperRoleReviewOverlap"
       ],
       "type": "object"
     }
@@ -148,6 +268,7 @@
     "scope",
     "summary",
     "items",
+    "closedItems",
     "completionBoundary"
   ],
   "title": "Era Draft eligibility review queue",

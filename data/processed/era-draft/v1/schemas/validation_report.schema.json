@@ -39,6 +39,10 @@
           "minimum": 0,
           "type": "integer"
         },
+        "closedUnknownReviewCases": {
+          "minimum": 0,
+          "type": "integer"
+        },
         "eligibilityCriticalReviewCases": {
           "minimum": 0,
           "type": "integer"
@@ -66,7 +70,8 @@
         "g2EligiblePlayers",
         "battingOrBowlingEligibleProfiles",
         "keeperOnlyAdmissions",
-        "eligibilityCriticalReviewCases"
+        "eligibilityCriticalReviewCases",
+        "closedUnknownReviewCases"
       ],
       "type": "object"
     },

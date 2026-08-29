@@ -1,49 +1,40 @@
 {
-  "completionBoundary": "Resolving this queue finalizes G2 pruning only; it does not complete Era Draft keeper-role coverage.",
-  "eligibilityVersion": "ipl-era-draft-eligibility/v1",
-  "items": [
+  "closedItems": [
     {
       "battingBalls": 4,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "T Kohli",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": false,
       "playerId": "40caa465",
       "playerTeamSeasonId": "pts:40caa465:ipl-2009:team-kings-xi-punjab",
       "reviewId": "eligibility:pts:40caa465:ipl-2009:team-kings-xi-punjab",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:cricbuzz-t-kohli-profile"
+      ],
       "seasonId": "ipl-2009",
       "teamId": "team-kings-xi-punjab"
-    },
-    {
-      "battingBalls": 4,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "SP Goswami",
-      "capabilityStatus": "CONFIRMED",
-      "officialAppearances": 2,
-      "overlapsKeeperRoleReview": true,
-      "playerId": "541f85c9",
-      "playerTeamSeasonId": "pts:541f85c9:ipl-2020:team-sunrisers-hyderabad",
-      "reviewId": "eligibility:pts:541f85c9:ipl-2020:team-sunrisers-hyderabad",
-      "reviewPath": "SEASON_USAGE_ONLY",
-      "reviewStatus": "PENDING",
-      "seasonId": "ipl-2020",
-      "teamId": "team-sunrisers-hyderabad"
     },
     {
       "battingBalls": 2,
       "bowlingLegalBalls": 6,
       "canonicalDisplayName": "SB Styris",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": false,
       "playerId": "57efa3be",
       "playerTeamSeasonId": "pts:57efa3be:ipl-2011:team-chennai-super-kings",
       "reviewId": "eligibility:pts:57efa3be:ipl-2011:team-chennai-super-kings",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:sky-sb-styris-profile"
+      ],
       "seasonId": "ipl-2011",
       "teamId": "team-chennai-super-kings"
     },
@@ -52,13 +43,17 @@
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "RV Patel",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": false,
       "playerId": "60500956",
       "playerTeamSeasonId": "pts:60500956:ipl-2022:team-delhi-capitals",
       "reviewId": "eligibility:pts:60500956:ipl-2022:team-delhi-capitals",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:dc-rv-patel-profile"
+      ],
       "seasonId": "ipl-2022",
       "teamId": "team-delhi-capitals"
     },
@@ -67,43 +62,36 @@
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "A Mukund",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": false,
       "playerId": "6165bca6",
       "playerTeamSeasonId": "pts:6165bca6:ipl-2008:team-chennai-super-kings",
       "reviewId": "eligibility:pts:6165bca6:ipl-2008:team-chennai-super-kings",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:cricbuzz-a-mukund-profile"
+      ],
       "seasonId": "ipl-2008",
       "teamId": "team-chennai-super-kings"
-    },
-    {
-      "battingBalls": 1,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "U Kaul",
-      "capabilityStatus": "UNKNOWN",
-      "officialAppearances": 5,
-      "overlapsKeeperRoleReview": false,
-      "playerId": "622cc511",
-      "playerTeamSeasonId": "pts:622cc511:ipl-2008:team-kings-xi-punjab",
-      "reviewId": "eligibility:pts:622cc511:ipl-2008:team-kings-xi-punjab",
-      "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
-      "seasonId": "ipl-2008",
-      "teamId": "team-kings-xi-punjab"
     },
     {
       "battingBalls": 5,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "R Powell",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": false,
       "playerId": "650d5e49",
       "playerTeamSeasonId": "pts:650d5e49:ipl-2025:team-kolkata-knight-riders",
       "reviewId": "eligibility:pts:650d5e49:ipl-2025:team-kolkata-knight-riders",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:cwi-r-powell-profile"
+      ],
       "seasonId": "ipl-2025",
       "teamId": "team-kolkata-knight-riders"
     },
@@ -112,13 +100,17 @@
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "Gurkeerat Singh",
       "capabilityStatus": "CONFIRMED",
+      "notes": "Gurkeerat Singh 2017 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": true,
       "playerId": "6eb146d2",
       "playerTeamSeasonId": "pts:6eb146d2:ipl-2017:team-kings-xi-punjab",
       "reviewId": "eligibility:pts:6eb146d2:ipl-2017:team-kings-xi-punjab",
       "reviewPath": "SEASON_USAGE_ONLY",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:espn-gurkeerat-kxip-2017"
+      ],
       "seasonId": "ipl-2017",
       "teamId": "team-kings-xi-punjab"
     },
@@ -127,13 +119,17 @@
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "T Stubbs",
       "capabilityStatus": "CONFIRMED",
+      "notes": "T Stubbs 2022 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": true,
       "playerId": "85b3fab2",
       "playerTeamSeasonId": "pts:85b3fab2:ipl-2022:team-mumbai-indians",
       "reviewId": "eligibility:pts:85b3fab2:ipl-2022:team-mumbai-indians",
       "reviewPath": "SEASON_USAGE_ONLY",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:espn-t-stubbs-mi-2022"
+      ],
       "seasonId": "ipl-2022",
       "teamId": "team-mumbai-indians"
     },
@@ -142,13 +138,17 @@
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "DV Malewar",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": false,
       "playerId": "9e6032fa",
       "playerTeamSeasonId": "pts:9e6032fa:ipl-2026:team-mumbai-indians",
       "reviewId": "eligibility:pts:9e6032fa:ipl-2026:team-mumbai-indians",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:ipl-mi-squad"
+      ],
       "seasonId": "ipl-2026",
       "teamId": "team-mumbai-indians"
     },
@@ -157,13 +157,17 @@
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "RS Sodhi",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 3,
       "overlapsKeeperRoleReview": false,
       "playerId": "a3ecf01f",
       "playerTeamSeasonId": "pts:a3ecf01f:ipl-2010:team-kings-xi-punjab",
       "reviewId": "eligibility:pts:a3ecf01f:ipl-2010:team-kings-xi-punjab",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:cricbuzz-rs-sodhi-profile"
+      ],
       "seasonId": "ipl-2010",
       "teamId": "team-kings-xi-punjab"
     },
@@ -172,13 +176,17 @@
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "TM Srivastava",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": false,
       "playerId": "a76d10ba",
       "playerTeamSeasonId": "pts:a76d10ba:ipl-2009:team-kings-xi-punjab",
       "reviewId": "eligibility:pts:a76d10ba:ipl-2009:team-kings-xi-punjab",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:cricketarchive-tm-srivastava-profile"
+      ],
       "seasonId": "ipl-2009",
       "teamId": "team-kings-xi-punjab"
     },
@@ -187,13 +195,17 @@
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "SA Asnodkar",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": false,
       "playerId": "ae091d39",
       "playerTeamSeasonId": "pts:ae091d39:ipl-2010:team-rajasthan-royals",
       "reviewId": "eligibility:pts:ae091d39:ipl-2010:team-rajasthan-royals",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:cricketarchive-sa-asnodkar-profile"
+      ],
       "seasonId": "ipl-2010",
       "teamId": "team-rajasthan-royals"
     },
@@ -202,13 +214,17 @@
       "bowlingLegalBalls": 6,
       "canonicalDisplayName": "RV Gomez",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": false,
       "playerId": "b2570b38",
       "playerTeamSeasonId": "pts:b2570b38:ipl-2013:team-pune-warriors",
       "reviewId": "eligibility:pts:b2570b38:ipl-2013:team-pune-warriors",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:cricbuzz-rv-gomez-profile"
+      ],
       "seasonId": "ipl-2013",
       "teamId": "team-pune-warriors"
     },
@@ -217,13 +233,17 @@
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "DB Ravi Teja",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": false,
       "playerId": "b720a5d6",
       "playerTeamSeasonId": "pts:b720a5d6:ipl-2012:team-deccan-chargers",
       "reviewId": "eligibility:pts:b720a5d6:ipl-2012:team-deccan-chargers",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:cricbuzz-db-ravi-teja-profile"
+      ],
       "seasonId": "ipl-2012",
       "teamId": "team-deccan-chargers"
     },
@@ -232,13 +252,17 @@
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "RA Bawa",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 3,
       "overlapsKeeperRoleReview": false,
       "playerId": "ba6b2f91",
       "playerTeamSeasonId": "pts:ba6b2f91:ipl-2025:team-mumbai-indians",
       "reviewId": "eligibility:pts:ba6b2f91:ipl-2025:team-mumbai-indians",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:ipl-mi-squad"
+      ],
       "seasonId": "ipl-2025",
       "teamId": "team-mumbai-indians"
     },
@@ -246,14 +270,18 @@
       "battingBalls": 4,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "R Minz",
-      "capabilityStatus": "UNKNOWN",
+      "capabilityStatus": "CONFIRMED",
+      "notes": "Robin Minz 2026 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
-      "overlapsKeeperRoleReview": false,
+      "overlapsKeeperRoleReview": true,
       "playerId": "bafd0398",
       "playerTeamSeasonId": "pts:bafd0398:ipl-2026:team-mumbai-indians",
       "reviewId": "eligibility:pts:bafd0398:ipl-2026:team-mumbai-indians",
-      "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewPath": "SEASON_USAGE_ONLY",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:espn-r-minz-mi-2026"
+      ],
       "seasonId": "ipl-2026",
       "teamId": "team-mumbai-indians"
     },
@@ -261,14 +289,18 @@
       "battingBalls": 1,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "Anuj Rawat",
-      "capabilityStatus": "UNKNOWN",
+      "capabilityStatus": "CONFIRMED",
+      "notes": "Anuj Rawat 2021 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
-      "overlapsKeeperRoleReview": false,
+      "overlapsKeeperRoleReview": true,
       "playerId": "c8f5f961",
       "playerTeamSeasonId": "pts:c8f5f961:ipl-2021:team-rajasthan-royals",
       "reviewId": "eligibility:pts:c8f5f961:ipl-2021:team-rajasthan-royals",
-      "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewPath": "SEASON_USAGE_ONLY",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:espn-anuj-rawat-rr-2021"
+      ],
       "seasonId": "ipl-2021",
       "teamId": "team-rajasthan-royals"
     },
@@ -277,13 +309,17 @@
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "MK Lomror",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": false,
       "playerId": "da934ee8",
       "playerTeamSeasonId": "pts:da934ee8:ipl-2019:team-rajasthan-royals",
       "reviewId": "eligibility:pts:da934ee8:ipl-2019:team-rajasthan-royals",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:ipl-mk-lomror-profile"
+      ],
       "seasonId": "ipl-2019",
       "teamId": "team-rajasthan-royals"
     },
@@ -292,13 +328,17 @@
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "Himmat Singh",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 3,
       "overlapsKeeperRoleReview": false,
       "playerId": "ebcfef83",
       "playerTeamSeasonId": "pts:ebcfef83:ipl-2025:team-lucknow-super-giants",
       "reviewId": "eligibility:pts:ebcfef83:ipl-2025:team-lucknow-super-giants",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:lsg-himmat-singh-profile"
+      ],
       "seasonId": "ipl-2025",
       "teamId": "team-lucknow-super-giants"
     },
@@ -306,14 +346,18 @@
       "battingBalls": 4,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "SN Khan",
-      "capabilityStatus": "UNKNOWN",
+      "capabilityStatus": "CONFIRMED",
+      "notes": "Sarfaraz Khan 2021 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
-      "overlapsKeeperRoleReview": false,
+      "overlapsKeeperRoleReview": true,
       "playerId": "f088b960",
       "playerTeamSeasonId": "pts:f088b960:ipl-2021:team-punjab-kings",
       "reviewId": "eligibility:pts:f088b960:ipl-2021:team-punjab-kings",
-      "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewPath": "SEASON_USAGE_ONLY",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:espn-sn-khan-pbks-2021"
+      ],
       "seasonId": "ipl-2021",
       "teamId": "team-punjab-kings"
     },
@@ -322,23 +366,34 @@
       "bowlingLegalBalls": 6,
       "canonicalDisplayName": "M Tiwari",
       "capabilityStatus": "UNKNOWN",
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN.",
       "officialAppearances": 2,
       "overlapsKeeperRoleReview": false,
       "playerId": "fb5f69e4",
       "playerTeamSeasonId": "pts:fb5f69e4:ipl-2025:team-delhi-capitals",
       "reviewId": "eligibility:pts:fb5f69e4:ipl-2025:team-delhi-capitals",
       "reviewPath": "CAPABILITY_THEN_USAGE",
-      "reviewStatus": "PENDING",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewedSourceRefs": [
+        "manual:dc-m-tiwari-profile"
+      ],
       "seasonId": "ipl-2025",
       "teamId": "team-delhi-capitals"
     }
   ],
+  "completionBoundary": "Resolving this queue finalizes G2 pruning only; it does not complete Era Draft keeper-role coverage.",
+  "eligibilityVersion": "ipl-era-draft-eligibility/v1",
+  "items": [],
   "schemaVersion": "ipl-era-draft-eligibility-review/v1",
   "scope": "G2_ELIGIBILITY_CRITICAL",
   "summary": {
-    "capabilityThenUsage": 19,
-    "keeperRoleReviewOverlap": 3,
-    "reviewCases": 22,
-    "seasonUsageOnly": 3
+    "capabilityThenUsage": 0,
+    "closedCapabilityThenUsage": 15,
+    "closedKeeperRoleReviewOverlap": 5,
+    "closedSeasonUsageOnly": 5,
+    "closedUnknownCases": 20,
+    "keeperRoleReviewOverlap": 0,
+    "reviewCases": 0,
+    "seasonUsageOnly": 0
   }
 }

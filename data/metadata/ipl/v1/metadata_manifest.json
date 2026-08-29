@@ -11,49 +11,49 @@
       "path": "player_capabilities.jsonl",
       "rows": 816,
       "schemaVersion": "ipl-wicketkeeper-capability/v1",
-      "sha256": "2f7f158840396d30ae941dc0559779ac8c03fe1b6211a4eecd0701ed7f612a1f",
-      "sizeBytes": 194425
+      "sha256": "43914453643b130df1e61f0df5bb09fe5adac1039582750871e42400c794cbd7",
+      "sizeBytes": 194672
     },
     {
       "path": "player_team_season_usage.jsonl",
       "rows": 3392,
       "schemaVersion": "ipl-wicketkeeper-usage/v1",
-      "sha256": "e70779933bf2a36d383660c0fe19aac041a98bd4d87c89ea60c87305771356f6",
-      "sizeBytes": 1131725
+      "sha256": "e1dcabee3ed7224518cbec0ae71e924ae30a821c54bad174ec8a177870237b3d",
+      "sizeBytes": 1131825
     },
     {
       "path": "legacy_migration_report.json",
       "rows": 147,
       "schemaVersion": "ipl-wicketkeeper-legacy-migration/v1",
-      "sha256": "554982be92ca5c60488750a3406d5ad98765f0fec02d585a5554697b35127b4b",
-      "sizeBytes": 64123
+      "sha256": "b12db7f5035f821d11c37aede74adddb7d1be0c9cc7c6fcc5a67e3f8f952bfd1",
+      "sizeBytes": 83517
     },
     {
       "path": "keeper_role_review_queue.json",
-      "rows": 169,
+      "rows": 199,
       "schemaVersion": "ipl-wicketkeeper-review-queue/v1",
-      "sha256": "8e737b960081056669558e5d9a47ce688989b9ecf011de7e2d31c8b14180552b",
-      "sizeBytes": 95445
+      "sha256": "7388794738fe1477a8a8842cb7640de0d127b58501b3e4df6ed18aaf66add383",
+      "sizeBytes": 111205
     }
   ],
-  "manualOverlaySha256": "3430d3a9f63b59d717c3f8def9cd47b7f6974384eff8d61d2119af47ff4f67ac",
-  "metadataAggregateHash": "59bdd90b90b62ae05e3ba75c7d118a7452938c538cb8e79fe1653325e443607a",
-  "metadataManifestHash": "8ffc6a3a08b0b92c643351a8435808d9b7305bd113963c2c713a8e6489231dd8",
+  "manualOverlaySha256": "31c71f64353bd836871a64f220b381b0e331252759fb0dc69eda102bac185f5d",
+  "metadataAggregateHash": "6fbade59de4c05a58de3dd1e71e9bc3eeb7ba5fb03255f3a08208f36b188cae6",
+  "metadataManifestHash": "4f8610be909fdbd14aae170a661977ad4fe638e21d7b0e8640b3b5a02c8c1484",
   "metadataVersion": "ipl-wicketkeeper-metadata/v1",
   "schemaFiles": [
     {
       "path": "schemas/keeper_role_review_queue.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "73294faf6c9ffe83661d14589d1a4b68bee19cf8b2fec3482df43607892ebda3",
-      "sizeBytes": 5275
+      "sha256": "27084412aaaedb24b45dc02af4dfb431bc49fc8cd177a611d80f0d73b96eb5ca",
+      "sizeBytes": 8606
     },
     {
       "path": "schemas/legacy_migration_report.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "2cf863083bd588d0bc4e0e7ae3cd53b036654df79760655ed6f7668ee1909111",
-      "sizeBytes": 3416
+      "sha256": "7336268bf61dd9fe4edccb1796156b064b9d39ffcd119319b55e3925d3b611b5",
+      "sizeBytes": 3681
     },
     {
       "path": "schemas/manual_metadata.schema.json",
@@ -94,8 +94,8 @@
       "path": "schemas/validation_report.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "8ec8d2fdeea82d0a59aab4a1cec96879ac82e76062669a1cfd35290595a9948f",
-      "sizeBytes": 3715
+      "sha256": "f07d369af7496034bc0cd1fbb38646d06f4f654732fa1a7391d26b4d6ae1ab23",
+      "sizeBytes": 4313
     }
   ],
   "schemaVersion": "ipl-wicketkeeper-metadata-manifest/v1",

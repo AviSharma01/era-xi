@@ -4,6 +4,7 @@
   "metadataVersion": "ipl-wicketkeeper-metadata/v1",
   "rows": [
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "MA Agarwal",
       "careerStumpings": 0,
@@ -15,6 +16,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "JW Hastings",
       "careerStumpings": 0,
@@ -26,6 +28,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "VR Aaron",
       "careerStumpings": 0,
@@ -37,6 +40,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "S Dhawan",
       "careerStumpings": 0,
@@ -48,6 +52,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Mustafizur Rahman",
       "careerStumpings": 0,
@@ -59,6 +64,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "NLTC Perera",
       "careerStumpings": 0,
@@ -70,6 +76,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "JO Holder",
       "careerStumpings": 0,
@@ -81,6 +88,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "KV Sharma",
       "careerStumpings": 0,
@@ -92,6 +100,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "TM Head",
       "careerStumpings": 0,
@@ -103,6 +112,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "TG Southee",
       "careerStumpings": 0,
@@ -114,6 +124,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "A Zampa",
       "careerStumpings": 0,
@@ -125,6 +136,40 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1082604:2:13:1:0:1c17e270",
+        "stumping:1082620:1:13:2:0:1c17e270",
+        "stumping:1082620:1:17:1:0:1c17e270",
+        "stumping:1082620:1:17:4:0:1c17e270",
+        "stumping:1082639:1:17:5:0:1c17e270",
+        "stumping:1082644:1:18:4:0:1c17e270",
+        "stumping:392182:2:13:2:0:1c17e270",
+        "stumping:419133:2:6:4:0:1c17e270",
+        "stumping:419145:2:10:3:0:1c17e270",
+        "stumping:419151:1:17:2:0:1c17e270",
+        "stumping:501213:2:12:3:0:1c17e270",
+        "stumping:501226:1:16:3:0:1c17e270",
+        "stumping:501259:2:8:0:0:1c17e270",
+        "stumping:548308:2:0:1:0:1c17e270",
+        "stumping:548308:2:10:4:0:1c17e270",
+        "stumping:548322:1:9:0:0:1c17e270",
+        "stumping:729279:2:16:0:0:1c17e270",
+        "stumping:729279:2:19:5:0:1c17e270",
+        "stumping:729307:1:18:0:0:1c17e270",
+        "stumping:733979:1:13:3:0:1c17e270",
+        "stumping:733997:1:19:4:0:1c17e270",
+        "stumping:734037:1:16:2:0:1c17e270",
+        "stumping:734043:2:17:2:0:1c17e270",
+        "stumping:829713:2:10:5:0:1c17e270",
+        "stumping:829713:2:14:3:0:1c17e270",
+        "stumping:829723:1:5:4:0:1c17e270",
+        "stumping:829739:1:14:5:0:1c17e270",
+        "stumping:829781:2:11:3:0:1c17e270",
+        "stumping:980903:1:9:5:0:1c17e270",
+        "stumping:980975:2:16:2:0:1c17e270",
+        "stumping:980989:1:10:2:0:1c17e270",
+        "stumping:981015:1:16:0:0:1c17e270"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "RV Uthappa",
       "careerStumpings": 32,
@@ -174,6 +219,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "A Ashish Reddy",
       "careerStumpings": 0,
@@ -185,6 +231,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Yuvraj Singh",
       "careerStumpings": 0,
@@ -196,6 +243,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "S Kaushik",
       "careerStumpings": 0,
@@ -207,6 +255,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "SK Raina",
       "careerStumpings": 0,
@@ -218,6 +267,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "DL Chahar",
       "careerStumpings": 0,
@@ -229,6 +279,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Ankit Sharma",
       "careerStumpings": 0,
@@ -240,6 +291,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "R Dhawan",
       "careerStumpings": 0,
@@ -251,6 +303,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "SA Yadav",
       "careerStumpings": 0,
@@ -262,6 +315,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "AM Rahane",
       "careerStumpings": 0,
@@ -273,6 +327,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "MJ Guptill",
       "careerStumpings": 0,
@@ -284,6 +339,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "BCJ Cutting",
       "careerStumpings": 0,
@@ -295,6 +351,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "AR Patel",
       "careerStumpings": 0,
@@ -306,6 +363,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "B Kumar",
       "careerStumpings": 0,
@@ -317,6 +375,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "JP Duminy",
       "careerStumpings": 0,
@@ -328,6 +387,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "SPD Smith",
       "careerStumpings": 0,
@@ -339,6 +399,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "MC Henriques",
       "careerStumpings": 0,
@@ -350,6 +411,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "UT Khawaja",
       "careerStumpings": 0,
@@ -361,6 +423,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "F du Plessis",
       "careerStumpings": 0,
@@ -372,6 +435,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "R Bhatia",
       "careerStumpings": 0,
@@ -383,6 +447,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "DR Smith",
       "careerStumpings": 0,
@@ -394,6 +459,25 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1136568:1:13:3:0:372455c4",
+        "stumping:1136568:1:18:4:0:372455c4",
+        "stumping:1136584:2:6:1:0:372455c4",
+        "stumping:1181764:1:12:0:0:372455c4",
+        "stumping:1181768:2:3:5:0:372455c4",
+        "stumping:1216499:1:7:4:0:372455c4",
+        "stumping:1216508:2:19:5:0:372455c4",
+        "stumping:1216521:1:8:4:0:372455c4",
+        "stumping:1216535:1:10:1:0:372455c4",
+        "stumping:1254062:2:14:5:0:372455c4",
+        "stumping:1254081:1:7:3:0:372455c4",
+        "stumping:1304112:2:15:3:0:372455c4",
+        "stumping:1359532:1:12:0:0:372455c4",
+        "stumping:1529273:2:15:1:0:372455c4",
+        "stumping:598030:2:7:2:0:372455c4",
+        "stumping:980913:1:6:0:0:372455c4",
+        "stumping:980961:1:10:5:0:372455c4"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "Q de Kock",
       "careerStumpings": 17,
@@ -426,6 +510,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "KP Pietersen",
       "careerStumpings": 0,
@@ -437,6 +522,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "YK Pathan",
       "careerStumpings": 0,
@@ -448,6 +534,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "MR Marsh",
       "careerStumpings": 0,
@@ -459,6 +546,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "R Vinay Kumar",
       "careerStumpings": 0,
@@ -470,6 +558,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "SR Watson",
       "careerStumpings": 0,
@@ -481,6 +570,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "CA Lynn",
       "careerStumpings": 0,
@@ -492,6 +582,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "JJ Bumrah",
       "careerStumpings": 0,
@@ -503,6 +594,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "R Ashwin",
       "careerStumpings": 0,
@@ -514,6 +606,55 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1082603:2:11:0:0:4a8a2e3b",
+        "stumping:1082607:2:10:2:0:4a8a2e3b",
+        "stumping:1082642:1:15:1:0:4a8a2e3b",
+        "stumping:1136595:1:13:0:0:4a8a2e3b",
+        "stumping:1136595:1:7:2:0:4a8a2e3b",
+        "stumping:1136620:1:12:0:0:4a8a2e3b",
+        "stumping:1178398:1:10:0:0:4a8a2e3b",
+        "stumping:1178398:1:15:2:0:4a8a2e3b",
+        "stumping:1178416:1:13:2:0:4a8a2e3b",
+        "stumping:1178425:2:11:3:0:4a8a2e3b",
+        "stumping:1178425:2:11:5:0:4a8a2e3b",
+        "stumping:1216539:1:12:1:0:4a8a2e3b",
+        "stumping:1359503:1:13:4:0:4a8a2e3b",
+        "stumping:1359515:2:8:2:0:4a8a2e3b",
+        "stumping:1370353:1:6:5:0:4a8a2e3b",
+        "stumping:1473440:1:10:2:0:4a8a2e3b",
+        "stumping:1473445:1:4:6:0:4a8a2e3b",
+        "stumping:1473448:1:11:3:0:4a8a2e3b",
+        "stumping:1473467:1:13:3:0:4a8a2e3b",
+        "stumping:1473494:1:7:0:0:4a8a2e3b",
+        "stumping:392185:2:7:4:0:4a8a2e3b",
+        "stumping:392206:2:15:4:0:4a8a2e3b",
+        "stumping:392217:1:12:1:0:4a8a2e3b",
+        "stumping:392217:1:17:1:0:4a8a2e3b",
+        "stumping:419142:2:9:4:0:4a8a2e3b",
+        "stumping:419147:2:4:3:0:4a8a2e3b",
+        "stumping:419153:1:15:4:0:4a8a2e3b",
+        "stumping:419153:1:2:1:0:4a8a2e3b",
+        "stumping:419153:1:4:0:0:4a8a2e3b",
+        "stumping:419163:2:12:0:0:4a8a2e3b",
+        "stumping:501198:2:16:2:0:4a8a2e3b",
+        "stumping:501198:2:18:5:0:4a8a2e3b",
+        "stumping:501198:2:8:4:0:4a8a2e3b",
+        "stumping:501221:1:11:0:0:4a8a2e3b",
+        "stumping:501266:2:0:2:0:4a8a2e3b",
+        "stumping:548311:2:14:2:0:4a8a2e3b",
+        "stumping:548380:2:15:4:0:4a8a2e3b",
+        "stumping:598012:1:8:4:0:4a8a2e3b",
+        "stumping:598015:1:12:2:0:4a8a2e3b",
+        "stumping:734013:2:14:0:0:4a8a2e3b",
+        "stumping:829753:2:11:3:0:4a8a2e3b",
+        "stumping:829773:1:9:5:0:4a8a2e3b",
+        "stumping:829809:1:8:3:0:4a8a2e3b",
+        "stumping:980911:2:16:0:0:4a8a2e3b",
+        "stumping:980979:1:19:1:0:4a8a2e3b",
+        "stumping:980989:2:0:1:0:4a8a2e3b",
+        "stumping:980997:1:9:5:0:4a8a2e3b"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "MS Dhoni",
       "careerStumpings": 47,
@@ -578,6 +719,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "M Vijay",
       "careerStumpings": 0,
@@ -589,6 +731,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "GJ Bailey",
       "careerStumpings": 0,
@@ -600,6 +743,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "SE Marsh",
       "careerStumpings": 0,
@@ -611,6 +755,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "MJ McClenaghan",
       "careerStumpings": 0,
@@ -622,6 +767,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "NM Coulter-Nile",
       "careerStumpings": 0,
@@ -633,6 +779,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "YS Chahal",
       "careerStumpings": 0,
@@ -644,6 +791,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "KH Pandya",
       "careerStumpings": 0,
@@ -655,6 +803,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "I Sharma",
       "careerStumpings": 0,
@@ -666,6 +815,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "M Morkel",
       "careerStumpings": 0,
@@ -677,6 +827,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "IK Pathan",
       "careerStumpings": 0,
@@ -688,6 +839,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "R Sathish",
       "careerStumpings": 0,
@@ -699,6 +851,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "AB Dinda",
       "careerStumpings": 0,
@@ -710,6 +863,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Anureet Singh",
       "careerStumpings": 0,
@@ -721,6 +875,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "PV Tambe",
       "careerStumpings": 0,
@@ -732,6 +887,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "A Mishra",
       "careerStumpings": 0,
@@ -743,6 +899,9 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:598041:1:11:0:0:6eb146d2"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "Gurkeerat Singh",
       "careerStumpings": 1,
@@ -756,6 +915,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "SS Tiwary",
       "careerStumpings": 0,
@@ -767,6 +927,10 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:419162:2:6:1:0:70d205c9",
+        "stumping:501256:1:10:3:0:70d205c9"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "AT Rayudu",
       "careerStumpings": 2,
@@ -781,6 +945,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "DJ Hooda",
       "careerStumpings": 0,
@@ -792,6 +957,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "RG Sharma",
       "careerStumpings": 0,
@@ -803,6 +969,14 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1136561:2:12:5:0:752f7486",
+        "stumping:1136574:2:9:3:0:752f7486",
+        "stumping:1359505:1:9:1:0:752f7486",
+        "stumping:1359520:1:7:1:0:752f7486",
+        "stumping:1370352:1:6:2:0:752f7486",
+        "stumping:1527683:2:12:0:0:752f7486"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "Ishan Kishan",
       "careerStumpings": 6,
@@ -821,6 +995,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "MM Sharma",
       "careerStumpings": 0,
@@ -832,6 +1007,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Shakib Al Hasan",
       "careerStumpings": 0,
@@ -843,6 +1019,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "JP Faulkner",
       "careerStumpings": 0,
@@ -854,6 +1031,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "J Yadav",
       "careerStumpings": 0,
@@ -865,6 +1043,14 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1136574:2:13:4:0:855a210c",
+        "stumping:419114:2:11:1:0:855a210c",
+        "stumping:419114:2:8:4:0:855a210c",
+        "stumping:734017:2:10:2:0:855a210c",
+        "stumping:734031:2:5:1:0:855a210c",
+        "stumping:734045:2:9:2:0:855a210c"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "AP Tare",
       "careerStumpings": 6,
@@ -883,6 +1069,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Iqbal Abdulla",
       "careerStumpings": 0,
@@ -894,6 +1081,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "SS Iyer",
       "careerStumpings": 0,
@@ -905,6 +1093,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "DJ Bravo",
       "careerStumpings": 0,
@@ -916,6 +1105,18 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:392210:2:5:5:0:890946a0",
+        "stumping:392217:2:16:5:0:890946a0",
+        "stumping:392220:1:9:2:0:890946a0",
+        "stumping:392233:2:7:0:0:890946a0",
+        "stumping:419126:1:6:3:0:890946a0",
+        "stumping:419154:2:10:3:0:890946a0",
+        "stumping:548307:1:11:1:0:890946a0",
+        "stumping:548369:1:12:4:0:890946a0",
+        "stumping:734007:2:7:0:0:890946a0",
+        "stumping:829793:2:8:1:0:890946a0"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "NV Ojha",
       "careerStumpings": 10,
@@ -938,6 +1139,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Harbhajan Singh",
       "careerStumpings": 0,
@@ -949,6 +1151,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Mohammed Shami",
       "careerStumpings": 0,
@@ -960,6 +1163,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Kuldeep Yadav",
       "careerStumpings": 0,
@@ -971,6 +1175,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Parvez Rasool",
       "careerStumpings": 0,
@@ -982,6 +1187,32 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1082595:1:8:3:0:919a3be2",
+        "stumping:1082608:2:19:1:0:919a3be2",
+        "stumping:1082635:1:8:3:0:919a3be2",
+        "stumping:1136592:2:6:3:0:919a3be2",
+        "stumping:1136615:2:8:5:0:919a3be2",
+        "stumping:1175358:2:19:1:0:919a3be2",
+        "stumping:1175360:2:6:4:0:919a3be2",
+        "stumping:1178395:1:14:2:0:919a3be2",
+        "stumping:1178412:1:16:2:0:919a3be2",
+        "stumping:1178412:1:1:3:0:919a3be2",
+        "stumping:1178428:1:11:1:0:919a3be2",
+        "stumping:1254077:2:14:1:0:919a3be2",
+        "stumping:1254082:1:3:3:0:919a3be2",
+        "stumping:1254097:2:4:1:0:919a3be2",
+        "stumping:1304065:2:12:4:0:919a3be2",
+        "stumping:1304078:1:5:2:0:919a3be2",
+        "stumping:1304087:1:13:3:0:919a3be2",
+        "stumping:1304110:2:7:5:0:919a3be2",
+        "stumping:1422120:2:11:2:0:919a3be2",
+        "stumping:1426270:1:8:2:0:919a3be2",
+        "stumping:1426270:1:8:4:0:919a3be2",
+        "stumping:1426302:2:14:3:0:919a3be2",
+        "stumping:1426302:2:3:0:0:919a3be2",
+        "stumping:1473473:2:8:3:0:919a3be2"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "RR Pant",
       "careerStumpings": 24,
@@ -1018,6 +1249,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Z Khan",
       "careerStumpings": 0,
@@ -1029,6 +1261,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "MK Pandey",
       "careerStumpings": 0,
@@ -1040,6 +1273,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "KK Nair",
       "careerStumpings": 0,
@@ -1051,6 +1285,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "S Aravind",
       "careerStumpings": 0,
@@ -1062,6 +1297,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "A Nehra",
       "careerStumpings": 0,
@@ -1073,6 +1309,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "PP Chawla",
       "careerStumpings": 0,
@@ -1084,6 +1321,12 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1136600:2:2:0:0:99b75528",
+        "stumping:1473476:2:12:3:0:99b75528",
+        "stumping:1473476:2:15:4:0:99b75528",
+        "stumping:1529299:2:14:4:0:99b75528"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "JC Buttler",
       "careerStumpings": 4,
@@ -1100,6 +1343,15 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1082610:2:9:4:0:99d63244",
+        "stumping:1082617:1:9:1:0:99d63244",
+        "stumping:1082636:2:13:1:0:99d63244",
+        "stumping:598010:2:13:5:0:99d63244",
+        "stumping:598044:2:6:4:0:99d63244",
+        "stumping:829715:2:9:5:0:99d63244",
+        "stumping:829747:2:8:1:0:99d63244"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "KM Jadhav",
       "careerStumpings": 7,
@@ -1119,6 +1371,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "P Sahu",
       "careerStumpings": 0,
@@ -1130,6 +1383,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "SP Narine",
       "careerStumpings": 0,
@@ -1141,6 +1395,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "S Nadeem",
       "careerStumpings": 0,
@@ -1152,6 +1407,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "PJ Sangwan",
       "careerStumpings": 0,
@@ -1163,6 +1419,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "T Shamsi",
       "careerStumpings": 0,
@@ -1174,6 +1431,27 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1178415:2:7:2:0:a4cc73aa",
+        "stumping:1216496:2:8:4:0:a4cc73aa",
+        "stumping:1216496:2:8:5:0:a4cc73aa",
+        "stumping:1254089:1:14:3:0:a4cc73aa",
+        "stumping:1254089:1:6:4:0:a4cc73aa",
+        "stumping:1254097:1:13:1:0:a4cc73aa",
+        "stumping:1254100:2:5:0:0:a4cc73aa",
+        "stumping:1304076:2:16:0:0:a4cc73aa",
+        "stumping:1304109:2:15:6:0:a4cc73aa",
+        "stumping:1359478:2:13:5:0:a4cc73aa",
+        "stumping:1359485:2:14:5:0:a4cc73aa",
+        "stumping:1359522:2:9:3:0:a4cc73aa",
+        "stumping:1426262:2:15:2:0:a4cc73aa",
+        "stumping:1473460:1:15:5:0:a4cc73aa",
+        "stumping:1529280:2:6:2:0:a4cc73aa",
+        "stumping:1529306:2:14:2:0:a4cc73aa",
+        "stumping:733979:2:15:0:0:a4cc73aa",
+        "stumping:733989:1:11:4:0:a4cc73aa",
+        "stumping:980965:2:8:1:0:a4cc73aa"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "SV Samson",
       "careerStumpings": 19,
@@ -1207,6 +1485,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "KA Pollard",
       "careerStumpings": 0,
@@ -1218,6 +1497,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "KJ Abbott",
       "careerStumpings": 0,
@@ -1229,6 +1509,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Imran Tahir",
       "careerStumpings": 0,
@@ -1240,6 +1521,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "PSP Handscomb",
       "careerStumpings": 0,
@@ -1251,10 +1533,14 @@
       "stumpingEvidenceRefs": []
     },
     {
-      "canonicalCapabilityStatus": "UNKNOWN",
+      "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ns-naik-kxip-2016",
+        "manual:ipl-ns-naik-profile"
+      ],
+      "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "NS Naik",
       "careerStumpings": 0,
-      "classification": "UNVERIFIED_POSITIVE",
+      "classification": "SUPPORTED_POSITIVE",
       "ipl2016EvidenceRefs": [],
       "ipl2016Stumpings": 0,
       "legacyIsWicketkeeper": true,
@@ -1262,6 +1548,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "C Munro",
       "careerStumpings": 0,
@@ -1273,6 +1560,16 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1136600:1:16:1:0:b17e2f24",
+        "stumping:1426264:2:15:2:0:b17e2f24",
+        "stumping:1426272:1:12:1:0:b17e2f24",
+        "stumping:1529291:2:6:2:0:b17e2f24",
+        "stumping:980931:2:14:3:0:b17e2f24",
+        "stumping:980969:1:14:1:0:b17e2f24",
+        "stumping:980977:2:10:5:0:b17e2f24",
+        "stumping:980995:1:14:0:0:b17e2f24"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "KL Rahul",
       "careerStumpings": 8,
@@ -1298,10 +1595,13 @@
       ]
     },
     {
-      "canonicalCapabilityStatus": "UNKNOWN",
+      "canonicalCapabilityEvidenceRefs": [
+        "manual:ipl-er-dwivedi-profile"
+      ],
+      "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "ER Dwivedi",
       "careerStumpings": 0,
-      "classification": "UNVERIFIED_POSITIVE",
+      "classification": "SUPPORTED_POSITIVE",
       "ipl2016EvidenceRefs": [],
       "ipl2016Stumpings": 0,
       "legacyIsWicketkeeper": true,
@@ -1309,6 +1609,24 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1082625:1:8:1:0:b5da6c24",
+        "stumping:1082649:1:4:3:0:b5da6c24",
+        "stumping:1178403:1:6:1:0:b5da6c24",
+        "stumping:1178406:2:10:2:0:b5da6c24",
+        "stumping:419121:1:8:1:0:b5da6c24",
+        "stumping:419123:1:15:3:0:b5da6c24",
+        "stumping:501219:2:16:5:0:b5da6c24",
+        "stumping:548366:2:12:1:0:b5da6c24",
+        "stumping:598000:2:9:4:0:b5da6c24",
+        "stumping:598044:1:11:1:0:b5da6c24",
+        "stumping:598060:2:13:1:0:b5da6c24",
+        "stumping:734005:2:11:5:0:b5da6c24",
+        "stumping:829783:1:11:1:0:b5da6c24",
+        "stumping:829815:1:9:1:0:b5da6c24",
+        "stumping:829823:2:13:2:0:b5da6c24",
+        "stumping:980927:1:10:5:0:b5da6c24"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "PA Patel",
       "careerStumpings": 16,
@@ -1339,6 +1657,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "GJ Maxwell",
       "careerStumpings": 0,
@@ -1350,6 +1669,14 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:548357:1:19:3:0:b8a55852",
+        "stumping:548370:2:15:2:0:b8a55852",
+        "stumping:548375:2:15:4:0:b8a55852",
+        "stumping:548375:2:7:4:0:b8a55852",
+        "stumping:548378:2:14:3:0:b8a55852",
+        "stumping:548378:2:19:2:0:b8a55852"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "BB McCullum",
       "careerStumpings": 6,
@@ -1368,6 +1695,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "AJ Finch",
       "careerStumpings": 0,
@@ -1379,6 +1707,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "V Kohli",
       "careerStumpings": 0,
@@ -1390,6 +1719,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "G Gambhir",
       "careerStumpings": 0,
@@ -1401,6 +1731,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "AD Russell",
       "careerStumpings": 0,
@@ -1412,6 +1743,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "STR Binny",
       "careerStumpings": 0,
@@ -1423,6 +1755,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "M Vohra",
       "careerStumpings": 0,
@@ -1434,6 +1767,45 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1136573:2:0:5:0:c03f1114",
+        "stumping:1136575:1:6:4:0:c03f1114",
+        "stumping:1136609:1:11:0:0:c03f1114",
+        "stumping:1136619:1:10:2:0:c03f1114",
+        "stumping:1254072:1:16:2:0:c03f1114",
+        "stumping:1254109:1:10:0:0:c03f1114",
+        "stumping:1304100:2:14:1:0:c03f1114",
+        "stumping:1312199:2:11:3:0:c03f1114",
+        "stumping:1359501:2:12:4:0:c03f1114",
+        "stumping:1359517:2:5:0:0:c03f1114",
+        "stumping:1426310:2:10:0:0:c03f1114",
+        "stumping:336020:2:19:2:0:c03f1114",
+        "stumping:336038:1:15:5:0:c03f1114",
+        "stumping:392198:2:10:5:0:c03f1114",
+        "stumping:392219:1:11:1:0:c03f1114",
+        "stumping:392230:2:16:1:0:c03f1114",
+        "stumping:392230:2:16:6:0:c03f1114",
+        "stumping:392237:2:7:5:0:c03f1114",
+        "stumping:419108:1:13:1:0:c03f1114",
+        "stumping:419108:1:14:4:0:c03f1114",
+        "stumping:419114:1:19:5:0:c03f1114",
+        "stumping:419131:2:3:3:0:c03f1114",
+        "stumping:419134:2:16:1:0:c03f1114",
+        "stumping:419134:2:17:3:0:c03f1114",
+        "stumping:548308:1:3:3:0:c03f1114",
+        "stumping:548346:1:11:0:0:c03f1114",
+        "stumping:598033:2:10:2:0:c03f1114",
+        "stumping:598050:2:6:0:0:c03f1114",
+        "stumping:733975:2:9:5:0:c03f1114",
+        "stumping:734011:1:17:2:0:c03f1114",
+        "stumping:829719:2:9:4:0:c03f1114",
+        "stumping:829757:1:12:0:0:c03f1114",
+        "stumping:829795:2:15:3:0:c03f1114",
+        "stumping:829803:1:5:4:0:c03f1114",
+        "stumping:980911:1:15:3:0:c03f1114",
+        "stumping:980917:1:8:5:0:c03f1114",
+        "stumping:980955:1:6:3:0:c03f1114"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "KD Karthik",
       "careerStumpings": 37,
@@ -1487,6 +1859,9 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1304060:1:7:4:0:c16d4035"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "SW Billings",
       "careerStumpings": 1,
@@ -1500,6 +1875,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Bipul Sharma",
       "careerStumpings": 0,
@@ -1511,6 +1887,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "RP Singh",
       "careerStumpings": 0,
@@ -1522,6 +1899,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "JA Morkel",
       "careerStumpings": 0,
@@ -1533,6 +1911,16 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1216502:2:10:5:0:c4487b84",
+        "stumping:501200:1:15:0:0:c4487b84",
+        "stumping:501270:2:7:5:0:c4487b84",
+        "stumping:548315:1:13:2:0:c4487b84",
+        "stumping:548324:1:10:1:0:c4487b84",
+        "stumping:548336:2:11:0:0:c4487b84",
+        "stumping:548362:2:11:0:0:c4487b84",
+        "stumping:548362:2:8:2:0:c4487b84"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "AB de Villiers",
       "careerStumpings": 8,
@@ -1553,6 +1941,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "SB Jakati",
       "careerStumpings": 0,
@@ -1564,6 +1953,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "UT Yadav",
       "careerStumpings": 0,
@@ -1575,6 +1965,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Sandeep Sharma",
       "careerStumpings": 0,
@@ -1586,6 +1977,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "KS Williamson",
       "careerStumpings": 0,
@@ -1597,6 +1989,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "SM Boland",
       "careerStumpings": 0,
@@ -1608,6 +2001,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "EJG Morgan",
       "careerStumpings": 0,
@@ -1619,6 +2013,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "DS Kulkarni",
       "careerStumpings": 0,
@@ -1630,6 +2025,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "DA Miller",
       "careerStumpings": 0,
@@ -1641,6 +2037,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "BB Sran",
       "careerStumpings": 0,
@@ -1652,6 +2049,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "MP Stoinis",
       "careerStumpings": 0,
@@ -1663,6 +2061,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "AS Rajpoot",
       "careerStumpings": 0,
@@ -1674,6 +2073,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "CH Gayle",
       "careerStumpings": 0,
@@ -1685,6 +2085,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "HH Pandya",
       "careerStumpings": 0,
@@ -1696,6 +2097,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "Sachin Baby",
       "careerStumpings": 0,
@@ -1707,6 +2109,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "DA Warner",
       "careerStumpings": 0,
@@ -1718,6 +2121,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "F Behardien",
       "careerStumpings": 0,
@@ -1729,6 +2133,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "KW Richardson",
       "careerStumpings": 0,
@@ -1740,6 +2145,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "M Ashwin",
       "careerStumpings": 0,
@@ -1751,6 +2157,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "CR Brathwaite",
       "careerStumpings": 0,
@@ -1762,6 +2169,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "HM Amla",
       "careerStumpings": 0,
@@ -1773,6 +2181,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "P Kumar",
       "careerStumpings": 0,
@@ -1784,6 +2193,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "KC Cariappa",
       "careerStumpings": 0,
@@ -1795,10 +2205,13 @@
       "stumpingEvidenceRefs": []
     },
     {
-      "canonicalCapabilityStatus": "UNKNOWN",
+      "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-sn-khan-dc-2023"
+      ],
+      "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "SN Khan",
       "careerStumpings": 0,
-      "classification": "UNSUPPORTED_NEGATIVE",
+      "classification": "CONFLICTING_NEGATIVE",
       "ipl2016EvidenceRefs": [],
       "ipl2016Stumpings": 0,
       "legacyIsWicketkeeper": false,
@@ -1806,6 +2219,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "AD Nath",
       "careerStumpings": 0,
@@ -1817,6 +2231,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "MG Johnson",
       "careerStumpings": 0,
@@ -1828,6 +2243,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "P Negi",
       "careerStumpings": 0,
@@ -1839,6 +2255,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "GB Hogg",
       "careerStumpings": 0,
@@ -1850,6 +2267,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "HV Patel",
       "careerStumpings": 0,
@@ -1861,6 +2279,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "N Rana",
       "careerStumpings": 0,
@@ -1872,6 +2291,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "CH Morris",
       "careerStumpings": 0,
@@ -1883,6 +2303,34 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [
+        "stumping:1082609:1:15:2:0:fe11caa6",
+        "stumping:1082609:1:9:0:0:fe11caa6",
+        "stumping:1136580:1:7:0:0:fe11caa6",
+        "stumping:1181766:2:7:3:0:fe11caa6",
+        "stumping:1216495:1:11:0:0:fe11caa6",
+        "stumping:1304103:2:10:4:0:fe11caa6",
+        "stumping:1304103:2:7:2:0:fe11caa6",
+        "stumping:1359504:2:14:2:0:fe11caa6",
+        "stumping:1359544:1:9:2:0:fe11caa6",
+        "stumping:1422125:1:10:0:0:fe11caa6",
+        "stumping:1422125:1:5:1:0:fe11caa6",
+        "stumping:336003:1:11:2:0:fe11caa6",
+        "stumping:336003:1:8:5:0:fe11caa6",
+        "stumping:419127:2:14:1:0:fe11caa6",
+        "stumping:419131:1:0:5:0:fe11caa6",
+        "stumping:419161:1:15:3:0:fe11caa6",
+        "stumping:729307:2:13:3:0:fe11caa6",
+        "stumping:734033:2:13:0:0:fe11caa6",
+        "stumping:734033:2:17:2:0:fe11caa6",
+        "stumping:734047:2:16:4:0:fe11caa6",
+        "stumping:829717:2:7:2:0:fe11caa6",
+        "stumping:829741:1:11:2:0:fe11caa6",
+        "stumping:829799:1:6:0:0:fe11caa6",
+        "stumping:980905:2:0:5:0:fe11caa6",
+        "stumping:980905:2:11:4:0:fe11caa6",
+        "stumping:981005:2:6:5:0:fe11caa6"
+      ],
       "canonicalCapabilityStatus": "CONFIRMED",
       "canonicalDisplayName": "WP Saha",
       "careerStumpings": 26,
@@ -1925,6 +2373,7 @@
       ]
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "RA Jadeja",
       "careerStumpings": 0,
@@ -1936,6 +2385,7 @@
       "stumpingEvidenceRefs": []
     },
     {
+      "canonicalCapabilityEvidenceRefs": [],
       "canonicalCapabilityStatus": "UNKNOWN",
       "canonicalDisplayName": "CJ Jordan",
       "careerStumpings": 0,
@@ -1949,10 +2399,10 @@
   ],
   "schemaVersion": "ipl-wicketkeeper-legacy-migration/v1",
   "summary": {
-    "conflictingNegatives": 5,
+    "conflictingNegatives": 6,
     "rows": 147,
-    "supportedPositives": 14,
-    "unsupportedNegatives": 126,
-    "unverifiedPositives": 2
+    "supportedPositives": 16,
+    "unsupportedNegatives": 125,
+    "unverifiedPositives": 0
   }
 }

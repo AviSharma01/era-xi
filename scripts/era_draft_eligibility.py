@@ -26,7 +26,11 @@ ROW_SCHEMA_VERSION = "ipl-era-draft-eligibility-row/v1"
 QUEUE_SCHEMA_VERSION = "ipl-era-draft-eligibility-review/v1"
 MANIFEST_SCHEMA_VERSION = "ipl-era-draft-eligibility-manifest/v1"
 VALIDATION_SCHEMA_VERSION = "ipl-era-draft-eligibility-validation/v1"
-EXPECTED_BASELINES = {"g2EligibleProfiles": 2990, "eligibilityCriticalReviewCases": 22}
+EXPECTED_BASELINES = {
+    "g2EligibleProfiles": 2992,
+    "eligibilityCriticalReviewCases": 0,
+    "closedUnknownReviewCases": 20,
+}
 
 
 class EraDraftEligibilityError(ValueError):
@@ -96,11 +100,29 @@ def build_eligibility_schemas() -> dict[str, dict[str, Any]]:
         "reviewPath": _string(enum=["SEASON_USAGE_ONLY", "CAPABILITY_THEN_USAGE"]),
         "overlapsKeeperRoleReview": {"type": "boolean"},
     })
+    closed_review_item = _object({
+        "reviewId": _string(), "reviewStatus": _string(enum=["CLOSED_UNKNOWN"]),
+        "playerTeamSeasonId": _string(), "playerId": _string(), "canonicalDisplayName": _string(),
+        "seasonId": _string(), "teamId": _string(), "officialAppearances": integer,
+        "battingBalls": integer, "bowlingLegalBalls": integer,
+        "capabilityStatus": _string(enum=["CONFIRMED", "UNKNOWN"]),
+        "reviewPath": _string(enum=["SEASON_USAGE_ONLY", "CAPABILITY_THEN_USAGE"]),
+        "overlapsKeeperRoleReview": {"type": "boolean"},
+        "reviewedSourceRefs": {"type": "array", "items": _string(), "uniqueItems": True},
+        "notes": _string(),
+    })
     queue = _object({
         "schemaVersion": _string(enum=[QUEUE_SCHEMA_VERSION]), "eligibilityVersion": _string(enum=[ELIGIBILITY_VERSION]),
         "scope": _string(enum=["G2_ELIGIBILITY_CRITICAL"]),
-        "summary": _object({"reviewCases": integer, "seasonUsageOnly": integer, "capabilityThenUsage": integer, "keeperRoleReviewOverlap": integer}),
-        "items": {"type": "array", "items": review_item}, "completionBoundary": _string(),
+        "summary": _object({
+            "reviewCases": integer, "seasonUsageOnly": integer, "capabilityThenUsage": integer,
+            "keeperRoleReviewOverlap": integer, "closedUnknownCases": integer,
+            "closedSeasonUsageOnly": integer, "closedCapabilityThenUsage": integer,
+            "closedKeeperRoleReviewOverlap": integer,
+        }),
+        "items": {"type": "array", "items": review_item},
+        "closedItems": {"type": "array", "items": closed_review_item},
+        "completionBoundary": _string(),
     })
     artifact = _object({
         "path": _string(), "sha256": hash_string, "sizeBytes": integer,
@@ -121,6 +143,7 @@ def build_eligibility_schemas() -> dict[str, dict[str, Any]]:
         "counts": _object({key: integer for key in (
             "playerTeamSeasons", "g2EligibleProfiles", "g2EligiblePlayers",
             "battingOrBowlingEligibleProfiles", "keeperOnlyAdmissions", "eligibilityCriticalReviewCases",
+            "closedUnknownReviewCases",
         )}),
         "qualifyingReasonCounts": _object({key: integer for key in ("BATTING_BALLS", "BOWLING_LEGAL_BALLS", "WICKETKEEPING_USAGE")}),
         "exclusionReasonCounts": _object({key: integer for key in ("NO_G2_ACTION_THRESHOLD", "OFFICIAL_APPEARANCES_BELOW_2")}),
@@ -135,11 +158,20 @@ def build_eligibility_schemas() -> dict[str, dict[str, Any]]:
     }
 
 
-def _load_role_review_ids(metadata_dir: Path) -> set[str]:
+def _load_role_review_state(
+    metadata_dir: Path,
+) -> tuple[set[str], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     _, queue = _read_json(metadata_dir / "keeper_role_review_queue.json", "keeper role review queue")
     if not isinstance(queue, dict):
         raise EraDraftEligibilityError("Keeper role review queue must be an object")
-    return {row["playerTeamSeasonId"] for row in queue.get("seasonUsageItems", [])}
+    active_usage_ids = {row["playerTeamSeasonId"] for row in queue.get("seasonUsageItems", [])}
+    closed_usage = {
+        row["playerTeamSeasonId"]: row for row in queue.get("closedSeasonUsageItems", [])
+    }
+    closed_capability = {
+        row["playerId"]: row for row in queue.get("closedCapabilityItems", [])
+    }
+    return active_usage_ids, closed_usage, closed_capability
 
 
 def build_era_draft_eligibility_files(
@@ -155,10 +187,11 @@ def build_era_draft_eligibility_files(
     usage_by_id = {row["playerTeamSeasonId"]: row for row in usage_rows}
     if len(capability_by_id) != len(capability_rows) or len(usage_by_id) != len(usage_rows):
         raise EraDraftEligibilityError("Duplicate wicketkeeper metadata identity")
-    role_review_ids = _load_role_review_ids(metadata_dir)
+    role_review_ids, closed_role_usage, closed_role_capability = _load_role_review_state(metadata_dir)
 
     decisions: list[dict[str, Any]] = []
     review_items: list[dict[str, Any]] = []
+    closed_review_items: list[dict[str, Any]] = []
     for pts in sorted(pts_rows, key=lambda row: row["playerTeamSeasonId"]):
         pts_id = pts["playerTeamSeasonId"]
         usage = usage_by_id.get(pts_id)
@@ -184,7 +217,7 @@ def build_era_draft_eligibility_files(
         decisions.append(decision)
         if official >= 2 and batting < 6 and bowling < 12 and usage["status"] == "UNKNOWN":
             capability_confirmed = capability["status"] == "CONFIRMED"
-            review_items.append({
+            common_review = {
                 "reviewId": f"eligibility:{pts_id}", "reviewStatus": "PENDING",
                 "playerTeamSeasonId": pts_id, "playerId": pts["playerId"],
                 "canonicalDisplayName": pts["canonicalDisplayName"], "seasonId": pts["seasonId"],
@@ -193,8 +226,18 @@ def build_era_draft_eligibility_files(
                 "capabilityStatus": capability["status"],
                 "reviewPath": "SEASON_USAGE_ONLY" if capability_confirmed else "CAPABILITY_THEN_USAGE",
                 "overlapsKeeperRoleReview": pts_id in role_review_ids,
-            })
+            }
+            disposition = closed_role_usage.get(pts_id) or closed_role_capability.get(pts["playerId"])
+            if disposition is None:
+                review_items.append(common_review)
+            else:
+                common_review["reviewStatus"] = "CLOSED_UNKNOWN"
+                common_review["overlapsKeeperRoleReview"] = pts_id in closed_role_usage
+                common_review["reviewedSourceRefs"] = disposition["reviewedSourceRefs"]
+                common_review["notes"] = disposition["notes"]
+                closed_review_items.append(common_review)
     review_items.sort(key=lambda row: row["reviewId"])
+    closed_review_items.sort(key=lambda row: row["reviewId"])
     eligible_rows = [row for row in decisions if row["eligibilityStatus"] == "ELIGIBLE"]
     base_eligible = [
         row for row in decisions
@@ -206,7 +249,11 @@ def build_era_draft_eligibility_files(
         row for row in eligible_rows
         if row["qualifyingReasons"] == ["WICKETKEEPING_USAGE"]
     ]
-    actual = {"g2EligibleProfiles": len(eligible_rows), "eligibilityCriticalReviewCases": len(review_items)}
+    actual = {
+        "g2EligibleProfiles": len(eligible_rows),
+        "eligibilityCriticalReviewCases": len(review_items),
+        "closedUnknownReviewCases": len(closed_review_items),
+    }
     comparisons = [
         {"metric": key, "expected": expected, "actual": actual[key], "matches": actual[key] == expected}
         for key, expected in EXPECTED_BASELINES.items()
@@ -229,8 +276,19 @@ def build_era_draft_eligibility_files(
             "seasonUsageOnly": sum(row["reviewPath"] == "SEASON_USAGE_ONLY" for row in review_items),
             "capabilityThenUsage": sum(row["reviewPath"] == "CAPABILITY_THEN_USAGE" for row in review_items),
             "keeperRoleReviewOverlap": sum(row["overlapsKeeperRoleReview"] for row in review_items),
+            "closedUnknownCases": len(closed_review_items),
+            "closedSeasonUsageOnly": sum(
+                row["reviewPath"] == "SEASON_USAGE_ONLY" for row in closed_review_items
+            ),
+            "closedCapabilityThenUsage": sum(
+                row["reviewPath"] == "CAPABILITY_THEN_USAGE" for row in closed_review_items
+            ),
+            "closedKeeperRoleReviewOverlap": sum(
+                row["overlapsKeeperRoleReview"] for row in closed_review_items
+            ),
         },
         "items": review_items,
+        "closedItems": closed_review_items,
         "completionBoundary": "Resolving this queue finalizes G2 pruning only; it does not complete Era Draft keeper-role coverage.",
     }
     try:
@@ -245,7 +303,10 @@ def build_era_draft_eligibility_files(
         files[f"schemas/{name}"] = pretty_json_bytes(schema)
     artifact_entries = [
         _artifact_entry("eligibility.jsonl", files["eligibility.jsonl"], ROW_SCHEMA_VERSION, len(decisions)),
-        _artifact_entry("eligibility_review_queue.json", files["eligibility_review_queue.json"], QUEUE_SCHEMA_VERSION, len(review_items)),
+        _artifact_entry(
+            "eligibility_review_queue.json", files["eligibility_review_queue.json"],
+            QUEUE_SCHEMA_VERSION, len(review_items) + len(closed_review_items),
+        ),
     ]
     schema_entries = [
         _artifact_entry(path, content, "json-schema/2020-12", None)
@@ -278,6 +339,7 @@ def build_era_draft_eligibility_files(
             "battingOrBowlingEligibleProfiles": len(base_eligible),
             "keeperOnlyAdmissions": len(keeper_only),
             "eligibilityCriticalReviewCases": len(review_items),
+            "closedUnknownReviewCases": len(closed_review_items),
         },
         "qualifyingReasonCounts": dict(sorted(reason_counts.items())),
         "exclusionReasonCounts": dict(sorted(exclusion_counts.items())),
@@ -298,6 +360,7 @@ def build_era_draft_eligibility_files(
         f"- Batting/bowling qualifiers: {len(base_eligible)}",
         f"- Keeper-only admissions: {len(keeper_only)}",
         f"- Eligibility-critical review cases: {len(review_items)}", "",
+        f"- Closed-unknown reviewed cases: {len(closed_review_items)}", "",
         "## Boundary", "",
         "- This output finalizes eligibility decisions only; keeper-role completeness is tracked separately.", "",
     ]

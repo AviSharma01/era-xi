@@ -22,6 +22,14 @@
       "items": {
         "additionalProperties": false,
         "properties": {
+          "canonicalCapabilityEvidenceRefs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
           "canonicalCapabilityStatus": {
             "enum": [
               "CONFIRMED",
@@ -83,6 +91,7 @@
           "classification",
           "careerStumpings",
           "stumpingEvidenceRefs",
+          "canonicalCapabilityEvidenceRefs",
           "ipl2016Stumpings",
           "ipl2016EvidenceRefs",
           "canonicalCapabilityStatus"
