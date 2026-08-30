@@ -1,0 +1,2571 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2022-v1",
+  "seasonId": "ipl-2022",
+  "researchStatus": "COMPLETED_APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "774b8a0c7b65bf8464d854884c0ff2086fdefaaef0bfa6fa2134b28a4712f99f",
+  "scopePlayerTeamSeasonIds": [
+    "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+    "pts:44a89551:ipl-2022:team-delhi-capitals",
+    "pts:4663bd23:ipl-2022:team-delhi-capitals",
+    "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+    "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+    "pts:752f7486:ipl-2022:team-mumbai-indians",
+    "pts:99b75528:ipl-2022:team-rajasthan-royals",
+    "pts:abb83e27:ipl-2022:team-punjab-kings",
+    "pts:b17e2f24:ipl-2022:team-lucknow-super-giants",
+    "pts:bd54eef5:ipl-2022:team-chennai-super-kings",
+    "pts:c8f5f961:ipl-2022:team-royal-challengers-bangalore",
+    "pts:df5a6881:ipl-2022:team-chennai-super-kings",
+    "pts:f088b960:ipl-2022:team-delhi-capitals",
+    "pts:ff1e68fa:ipl-2022:team-kolkata-knight-riders"
+  ],
+  "scopeAudit": {
+    "originalQueueScopeCaseCount": 14,
+    "originalQueueScopePreserved": true,
+    "capabilityFreezeExceptionCasesWereNotOriginalQueueCases": true,
+    "supplementalUsageCasesWereNotOriginalQueueCases": true,
+    "notes": "The original scope IDs are preserved exactly from the committed queue snapshot. Exception and supplemental records are stored separately and do not rewrite the historical starting scope."
+  },
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated wicketkeeper.",
+    "Every official appearance was checked and none designates the candidate.",
+    "Substitute or event-only involvement is separated from canonical official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "publisher": "ESPN",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "‡"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1304076",
+          "knownKeeper": "SV Samson",
+          "observedText": "SV Samson (c) †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1304076"
+        },
+        {
+          "matchId": "1304103",
+          "knownKeeper": "WP Saha",
+          "observedText": "WP Saha †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1304103"
+        },
+        {
+          "matchId": "1304110",
+          "knownKeeper": "RR Pant",
+          "observedText": "RR Pant (c) †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1304110"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Rendered scorecards used † while some search-index representations used ‡; both were normalized only after deterministic control calibration. Dismissal text and catches were not accepted as usage evidence."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2022-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1304092",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2022/462",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The indexed historical route redirected to the redesigned /en site and exposed no readable scorecard or keeper-marker convention."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2022-1304047",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304047",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304047",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "SP Jackson †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2022:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304048",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304048",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304048",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4663bd23:ipl-2022:team-delhi-capitals",
+        "pts:752f7486:ipl-2022:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SUPPLEMENTAL_SCOPE_REVIEW"
+      ],
+      "notes": null,
+      "supplementalCandidatesCovered": [
+        "pts:1399b39c:ipl-2022:team-mumbai-indians"
+      ]
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304049",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304049",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304049",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "PBB Rajapaksa †"
+      ],
+      "candidatesCovered": [
+        "pts:c8f5f961:ipl-2022:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "CAPABILITY_FREEZE_EXCEPTION"
+      ],
+      "notes": null,
+      "capabilityFreezeExceptionSubjects": [
+        "pts:6c882e9a:ipl-2022:team-punjab-kings"
+      ]
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304050",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304050",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304050",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "MS Wade †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304051",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304051",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304051",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "N Pooran †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2022:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304052",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304052",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304052",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Jackson †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:c8f5f961:ipl-2022:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304053",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304053",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304053",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304055",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304055",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304055",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2022:team-mumbai-indians",
+        "pts:99b75528:ipl-2022:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SUPPLEMENTAL_SCOPE_REVIEW"
+      ],
+      "notes": null,
+      "supplementalCandidatesCovered": [
+        "pts:1399b39c:ipl-2022:team-mumbai-indians"
+      ]
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304056",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304056",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304056",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Wade †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4663bd23:ipl-2022:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304057",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304057",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304057",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304058",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304058",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304058",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "N Pooran †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304059",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304059",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304059",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2022:team-rajasthan-royals",
+        "pts:c8f5f961:ipl-2022:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304060",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304060",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304060",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "SW Billings †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2022:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304061",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304061",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304061",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants",
+        "pts:f088b960:ipl-2022:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304062",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304062",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304062",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Bairstow †",
+        "MS Wade †"
+      ],
+      "candidatesCovered": [
+        "pts:abb83e27:ipl-2022:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304063",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304063",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304063",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "N Pooran †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304064",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304064",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304064",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2022:team-mumbai-indians",
+        "pts:c8f5f961:ipl-2022:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304065",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304065",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304065",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "SW Billings †"
+      ],
+      "candidatesCovered": [
+        "pts:f088b960:ipl-2022:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304066",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304066",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304066",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2022:team-rajasthan-royals",
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304068",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304068",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304068",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+        "pts:c8f5f961:ipl-2022:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304069",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304069",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304069",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2022:team-mumbai-indians",
+        "pts:abb83e27:ipl-2022:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304070",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304070",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304070",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Wade †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2022:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304072",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304072",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304072",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2022:team-mumbai-indians",
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304073",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304073",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304073",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:c8f5f961:ipl-2022:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304074",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304074",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304074",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "N Pooran †"
+      ],
+      "candidatesCovered": [
+        "pts:abb83e27:ipl-2022:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304075",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304075",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304075",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Did not bat: MS Dhoni †, DJ Bravo, CJ Jordan, M Theekshana, Mukesh Choudhary",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304076",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304076",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304076",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "SP Jackson †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2022:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304077",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304077",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304077",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants",
+        "pts:c8f5f961:ipl-2022:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304078",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304078",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304078",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "Did not bat: RR Pant (c) †, R Powell, Lalit Yadav, SN Thakur, AR Patel, Kuldeep Yadav, Mustafizur Rahman, KK Ahmed"
+      ],
+      "candidatesCovered": [
+        "pts:abb83e27:ipl-2022:team-punjab-kings",
+        "pts:f088b960:ipl-2022:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304079",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304079",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304079",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+        "pts:752f7486:ipl-2022:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304080",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304080",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304080",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2022:team-rajasthan-royals",
+        "pts:f088b960:ipl-2022:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304082",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304082",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304082",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "Did not bat: AK Markram, N Pooran †, Shashank Singh, J Suchith, B Kumar, M Jansen, T Natarajan, Umran Malik"
+      ],
+      "candidatesCovered": [
+        "pts:c8f5f961:ipl-2022:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304083",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304083",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304083",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2022:team-mumbai-indians",
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304084",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304084",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304084",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Did not bat: JM Sharma †, R Dhawan, K Rabada, RD Chahar, Arshdeep Singh, Sandeep Sharma",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+        "pts:abb83e27:ipl-2022:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304085",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304085",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304085",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2022:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304087",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304087",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304087",
+      "availability": "UNAVAILABLE_TRANSIENT_SCORECARD_SHELL",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:ff1e68fa:ipl-2022:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "The ESPN route returned a transient generic shell. No closure depended on this page because the only affected original-scope candidate was positively confirmed on another readable scorecard."
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304088",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304088",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304088",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:abb83e27:ipl-2022:team-punjab-kings",
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304089",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304089",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304089",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [],
+      "eventOnlySubjects": [
+        "pts:c8f5f961:ipl-2022:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "EVENT_ONLY_REVIEW"
+      ],
+      "notes": "Anuj Rawat appeared only in substitute dismissal notation in this match. It was kept separate from his eight canonical official appearances and was not accepted as a playing-XI usage designation."
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304090",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304090",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304090",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2022:team-mumbai-indians",
+        "pts:99b75528:ipl-2022:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304091",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304091",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304091",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304092",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304092",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.cricinfo.com/series/indian-premier-league-2022-1298423/sunrisers-hyderabad-vs-chennai-super-kings-46th-match-1304092/full-scorecard",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "Nicholas Pooran †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2022:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304093",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304093",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304093",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "B Indrajith †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2022:team-rajasthan-royals",
+        "pts:ff1e68fa:ipl-2022:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304094",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304094",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304094",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "Did not bat: MA Agarwal (c), JM Sharma †, R Dhawan, K Rabada, RD Chahar, Arshdeep Singh, Sandeep Sharma"
+      ],
+      "candidatesCovered": [
+        "pts:abb83e27:ipl-2022:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304095",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304095",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304095",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2022:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304097",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304097",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304097",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2022:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304098",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304098",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304098",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2022:team-rajasthan-royals",
+        "pts:abb83e27:ipl-2022:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304099",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304099",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304099",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "B Indrajith †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants",
+        "pts:ff1e68fa:ipl-2022:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304101",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304101",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304101",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+        "pts:44a89551:ipl-2022:team-delhi-capitals",
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2022:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304102",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304102",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304102",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Jackson †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2022:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304103",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304103",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304103",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304104",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304104",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304104",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:44a89551:ipl-2022:team-delhi-capitals",
+        "pts:99b75528:ipl-2022:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304105",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304105",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304105",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+        "pts:752f7486:ipl-2022:team-mumbai-indians",
+        "pts:df5a6881:ipl-2022:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304108",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304108",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304108",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:bd54eef5:ipl-2022:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2022:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304109",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304109",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304109",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2022:team-rajasthan-royals",
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304110",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304110",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304110",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:abb83e27:ipl-2022:team-punjab-kings",
+        "pts:f088b960:ipl-2022:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304112",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304112",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304112",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "SW Billings †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304114",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304114",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304114",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+        "pts:99b75528:ipl-2022:team-rajasthan-royals",
+        "pts:bd54eef5:ipl-2022:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2022:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1304115",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1304115",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304115",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2022:team-mumbai-indians",
+        "pts:f088b960:ipl-2022:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1312197",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1312197",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1312197",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2022:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1312198",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1312198",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1312198",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1312199",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1312199",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1312199",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2022:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2022-1312200",
+      "sourceFamilyId": "espn-scorecard-2022-v1",
+      "matchId": "1312200",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1312200",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2022:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2022-462",
+      "sourceFamilyId": "official-ipl-historical-route-2022-v1",
+      "matchId": "1304092",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2022/462",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2022:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The official IPL route redirected to the redesigned /en site and did not expose readable scorecard data or a keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+      "player": "RV Uthappa",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 12,
+      "appearancesReviewed": [
+        "1304047",
+        "1304053",
+        "1304057",
+        "1304063",
+        "1304068",
+        "1304075",
+        "1304079",
+        "1304084",
+        "1304092",
+        "1304095",
+        "1304101",
+        "1304105"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304047",
+        "espn-ipl-2022-1304053",
+        "espn-ipl-2022-1304057",
+        "espn-ipl-2022-1304063",
+        "espn-ipl-2022-1304068",
+        "espn-ipl-2022-1304075",
+        "espn-ipl-2022-1304079",
+        "espn-ipl-2022-1304084",
+        "espn-ipl-2022-1304092",
+        "espn-ipl-2022-1304095",
+        "espn-ipl-2022-1304101",
+        "espn-ipl-2022-1304105"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:44a89551:ipl-2022:team-delhi-capitals",
+      "player": "KS Bharat",
+      "team": "Delhi Capitals",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1304101",
+        "1304104"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304101",
+        "espn-ipl-2022-1304104"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:4663bd23:ipl-2022:team-delhi-capitals",
+      "player": "TL Seifert",
+      "team": "Delhi Capitals",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1304048",
+        "1304056"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304048",
+        "espn-ipl-2022-1304056"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+      "player": "MS Dhoni",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1304047"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304047"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2022-1304047",
+        "observedMarker": "†",
+        "observedText": "MS Dhoni †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+      "player": "AT Rayudu",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 13,
+      "appearancesReviewed": [
+        "1304047",
+        "1304053",
+        "1304057",
+        "1304063",
+        "1304068",
+        "1304075",
+        "1304079",
+        "1304084",
+        "1304092",
+        "1304095",
+        "1304101",
+        "1304105",
+        "1304114"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304047",
+        "espn-ipl-2022-1304053",
+        "espn-ipl-2022-1304057",
+        "espn-ipl-2022-1304063",
+        "espn-ipl-2022-1304068",
+        "espn-ipl-2022-1304075",
+        "espn-ipl-2022-1304079",
+        "espn-ipl-2022-1304084",
+        "espn-ipl-2022-1304092",
+        "espn-ipl-2022-1304095",
+        "espn-ipl-2022-1304101",
+        "espn-ipl-2022-1304105",
+        "espn-ipl-2022-1304114"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:752f7486:ipl-2022:team-mumbai-indians",
+      "player": "Ishan Kishan",
+      "team": "Mumbai Indians",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1304048"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304048"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2022-1304048",
+        "observedMarker": "†",
+        "observedText": "Ishan Kishan †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:99b75528:ipl-2022:team-rajasthan-royals",
+      "player": "JC Buttler",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 17,
+      "appearancesReviewed": [
+        "1304051",
+        "1304055",
+        "1304059",
+        "1304066",
+        "1304070",
+        "1304076",
+        "1304080",
+        "1304085",
+        "1304090",
+        "1304093",
+        "1304098",
+        "1304104",
+        "1304109",
+        "1304114",
+        "1312197",
+        "1312199",
+        "1312200"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304051",
+        "espn-ipl-2022-1304055",
+        "espn-ipl-2022-1304059",
+        "espn-ipl-2022-1304066",
+        "espn-ipl-2022-1304070",
+        "espn-ipl-2022-1304076",
+        "espn-ipl-2022-1304080",
+        "espn-ipl-2022-1304085",
+        "espn-ipl-2022-1304090",
+        "espn-ipl-2022-1304093",
+        "espn-ipl-2022-1304098",
+        "espn-ipl-2022-1304104",
+        "espn-ipl-2022-1304109",
+        "espn-ipl-2022-1304114",
+        "espn-ipl-2022-1312197",
+        "espn-ipl-2022-1312199",
+        "espn-ipl-2022-1312200"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:abb83e27:ipl-2022:team-punjab-kings",
+      "player": "JM Bairstow",
+      "team": "Punjab Kings",
+      "officialAppearances": 11,
+      "appearancesReviewed": [
+        "1304062"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304062"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2022-1304062",
+        "observedMarker": "†",
+        "observedText": "JM Bairstow †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2022:team-lucknow-super-giants",
+      "player": "KL Rahul",
+      "team": "Lucknow Super Giants",
+      "officialAppearances": 15,
+      "appearancesReviewed": [
+        "1304050",
+        "1304053",
+        "1304058",
+        "1304061",
+        "1304066",
+        "1304072",
+        "1304077",
+        "1304083",
+        "1304088",
+        "1304091",
+        "1304099",
+        "1304103",
+        "1304109",
+        "1304112",
+        "1312198"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304050",
+        "espn-ipl-2022-1304053",
+        "espn-ipl-2022-1304058",
+        "espn-ipl-2022-1304061",
+        "espn-ipl-2022-1304066",
+        "espn-ipl-2022-1304072",
+        "espn-ipl-2022-1304077",
+        "espn-ipl-2022-1304083",
+        "espn-ipl-2022-1304088",
+        "espn-ipl-2022-1304091",
+        "espn-ipl-2022-1304099",
+        "espn-ipl-2022-1304103",
+        "espn-ipl-2022-1304109",
+        "espn-ipl-2022-1304112",
+        "espn-ipl-2022-1312198"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:bd54eef5:ipl-2022:team-chennai-super-kings",
+      "player": "N Jagadeesan",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1304108",
+        "1304114"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304108",
+        "espn-ipl-2022-1304114"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:c8f5f961:ipl-2022:team-royal-challengers-bangalore",
+      "player": "Anuj Rawat",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 8,
+      "appearancesReviewed": [
+        "1304049",
+        "1304052",
+        "1304059",
+        "1304064",
+        "1304068",
+        "1304073",
+        "1304077",
+        "1304082"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304049",
+        "espn-ipl-2022-1304052",
+        "espn-ipl-2022-1304059",
+        "espn-ipl-2022-1304064",
+        "espn-ipl-2022-1304068",
+        "espn-ipl-2022-1304073",
+        "espn-ipl-2022-1304077",
+        "espn-ipl-2022-1304082"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained. Match 1304089 was separately reviewed as substitute/event-only involvement and is not a canonical official appearance."
+    },
+    {
+      "playerTeamSeasonId": "pts:df5a6881:ipl-2022:team-chennai-super-kings",
+      "player": "DP Conway",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 7,
+      "appearancesReviewed": [
+        "1304047",
+        "1304092",
+        "1304095",
+        "1304101",
+        "1304105",
+        "1304108",
+        "1304114"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304047",
+        "espn-ipl-2022-1304092",
+        "espn-ipl-2022-1304095",
+        "espn-ipl-2022-1304101",
+        "espn-ipl-2022-1304105",
+        "espn-ipl-2022-1304108",
+        "espn-ipl-2022-1304114"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:f088b960:ipl-2022:team-delhi-capitals",
+      "player": "SN Khan",
+      "team": "Delhi Capitals",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "1304061",
+        "1304065",
+        "1304078",
+        "1304080",
+        "1304110",
+        "1304115"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304061",
+        "espn-ipl-2022-1304065",
+        "espn-ipl-2022-1304078",
+        "espn-ipl-2022-1304080",
+        "espn-ipl-2022-1304110",
+        "espn-ipl-2022-1304115"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:ff1e68fa:ipl-2022:team-kolkata-knight-riders",
+      "player": "B Indrajith",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "1304093"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304093"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2022-1304093",
+        "observedMarker": "†",
+        "observedText": "B Indrajith †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    }
+  ],
+  "capabilityFreezeExceptions": [
+    {
+      "playerId": "6c882e9a",
+      "player": "PBB Rajapaksa",
+      "playerTeamSeasonId": "pts:6c882e9a:ipl-2022:team-punjab-kings",
+      "discoveryStatus": "CAPABILITY_FREEZE_EXCEPTION_CONFIRMED",
+      "sourceId": "espn-ipl-2022-1304049",
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2022-1304049",
+        "observedMarker": "†",
+        "observedText": "PBB Rajapaksa †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCapabilityAction": "CONFIRMED",
+      "proposedUsageAction": "CONFIRMED",
+      "notes": "Discovered outside the original active queue when a calibrated scorecard explicitly designated the player as the match-XI wicketkeeper. The season usage necessarily confirms player-level capability."
+    }
+  ],
+  "supplementalCaseResults": [
+    {
+      "playerTeamSeasonId": "pts:1399b39c:ipl-2022:team-mumbai-indians",
+      "player": "Anmolpreet Singh",
+      "team": "Mumbai Indians",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1304048",
+        "1304055"
+      ],
+      "sourceIds": [
+        "espn-ipl-2022-1304048",
+        "espn-ipl-2022-1304055"
+      ],
+      "sourceConventionId": "espn-scorecard-2022-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "activationReason": "CAPABILITY_FREEZE_EXCEPTION_CORRECTION",
+      "notes": "Supplemental review activated only after the player's capability correction. Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained. This case was not part of the original queue snapshot for usage-2022-v1."
+    }
+  ],
+  "summary": {
+    "scopeCases": 14,
+    "positiveUsageFound": 4,
+    "reviewedUnknown": 10,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 1,
+    "freezeExceptionPositiveUsageFound": 1,
+    "supplementalUsageReviews": 1,
+    "supplementalReviewedUnknown": 1,
+    "supplementalSourceGaps": 0,
+    "targetScorecardsInspected": 60,
+    "targetScorecardRouteAttempts": 61,
+    "eventOnlyScorecardsInspected": 1,
+    "totalReadableScorecardsInspected": 61,
+    "targetUpperBound": 64,
+    "reusedTargetScorecards": 35,
+    "canonicalCandidateAppearances": 126,
+    "candidateAppearancesCoveredByInspectedScorecards": 122,
+    "candidateAppearancesSkippedAfterPositive": 4,
+    "officialRouteAvailabilityFailures": 1,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}

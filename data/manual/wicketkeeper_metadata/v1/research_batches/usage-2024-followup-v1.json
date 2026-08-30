@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2024-followup-v1",
+  "seasonId": "ipl-2024",
+  "parentBatchId": "usage-2024-v1",
+  "scopeOrigin": "SUPPLEMENTAL_CAPABILITY_FREEZE_FOLLOWUP",
+  "researchStatus": "COMPLETED_APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "774b8a0c7b65bf8464d854884c0ff2086fdefaaef0bfa6fa2134b28a4712f99f",
+  "scopePlayerTeamSeasonIds": [
+    "pts:1399b39c:ipl-2024:team-sunrisers-hyderabad"
+  ],
+  "scopeAudit": {
+    "originalUsage2024LedgerUnchanged": true,
+    "originalQueueScopeCaseCount": 0,
+    "supplementalScopeCaseCount": 1,
+    "notes": "This case was activated only by the later Anmolpreet Singh capability correction and was not present in the original usage-2024-v1 queue snapshot."
+  },
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated wicketkeeper.",
+    "Every official appearance was checked and none designates the candidate.",
+    "Substitute or event-only involvement is separated from canonical official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "publisher": "ESPN",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "‡"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1422120",
+          "knownKeeper": "RR Pant",
+          "observedText": "RR Pant (c) †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1422120"
+        },
+        {
+          "matchId": "1426261",
+          "knownKeeper": "H Klaasen",
+          "observedText": "H Klaasen †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1426261"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Rendered scorecards used † while some search-index representations used ‡; both were normalized only after deterministic control calibration. Dismissal text and catches were not accepted as usage evidence.",
+      "inheritedCalibrationFromBatchId": "usage-2024-v1"
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2024-1426284",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426284",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426284",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "H Klaasen †"
+      ],
+      "candidatesCovered": [
+        "pts:1399b39c:ipl-2024:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SUPPLEMENTAL_SCOPE_REVIEW"
+      ],
+      "notes": "Supplemental review activated by the Anmolpreet Singh capability-freeze correction; this record does not alter the original usage-2024-v1 scope."
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426288",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426288",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426288",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1399b39c:ipl-2024:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SUPPLEMENTAL_SCOPE_REVIEW"
+      ],
+      "notes": "Supplemental review activated by the Anmolpreet Singh capability-freeze correction; this record does not alter the original usage-2024-v1 scope."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:1399b39c:ipl-2024:team-sunrisers-hyderabad",
+      "player": "Anmolpreet Singh",
+      "team": "Sunrisers Hyderabad",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1426284",
+        "1426288"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1426284",
+        "espn-ipl-2024-1426288"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "activationReason": "CAPABILITY_FREEZE_EXCEPTION_CORRECTION",
+      "notes": "Supplemental review activated only after the player's capability correction. Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained. This case was not part of the original queue snapshot for usage-2024-v1."
+    }
+  ],
+  "summary": {
+    "scopeCases": 1,
+    "positiveUsageFound": 0,
+    "reviewedUnknown": 1,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "targetScorecardsInspected": 2,
+    "controlOnlyScorecardsInspected": 0,
+    "totalScorecardsInspected": 2,
+    "officialRouteAvailabilityFailures": 0,
+    "targetUpperBound": 2,
+    "reusedTargetScorecards": 0,
+    "canonicalCandidateAppearances": 2,
+    "candidateAppearancesCoveredByInspectedScorecards": 2,
+    "candidateAppearancesSkippedAfterPositive": 0,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}

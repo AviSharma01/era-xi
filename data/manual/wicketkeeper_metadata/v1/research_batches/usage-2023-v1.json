@@ -1,0 +1,2592 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2023-v1",
+  "seasonId": "ipl-2023",
+  "researchStatus": "COMPLETED_APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "774b8a0c7b65bf8464d854884c0ff2086fdefaaef0bfa6fa2134b28a4712f99f",
+  "scopePlayerTeamSeasonIds": [
+    "pts:0494fa6e:ipl-2023:team-mumbai-indians",
+    "pts:0bacade8:ipl-2023:team-kolkata-knight-riders",
+    "pts:3d284ca3:ipl-2023:team-delhi-capitals",
+    "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+    "pts:85b3fab2:ipl-2023:team-mumbai-indians",
+    "pts:9418198b:ipl-2023:team-punjab-kings",
+    "pts:99b75528:ipl-2023:team-rajasthan-royals",
+    "pts:99d63244:ipl-2023:team-royal-challengers-bangalore",
+    "pts:9a46c4e5:ipl-2023:team-sunrisers-hyderabad",
+    "pts:ad3b6e95:ipl-2023:team-delhi-capitals",
+    "pts:b17e2f24:ipl-2023:team-lucknow-super-giants",
+    "pts:bcf325d2:ipl-2023:team-rajasthan-royals",
+    "pts:bd54eef5:ipl-2023:team-kolkata-knight-riders",
+    "pts:c8f5f961:ipl-2023:team-royal-challengers-bangalore",
+    "pts:df5a6881:ipl-2023:team-chennai-super-kings",
+    "pts:f088b960:ipl-2023:team-delhi-capitals"
+  ],
+  "scopeAudit": {
+    "originalQueueScopeCaseCount": 16,
+    "originalQueueScopePreserved": true,
+    "capabilityFreezeExceptionCasesWereNotOriginalQueueCases": true,
+    "supplementalUsageCasesWereNotOriginalQueueCases": true,
+    "notes": "The original scope IDs are preserved exactly from the committed queue snapshot. Exception and supplemental records are stored separately and do not rewrite the historical starting scope."
+  },
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated wicketkeeper.",
+    "Every official appearance was checked and none designates the candidate.",
+    "Substitute or event-only involvement is separated from canonical official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "publisher": "ESPN",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "‡"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1359478",
+          "knownKeeper": "SV Samson",
+          "observedText": "SV Samson (c) †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1359478"
+        },
+        {
+          "matchId": "1359480",
+          "knownKeeper": "N Pooran",
+          "observedText": "N Pooran †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1359480"
+        },
+        {
+          "matchId": "1359504",
+          "knownKeeper": "WP Saha",
+          "observedText": "WP Saha †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1359504"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Rendered scorecards used † while some search-index representations used ‡; both were normalized only after deterministic control calibration. Dismissal text and catches were not accepted as usage evidence."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2023-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1359544",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2023/925",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The indexed historical route redirected to the redesigned /en site and exposed no readable scorecard or keeper-marker convention."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2023-1359475",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359475",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359475",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359476",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359476",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359476",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "Rahmanullah Gurbaz †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2023:team-kolkata-knight-riders",
+        "pts:9418198b:ipl-2023:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SUPPLEMENTAL_SCOPE_REVIEW"
+      ],
+      "notes": null,
+      "supplementalCandidatesCovered": [
+        "pts:6c882e9a:ipl-2023:team-punjab-kings"
+      ]
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359477",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359477",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359477",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "N Pooran †",
+        "SN Khan †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2023:team-lucknow-super-giants",
+        "pts:f088b960:ipl-2023:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359478",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359478",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359478",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "GD Phillips †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:9a46c4e5:ipl-2023:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359480",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359480",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359480",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "N Pooran †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:b17e2f24:ipl-2023:team-lucknow-super-giants",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359481",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359481",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359481",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Abishek Porel †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:ad3b6e95:ipl-2023:team-delhi-capitals",
+        "pts:f088b960:ipl-2023:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359482",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359482",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359482",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2023:team-punjab-kings",
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SUPPLEMENTAL_SCOPE_REVIEW"
+      ],
+      "notes": null,
+      "supplementalCandidatesCovered": [
+        "pts:6c882e9a:ipl-2023:team-punjab-kings"
+      ]
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359483",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359483",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359483",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Rahmanullah Gurbaz †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2023:team-kolkata-knight-riders",
+        "pts:c8f5f961:ipl-2023:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359484",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359484",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359484",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Anmolpreet Singh †",
+        "N Pooran †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2023:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "CAPABILITY_FREEZE_EXCEPTION"
+      ],
+      "notes": null,
+      "capabilityFreezeExceptionSubjects": [
+        "pts:1399b39c:ipl-2023:team-sunrisers-hyderabad"
+      ]
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359485",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359485",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359485",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "Abishek Porel †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:ad3b6e95:ipl-2023:team-delhi-capitals",
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359486",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359486",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359486",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "Did not bat: RA Jadeja, MS Dhoni (c) †, D Pretorius, MJ Santner, SSB Magala, TU Deshpande, DL Chahar"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:85b3fab2:ipl-2023:team-mumbai-indians",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359487",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359487",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359487",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "Rahmanullah Gurbaz †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2023:team-kolkata-knight-riders",
+        "pts:bd54eef5:ipl-2023:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359488",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359488",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359488",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "Did not bat: H Klaasen †, Washington Sundar, M Jansen, M Markande, B Kumar, Umran Malik, T Natarajan"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2023:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359489",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359489",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359489",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "N Pooran †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2023:team-lucknow-super-giants",
+        "pts:c8f5f961:ipl-2023:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359491",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359491",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359491",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359492",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359492",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359492",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2023:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SUPPLEMENTAL_SCOPE_REVIEW"
+      ],
+      "notes": null,
+      "supplementalCandidatesCovered": [
+        "pts:6c882e9a:ipl-2023:team-punjab-kings"
+      ]
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359493",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359493",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359493",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "Rahmanullah Gurbaz †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2023:team-kolkata-knight-riders",
+        "pts:bd54eef5:ipl-2023:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359494",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359494",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359494",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "Abishek Porel †"
+      ],
+      "candidatesCovered": [
+        "pts:ad3b6e95:ipl-2023:team-delhi-capitals",
+        "pts:c8f5f961:ipl-2023:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359495",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359495",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359495",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "N Pooran †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2023:team-punjab-kings",
+        "pts:b17e2f24:ipl-2023:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359496",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359496",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359496",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Rahmanullah Gurbaz †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2023:team-kolkata-knight-riders",
+        "pts:bd54eef5:ipl-2023:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359497",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359497",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359497",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359498",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359498",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359498",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359500",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359500",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359500",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "N Pooran †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:b17e2f24:ipl-2023:team-lucknow-super-giants",
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359501",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359501",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359501",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2023:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359502",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359502",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359502",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Liton Das †",
+        "PD Salt †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2023:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359503",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359503",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359503",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "Did not bat: S Dube, RA Jadeja, MS Dhoni (c) †, TU Deshpande, M Theekshana, M Pathirana, Akash Singh"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359504",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359504",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359504",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "N Pooran †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2023:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359505",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359505",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359505",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2023:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359506",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359506",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359506",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359507",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359507",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359507",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "N Jagadeesan †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:bd54eef5:ipl-2023:team-kolkata-knight-riders",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359510",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359510",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359510",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "N Jagadeesan †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:bd54eef5:ipl-2023:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359511",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359511",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359511",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "Did not bat: MS Dhoni (c) †, M Pathirana, TU Deshpande, M Theekshana, Akash Singh"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359512",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359512",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359512",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "N Pooran †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2023:team-punjab-kings",
+        "pts:b17e2f24:ipl-2023:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359513",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359513",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359513",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "N Jagadeesan †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2023:team-kolkata-knight-riders",
+        "pts:bd54eef5:ipl-2023:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359515",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359515",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359515",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:9418198b:ipl-2023:team-punjab-kings",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359516",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359516",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359516",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359517",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359517",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359517",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "N Pooran †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2023:team-lucknow-super-giants",
+        "pts:c8f5f961:ipl-2023:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359519",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359519",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359519",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "N Pooran †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359520",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359520",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359520",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2023:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359522",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359522",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359522",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359523",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359523",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359523",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:85b3fab2:ipl-2023:team-mumbai-indians",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359524",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359524",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359524",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "PD Salt †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2023:team-delhi-capitals",
+        "pts:99d63244:ipl-2023:team-royal-challengers-bangalore",
+        "pts:c8f5f961:ipl-2023:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359526",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359526",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359526",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "H Klaasen †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:9a46c4e5:ipl-2023:team-sunrisers-hyderabad",
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359527",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359527",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359527",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "Rahmanullah Gurbaz †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2023:team-kolkata-knight-riders",
+        "pts:9418198b:ipl-2023:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SUPPLEMENTAL_SCOPE_REVIEW"
+      ],
+      "notes": null,
+      "supplementalCandidatesCovered": [
+        "pts:6c882e9a:ipl-2023:team-punjab-kings"
+      ]
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359528",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359528",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359528",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2023:team-royal-challengers-bangalore",
+        "pts:c8f5f961:ipl-2023:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359529",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359529",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359529",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "PD Salt †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2023:team-delhi-capitals",
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359530",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359530",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359530",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Rahmanullah Gurbaz †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2023:team-kolkata-knight-riders",
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359531",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359531",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359531",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:0494fa6e:ipl-2023:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359533",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359533",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359533",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "PD Salt †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2023:team-delhi-capitals",
+        "pts:9418198b:ipl-2023:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359534",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359534",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359534",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals",
+        "pts:c8f5f961:ipl-2023:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359535",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359535",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359535",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "Rahmanullah Gurbaz †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2023:team-kolkata-knight-riders",
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359537",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359537",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359537",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:0494fa6e:ipl-2023:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359538",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359538",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359538",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PD Salt †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2023:team-delhi-capitals",
+        "pts:9418198b:ipl-2023:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359539",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359539",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359539",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "Did not bat: MK Lomror, Anuj Rawat †, Shahbaz Ahmed, HV Patel, WD Parnell, KV Sharma, Mohammed Siraj"
+      ],
+      "candidatesCovered": [
+        "pts:9a46c4e5:ipl-2023:team-sunrisers-hyderabad",
+        "pts:c8f5f961:ipl-2023:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359540",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359540",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359540",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2023:team-punjab-kings",
+        "pts:99b75528:ipl-2023:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359541",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359541",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359541",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "PD Salt †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2023:team-delhi-capitals",
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1359544",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1359544",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359544",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Anuj Rawat †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:c8f5f961:ipl-2023:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1370350",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1370350",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1370350",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1370352",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1370352",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1370352",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "Vishnu Vinod †"
+      ],
+      "candidatesCovered": [
+        "pts:0494fa6e:ipl-2023:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2023-1370353",
+      "sourceFamilyId": "espn-scorecard-2023-v1",
+      "matchId": "1370353",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1370353",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2023-925",
+      "sourceFamilyId": "official-ipl-historical-route-2023-v1",
+      "matchId": "1359544",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2023/925",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:c8f5f961:ipl-2023:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The official IPL route redirected to the redesigned /en site and did not expose readable scorecard data or a keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:0494fa6e:ipl-2023:team-mumbai-indians",
+      "player": "Vishnu Vinod",
+      "team": "Mumbai Indians",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "1370352"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1370352"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2023-1370352",
+        "observedMarker": "†",
+        "observedText": "Vishnu Vinod †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:0bacade8:ipl-2023:team-kolkata-knight-riders",
+      "player": "Rahmanullah Gurbaz",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 11,
+      "appearancesReviewed": [
+        "1359476"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359476"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2023-1359476",
+        "observedMarker": "†",
+        "observedText": "Rahmanullah Gurbaz †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:3d284ca3:ipl-2023:team-delhi-capitals",
+      "player": "PD Salt",
+      "team": "Delhi Capitals",
+      "officialAppearances": 9,
+      "appearancesReviewed": [
+        "1359502"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359502"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2023-1359502",
+        "observedMarker": "†",
+        "observedText": "PD Salt †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+      "player": "AT Rayudu",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 16,
+      "appearancesReviewed": [
+        "1359475",
+        "1359480",
+        "1359486",
+        "1359491",
+        "1359498",
+        "1359503",
+        "1359507",
+        "1359511",
+        "1359515",
+        "1359519",
+        "1359523",
+        "1359529",
+        "1359535",
+        "1359541",
+        "1370350",
+        "1370353"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359475",
+        "espn-ipl-2023-1359480",
+        "espn-ipl-2023-1359486",
+        "espn-ipl-2023-1359491",
+        "espn-ipl-2023-1359498",
+        "espn-ipl-2023-1359503",
+        "espn-ipl-2023-1359507",
+        "espn-ipl-2023-1359511",
+        "espn-ipl-2023-1359515",
+        "espn-ipl-2023-1359519",
+        "espn-ipl-2023-1359523",
+        "espn-ipl-2023-1359529",
+        "espn-ipl-2023-1359535",
+        "espn-ipl-2023-1359541",
+        "espn-ipl-2023-1370350",
+        "espn-ipl-2023-1370353"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:85b3fab2:ipl-2023:team-mumbai-indians",
+      "player": "T Stubbs",
+      "team": "Mumbai Indians",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1359486",
+        "1359523"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359486",
+        "espn-ipl-2023-1359523"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:9418198b:ipl-2023:team-punjab-kings",
+      "player": "P Simran Singh",
+      "team": "Punjab Kings",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1359476",
+        "1359482",
+        "1359488",
+        "1359492",
+        "1359495",
+        "1359501",
+        "1359505",
+        "1359512",
+        "1359515",
+        "1359520",
+        "1359527",
+        "1359533",
+        "1359538",
+        "1359540"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359476",
+        "espn-ipl-2023-1359482",
+        "espn-ipl-2023-1359488",
+        "espn-ipl-2023-1359492",
+        "espn-ipl-2023-1359495",
+        "espn-ipl-2023-1359501",
+        "espn-ipl-2023-1359505",
+        "espn-ipl-2023-1359512",
+        "espn-ipl-2023-1359515",
+        "espn-ipl-2023-1359520",
+        "espn-ipl-2023-1359527",
+        "espn-ipl-2023-1359533",
+        "espn-ipl-2023-1359538",
+        "espn-ipl-2023-1359540"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:99b75528:ipl-2023:team-rajasthan-royals",
+      "player": "JC Buttler",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1359478",
+        "1359482",
+        "1359485",
+        "1359491",
+        "1359497",
+        "1359500",
+        "1359506",
+        "1359511",
+        "1359516",
+        "1359522",
+        "1359526",
+        "1359530",
+        "1359534",
+        "1359540"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359478",
+        "espn-ipl-2023-1359482",
+        "espn-ipl-2023-1359485",
+        "espn-ipl-2023-1359491",
+        "espn-ipl-2023-1359497",
+        "espn-ipl-2023-1359500",
+        "espn-ipl-2023-1359506",
+        "espn-ipl-2023-1359511",
+        "espn-ipl-2023-1359516",
+        "espn-ipl-2023-1359522",
+        "espn-ipl-2023-1359526",
+        "espn-ipl-2023-1359530",
+        "espn-ipl-2023-1359534",
+        "espn-ipl-2023-1359540"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:99d63244:ipl-2023:team-royal-challengers-bangalore",
+      "player": "KM Jadhav",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1359524",
+        "1359528"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359524",
+        "espn-ipl-2023-1359528"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:9a46c4e5:ipl-2023:team-sunrisers-hyderabad",
+      "player": "GD Phillips",
+      "team": "Sunrisers Hyderabad",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "1359478"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359478"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2023-1359478",
+        "observedMarker": "†",
+        "observedText": "GD Phillips †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:ad3b6e95:ipl-2023:team-delhi-capitals",
+      "player": "Abishek Porel",
+      "team": "Delhi Capitals",
+      "officialAppearances": 4,
+      "appearancesReviewed": [
+        "1359481"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359481"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2023-1359481",
+        "observedMarker": "†",
+        "observedText": "Abishek Porel †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2023:team-lucknow-super-giants",
+      "player": "KL Rahul",
+      "team": "Lucknow Super Giants",
+      "officialAppearances": 9,
+      "appearancesReviewed": [
+        "1359477",
+        "1359480",
+        "1359484",
+        "1359489",
+        "1359495",
+        "1359500",
+        "1359504",
+        "1359512",
+        "1359517"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359477",
+        "espn-ipl-2023-1359480",
+        "espn-ipl-2023-1359484",
+        "espn-ipl-2023-1359489",
+        "espn-ipl-2023-1359495",
+        "espn-ipl-2023-1359500",
+        "espn-ipl-2023-1359504",
+        "espn-ipl-2023-1359512",
+        "espn-ipl-2023-1359517"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:bcf325d2:ipl-2023:team-rajasthan-royals",
+      "player": "Dhruv Jurel",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 13,
+      "appearancesReviewed": [
+        "1359482",
+        "1359485",
+        "1359491",
+        "1359497",
+        "1359500",
+        "1359506",
+        "1359511",
+        "1359516",
+        "1359522",
+        "1359526",
+        "1359530",
+        "1359534",
+        "1359540"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359482",
+        "espn-ipl-2023-1359485",
+        "espn-ipl-2023-1359491",
+        "espn-ipl-2023-1359497",
+        "espn-ipl-2023-1359500",
+        "espn-ipl-2023-1359506",
+        "espn-ipl-2023-1359511",
+        "espn-ipl-2023-1359516",
+        "espn-ipl-2023-1359522",
+        "espn-ipl-2023-1359526",
+        "espn-ipl-2023-1359530",
+        "espn-ipl-2023-1359534",
+        "espn-ipl-2023-1359540"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:bd54eef5:ipl-2023:team-kolkata-knight-riders",
+      "player": "N Jagadeesan",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "1359507"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359507"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2023-1359507",
+        "observedMarker": "†",
+        "observedText": "N Jagadeesan †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:c8f5f961:ipl-2023:team-royal-challengers-bangalore",
+      "player": "Anuj Rawat",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 9,
+      "appearancesReviewed": [
+        "1359544"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359544"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2023-1359544",
+        "observedMarker": "†",
+        "observedText": "Anuj Rawat †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:df5a6881:ipl-2023:team-chennai-super-kings",
+      "player": "DP Conway",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 16,
+      "appearancesReviewed": [
+        "1359475",
+        "1359480",
+        "1359486",
+        "1359491",
+        "1359498",
+        "1359503",
+        "1359507",
+        "1359511",
+        "1359515",
+        "1359519",
+        "1359523",
+        "1359529",
+        "1359535",
+        "1359541",
+        "1370350",
+        "1370353"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359475",
+        "espn-ipl-2023-1359480",
+        "espn-ipl-2023-1359486",
+        "espn-ipl-2023-1359491",
+        "espn-ipl-2023-1359498",
+        "espn-ipl-2023-1359503",
+        "espn-ipl-2023-1359507",
+        "espn-ipl-2023-1359511",
+        "espn-ipl-2023-1359515",
+        "espn-ipl-2023-1359519",
+        "espn-ipl-2023-1359523",
+        "espn-ipl-2023-1359529",
+        "espn-ipl-2023-1359535",
+        "espn-ipl-2023-1359541",
+        "espn-ipl-2023-1370350",
+        "espn-ipl-2023-1370353"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:f088b960:ipl-2023:team-delhi-capitals",
+      "player": "SN Khan",
+      "team": "Delhi Capitals",
+      "officialAppearances": 4,
+      "appearancesReviewed": [
+        "1359477"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359477"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2023-1359477",
+        "observedMarker": "†",
+        "observedText": "SN Khan †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    }
+  ],
+  "capabilityFreezeExceptions": [
+    {
+      "playerId": "1399b39c",
+      "player": "Anmolpreet Singh",
+      "playerTeamSeasonId": "pts:1399b39c:ipl-2023:team-sunrisers-hyderabad",
+      "discoveryStatus": "CAPABILITY_FREEZE_EXCEPTION_CONFIRMED",
+      "sourceId": "espn-ipl-2023-1359484",
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2023-1359484",
+        "observedMarker": "†",
+        "observedText": "Anmolpreet Singh †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCapabilityAction": "CONFIRMED",
+      "proposedUsageAction": "CONFIRMED",
+      "notes": "Discovered outside the original active queue when a calibrated scorecard explicitly designated the player as the match-XI wicketkeeper. The season usage necessarily confirms player-level capability."
+    }
+  ],
+  "supplementalCaseResults": [
+    {
+      "playerTeamSeasonId": "pts:6c882e9a:ipl-2023:team-punjab-kings",
+      "player": "PBB Rajapaksa",
+      "team": "Punjab Kings",
+      "officialAppearances": 4,
+      "appearancesReviewed": [
+        "1359476",
+        "1359482",
+        "1359492",
+        "1359527"
+      ],
+      "sourceIds": [
+        "espn-ipl-2023-1359476",
+        "espn-ipl-2023-1359482",
+        "espn-ipl-2023-1359492",
+        "espn-ipl-2023-1359527"
+      ],
+      "sourceConventionId": "espn-scorecard-2023-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "activationReason": "CAPABILITY_FREEZE_EXCEPTION_CORRECTION",
+      "notes": "Supplemental review activated only after the player's capability correction. Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained. This case was not part of the original queue snapshot for usage-2023-v1."
+    }
+  ],
+  "summary": {
+    "scopeCases": 16,
+    "positiveUsageFound": 8,
+    "reviewedUnknown": 8,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 1,
+    "freezeExceptionPositiveUsageFound": 1,
+    "supplementalUsageReviews": 1,
+    "supplementalReviewedUnknown": 1,
+    "supplementalSourceGaps": 0,
+    "targetScorecardsInspected": 60,
+    "targetScorecardRouteAttempts": 60,
+    "eventOnlyScorecardsInspected": 0,
+    "totalReadableScorecardsInspected": 60,
+    "targetUpperBound": 68,
+    "reusedTargetScorecards": 47,
+    "canonicalCandidateAppearances": 137,
+    "candidateAppearancesCoveredByInspectedScorecards": 127,
+    "candidateAppearancesSkippedAfterPositive": 10,
+    "officialRouteAvailabilityFailures": 1,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}

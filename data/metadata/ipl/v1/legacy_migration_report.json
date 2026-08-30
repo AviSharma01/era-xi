@@ -609,6 +609,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2022-1304047",
         "manual:espn-ipl-2024-1426297",
         "stumping:1082603:2:11:0:0:4a8a2e3b",
         "stumping:1082607:2:10:2:0:4a8a2e3b",
@@ -973,6 +974,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2022-1304048",
         "manual:espn-ipl-2024-1422138",
         "manual:espn-ipl-2025-1473492",
         "stumping:1136561:2:12:5:0:752f7486",
@@ -2215,6 +2217,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2023-1359477",
         "manual:espn-sn-khan-dc-2023"
       ],
       "canonicalCapabilityStatus": "CONFIRMED",

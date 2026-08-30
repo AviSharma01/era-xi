@@ -2447,6 +2447,1086 @@
       "locator": "Rendered scorecard XI keeper designations: DC Jurel †; JC Buttler †",
       "supports": [],
       "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304047",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kolkata Knight Riders, Indian Premier League 2022, 1st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304047",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni †; SP Jackson †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2022-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304048",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Mumbai Indians, Indian Premier League 2022, 2nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304048",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; RR Pant (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2022-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304049",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Royal Challengers Bangalore, Indian Premier League 2022, 3rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304049",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; PBB Rajapaksa †",
+      "supports": [
+        "PLAYER_CAPABILITY",
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2022-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304050",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Gujarat Titans vs Lucknow Super Giants, Indian Premier League 2022, 4th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304050",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; MS Wade †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304051",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Rajasthan Royals, Indian Premier League 2022, 5th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304051",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; N Pooran †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304052",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kolkata Knight Riders, Indian Premier League 2022, 6th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304052",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SP Jackson †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304053",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Chennai Super Kings, Indian Premier League 2022, 7th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304053",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304055",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Rajasthan Royals, Indian Premier League 2022, 9th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304055",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304056",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Gujarat Titans vs Delhi Capitals, Indian Premier League 2022, 10th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304056",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Wade †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304057",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Punjab Kings, Indian Premier League 2022, 11th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304057",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; MS Dhoni †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304058",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Lucknow Super Giants, Indian Premier League 2022, 12th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304058",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; N Pooran †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304059",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Royal Challengers Bangalore, Indian Premier League 2022, 13th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304059",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304061",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Delhi Capitals, Indian Premier League 2022, 15th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304061",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304062",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Gujarat Titans, Indian Premier League 2022, 16th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304062",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Bairstow †; MS Wade †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2022-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304063",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Sunrisers Hyderabad, Indian Premier League 2022, 17th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304063",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni †; N Pooran †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304064",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Mumbai Indians, Indian Premier League 2022, 18th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304064",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304065",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Delhi Capitals, Indian Premier League 2022, 19th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304065",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; SW Billings †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304066",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Lucknow Super Giants, Indian Premier League 2022, 20th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304066",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304068",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Royal Challengers Bangalore, Indian Premier League 2022, 22nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304068",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304070",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Gujarat Titans, Indian Premier League 2022, 24th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304070",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Wade †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304072",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Lucknow Super Giants, Indian Premier League 2022, 26th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304072",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304073",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Royal Challengers Bangalore, Indian Premier League 2022, 27th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304073",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304075",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Gujarat Titans vs Chennai Super Kings, Indian Premier League 2022, 29th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304075",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Did not bat: MS Dhoni †, DJ Bravo, CJ Jordan, M Theekshana, Mukesh Choudhary; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304076",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Kolkata Knight Riders, Indian Premier League 2022, 30th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304076",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; SP Jackson †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304077",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Royal Challengers Bangalore, Indian Premier League 2022, 31st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304077",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304078",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Punjab Kings, Indian Premier League 2022, 32nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304078",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; Did not bat: RR Pant (c) †, R Powell, Lalit Yadav, SN Thakur, AR Patel, Kuldeep Yadav, Mustafizur Rahman, KK Ahmed",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304079",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Chennai Super Kings, Indian Premier League 2022, 33rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304079",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; MS Dhoni †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304080",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Rajasthan Royals, Indian Premier League 2022, 34th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304080",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304082",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Sunrisers Hyderabad, Indian Premier League 2022, 36th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304082",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; Did not bat: AK Markram, N Pooran †, Shashank Singh, J Suchith, B Kumar, M Jansen, T Natarajan, Umran Malik",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304083",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Mumbai Indians, Indian Premier League 2022, 37th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304083",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304084",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Chennai Super Kings, Indian Premier League 2022, 38th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304084",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Did not bat: JM Sharma †, R Dhawan, K Rabada, RD Chahar, Arshdeep Singh, Sandeep Sharma; MS Dhoni †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304085",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Rajasthan Royals, Indian Premier League 2022, 39th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304085",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304088",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Lucknow Super Giants, Indian Premier League 2022, 42nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304088",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304090",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Mumbai Indians, Indian Premier League 2022, 44th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304090",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304091",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Lucknow Super Giants, Indian Premier League 2022, 45th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304091",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304092",
+      "publisher": "ESPN",
+      "title": "SRH vs CSK Cricket Scorecard, 46th Match at Pune, May 01, 2022",
+      "url": "https://www.cricinfo.com/series/indian-premier-league-2022-1298423/sunrisers-hyderabad-vs-chennai-super-kings-46th-match-1304092/full-scorecard",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; Nicholas Pooran †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304093",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Rajasthan Royals, Indian Premier League 2022, 47th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304093",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; B Indrajith †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2022-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304095",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Chennai Super Kings, Indian Premier League 2022, 49th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304095",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304098",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Rajasthan Royals, Indian Premier League 2022, 52nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304098",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304099",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Kolkata Knight Riders, Indian Premier League 2022, 53rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304099",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; B Indrajith †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304101",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Delhi Capitals, Indian Premier League 2022, 55th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304101",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304103",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Gujarat Titans, Indian Premier League 2022, 57th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304103",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304104",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Delhi Capitals, Indian Premier League 2022, 58th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304104",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304105",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Indian Premier League 2022, 59th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304105",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304108",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Gujarat Titans, Indian Premier League 2022, 62nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304108",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304109",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Rajasthan Royals, Indian Premier League 2022, 63rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304109",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304110",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Delhi Capitals, Indian Premier League 2022, 64th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304110",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304112",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Lucknow Super Giants, Indian Premier League 2022, 66th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304112",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; SW Billings †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304114",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Chennai Super Kings, Indian Premier League 2022, 68th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304114",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1304115",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Delhi Capitals, Indian Premier League 2022, 69th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1304115",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1312197",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Gujarat Titans vs Rajasthan Royals, Indian Premier League 2022, Qualifier 1 - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1312197",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1312198",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Royal Challengers Bangalore, Indian Premier League 2022, Eliminator - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1312198",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1312199",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Royal Challengers Bangalore, Indian Premier League 2022, Qualifier 2 - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1312199",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2022-1312200",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Gujarat Titans vs Rajasthan Royals, Indian Premier League 2022, Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1312200",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2022-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359475",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Gujarat Titans vs Chennai Super Kings, Indian Premier League 2023, 1st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359475",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359476",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Kolkata Knight Riders, Indian Premier League 2023, 2nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359476",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; Rahmanullah Gurbaz †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2023-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359477",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Delhi Capitals, Indian Premier League 2023, 3rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359477",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: N Pooran †; SN Khan †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2023-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359478",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Rajasthan Royals, Indian Premier League 2023, 4th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359478",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; GD Phillips †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2023-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359480",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Lucknow Super Giants, Indian Premier League 2023, 6th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359480",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; N Pooran †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359481",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Gujarat Titans, Indian Premier League 2023, 7th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359481",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Abishek Porel †; WP Saha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2023-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359482",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Punjab Kings, Indian Premier League 2023, 8th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359482",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359484",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Sunrisers Hyderabad, Indian Premier League 2023, 10th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359484",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Anmolpreet Singh †; N Pooran †",
+      "supports": [
+        "PLAYER_CAPABILITY",
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2023-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359485",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Delhi Capitals, Indian Premier League 2023, 11th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359485",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; Abishek Porel †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359486",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Chennai Super Kings, Indian Premier League 2023, 12th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359486",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; Did not bat: RA Jadeja, MS Dhoni (c) †, D Pretorius, MJ Santner, SSB Magala, TU Deshpande, DL Chahar",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359488",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Punjab Kings, Indian Premier League 2023, 14th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359488",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; Did not bat: H Klaasen †, Washington Sundar, M Jansen, M Markande, B Kumar, Umran Malik, T Natarajan",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359489",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Lucknow Super Giants, Indian Premier League 2023, 15th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359489",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; N Pooran †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359491",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Rajasthan Royals, Indian Premier League 2023, 17th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359491",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359492",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Gujarat Titans, Indian Premier League 2023, 18th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359492",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359495",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Punjab Kings, Indian Premier League 2023, 21st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359495",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: N Pooran †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359497",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Gujarat Titans vs Rajasthan Royals, Indian Premier League 2023, 23rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359497",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359498",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Chennai Super Kings, Indian Premier League 2023, 24th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359498",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359500",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Lucknow Super Giants, Indian Premier League 2023, 26th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359500",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: N Pooran †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359501",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Royal Challengers Bangalore, Indian Premier League 2023, 27th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359501",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359502",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Kolkata Knight Riders, Indian Premier League 2023, 28th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359502",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Liton Das †; PD Salt †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2023-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359503",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Sunrisers Hyderabad, Indian Premier League 2023, 29th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359503",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: H Klaasen †; Did not bat: S Dube, RA Jadeja, MS Dhoni (c) †, TU Deshpande, M Theekshana, M Pathirana, Akash Singh",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359504",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Gujarat Titans, Indian Premier League 2023, 30th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359504",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; N Pooran †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359505",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Punjab Kings, Indian Premier League 2023, 31st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359505",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359506",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Rajasthan Royals, Indian Premier League 2023, 32nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359506",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359507",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Chennai Super Kings, Indian Premier League 2023, 33rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359507",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; N Jagadeesan †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2023-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359511",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Chennai Super Kings, Indian Premier League 2023, 37th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359511",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; Did not bat: MS Dhoni (c) †, M Pathirana, TU Deshpande, M Theekshana, Akash Singh",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359512",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Lucknow Super Giants, Indian Premier League 2023, 38th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359512",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: N Pooran †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359515",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Punjab Kings, Indian Premier League 2023, 41st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359515",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359516",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Rajasthan Royals, Indian Premier League 2023, 42nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359516",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359517",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Royal Challengers Bangalore, Indian Premier League 2023, 43rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359517",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; N Pooran †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359519",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Lucknow Super Giants vs Chennai Super Kings, Indian Premier League 2023, 45th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359519",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: N Pooran †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359520",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Mumbai Indians, Indian Premier League 2023, 46th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359520",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359522",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Gujarat Titans, Indian Premier League 2023, 48th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359522",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359523",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Indian Premier League 2023, 49th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359523",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359524",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Royal Challengers Bangalore, Indian Premier League 2023, 50th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359524",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; PD Salt †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359526",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Sunrisers Hyderabad, Indian Premier League 2023, 52nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359526",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; H Klaasen †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359527",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Punjab Kings, Indian Premier League 2023, 53rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359527",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; Rahmanullah Gurbaz †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359528",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Royal Challengers Bangalore, Indian Premier League 2023, 54th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359528",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359529",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Delhi Capitals, Indian Premier League 2023, 55th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359529",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; PD Salt †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359530",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Rajasthan Royals, Indian Premier League 2023, 56th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359530",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Rahmanullah Gurbaz †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359533",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Punjab Kings, Indian Premier League 2023, 59th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359533",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; PD Salt †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359534",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Royal Challengers Bangalore, Indian Premier League 2023, 60th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359534",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359535",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kolkata Knight Riders, Indian Premier League 2023, 61st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359535",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; Rahmanullah Gurbaz †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359538",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Delhi Capitals, Indian Premier League 2023, 64th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359538",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: PD Salt †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359540",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Rajasthan Royals, Indian Premier League 2023, 66th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359540",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359541",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Chennai Super Kings, Indian Premier League 2023, 67th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359541",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; PD Salt †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1359544",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Gujarat Titans, Indian Premier League 2023, 70th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1359544",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Anuj Rawat †; WP Saha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2023-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1370350",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Gujarat Titans, Indian Premier League 2023, Qualifier 1 - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1370350",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1370352",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Gujarat Titans vs Mumbai Indians, Indian Premier League 2023, Qualifier 2 - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1370352",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; Vishnu Vinod †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2023-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2023-1370353",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Gujarat Titans vs Chennai Super Kings, Indian Premier League 2023, Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1370353",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2023-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426284",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Sunrisers Hyderabad, Indian Premier League 2024, 46th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426284",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni †; H Klaasen †",
+      "supports": [],
+      "notes": "Research batch usage-2024-followup-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
     }
   ],
   "capabilityConfirmations": [
@@ -2874,6 +3954,22 @@
       ],
       "reviewStatus": "APPROVED",
       "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "1399b39c",
+      "sourceIds": [
+        "espn-ipl-2023-1359484"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability follows directly from an explicit calibrated match-XI wicketkeeper designation; no other season usage inferred."
+    },
+    {
+      "playerId": "6c882e9a",
+      "sourceIds": [
+        "espn-ipl-2022-1304049"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability follows directly from an explicit calibrated match-XI wicketkeeper designation; no other season usage inferred."
     }
   ],
   "usageConfirmations": [
@@ -3084,6 +4180,118 @@
       ],
       "reviewStatus": "APPROVED",
       "notes": "Approved Kolkata Knight Riders 2026 season-usage assertion for T Dahiya from research batch usage-2026-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:0494fa6e:ipl-2023:team-mumbai-indians",
+      "sourceIds": [
+        "espn-ipl-2023-1370352"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Mumbai Indians 2023 season-usage assertion for Vishnu Vinod from research batch usage-2023-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:0bacade8:ipl-2023:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2023-1359476"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2023 season-usage assertion for Rahmanullah Gurbaz from research batch usage-2023-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:1399b39c:ipl-2023:team-sunrisers-hyderabad",
+      "sourceIds": [
+        "espn-ipl-2023-1359484"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved freeze-exception season-usage assertion for Anmolpreet Singh from research batch usage-2023-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:3d284ca3:ipl-2023:team-delhi-capitals",
+      "sourceIds": [
+        "espn-ipl-2023-1359502"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Capitals 2023 season-usage assertion for PD Salt from research batch usage-2023-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
+      "sourceIds": [
+        "espn-ipl-2022-1304047"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Chennai Super Kings 2022 season-usage assertion for MS Dhoni from research batch usage-2022-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:6c882e9a:ipl-2022:team-punjab-kings",
+      "sourceIds": [
+        "espn-ipl-2022-1304049"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved freeze-exception season-usage assertion for PBB Rajapaksa from research batch usage-2022-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:752f7486:ipl-2022:team-mumbai-indians",
+      "sourceIds": [
+        "espn-ipl-2022-1304048"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Mumbai Indians 2022 season-usage assertion for Ishan Kishan from research batch usage-2022-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:9a46c4e5:ipl-2023:team-sunrisers-hyderabad",
+      "sourceIds": [
+        "espn-ipl-2023-1359478"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Sunrisers Hyderabad 2023 season-usage assertion for GD Phillips from research batch usage-2023-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:abb83e27:ipl-2022:team-punjab-kings",
+      "sourceIds": [
+        "espn-ipl-2022-1304062"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Punjab Kings 2022 season-usage assertion for JM Bairstow from research batch usage-2022-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:ad3b6e95:ipl-2023:team-delhi-capitals",
+      "sourceIds": [
+        "espn-ipl-2023-1359481"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Capitals 2023 season-usage assertion for Abishek Porel from research batch usage-2023-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:bd54eef5:ipl-2023:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2023-1359507"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2023 season-usage assertion for N Jagadeesan from research batch usage-2023-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:c8f5f961:ipl-2023:team-royal-challengers-bangalore",
+      "sourceIds": [
+        "espn-ipl-2023-1359544"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Royal Challengers Bangalore 2023 season-usage assertion for Anuj Rawat from research batch usage-2023-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:f088b960:ipl-2023:team-delhi-capitals",
+      "sourceIds": [
+        "espn-ipl-2023-1359477"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Capitals 2023 season-usage assertion for SN Khan from research batch usage-2023-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:ff1e68fa:ipl-2022:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2022-1304093"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2022 season-usage assertion for B Indrajith from research batch usage-2022-v1."
     }
   ],
   "reviewDispositions": [
@@ -3797,6 +5005,352 @@
         "espn-ipl-2026-1535464"
       ],
       "notes": "Research batch usage-2026-v1 reviewed every canonical official Rajasthan Royals 2026 appearance for D Ferreira using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:1399b39c:ipl-2022:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2022-1304048",
+        "espn-ipl-2022-1304055"
+      ],
+      "notes": "Research batch usage-2022-v1 reviewed every canonical official Mumbai Indians 2022 appearance for Anmolpreet Singh using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN. This supplemental case was activated by a bounded capability-freeze correction and was not part of the original queue snapshot."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:1399b39c:ipl-2024:team-sunrisers-hyderabad",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2024-1426284",
+        "espn-ipl-2024-1426288"
+      ],
+      "notes": "Research batch usage-2024-followup-v1 reviewed every canonical official Sunrisers Hyderabad 2024 appearance for Anmolpreet Singh using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN. This supplemental case was activated by a bounded capability-freeze correction and was not part of the original queue snapshot."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:1c17e270:ipl-2022:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2022-1304047",
+        "espn-ipl-2022-1304053",
+        "espn-ipl-2022-1304057",
+        "espn-ipl-2022-1304063",
+        "espn-ipl-2022-1304068",
+        "espn-ipl-2022-1304075",
+        "espn-ipl-2022-1304079",
+        "espn-ipl-2022-1304084",
+        "espn-ipl-2022-1304092",
+        "espn-ipl-2022-1304095",
+        "espn-ipl-2022-1304101",
+        "espn-ipl-2022-1304105"
+      ],
+      "notes": "Research batch usage-2022-v1 reviewed every canonical official Chennai Super Kings 2022 appearance for RV Uthappa using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:44a89551:ipl-2022:team-delhi-capitals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2022-1304101",
+        "espn-ipl-2022-1304104"
+      ],
+      "notes": "Research batch usage-2022-v1 reviewed every canonical official Delhi Capitals 2022 appearance for KS Bharat using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:4663bd23:ipl-2022:team-delhi-capitals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2022-1304048",
+        "espn-ipl-2022-1304056"
+      ],
+      "notes": "Research batch usage-2022-v1 reviewed every canonical official Delhi Capitals 2022 appearance for TL Seifert using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:6c882e9a:ipl-2023:team-punjab-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2023-1359476",
+        "espn-ipl-2023-1359482",
+        "espn-ipl-2023-1359492",
+        "espn-ipl-2023-1359527"
+      ],
+      "notes": "Research batch usage-2023-v1 reviewed every canonical official Punjab Kings 2023 appearance for PBB Rajapaksa using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN. This supplemental case was activated by a bounded capability-freeze correction and was not part of the original queue snapshot."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:70d205c9:ipl-2022:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2022-1304047",
+        "espn-ipl-2022-1304053",
+        "espn-ipl-2022-1304057",
+        "espn-ipl-2022-1304063",
+        "espn-ipl-2022-1304068",
+        "espn-ipl-2022-1304075",
+        "espn-ipl-2022-1304079",
+        "espn-ipl-2022-1304084",
+        "espn-ipl-2022-1304092",
+        "espn-ipl-2022-1304095",
+        "espn-ipl-2022-1304101",
+        "espn-ipl-2022-1304105",
+        "espn-ipl-2022-1304114"
+      ],
+      "notes": "Research batch usage-2022-v1 reviewed every canonical official Chennai Super Kings 2022 appearance for AT Rayudu using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2023-1359475",
+        "espn-ipl-2023-1359480",
+        "espn-ipl-2023-1359486",
+        "espn-ipl-2023-1359491",
+        "espn-ipl-2023-1359498",
+        "espn-ipl-2023-1359503",
+        "espn-ipl-2023-1359507",
+        "espn-ipl-2023-1359511",
+        "espn-ipl-2023-1359515",
+        "espn-ipl-2023-1359519",
+        "espn-ipl-2023-1359523",
+        "espn-ipl-2023-1359529",
+        "espn-ipl-2023-1359535",
+        "espn-ipl-2023-1359541",
+        "espn-ipl-2023-1370350",
+        "espn-ipl-2023-1370353"
+      ],
+      "notes": "Research batch usage-2023-v1 reviewed every canonical official Chennai Super Kings 2023 appearance for AT Rayudu using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:85b3fab2:ipl-2023:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2023-1359486",
+        "espn-ipl-2023-1359523"
+      ],
+      "notes": "Research batch usage-2023-v1 reviewed every canonical official Mumbai Indians 2023 appearance for T Stubbs using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:9418198b:ipl-2023:team-punjab-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2023-1359476",
+        "espn-ipl-2023-1359482",
+        "espn-ipl-2023-1359488",
+        "espn-ipl-2023-1359492",
+        "espn-ipl-2023-1359495",
+        "espn-ipl-2023-1359501",
+        "espn-ipl-2023-1359505",
+        "espn-ipl-2023-1359512",
+        "espn-ipl-2023-1359515",
+        "espn-ipl-2023-1359520",
+        "espn-ipl-2023-1359527",
+        "espn-ipl-2023-1359533",
+        "espn-ipl-2023-1359538",
+        "espn-ipl-2023-1359540"
+      ],
+      "notes": "Research batch usage-2023-v1 reviewed every canonical official Punjab Kings 2023 appearance for P Simran Singh using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:99b75528:ipl-2022:team-rajasthan-royals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2022-1304051",
+        "espn-ipl-2022-1304055",
+        "espn-ipl-2022-1304059",
+        "espn-ipl-2022-1304066",
+        "espn-ipl-2022-1304070",
+        "espn-ipl-2022-1304076",
+        "espn-ipl-2022-1304080",
+        "espn-ipl-2022-1304085",
+        "espn-ipl-2022-1304090",
+        "espn-ipl-2022-1304093",
+        "espn-ipl-2022-1304098",
+        "espn-ipl-2022-1304104",
+        "espn-ipl-2022-1304109",
+        "espn-ipl-2022-1304114",
+        "espn-ipl-2022-1312197",
+        "espn-ipl-2022-1312199",
+        "espn-ipl-2022-1312200"
+      ],
+      "notes": "Research batch usage-2022-v1 reviewed every canonical official Rajasthan Royals 2022 appearance for JC Buttler using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:99b75528:ipl-2023:team-rajasthan-royals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2023-1359478",
+        "espn-ipl-2023-1359482",
+        "espn-ipl-2023-1359485",
+        "espn-ipl-2023-1359491",
+        "espn-ipl-2023-1359497",
+        "espn-ipl-2023-1359500",
+        "espn-ipl-2023-1359506",
+        "espn-ipl-2023-1359511",
+        "espn-ipl-2023-1359516",
+        "espn-ipl-2023-1359522",
+        "espn-ipl-2023-1359526",
+        "espn-ipl-2023-1359530",
+        "espn-ipl-2023-1359534",
+        "espn-ipl-2023-1359540"
+      ],
+      "notes": "Research batch usage-2023-v1 reviewed every canonical official Rajasthan Royals 2023 appearance for JC Buttler using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:99d63244:ipl-2023:team-royal-challengers-bangalore",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2023-1359524",
+        "espn-ipl-2023-1359528"
+      ],
+      "notes": "Research batch usage-2023-v1 reviewed every canonical official Royal Challengers Bangalore 2023 appearance for KM Jadhav using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:b17e2f24:ipl-2022:team-lucknow-super-giants",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2022-1304050",
+        "espn-ipl-2022-1304053",
+        "espn-ipl-2022-1304058",
+        "espn-ipl-2022-1304061",
+        "espn-ipl-2022-1304066",
+        "espn-ipl-2022-1304072",
+        "espn-ipl-2022-1304077",
+        "espn-ipl-2022-1304083",
+        "espn-ipl-2022-1304088",
+        "espn-ipl-2022-1304091",
+        "espn-ipl-2022-1304099",
+        "espn-ipl-2022-1304103",
+        "espn-ipl-2022-1304109",
+        "espn-ipl-2022-1304112",
+        "espn-ipl-2022-1312198"
+      ],
+      "notes": "Research batch usage-2022-v1 reviewed every canonical official Lucknow Super Giants 2022 appearance for KL Rahul using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:b17e2f24:ipl-2023:team-lucknow-super-giants",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2023-1359477",
+        "espn-ipl-2023-1359480",
+        "espn-ipl-2023-1359484",
+        "espn-ipl-2023-1359489",
+        "espn-ipl-2023-1359495",
+        "espn-ipl-2023-1359500",
+        "espn-ipl-2023-1359504",
+        "espn-ipl-2023-1359512",
+        "espn-ipl-2023-1359517"
+      ],
+      "notes": "Research batch usage-2023-v1 reviewed every canonical official Lucknow Super Giants 2023 appearance for KL Rahul using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:bcf325d2:ipl-2023:team-rajasthan-royals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2023-1359482",
+        "espn-ipl-2023-1359485",
+        "espn-ipl-2023-1359491",
+        "espn-ipl-2023-1359497",
+        "espn-ipl-2023-1359500",
+        "espn-ipl-2023-1359506",
+        "espn-ipl-2023-1359511",
+        "espn-ipl-2023-1359516",
+        "espn-ipl-2023-1359522",
+        "espn-ipl-2023-1359526",
+        "espn-ipl-2023-1359530",
+        "espn-ipl-2023-1359534",
+        "espn-ipl-2023-1359540"
+      ],
+      "notes": "Research batch usage-2023-v1 reviewed every canonical official Rajasthan Royals 2023 appearance for Dhruv Jurel using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:bd54eef5:ipl-2022:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2022-1304108",
+        "espn-ipl-2022-1304114"
+      ],
+      "notes": "Research batch usage-2022-v1 reviewed every canonical official Chennai Super Kings 2022 appearance for N Jagadeesan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:c8f5f961:ipl-2022:team-royal-challengers-bangalore",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2022-1304049",
+        "espn-ipl-2022-1304052",
+        "espn-ipl-2022-1304059",
+        "espn-ipl-2022-1304064",
+        "espn-ipl-2022-1304068",
+        "espn-ipl-2022-1304073",
+        "espn-ipl-2022-1304077",
+        "espn-ipl-2022-1304082"
+      ],
+      "notes": "Research batch usage-2022-v1 reviewed every canonical official Royal Challengers Bangalore 2022 appearance for Anuj Rawat using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:df5a6881:ipl-2022:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2022-1304047",
+        "espn-ipl-2022-1304092",
+        "espn-ipl-2022-1304095",
+        "espn-ipl-2022-1304101",
+        "espn-ipl-2022-1304105",
+        "espn-ipl-2022-1304108",
+        "espn-ipl-2022-1304114"
+      ],
+      "notes": "Research batch usage-2022-v1 reviewed every canonical official Chennai Super Kings 2022 appearance for DP Conway using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:df5a6881:ipl-2023:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2023-1359475",
+        "espn-ipl-2023-1359480",
+        "espn-ipl-2023-1359486",
+        "espn-ipl-2023-1359491",
+        "espn-ipl-2023-1359498",
+        "espn-ipl-2023-1359503",
+        "espn-ipl-2023-1359507",
+        "espn-ipl-2023-1359511",
+        "espn-ipl-2023-1359515",
+        "espn-ipl-2023-1359519",
+        "espn-ipl-2023-1359523",
+        "espn-ipl-2023-1359529",
+        "espn-ipl-2023-1359535",
+        "espn-ipl-2023-1359541",
+        "espn-ipl-2023-1370350",
+        "espn-ipl-2023-1370353"
+      ],
+      "notes": "Research batch usage-2023-v1 reviewed every canonical official Chennai Super Kings 2023 appearance for DP Conway using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:f088b960:ipl-2022:team-delhi-capitals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2022-1304061",
+        "espn-ipl-2022-1304065",
+        "espn-ipl-2022-1304078",
+        "espn-ipl-2022-1304080",
+        "espn-ipl-2022-1304110",
+        "espn-ipl-2022-1304115"
+      ],
+      "notes": "Research batch usage-2022-v1 reviewed every canonical official Delhi Capitals 2022 appearance for SN Khan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
     }
   ]
 }
