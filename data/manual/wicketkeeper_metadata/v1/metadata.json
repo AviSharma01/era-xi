@@ -1233,6 +1233,1220 @@
       "locator": "Rendered scorecard XI keeper designations: H Klaasen †; SV Samson (c) †",
       "supports": [],
       "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473438",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Royal Challengers Bengaluru, IPL 2025 match 1473438 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473438",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; Did not bat: JM Sharma †, TH David, KH Pandya, Rasikh Salam, JR Hazlewood, Yash Dayal, Suyash Sharma",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2025-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473439",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Rajasthan Royals, IPL 2025 match 1473439 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473439",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: H Klaasen †; DC Jurel †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2025-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473440",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Chennai Super Kings, IPL 2025 match 1473440 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473440",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RD Rickelton †; MS Dhoni †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473441",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Delhi Capitals, IPL 2025 match 1473441 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473441",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; Abishek Porel †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2025-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473443",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Kolkata Knight Riders, IPL 2025 match 1473443 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473443",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: DC Jurel †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473444",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Lucknow Super Giants, IPL 2025 match 1473444 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473444",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: H Klaasen †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473445",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Chennai Super Kings, IPL 2025 match 1473445 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473445",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; MS Dhoni †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473446",
+      "publisher": "ESPN",
+      "title": "Gujarat Titans v Mumbai Indians, IPL 2025 match 1473446 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473446",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JC Buttler †; RD Rickelton †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473447",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Delhi Capitals, IPL 2025 match 1473447 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473447",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: H Klaasen †; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473449",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Mumbai Indians, IPL 2025 match 1473449 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473449",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; RD Rickelton †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473450",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Punjab Kings, IPL 2025 match 1473450 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473450",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; Prabhsimran Singh †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473451",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Gujarat Titans, IPL 2025 match 1473451 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473451",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473452",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Sunrisers Hyderabad, IPL 2025 match 1473452 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473452",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; H Klaasen †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473453",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Mumbai Indians, IPL 2025 match 1473453 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473453",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; RD Rickelton †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473454",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Chennai Super Kings, IPL 2025 match 1473454 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473454",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul †; MS Dhoni †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2025-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473456",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Kolkata Knight Riders, IPL 2025 match 1473456 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473456",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Did not bat: RR Pant (c) †, A Badoni, SN Thakur, Akash Deep, Avesh Khan, DS Rathi, Ravi Bishnoi; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473457",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Gujarat Titans, IPL 2025 match 1473457 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473457",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: H Klaasen †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473458",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Mumbai Indians, IPL 2025 match 1473458 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473458",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; RD Rickelton †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473459",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Chennai Super Kings, IPL 2025 match 1473459 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473459",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Prabhsimran Singh †; MS Dhoni †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473461",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Delhi Capitals, IPL 2025 match 1473461 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473461",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473462",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Kolkata Knight Riders, IPL 2025 match 1473462 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473462",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473463",
+      "publisher": "ESPN",
+      "title": "Gujarat Titans v Lucknow Super Giants, IPL 2025 match 1473463 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473463",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JC Buttler †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473464",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Sunrisers Hyderabad, IPL 2025 match 1473464 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473464",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Prabhsimran Singh †; H Klaasen †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473465",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Royal Challengers Bengaluru, IPL 2025 match 1473465 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473465",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; Did not bat: RM Patidar (c), LS Livingstone, JM Sharma †, TH David, KH Pandya, B Kumar, JR Hazlewood, Yash Dayal, Suyash Sharma",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473467",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Chennai Super Kings, IPL 2025 match 1473467 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473467",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473468",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Kolkata Knight Riders, IPL 2025 match 1473468 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473468",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JP Inglis †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473470",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Mumbai Indians, IPL 2025 match 1473470 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473470",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: H Klaasen †; RD Rickelton †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473471",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Punjab Kings, IPL 2025 match 1473471 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473471",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; JP Inglis †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473473",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Rajasthan Royals, IPL 2025 match 1473473 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473473",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; DC Jurel †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473474",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Royal Challengers Bengaluru, IPL 2025 match 1473474 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473474",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JP Inglis †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473476",
+      "publisher": "ESPN",
+      "title": "Gujarat Titans v Kolkata Knight Riders, IPL 2025 match 1473476 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473476",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JC Buttler †; Rahmanullah Gurbaz †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2025-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473477",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Delhi Capitals, IPL 2025 match 1473477 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473477",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473478",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Mumbai Indians, IPL 2025 match 1473478 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473478",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: H Klaasen †; RD Rickelton †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473479",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Rajasthan Royals, IPL 2025 match 1473479 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473479",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; DC Jurel †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473480",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Sunrisers Hyderabad, IPL 2025 match 1473480 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473480",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; H Klaasen †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473481",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Kolkata Knight Riders, IPL 2025 match 1473481 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473481",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JP Inglis †; Rahmanullah Gurbaz †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473482",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Lucknow Super Giants, IPL 2025 match 1473482 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473482",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RD Rickelton †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473485",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Delhi Capitals, IPL 2025 match 1473485 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473485",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Rahmanullah Gurbaz †; Abishek Porel †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473488",
+      "publisher": "ESPN",
+      "title": "Gujarat Titans v Sunrisers Hyderabad, IPL 2025 match 1473488 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473488",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JC Buttler †; H Klaasen †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473490",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Rajasthan Royals, IPL 2025 match 1473490 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473490",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Rahmanullah Gurbaz †; DC Jurel †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473491",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Lucknow Super Giants, IPL 2025 match 1473491 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473491",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JP Inglis †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473492",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Sunrisers Hyderabad, IPL 2025 match 1473492 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473492",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul †; Ishan Kishan †\tWicketkeeper",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2025-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473494",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Chennai Super Kings, IPL 2025 match 1473494 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473494",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Rahmanullah Gurbaz †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473499",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Sunrisers Hyderabad, IPL 2025 match 1473499 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473499",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473500",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Rajasthan Royals, IPL 2025 match 1473500 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473500",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473502",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Gujarat Titans, IPL 2025 match 1473502 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473502",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473503",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Royal Challengers Bengaluru, IPL 2025 match 1473503 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473503",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; JM Sharma (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473504",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Gujarat Titans, IPL 2025 match 1473504 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473504",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Did not bat: MS Dhoni (c) †, DJ Hooda, Noor Ahmad, A Kamboj, KK Ahmed, M Pathirana; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473505",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Kolkata Knight Riders, IPL 2025 match 1473505 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473505",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473507",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Royal Challengers Bengaluru, IPL 2025 match 1473507 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473507",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; JM Sharma (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473508",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Royal Challengers Bengaluru, IPL 2025 match 1473508 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473508",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JP Inglis †; Did not bat: LS Livingstone, JM Sharma †, R Shepherd, KH Pandya, B Kumar, Yash Dayal, JR Hazlewood, Suyash Sharma",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473509",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Gujarat Titans, IPL 2025 match 1473509 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473509",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Bairstow †; BKG Mendis †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2025-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473510",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Punjab Kings, IPL 2025 match 1473510 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473510",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Bairstow †; JP Inglis †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2025-1473511",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Punjab Kings, IPL 2025 match 1473511 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473511",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; JP Inglis †",
+      "supports": [],
+      "notes": "Research batch usage-2025-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527674",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Royal Challengers Bengaluru, IPL 2026 match 1527674 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527674",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan (c) †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527675",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Mumbai Indians, IPL 2026 match 1527675 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527675",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: A Raghuvanshi †; RD Rickelton †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2026-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527676",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Rajasthan Royals, IPL 2026 match 1527676 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527676",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; DC Jurel †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527677",
+      "publisher": "ESPN",
+      "title": "Gujarat Titans v Punjab Kings, IPL 2026 match 1527677 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527677",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JC Buttler †; Prabhsimran Singh †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527678",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Delhi Capitals, IPL 2026 match 1527678 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527678",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; KL Rahul †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2026-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527679",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Kolkata Knight Riders, IPL 2026 match 1527679 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527679",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan (c) †; A Raghuvanshi †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527680",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Punjab Kings, IPL 2026 match 1527680 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527680",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; Prabhsimran Singh †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527681",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Delhi Capitals, IPL 2026 match 1527681 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527681",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RD Rickelton †; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527682",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Gujarat Titans, IPL 2026 match 1527682 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527682",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: DC Jurel †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527683",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Lucknow Super Giants, IPL 2026 match 1527683 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527683",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan (c) †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527684",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Chennai Super Kings, IPL 2026 match 1527684 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527684",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Did not bat: JM Sharma †, R Shepherd, KH Pandya, B Kumar, Abhinandan Singh, JA Duffy, Suyash Sharma; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527685",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Punjab Kings, IPL 2026 match 1527685 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527685",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: A Raghuvanshi †; Prabhsimran Singh †\tWicketkeeper",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527686",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Mumbai Indians, IPL 2026 match 1527686 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527686",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: DC Jurel †; RD Rickelton †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527687",
+      "publisher": "ESPN",
+      "title": "Gujarat Titans v Delhi Capitals, IPL 2026 match 1527687 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527687",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JC Buttler †; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527688",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Lucknow Super Giants, IPL 2026 match 1527688 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527688",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: A Raghuvanshi †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527689",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Rajasthan Royals, IPL 2026 match 1527689 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527689",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; DC Jurel †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527690",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Punjab Kings, IPL 2026 match 1527690 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527690",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan (c) †; Prabhsimran Singh †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527691",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Delhi Capitals, IPL 2026 match 1527691 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527691",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527692",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Gujarat Titans, IPL 2026 match 1527692 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527692",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1527693",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Mumbai Indians, IPL 2026 match 1527693 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527693",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; RD Rickelton †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529264",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Rajasthan Royals, IPL 2026 match 1529264 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529264",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: S Arora †; DC Jurel †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2026-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529265",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Kolkata Knight Riders, IPL 2026 match 1529265 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529265",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; A Raghuvanshi †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529266",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Royal Challengers Bengaluru, IPL 2026 match 1529266 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529266",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529268",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Gujarat Titans, IPL 2026 match 1529268 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529268",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: TL Seifert †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529269",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Delhi Capitals, IPL 2026 match 1529269 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529269",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529270",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Chennai Super Kings, IPL 2026 match 1529270 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529270",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: S Arora †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529271",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Kolkata Knight Riders, IPL 2026 match 1529271 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529271",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: DC Jurel †; TL Seifert †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529272",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Lucknow Super Giants, IPL 2026 match 1529272 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529272",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Prabhsimran Singh †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529273",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Gujarat Titans, IPL 2026 match 1529273 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529273",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529274",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Delhi Capitals, IPL 2026 match 1529274 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529274",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Did not bat: S Arora †, AU Verma, K Nitish Kumar Reddy, Shivang Kumar, HS Dubey, Sakib Hussain, E Malinga, D Madushanka; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529275",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Lucknow Super Giants, IPL 2026 match 1529275 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529275",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: DC Jurel †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529276",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Mumbai Indians, IPL 2026 match 1529276 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529276",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529278",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Punjab Kings, IPL 2026 match 1529278 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529278",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul †; Prabhsimran Singh †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529279",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Sunrisers Hyderabad, IPL 2026 match 1529279 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529279",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: DC Jurel †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529280",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Gujarat Titans, IPL 2026 match 1529280 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529280",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529281",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Lucknow Super Giants, IPL 2026 match 1529281 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529281",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: TL Seifert †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529282",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Royal Challengers Bengaluru, IPL 2026 match 1529282 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529282",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul †; Did not bat: RM Patidar (c), JM Sharma †, TH David, R Shepherd, KH Pandya, B Kumar, JR Hazlewood, Rasikh Salam, Suyash Sharma",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529283",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Rajasthan Royals, IPL 2026 match 1529283 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529283",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Prabhsimran Singh †; DC Jurel †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529284",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Sunrisers Hyderabad, IPL 2026 match 1529284 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529284",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RD Rickelton †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529286",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Delhi Capitals, IPL 2026 match 1529286 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529286",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: DC Jurel †; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529287",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Chennai Super Kings, IPL 2026 match 1529287 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529287",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RD Rickelton †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529288",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Kolkata Knight Riders, IPL 2026 match 1529288 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529288",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; A Raghuvanshi †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529290",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Mumbai Indians, IPL 2026 match 1529290 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529290",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; RD Rickelton †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529291",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Chennai Super Kings, IPL 2026 match 1529291 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529291",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529292",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Punjab Kings, IPL 2026 match 1529292 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529292",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; Prabhsimran Singh †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529293",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Royal Challengers Bengaluru, IPL 2026 match 1529293 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529293",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529294",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Kolkata Knight Riders, IPL 2026 match 1529294 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529294",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul †; A Raghuvanshi †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529295",
+      "publisher": "ESPN",
+      "title": "Gujarat Titans v Rajasthan Royals, IPL 2026 match 1529295 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529295",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JC Buttler †; DC Jurel †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529296",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Chennai Super Kings, IPL 2026 match 1529296 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529296",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529298",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Delhi Capitals, IPL 2026 match 1529298 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529298",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Prabhsimran Singh †; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529299",
+      "publisher": "ESPN",
+      "title": "Gujarat Titans v Sunrisers Hyderabad, IPL 2026 match 1529299 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529299",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JC Buttler †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529300",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Royal Challengers Bengaluru, IPL 2026 match 1529300 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529300",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: A Raghuvanshi †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529302",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Lucknow Super Giants, IPL 2026 match 1529302 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529302",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; Did not bat: AK Markram, RR Pant (c) †, Shahbaz Ahmed, Mohammed Shami, MP Yadav, Akash Singh, Prince Yadav",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529303",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Gujarat Titans, IPL 2026 match 1529303 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529303",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: A Raghuvanshi †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529305",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Delhi Capitals, IPL 2026 match 1529305 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529305",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: DC Jurel †; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529306",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Sunrisers Hyderabad, IPL 2026 match 1529306 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529306",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529307",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Rajasthan Royals, IPL 2026 match 1529307 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529307",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; DC Jurel †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529308",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Kolkata Knight Riders, IPL 2026 match 1529308 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529308",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RD Rickelton †; T Dahiya †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2026-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529309",
+      "publisher": "ESPN",
+      "title": "Gujarat Titans v Chennai Super Kings, IPL 2026 match 1529309 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529309",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JC Buttler †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529310",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Royal Challengers Bengaluru, IPL 2026 match 1529310 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529310",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; Did not bat: JM Sharma †, R Shepherd, B Kumar, JR Hazlewood, Rasikh Salam, Suyash Sharma",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529311",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Punjab Kings, IPL 2026 match 1529311 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529311",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; Prabhsimran Singh †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529312",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Mumbai Indians, IPL 2026 match 1529312 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529312",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: DC Jurel †; RD Rickelton †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1529313",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Kolkata Knight Riders, IPL 2026 match 1529313 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529313",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Abishek Porel †; T Dahiya †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2026-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1535463",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Sunrisers Hyderabad, IPL 2026 match 1535463 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1535463",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: DC Jurel †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2026-1535464",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Gujarat Titans, IPL 2026 match 1535464 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1535464",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: DC Jurel †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2026-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
     }
   ],
   "capabilityConfirmations": [
@@ -1766,6 +2980,110 @@
       ],
       "reviewStatus": "APPROVED",
       "notes": "Approved Royal Challengers Bengaluru 2024 season-usage assertion for Anuj Rawat from research batch usage-2024-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:0bacade8:ipl-2025:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2025-1473476"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2025 season-usage assertion for Rahmanullah Gurbaz from research batch usage-2025-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+      "sourceIds": [
+        "espn-ipl-2025-1473439"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Sunrisers Hyderabad 2025 season-usage assertion for H Klaasen from research batch usage-2025-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:372455c4:ipl-2025:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2025-1473438"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2025 season-usage assertion for Q de Kock from research batch usage-2025-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:752f7486:ipl-2025:team-sunrisers-hyderabad",
+      "sourceIds": [
+        "espn-ipl-2025-1473492"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Sunrisers Hyderabad 2025 season-usage assertion for Ishan Kishan from research batch usage-2025-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:919a3be2:ipl-2026:team-lucknow-super-giants",
+      "sourceIds": [
+        "espn-ipl-2026-1527678"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Lucknow Super Giants 2026 season-usage assertion for RR Pant from research batch usage-2026-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:abb83e27:ipl-2025:team-mumbai-indians",
+      "sourceIds": [
+        "espn-ipl-2025-1473509"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Mumbai Indians 2025 season-usage assertion for JM Bairstow from research batch usage-2025-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:ad3b6e95:ipl-2025:team-delhi-capitals",
+      "sourceIds": [
+        "espn-ipl-2025-1473441"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Capitals 2025 season-usage assertion for Abishek Porel from research batch usage-2025-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:ad3b6e95:ipl-2026:team-delhi-capitals",
+      "sourceIds": [
+        "espn-ipl-2026-1529313"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Capitals 2026 season-usage assertion for Abishek Porel from research batch usage-2026-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2025:team-delhi-capitals",
+      "sourceIds": [
+        "espn-ipl-2025-1473454"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Capitals 2025 season-usage assertion for KL Rahul from research batch usage-2025-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:bcf325d2:ipl-2025:team-rajasthan-royals",
+      "sourceIds": [
+        "espn-ipl-2025-1473439"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Rajasthan Royals 2025 season-usage assertion for Dhruv Jurel from research batch usage-2025-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad",
+      "sourceIds": [
+        "espn-ipl-2026-1529264"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Sunrisers Hyderabad 2026 season-usage assertion for Salil Arora from research batch usage-2026-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:e66732f8:ipl-2026:team-mumbai-indians",
+      "sourceIds": [
+        "espn-ipl-2026-1527675"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Mumbai Indians 2026 season-usage assertion for RD Rickelton from research batch usage-2026-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:f12fe2a1:ipl-2026:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2026-1529308"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2026 season-usage assertion for T Dahiya from research batch usage-2026-v1."
     }
   ],
   "reviewDispositions": [
@@ -2171,6 +3489,314 @@
         "espn-ipl-2024-1426311"
       ],
       "notes": "Research batch usage-2024-v1 reviewed every canonical official Rajasthan Royals 2024 appearance for T Kohler-Cadmore using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2026-1527674",
+        "espn-ipl-2026-1527679",
+        "espn-ipl-2026-1527683",
+        "espn-ipl-2026-1527690",
+        "espn-ipl-2026-1529264",
+        "espn-ipl-2026-1529270",
+        "espn-ipl-2026-1529274",
+        "espn-ipl-2026-1529279",
+        "espn-ipl-2026-1529284",
+        "espn-ipl-2026-1529288",
+        "espn-ipl-2026-1529292",
+        "espn-ipl-2026-1529299",
+        "espn-ipl-2026-1529306",
+        "espn-ipl-2026-1529310",
+        "espn-ipl-2026-1535463"
+      ],
+      "notes": "Research batch usage-2026-v1 reviewed every canonical official Sunrisers Hyderabad 2026 appearance for H Klaasen using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:3241e3fd:ipl-2025:team-lucknow-super-giants",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2025-1473441",
+        "espn-ipl-2025-1473444",
+        "espn-ipl-2025-1473450",
+        "espn-ipl-2025-1473453",
+        "espn-ipl-2025-1473456",
+        "espn-ipl-2025-1473463",
+        "espn-ipl-2025-1473467",
+        "espn-ipl-2025-1473473",
+        "espn-ipl-2025-1473477",
+        "espn-ipl-2025-1473482",
+        "espn-ipl-2025-1473491",
+        "espn-ipl-2025-1473499",
+        "espn-ipl-2025-1473502",
+        "espn-ipl-2025-1473507"
+      ],
+      "notes": "Research batch usage-2025-v1 reviewed every canonical official Lucknow Super Giants 2025 appearance for N Pooran using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2026-1527678",
+        "espn-ipl-2026-1527683",
+        "espn-ipl-2026-1527688",
+        "espn-ipl-2026-1527692",
+        "espn-ipl-2026-1529266",
+        "espn-ipl-2026-1529272",
+        "espn-ipl-2026-1529275",
+        "espn-ipl-2026-1529281",
+        "espn-ipl-2026-1529290",
+        "espn-ipl-2026-1529293",
+        "espn-ipl-2026-1529296",
+        "espn-ipl-2026-1529302",
+        "espn-ipl-2026-1529307",
+        "espn-ipl-2026-1529311"
+      ],
+      "notes": "Research batch usage-2026-v1 reviewed every canonical official Lucknow Super Giants 2026 appearance for N Pooran using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2025-1473438",
+        "espn-ipl-2025-1473445",
+        "espn-ipl-2025-1473451",
+        "espn-ipl-2025-1473458",
+        "espn-ipl-2025-1473461",
+        "espn-ipl-2025-1473465",
+        "espn-ipl-2025-1473471",
+        "espn-ipl-2025-1473474",
+        "espn-ipl-2025-1473479",
+        "espn-ipl-2025-1473503",
+        "espn-ipl-2025-1473507",
+        "espn-ipl-2025-1473508",
+        "espn-ipl-2025-1473511"
+      ],
+      "notes": "Research batch usage-2025-v1 reviewed every canonical official Royal Challengers Bengaluru 2025 appearance for PD Salt using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:3d284ca3:ipl-2026:team-royal-challengers-bengaluru",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2026-1527674",
+        "espn-ipl-2026-1527684",
+        "espn-ipl-2026-1527689",
+        "espn-ipl-2026-1527693",
+        "espn-ipl-2026-1529266",
+        "espn-ipl-2026-1529269"
+      ],
+      "notes": "Research batch usage-2026-v1 reviewed every canonical official Royal Challengers Bengaluru 2026 appearance for PD Salt using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:60aa2db3:ipl-2026:team-rajasthan-royals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2026-1529264",
+        "espn-ipl-2026-1529307"
+      ],
+      "notes": "Research batch usage-2026-v1 reviewed every canonical official Rajasthan Royals 2026 appearance for LG Pretorius using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2026-1527676",
+        "espn-ipl-2026-1527680",
+        "espn-ipl-2026-1527684",
+        "espn-ipl-2026-1529276",
+        "espn-ipl-2026-1529280",
+        "espn-ipl-2026-1529287",
+        "espn-ipl-2026-1529291",
+        "espn-ipl-2026-1529296",
+        "espn-ipl-2026-1529302",
+        "espn-ipl-2026-1529306",
+        "espn-ipl-2026-1529309"
+      ],
+      "notes": "Research batch usage-2026-v1 reviewed every canonical official Chennai Super Kings 2026 appearance for Kartik Sharma using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2026-1527678",
+        "espn-ipl-2026-1527681",
+        "espn-ipl-2026-1527687",
+        "espn-ipl-2026-1527691",
+        "espn-ipl-2026-1529269",
+        "espn-ipl-2026-1529274",
+        "espn-ipl-2026-1529278",
+        "espn-ipl-2026-1529282",
+        "espn-ipl-2026-1529286",
+        "espn-ipl-2026-1529291",
+        "espn-ipl-2026-1529294",
+        "espn-ipl-2026-1529298",
+        "espn-ipl-2026-1529305",
+        "espn-ipl-2026-1529313"
+      ],
+      "notes": "Research batch usage-2026-v1 reviewed every canonical official Delhi Capitals 2026 appearance for T Stubbs using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:989889ff:ipl-2026:team-lucknow-super-giants",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2026-1529290",
+        "espn-ipl-2026-1529296",
+        "espn-ipl-2026-1529302",
+        "espn-ipl-2026-1529307",
+        "espn-ipl-2026-1529311"
+      ],
+      "notes": "Research batch usage-2026-v1 reviewed every canonical official Lucknow Super Giants 2026 appearance for JP Inglis using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:9a46c4e5:ipl-2026:team-gujarat-titans",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2026-1527677",
+        "espn-ipl-2026-1527682",
+        "espn-ipl-2026-1527687",
+        "espn-ipl-2026-1527692",
+        "espn-ipl-2026-1529268",
+        "espn-ipl-2026-1529273"
+      ],
+      "notes": "Research batch usage-2026-v1 reviewed every canonical official Gujarat Titans 2026 appearance for GD Phillips using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:bafd0398:ipl-2025:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2025-1473440",
+        "espn-ipl-2025-1473446"
+      ],
+      "notes": "Research batch usage-2025-v1 reviewed every canonical official Mumbai Indians 2025 appearance for R Minz using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:bf74b130:ipl-2026:team-kolkata-knight-riders",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2026-1527675",
+        "espn-ipl-2026-1527679",
+        "espn-ipl-2026-1527685",
+        "espn-ipl-2026-1527688",
+        "espn-ipl-2026-1529265",
+        "espn-ipl-2026-1529288",
+        "espn-ipl-2026-1529294",
+        "espn-ipl-2026-1529300",
+        "espn-ipl-2026-1529303",
+        "espn-ipl-2026-1529308",
+        "espn-ipl-2026-1529313"
+      ],
+      "notes": "Research batch usage-2026-v1 reviewed every canonical official Kolkata Knight Riders 2026 appearance for FH Allen using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:cf59b3f0:ipl-2025:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2025-1473494",
+        "espn-ipl-2025-1473500",
+        "espn-ipl-2025-1473504"
+      ],
+      "notes": "Research batch usage-2025-v1 reviewed every canonical official Chennai Super Kings 2025 appearance for Urvil Patel using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:cf59b3f0:ipl-2026:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2026-1529280",
+        "espn-ipl-2026-1529287",
+        "espn-ipl-2026-1529291",
+        "espn-ipl-2026-1529296",
+        "espn-ipl-2026-1529302",
+        "espn-ipl-2026-1529306",
+        "espn-ipl-2026-1529309"
+      ],
+      "notes": "Research batch usage-2026-v1 reviewed every canonical official Chennai Super Kings 2026 appearance for Urvil Patel using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:d7017798:ipl-2025:team-kolkata-knight-riders",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2025-1473438",
+        "espn-ipl-2025-1473443",
+        "espn-ipl-2025-1473449",
+        "espn-ipl-2025-1473452",
+        "espn-ipl-2025-1473456",
+        "espn-ipl-2025-1473468",
+        "espn-ipl-2025-1473476",
+        "espn-ipl-2025-1473481",
+        "espn-ipl-2025-1473485",
+        "espn-ipl-2025-1473490",
+        "espn-ipl-2025-1473494",
+        "espn-ipl-2025-1473505"
+      ],
+      "notes": "Research batch usage-2025-v1 reviewed every canonical official Kolkata Knight Riders 2025 appearance for A Raghuvanshi using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:df5a6881:ipl-2025:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2025-1473454",
+        "espn-ipl-2025-1473459",
+        "espn-ipl-2025-1473462",
+        "espn-ipl-2025-1473494",
+        "espn-ipl-2025-1473500",
+        "espn-ipl-2025-1473504"
+      ],
+      "notes": "Research batch usage-2025-v1 reviewed every canonical official Chennai Super Kings 2025 appearance for DP Conway using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:f088b960:ipl-2026:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2026-1527676",
+        "espn-ipl-2026-1527680",
+        "espn-ipl-2026-1527684",
+        "espn-ipl-2026-1527691",
+        "espn-ipl-2026-1529265",
+        "espn-ipl-2026-1529270",
+        "espn-ipl-2026-1529276",
+        "espn-ipl-2026-1529280"
+      ],
+      "notes": "Research batch usage-2026-v1 reviewed all eight canonical official Chennai Super Kings 2026 appearances for SN Khan using readable calibrated scorecards without finding an explicit wicketkeeper designation. Matches 1529287 and 1529296 were substitute-fielding/event-only involvement, not canonical official appearances; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:f0af99a7:ipl-2026:team-rajasthan-royals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2026-1527682",
+        "espn-ipl-2026-1527686",
+        "espn-ipl-2026-1527689",
+        "espn-ipl-2026-1529264",
+        "espn-ipl-2026-1529271",
+        "espn-ipl-2026-1529275",
+        "espn-ipl-2026-1529279",
+        "espn-ipl-2026-1529283",
+        "espn-ipl-2026-1529286",
+        "espn-ipl-2026-1529295",
+        "espn-ipl-2026-1529305",
+        "espn-ipl-2026-1529307",
+        "espn-ipl-2026-1529312",
+        "espn-ipl-2026-1535463",
+        "espn-ipl-2026-1535464"
+      ],
+      "notes": "Research batch usage-2026-v1 reviewed every canonical official Rajasthan Royals 2026 appearance for D Ferreira using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
     }
   ]
 }

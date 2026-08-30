@@ -1,0 +1,2750 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2026-v1",
+  "seasonId": "ipl-2026",
+  "researchStatus": "APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "94407c268467b33f14597d3c9167c5ce33e08b26b5a32861818969ce618a9962",
+  "scopePlayerTeamSeasonIds": [
+    "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+    "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+    "pts:3d284ca3:ipl-2026:team-royal-challengers-bengaluru",
+    "pts:60aa2db3:ipl-2026:team-rajasthan-royals",
+    "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+    "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+    "pts:919a3be2:ipl-2026:team-lucknow-super-giants",
+    "pts:989889ff:ipl-2026:team-lucknow-super-giants",
+    "pts:9a46c4e5:ipl-2026:team-gujarat-titans",
+    "pts:ad3b6e95:ipl-2026:team-delhi-capitals",
+    "pts:bf74b130:ipl-2026:team-kolkata-knight-riders",
+    "pts:cf59b3f0:ipl-2026:team-chennai-super-kings",
+    "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad",
+    "pts:e66732f8:ipl-2026:team-mumbai-indians",
+    "pts:f088b960:ipl-2026:team-chennai-super-kings",
+    "pts:f0af99a7:ipl-2026:team-rajasthan-royals",
+    "pts:f12fe2a1:ipl-2026:team-kolkata-knight-riders"
+  ],
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated wicketkeeper.",
+    "Every official appearance was checked and none designates the candidate.",
+    "Substitute or event-only involvement is separated from canonical official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "publisher": "ESPN",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "‡"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1527683",
+          "knownKeeper": "Ishan Kishan",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1527683",
+          "observedText": "Ishan Kishan (c) †"
+        },
+        {
+          "matchId": "1529294",
+          "knownKeeper": "A Raghuvanshi",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1529294",
+          "observedText": "A Raghuvanshi †"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Rendered scorecards used † while some search-index representations used ‡; both were normalized only after deterministic control calibration. Dismissal text and catches were not accepted as usage evidence."
+    },
+    {
+      "sourceConventionId": "official-ipl-match-route-2026-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1529308",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2026/2505",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The current official IPL match route exposed only a dynamic match shell and no readable scorecard or marker convention."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2026-1527674",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527674",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527674",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan (c) †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:3d284ca3:ipl-2026:team-royal-challengers-bengaluru",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527675",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527675",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527675",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "A Raghuvanshi †",
+        "RD Rickelton †"
+      ],
+      "candidatesCovered": [
+        "pts:bf74b130:ipl-2026:team-kolkata-knight-riders",
+        "pts:e66732f8:ipl-2026:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527676",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527676",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527676",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson †",
+        "DC Jurel †"
+      ],
+      "candidatesCovered": [
+        "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+        "pts:f088b960:ipl-2026:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527677",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527677",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527677",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "Prabhsimran Singh †"
+      ],
+      "candidatesCovered": [
+        "pts:9a46c4e5:ipl-2026:team-gujarat-titans"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527678",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527678",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527678",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527679",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527679",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527679",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan (c) †",
+        "A Raghuvanshi †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:bf74b130:ipl-2026:team-kolkata-knight-riders",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527680",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527680",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527680",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson †",
+        "Prabhsimran Singh †"
+      ],
+      "candidatesCovered": [
+        "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+        "pts:f088b960:ipl-2026:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527681",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527681",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527681",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RD Rickelton †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+        "pts:e66732f8:ipl-2026:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527682",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527682",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527682",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DC Jurel †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:9a46c4e5:ipl-2026:team-gujarat-titans",
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527683",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527683",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527683",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan (c) †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527684",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527684",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527684",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Did not bat: JM Sharma †, R Shepherd, KH Pandya, B Kumar, Abhinandan Singh, JA Duffy, Suyash Sharma",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2026:team-royal-challengers-bengaluru",
+        "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+        "pts:f088b960:ipl-2026:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527685",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527685",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527685",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "A Raghuvanshi †",
+        "Prabhsimran Singh †\tWicketkeeper"
+      ],
+      "candidatesCovered": [
+        "pts:bf74b130:ipl-2026:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527686",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527686",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527686",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DC Jurel †",
+        "RD Rickelton †"
+      ],
+      "candidatesCovered": [
+        "pts:e66732f8:ipl-2026:team-mumbai-indians",
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527687",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527687",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527687",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+        "pts:9a46c4e5:ipl-2026:team-gujarat-titans"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527688",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527688",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527688",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "A Raghuvanshi †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants",
+        "pts:bf74b130:ipl-2026:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527689",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527689",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527689",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "DC Jurel †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2026:team-royal-challengers-bengaluru",
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527690",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527690",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527690",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan (c) †",
+        "Prabhsimran Singh †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527691",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527691",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527691",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+        "pts:f088b960:ipl-2026:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527692",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527692",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527692",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants",
+        "pts:9a46c4e5:ipl-2026:team-gujarat-titans"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1527693",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1527693",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1527693",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "RD Rickelton †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2026:team-royal-challengers-bengaluru",
+        "pts:e66732f8:ipl-2026:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529264",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529264",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529264",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "S Arora †",
+        "DC Jurel †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:60aa2db3:ipl-2026:team-rajasthan-royals",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad",
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529265",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529265",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529265",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson †",
+        "A Raghuvanshi †"
+      ],
+      "candidatesCovered": [
+        "pts:bf74b130:ipl-2026:team-kolkata-knight-riders",
+        "pts:f088b960:ipl-2026:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529266",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529266",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529266",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:3d284ca3:ipl-2026:team-royal-challengers-bengaluru",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529268",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529268",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529268",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "TL Seifert †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:9a46c4e5:ipl-2026:team-gujarat-titans"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529269",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529269",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529269",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2026:team-royal-challengers-bengaluru",
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529270",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529270",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529270",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "S Arora †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad",
+        "pts:f088b960:ipl-2026:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529271",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529271",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529271",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DC Jurel †",
+        "TL Seifert †"
+      ],
+      "candidatesCovered": [
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529272",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529272",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529272",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Prabhsimran Singh †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529273",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529273",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529273",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:9a46c4e5:ipl-2026:team-gujarat-titans"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529274",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529274",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529274",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Did not bat: S Arora †, AU Verma, K Nitish Kumar Reddy, Shivang Kumar, HS Dubey, Sakib Hussain, E Malinga, D Madushanka",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529275",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529275",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529275",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DC Jurel †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants",
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529276",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529276",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529276",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+        "pts:f088b960:ipl-2026:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529278",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529278",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529278",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul †",
+        "Prabhsimran Singh †"
+      ],
+      "candidatesCovered": [
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529279",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529279",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529279",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DC Jurel †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad",
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529280",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529280",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529280",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+        "pts:cf59b3f0:ipl-2026:team-chennai-super-kings",
+        "pts:f088b960:ipl-2026:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529281",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529281",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529281",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "TL Seifert †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529282",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529282",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529282",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul †",
+        "Did not bat: RM Patidar (c), JM Sharma †, TH David, R Shepherd, KH Pandya, B Kumar, JR Hazlewood, Rasikh Salam, Suyash Sharma"
+      ],
+      "candidatesCovered": [
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+        "pts:ad3b6e95:ipl-2026:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529283",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529283",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529283",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Prabhsimran Singh †",
+        "DC Jurel †"
+      ],
+      "candidatesCovered": [
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529284",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529284",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529284",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RD Rickelton †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad",
+        "pts:e66732f8:ipl-2026:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529286",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529286",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529286",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DC Jurel †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529287",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529287",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529287",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RD Rickelton †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+        "pts:cf59b3f0:ipl-2026:team-chennai-super-kings",
+        "pts:e66732f8:ipl-2026:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "SN Khan appeared only through substitute-fielding/event-only involvement in this match and is intentionally excluded from canonical official candidate coverage."
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529288",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529288",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529288",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "A Raghuvanshi †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:bf74b130:ipl-2026:team-kolkata-knight-riders",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529290",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529290",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529290",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "RD Rickelton †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants",
+        "pts:989889ff:ipl-2026:team-lucknow-super-giants",
+        "pts:e66732f8:ipl-2026:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529291",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529291",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529291",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+        "pts:cf59b3f0:ipl-2026:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529292",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529292",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529292",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "Prabhsimran Singh †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529293",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529293",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529293",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529294",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529294",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529294",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul †",
+        "A Raghuvanshi †"
+      ],
+      "candidatesCovered": [
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+        "pts:bf74b130:ipl-2026:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529295",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529295",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529295",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "DC Jurel †"
+      ],
+      "candidatesCovered": [
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529296",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529296",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529296",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants",
+        "pts:989889ff:ipl-2026:team-lucknow-super-giants",
+        "pts:cf59b3f0:ipl-2026:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "SN Khan appeared only through substitute-fielding/event-only involvement in this match and is intentionally excluded from canonical official candidate coverage."
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529298",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529298",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529298",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Prabhsimran Singh †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+        "pts:ad3b6e95:ipl-2026:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529299",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529299",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529299",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529300",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529300",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529300",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "A Raghuvanshi †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:bf74b130:ipl-2026:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529302",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529302",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529302",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson †",
+        "Did not bat: AK Markram, RR Pant (c) †, Shahbaz Ahmed, Mohammed Shami, MP Yadav, Akash Singh, Prince Yadav"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants",
+        "pts:989889ff:ipl-2026:team-lucknow-super-giants",
+        "pts:cf59b3f0:ipl-2026:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529303",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529303",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529303",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "A Raghuvanshi †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:bf74b130:ipl-2026:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529305",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529305",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529305",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DC Jurel †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+        "pts:ad3b6e95:ipl-2026:team-delhi-capitals",
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529306",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529306",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529306",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+        "pts:cf59b3f0:ipl-2026:team-chennai-super-kings",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529307",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529307",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529307",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "DC Jurel †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:60aa2db3:ipl-2026:team-rajasthan-royals",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants",
+        "pts:989889ff:ipl-2026:team-lucknow-super-giants",
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529308",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529308",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529308",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RD Rickelton †",
+        "T Dahiya †"
+      ],
+      "candidatesCovered": [
+        "pts:bf74b130:ipl-2026:team-kolkata-knight-riders",
+        "pts:e66732f8:ipl-2026:team-mumbai-indians",
+        "pts:f12fe2a1:ipl-2026:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529309",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529309",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529309",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+        "pts:cf59b3f0:ipl-2026:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529310",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529310",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529310",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "Did not bat: JM Sharma †, R Shepherd, B Kumar, JR Hazlewood, Rasikh Salam, Suyash Sharma"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529311",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529311",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529311",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "Prabhsimran Singh †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+        "pts:919a3be2:ipl-2026:team-lucknow-super-giants",
+        "pts:989889ff:ipl-2026:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529312",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529312",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529312",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DC Jurel †",
+        "RD Rickelton †"
+      ],
+      "candidatesCovered": [
+        "pts:e66732f8:ipl-2026:team-mumbai-indians",
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1529313",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1529313",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1529313",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Abishek Porel †",
+        "T Dahiya †"
+      ],
+      "candidatesCovered": [
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+        "pts:ad3b6e95:ipl-2026:team-delhi-capitals",
+        "pts:bf74b130:ipl-2026:team-kolkata-knight-riders",
+        "pts:f12fe2a1:ipl-2026:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1535463",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1535463",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1535463",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DC Jurel †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+        "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad",
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2026-1535464",
+      "sourceFamilyId": "espn-scorecard-2026-v1",
+      "matchId": "1535464",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1535464",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DC Jurel †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:f0af99a7:ipl-2026:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2026-2505",
+      "sourceFamilyId": "official-ipl-match-route-2026-v1",
+      "matchId": "1529308",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2026/2505",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:bf74b130:ipl-2026:team-kolkata-knight-riders",
+        "pts:e66732f8:ipl-2026:team-mumbai-indians",
+        "pts:f12fe2a1:ipl-2026:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The official IPL match route loaded the redesigned match shell but did not expose readable scorecard data or a keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad",
+      "player": "H Klaasen",
+      "team": "Sunrisers Hyderabad",
+      "officialAppearances": 15,
+      "appearancesReviewed": [
+        "1527674",
+        "1527679",
+        "1527683",
+        "1527690",
+        "1529264",
+        "1529270",
+        "1529274",
+        "1529279",
+        "1529284",
+        "1529288",
+        "1529292",
+        "1529299",
+        "1529306",
+        "1529310",
+        "1535463"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1527674",
+        "espn-ipl-2026-1527679",
+        "espn-ipl-2026-1527683",
+        "espn-ipl-2026-1527690",
+        "espn-ipl-2026-1529264",
+        "espn-ipl-2026-1529270",
+        "espn-ipl-2026-1529274",
+        "espn-ipl-2026-1529279",
+        "espn-ipl-2026-1529284",
+        "espn-ipl-2026-1529288",
+        "espn-ipl-2026-1529292",
+        "espn-ipl-2026-1529299",
+        "espn-ipl-2026-1529306",
+        "espn-ipl-2026-1529310",
+        "espn-ipl-2026-1535463"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:3241e3fd:ipl-2026:team-lucknow-super-giants",
+      "player": "N Pooran",
+      "team": "Lucknow Super Giants",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1527678",
+        "1527683",
+        "1527688",
+        "1527692",
+        "1529266",
+        "1529272",
+        "1529275",
+        "1529281",
+        "1529290",
+        "1529293",
+        "1529296",
+        "1529302",
+        "1529307",
+        "1529311"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1527678",
+        "espn-ipl-2026-1527683",
+        "espn-ipl-2026-1527688",
+        "espn-ipl-2026-1527692",
+        "espn-ipl-2026-1529266",
+        "espn-ipl-2026-1529272",
+        "espn-ipl-2026-1529275",
+        "espn-ipl-2026-1529281",
+        "espn-ipl-2026-1529290",
+        "espn-ipl-2026-1529293",
+        "espn-ipl-2026-1529296",
+        "espn-ipl-2026-1529302",
+        "espn-ipl-2026-1529307",
+        "espn-ipl-2026-1529311"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:3d284ca3:ipl-2026:team-royal-challengers-bengaluru",
+      "player": "PD Salt",
+      "team": "Royal Challengers Bengaluru",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "1527674",
+        "1527684",
+        "1527689",
+        "1527693",
+        "1529266",
+        "1529269"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1527674",
+        "espn-ipl-2026-1527684",
+        "espn-ipl-2026-1527689",
+        "espn-ipl-2026-1527693",
+        "espn-ipl-2026-1529266",
+        "espn-ipl-2026-1529269"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:60aa2db3:ipl-2026:team-rajasthan-royals",
+      "player": "LG Pretorius",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1529264",
+        "1529307"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1529264",
+        "espn-ipl-2026-1529307"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:7b679de5:ipl-2026:team-chennai-super-kings",
+      "player": "Kartik Sharma",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 11,
+      "appearancesReviewed": [
+        "1527676",
+        "1527680",
+        "1527684",
+        "1529276",
+        "1529280",
+        "1529287",
+        "1529291",
+        "1529296",
+        "1529302",
+        "1529306",
+        "1529309"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1527676",
+        "espn-ipl-2026-1527680",
+        "espn-ipl-2026-1527684",
+        "espn-ipl-2026-1529276",
+        "espn-ipl-2026-1529280",
+        "espn-ipl-2026-1529287",
+        "espn-ipl-2026-1529291",
+        "espn-ipl-2026-1529296",
+        "espn-ipl-2026-1529302",
+        "espn-ipl-2026-1529306",
+        "espn-ipl-2026-1529309"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:85b3fab2:ipl-2026:team-delhi-capitals",
+      "player": "T Stubbs",
+      "team": "Delhi Capitals",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1527678",
+        "1527681",
+        "1527687",
+        "1527691",
+        "1529269",
+        "1529274",
+        "1529278",
+        "1529282",
+        "1529286",
+        "1529291",
+        "1529294",
+        "1529298",
+        "1529305",
+        "1529313"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1527678",
+        "espn-ipl-2026-1527681",
+        "espn-ipl-2026-1527687",
+        "espn-ipl-2026-1527691",
+        "espn-ipl-2026-1529269",
+        "espn-ipl-2026-1529274",
+        "espn-ipl-2026-1529278",
+        "espn-ipl-2026-1529282",
+        "espn-ipl-2026-1529286",
+        "espn-ipl-2026-1529291",
+        "espn-ipl-2026-1529294",
+        "espn-ipl-2026-1529298",
+        "espn-ipl-2026-1529305",
+        "espn-ipl-2026-1529313"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:919a3be2:ipl-2026:team-lucknow-super-giants",
+      "player": "RR Pant",
+      "team": "Lucknow Super Giants",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1527678"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1527678"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2026-1527678",
+        "observedMarker": "†",
+        "observedText": "RR Pant (c) †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:989889ff:ipl-2026:team-lucknow-super-giants",
+      "player": "JP Inglis",
+      "team": "Lucknow Super Giants",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "1529290",
+        "1529296",
+        "1529302",
+        "1529307",
+        "1529311"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1529290",
+        "espn-ipl-2026-1529296",
+        "espn-ipl-2026-1529302",
+        "espn-ipl-2026-1529307",
+        "espn-ipl-2026-1529311"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:9a46c4e5:ipl-2026:team-gujarat-titans",
+      "player": "GD Phillips",
+      "team": "Gujarat Titans",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "1527677",
+        "1527682",
+        "1527687",
+        "1527692",
+        "1529268",
+        "1529273"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1527677",
+        "espn-ipl-2026-1527682",
+        "espn-ipl-2026-1527687",
+        "espn-ipl-2026-1527692",
+        "espn-ipl-2026-1529268",
+        "espn-ipl-2026-1529273"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:ad3b6e95:ipl-2026:team-delhi-capitals",
+      "player": "Abishek Porel",
+      "team": "Delhi Capitals",
+      "officialAppearances": 4,
+      "appearancesReviewed": [
+        "1529282",
+        "1529298",
+        "1529305",
+        "1529313"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1529282",
+        "espn-ipl-2026-1529298",
+        "espn-ipl-2026-1529305",
+        "espn-ipl-2026-1529313"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2026-1529313",
+        "observedMarker": "†",
+        "observedText": "Abishek Porel †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:bf74b130:ipl-2026:team-kolkata-knight-riders",
+      "player": "FH Allen",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 11,
+      "appearancesReviewed": [
+        "1527675",
+        "1527679",
+        "1527685",
+        "1527688",
+        "1529265",
+        "1529288",
+        "1529294",
+        "1529300",
+        "1529303",
+        "1529308",
+        "1529313"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1527675",
+        "espn-ipl-2026-1527679",
+        "espn-ipl-2026-1527685",
+        "espn-ipl-2026-1527688",
+        "espn-ipl-2026-1529265",
+        "espn-ipl-2026-1529288",
+        "espn-ipl-2026-1529294",
+        "espn-ipl-2026-1529300",
+        "espn-ipl-2026-1529303",
+        "espn-ipl-2026-1529308",
+        "espn-ipl-2026-1529313"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:cf59b3f0:ipl-2026:team-chennai-super-kings",
+      "player": "Urvil Patel",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 7,
+      "appearancesReviewed": [
+        "1529280",
+        "1529287",
+        "1529291",
+        "1529296",
+        "1529302",
+        "1529306",
+        "1529309"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1529280",
+        "espn-ipl-2026-1529287",
+        "espn-ipl-2026-1529291",
+        "espn-ipl-2026-1529296",
+        "espn-ipl-2026-1529302",
+        "espn-ipl-2026-1529306",
+        "espn-ipl-2026-1529309"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:d7423da1:ipl-2026:team-sunrisers-hyderabad",
+      "player": "Salil Arora",
+      "team": "Sunrisers Hyderabad",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1527674",
+        "1527679",
+        "1529264"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1527674",
+        "espn-ipl-2026-1527679",
+        "espn-ipl-2026-1529264"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2026-1529264",
+        "observedMarker": "†",
+        "observedText": "S Arora †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:e66732f8:ipl-2026:team-mumbai-indians",
+      "player": "RD Rickelton",
+      "team": "Mumbai Indians",
+      "officialAppearances": 12,
+      "appearancesReviewed": [
+        "1527675"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1527675"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2026-1527675",
+        "observedMarker": "†",
+        "observedText": "RD Rickelton †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:f088b960:ipl-2026:team-chennai-super-kings",
+      "player": "SN Khan",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 8,
+      "appearancesReviewed": [
+        "1527676",
+        "1527680",
+        "1527684",
+        "1527691",
+        "1529265",
+        "1529270",
+        "1529276",
+        "1529280"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1527676",
+        "espn-ipl-2026-1527680",
+        "espn-ipl-2026-1527684",
+        "espn-ipl-2026-1527691",
+        "espn-ipl-2026-1529265",
+        "espn-ipl-2026-1529270",
+        "espn-ipl-2026-1529276",
+        "espn-ipl-2026-1529280"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every one of SN Khan's eight canonical official appearances had a readable calibrated scorecard with no keeper designation. Matches 1529287 and 1529296 were separately reviewed substitute-fielding/event-only involvement and are not canonical official appearances."
+    },
+    {
+      "playerTeamSeasonId": "pts:f0af99a7:ipl-2026:team-rajasthan-royals",
+      "player": "D Ferreira",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 15,
+      "appearancesReviewed": [
+        "1527682",
+        "1527686",
+        "1527689",
+        "1529264",
+        "1529271",
+        "1529275",
+        "1529279",
+        "1529283",
+        "1529286",
+        "1529295",
+        "1529305",
+        "1529307",
+        "1529312",
+        "1535463",
+        "1535464"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1527682",
+        "espn-ipl-2026-1527686",
+        "espn-ipl-2026-1527689",
+        "espn-ipl-2026-1529264",
+        "espn-ipl-2026-1529271",
+        "espn-ipl-2026-1529275",
+        "espn-ipl-2026-1529279",
+        "espn-ipl-2026-1529283",
+        "espn-ipl-2026-1529286",
+        "espn-ipl-2026-1529295",
+        "espn-ipl-2026-1529305",
+        "espn-ipl-2026-1529307",
+        "espn-ipl-2026-1529312",
+        "espn-ipl-2026-1535463",
+        "espn-ipl-2026-1535464"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:f12fe2a1:ipl-2026:team-kolkata-knight-riders",
+      "player": "T Dahiya",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1529308"
+      ],
+      "sourceIds": [
+        "espn-ipl-2026-1529308"
+      ],
+      "sourceConventionId": "espn-scorecard-2026-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2026-1529308",
+        "observedMarker": "†",
+        "observedText": "T Dahiya †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    }
+  ],
+  "summary": {
+    "scopeCases": 17,
+    "positiveUsageFound": 5,
+    "reviewedUnknown": 12,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "targetScorecardsInspected": 65,
+    "controlOnlyScorecardsInspected": 0,
+    "totalScorecardsInspected": 65,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 68,
+    "reusedTargetScorecards": 54,
+    "canonicalCandidateAppearances": 160,
+    "candidateAppearancesCoveredByInspectedScorecards": 157,
+    "candidateAppearancesSkippedAfterPositive": 3,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}

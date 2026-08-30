@@ -461,6 +461,7 @@
     {
       "canonicalCapabilityEvidenceRefs": [
         "manual:espn-ipl-2024-1426302",
+        "manual:espn-ipl-2025-1473438",
         "stumping:1136568:1:13:3:0:372455c4",
         "stumping:1136568:1:18:4:0:372455c4",
         "stumping:1136584:2:6:1:0:372455c4",
@@ -973,6 +974,7 @@
     {
       "canonicalCapabilityEvidenceRefs": [
         "manual:espn-ipl-2024-1422138",
+        "manual:espn-ipl-2025-1473492",
         "stumping:1136561:2:12:5:0:752f7486",
         "stumping:1136574:2:9:3:0:752f7486",
         "stumping:1359505:1:9:1:0:752f7486",
@@ -1191,6 +1193,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2026-1527678",
         "stumping:1082595:1:8:3:0:919a3be2",
         "stumping:1082608:2:19:1:0:919a3be2",
         "stumping:1082635:1:8:3:0:919a3be2",
@@ -1566,6 +1569,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2025-1473454",
         "stumping:1136600:1:16:1:0:b17e2f24",
         "stumping:1426264:2:15:2:0:b17e2f24",
         "stumping:1426272:1:12:1:0:b17e2f24",

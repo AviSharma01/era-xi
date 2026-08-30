@@ -1,0 +1,2230 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2025-v1",
+  "seasonId": "ipl-2025",
+  "researchStatus": "APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "94407c268467b33f14597d3c9167c5ce33e08b26b5a32861818969ce618a9962",
+  "scopePlayerTeamSeasonIds": [
+    "pts:0bacade8:ipl-2025:team-kolkata-knight-riders",
+    "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+    "pts:3241e3fd:ipl-2025:team-lucknow-super-giants",
+    "pts:372455c4:ipl-2025:team-kolkata-knight-riders",
+    "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru",
+    "pts:752f7486:ipl-2025:team-sunrisers-hyderabad",
+    "pts:abb83e27:ipl-2025:team-mumbai-indians",
+    "pts:ad3b6e95:ipl-2025:team-delhi-capitals",
+    "pts:b17e2f24:ipl-2025:team-delhi-capitals",
+    "pts:bafd0398:ipl-2025:team-mumbai-indians",
+    "pts:bcf325d2:ipl-2025:team-rajasthan-royals",
+    "pts:cf59b3f0:ipl-2025:team-chennai-super-kings",
+    "pts:d7017798:ipl-2025:team-kolkata-knight-riders",
+    "pts:df5a6881:ipl-2025:team-chennai-super-kings"
+  ],
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated wicketkeeper.",
+    "Every official appearance was checked and none designates the candidate.",
+    "Substitute or event-only involvement is separated from canonical official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "publisher": "ESPN",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "‡"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1473440",
+          "knownKeeper": "MS Dhoni",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1473440",
+          "observedText": "MS Dhoni †"
+        },
+        {
+          "matchId": "1473476",
+          "knownKeeper": "JC Buttler",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1473476",
+          "observedText": "JC Buttler †"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Rendered scorecards used † while some search-index representations used ‡; both were normalized only after deterministic control calibration. Dismissal text and catches were not accepted as usage evidence."
+    },
+    {
+      "sourceConventionId": "official-ipl-match-route-2025-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1473500",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2025/1860",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The current official IPL match route exposed only a dynamic match shell and no readable scorecard or marker convention."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2025-1473438",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473438",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473438",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "Did not bat: JM Sharma †, TH David, KH Pandya, Rasikh Salam, JR Hazlewood, Yash Dayal, Suyash Sharma"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2025:team-kolkata-knight-riders",
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:d7017798:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473439",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473439",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473439",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "DC Jurel †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad",
+        "pts:bcf325d2:ipl-2025:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473440",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473440",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473440",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RD Rickelton †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:bafd0398:ipl-2025:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473441",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473441",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473441",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "Abishek Porel †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants",
+        "pts:ad3b6e95:ipl-2025:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473443",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473443",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473443",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DC Jurel †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2025:team-kolkata-knight-riders",
+        "pts:bcf325d2:ipl-2025:team-rajasthan-royals",
+        "pts:d7017798:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473444",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473444",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473444",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473445",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473445",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473445",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473446",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473446",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473446",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "RD Rickelton †"
+      ],
+      "candidatesCovered": [
+        "pts:bafd0398:ipl-2025:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473447",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473447",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473447",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad",
+        "pts:ad3b6e95:ipl-2025:team-delhi-capitals",
+        "pts:b17e2f24:ipl-2025:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473449",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473449",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473449",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "RD Rickelton †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2025:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473450",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473450",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473450",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "Prabhsimran Singh †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473451",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473451",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473451",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473452",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473452",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473452",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "H Klaasen †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:372455c4:ipl-2025:team-kolkata-knight-riders",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad",
+        "pts:d7017798:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473453",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473453",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473453",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "RD Rickelton †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473454",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473454",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473454",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:ad3b6e95:ipl-2025:team-delhi-capitals",
+        "pts:b17e2f24:ipl-2025:team-delhi-capitals",
+        "pts:df5a6881:ipl-2025:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473456",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473456",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473456",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Did not bat: RR Pant (c) †, A Badoni, SN Thakur, Akash Deep, Avesh Khan, DS Rathi, Ravi Bishnoi",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants",
+        "pts:372455c4:ipl-2025:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473457",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473457",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473457",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473458",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473458",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473458",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "RD Rickelton †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473459",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473459",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473459",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Prabhsimran Singh †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:df5a6881:ipl-2025:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473461",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473461",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473461",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:ad3b6e95:ipl-2025:team-delhi-capitals",
+        "pts:b17e2f24:ipl-2025:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473462",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473462",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473462",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2025:team-kolkata-knight-riders",
+        "pts:df5a6881:ipl-2025:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473463",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473463",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473463",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473464",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473464",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473464",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Prabhsimran Singh †",
+        "H Klaasen †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473465",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473465",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473465",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "Did not bat: RM Patidar (c), LS Livingstone, JM Sharma †, TH David, KH Pandya, B Kumar, JR Hazlewood, Yash Dayal, Suyash Sharma"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:bcf325d2:ipl-2025:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473467",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473467",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473467",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473468",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473468",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473468",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JP Inglis †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2025:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473470",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473470",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473470",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "RD Rickelton †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473471",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473471",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473471",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "JP Inglis †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473473",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473473",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473473",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "DC Jurel †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants",
+        "pts:bcf325d2:ipl-2025:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473474",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473474",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473474",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JP Inglis †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473476",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473476",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473476",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "Rahmanullah Gurbaz †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2025:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473477",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473477",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473477",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants",
+        "pts:ad3b6e95:ipl-2025:team-delhi-capitals",
+        "pts:b17e2f24:ipl-2025:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473478",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473478",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473478",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "RD Rickelton †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473479",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473479",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473479",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "DC Jurel †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:bcf325d2:ipl-2025:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473480",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473480",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473480",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "H Klaasen †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473481",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473481",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473481",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JP Inglis †",
+        "Rahmanullah Gurbaz †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2025:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473482",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473482",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473482",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RD Rickelton †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473485",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473485",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473485",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Rahmanullah Gurbaz †",
+        "Abishek Porel †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2025:team-kolkata-knight-riders",
+        "pts:ad3b6e95:ipl-2025:team-delhi-capitals",
+        "pts:b17e2f24:ipl-2025:team-delhi-capitals",
+        "pts:d7017798:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473488",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473488",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473488",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "H Klaasen †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473490",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473490",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473490",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Rahmanullah Gurbaz †",
+        "DC Jurel †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2025:team-kolkata-knight-riders",
+        "pts:bcf325d2:ipl-2025:team-rajasthan-royals",
+        "pts:d7017798:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473491",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473491",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473491",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JP Inglis †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473492",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473492",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473492",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul †",
+        "Ishan Kishan †\tWicketkeeper"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad",
+        "pts:ad3b6e95:ipl-2025:team-delhi-capitals",
+        "pts:b17e2f24:ipl-2025:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473494",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473494",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473494",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Rahmanullah Gurbaz †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2025:team-kolkata-knight-riders",
+        "pts:cf59b3f0:ipl-2025:team-chennai-super-kings",
+        "pts:d7017798:ipl-2025:team-kolkata-knight-riders",
+        "pts:df5a6881:ipl-2025:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473499",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473499",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473499",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473500",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473500",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473500",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:bcf325d2:ipl-2025:team-rajasthan-royals",
+        "pts:cf59b3f0:ipl-2025:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2025:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473502",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473502",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473502",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473503",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473503",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473503",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "JM Sharma (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473504",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473504",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473504",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Did not bat: MS Dhoni (c) †, DJ Hooda, Noor Ahmad, A Kamboj, KK Ahmed, M Pathirana",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:cf59b3f0:ipl-2025:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2025:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473505",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473505",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473505",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+        "pts:372455c4:ipl-2025:team-kolkata-knight-riders",
+        "pts:752f7486:ipl-2025:team-sunrisers-hyderabad",
+        "pts:d7017798:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473507",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473507",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473507",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "JM Sharma (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants",
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473508",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473508",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473508",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JP Inglis †",
+        "Did not bat: LS Livingstone, JM Sharma †, R Shepherd, KH Pandya, B Kumar, Yash Dayal, JR Hazlewood, Suyash Sharma"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473509",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473509",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473509",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Bairstow †",
+        "BKG Mendis †"
+      ],
+      "candidatesCovered": [
+        "pts:abb83e27:ipl-2025:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473510",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473510",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473510",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Bairstow †",
+        "JP Inglis †"
+      ],
+      "candidatesCovered": [
+        "pts:abb83e27:ipl-2025:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2025-1473511",
+      "sourceFamilyId": "espn-scorecard-2025-v1",
+      "matchId": "1473511",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1473511",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "JP Inglis †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2025-1860",
+      "sourceFamilyId": "official-ipl-match-route-2025-v1",
+      "matchId": "1473500",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2025/1860",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:bcf325d2:ipl-2025:team-rajasthan-royals",
+        "pts:cf59b3f0:ipl-2025:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2025:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The official IPL match route loaded the redesigned match shell but did not expose readable scorecard data or a keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:0bacade8:ipl-2025:team-kolkata-knight-riders",
+      "player": "Rahmanullah Gurbaz",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "1473476"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473476"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2025-1473476",
+        "observedMarker": "†",
+        "observedText": "Rahmanullah Gurbaz †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
+      "player": "H Klaasen",
+      "team": "Sunrisers Hyderabad",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1473439"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473439"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2025-1473439",
+        "observedMarker": "†",
+        "observedText": "H Klaasen †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:3241e3fd:ipl-2025:team-lucknow-super-giants",
+      "player": "N Pooran",
+      "team": "Lucknow Super Giants",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1473441",
+        "1473444",
+        "1473450",
+        "1473453",
+        "1473456",
+        "1473463",
+        "1473467",
+        "1473473",
+        "1473477",
+        "1473482",
+        "1473491",
+        "1473499",
+        "1473502",
+        "1473507"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473441",
+        "espn-ipl-2025-1473444",
+        "espn-ipl-2025-1473450",
+        "espn-ipl-2025-1473453",
+        "espn-ipl-2025-1473456",
+        "espn-ipl-2025-1473463",
+        "espn-ipl-2025-1473467",
+        "espn-ipl-2025-1473473",
+        "espn-ipl-2025-1473477",
+        "espn-ipl-2025-1473482",
+        "espn-ipl-2025-1473491",
+        "espn-ipl-2025-1473499",
+        "espn-ipl-2025-1473502",
+        "espn-ipl-2025-1473507"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:372455c4:ipl-2025:team-kolkata-knight-riders",
+      "player": "Q de Kock",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 8,
+      "appearancesReviewed": [
+        "1473438"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473438"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2025-1473438",
+        "observedMarker": "†",
+        "observedText": "Q de Kock †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru",
+      "player": "PD Salt",
+      "team": "Royal Challengers Bengaluru",
+      "officialAppearances": 13,
+      "appearancesReviewed": [
+        "1473438",
+        "1473445",
+        "1473451",
+        "1473458",
+        "1473461",
+        "1473465",
+        "1473471",
+        "1473474",
+        "1473479",
+        "1473503",
+        "1473507",
+        "1473508",
+        "1473511"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473438",
+        "espn-ipl-2025-1473445",
+        "espn-ipl-2025-1473451",
+        "espn-ipl-2025-1473458",
+        "espn-ipl-2025-1473461",
+        "espn-ipl-2025-1473465",
+        "espn-ipl-2025-1473471",
+        "espn-ipl-2025-1473474",
+        "espn-ipl-2025-1473479",
+        "espn-ipl-2025-1473503",
+        "espn-ipl-2025-1473507",
+        "espn-ipl-2025-1473508",
+        "espn-ipl-2025-1473511"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:752f7486:ipl-2025:team-sunrisers-hyderabad",
+      "player": "Ishan Kishan",
+      "team": "Sunrisers Hyderabad",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1473439",
+        "1473444",
+        "1473447",
+        "1473452",
+        "1473457",
+        "1473464",
+        "1473470",
+        "1473478",
+        "1473480",
+        "1473488",
+        "1473492"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473439",
+        "espn-ipl-2025-1473444",
+        "espn-ipl-2025-1473447",
+        "espn-ipl-2025-1473452",
+        "espn-ipl-2025-1473457",
+        "espn-ipl-2025-1473464",
+        "espn-ipl-2025-1473470",
+        "espn-ipl-2025-1473478",
+        "espn-ipl-2025-1473480",
+        "espn-ipl-2025-1473488",
+        "espn-ipl-2025-1473492"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2025-1473492",
+        "observedMarker": "†",
+        "observedText": "Ishan Kishan †\tWicketkeeper"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:abb83e27:ipl-2025:team-mumbai-indians",
+      "player": "JM Bairstow",
+      "team": "Mumbai Indians",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1473509"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473509"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2025-1473509",
+        "observedMarker": "†",
+        "observedText": "JM Bairstow †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:ad3b6e95:ipl-2025:team-delhi-capitals",
+      "player": "Abishek Porel",
+      "team": "Delhi Capitals",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1473441"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473441"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2025-1473441",
+        "observedMarker": "†",
+        "observedText": "Abishek Porel †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2025:team-delhi-capitals",
+      "player": "KL Rahul",
+      "team": "Delhi Capitals",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1473454"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473454"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2025-1473454",
+        "observedMarker": "†",
+        "observedText": "KL Rahul †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:bafd0398:ipl-2025:team-mumbai-indians",
+      "player": "R Minz",
+      "team": "Mumbai Indians",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1473440",
+        "1473446"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473440",
+        "espn-ipl-2025-1473446"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:bcf325d2:ipl-2025:team-rajasthan-royals",
+      "player": "Dhruv Jurel",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1473439"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473439"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2025-1473439",
+        "observedMarker": "†",
+        "observedText": "DC Jurel †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:cf59b3f0:ipl-2025:team-chennai-super-kings",
+      "player": "Urvil Patel",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "1473494",
+        "1473500",
+        "1473504"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473494",
+        "espn-ipl-2025-1473500",
+        "espn-ipl-2025-1473504"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:d7017798:ipl-2025:team-kolkata-knight-riders",
+      "player": "A Raghuvanshi",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 12,
+      "appearancesReviewed": [
+        "1473438",
+        "1473443",
+        "1473449",
+        "1473452",
+        "1473456",
+        "1473468",
+        "1473476",
+        "1473481",
+        "1473485",
+        "1473490",
+        "1473494",
+        "1473505"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473438",
+        "espn-ipl-2025-1473443",
+        "espn-ipl-2025-1473449",
+        "espn-ipl-2025-1473452",
+        "espn-ipl-2025-1473456",
+        "espn-ipl-2025-1473468",
+        "espn-ipl-2025-1473476",
+        "espn-ipl-2025-1473481",
+        "espn-ipl-2025-1473485",
+        "espn-ipl-2025-1473490",
+        "espn-ipl-2025-1473494",
+        "espn-ipl-2025-1473505"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:df5a6881:ipl-2025:team-chennai-super-kings",
+      "player": "DP Conway",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "1473454",
+        "1473459",
+        "1473462",
+        "1473494",
+        "1473500",
+        "1473504"
+      ],
+      "sourceIds": [
+        "espn-ipl-2025-1473454",
+        "espn-ipl-2025-1473459",
+        "espn-ipl-2025-1473462",
+        "espn-ipl-2025-1473494",
+        "espn-ipl-2025-1473500",
+        "espn-ipl-2025-1473504"
+      ],
+      "sourceConventionId": "espn-scorecard-2025-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    }
+  ],
+  "summary": {
+    "scopeCases": 14,
+    "positiveUsageFound": 8,
+    "reviewedUnknown": 6,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "targetScorecardsInspected": 54,
+    "controlOnlyScorecardsInspected": 0,
+    "totalScorecardsInspected": 54,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 68,
+    "reusedTargetScorecards": 35,
+    "canonicalCandidateAppearances": 135,
+    "candidateAppearancesCoveredByInspectedScorecards": 113,
+    "candidateAppearancesSkippedAfterPositive": 22,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}
