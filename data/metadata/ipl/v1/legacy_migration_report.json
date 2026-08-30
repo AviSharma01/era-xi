@@ -460,6 +460,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2024-1426302",
         "stumping:1136568:1:13:3:0:372455c4",
         "stumping:1136568:1:18:4:0:372455c4",
         "stumping:1136584:2:6:1:0:372455c4",
@@ -607,6 +608,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2024-1426297",
         "stumping:1082603:2:11:0:0:4a8a2e3b",
         "stumping:1082607:2:10:2:0:4a8a2e3b",
         "stumping:1082642:1:15:1:0:4a8a2e3b",
@@ -970,6 +972,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2024-1422138",
         "stumping:1136561:2:12:5:0:752f7486",
         "stumping:1136574:2:9:3:0:752f7486",
         "stumping:1359505:1:9:1:0:752f7486",

@@ -27,7 +27,7 @@ VALIDATION_SCHEMA_VERSION = "ipl-wicketkeeper-metadata-validation/v1"
 EXPECTED_BASELINES = {
     "stumpingEvents": 388,
     "capabilityPlayers": 102,
-    "confirmedUsageProfiles": 169,
+    "confirmedUsageProfiles": 179,
     "legacySupportedPositives": 16,
     "legacyUnverifiedPositives": 0,
     "legacyConflictingNegatives": 7,

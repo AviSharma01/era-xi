@@ -1,0 +1,2635 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2024-v1",
+  "seasonId": "ipl-2024",
+  "researchStatus": "APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "13940e0db4059fca2a12fba17b3046255cf9984f52be935766592b09814882d8",
+  "scopePlayerTeamSeasonIds": [
+    "pts:0bacade8:ipl-2024:team-kolkata-knight-riders",
+    "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+    "pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
+    "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+    "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+    "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
+    "pts:57ca01b3:ipl-2024:team-delhi-capitals",
+    "pts:752f7486:ipl-2024:team-mumbai-indians",
+    "pts:800d2d97:ipl-2024:team-punjab-kings",
+    "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+    "pts:9418198b:ipl-2024:team-punjab-kings",
+    "pts:99b75528:ipl-2024:team-rajasthan-royals",
+    "pts:9e7225b0:ipl-2024:team-royal-challengers-bengaluru",
+    "pts:abb83e27:ipl-2024:team-punjab-kings",
+    "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+    "pts:afa7e784:ipl-2024:team-gujarat-titans",
+    "pts:b63e358a:ipl-2024:team-delhi-capitals",
+    "pts:bcf325d2:ipl-2024:team-rajasthan-royals",
+    "pts:c8f5f961:ipl-2024:team-royal-challengers-bengaluru",
+    "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+    "pts:f0af99a7:ipl-2024:team-rajasthan-royals",
+    "pts:f836b33d:ipl-2024:team-rajasthan-royals"
+  ],
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated wicketkeeper.",
+    "Every official appearance was checked and none designates the candidate.",
+    "Substitute or event-only involvement is separated from canonical official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "publisher": "ESPN",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "‡"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1422120",
+          "knownKeeper": "RR Pant",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1422120",
+          "observedText": "RR Pant (c) †"
+        },
+        {
+          "matchId": "1422125",
+          "knownKeeper": "WP Saha",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1422125",
+          "observedText": "WP Saha †"
+        },
+        {
+          "matchId": "1426261",
+          "knownKeeper": "H Klaasen",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1426261",
+          "observedText": "H Klaasen †"
+        },
+        {
+          "matchId": "1426262",
+          "knownKeeper": "SV Samson",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1426262",
+          "observedText": "SV Samson (c) †"
+        },
+        {
+          "matchId": "1426264",
+          "knownKeeper": "KL Rahul",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1426264",
+          "observedText": "KL Rahul (c) †"
+        },
+        {
+          "matchId": "1426310",
+          "knownKeeper": "KD Karthik",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1426310",
+          "observedText": "KD Karthik †"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Rendered scorecards used † while some search-index representations used ‡; both were normalized only after deterministic control calibration. Dismissal text and catches were not accepted as usage evidence."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2024-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1422128",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2024/1363",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The indexed historical route redirected to the redesigned /en site and returned a 404. It supplied no readable scorecard or marker convention."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2024-1422120",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422120",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422120",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+        "pts:b63e358a:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:abb83e27:ipl-2024:team-punjab-kings",
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422122",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422122",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422122",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
+        "pts:99b75528:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422124",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422124",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422124",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "Anuj Rawat †"
+      ],
+      "candidatesCovered": [
+        "pts:abb83e27:ipl-2024:team-punjab-kings",
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings",
+        "pts:c8f5f961:ipl-2024:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422125",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422125",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422125",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Did not bat: MS Dhoni †, DL Chahar, TU Deshpande, Mustafizur Rahman, M Pathirana",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "MARKER_CALIBRATION"
+      ],
+      "notes": "Control-only scorecard; not counted among the 55 target scorecards."
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422127",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422127",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422127",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b63e358a:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:99b75528:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422128",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422128",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422128",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Anuj Rawat †",
+        "PD Salt †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+        "pts:c8f5f961:ipl-2024:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422129",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422129",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422129",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
+        "pts:abb83e27:ipl-2024:team-punjab-kings",
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422131",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422131",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422131",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422132",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422132",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422132",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2024:team-mumbai-indians",
+        "pts:99b75528:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422133",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422133",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422133",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "Anuj Rawat †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
+        "pts:c8f5f961:ipl-2024:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422134",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422134",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422134",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PD Salt †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2024:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422135",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422135",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422135",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:abb83e27:ipl-2024:team-punjab-kings",
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422137",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422137",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422137",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Did not bat: RM Patidar, KD Karthik †, RJW Topley, MJ Dagar, Mohammed Siraj, Yash Dayal, H Sharma",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals",
+        "pts:9e7225b0:ipl-2024:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422138",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422138",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422138",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+        "pts:57ca01b3:ipl-2024:team-delhi-capitals",
+        "pts:752f7486:ipl-2024:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1422139",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1422139",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422139",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "BR Sharath †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426260",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426260",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426260",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PD Salt †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
+        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2024:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426261",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426261",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426261",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:abb83e27:ipl-2024:team-punjab-kings",
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426262",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426262",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426262",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "MS Wade †"
+      ],
+      "candidatesCovered": [
+        "pts:afa7e784:ipl-2024:team-gujarat-titans",
+        "pts:99b75528:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426263",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426263",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426263",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2024:team-mumbai-indians",
+        "pts:9e7225b0:ipl-2024:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426264",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426264",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426264",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+        "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426265",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426265",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426265",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:abb83e27:ipl-2024:team-punjab-kings",
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426266",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426266",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426266",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "PD Salt †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+        "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426268",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426268",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426268",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:9e7225b0:ipl-2024:team-royal-challengers-bengaluru",
+        "pts:c8f5f961:ipl-2024:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426269",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426269",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426269",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PD Salt †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+        "pts:99b75528:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426270",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426270",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426270",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426271",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426271",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426271",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2024:team-mumbai-indians",
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426272",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426272",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426272",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
+        "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426273",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426273",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426273",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426274",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426274",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426274",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PD Salt †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2024:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426275",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426275",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426275",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426276",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426276",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426276",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2024:team-mumbai-indians",
+        "pts:99b75528:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426277",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426277",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426277",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
+        "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426278",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426278",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426278",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426280",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426280",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426280",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PD Salt †",
+        "Did not bat: SM Curran (c), JM Sharma †, AR Sharma, Harpreet Brar, HV Patel, K Rabada, RD Chahar, Arshdeep Singh"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:abb83e27:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426281",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426281",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426281",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+        "pts:57ca01b3:ipl-2024:team-delhi-capitals",
+        "pts:752f7486:ipl-2024:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426282",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426282",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426282",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
+        "pts:99b75528:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426285",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426285",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426285",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "PD Salt †"
+      ],
+      "candidatesCovered": [
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+        "pts:57ca01b3:ipl-2024:team-delhi-capitals",
+        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2024:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426286",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426286",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426286",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
+        "pts:752f7486:ipl-2024:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426287",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426287",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426287",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "Did not bat: JM Sharma †, AR Sharma, Harpreet Brar, RD Chahar, HV Patel, K Rabada, Arshdeep Singh"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:abb83e27:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426288",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426288",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426288",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426289",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426289",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426289",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PD Salt †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+        "pts:752f7486:ipl-2024:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426291",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426291",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426291",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "JM Sharma †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:abb83e27:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426292",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426292",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426292",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PD Salt †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426294",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426294",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426294",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+        "pts:99b75528:ipl-2024:team-rajasthan-royals",
+        "pts:f0af99a7:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426295",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426295",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426295",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "Did not bat: K Nitish Kumar Reddy, H Klaasen †, Abdul Samad, Shahbaz Ahmed, Sanvir Singh, PJ Cummins (c), B Kumar, JD Unadkat, V Viyaskanth, T Natarajan"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426296",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426296",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426296",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "JM Bairstow †"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:abb83e27:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426297",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426297",
+      "teams": [
+        {
+          "teamId": "team-gujarat-titans",
+          "teamName": "Gujarat Titans"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426297",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Did not bat: MS Wade †, R Tewatia, Rashid Khan, Noor Ahmad, UT Yadav, MM Sharma, Kartik Tyagi, S Sandeep Warrier",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
+        "pts:afa7e784:ipl-2024:team-gujarat-titans"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426299",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426299",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426299",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "Did not bat: MS Dhoni †, SN Thakur, TU Deshpande, Simarjeet Singh, M Theekshana"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
+        "pts:99b75528:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426300",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426300",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426300",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "Abishek Porel †"
+      ],
+      "candidatesCovered": [
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+        "pts:57ca01b3:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426302",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426302",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426302",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+        "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426303",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426303",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426303",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "JM Bairstow †"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:abb83e27:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings",
+        "pts:f836b33d:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals",
+        "pts:f0af99a7:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426305",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426305",
+      "teams": [
+        {
+          "teamId": "team-lucknow-super-giants",
+          "teamName": "Lucknow Super Giants"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426305",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
+        "pts:752f7486:ipl-2024:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426307",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426307",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426307",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Sharma (c) †",
+        "H Klaasen †"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2024:team-punjab-kings",
+        "pts:800d2d97:ipl-2024:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426309",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426309",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426309",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "Rahmanullah Gurbaz †"
+      ],
+      "candidatesCovered": [
+        "pts:0bacade8:ipl-2024:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426310",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426310",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426310",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:f836b33d:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "MARKER_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2024-1426311",
+      "sourceFamilyId": "espn-scorecard-2024-v1",
+      "matchId": "1426311",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426311",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:f836b33d:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2024-1363",
+      "sourceFamilyId": "official-ipl-historical-route-2024-v1",
+      "matchId": "1422128",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bengaluru",
+          "teamName": "Royal Challengers Bengaluru"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2024/1363",
+      "availability": "UNAVAILABLE_HISTORICAL_ROUTE_404",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+        "pts:c8f5f961:ipl-2024:team-royal-challengers-bengaluru"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The indexed historical IPL match route redirected to the redesigned /en site and returned a 404, so no official marker convention could be calibrated."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:0bacade8:ipl-2024:team-kolkata-knight-riders",
+      "player": "Rahmanullah Gurbaz",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1426309"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1426309"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2024-1426309",
+        "observedMarker": "†",
+        "observedText": "Rahmanullah Gurbaz †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+      "player": "SD Hope",
+      "team": "Delhi Capitals",
+      "officialAppearances": 9,
+      "appearancesReviewed": [
+        "1422120",
+        "1426264",
+        "1426270",
+        "1426278",
+        "1426281",
+        "1426285",
+        "1426294",
+        "1426300",
+        "1426302"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422120",
+        "espn-ipl-2024-1426264",
+        "espn-ipl-2024-1426270",
+        "espn-ipl-2024-1426278",
+        "espn-ipl-2024-1426281",
+        "espn-ipl-2024-1426285",
+        "espn-ipl-2024-1426294",
+        "espn-ipl-2024-1426300",
+        "espn-ipl-2024-1426302"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
+      "player": "N Pooran",
+      "team": "Lucknow Super Giants",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1422122",
+        "1422129",
+        "1422133",
+        "1422139",
+        "1426264",
+        "1426266",
+        "1426272",
+        "1426277",
+        "1426282",
+        "1426286",
+        "1426292",
+        "1426295",
+        "1426302",
+        "1426305"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422122",
+        "espn-ipl-2024-1422129",
+        "espn-ipl-2024-1422133",
+        "espn-ipl-2024-1422139",
+        "espn-ipl-2024-1426264",
+        "espn-ipl-2024-1426266",
+        "espn-ipl-2024-1426272",
+        "espn-ipl-2024-1426277",
+        "espn-ipl-2024-1426282",
+        "espn-ipl-2024-1426286",
+        "espn-ipl-2024-1426292",
+        "espn-ipl-2024-1426295",
+        "espn-ipl-2024-1426302",
+        "espn-ipl-2024-1426305"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+      "player": "Q de Kock",
+      "team": "Lucknow Super Giants",
+      "officialAppearances": 11,
+      "appearancesReviewed": [
+        "1422122",
+        "1426302"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422122",
+        "espn-ipl-2024-1426302"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2024-1426302",
+        "observedMarker": "†",
+        "observedText": "Q de Kock †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+      "player": "PD Salt",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 12,
+      "appearancesReviewed": [
+        "1422128"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422128"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2024-1422128",
+        "observedMarker": "†",
+        "observedText": "PD Salt †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
+      "player": "MS Dhoni",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1426297"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1426297"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2024-1426297",
+        "observedMarker": "†",
+        "observedText": "MS Dhoni †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:57ca01b3:ipl-2024:team-delhi-capitals",
+      "player": "Kumar Kushagra",
+      "team": "Delhi Capitals",
+      "officialAppearances": 4,
+      "appearancesReviewed": [
+        "1422138",
+        "1426281",
+        "1426285",
+        "1426300"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422138",
+        "espn-ipl-2024-1426281",
+        "espn-ipl-2024-1426285",
+        "espn-ipl-2024-1426300"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:752f7486:ipl-2024:team-mumbai-indians",
+      "player": "Ishan Kishan",
+      "team": "Mumbai Indians",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1422138"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422138"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2024-1422138",
+        "observedMarker": "†",
+        "observedText": "Ishan Kishan †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:800d2d97:ipl-2024:team-punjab-kings",
+      "player": "JM Sharma",
+      "team": "Punjab Kings",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1422120"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422120"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2024-1422120",
+        "observedMarker": "†",
+        "observedText": "JM Sharma †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+      "player": "T Stubbs",
+      "team": "Delhi Capitals",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1422120",
+        "1422127",
+        "1422131",
+        "1422134",
+        "1422138",
+        "1426264",
+        "1426270",
+        "1426273",
+        "1426278",
+        "1426281",
+        "1426285",
+        "1426294",
+        "1426300",
+        "1426302"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422120",
+        "espn-ipl-2024-1422127",
+        "espn-ipl-2024-1422131",
+        "espn-ipl-2024-1422134",
+        "espn-ipl-2024-1422138",
+        "espn-ipl-2024-1426264",
+        "espn-ipl-2024-1426270",
+        "espn-ipl-2024-1426273",
+        "espn-ipl-2024-1426278",
+        "espn-ipl-2024-1426281",
+        "espn-ipl-2024-1426285",
+        "espn-ipl-2024-1426294",
+        "espn-ipl-2024-1426300",
+        "espn-ipl-2024-1426302"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:9418198b:ipl-2024:team-punjab-kings",
+      "player": "P Simran Singh",
+      "team": "Punjab Kings",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1422120",
+        "1422124",
+        "1422129",
+        "1422135",
+        "1426261",
+        "1426265",
+        "1426271",
+        "1426275",
+        "1426280",
+        "1426287",
+        "1426291",
+        "1426296",
+        "1426303",
+        "1426307"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422120",
+        "espn-ipl-2024-1422124",
+        "espn-ipl-2024-1422129",
+        "espn-ipl-2024-1422135",
+        "espn-ipl-2024-1426261",
+        "espn-ipl-2024-1426265",
+        "espn-ipl-2024-1426271",
+        "espn-ipl-2024-1426275",
+        "espn-ipl-2024-1426280",
+        "espn-ipl-2024-1426287",
+        "espn-ipl-2024-1426291",
+        "espn-ipl-2024-1426296",
+        "espn-ipl-2024-1426303",
+        "espn-ipl-2024-1426307"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:99b75528:ipl-2024:team-rajasthan-royals",
+      "player": "JC Buttler",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 11,
+      "appearancesReviewed": [
+        "1422122",
+        "1422127",
+        "1422132",
+        "1422137",
+        "1426262",
+        "1426269",
+        "1426276",
+        "1426282",
+        "1426288",
+        "1426294",
+        "1426299"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422122",
+        "espn-ipl-2024-1422127",
+        "espn-ipl-2024-1422132",
+        "espn-ipl-2024-1422137",
+        "espn-ipl-2024-1426262",
+        "espn-ipl-2024-1426269",
+        "espn-ipl-2024-1426276",
+        "espn-ipl-2024-1426282",
+        "espn-ipl-2024-1426288",
+        "espn-ipl-2024-1426294",
+        "espn-ipl-2024-1426299"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:9e7225b0:ipl-2024:team-royal-challengers-bengaluru",
+      "player": "Saurav Chauhan",
+      "team": "Royal Challengers Bengaluru",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "1422137",
+        "1426263",
+        "1426268"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422137",
+        "espn-ipl-2024-1426263",
+        "espn-ipl-2024-1426268"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:abb83e27:ipl-2024:team-punjab-kings",
+      "player": "JM Bairstow",
+      "team": "Punjab Kings",
+      "officialAppearances": 11,
+      "appearancesReviewed": [
+        "1422120",
+        "1426303"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422120",
+        "espn-ipl-2024-1426303"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2024-1426303",
+        "observedMarker": "†",
+        "observedText": "JM Bairstow †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+      "player": "Abishek Porel",
+      "team": "Delhi Capitals",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1422120",
+        "1422138",
+        "1426300"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422120",
+        "espn-ipl-2024-1422138",
+        "espn-ipl-2024-1426300"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2024-1426300",
+        "observedMarker": "†",
+        "observedText": "Abishek Porel †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:afa7e784:ipl-2024:team-gujarat-titans",
+      "player": "MS Wade",
+      "team": "Gujarat Titans",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1426297"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1426297"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2024-1426297",
+        "observedMarker": "†",
+        "observedText": "Did not bat: MS Wade †, R Tewatia, Rashid Khan, Noor Ahmad, UT Yadav, MM Sharma, Kartik Tyagi, S Sandeep Warrier"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:b63e358a:ipl-2024:team-delhi-capitals",
+      "player": "RK Bhui",
+      "team": "Delhi Capitals",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1422120",
+        "1422127"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422120",
+        "espn-ipl-2024-1422127"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:bcf325d2:ipl-2024:team-rajasthan-royals",
+      "player": "Dhruv Jurel",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1422122",
+        "1422127",
+        "1422132",
+        "1422137",
+        "1426262",
+        "1426265",
+        "1426269",
+        "1426276",
+        "1426282",
+        "1426288",
+        "1426299",
+        "1426303",
+        "1426310",
+        "1426311"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422122",
+        "espn-ipl-2024-1422127",
+        "espn-ipl-2024-1422132",
+        "espn-ipl-2024-1422137",
+        "espn-ipl-2024-1426262",
+        "espn-ipl-2024-1426265",
+        "espn-ipl-2024-1426269",
+        "espn-ipl-2024-1426276",
+        "espn-ipl-2024-1426282",
+        "espn-ipl-2024-1426288",
+        "espn-ipl-2024-1426299",
+        "espn-ipl-2024-1426303",
+        "espn-ipl-2024-1426310",
+        "espn-ipl-2024-1426311"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:c8f5f961:ipl-2024:team-royal-challengers-bengaluru",
+      "player": "Anuj Rawat",
+      "team": "Royal Challengers Bengaluru",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "1422128"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422128"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2024-1422128",
+        "observedMarker": "†",
+        "observedText": "Anuj Rawat †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+      "player": "A Raghuvanshi",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 10,
+      "appearancesReviewed": [
+        "1422128",
+        "1422134",
+        "1426260",
+        "1426266",
+        "1426269",
+        "1426274",
+        "1426280",
+        "1426285",
+        "1426289",
+        "1426292"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1422128",
+        "espn-ipl-2024-1422134",
+        "espn-ipl-2024-1426260",
+        "espn-ipl-2024-1426266",
+        "espn-ipl-2024-1426269",
+        "espn-ipl-2024-1426274",
+        "espn-ipl-2024-1426280",
+        "espn-ipl-2024-1426285",
+        "espn-ipl-2024-1426289",
+        "espn-ipl-2024-1426292"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:f0af99a7:ipl-2024:team-rajasthan-royals",
+      "player": "D Ferreira",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1426294",
+        "1426303"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1426294",
+        "espn-ipl-2024-1426303"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Both canonical official appearances were reviewed. Match 1426310 was also inspected for other candidates; Ferreira's involvement there was substitute-fielding-only and was not counted as an official appearance or usage evidence."
+    },
+    {
+      "playerTeamSeasonId": "pts:f836b33d:ipl-2024:team-rajasthan-royals",
+      "player": "T Kohler-Cadmore",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "1426303",
+        "1426310",
+        "1426311"
+      ],
+      "sourceIds": [
+        "espn-ipl-2024-1426303",
+        "espn-ipl-2024-1426310",
+        "espn-ipl-2024-1426311"
+      ],
+      "sourceConventionId": "espn-scorecard-2024-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    }
+  ],
+  "summary": {
+    "scopeCases": 22,
+    "positiveUsageFound": 10,
+    "reviewedUnknown": 12,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "targetScorecardsInspected": 55,
+    "controlOnlyScorecardsInspected": 1,
+    "totalScorecardsInspected": 56,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 67,
+    "reusedTargetScorecards": 54
+  }
+}

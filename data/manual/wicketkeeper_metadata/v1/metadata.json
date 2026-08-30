@@ -1,149 +1,2176 @@
 {
   "schemaVersion": "ipl-wicketkeeper-manual/v1",
   "sources": [
-    {"sourceId":"espn-sp-goswami-srh-2020","publisher":"ESPN","title":"Royal Challengers Bangalore v Sunrisers Hyderabad, IPL 2020 Eliminator scorecard","url":"https://www.espn.in/cricket/series/8048/scorecard/1237178/royal-challengers-bangalore-vs-sunrisers-hyderabad-eliminator-ipl","accessedDate":"2026-08-29","locator":"Sunrisers Hyderabad team sheet designates SP Goswami as wicketkeeper","supports":["PLAYER_TEAM_SEASON_USAGE"],"notes":null},
-    {"sourceId":"espn-u-kaul-kxip-2008","publisher":"ESPN","title":"Kings XI Punjab v Royal Challengers Bangalore, IPL 2008 34th match scorecard","url":"https://www.espn.in/cricket/series/8048/scorecard/336016/kings-xi-punjab-vs-royal-challengers-bangalore-34th-match-ipl","accessedDate":"2026-08-29","locator":"Kings XI Punjab team sheet designates U Kaul as wicketkeeper","supports":["PLAYER_CAPABILITY","PLAYER_TEAM_SEASON_USAGE"],"notes":null},
-    {"sourceId":"ipl-mi-squad","publisher":"Indian Premier League","title":"Mumbai Indians squad","url":"https://www.iplt20.com/teams/mumbai-indians/squad","accessedDate":"2026-08-29","locator":"Robin Minz is listed as a wicketkeeper-batter; Danish Malewar and Raj Angad Bawa role listings were reviewed","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"gt-anuj-rawat-profile","publisher":"Gujarat Titans","title":"Anuj Rawat player profile","url":"https://www.gujarattitansipl.com/players/anuj-rawat-67752-profile","accessedDate":"2026-08-29","locator":"Official team profile identifies Anuj Rawat as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"espn-sn-khan-dc-2023","publisher":"ESPN","title":"Lucknow Super Giants v Delhi Capitals, IPL 2023 3rd match scorecard","url":"https://www.espn.com/cricket/series/8048/scorecard/1359477/lucknow-super-giants-vs-delhi-capitals-3rd-match-indian-premier-league-2023","accessedDate":"2026-08-29","locator":"Delhi Capitals team sheet designates Sarfaraz Khan as wicketkeeper","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"ipl-er-dwivedi-profile","publisher":"Indian Premier League","title":"Eklavya Dwivedi player profile","url":"https://www.iplt20.com/players/eklavya-dwivedi/118","accessedDate":"2026-08-29","locator":"Official IPL profile identifies Eklavya Dwivedi as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"ipl-ns-naik-profile","publisher":"Indian Premier League","title":"Nikhil Naik player profile","url":"https://www.iplt20.com/players/nikhil-naik/2732","accessedDate":"2026-08-29","locator":"Official IPL profile identifies Nikhil Naik as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"espn-ns-naik-kxip-2016","publisher":"ESPN","title":"Sunrisers Hyderabad v Kings XI Punjab, IPL 2016 18th match scorecard","url":"https://www.espn.com/cricket/series/8048/scorecard/980935/sunrisers-hyderabad-vs-kings-xi-punjab-18th-match-indian-premier-league-2016","accessedDate":"2026-08-29","locator":"Kings XI Punjab team sheet designates NS Naik as wicketkeeper","supports":["PLAYER_TEAM_SEASON_USAGE"],"notes":null},
-    {"sourceId":"ipl-ag-paunikar-profile","publisher":"Indian Premier League","title":"Amit Paunikar player profile","url":"https://www.iplt20.com/players/amit-paunikar/136","accessedDate":"2026-08-29","locator":"Official IPL profile identifies Amit Paunikar as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"ipl-at-carey-profile","publisher":"Indian Premier League","title":"Alex Carey player profile","url":"https://www.iplt20.com/players/alex-carey/3882","accessedDate":"2026-08-29","locator":"Official IPL profile identifies Alex Carey as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"dc-abishek-porel-replacement","publisher":"Delhi Capitals","title":"Delhi Capitals announce Abishek Porel as replacement for Rishabh Pant","url":"https://www.delhicapitals.in/news/delhi-capitals-announce-abishek-porel-as-replacement-for-rishabh-pant","accessedDate":"2026-08-29","locator":"Official team announcement identifies Abishek Porel as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"ipl-2025-auction-list","publisher":"Indian Premier League","title":"TATA IPL 2025 auction list with RTM","url":"https://documents.iplt20.com/bcci/documents/1732248356511_TATA%20IPL%202025-%20Auction%20List%20with%20RTM%20-19.11.24.pdf","accessedDate":"2026-08-29","locator":"Official auction role/category entries identify B Indrajith, BR Sharath, D Ferreira, JR Philippe, KS Rathore, N Jagadeesan, Rahmanullah Gurbaz, T Banton, UBT Chand, Saurav Chauhan and T Kohler-Cadmore as wicketkeepers","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"ipl-bj-haddin-profile","publisher":"Indian Premier League","title":"Brad Haddin player profile","url":"https://www.iplt20.com/players/brad-haddin/195","accessedDate":"2026-08-29","locator":"Official IPL profile identifies Brad Haddin as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"ipl-2024-auction-list","publisher":"Indian Premier League","title":"IPL 2024 auction list","url":"https://documents.iplt20.com/bcci/documents/1702300206581_IPL%202024%20Auction%20List-%2011.12.23.pdf","accessedDate":"2026-08-29","locator":"Official auction role/category entries identify BKG Mendis, Kumar Kushagra, PD Salt, RK Bhui, SD Hope and Urvil Patel as wicketkeepers","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"ipl-br-dunk-profile","publisher":"Indian Premier League","title":"Ben Dunk player profile","url":"https://www.iplt20.com/players/ben-dunk/918","accessedDate":"2026-08-29","locator":"Official IPL profile identifies Ben Dunk as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"sky-c-madan-profile","publisher":"Sky Sports","title":"Chandan Madan player profile","url":"https://www.skysports.com/cricket/player/14366/chandan-madan","accessedDate":"2026-08-29","locator":"Established player profile identifies Chandan Madan as a wicketkeeper","supports":["PLAYER_CAPABILITY"],"notes":"Secondary database evidence used because a stable primary historical role page was unavailable."},
-    {"sourceId":"ndtv-db-das-auction-2014","publisher":"NDTV Sports","title":"IPL 2014 auction live updates","url":"https://sports.ndtv.com/cricket/ipl-2014-auction-live-updates-1523450","accessedDate":"2026-08-29","locator":"Contemporaneous auction coverage identifies DB Das as a wicketkeeper-batsman","supports":["PLAYER_CAPABILITY"],"notes":"Medium-high confidence secondary evidence; a stable official historical player-role page was unavailable."},
-    {"sourceId":"icc-dp-conway-profile","publisher":"International Cricket Council","title":"Devon Conway player profile","url":"https://www.icc-cricket.com/tournaments/mens-t20-world-cup-2026/teams/5/players/13177/devon-conway","accessedDate":"2026-08-29","locator":"Official governing-body tournament profile identifies Devon Conway as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"cricketarchive-dt-patil-profile","publisher":"CricketArchive","title":"Dinesh Patil player profile","url":"https://cricketarchive.com/Archive/Players/10/10425/10425.html","accessedDate":"2026-08-29","locator":"Established historical player profile identifies DT Patil as a wicketkeeper","supports":["PLAYER_CAPABILITY"],"notes":"Secondary database evidence used because direct official historical role coverage was unavailable."},
-    {"sourceId":"ipl-fh-allen-profile","publisher":"Indian Premier League","title":"Finn Allen player profile","url":"https://www.iplt20.com/players/finn-allen/3020","accessedDate":"2026-08-29","locator":"Official IPL profile identifies Finn Allen as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"ipl-gd-phillips-profile","publisher":"Indian Premier League","title":"Glenn Phillips player profile","url":"https://www.iplt20.com/players/glenn-phillips/3027","accessedDate":"2026-08-29","locator":"Official IPL profile identifies Glenn Phillips as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"cricketarchive-h-das-profile","publisher":"CricketArchive","title":"Haladhar Das player profile","url":"https://cricketarchive.com/Archive/Players/100/100652/100652.html","accessedDate":"2026-08-29","locator":"Established historical player profile identifies H Das as a wicketkeeper","supports":["PLAYER_CAPABILITY"],"notes":"Secondary database evidence used because direct official historical role coverage was unavailable."},
-    {"sourceId":"ipl-2026-auction-list","publisher":"Indian Premier League","title":"TATA IPL 2026 auction list","url":"https://documents.iplt20.com/bcci/documents/1765197869375_TATA-IPL-2026-Auction-List-8.12.25.pdf","accessedDate":"2026-08-29","locator":"Official auction role/category entries identify JM Cox, Kartik Sharma, Ravi Singh and T Dahiya as wicketkeepers","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"nzc-l-ronchi-profile","publisher":"New Zealand Cricket","title":"Luke Ronchi player profile","url":"https://archive.nzc.nz/Players/17/17568/17568.html","accessedDate":"2026-08-29","locator":"Official governing-body archive identifies Luke Ronchi as a wicketkeeper","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"icc-lg-pretorius-profile","publisher":"International Cricket Council","title":"Lhuan-dre Pretorius player profile","url":"https://www.icc-cricket.com/rankings/109249/lhuan-dre","accessedDate":"2026-08-29","locator":"Official governing-body profile identifies Lhuan-dre Pretorius as a wicketkeeper","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"icc-liton-das-profile","publisher":"International Cricket Council","title":"Liton Das player profile","url":"https://www.icc-cricket.com/tournaments/mens-t20-world-cup-2026/teams/2/players/63206/litton-das","accessedDate":"2026-08-29","locator":"Official governing-body tournament profile identifies Liton Das as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"ipl-mdkj-perera-profile","publisher":"Indian Premier League","title":"Kushal Janith Perera player profile","url":"https://www.iplt20.com/players/kushal-janith-perera/716","accessedDate":"2026-08-29","locator":"Official IPL profile identifies MDKJ Perera as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"cricbuzz-mn-van-wyk-profile","publisher":"Cricbuzz","title":"Morne van Wyk player profile","url":"https://www.cricbuzz.com/profiles/614/morne-van-wyk","accessedDate":"2026-08-29","locator":"Established player profile identifies MN van Wyk as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":"Secondary database evidence used because a stable primary historical role page was unavailable."},
-    {"sourceId":"cricketarchive-p-dharmani-profile","publisher":"CricketArchive","title":"Pankaj Dharmani player profile","url":"https://cricketarchive.com/Archive/Players/4/4169/4169.html","accessedDate":"2026-08-29","locator":"Established historical player profile identifies P Dharmani as a wicketkeeper","supports":["PLAYER_CAPABILITY"],"notes":"Secondary database evidence used because direct official historical role coverage was unavailable."},
-    {"sourceId":"ca-psp-handscomb-profile","publisher":"Cricket Australia","title":"I'm not a full-time gloveman: Handscomb","url":"https://www.cricket.com.au/news/3286503/im-not-a-fulltime-gloveman-handscomb","accessedDate":"2026-08-29","locator":"Official governing-body article documents Peter Handscomb's wicketkeeping capability","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"ipl-2019-auction-archive","publisher":"Indian Premier League","title":"IPL 2019 auction player list","url":"https://staging-iplt20.epicon.in/auction/2019","accessedDate":"2026-08-29","locator":"Archived official IPL auction entry lists S Anirudha under Wicket Keeper","supports":["PLAYER_CAPABILITY"],"notes":"Historical official page is available through an IPL staging/archive host rather than the current production site."},
-    {"sourceId":"newindianexpress-s-anirudha","publisher":"The New Indian Express","title":"Keeping, vice-captaincy not a burden: Anirudha Srikkanth","url":"https://www.newindianexpress.com/sport/cricket/2017/Aug/04/keeping-vice-captaincy-not-a-burden--anirudha-srikkanth-1638131.html","accessedDate":"2026-08-29","locator":"Contemporaneous interview coverage explicitly discusses S Anirudha's wicketkeeping role","supports":["PLAYER_CAPABILITY"],"notes":"Independent secondary corroboration for the archived official auction role entry."},
-    {"sourceId":"ipl-salil-arora-profile","publisher":"Indian Premier League","title":"Salil Arora player profile","url":"https://www.iplt20.com/players/salil-arora/23041","accessedDate":"2026-08-29","locator":"Official IPL profile identifies Salil Arora as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"icc-t-taibu-retirement","publisher":"International Cricket Council","title":"Taibu announces retirement","url":"https://www.icc-cricket.com/news/taibu-announces-retirement","accessedDate":"2026-08-29","locator":"Official governing-body article identifies Tatenda Taibu as a former Zimbabwe wicketkeeper","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"ca-td-paine-profile","publisher":"Cricket Australia","title":"Tim Paine player profile","url":"https://www.cricket.com.au/players/CA%3A723/timothy-paine","accessedDate":"2026-08-29","locator":"Official governing-body profile identifies Tim Paine as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"ipl-p-chopra-profile","publisher":"Indian Premier League","title":"Prashant Chopra player profile","url":"https://www.iplt20.com/players/prashant-chopra/3226","accessedDate":"2026-08-29","locator":"Official IPL profile identifies Prashant Chopra as a wicketkeeper-batter","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"espn-ipl-2011-auction-list","publisher":"ESPNcricinfo","title":"IPL 2011 auction list","url":"https://p.imgci.com/db/DOWNLOAD/0000/0077/IPL_2011_Auction_List.pdf","accessedDate":"2026-08-29","locator":"Contemporaneous auction list records TM Dilshan's specialism as Batsman and role code as ROB/Wk","supports":["PLAYER_CAPABILITY"],"notes":"Archived contemporaneous auction PDF used because direct official role-labelled coverage for this period is incomplete."},
-    {"sourceId":"icc-2018-u19-sa-profile","publisher":"International Cricket Council","title":"South Africa squad profile, ICC U19 Cricket World Cup 2018","url":"https://images.icc-cricket.com/image/upload/prd/zuoxvefe9zvnobdu4ybx.pdf","accessedDate":"2026-08-29","locator":"Official governing-body squad profile identifies MP Breetzke's role as WK/BATSMAN","supports":["PLAYER_CAPABILITY"],"notes":null},
-    {"sourceId":"cricbuzz-t-kohli-profile","publisher":"Cricbuzz","title":"Taruwar Kohli player profile","url":"https://m.cricbuzz.com/profiles/1793/taruwar-kohlic","accessedDate":"2026-08-29","locator":"Role reviewed; no positive wicketkeeper designation found","supports":[],"notes":"Review only; role labels are not canonical negative evidence."},
-    {"sourceId":"sky-sb-styris-profile","publisher":"Sky Sports","title":"Scott Styris player profile","url":"https://www.skysports.com/cricket/player/1926/scott-styris","accessedDate":"2026-08-29","locator":"Role reviewed; no positive wicketkeeper designation found","supports":[],"notes":"Review only; role labels are not canonical negative evidence."},
-    {"sourceId":"dc-rv-patel-profile","publisher":"Delhi Capitals","title":"Ripal Patel player profile","url":"https://www.delhicapitals.in/players/73393-ripal-patel-profile","accessedDate":"2026-08-29","locator":"Role reviewed; no positive wicketkeeper designation found","supports":[],"notes":"Review only; role labels are not canonical negative evidence."},
-    {"sourceId":"cricbuzz-a-mukund-profile","publisher":"Cricbuzz","title":"Abhinav Mukund player profile","url":"https://www.cricbuzz.com/profiles/1720/mukund-c","accessedDate":"2026-08-29","locator":"Role reviewed; no positive wicketkeeper designation found","supports":[],"notes":"Review only; role labels are not canonical negative evidence."},
-    {"sourceId":"cwi-r-powell-profile","publisher":"Cricket West Indies","title":"Rovman Powell player profile","url":"https://www.windiescricket.com/players/rovman-powell-4166/","accessedDate":"2026-08-29","locator":"Role reviewed; no positive wicketkeeper designation found","supports":[],"notes":"Review only; role labels are not canonical negative evidence."},
-    {"sourceId":"cricbuzz-rs-sodhi-profile","publisher":"Cricbuzz","title":"Reetinder Sodhi player profile","url":"https://www.cricbuzz.com/profiles/3948/reetinder-sodhi","accessedDate":"2026-08-29","locator":"Role reviewed; no positive wicketkeeper designation found","supports":[],"notes":"Review only; role labels are not canonical negative evidence."},
-    {"sourceId":"cricketarchive-tm-srivastava-profile","publisher":"CricketArchive","title":"Tanmay Srivastava player profile","url":"https://cricketarchive.com/Archive/Players/15/15483/15483.html","accessedDate":"2026-08-29","locator":"Role reviewed; no positive wicketkeeper designation found","supports":[],"notes":"Review only; role labels are not canonical negative evidence."},
-    {"sourceId":"cricketarchive-sa-asnodkar-profile","publisher":"CricketArchive","title":"Swapnil Asnodkar player profile","url":"https://cricketarchive.com/Archive/Players/11/11923/11923.html","accessedDate":"2026-08-29","locator":"Role reviewed; no positive wicketkeeper designation found","supports":[],"notes":"Review only; role labels are not canonical negative evidence."},
-    {"sourceId":"cricbuzz-rv-gomez-profile","publisher":"Cricbuzz","title":"Raiphi Gomez player profile","url":"https://www.cricbuzz.com/profiles/1862/raiphi-gomez","accessedDate":"2026-08-29","locator":"Role reviewed; no positive wicketkeeper designation found","supports":[],"notes":"Review only; role labels are not canonical negative evidence."},
-    {"sourceId":"cricbuzz-db-ravi-teja-profile","publisher":"Cricbuzz","title":"Dwaraka Ravi Teja player profile","url":"https://www.cricbuzz.com/profiles/1464/ravi-teja","accessedDate":"2026-08-29","locator":"Role reviewed; no positive wicketkeeper designation found","supports":[],"notes":"Review only; role labels are not canonical negative evidence."},
-    {"sourceId":"ipl-mk-lomror-profile","publisher":"Indian Premier League","title":"Mahipal Lomror player profile","url":"https://www.iplt20.com/players/mahipal-lomror/2970","accessedDate":"2026-08-29","locator":"Role reviewed; no positive wicketkeeper designation found","supports":[],"notes":"Review only; role labels are not canonical negative evidence."},
-    {"sourceId":"lsg-himmat-singh-profile","publisher":"Lucknow Super Giants","title":"Himmat Singh player profile","url":"https://www.lucknowsupergiants.in/team/himmat-singh-65152-profile","accessedDate":"2026-08-29","locator":"Role reviewed; no positive wicketkeeper designation found","supports":[],"notes":"Review only; role labels are not canonical negative evidence."},
-    {"sourceId":"dc-m-tiwari-profile","publisher":"Delhi Capitals","title":"Madhav Tiwari player profile","url":"https://www.delhicapitals.in/players/124649-madhav-tiwari-profile","accessedDate":"2026-08-29","locator":"Role reviewed; no positive wicketkeeper designation found","supports":[],"notes":"Review only; role labels are not canonical negative evidence."},
-    {"sourceId":"espn-gurkeerat-kxip-2017","publisher":"ESPN","title":"Kings XI Punjab v Gujarat Lions, IPL 2017 47th match scorecard","url":"https://www.espn.co.uk/cricket/series/8048/scorecard/1082637/kings-xi-punjab-vs-gujarat-lions-47th-match-ipl","accessedDate":"2026-08-29","locator":"Team sheet reviewed; no Gurkeerat Singh wicketkeeping designation found","supports":[],"notes":"Review only; absence is not canonical negative evidence."},
-    {"sourceId":"espn-t-stubbs-mi-2022","publisher":"ESPN","title":"Sunrisers Hyderabad v Mumbai Indians, IPL 2022 65th match scorecard","url":"https://www.espn.com/cricket/series/8048/scorecard/1304111/sunrisers-hyderabad-vs-mumbai-indians-65th-match-indian-premier-league-2022","accessedDate":"2026-08-29","locator":"Team sheet reviewed; no T Stubbs wicketkeeping designation found","supports":[],"notes":"Review only; absence is not canonical negative evidence."},
-    {"sourceId":"espn-r-minz-mi-2026","publisher":"ESPN","title":"Mumbai Indians v Sunrisers Hyderabad, IPL 2026 41st match scorecard","url":"https://www.espn.com.au/cricket/series/8048/scorecard/1529284/mumbai-indians-vs-sunrisers-hyderabad-41st-match-indian-premier-league-2026","accessedDate":"2026-08-29","locator":"Team sheet reviewed; no Robin Minz wicketkeeping designation found","supports":[],"notes":"Review only; absence is not canonical negative evidence."},
-    {"sourceId":"espn-anuj-rawat-rr-2021","publisher":"ESPN","title":"Kolkata Knight Riders v Rajasthan Royals, IPL 2021 54th match scorecard","url":"https://www.espn.com/cricket/series/8048/scorecard/1254106/kolkata-knight-riders-vs-rajasthan-royals-54th-match-ipl","accessedDate":"2026-08-29","locator":"Team sheet reviewed; no Anuj Rawat wicketkeeping designation found","supports":[],"notes":"Review only; absence is not canonical negative evidence."},
-    {"sourceId":"espn-sn-khan-pbks-2021","publisher":"ESPN","title":"Chennai Super Kings v Punjab Kings, IPL 2021 53rd match scorecard","url":"https://www.espn.com/cricket/series/8048/scorecard/1254094/chennai-super-kings-vs-punjab-kings-53rd-match-indian-premier-league-2021","accessedDate":"2026-08-29","locator":"Team sheet reviewed; no Sarfaraz Khan wicketkeeping designation found","supports":[],"notes":"Review only; absence is not canonical negative evidence."},
-    {"sourceId":"espn-er-dwivedi-gl-2016","publisher":"ESPN","title":"Gujarat Lions v Sunrisers Hyderabad, IPL 2016 Qualifier 2 scorecard","url":"https://www.espn.in/cricket/series/8048/scorecard/981017/gujarat-lions-vs-sunrisers-hyderabad-qualifier-2-ipl","accessedDate":"2026-08-29","locator":"ER Dwivedi's 2016 appearances were reviewed; team sheets designate another wicketkeeper","supports":[],"notes":"Review only; absence is not canonical negative evidence."},
-    {"sourceId":"espn-ns-naik-kkr-2019","publisher":"ESPN","title":"Delhi Capitals v Kolkata Knight Riders, IPL 2019 10th match scorecard","url":"https://www.espn.in/cricket/series/8048/scorecard/1175365/delhi-capitals-vs-kolkata-knight-riders-10th-match-indian-premier-league-2019","accessedDate":"2026-08-29","locator":"Team sheet designates another wicketkeeper; no NS Naik usage found","supports":[],"notes":"Review only; absence is not canonical negative evidence."},
-    {"sourceId":"espn-ns-naik-kkr-2020","publisher":"ESPN","title":"Kolkata Knight Riders v Mumbai Indians, IPL 2020 5th match scorecard","url":"https://www.espn.com/cricket/series/8048/scorecard/1216508/kolkata-knight-riders-vs-mumbai-indians-5th-match-indian-premier-league-2020","accessedDate":"2026-08-29","locator":"Team sheet designates another wicketkeeper; no NS Naik usage found","supports":[],"notes":"Review only; absence is not canonical negative evidence."}
+    {
+      "sourceId": "espn-sp-goswami-srh-2020",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bangalore v Sunrisers Hyderabad, IPL 2020 Eliminator scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1237178/royal-challengers-bangalore-vs-sunrisers-hyderabad-eliminator-ipl",
+      "accessedDate": "2026-08-29",
+      "locator": "Sunrisers Hyderabad team sheet designates SP Goswami as wicketkeeper",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "espn-u-kaul-kxip-2008",
+      "publisher": "ESPN",
+      "title": "Kings XI Punjab v Royal Challengers Bangalore, IPL 2008 34th match scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336016/kings-xi-punjab-vs-royal-challengers-bangalore-34th-match-ipl",
+      "accessedDate": "2026-08-29",
+      "locator": "Kings XI Punjab team sheet designates U Kaul as wicketkeeper",
+      "supports": [
+        "PLAYER_CAPABILITY",
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ipl-mi-squad",
+      "publisher": "Indian Premier League",
+      "title": "Mumbai Indians squad",
+      "url": "https://www.iplt20.com/teams/mumbai-indians/squad",
+      "accessedDate": "2026-08-29",
+      "locator": "Robin Minz is listed as a wicketkeeper-batter; Danish Malewar and Raj Angad Bawa role listings were reviewed",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "gt-anuj-rawat-profile",
+      "publisher": "Gujarat Titans",
+      "title": "Anuj Rawat player profile",
+      "url": "https://www.gujarattitansipl.com/players/anuj-rawat-67752-profile",
+      "accessedDate": "2026-08-29",
+      "locator": "Official team profile identifies Anuj Rawat as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "espn-sn-khan-dc-2023",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Delhi Capitals, IPL 2023 3rd match scorecard",
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/1359477/lucknow-super-giants-vs-delhi-capitals-3rd-match-indian-premier-league-2023",
+      "accessedDate": "2026-08-29",
+      "locator": "Delhi Capitals team sheet designates Sarfaraz Khan as wicketkeeper",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ipl-er-dwivedi-profile",
+      "publisher": "Indian Premier League",
+      "title": "Eklavya Dwivedi player profile",
+      "url": "https://www.iplt20.com/players/eklavya-dwivedi/118",
+      "accessedDate": "2026-08-29",
+      "locator": "Official IPL profile identifies Eklavya Dwivedi as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ipl-ns-naik-profile",
+      "publisher": "Indian Premier League",
+      "title": "Nikhil Naik player profile",
+      "url": "https://www.iplt20.com/players/nikhil-naik/2732",
+      "accessedDate": "2026-08-29",
+      "locator": "Official IPL profile identifies Nikhil Naik as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "espn-ns-naik-kxip-2016",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Kings XI Punjab, IPL 2016 18th match scorecard",
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/980935/sunrisers-hyderabad-vs-kings-xi-punjab-18th-match-indian-premier-league-2016",
+      "accessedDate": "2026-08-29",
+      "locator": "Kings XI Punjab team sheet designates NS Naik as wicketkeeper",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ipl-ag-paunikar-profile",
+      "publisher": "Indian Premier League",
+      "title": "Amit Paunikar player profile",
+      "url": "https://www.iplt20.com/players/amit-paunikar/136",
+      "accessedDate": "2026-08-29",
+      "locator": "Official IPL profile identifies Amit Paunikar as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ipl-at-carey-profile",
+      "publisher": "Indian Premier League",
+      "title": "Alex Carey player profile",
+      "url": "https://www.iplt20.com/players/alex-carey/3882",
+      "accessedDate": "2026-08-29",
+      "locator": "Official IPL profile identifies Alex Carey as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "dc-abishek-porel-replacement",
+      "publisher": "Delhi Capitals",
+      "title": "Delhi Capitals announce Abishek Porel as replacement for Rishabh Pant",
+      "url": "https://www.delhicapitals.in/news/delhi-capitals-announce-abishek-porel-as-replacement-for-rishabh-pant",
+      "accessedDate": "2026-08-29",
+      "locator": "Official team announcement identifies Abishek Porel as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ipl-2025-auction-list",
+      "publisher": "Indian Premier League",
+      "title": "TATA IPL 2025 auction list with RTM",
+      "url": "https://documents.iplt20.com/bcci/documents/1732248356511_TATA%20IPL%202025-%20Auction%20List%20with%20RTM%20-19.11.24.pdf",
+      "accessedDate": "2026-08-29",
+      "locator": "Official auction role/category entries identify B Indrajith, BR Sharath, D Ferreira, JR Philippe, KS Rathore, N Jagadeesan, Rahmanullah Gurbaz, T Banton, UBT Chand, Saurav Chauhan and T Kohler-Cadmore as wicketkeepers",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ipl-bj-haddin-profile",
+      "publisher": "Indian Premier League",
+      "title": "Brad Haddin player profile",
+      "url": "https://www.iplt20.com/players/brad-haddin/195",
+      "accessedDate": "2026-08-29",
+      "locator": "Official IPL profile identifies Brad Haddin as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ipl-2024-auction-list",
+      "publisher": "Indian Premier League",
+      "title": "IPL 2024 auction list",
+      "url": "https://documents.iplt20.com/bcci/documents/1702300206581_IPL%202024%20Auction%20List-%2011.12.23.pdf",
+      "accessedDate": "2026-08-29",
+      "locator": "Official auction role/category entries identify BKG Mendis, Kumar Kushagra, PD Salt, RK Bhui, SD Hope and Urvil Patel as wicketkeepers",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ipl-br-dunk-profile",
+      "publisher": "Indian Premier League",
+      "title": "Ben Dunk player profile",
+      "url": "https://www.iplt20.com/players/ben-dunk/918",
+      "accessedDate": "2026-08-29",
+      "locator": "Official IPL profile identifies Ben Dunk as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "sky-c-madan-profile",
+      "publisher": "Sky Sports",
+      "title": "Chandan Madan player profile",
+      "url": "https://www.skysports.com/cricket/player/14366/chandan-madan",
+      "accessedDate": "2026-08-29",
+      "locator": "Established player profile identifies Chandan Madan as a wicketkeeper",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": "Secondary database evidence used because a stable primary historical role page was unavailable."
+    },
+    {
+      "sourceId": "ndtv-db-das-auction-2014",
+      "publisher": "NDTV Sports",
+      "title": "IPL 2014 auction live updates",
+      "url": "https://sports.ndtv.com/cricket/ipl-2014-auction-live-updates-1523450",
+      "accessedDate": "2026-08-29",
+      "locator": "Contemporaneous auction coverage identifies DB Das as a wicketkeeper-batsman",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": "Medium-high confidence secondary evidence; a stable official historical player-role page was unavailable."
+    },
+    {
+      "sourceId": "icc-dp-conway-profile",
+      "publisher": "International Cricket Council",
+      "title": "Devon Conway player profile",
+      "url": "https://www.icc-cricket.com/tournaments/mens-t20-world-cup-2026/teams/5/players/13177/devon-conway",
+      "accessedDate": "2026-08-29",
+      "locator": "Official governing-body tournament profile identifies Devon Conway as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "cricketarchive-dt-patil-profile",
+      "publisher": "CricketArchive",
+      "title": "Dinesh Patil player profile",
+      "url": "https://cricketarchive.com/Archive/Players/10/10425/10425.html",
+      "accessedDate": "2026-08-29",
+      "locator": "Established historical player profile identifies DT Patil as a wicketkeeper",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": "Secondary database evidence used because direct official historical role coverage was unavailable."
+    },
+    {
+      "sourceId": "ipl-fh-allen-profile",
+      "publisher": "Indian Premier League",
+      "title": "Finn Allen player profile",
+      "url": "https://www.iplt20.com/players/finn-allen/3020",
+      "accessedDate": "2026-08-29",
+      "locator": "Official IPL profile identifies Finn Allen as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ipl-gd-phillips-profile",
+      "publisher": "Indian Premier League",
+      "title": "Glenn Phillips player profile",
+      "url": "https://www.iplt20.com/players/glenn-phillips/3027",
+      "accessedDate": "2026-08-29",
+      "locator": "Official IPL profile identifies Glenn Phillips as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "cricketarchive-h-das-profile",
+      "publisher": "CricketArchive",
+      "title": "Haladhar Das player profile",
+      "url": "https://cricketarchive.com/Archive/Players/100/100652/100652.html",
+      "accessedDate": "2026-08-29",
+      "locator": "Established historical player profile identifies H Das as a wicketkeeper",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": "Secondary database evidence used because direct official historical role coverage was unavailable."
+    },
+    {
+      "sourceId": "ipl-2026-auction-list",
+      "publisher": "Indian Premier League",
+      "title": "TATA IPL 2026 auction list",
+      "url": "https://documents.iplt20.com/bcci/documents/1765197869375_TATA-IPL-2026-Auction-List-8.12.25.pdf",
+      "accessedDate": "2026-08-29",
+      "locator": "Official auction role/category entries identify JM Cox, Kartik Sharma, Ravi Singh and T Dahiya as wicketkeepers",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "nzc-l-ronchi-profile",
+      "publisher": "New Zealand Cricket",
+      "title": "Luke Ronchi player profile",
+      "url": "https://archive.nzc.nz/Players/17/17568/17568.html",
+      "accessedDate": "2026-08-29",
+      "locator": "Official governing-body archive identifies Luke Ronchi as a wicketkeeper",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "icc-lg-pretorius-profile",
+      "publisher": "International Cricket Council",
+      "title": "Lhuan-dre Pretorius player profile",
+      "url": "https://www.icc-cricket.com/rankings/109249/lhuan-dre",
+      "accessedDate": "2026-08-29",
+      "locator": "Official governing-body profile identifies Lhuan-dre Pretorius as a wicketkeeper",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "icc-liton-das-profile",
+      "publisher": "International Cricket Council",
+      "title": "Liton Das player profile",
+      "url": "https://www.icc-cricket.com/tournaments/mens-t20-world-cup-2026/teams/2/players/63206/litton-das",
+      "accessedDate": "2026-08-29",
+      "locator": "Official governing-body tournament profile identifies Liton Das as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ipl-mdkj-perera-profile",
+      "publisher": "Indian Premier League",
+      "title": "Kushal Janith Perera player profile",
+      "url": "https://www.iplt20.com/players/kushal-janith-perera/716",
+      "accessedDate": "2026-08-29",
+      "locator": "Official IPL profile identifies MDKJ Perera as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "cricbuzz-mn-van-wyk-profile",
+      "publisher": "Cricbuzz",
+      "title": "Morne van Wyk player profile",
+      "url": "https://www.cricbuzz.com/profiles/614/morne-van-wyk",
+      "accessedDate": "2026-08-29",
+      "locator": "Established player profile identifies MN van Wyk as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": "Secondary database evidence used because a stable primary historical role page was unavailable."
+    },
+    {
+      "sourceId": "cricketarchive-p-dharmani-profile",
+      "publisher": "CricketArchive",
+      "title": "Pankaj Dharmani player profile",
+      "url": "https://cricketarchive.com/Archive/Players/4/4169/4169.html",
+      "accessedDate": "2026-08-29",
+      "locator": "Established historical player profile identifies P Dharmani as a wicketkeeper",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": "Secondary database evidence used because direct official historical role coverage was unavailable."
+    },
+    {
+      "sourceId": "ca-psp-handscomb-profile",
+      "publisher": "Cricket Australia",
+      "title": "I'm not a full-time gloveman: Handscomb",
+      "url": "https://www.cricket.com.au/news/3286503/im-not-a-fulltime-gloveman-handscomb",
+      "accessedDate": "2026-08-29",
+      "locator": "Official governing-body article documents Peter Handscomb's wicketkeeping capability",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ipl-2019-auction-archive",
+      "publisher": "Indian Premier League",
+      "title": "IPL 2019 auction player list",
+      "url": "https://staging-iplt20.epicon.in/auction/2019",
+      "accessedDate": "2026-08-29",
+      "locator": "Archived official IPL auction entry lists S Anirudha under Wicket Keeper",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": "Historical official page is available through an IPL staging/archive host rather than the current production site."
+    },
+    {
+      "sourceId": "newindianexpress-s-anirudha",
+      "publisher": "The New Indian Express",
+      "title": "Keeping, vice-captaincy not a burden: Anirudha Srikkanth",
+      "url": "https://www.newindianexpress.com/sport/cricket/2017/Aug/04/keeping-vice-captaincy-not-a-burden--anirudha-srikkanth-1638131.html",
+      "accessedDate": "2026-08-29",
+      "locator": "Contemporaneous interview coverage explicitly discusses S Anirudha's wicketkeeping role",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": "Independent secondary corroboration for the archived official auction role entry."
+    },
+    {
+      "sourceId": "ipl-salil-arora-profile",
+      "publisher": "Indian Premier League",
+      "title": "Salil Arora player profile",
+      "url": "https://www.iplt20.com/players/salil-arora/23041",
+      "accessedDate": "2026-08-29",
+      "locator": "Official IPL profile identifies Salil Arora as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "icc-t-taibu-retirement",
+      "publisher": "International Cricket Council",
+      "title": "Taibu announces retirement",
+      "url": "https://www.icc-cricket.com/news/taibu-announces-retirement",
+      "accessedDate": "2026-08-29",
+      "locator": "Official governing-body article identifies Tatenda Taibu as a former Zimbabwe wicketkeeper",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ca-td-paine-profile",
+      "publisher": "Cricket Australia",
+      "title": "Tim Paine player profile",
+      "url": "https://www.cricket.com.au/players/CA%3A723/timothy-paine",
+      "accessedDate": "2026-08-29",
+      "locator": "Official governing-body profile identifies Tim Paine as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "ipl-p-chopra-profile",
+      "publisher": "Indian Premier League",
+      "title": "Prashant Chopra player profile",
+      "url": "https://www.iplt20.com/players/prashant-chopra/3226",
+      "accessedDate": "2026-08-29",
+      "locator": "Official IPL profile identifies Prashant Chopra as a wicketkeeper-batter",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "espn-ipl-2011-auction-list",
+      "publisher": "ESPNcricinfo",
+      "title": "IPL 2011 auction list",
+      "url": "https://p.imgci.com/db/DOWNLOAD/0000/0077/IPL_2011_Auction_List.pdf",
+      "accessedDate": "2026-08-29",
+      "locator": "Contemporaneous auction list records TM Dilshan's specialism as Batsman and role code as ROB/Wk",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": "Archived contemporaneous auction PDF used because direct official role-labelled coverage for this period is incomplete."
+    },
+    {
+      "sourceId": "icc-2018-u19-sa-profile",
+      "publisher": "International Cricket Council",
+      "title": "South Africa squad profile, ICC U19 Cricket World Cup 2018",
+      "url": "https://images.icc-cricket.com/image/upload/prd/zuoxvefe9zvnobdu4ybx.pdf",
+      "accessedDate": "2026-08-29",
+      "locator": "Official governing-body squad profile identifies MP Breetzke's role as WK/BATSMAN",
+      "supports": [
+        "PLAYER_CAPABILITY"
+      ],
+      "notes": null
+    },
+    {
+      "sourceId": "cricbuzz-t-kohli-profile",
+      "publisher": "Cricbuzz",
+      "title": "Taruwar Kohli player profile",
+      "url": "https://m.cricbuzz.com/profiles/1793/taruwar-kohlic",
+      "accessedDate": "2026-08-29",
+      "locator": "Role reviewed; no positive wicketkeeper designation found",
+      "supports": [],
+      "notes": "Review only; role labels are not canonical negative evidence."
+    },
+    {
+      "sourceId": "sky-sb-styris-profile",
+      "publisher": "Sky Sports",
+      "title": "Scott Styris player profile",
+      "url": "https://www.skysports.com/cricket/player/1926/scott-styris",
+      "accessedDate": "2026-08-29",
+      "locator": "Role reviewed; no positive wicketkeeper designation found",
+      "supports": [],
+      "notes": "Review only; role labels are not canonical negative evidence."
+    },
+    {
+      "sourceId": "dc-rv-patel-profile",
+      "publisher": "Delhi Capitals",
+      "title": "Ripal Patel player profile",
+      "url": "https://www.delhicapitals.in/players/73393-ripal-patel-profile",
+      "accessedDate": "2026-08-29",
+      "locator": "Role reviewed; no positive wicketkeeper designation found",
+      "supports": [],
+      "notes": "Review only; role labels are not canonical negative evidence."
+    },
+    {
+      "sourceId": "cricbuzz-a-mukund-profile",
+      "publisher": "Cricbuzz",
+      "title": "Abhinav Mukund player profile",
+      "url": "https://www.cricbuzz.com/profiles/1720/mukund-c",
+      "accessedDate": "2026-08-29",
+      "locator": "Role reviewed; no positive wicketkeeper designation found",
+      "supports": [],
+      "notes": "Review only; role labels are not canonical negative evidence."
+    },
+    {
+      "sourceId": "cwi-r-powell-profile",
+      "publisher": "Cricket West Indies",
+      "title": "Rovman Powell player profile",
+      "url": "https://www.windiescricket.com/players/rovman-powell-4166/",
+      "accessedDate": "2026-08-29",
+      "locator": "Role reviewed; no positive wicketkeeper designation found",
+      "supports": [],
+      "notes": "Review only; role labels are not canonical negative evidence."
+    },
+    {
+      "sourceId": "cricbuzz-rs-sodhi-profile",
+      "publisher": "Cricbuzz",
+      "title": "Reetinder Sodhi player profile",
+      "url": "https://www.cricbuzz.com/profiles/3948/reetinder-sodhi",
+      "accessedDate": "2026-08-29",
+      "locator": "Role reviewed; no positive wicketkeeper designation found",
+      "supports": [],
+      "notes": "Review only; role labels are not canonical negative evidence."
+    },
+    {
+      "sourceId": "cricketarchive-tm-srivastava-profile",
+      "publisher": "CricketArchive",
+      "title": "Tanmay Srivastava player profile",
+      "url": "https://cricketarchive.com/Archive/Players/15/15483/15483.html",
+      "accessedDate": "2026-08-29",
+      "locator": "Role reviewed; no positive wicketkeeper designation found",
+      "supports": [],
+      "notes": "Review only; role labels are not canonical negative evidence."
+    },
+    {
+      "sourceId": "cricketarchive-sa-asnodkar-profile",
+      "publisher": "CricketArchive",
+      "title": "Swapnil Asnodkar player profile",
+      "url": "https://cricketarchive.com/Archive/Players/11/11923/11923.html",
+      "accessedDate": "2026-08-29",
+      "locator": "Role reviewed; no positive wicketkeeper designation found",
+      "supports": [],
+      "notes": "Review only; role labels are not canonical negative evidence."
+    },
+    {
+      "sourceId": "cricbuzz-rv-gomez-profile",
+      "publisher": "Cricbuzz",
+      "title": "Raiphi Gomez player profile",
+      "url": "https://www.cricbuzz.com/profiles/1862/raiphi-gomez",
+      "accessedDate": "2026-08-29",
+      "locator": "Role reviewed; no positive wicketkeeper designation found",
+      "supports": [],
+      "notes": "Review only; role labels are not canonical negative evidence."
+    },
+    {
+      "sourceId": "cricbuzz-db-ravi-teja-profile",
+      "publisher": "Cricbuzz",
+      "title": "Dwaraka Ravi Teja player profile",
+      "url": "https://www.cricbuzz.com/profiles/1464/ravi-teja",
+      "accessedDate": "2026-08-29",
+      "locator": "Role reviewed; no positive wicketkeeper designation found",
+      "supports": [],
+      "notes": "Review only; role labels are not canonical negative evidence."
+    },
+    {
+      "sourceId": "ipl-mk-lomror-profile",
+      "publisher": "Indian Premier League",
+      "title": "Mahipal Lomror player profile",
+      "url": "https://www.iplt20.com/players/mahipal-lomror/2970",
+      "accessedDate": "2026-08-29",
+      "locator": "Role reviewed; no positive wicketkeeper designation found",
+      "supports": [],
+      "notes": "Review only; role labels are not canonical negative evidence."
+    },
+    {
+      "sourceId": "lsg-himmat-singh-profile",
+      "publisher": "Lucknow Super Giants",
+      "title": "Himmat Singh player profile",
+      "url": "https://www.lucknowsupergiants.in/team/himmat-singh-65152-profile",
+      "accessedDate": "2026-08-29",
+      "locator": "Role reviewed; no positive wicketkeeper designation found",
+      "supports": [],
+      "notes": "Review only; role labels are not canonical negative evidence."
+    },
+    {
+      "sourceId": "dc-m-tiwari-profile",
+      "publisher": "Delhi Capitals",
+      "title": "Madhav Tiwari player profile",
+      "url": "https://www.delhicapitals.in/players/124649-madhav-tiwari-profile",
+      "accessedDate": "2026-08-29",
+      "locator": "Role reviewed; no positive wicketkeeper designation found",
+      "supports": [],
+      "notes": "Review only; role labels are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-gurkeerat-kxip-2017",
+      "publisher": "ESPN",
+      "title": "Kings XI Punjab v Gujarat Lions, IPL 2017 47th match scorecard",
+      "url": "https://www.espn.co.uk/cricket/series/8048/scorecard/1082637/kings-xi-punjab-vs-gujarat-lions-47th-match-ipl",
+      "accessedDate": "2026-08-29",
+      "locator": "Team sheet reviewed; no Gurkeerat Singh wicketkeeping designation found",
+      "supports": [],
+      "notes": "Review only; absence is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-t-stubbs-mi-2022",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Mumbai Indians, IPL 2022 65th match scorecard",
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/1304111/sunrisers-hyderabad-vs-mumbai-indians-65th-match-indian-premier-league-2022",
+      "accessedDate": "2026-08-29",
+      "locator": "Team sheet reviewed; no T Stubbs wicketkeeping designation found",
+      "supports": [],
+      "notes": "Review only; absence is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-r-minz-mi-2026",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Sunrisers Hyderabad, IPL 2026 41st match scorecard",
+      "url": "https://www.espn.com.au/cricket/series/8048/scorecard/1529284/mumbai-indians-vs-sunrisers-hyderabad-41st-match-indian-premier-league-2026",
+      "accessedDate": "2026-08-29",
+      "locator": "Team sheet reviewed; no Robin Minz wicketkeeping designation found",
+      "supports": [],
+      "notes": "Review only; absence is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-anuj-rawat-rr-2021",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Rajasthan Royals, IPL 2021 54th match scorecard",
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/1254106/kolkata-knight-riders-vs-rajasthan-royals-54th-match-ipl",
+      "accessedDate": "2026-08-29",
+      "locator": "Team sheet reviewed; no Anuj Rawat wicketkeeping designation found",
+      "supports": [],
+      "notes": "Review only; absence is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-sn-khan-pbks-2021",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Punjab Kings, IPL 2021 53rd match scorecard",
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/1254094/chennai-super-kings-vs-punjab-kings-53rd-match-indian-premier-league-2021",
+      "accessedDate": "2026-08-29",
+      "locator": "Team sheet reviewed; no Sarfaraz Khan wicketkeeping designation found",
+      "supports": [],
+      "notes": "Review only; absence is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-er-dwivedi-gl-2016",
+      "publisher": "ESPN",
+      "title": "Gujarat Lions v Sunrisers Hyderabad, IPL 2016 Qualifier 2 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/981017/gujarat-lions-vs-sunrisers-hyderabad-qualifier-2-ipl",
+      "accessedDate": "2026-08-29",
+      "locator": "ER Dwivedi's 2016 appearances were reviewed; team sheets designate another wicketkeeper",
+      "supports": [],
+      "notes": "Review only; absence is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ns-naik-kkr-2019",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Kolkata Knight Riders, IPL 2019 10th match scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175365/delhi-capitals-vs-kolkata-knight-riders-10th-match-indian-premier-league-2019",
+      "accessedDate": "2026-08-29",
+      "locator": "Team sheet designates another wicketkeeper; no NS Naik usage found",
+      "supports": [],
+      "notes": "Review only; absence is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ns-naik-kkr-2020",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Mumbai Indians, IPL 2020 5th match scorecard",
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/1216508/kolkata-knight-riders-vs-mumbai-indians-5th-match-indian-premier-league-2020",
+      "accessedDate": "2026-08-29",
+      "locator": "Team sheet designates another wicketkeeper; no NS Naik usage found",
+      "supports": [],
+      "notes": "Review only; absence is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422120",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Punjab Kings, IPL 2024 match 1422120 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422120",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; JM Sharma †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2024-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422122",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Lucknow Super Giants, IPL 2024 match 1422122 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422122",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; KL Rahul (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422124",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Royal Challengers Bengaluru, IPL 2024 match 1422124 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422124",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; Anuj Rawat †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422127",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Delhi Capitals, IPL 2024 match 1422127 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422127",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422128",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Kolkata Knight Riders, IPL 2024 match 1422128 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422128",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Anuj Rawat †; PD Salt †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2024-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422129",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Punjab Kings, IPL 2024 match 1422129 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422129",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422131",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Chennai Super Kings, IPL 2024 match 1422131 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422131",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; MS Dhoni †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422132",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Rajasthan Royals, IPL 2024 match 1422132 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422132",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422133",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Royal Challengers Bengaluru, IPL 2024 match 1422133 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422133",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; Anuj Rawat †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422134",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Delhi Capitals, IPL 2024 match 1422134 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422134",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: PD Salt †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422135",
+      "publisher": "ESPN",
+      "title": "Gujarat Titans v Punjab Kings, IPL 2024 match 1422135 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422135",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422137",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Rajasthan Royals, IPL 2024 match 1422137 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422137",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Did not bat: RM Patidar, KD Karthik †, RJW Topley, MJ Dagar, Mohammed Siraj, Yash Dayal, H Sharma; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422138",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Delhi Capitals, IPL 2024 match 1422138 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422138",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; RR Pant (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2024-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1422139",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Gujarat Titans, IPL 2024 match 1422139 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1422139",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; BR Sharath †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426260",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Chennai Super Kings, IPL 2024 match 1426260 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426260",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: PD Salt †; MS Dhoni †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426261",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Punjab Kings, IPL 2024 match 1426261 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426261",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: H Klaasen †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426262",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Gujarat Titans, IPL 2024 match 1426262 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426262",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; MS Wade †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426263",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Mumbai Indians, IPL 2024 match 1426263 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426263",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426264",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Delhi Capitals, IPL 2024 match 1426264 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426264",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426265",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Rajasthan Royals, IPL 2024 match 1426265 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426265",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426266",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Kolkata Knight Riders, IPL 2024 match 1426266 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426266",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; PD Salt †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426268",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Royal Challengers Bengaluru, IPL 2024 match 1426268 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426268",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: H Klaasen †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426269",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Rajasthan Royals, IPL 2024 match 1426269 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426269",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: PD Salt †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426270",
+      "publisher": "ESPN",
+      "title": "Gujarat Titans v Delhi Capitals, IPL 2024 match 1426270 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426270",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426271",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Punjab Kings, IPL 2024 match 1426271 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426271",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426272",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Lucknow Super Giants, IPL 2024 match 1426272 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426272",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni †; KL Rahul (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426273",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Delhi Capitals, IPL 2024 match 1426273 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426273",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: H Klaasen †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426274",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Royal Challengers Bengaluru, IPL 2024 match 1426274 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426274",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: PD Salt †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426275",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Gujarat Titans, IPL 2024 match 1426275 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426275",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426276",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Rajasthan Royals, IPL 2024 match 1426276 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426276",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426277",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Lucknow Super Giants, IPL 2024 match 1426277 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426277",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni †; KL Rahul (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426278",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Gujarat Titans, IPL 2024 match 1426278 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426278",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426280",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Punjab Kings, IPL 2024 match 1426280 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426280",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: PD Salt †; Did not bat: SM Curran (c), JM Sharma †, AR Sharma, Harpreet Brar, HV Patel, K Rabada, RD Chahar, Arshdeep Singh",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426281",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Mumbai Indians, IPL 2024 match 1426281 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426281",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426282",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Rajasthan Royals, IPL 2024 match 1426282 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426282",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426285",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Kolkata Knight Riders, IPL 2024 match 1426285 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426285",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; PD Salt †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426286",
+      "publisher": "ESPN",
+      "title": "Mumbai Indians v Lucknow Super Giants, IPL 2024 match 1426286 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426286",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; KL Rahul (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426287",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Punjab Kings, IPL 2024 match 1426287 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426287",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni †; Did not bat: JM Sharma †, AR Sharma, Harpreet Brar, RD Chahar, HV Patel, K Rabada, Arshdeep Singh",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426288",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Rajasthan Royals, IPL 2024 match 1426288 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426288",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: H Klaasen †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426289",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Mumbai Indians, IPL 2024 match 1426289 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426289",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: PD Salt †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426291",
+      "publisher": "ESPN",
+      "title": "Chennai Super Kings v Punjab Kings, IPL 2024 match 1426291 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426291",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni †; JM Sharma †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426292",
+      "publisher": "ESPN",
+      "title": "Kolkata Knight Riders v Lucknow Super Giants, IPL 2024 match 1426292 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426292",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: PD Salt †; KL Rahul (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426294",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Rajasthan Royals, IPL 2024 match 1426294 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426294",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426295",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Sunrisers Hyderabad, IPL 2024 match 1426295 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426295",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; Did not bat: K Nitish Kumar Reddy, H Klaasen †, Abdul Samad, Shahbaz Ahmed, Sanvir Singh, PJ Cummins (c), B Kumar, JD Unadkat, V Viyaskanth, T Natarajan",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426296",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Punjab Kings, IPL 2024 match 1426296 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426296",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; JM Bairstow †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426297",
+      "publisher": "ESPN",
+      "title": "Gujarat Titans v Chennai Super Kings, IPL 2024 match 1426297 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426297",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: Did not bat: MS Wade †, R Tewatia, Rashid Khan, Noor Ahmad, UT Yadav, MM Sharma, Kartik Tyagi, S Sandeep Warrier; MS Dhoni †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2024-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426299",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Chennai Super Kings, IPL 2024 match 1426299 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426299",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; Did not bat: MS Dhoni †, SN Thakur, TU Deshpande, Simarjeet Singh, M Theekshana",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426300",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Delhi Capitals, IPL 2024 match 1426300 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426300",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; Abishek Porel †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2024-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426302",
+      "publisher": "ESPN",
+      "title": "Delhi Capitals v Lucknow Super Giants, IPL 2024 match 1426302 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426302",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; Q de Kock †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2024-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426303",
+      "publisher": "ESPN",
+      "title": "Rajasthan Royals v Punjab Kings, IPL 2024 match 1426303 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426303",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; JM Bairstow †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2024-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426305",
+      "publisher": "ESPN",
+      "title": "Lucknow Super Giants v Mumbai Indians, IPL 2024 match 1426305 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426305",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426307",
+      "publisher": "ESPN",
+      "title": "Punjab Kings v Sunrisers Hyderabad, IPL 2024 match 1426307 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426307",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: JM Sharma (c) †; H Klaasen †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426309",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Kolkata Knight Riders, IPL 2024 match 1426309 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426309",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: H Klaasen †; Rahmanullah Gurbaz †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2024-v1. Explicit marked designations support approved positives; other candidate observations are workflow review only and are not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426310",
+      "publisher": "ESPN",
+      "title": "Royal Challengers Bengaluru v Rajasthan Royals, IPL 2024 match 1426310 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426310",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2024-1426311",
+      "publisher": "ESPN",
+      "title": "Sunrisers Hyderabad v Rajasthan Royals, IPL 2024 match 1426311 scorecard",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1426311",
+      "accessedDate": "2026-08-30",
+      "locator": "Rendered scorecard XI keeper designations: H Klaasen †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2024-v1 review evidence only; absence of a candidate marker is not canonical negative evidence."
+    }
   ],
   "capabilityConfirmations": [
-    {"playerId":"622cc511","sourceIds":["espn-u-kaul-kxip-2008"],"reviewStatus":"APPROVED","notes":"Approved capability assertion for U Kaul."},
-    {"playerId":"bafd0398","sourceIds":["ipl-mi-squad"],"reviewStatus":"APPROVED","notes":"Approved capability assertion for Robin Minz."},
-    {"playerId":"c8f5f961","sourceIds":["gt-anuj-rawat-profile"],"reviewStatus":"APPROVED","notes":"Approved capability assertion for Anuj Rawat."},
-    {"playerId":"f088b960","sourceIds":["espn-sn-khan-dc-2023"],"reviewStatus":"APPROVED","notes":"Approved capability assertion for Sarfaraz Khan."},
-    {"playerId":"b274dbbd","sourceIds":["ipl-er-dwivedi-profile"],"reviewStatus":"APPROVED","notes":"Approved capability assertion for Eklavya Dwivedi."},
-    {"playerId":"aedc3b7c","sourceIds":["ipl-ns-naik-profile"],"reviewStatus":"APPROVED","notes":"Approved capability assertion for Nikhil Naik."},
-    {"playerId":"3a02626a","sourceIds":["ipl-ag-paunikar-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"69d03465","sourceIds":["ipl-at-carey-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"ad3b6e95","sourceIds":["dc-abishek-porel-replacement"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"ff1e68fa","sourceIds":["ipl-2025-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"b0c772ee","sourceIds":["ipl-bj-haddin-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"5d1e7582","sourceIds":["ipl-2024-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"272d796e","sourceIds":["ipl-br-dunk-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"c2dd89ea","sourceIds":["ipl-2025-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"2eeb4370","sourceIds":["sky-c-madan-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"f0af99a7","sourceIds":["ipl-2025-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"7050a1e7","sourceIds":["ndtv-db-das-auction-2014"],"reviewStatus":"APPROVED","notes":"Capability-only assertion with medium-high confidence secondary evidence; no season usage inferred."},
-    {"playerId":"df5a6881","sourceIds":["icc-dp-conway-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"f48cf4da","sourceIds":["cricketarchive-dt-patil-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"bf74b130","sourceIds":["ipl-fh-allen-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"9a46c4e5","sourceIds":["ipl-gd-phillips-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"0ed0cdbf","sourceIds":["cricketarchive-h-das-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"ff154ecd","sourceIds":["ipl-2026-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"39086549","sourceIds":["ipl-2025-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"e3851766","sourceIds":["ipl-2025-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"7b679de5","sourceIds":["ipl-2026-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"57ca01b3","sourceIds":["ipl-2024-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"0fa5042b","sourceIds":["nzc-l-ronchi-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"60aa2db3","sourceIds":["icc-lg-pretorius-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"0404d43c","sourceIds":["icc-liton-das-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"f21043a5","sourceIds":["ipl-mdkj-perera-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"710dd98c","sourceIds":["cricbuzz-mn-van-wyk-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"bd54eef5","sourceIds":["ipl-2025-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"eaa90ab4","sourceIds":["cricketarchive-p-dharmani-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"3d284ca3","sourceIds":["ipl-2024-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"ada15e88","sourceIds":["ca-psp-handscomb-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"b63e358a","sourceIds":["ipl-2024-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"0bacade8","sourceIds":["ipl-2025-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"548516a6","sourceIds":["ipl-2026-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"95a2ea61","sourceIds":["ipl-2019-auction-archive","newindianexpress-s-anirudha"],"reviewStatus":"APPROVED","notes":"Capability-only assertion supported by an archived official role entry and independent contemporaneous corroboration; no season usage inferred."},
-    {"playerId":"1fc6ef83","sourceIds":["ipl-2024-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"d7423da1","sourceIds":["ipl-salil-arora-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"25f7b7d6","sourceIds":["ipl-2025-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"f12fe2a1","sourceIds":["ipl-2026-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"75de770f","sourceIds":["icc-t-taibu-retirement"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"5748e866","sourceIds":["ca-td-paine-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"0c94f480","sourceIds":["ipl-2025-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"cf59b3f0","sourceIds":["ipl-2024-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"8ac93ca2","sourceIds":["ipl-p-chopra-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"9e7225b0","sourceIds":["ipl-2025-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"f836b33d","sourceIds":["ipl-2025-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."},
-    {"playerId":"5bdcdb72","sourceIds":["espn-ipl-2011-auction-list"],"reviewStatus":"APPROVED","notes":"Capability-only assertion from contemporaneous archived role-labelled evidence; no season usage inferred."},
-    {"playerId":"35f173a0","sourceIds":["icc-2018-u19-sa-profile"],"reviewStatus":"APPROVED","notes":"Capability-only assertion; no season usage inferred."}
+    {
+      "playerId": "622cc511",
+      "sourceIds": [
+        "espn-u-kaul-kxip-2008"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved capability assertion for U Kaul."
+    },
+    {
+      "playerId": "bafd0398",
+      "sourceIds": [
+        "ipl-mi-squad"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved capability assertion for Robin Minz."
+    },
+    {
+      "playerId": "c8f5f961",
+      "sourceIds": [
+        "gt-anuj-rawat-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved capability assertion for Anuj Rawat."
+    },
+    {
+      "playerId": "f088b960",
+      "sourceIds": [
+        "espn-sn-khan-dc-2023"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved capability assertion for Sarfaraz Khan."
+    },
+    {
+      "playerId": "b274dbbd",
+      "sourceIds": [
+        "ipl-er-dwivedi-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved capability assertion for Eklavya Dwivedi."
+    },
+    {
+      "playerId": "aedc3b7c",
+      "sourceIds": [
+        "ipl-ns-naik-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved capability assertion for Nikhil Naik."
+    },
+    {
+      "playerId": "3a02626a",
+      "sourceIds": [
+        "ipl-ag-paunikar-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "69d03465",
+      "sourceIds": [
+        "ipl-at-carey-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "ad3b6e95",
+      "sourceIds": [
+        "dc-abishek-porel-replacement"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "ff1e68fa",
+      "sourceIds": [
+        "ipl-2025-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "b0c772ee",
+      "sourceIds": [
+        "ipl-bj-haddin-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "5d1e7582",
+      "sourceIds": [
+        "ipl-2024-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "272d796e",
+      "sourceIds": [
+        "ipl-br-dunk-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "c2dd89ea",
+      "sourceIds": [
+        "ipl-2025-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "2eeb4370",
+      "sourceIds": [
+        "sky-c-madan-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "f0af99a7",
+      "sourceIds": [
+        "ipl-2025-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "7050a1e7",
+      "sourceIds": [
+        "ndtv-db-das-auction-2014"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion with medium-high confidence secondary evidence; no season usage inferred."
+    },
+    {
+      "playerId": "df5a6881",
+      "sourceIds": [
+        "icc-dp-conway-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "f48cf4da",
+      "sourceIds": [
+        "cricketarchive-dt-patil-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "bf74b130",
+      "sourceIds": [
+        "ipl-fh-allen-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "9a46c4e5",
+      "sourceIds": [
+        "ipl-gd-phillips-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "0ed0cdbf",
+      "sourceIds": [
+        "cricketarchive-h-das-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "ff154ecd",
+      "sourceIds": [
+        "ipl-2026-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "39086549",
+      "sourceIds": [
+        "ipl-2025-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "e3851766",
+      "sourceIds": [
+        "ipl-2025-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "7b679de5",
+      "sourceIds": [
+        "ipl-2026-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "57ca01b3",
+      "sourceIds": [
+        "ipl-2024-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "0fa5042b",
+      "sourceIds": [
+        "nzc-l-ronchi-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "60aa2db3",
+      "sourceIds": [
+        "icc-lg-pretorius-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "0404d43c",
+      "sourceIds": [
+        "icc-liton-das-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "f21043a5",
+      "sourceIds": [
+        "ipl-mdkj-perera-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "710dd98c",
+      "sourceIds": [
+        "cricbuzz-mn-van-wyk-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "bd54eef5",
+      "sourceIds": [
+        "ipl-2025-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "eaa90ab4",
+      "sourceIds": [
+        "cricketarchive-p-dharmani-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "3d284ca3",
+      "sourceIds": [
+        "ipl-2024-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "ada15e88",
+      "sourceIds": [
+        "ca-psp-handscomb-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "b63e358a",
+      "sourceIds": [
+        "ipl-2024-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "0bacade8",
+      "sourceIds": [
+        "ipl-2025-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "548516a6",
+      "sourceIds": [
+        "ipl-2026-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "95a2ea61",
+      "sourceIds": [
+        "ipl-2019-auction-archive",
+        "newindianexpress-s-anirudha"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion supported by an archived official role entry and independent contemporaneous corroboration; no season usage inferred."
+    },
+    {
+      "playerId": "1fc6ef83",
+      "sourceIds": [
+        "ipl-2024-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "d7423da1",
+      "sourceIds": [
+        "ipl-salil-arora-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "25f7b7d6",
+      "sourceIds": [
+        "ipl-2025-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "f12fe2a1",
+      "sourceIds": [
+        "ipl-2026-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "75de770f",
+      "sourceIds": [
+        "icc-t-taibu-retirement"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "5748e866",
+      "sourceIds": [
+        "ca-td-paine-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "0c94f480",
+      "sourceIds": [
+        "ipl-2025-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "cf59b3f0",
+      "sourceIds": [
+        "ipl-2024-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "8ac93ca2",
+      "sourceIds": [
+        "ipl-p-chopra-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "9e7225b0",
+      "sourceIds": [
+        "ipl-2025-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "f836b33d",
+      "sourceIds": [
+        "ipl-2025-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    },
+    {
+      "playerId": "5bdcdb72",
+      "sourceIds": [
+        "espn-ipl-2011-auction-list"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion from contemporaneous archived role-labelled evidence; no season usage inferred."
+    },
+    {
+      "playerId": "35f173a0",
+      "sourceIds": [
+        "icc-2018-u19-sa-profile"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability-only assertion; no season usage inferred."
+    }
   ],
   "usageConfirmations": [
-    {"playerTeamSeasonId":"pts:541f85c9:ipl-2020:team-sunrisers-hyderabad","sourceIds":["espn-sp-goswami-srh-2020"],"reviewStatus":"APPROVED","notes":"Approved SRH 2020 season-usage assertion for SP Goswami."},
-    {"playerTeamSeasonId":"pts:622cc511:ipl-2008:team-kings-xi-punjab","sourceIds":["espn-u-kaul-kxip-2008"],"reviewStatus":"APPROVED","notes":"Approved KXIP 2008 season-usage assertion for U Kaul."},
-    {"playerTeamSeasonId":"pts:aedc3b7c:ipl-2016:team-kings-xi-punjab","sourceIds":["espn-ns-naik-kxip-2016"],"reviewStatus":"APPROVED","notes":"Approved KXIP 2016 season-usage assertion for NS Naik."}
+    {
+      "playerTeamSeasonId": "pts:0bacade8:ipl-2024:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2024-1426309"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2024 season-usage assertion for Rahmanullah Gurbaz from research batch usage-2024-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:372455c4:ipl-2024:team-lucknow-super-giants",
+      "sourceIds": [
+        "espn-ipl-2024-1426302"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Lucknow Super Giants 2024 season-usage assertion for Q de Kock from research batch usage-2024-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2024-1422128"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2024 season-usage assertion for PD Salt from research batch usage-2024-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
+      "sourceIds": [
+        "espn-ipl-2024-1426297"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Chennai Super Kings 2024 season-usage assertion for MS Dhoni from research batch usage-2024-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:541f85c9:ipl-2020:team-sunrisers-hyderabad",
+      "sourceIds": [
+        "espn-sp-goswami-srh-2020"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved SRH 2020 season-usage assertion for SP Goswami."
+    },
+    {
+      "playerTeamSeasonId": "pts:622cc511:ipl-2008:team-kings-xi-punjab",
+      "sourceIds": [
+        "espn-u-kaul-kxip-2008"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved KXIP 2008 season-usage assertion for U Kaul."
+    },
+    {
+      "playerTeamSeasonId": "pts:752f7486:ipl-2024:team-mumbai-indians",
+      "sourceIds": [
+        "espn-ipl-2024-1422138"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Mumbai Indians 2024 season-usage assertion for Ishan Kishan from research batch usage-2024-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:800d2d97:ipl-2024:team-punjab-kings",
+      "sourceIds": [
+        "espn-ipl-2024-1422120"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Punjab Kings 2024 season-usage assertion for JM Sharma from research batch usage-2024-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:abb83e27:ipl-2024:team-punjab-kings",
+      "sourceIds": [
+        "espn-ipl-2024-1426303"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Punjab Kings 2024 season-usage assertion for JM Bairstow from research batch usage-2024-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+      "sourceIds": [
+        "espn-ipl-2024-1426300"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Capitals 2024 season-usage assertion for Abishek Porel from research batch usage-2024-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:aedc3b7c:ipl-2016:team-kings-xi-punjab",
+      "sourceIds": [
+        "espn-ns-naik-kxip-2016"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved KXIP 2016 season-usage assertion for NS Naik."
+    },
+    {
+      "playerTeamSeasonId": "pts:afa7e784:ipl-2024:team-gujarat-titans",
+      "sourceIds": [
+        "espn-ipl-2024-1426297"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Gujarat Titans 2024 season-usage assertion for MS Wade from research batch usage-2024-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:c8f5f961:ipl-2024:team-royal-challengers-bengaluru",
+      "sourceIds": [
+        "espn-ipl-2024-1422128"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Royal Challengers Bengaluru 2024 season-usage assertion for Anuj Rawat from research batch usage-2024-v1."
+    }
   ],
   "reviewDispositions": [
-    {"scope":"PLAYER_CAPABILITY","subjectId":"40caa465","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["cricbuzz-t-kohli-profile"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"57efa3be","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["sky-sb-styris-profile"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"60500956","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["dc-rv-patel-profile"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"6165bca6","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["cricbuzz-a-mukund-profile"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"650d5e49","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["cwi-r-powell-profile"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"9e6032fa","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["ipl-mi-squad"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"a3ecf01f","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["cricbuzz-rs-sodhi-profile"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"a76d10ba","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["cricketarchive-tm-srivastava-profile"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"ae091d39","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["cricketarchive-sa-asnodkar-profile"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"b2570b38","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["cricbuzz-rv-gomez-profile"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"b720a5d6","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["cricbuzz-db-ravi-teja-profile"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"ba6b2f91","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["ipl-mi-squad"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"da934ee8","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["ipl-mk-lomror-profile"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"ebcfef83","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["lsg-himmat-singh-profile"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_CAPABILITY","subjectId":"fb5f69e4","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["dc-m-tiwari-profile"],"notes":"Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_TEAM_SEASON_USAGE","subjectId":"pts:6eb146d2:ipl-2017:team-kings-xi-punjab","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["espn-gurkeerat-kxip-2017"],"notes":"Gurkeerat Singh 2017 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_TEAM_SEASON_USAGE","subjectId":"pts:85b3fab2:ipl-2022:team-mumbai-indians","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["espn-t-stubbs-mi-2022"],"notes":"T Stubbs 2022 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_TEAM_SEASON_USAGE","subjectId":"pts:bafd0398:ipl-2026:team-mumbai-indians","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["espn-r-minz-mi-2026"],"notes":"Robin Minz 2026 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_TEAM_SEASON_USAGE","subjectId":"pts:c8f5f961:ipl-2021:team-rajasthan-royals","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["espn-anuj-rawat-rr-2021"],"notes":"Anuj Rawat 2021 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_TEAM_SEASON_USAGE","subjectId":"pts:f088b960:ipl-2021:team-punjab-kings","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["espn-sn-khan-pbks-2021"],"notes":"Sarfaraz Khan 2021 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_TEAM_SEASON_USAGE","subjectId":"pts:b274dbbd:ipl-2016:team-gujarat-lions","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["espn-er-dwivedi-gl-2016"],"notes":"ER Dwivedi 2016 appearances were reviewed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_TEAM_SEASON_USAGE","subjectId":"pts:aedc3b7c:ipl-2019:team-kolkata-knight-riders","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["espn-ns-naik-kkr-2019"],"notes":"NS Naik 2019 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."},
-    {"scope":"PLAYER_TEAM_SEASON_USAGE","subjectId":"pts:aedc3b7c:ipl-2020:team-kolkata-knight-riders","status":"CLOSED_UNKNOWN","sourceIdsReviewed":["espn-ns-naik-kkr-2020"],"notes":"NS Naik 2020 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."}
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "40caa465",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "cricbuzz-t-kohli-profile"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "57efa3be",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "sky-sb-styris-profile"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "60500956",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "dc-rv-patel-profile"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "6165bca6",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "cricbuzz-a-mukund-profile"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "650d5e49",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "cwi-r-powell-profile"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "9e6032fa",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "ipl-mi-squad"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "a3ecf01f",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "cricbuzz-rs-sodhi-profile"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "a76d10ba",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "cricketarchive-tm-srivastava-profile"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "ae091d39",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "cricketarchive-sa-asnodkar-profile"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "b2570b38",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "cricbuzz-rv-gomez-profile"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "b720a5d6",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "cricbuzz-db-ravi-teja-profile"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "ba6b2f91",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "ipl-mi-squad"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "da934ee8",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "ipl-mk-lomror-profile"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "ebcfef83",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "lsg-himmat-singh-profile"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_CAPABILITY",
+      "subjectId": "fb5f69e4",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "dc-m-tiwari-profile"
+      ],
+      "notes": "Eligibility-critical capability research completed without positive keeper evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2024-1422120",
+        "espn-ipl-2024-1426264",
+        "espn-ipl-2024-1426270",
+        "espn-ipl-2024-1426278",
+        "espn-ipl-2024-1426281",
+        "espn-ipl-2024-1426285",
+        "espn-ipl-2024-1426294",
+        "espn-ipl-2024-1426300",
+        "espn-ipl-2024-1426302"
+      ],
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Delhi Capitals 2024 appearance for SD Hope using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2024-1422122",
+        "espn-ipl-2024-1422129",
+        "espn-ipl-2024-1422133",
+        "espn-ipl-2024-1422139",
+        "espn-ipl-2024-1426264",
+        "espn-ipl-2024-1426266",
+        "espn-ipl-2024-1426272",
+        "espn-ipl-2024-1426277",
+        "espn-ipl-2024-1426282",
+        "espn-ipl-2024-1426286",
+        "espn-ipl-2024-1426292",
+        "espn-ipl-2024-1426295",
+        "espn-ipl-2024-1426302",
+        "espn-ipl-2024-1426305"
+      ],
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Lucknow Super Giants 2024 appearance for N Pooran using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:57ca01b3:ipl-2024:team-delhi-capitals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2024-1422138",
+        "espn-ipl-2024-1426281",
+        "espn-ipl-2024-1426285",
+        "espn-ipl-2024-1426300"
+      ],
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Delhi Capitals 2024 appearance for Kumar Kushagra using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:6eb146d2:ipl-2017:team-kings-xi-punjab",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-gurkeerat-kxip-2017"
+      ],
+      "notes": "Gurkeerat Singh 2017 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:85b3fab2:ipl-2022:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-t-stubbs-mi-2022"
+      ],
+      "notes": "T Stubbs 2022 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2024-1422120",
+        "espn-ipl-2024-1422127",
+        "espn-ipl-2024-1422131",
+        "espn-ipl-2024-1422134",
+        "espn-ipl-2024-1422138",
+        "espn-ipl-2024-1426264",
+        "espn-ipl-2024-1426270",
+        "espn-ipl-2024-1426273",
+        "espn-ipl-2024-1426278",
+        "espn-ipl-2024-1426281",
+        "espn-ipl-2024-1426285",
+        "espn-ipl-2024-1426294",
+        "espn-ipl-2024-1426300",
+        "espn-ipl-2024-1426302"
+      ],
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Delhi Capitals 2024 appearance for T Stubbs using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:9418198b:ipl-2024:team-punjab-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2024-1422120",
+        "espn-ipl-2024-1422124",
+        "espn-ipl-2024-1422129",
+        "espn-ipl-2024-1422135",
+        "espn-ipl-2024-1426261",
+        "espn-ipl-2024-1426265",
+        "espn-ipl-2024-1426271",
+        "espn-ipl-2024-1426275",
+        "espn-ipl-2024-1426280",
+        "espn-ipl-2024-1426287",
+        "espn-ipl-2024-1426291",
+        "espn-ipl-2024-1426296",
+        "espn-ipl-2024-1426303",
+        "espn-ipl-2024-1426307"
+      ],
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Punjab Kings 2024 appearance for P Simran Singh using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:99b75528:ipl-2024:team-rajasthan-royals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2024-1422122",
+        "espn-ipl-2024-1422127",
+        "espn-ipl-2024-1422132",
+        "espn-ipl-2024-1422137",
+        "espn-ipl-2024-1426262",
+        "espn-ipl-2024-1426269",
+        "espn-ipl-2024-1426276",
+        "espn-ipl-2024-1426282",
+        "espn-ipl-2024-1426288",
+        "espn-ipl-2024-1426294",
+        "espn-ipl-2024-1426299"
+      ],
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Rajasthan Royals 2024 appearance for JC Buttler using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:9e7225b0:ipl-2024:team-royal-challengers-bengaluru",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2024-1422137",
+        "espn-ipl-2024-1426263",
+        "espn-ipl-2024-1426268"
+      ],
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Royal Challengers Bengaluru 2024 appearance for Saurav Chauhan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:aedc3b7c:ipl-2019:team-kolkata-knight-riders",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ns-naik-kkr-2019"
+      ],
+      "notes": "NS Naik 2019 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:aedc3b7c:ipl-2020:team-kolkata-knight-riders",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ns-naik-kkr-2020"
+      ],
+      "notes": "NS Naik 2020 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:b274dbbd:ipl-2016:team-gujarat-lions",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-er-dwivedi-gl-2016"
+      ],
+      "notes": "ER Dwivedi 2016 appearances were reviewed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:b63e358a:ipl-2024:team-delhi-capitals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2024-1422120",
+        "espn-ipl-2024-1422127"
+      ],
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Delhi Capitals 2024 appearance for RK Bhui using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:bafd0398:ipl-2026:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-r-minz-mi-2026"
+      ],
+      "notes": "Robin Minz 2026 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:bcf325d2:ipl-2024:team-rajasthan-royals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2024-1422122",
+        "espn-ipl-2024-1422127",
+        "espn-ipl-2024-1422132",
+        "espn-ipl-2024-1422137",
+        "espn-ipl-2024-1426262",
+        "espn-ipl-2024-1426265",
+        "espn-ipl-2024-1426269",
+        "espn-ipl-2024-1426276",
+        "espn-ipl-2024-1426282",
+        "espn-ipl-2024-1426288",
+        "espn-ipl-2024-1426299",
+        "espn-ipl-2024-1426303",
+        "espn-ipl-2024-1426310",
+        "espn-ipl-2024-1426311"
+      ],
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Rajasthan Royals 2024 appearance for Dhruv Jurel using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:c8f5f961:ipl-2021:team-rajasthan-royals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-anuj-rawat-rr-2021"
+      ],
+      "notes": "Anuj Rawat 2021 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2024-1422128",
+        "espn-ipl-2024-1422134",
+        "espn-ipl-2024-1426260",
+        "espn-ipl-2024-1426266",
+        "espn-ipl-2024-1426269",
+        "espn-ipl-2024-1426274",
+        "espn-ipl-2024-1426280",
+        "espn-ipl-2024-1426285",
+        "espn-ipl-2024-1426289",
+        "espn-ipl-2024-1426292"
+      ],
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Kolkata Knight Riders 2024 appearance for A Raghuvanshi using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:f088b960:ipl-2021:team-punjab-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-sn-khan-pbks-2021"
+      ],
+      "notes": "Sarfaraz Khan 2021 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:f0af99a7:ipl-2024:team-rajasthan-royals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2024-1426294",
+        "espn-ipl-2024-1426303"
+      ],
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Rajasthan Royals 2024 appearance for D Ferreira using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:f836b33d:ipl-2024:team-rajasthan-royals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2024-1426303",
+        "espn-ipl-2024-1426310",
+        "espn-ipl-2024-1426311"
+      ],
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Rajasthan Royals 2024 appearance for T Kohler-Cadmore using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    }
   ]
 }

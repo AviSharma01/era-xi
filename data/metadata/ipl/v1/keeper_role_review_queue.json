@@ -168,6 +168,72 @@
   ],
   "closedSeasonUsageItems": [
     {
+      "canonicalDisplayName": "SD Hope",
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Delhi Capitals 2024 appearance for SD Hope using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "1fc6ef83",
+      "playerTeamSeasonId": "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+      "reviewId": "usage:pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2024-1422120",
+        "manual:espn-ipl-2024-1426264",
+        "manual:espn-ipl-2024-1426270",
+        "manual:espn-ipl-2024-1426278",
+        "manual:espn-ipl-2024-1426281",
+        "manual:espn-ipl-2024-1426285",
+        "manual:espn-ipl-2024-1426294",
+        "manual:espn-ipl-2024-1426300",
+        "manual:espn-ipl-2024-1426302"
+      ],
+      "seasonId": "ipl-2024",
+      "teamId": "team-delhi-capitals"
+    },
+    {
+      "canonicalDisplayName": "N Pooran",
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Lucknow Super Giants 2024 appearance for N Pooran using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "3241e3fd",
+      "playerTeamSeasonId": "pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
+      "reviewId": "usage:pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2024-1422122",
+        "manual:espn-ipl-2024-1422129",
+        "manual:espn-ipl-2024-1422133",
+        "manual:espn-ipl-2024-1422139",
+        "manual:espn-ipl-2024-1426264",
+        "manual:espn-ipl-2024-1426266",
+        "manual:espn-ipl-2024-1426272",
+        "manual:espn-ipl-2024-1426277",
+        "manual:espn-ipl-2024-1426282",
+        "manual:espn-ipl-2024-1426286",
+        "manual:espn-ipl-2024-1426292",
+        "manual:espn-ipl-2024-1426295",
+        "manual:espn-ipl-2024-1426302",
+        "manual:espn-ipl-2024-1426305"
+      ],
+      "seasonId": "ipl-2024",
+      "teamId": "team-lucknow-super-giants"
+    },
+    {
+      "canonicalDisplayName": "Kumar Kushagra",
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Delhi Capitals 2024 appearance for Kumar Kushagra using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "57ca01b3",
+      "playerTeamSeasonId": "pts:57ca01b3:ipl-2024:team-delhi-capitals",
+      "reviewId": "usage:pts:57ca01b3:ipl-2024:team-delhi-capitals",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2024-1422138",
+        "manual:espn-ipl-2024-1426281",
+        "manual:espn-ipl-2024-1426285",
+        "manual:espn-ipl-2024-1426300"
+      ],
+      "seasonId": "ipl-2024",
+      "teamId": "team-delhi-capitals"
+    },
+    {
       "canonicalDisplayName": "Gurkeerat Singh",
       "notes": "Gurkeerat Singh 2017 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN.",
       "playerId": "6eb146d2",
@@ -194,6 +260,100 @@
       ],
       "seasonId": "ipl-2022",
       "teamId": "team-mumbai-indians"
+    },
+    {
+      "canonicalDisplayName": "T Stubbs",
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Delhi Capitals 2024 appearance for T Stubbs using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "85b3fab2",
+      "playerTeamSeasonId": "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+      "reviewId": "usage:pts:85b3fab2:ipl-2024:team-delhi-capitals",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2024-1422120",
+        "manual:espn-ipl-2024-1422127",
+        "manual:espn-ipl-2024-1422131",
+        "manual:espn-ipl-2024-1422134",
+        "manual:espn-ipl-2024-1422138",
+        "manual:espn-ipl-2024-1426264",
+        "manual:espn-ipl-2024-1426270",
+        "manual:espn-ipl-2024-1426273",
+        "manual:espn-ipl-2024-1426278",
+        "manual:espn-ipl-2024-1426281",
+        "manual:espn-ipl-2024-1426285",
+        "manual:espn-ipl-2024-1426294",
+        "manual:espn-ipl-2024-1426300",
+        "manual:espn-ipl-2024-1426302"
+      ],
+      "seasonId": "ipl-2024",
+      "teamId": "team-delhi-capitals"
+    },
+    {
+      "canonicalDisplayName": "P Simran Singh",
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Punjab Kings 2024 appearance for P Simran Singh using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "9418198b",
+      "playerTeamSeasonId": "pts:9418198b:ipl-2024:team-punjab-kings",
+      "reviewId": "usage:pts:9418198b:ipl-2024:team-punjab-kings",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2024-1422120",
+        "manual:espn-ipl-2024-1422124",
+        "manual:espn-ipl-2024-1422129",
+        "manual:espn-ipl-2024-1422135",
+        "manual:espn-ipl-2024-1426261",
+        "manual:espn-ipl-2024-1426265",
+        "manual:espn-ipl-2024-1426271",
+        "manual:espn-ipl-2024-1426275",
+        "manual:espn-ipl-2024-1426280",
+        "manual:espn-ipl-2024-1426287",
+        "manual:espn-ipl-2024-1426291",
+        "manual:espn-ipl-2024-1426296",
+        "manual:espn-ipl-2024-1426303",
+        "manual:espn-ipl-2024-1426307"
+      ],
+      "seasonId": "ipl-2024",
+      "teamId": "team-punjab-kings"
+    },
+    {
+      "canonicalDisplayName": "JC Buttler",
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Rajasthan Royals 2024 appearance for JC Buttler using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "99b75528",
+      "playerTeamSeasonId": "pts:99b75528:ipl-2024:team-rajasthan-royals",
+      "reviewId": "usage:pts:99b75528:ipl-2024:team-rajasthan-royals",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2024-1422122",
+        "manual:espn-ipl-2024-1422127",
+        "manual:espn-ipl-2024-1422132",
+        "manual:espn-ipl-2024-1422137",
+        "manual:espn-ipl-2024-1426262",
+        "manual:espn-ipl-2024-1426269",
+        "manual:espn-ipl-2024-1426276",
+        "manual:espn-ipl-2024-1426282",
+        "manual:espn-ipl-2024-1426288",
+        "manual:espn-ipl-2024-1426294",
+        "manual:espn-ipl-2024-1426299"
+      ],
+      "seasonId": "ipl-2024",
+      "teamId": "team-rajasthan-royals"
+    },
+    {
+      "canonicalDisplayName": "Saurav Chauhan",
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Royal Challengers Bengaluru 2024 appearance for Saurav Chauhan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "9e7225b0",
+      "playerTeamSeasonId": "pts:9e7225b0:ipl-2024:team-royal-challengers-bengaluru",
+      "reviewId": "usage:pts:9e7225b0:ipl-2024:team-royal-challengers-bengaluru",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2024-1422137",
+        "manual:espn-ipl-2024-1426263",
+        "manual:espn-ipl-2024-1426268"
+      ],
+      "seasonId": "ipl-2024",
+      "teamId": "team-royal-challengers-bengaluru"
     },
     {
       "canonicalDisplayName": "NS Naik",
@@ -238,6 +398,21 @@
       "teamId": "team-gujarat-lions"
     },
     {
+      "canonicalDisplayName": "RK Bhui",
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Delhi Capitals 2024 appearance for RK Bhui using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "b63e358a",
+      "playerTeamSeasonId": "pts:b63e358a:ipl-2024:team-delhi-capitals",
+      "reviewId": "usage:pts:b63e358a:ipl-2024:team-delhi-capitals",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2024-1422120",
+        "manual:espn-ipl-2024-1422127"
+      ],
+      "seasonId": "ipl-2024",
+      "teamId": "team-delhi-capitals"
+    },
+    {
       "canonicalDisplayName": "R Minz",
       "notes": "Robin Minz 2026 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN.",
       "playerId": "bafd0398",
@@ -250,6 +425,33 @@
       ],
       "seasonId": "ipl-2026",
       "teamId": "team-mumbai-indians"
+    },
+    {
+      "canonicalDisplayName": "Dhruv Jurel",
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Rajasthan Royals 2024 appearance for Dhruv Jurel using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "bcf325d2",
+      "playerTeamSeasonId": "pts:bcf325d2:ipl-2024:team-rajasthan-royals",
+      "reviewId": "usage:pts:bcf325d2:ipl-2024:team-rajasthan-royals",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2024-1422122",
+        "manual:espn-ipl-2024-1422127",
+        "manual:espn-ipl-2024-1422132",
+        "manual:espn-ipl-2024-1422137",
+        "manual:espn-ipl-2024-1426262",
+        "manual:espn-ipl-2024-1426265",
+        "manual:espn-ipl-2024-1426269",
+        "manual:espn-ipl-2024-1426276",
+        "manual:espn-ipl-2024-1426282",
+        "manual:espn-ipl-2024-1426288",
+        "manual:espn-ipl-2024-1426299",
+        "manual:espn-ipl-2024-1426303",
+        "manual:espn-ipl-2024-1426310",
+        "manual:espn-ipl-2024-1426311"
+      ],
+      "seasonId": "ipl-2024",
+      "teamId": "team-rajasthan-royals"
     },
     {
       "canonicalDisplayName": "Anuj Rawat",
@@ -266,6 +468,29 @@
       "teamId": "team-rajasthan-royals"
     },
     {
+      "canonicalDisplayName": "A Raghuvanshi",
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Kolkata Knight Riders 2024 appearance for A Raghuvanshi using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "d7017798",
+      "playerTeamSeasonId": "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+      "reviewId": "usage:pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2024-1422128",
+        "manual:espn-ipl-2024-1422134",
+        "manual:espn-ipl-2024-1426260",
+        "manual:espn-ipl-2024-1426266",
+        "manual:espn-ipl-2024-1426269",
+        "manual:espn-ipl-2024-1426274",
+        "manual:espn-ipl-2024-1426280",
+        "manual:espn-ipl-2024-1426285",
+        "manual:espn-ipl-2024-1426289",
+        "manual:espn-ipl-2024-1426292"
+      ],
+      "seasonId": "ipl-2024",
+      "teamId": "team-kolkata-knight-riders"
+    },
+    {
       "canonicalDisplayName": "SN Khan",
       "notes": "Sarfaraz Khan 2021 research completed without positive wicketkeeping usage evidence; canonical status remains UNKNOWN.",
       "playerId": "f088b960",
@@ -278,6 +503,37 @@
       ],
       "seasonId": "ipl-2021",
       "teamId": "team-punjab-kings"
+    },
+    {
+      "canonicalDisplayName": "D Ferreira",
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Rajasthan Royals 2024 appearance for D Ferreira using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "f0af99a7",
+      "playerTeamSeasonId": "pts:f0af99a7:ipl-2024:team-rajasthan-royals",
+      "reviewId": "usage:pts:f0af99a7:ipl-2024:team-rajasthan-royals",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2024-1426294",
+        "manual:espn-ipl-2024-1426303"
+      ],
+      "seasonId": "ipl-2024",
+      "teamId": "team-rajasthan-royals"
+    },
+    {
+      "canonicalDisplayName": "T Kohler-Cadmore",
+      "notes": "Research batch usage-2024-v1 reviewed every canonical official Rajasthan Royals 2024 appearance for T Kohler-Cadmore using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "f836b33d",
+      "playerTeamSeasonId": "pts:f836b33d:ipl-2024:team-rajasthan-royals",
+      "reviewId": "usage:pts:f836b33d:ipl-2024:team-rajasthan-royals",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2024-1426303",
+        "manual:espn-ipl-2024-1426310",
+        "manual:espn-ipl-2024-1426311"
+      ],
+      "seasonId": "ipl-2024",
+      "teamId": "team-rajasthan-royals"
     }
   ],
   "legacyCapabilityCandidateItems": [],
@@ -347,21 +603,6 @@
       "reviewStatus": "PENDING",
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2023",
-      "teamId": "team-kolkata-knight-riders"
-    },
-    {
-      "battingBalls": 46,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "Rahmanullah Gurbaz",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 2,
-      "overlapsEligibilityCritical": false,
-      "playerId": "0bacade8",
-      "playerTeamSeasonId": "pts:0bacade8:ipl-2024:team-kolkata-knight-riders",
-      "reviewId": "usage:pts:0bacade8:ipl-2024:team-kolkata-knight-riders",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
       "teamId": "team-kolkata-knight-riders"
     },
     {
@@ -560,21 +801,6 @@
       "teamId": "team-chennai-super-kings"
     },
     {
-      "battingBalls": 122,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "SD Hope",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 9,
-      "overlapsEligibilityCritical": false,
-      "playerId": "1fc6ef83",
-      "playerTeamSeasonId": "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
-      "reviewId": "usage:pts:1fc6ef83:ipl-2024:team-delhi-capitals",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-delhi-capitals"
-    },
-    {
       "battingBalls": 10,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "H Klaasen",
@@ -740,21 +966,6 @@
       "teamId": "team-punjab-kings"
     },
     {
-      "battingBalls": 280,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "N Pooran",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 14,
-      "overlapsEligibilityCritical": false,
-      "playerId": "3241e3fd",
-      "playerTeamSeasonId": "pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
-      "reviewId": "usage:pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-lucknow-super-giants"
-    },
-    {
       "battingBalls": 267,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "N Pooran",
@@ -815,21 +1026,6 @@
       "teamId": "team-delhi-daredevils"
     },
     {
-      "battingBalls": 186,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "Q de Kock",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 11,
-      "overlapsEligibilityCritical": false,
-      "playerId": "372455c4",
-      "playerTeamSeasonId": "pts:372455c4:ipl-2024:team-lucknow-super-giants",
-      "reviewId": "usage:pts:372455c4:ipl-2024:team-lucknow-super-giants",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-lucknow-super-giants"
-    },
-    {
       "battingBalls": 117,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "Q de Kock",
@@ -888,21 +1084,6 @@
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2023",
       "teamId": "team-delhi-capitals"
-    },
-    {
-      "battingBalls": 239,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "PD Salt",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 12,
-      "overlapsEligibilityCritical": false,
-      "playerId": "3d284ca3",
-      "playerTeamSeasonId": "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
-      "reviewId": "usage:pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-kolkata-knight-riders"
     },
     {
       "battingBalls": 229,
@@ -1010,21 +1191,6 @@
       "teamId": "team-chennai-super-kings"
     },
     {
-      "battingBalls": 73,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "MS Dhoni",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 14,
-      "overlapsEligibilityCritical": false,
-      "playerId": "4a8a2e3b",
-      "playerTeamSeasonId": "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
-      "reviewId": "usage:pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-chennai-super-kings"
-    },
-    {
       "battingBalls": 60,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "SP Goswami",
@@ -1068,21 +1234,6 @@
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2011",
       "teamId": "team-pune-warriors"
-    },
-    {
-      "battingBalls": 7,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "Kumar Kushagra",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 4,
-      "overlapsEligibilityCritical": false,
-      "playerId": "57ca01b3",
-      "playerTeamSeasonId": "pts:57ca01b3:ipl-2024:team-delhi-capitals",
-      "reviewId": "usage:pts:57ca01b3:ipl-2024:team-delhi-capitals",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-delhi-capitals"
     },
     {
       "battingBalls": 178,
@@ -1685,21 +1836,6 @@
       "teamId": "team-mumbai-indians"
     },
     {
-      "battingBalls": 215,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "Ishan Kishan",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 14,
-      "overlapsEligibilityCritical": false,
-      "playerId": "752f7486",
-      "playerTeamSeasonId": "pts:752f7486:ipl-2024:team-mumbai-indians",
-      "reviewId": "usage:pts:752f7486:ipl-2024:team-mumbai-indians",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-mumbai-indians"
-    },
-    {
       "battingBalls": 232,
       "bowlingLegalBalls": 1,
       "canonicalDisplayName": "Ishan Kishan",
@@ -1758,21 +1894,6 @@
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2011",
       "teamId": "team-royal-challengers-bangalore"
-    },
-    {
-      "battingBalls": 142,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "JM Sharma",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 14,
-      "overlapsEligibilityCritical": false,
-      "playerId": "800d2d97",
-      "playerTeamSeasonId": "pts:800d2d97:ipl-2024:team-punjab-kings",
-      "reviewId": "usage:pts:800d2d97:ipl-2024:team-punjab-kings",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-punjab-kings"
     },
     {
       "battingBalls": 84,
@@ -1848,21 +1969,6 @@
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2023",
       "teamId": "team-mumbai-indians"
-    },
-    {
-      "battingBalls": 198,
-      "bowlingLegalBalls": 12,
-      "canonicalDisplayName": "T Stubbs",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 14,
-      "overlapsEligibilityCritical": false,
-      "playerId": "85b3fab2",
-      "playerTeamSeasonId": "pts:85b3fab2:ipl-2024:team-delhi-capitals",
-      "reviewId": "usage:pts:85b3fab2:ipl-2024:team-delhi-capitals",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-delhi-capitals"
     },
     {
       "battingBalls": 216,
@@ -2027,21 +2133,6 @@
       "reviewStatus": "PENDING",
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2023",
-      "teamId": "team-punjab-kings"
-    },
-    {
-      "battingBalls": 213,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "P Simran Singh",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 14,
-      "overlapsEligibilityCritical": false,
-      "playerId": "9418198b",
-      "playerTeamSeasonId": "pts:9418198b:ipl-2024:team-punjab-kings",
-      "reviewId": "usage:pts:9418198b:ipl-2024:team-punjab-kings",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
       "teamId": "team-punjab-kings"
     },
     {
@@ -2210,21 +2301,6 @@
       "teamId": "team-rajasthan-royals"
     },
     {
-      "battingBalls": 255,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "JC Buttler",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 11,
-      "overlapsEligibilityCritical": false,
-      "playerId": "99b75528",
-      "playerTeamSeasonId": "pts:99b75528:ipl-2024:team-rajasthan-royals",
-      "reviewId": "usage:pts:99b75528:ipl-2024:team-rajasthan-royals",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-rajasthan-royals"
-    },
-    {
       "battingBalls": 56,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "KM Jadhav",
@@ -2390,21 +2466,6 @@
       "teamId": "team-gujarat-titans"
     },
     {
-      "battingBalls": 15,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "Saurav Chauhan",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 3,
-      "overlapsEligibilityCritical": false,
-      "playerId": "9e7225b0",
-      "playerTeamSeasonId": "pts:9e7225b0:ipl-2024:team-royal-challengers-bengaluru",
-      "reviewId": "usage:pts:9e7225b0:ipl-2024:team-royal-challengers-bengaluru",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-royal-challengers-bengaluru"
-    },
-    {
       "battingBalls": 178,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "SV Samson",
@@ -2480,21 +2541,6 @@
       "teamId": "team-punjab-kings"
     },
     {
-      "battingBalls": 195,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "JM Bairstow",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 11,
-      "overlapsEligibilityCritical": false,
-      "playerId": "abb83e27",
-      "playerTeamSeasonId": "pts:abb83e27:ipl-2024:team-punjab-kings",
-      "reviewId": "usage:pts:abb83e27:ipl-2024:team-punjab-kings",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-punjab-kings"
-    },
-    {
       "battingBalls": 46,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "JM Bairstow",
@@ -2537,21 +2583,6 @@
       "reviewStatus": "PENDING",
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2023",
-      "teamId": "team-delhi-capitals"
-    },
-    {
-      "battingBalls": 205,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "Abishek Porel",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 14,
-      "overlapsEligibilityCritical": false,
-      "playerId": "ad3b6e95",
-      "playerTeamSeasonId": "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
-      "reviewId": "usage:pts:ad3b6e95:ipl-2024:team-delhi-capitals",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
       "teamId": "team-delhi-capitals"
     },
     {
@@ -2613,21 +2644,6 @@
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2011",
       "teamId": "team-delhi-daredevils"
-    },
-    {
-      "battingBalls": 6,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "MS Wade",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 2,
-      "overlapsEligibilityCritical": false,
-      "playerId": "afa7e784",
-      "playerTeamSeasonId": "pts:afa7e784:ipl-2024:team-gujarat-titans",
-      "reviewId": "usage:pts:afa7e784:ipl-2024:team-gujarat-titans",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-gujarat-titans"
     },
     {
       "battingBalls": 16,
@@ -2810,21 +2826,6 @@
       "teamId": "team-royal-challengers-bangalore"
     },
     {
-      "battingBalls": 9,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "RK Bhui",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 2,
-      "overlapsEligibilityCritical": false,
-      "playerId": "b63e358a",
-      "playerTeamSeasonId": "pts:b63e358a:ipl-2024:team-delhi-capitals",
-      "reviewId": "usage:pts:b63e358a:ipl-2024:team-delhi-capitals",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-delhi-capitals"
-    },
-    {
       "battingBalls": 92,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "BB McCullum",
@@ -2987,21 +2988,6 @@
       "reviewStatus": "PENDING",
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2023",
-      "teamId": "team-rajasthan-royals"
-    },
-    {
-      "battingBalls": 141,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "Dhruv Jurel",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 14,
-      "overlapsEligibilityCritical": false,
-      "playerId": "bcf325d2",
-      "playerTeamSeasonId": "pts:bcf325d2:ipl-2024:team-rajasthan-royals",
-      "reviewId": "usage:pts:bcf325d2:ipl-2024:team-rajasthan-royals",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
       "teamId": "team-rajasthan-royals"
     },
     {
@@ -3380,21 +3366,6 @@
       "teamId": "team-royal-challengers-bangalore"
     },
     {
-      "battingBalls": 77,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "Anuj Rawat",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 5,
-      "overlapsEligibilityCritical": false,
-      "playerId": "c8f5f961",
-      "playerTeamSeasonId": "pts:c8f5f961:ipl-2024:team-royal-challengers-bengaluru",
-      "reviewId": "usage:pts:c8f5f961:ipl-2024:team-royal-challengers-bengaluru",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-royal-challengers-bengaluru"
-    },
-    {
       "battingBalls": 32,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "Urvil Patel",
@@ -3423,21 +3394,6 @@
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2026",
       "teamId": "team-chennai-super-kings"
-    },
-    {
-      "battingBalls": 105,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "A Raghuvanshi",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 10,
-      "overlapsEligibilityCritical": false,
-      "playerId": "d7017798",
-      "playerTeamSeasonId": "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
-      "reviewId": "usage:pts:d7017798:ipl-2024:team-kolkata-knight-riders",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-kolkata-knight-riders"
     },
     {
       "battingBalls": 215,
@@ -3665,21 +3621,6 @@
       "teamId": "team-chennai-super-kings"
     },
     {
-      "battingBalls": 11,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "D Ferreira",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 2,
-      "overlapsEligibilityCritical": false,
-      "playerId": "f0af99a7",
-      "playerTeamSeasonId": "pts:f0af99a7:ipl-2024:team-rajasthan-royals",
-      "reviewId": "usage:pts:f0af99a7:ipl-2024:team-rajasthan-royals",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-rajasthan-royals"
-    },
-    {
       "battingBalls": 177,
       "bowlingLegalBalls": 18,
       "canonicalDisplayName": "D Ferreira",
@@ -3768,21 +3709,6 @@
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2008",
       "teamId": "team-royal-challengers-bangalore"
-    },
-    {
-      "battingBalls": 54,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "T Kohler-Cadmore",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 3,
-      "overlapsEligibilityCritical": false,
-      "playerId": "f836b33d",
-      "playerTeamSeasonId": "pts:f836b33d:ipl-2024:team-rajasthan-royals",
-      "reviewId": "usage:pts:f836b33d:ipl-2024:team-rajasthan-royals",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2024",
-      "teamId": "team-rajasthan-royals"
     },
     {
       "battingBalls": 41,
@@ -3877,11 +3803,11 @@
   ],
   "summary": {
     "closedCapabilityReviews": 15,
-    "closedSeasonUsageReviews": 8,
-    "currentlyG2EligibleUsageReviews": 239,
+    "closedSeasonUsageReviews": 20,
+    "currentlyG2EligibleUsageReviews": 217,
     "eligibilityCriticalOverlap": 0,
     "legacyCapabilityCandidates": 0,
     "positiveDiscoveryComplete": true,
-    "seasonUsageReviews": 239
+    "seasonUsageReviews": 217
   }
 }
