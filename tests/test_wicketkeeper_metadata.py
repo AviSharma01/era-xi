@@ -73,10 +73,10 @@ class WicketkeeperMetadataIntegrationTests(unittest.TestCase):
         self.assertEqual(self.report["status"], "passed")
         self.assertEqual(self.report["counts"]["stumpingEvents"], 388)
         self.assertEqual(self.report["counts"]["capabilityPlayers"], 104)
-        self.assertEqual(self.report["counts"]["confirmedUsageProfiles"], 249)
+        self.assertEqual(self.report["counts"]["confirmedUsageProfiles"], 257)
         self.assertEqual(self.report["counts"]["automaticallyConfirmedCapabilityPlayers"], 49)
         self.assertEqual(self.report["counts"]["automaticallyConfirmedUsageProfiles"], 166)
-        self.assertEqual(self.report["counts"]["confirmedUsageWithAtLeastTwoOfficialAppearances"], 246)
+        self.assertEqual(self.report["counts"]["confirmedUsageWithAtLeastTwoOfficialAppearances"], 254)
         self.assertEqual(self.report["counts"]["confirmedUsageBelowTwoOfficialAppearances"], 3)
         self.assertEqual(self.report["counts"]["substituteStumpingEvents"], 1)
         self.assertTrue(all(row["matches"] for row in self.report["baselineComparisons"]))
@@ -121,7 +121,7 @@ class WicketkeeperMetadataIntegrationTests(unittest.TestCase):
             row["playerId"] for row in manual["capabilityConfirmations"]
         }))
         self.assertTrue(all(capabilities[player_id]["status"] == "CONFIRMED" for player_id in capability_freeze_additions))
-        self.assertEqual(len(manual["usageConfirmations"]), 83)
+        self.assertEqual(len(manual["usageConfirmations"]), 91)
         for player_id in {"1399b39c", "6c882e9a"}:
             self.assertEqual(capabilities[player_id]["status"], "CONFIRMED")
             self.assertIn(player_id, {
@@ -803,6 +803,129 @@ class WicketkeeperMetadataIntegrationTests(unittest.TestCase):
         }
         self.assertEqual(recovered_match_ids, {"597998", "733999", "734011", "829705", "829799"})
 
+    def test_2011_2012_research_ledgers_and_population_are_exact(self) -> None:
+        expected = {
+            "2011": {"scope": 13, "positives": 5, "unknowns": 8, "sources": 67},
+            "2012": {"scope": 10, "positives": 3, "unknowns": 7, "sources": 58},
+        }
+        positive_ids = {
+            "pts:3a02626a:ipl-2011:team-rajasthan-royals",
+            "pts:5748e866:ipl-2011:team-pune-warriors",
+            "pts:7daedf2f:ipl-2011:team-royal-challengers-bangalore",
+            "pts:890946a0:ipl-2011:team-delhi-daredevils",
+            "pts:f3cb53a1:ipl-2011:team-kolkata-knight-riders",
+            "pts:063b3673:ipl-2012:team-rajasthan-royals",
+            "pts:2b6e6dec:ipl-2012:team-kings-xi-punjab",
+            "pts:6b71e6cf:ipl-2012:team-deccan-chargers",
+        }
+        closed_ids = {
+            "pts:0c94f480:ipl-2011:team-delhi-daredevils",
+            "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore",
+            "pts:95a2ea61:ipl-2011:team-chennai-super-kings",
+            "pts:99d63244:ipl-2011:team-kochi-tuskers-kerala",
+            "pts:afa7e784:ipl-2011:team-delhi-daredevils",
+            "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala",
+            "pts:c03f1114:ipl-2011:team-kings-xi-punjab",
+            "pts:fe11caa6:ipl-2011:team-chennai-super-kings",
+            "pts:0c94f480:ipl-2012:team-delhi-daredevils",
+            "pts:5bdcdb72:ipl-2012:team-royal-challengers-bangalore",
+            "pts:6eb146d2:ipl-2012:team-kings-xi-punjab",
+            "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders",
+            "pts:70d205c9:ipl-2012:team-mumbai-indians",
+            "pts:95a2ea61:ipl-2012:team-chennai-super-kings",
+            "pts:fe11caa6:ipl-2012:team-chennai-super-kings",
+        }
+        ledger_positive_ids: set[str] = set()
+        ledger_closed_ids: set[str] = set()
+        for year, counts in expected.items():
+            ledger = json.loads(Path(
+                f"data/manual/wicketkeeper_metadata/v1/research_batches/usage-{year}-v1.json"
+            ).read_text())
+            self.assertEqual(ledger["batchId"], f"usage-{year}-v1")
+            self.assertEqual(ledger["seasonId"], f"ipl-{year}")
+            self.assertEqual(
+                ledger["snapshotMetadataManifestHash"],
+                "369bbe3e7248010786668cf5541aec1f00a92da95066b7a86c31c4b4a195314a",
+            )
+            self.assertEqual(len(ledger["scopePlayerTeamSeasonIds"]), counts["scope"])
+            self.assertEqual(len(ledger["caseResults"]), counts["scope"])
+            self.assertEqual(len(ledger["matchSources"]), counts["sources"])
+            self.assertEqual(ledger["capabilityFreezeExceptions"], [])
+            source_ids = {row["matchSourceId"] for row in ledger["matchSources"]}
+            self.assertTrue(all(
+                set(row["sourceIds"]).issubset(source_ids)
+                for row in ledger["caseResults"]
+            ))
+            positives = {
+                row["playerTeamSeasonId"] for row in ledger["caseResults"]
+                if row["result"] == "POSITIVE_USAGE_FOUND"
+            }
+            unknowns = {
+                row["playerTeamSeasonId"] for row in ledger["caseResults"]
+                if row["result"] == "REVIEWED_UNKNOWN"
+            }
+            self.assertEqual(len(positives), counts["positives"])
+            self.assertEqual(len(unknowns), counts["unknowns"])
+            ledger_positive_ids.update(positives)
+            ledger_closed_ids.update(unknowns)
+            self.assertTrue(all(
+                row["proposedCanonicalAction"] == "CONFIRMED"
+                and row["positiveLocator"]["observedMarker"] == "†"
+                for row in ledger["caseResults"] if row["result"] == "POSITIVE_USAGE_FOUND"
+            ))
+            self.assertTrue(all(
+                row["proposedCanonicalAction"] == "REMAIN_UNKNOWN"
+                and row["proposedReviewDisposition"] == "CLOSED_UNKNOWN"
+                and row["closureCriterionSatisfied"] is True
+                and len(row["appearancesReviewed"]) == row["officialAppearances"]
+                for row in ledger["caseResults"] if row["result"] == "REVIEWED_UNKNOWN"
+            ))
+            self.assertEqual(ledger["summary"]["sourceGaps"], 0)
+            self.assertEqual(ledger["summary"]["capabilityFreezeExceptions"], 0)
+        self.assertEqual(ledger_positive_ids, positive_ids)
+        self.assertEqual(ledger_closed_ids, closed_ids)
+
+        usages = {
+            row["playerTeamSeasonId"]: row
+            for row in read_jsonl(self.output / "player_team_season_usage.jsonl")
+        }
+        self.assertTrue(all(usages[row_id]["status"] == "CONFIRMED" for row_id in positive_ids))
+        self.assertTrue(all(usages[row_id]["status"] == "UNKNOWN" for row_id in closed_ids))
+        queue = json.loads((self.output / "keeper_role_review_queue.json").read_text())
+        active_ids = {row["playerTeamSeasonId"] for row in queue["seasonUsageItems"]}
+        closed_queue_ids = {row["playerTeamSeasonId"] for row in queue["closedSeasonUsageItems"]}
+        self.assertTrue((positive_ids | closed_ids).isdisjoint(active_ids))
+        self.assertTrue(closed_ids.issubset(closed_queue_ids))
+
+        ledger_2011 = json.loads(Path(
+            "data/manual/wicketkeeper_metadata/v1/research_batches/usage-2011-v1.json"
+        ).read_text())
+        self.assertEqual(
+            {row["matchId"] for row in ledger_2011["routeRecoveries"]},
+            {"501210", "501246", "501247", "501251", "501252", "501257"},
+        )
+        arun = next(
+            row for row in ledger_2011["caseResults"]
+            if row["playerTeamSeasonId"]
+            == "pts:7daedf2f:ipl-2011:team-royal-challengers-bangalore"
+        )
+        self.assertEqual(arun["officialAppearances"], 3)
+        self.assertEqual(arun["eventOnlyObservations"][0]["matchId"], "501247")
+        self.assertFalse(arun["eventOnlyObservations"][0]["includedInOfficialAppearanceDenominator"])
+        self.assertEqual(ledger_2011["identityNormalizations"][0]["playerId"], "1c17e270")
+
+        ledger_2012 = json.loads(Path(
+            "data/manual/wicketkeeper_metadata/v1/research_batches/usage-2012-v1.json"
+        ).read_text())
+        event_only = {
+            row["playerTeamSeasonId"]: row["eventOnlyObservations"][0]["matchId"]
+            for row in ledger_2012["caseResults"] if "eventOnlyObservations" in row
+        }
+        self.assertEqual(event_only, {
+            "pts:5bdcdb72:ipl-2012:team-royal-challengers-bangalore": "548318",
+            "pts:fe11caa6:ipl-2012:team-chennai-super-kings": "548355",
+        })
+
     def test_legacy_migration_and_conflicts(self) -> None:
         report = json.loads((self.output / "legacy_migration_report.json").read_text())
         self.assertEqual(report["summary"], {
@@ -824,11 +947,11 @@ class WicketkeeperMetadataIntegrationTests(unittest.TestCase):
 
     def test_keeper_role_queue_is_separate_and_auditable(self) -> None:
         queue = json.loads((self.output / "keeper_role_review_queue.json").read_text())
-        self.assertEqual(queue["summary"]["seasonUsageReviews"], 50)
-        self.assertEqual(queue["summary"]["currentlyG2EligibleUsageReviews"], 50)
+        self.assertEqual(queue["summary"]["seasonUsageReviews"], 27)
+        self.assertEqual(queue["summary"]["currentlyG2EligibleUsageReviews"], 27)
         self.assertEqual(queue["summary"]["eligibilityCriticalOverlap"], 0)
         self.assertEqual(queue["summary"]["legacyCapabilityCandidates"], 0)
-        self.assertEqual(queue["summary"]["closedSeasonUsageReviews"], 122)
+        self.assertEqual(queue["summary"]["closedSeasonUsageReviews"], 137)
         self.assertEqual(queue["summary"]["closedCapabilityReviews"], 15)
         self.assertTrue(all(row["reviewStatus"] == "CLOSED_UNKNOWN" for row in queue["closedSeasonUsageItems"]))
         self.assertTrue(all(row["reviewStatus"] == "CLOSED_UNKNOWN" for row in queue["closedCapabilityItems"]))

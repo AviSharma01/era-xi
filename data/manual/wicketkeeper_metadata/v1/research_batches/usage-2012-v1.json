@@ -1,0 +1,2250 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2012-v1",
+  "seasonId": "ipl-2012",
+  "researchStatus": "COMPLETED_APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "369bbe3e7248010786668cf5541aec1f00a92da95066b7a86c31c4b4a195314a",
+  "scopePlayerTeamSeasonIds": [
+    "pts:063b3673:ipl-2012:team-rajasthan-royals",
+    "pts:0c94f480:ipl-2012:team-delhi-daredevils",
+    "pts:2b6e6dec:ipl-2012:team-kings-xi-punjab",
+    "pts:5bdcdb72:ipl-2012:team-royal-challengers-bangalore",
+    "pts:6b71e6cf:ipl-2012:team-deccan-chargers",
+    "pts:6eb146d2:ipl-2012:team-kings-xi-punjab",
+    "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders",
+    "pts:70d205c9:ipl-2012:team-mumbai-indians",
+    "pts:95a2ea61:ipl-2012:team-chennai-super-kings",
+    "pts:fe11caa6:ipl-2012:team-chennai-super-kings"
+  ],
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated keeper.",
+    "Every canonical official appearance was checked and none designates the candidate.",
+    "Substitute-fielding, event-only, and replacement involvement is separated from official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "identityNormalizations": [],
+  "historicalIdentityNotes": [
+    "Canonical Stage 2 identities preserve Delhi Daredevils despite modern Delhi Capitals source titles.",
+    "Deccan Chargers remains the authoritative historical team identity for IPL 2012."
+  ],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2012-v1",
+      "publisher": "ESPN/Cricinfo",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "†,",
+        "(c) †",
+        "non-breaking-space before †"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "548307",
+          "knownKeeper": "BB McCullum",
+          "observedText": "BB McCullum †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/548307"
+        },
+        {
+          "matchId": "548307",
+          "knownKeeper": "NV Ojha",
+          "observedText": "NV Ojha †,",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/548307"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Only a dagger terminating a playing-XI name was accepted; dismissal annotations, catches, stumpings text, and uncalibrated symbols were excluded."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2012-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "548306",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2012/1",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The historical route redirected to the redesigned /en site and exposed no readable historical scorecard or keeper-marker convention."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2012-548306",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548306",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548306",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KD Karthik †,"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548307",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548307",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548307",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "BB McCullum †",
+        "NV Ojha †,"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548308",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548308",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548308",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548309",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548309",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548309",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Goswami †,",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2012:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548312",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548312",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548312",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Goswami †",
+        "BB McCullum †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548313",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548313",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548313",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2012:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548314",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548314",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548314",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2012:team-deccan-chargers",
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548317",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548317",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548317",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "SP Goswami †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548319",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548319",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548319",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2012:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548320",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548320",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548320",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Goswami †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548321",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548321",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548321",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2012:team-deccan-chargers"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548323",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548323",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548323",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2012:team-kings-xi-punjab",
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548325",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548325",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548325",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548326",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548326",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548326",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara (c) †",
+        "DH Yagnik †"
+      ],
+      "candidatesCovered": [
+        "pts:063b3673:ipl-2012:team-rajasthan-royals",
+        "pts:6b71e6cf:ipl-2012:team-deccan-chargers"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548327",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548327",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548327",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2012:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548328",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548328",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548328",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2012:team-kings-xi-punjab",
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548329",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548329",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548329",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2012:team-deccan-chargers"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548330",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548330",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548330",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:fe11caa6:ipl-2012:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548332",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548332",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548332",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Goswami †,",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:fe11caa6:ipl-2012:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548334",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548334",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548334",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "N Saini †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548335",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548335",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548335",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2012:team-deccan-chargers",
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548336",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548336",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548336",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "SP Goswami †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2012:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548339",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548339",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548339",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "N Saini †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548341",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548341",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548341",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2012:team-deccan-chargers"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548342",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548342",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548342",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548343",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548343",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548343",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "N Saini †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:fe11caa6:ipl-2012:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548344",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548344",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548344",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "BB McCullum †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2012:team-royal-challengers-bangalore",
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548346",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548346",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548346",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548347",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548347",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548347",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "BB McCullum †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548348",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548348",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548348",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2012:team-deccan-chargers"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548351",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548351",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548351",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548352",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548352",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548352",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2012:team-deccan-chargers"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548353",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548353",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548353",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "BB McCullum †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548354",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548354",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548354",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DH Yagnik †,",
+        "N Saini †"
+      ],
+      "candidatesCovered": [
+        "pts:063b3673:ipl-2012:team-rajasthan-royals",
+        "pts:6eb146d2:ipl-2012:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548355",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548355",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548355",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548356",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548356",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548356",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †,",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2012:team-royal-challengers-bangalore",
+        "pts:6b71e6cf:ipl-2012:team-deccan-chargers"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548357",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548357",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548357",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "BB McCullum †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548358",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548358",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548358",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "DH Yagnik †,"
+      ],
+      "candidatesCovered": [
+        "pts:063b3673:ipl-2012:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548359",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548359",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548359",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "N Saini †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2012:team-deccan-chargers"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548360",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548360",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548360",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "AB de Villiers †,"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2012:team-royal-challengers-bangalore",
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548361",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548361",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548361",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DH Yagnik †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:063b3673:ipl-2012:team-rajasthan-royals",
+        "pts:95a2ea61:ipl-2012:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548362",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548362",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548362",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2012:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548363",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548363",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548363",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †,",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders",
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548364",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548364",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548364",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "MS Dhoni (c) †,"
+      ],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2012:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548366",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548366",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548366",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "N Saini †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2012:team-deccan-chargers",
+        "pts:6eb146d2:ipl-2012:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548367",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548367",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548367",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2012:team-royal-challengers-bangalore",
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548368",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548368",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548368",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "BB McCullum †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders",
+        "pts:95a2ea61:ipl-2012:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548369",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548369",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548369",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "N Saini †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:6eb146d2:ipl-2012:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548370",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548370",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548370",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "BB McCullum †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders",
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548371",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548371",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548371",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2012:team-kings-xi-punjab",
+        "pts:6eb146d2:ipl-2012:team-kings-xi-punjab",
+        "pts:95a2ea61:ipl-2012:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548372",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548372",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548372",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †,",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2012:team-delhi-daredevils",
+        "pts:5bdcdb72:ipl-2012:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548374",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548374",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548374",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2012:team-delhi-daredevils",
+        "pts:2b6e6dec:ipl-2012:team-kings-xi-punjab",
+        "pts:6eb146d2:ipl-2012:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548375",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548375",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548375",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "BB McCullum †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548376",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548376",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548376",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2012:team-royal-challengers-bangalore",
+        "pts:6b71e6cf:ipl-2012:team-deccan-chargers"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548377",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548377",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548377",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DH Yagnik †",
+        "KD Karthik †,"
+      ],
+      "candidatesCovered": [
+        "pts:063b3673:ipl-2012:team-rajasthan-royals",
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548378",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548378",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548378",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "BB McCullum †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2012-548379",
+      "sourceFamilyId": "espn-scorecard-2012-v1",
+      "matchId": "548379",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/548379",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2012-historical-route",
+      "sourceFamilyId": "official-ipl-historical-route-2012-v1",
+      "matchId": "548306",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2012/1",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2012:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The route redirected to the redesigned /en site without readable historical scorecard data or a keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "routeRecoveries": [],
+  "sourcePresentationNotes": [
+    {
+      "matchId": "548307",
+      "sourceId": "espn-ipl-2012-548307",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2012."
+    },
+    {
+      "matchId": "548321",
+      "sourceId": "espn-ipl-2012-548321",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2012."
+    },
+    {
+      "matchId": "548325",
+      "sourceId": "espn-ipl-2012-548325",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2012."
+    },
+    {
+      "matchId": "548329",
+      "sourceId": "espn-ipl-2012-548329",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2012."
+    },
+    {
+      "matchId": "548342",
+      "sourceId": "espn-ipl-2012-548342",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2012."
+    },
+    {
+      "matchId": "548357",
+      "sourceId": "espn-ipl-2012-548357",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2012."
+    },
+    {
+      "matchId": "548364",
+      "sourceId": "espn-ipl-2012-548364",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2012."
+    },
+    {
+      "matchId": "548369",
+      "sourceId": "espn-ipl-2012-548369",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2012."
+    },
+    {
+      "matchId": "548372",
+      "sourceId": "espn-ipl-2012-548372",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2012."
+    },
+    {
+      "matchId": "548374",
+      "sourceId": "espn-ipl-2012-548374",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2012."
+    },
+    {
+      "matchId": "548378",
+      "sourceId": "espn-ipl-2012-548378",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2012."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:063b3673:ipl-2012:team-rajasthan-royals",
+      "player": "DH Yagnik",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "548326"
+      ],
+      "sourceIds": [
+        "espn-ipl-2012-548326"
+      ],
+      "sourceConventionId": "espn-scorecard-2012-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2012-548326",
+        "observedMarker": "†",
+        "observedText": "DH Yagnik †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:0c94f480:ipl-2012:team-delhi-daredevils",
+      "player": "UBT Chand",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "548372",
+        "548374"
+      ],
+      "sourceIds": [
+        "espn-ipl-2012-548372",
+        "espn-ipl-2012-548374"
+      ],
+      "sourceConventionId": "espn-scorecard-2012-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:2b6e6dec:ipl-2012:team-kings-xi-punjab",
+      "player": "AC Gilchrist",
+      "team": "Kings XI Punjab",
+      "officialAppearances": 7,
+      "appearancesReviewed": [
+        "548309"
+      ],
+      "sourceIds": [
+        "espn-ipl-2012-548309"
+      ],
+      "sourceConventionId": "espn-scorecard-2012-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2012-548309",
+        "observedMarker": "†",
+        "observedText": "AC Gilchrist (c) †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:5bdcdb72:ipl-2012:team-royal-challengers-bangalore",
+      "player": "TM Dilshan",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 9,
+      "appearancesReviewed": [
+        "548327",
+        "548336",
+        "548344",
+        "548356",
+        "548360",
+        "548362",
+        "548367",
+        "548372",
+        "548376"
+      ],
+      "sourceIds": [
+        "espn-ipl-2012-548327",
+        "espn-ipl-2012-548336",
+        "espn-ipl-2012-548344",
+        "espn-ipl-2012-548356",
+        "espn-ipl-2012-548360",
+        "espn-ipl-2012-548362",
+        "espn-ipl-2012-548367",
+        "espn-ipl-2012-548372",
+        "espn-ipl-2012-548376"
+      ],
+      "sourceConventionId": "espn-scorecard-2012-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained. Match 548318 was reviewed separately and excluded from the official-appearance denominator.",
+      "eventOnlyObservations": [
+        {
+          "matchId": "548318",
+          "participationType": "SUBSTITUTE_FIELDING_EVENT_ONLY",
+          "includedInOfficialAppearanceDenominator": false,
+          "notes": "Documented substitute-fielding/event-only involvement; not a canonical official playing-XI appearance for TM Dilshan."
+        }
+      ]
+    },
+    {
+      "playerTeamSeasonId": "pts:6b71e6cf:ipl-2012:team-deccan-chargers",
+      "player": "KC Sangakkara",
+      "team": "Deccan Chargers",
+      "officialAppearances": 12,
+      "appearancesReviewed": [
+        "548326"
+      ],
+      "sourceIds": [
+        "espn-ipl-2012-548326"
+      ],
+      "sourceConventionId": "espn-scorecard-2012-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2012-548326",
+        "observedMarker": "†",
+        "observedText": "KC Sangakkara (c) †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:6eb146d2:ipl-2012:team-kings-xi-punjab",
+      "player": "Gurkeerat Singh",
+      "team": "Kings XI Punjab",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "548354",
+        "548366",
+        "548369",
+        "548371",
+        "548374"
+      ],
+      "sourceIds": [
+        "espn-ipl-2012-548354",
+        "espn-ipl-2012-548366",
+        "espn-ipl-2012-548369",
+        "espn-ipl-2012-548371",
+        "espn-ipl-2012-548374"
+      ],
+      "sourceConventionId": "espn-scorecard-2012-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders",
+      "player": "DB Das",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 15,
+      "appearancesReviewed": [
+        "548307",
+        "548312",
+        "548320",
+        "548323",
+        "548328",
+        "548335",
+        "548344",
+        "548347",
+        "548353",
+        "548357",
+        "548363",
+        "548368",
+        "548370",
+        "548375",
+        "548378"
+      ],
+      "sourceIds": [
+        "espn-ipl-2012-548307",
+        "espn-ipl-2012-548312",
+        "espn-ipl-2012-548320",
+        "espn-ipl-2012-548323",
+        "espn-ipl-2012-548328",
+        "espn-ipl-2012-548335",
+        "espn-ipl-2012-548344",
+        "espn-ipl-2012-548347",
+        "espn-ipl-2012-548353",
+        "espn-ipl-2012-548357",
+        "espn-ipl-2012-548363",
+        "espn-ipl-2012-548368",
+        "espn-ipl-2012-548370",
+        "espn-ipl-2012-548375",
+        "espn-ipl-2012-548378"
+      ],
+      "sourceConventionId": "espn-scorecard-2012-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:70d205c9:ipl-2012:team-mumbai-indians",
+      "player": "AT Rayudu",
+      "team": "Mumbai Indians",
+      "officialAppearances": 17,
+      "appearancesReviewed": [
+        "548306",
+        "548308",
+        "548314",
+        "548317",
+        "548325",
+        "548334",
+        "548339",
+        "548342",
+        "548346",
+        "548351",
+        "548355",
+        "548360",
+        "548363",
+        "548367",
+        "548370",
+        "548377",
+        "548379"
+      ],
+      "sourceIds": [
+        "espn-ipl-2012-548306",
+        "espn-ipl-2012-548308",
+        "espn-ipl-2012-548314",
+        "espn-ipl-2012-548317",
+        "espn-ipl-2012-548325",
+        "espn-ipl-2012-548334",
+        "espn-ipl-2012-548339",
+        "espn-ipl-2012-548342",
+        "espn-ipl-2012-548346",
+        "espn-ipl-2012-548351",
+        "espn-ipl-2012-548355",
+        "espn-ipl-2012-548360",
+        "espn-ipl-2012-548363",
+        "espn-ipl-2012-548367",
+        "espn-ipl-2012-548370",
+        "espn-ipl-2012-548377",
+        "espn-ipl-2012-548379"
+      ],
+      "sourceConventionId": "espn-scorecard-2012-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:95a2ea61:ipl-2012:team-chennai-super-kings",
+      "player": "S Anirudha",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 4,
+      "appearancesReviewed": [
+        "548361",
+        "548364",
+        "548368",
+        "548371"
+      ],
+      "sourceIds": [
+        "espn-ipl-2012-548361",
+        "espn-ipl-2012-548364",
+        "espn-ipl-2012-548368",
+        "espn-ipl-2012-548371"
+      ],
+      "sourceConventionId": "espn-scorecard-2012-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:fe11caa6:ipl-2012:team-chennai-super-kings",
+      "player": "WP Saha",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "548330",
+        "548332",
+        "548343"
+      ],
+      "sourceIds": [
+        "espn-ipl-2012-548330",
+        "espn-ipl-2012-548332",
+        "espn-ipl-2012-548343"
+      ],
+      "sourceConventionId": "espn-scorecard-2012-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained. Match 548355 was reviewed separately and excluded from the official-appearance denominator.",
+      "eventOnlyObservations": [
+        {
+          "matchId": "548355",
+          "participationType": "SUBSTITUTE_FIELDING_EVENT_ONLY",
+          "includedInOfficialAppearanceDenominator": false,
+          "notes": "Documented substitute-fielding/event-only involvement; not a canonical official playing-XI appearance for WP Saha."
+        }
+      ]
+    }
+  ],
+  "capabilityFreezeExceptions": [],
+  "summary": {
+    "scopeCases": 10,
+    "positiveUsageFound": 3,
+    "reviewedUnknown": 7,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "targetScorecardsInspected": 57,
+    "controlOnlyScorecardsInspected": 0,
+    "totalReadableScorecardsInspected": 57,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 57,
+    "reusedTargetScorecards": 20,
+    "crossTeamReusedScorecards": 20,
+    "sameTeamMultiCandidateScorecards": 0,
+    "canonicalCandidateAppearances": 79,
+    "candidateAppearancesCoveredByInspectedScorecards": 79,
+    "candidateAppearancesSkippedAfterPositive": 0,
+    "failedEspnShortcutRoutes": 0,
+    "stableReplacementScorecards": 0,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}

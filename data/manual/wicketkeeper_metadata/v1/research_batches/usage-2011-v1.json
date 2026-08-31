@@ -1,0 +1,2654 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2011-v1",
+  "seasonId": "ipl-2011",
+  "researchStatus": "COMPLETED_APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "369bbe3e7248010786668cf5541aec1f00a92da95066b7a86c31c4b4a195314a",
+  "scopePlayerTeamSeasonIds": [
+    "pts:0c94f480:ipl-2011:team-delhi-daredevils",
+    "pts:3a02626a:ipl-2011:team-rajasthan-royals",
+    "pts:5748e866:ipl-2011:team-pune-warriors",
+    "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore",
+    "pts:7daedf2f:ipl-2011:team-royal-challengers-bangalore",
+    "pts:890946a0:ipl-2011:team-delhi-daredevils",
+    "pts:95a2ea61:ipl-2011:team-chennai-super-kings",
+    "pts:99d63244:ipl-2011:team-kochi-tuskers-kerala",
+    "pts:afa7e784:ipl-2011:team-delhi-daredevils",
+    "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala",
+    "pts:c03f1114:ipl-2011:team-kings-xi-punjab",
+    "pts:f3cb53a1:ipl-2011:team-kolkata-knight-riders",
+    "pts:fe11caa6:ipl-2011:team-chennai-super-kings"
+  ],
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated keeper.",
+    "Every canonical official appearance was checked and none designates the candidate.",
+    "Substitute-fielding, event-only, and replacement involvement is separated from official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "identityNormalizations": [
+    {
+      "sourceRenderedName": "Robin Uthappa",
+      "canonicalDisplayName": "RV Uthappa",
+      "playerId": "1c17e270",
+      "status": "ESTABLISHED_UNAMBIGUOUS_MAPPING",
+      "notes": "Match 501265 renders Robin Uthappa; canonical Stage 2 identity and the same season's abbreviated scorecards map him to RV Uthappa."
+    }
+  ],
+  "historicalIdentityNotes": [
+    "Canonical Stage 2 identities preserve Delhi Daredevils despite modern Delhi Capitals source titles.",
+    "Kochi Tuskers Kerala and Pune Warriors remain distinct dissolved historical team identities."
+  ],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "publisher": "ESPN/Cricinfo",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "†,",
+        "(c) †",
+        "non-breaking-space before †"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "501198",
+          "knownKeeper": "MS Dhoni",
+          "observedText": "MS Dhoni (c) †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/501198"
+        },
+        {
+          "matchId": "501198",
+          "knownKeeper": "MS Bisla",
+          "observedText": "MS Bisla †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/501198"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Only a dagger terminating a playing-XI name was accepted; dismissal annotations, catches, stumpings text, and uncalibrated symbols were excluded."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2011-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "501198",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2011/1",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The historical route redirected to the redesigned /en site and exposed no readable historical scorecard or keeper-marker convention."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2011-501198",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501198",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501198",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501199",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501199",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501199",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara (c) †",
+        "AG Paunikar †"
+      ],
+      "candidatesCovered": [
+        "pts:3a02626a:ipl-2011:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501200",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501200",
+      "teams": [
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501200",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore",
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501201",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501201",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501201",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "DJ Jacobs †"
+      ],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2011:team-delhi-daredevils",
+        "pts:890946a0:ipl-2011:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501202",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501202",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501202",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501204",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501204",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501204",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "AG Paunikar †"
+      ],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2011:team-delhi-daredevils",
+        "pts:3a02626a:ipl-2011:team-rajasthan-royals",
+        "pts:890946a0:ipl-2011:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501205",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501205",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501205",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "DJ Jacobs †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501206",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501206",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501206",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2011:team-chennai-super-kings",
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501207",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501207",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501207",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501208",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501208",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501208",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara (c) †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501209",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501209",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501209",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AG Paunikar †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:3a02626a:ipl-2011:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-shortcut-ipl-2011-501210",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501210",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501210",
+      "availability": "UNAVAILABLE_PAGE_ERROR",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "purposes": [
+        "ROUTE_DIAGNOSTIC"
+      ],
+      "notes": "The shortened route returned ESPN's Page error. Coverage was completed through espn-ipl-2011-501210-full."
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501210-full",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501210",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        }
+      ],
+      "url": "https://www.espn.com/cricket/series/466304/scorecard/501210/mumbai-indians-vs-kochi-tuskers-kerala-13th-match-indian-premier-league-2011",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DJ Jacobs †",
+        "PA Patel †,"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "Stable fully named full-scorecard route used after the shortened ESPN route returned a page error."
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501211",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501211",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501211",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore",
+        "pts:95a2ea61:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501212",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501212",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501212",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara (c) †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501213",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501213",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501213",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2011:team-delhi-daredevils",
+        "pts:afa7e784:ipl-2011:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501214",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501214",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501214",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AG Paunikar †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:3a02626a:ipl-2011:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501215",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501215",
+      "teams": [
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501215",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2011:team-chennai-super-kings",
+        "pts:99d63244:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501216",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501216",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501216",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara (c) †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2011:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501218",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501218",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501218",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "TD Paine †",
+        "AT Rayudu †"
+      ],
+      "candidatesCovered": [
+        "pts:5748e866:ipl-2011:team-pune-warriors"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501219",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501219",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501219",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501220",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501220",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501220",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "DH Yagnik †"
+      ],
+      "candidatesCovered": [
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501221",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501221",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501221",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AT Rayudu †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501222",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501222",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501222",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "BJ Haddin †",
+        "AB de Villiers †,"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501223",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501223",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501223",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2011:team-delhi-daredevils",
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501225",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501225",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501225",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "DH Yagnik †,"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501226",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501226",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501226",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501227",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501227",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501227",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore",
+        "pts:890946a0:ipl-2011:team-delhi-daredevils",
+        "pts:afa7e784:ipl-2011:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501228",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501228",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501228",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "MS Dhoni (c) †,"
+      ],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501229",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501229",
+      "teams": [
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501229",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara (c) †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501230",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501230",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501230",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Goswami †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2011:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501232",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501232",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501232",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:5748e866:ipl-2011:team-pune-warriors",
+        "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501233",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501233",
+      "teams": [
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501233",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2011:team-delhi-daredevils",
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501234",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501234",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501234",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "SP Goswami †,"
+      ],
+      "candidatesCovered": [
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501236",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501236",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501236",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KC Sangakkara (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501237",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501237",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501237",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DJ Jacobs †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501238",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501238",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501238",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2011:team-delhi-daredevils",
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501239",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501239",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501239",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MV Boucher †",
+        "KC Sangakkara (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:f3cb53a1:ipl-2011:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501240",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501240",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501240",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DH Yagnik †",
+        "MS Dhoni (c) †,"
+      ],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501242",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501242",
+      "teams": [
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501242",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "MV Boucher †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:f3cb53a1:ipl-2011:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501243",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501243",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501243",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara (c) †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2011:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501244",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501244",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501244",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore",
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501245",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501245",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501245",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †,",
+        "MV Boucher †,"
+      ],
+      "candidatesCovered": [
+        "pts:f3cb53a1:ipl-2011:team-kolkata-knight-riders",
+        "pts:fe11caa6:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-shortcut-ipl-2011-501246",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501246",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501246",
+      "availability": "UNAVAILABLE_PAGE_ERROR",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2011:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "ROUTE_DIAGNOSTIC"
+      ],
+      "notes": "The shortened route returned ESPN's Page error. Coverage was completed through espn-ipl-2011-501246-full."
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501246-full",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501246",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.com/cricket/series/466304/scorecard/501246/mumbai-indians-vs-delhi-daredevils-49th-match-indian-premier-league-2011",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AT Rayudu †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2011:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "Stable fully named full-scorecard route used after the shortened ESPN route returned a page error."
+    },
+    {
+      "matchSourceId": "espn-shortcut-ipl-2011-501247",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501247",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501247",
+      "availability": "UNAVAILABLE_PAGE_ERROR",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore",
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "purposes": [
+        "ROUTE_DIAGNOSTIC"
+      ],
+      "notes": "The shortened route returned ESPN's Page error. Coverage was completed through espn-ipl-2011-501247-full."
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501247-full",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501247",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        }
+      ],
+      "url": "https://www.espn.com/cricket/series/466304/scorecard/501247/royal-challengers-bangalore-vs-kochi-tuskers-kerala-50th-match-indian-premier-league-2011",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "AB de Villiers †,"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore",
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "Stable fully named full-scorecard route used after the shortened ESPN route returned a page error."
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501248",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501248",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501248",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501249",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501249",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501249",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "DH Yagnik †"
+      ],
+      "candidatesCovered": [
+        "pts:fe11caa6:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-shortcut-ipl-2011-501251",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501251",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501251",
+      "availability": "UNAVAILABLE_PAGE_ERROR",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "ROUTE_DIAGNOSTIC"
+      ],
+      "notes": "The shortened route returned ESPN's Page error. Coverage was completed through espn-ipl-2011-501251-full."
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501251-full",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501251",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.com/cricket/series/466304/scorecard/501251/kings-xi-punjab-vs-mumbai-indians-54th-match-indian-premier-league-2011",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "AT Rayudu †"
+      ],
+      "candidatesCovered": [
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "Stable fully named full-scorecard route used after the shortened ESPN route returned a page error."
+    },
+    {
+      "matchSourceId": "espn-shortcut-ipl-2011-501252",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501252",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501252",
+      "availability": "UNAVAILABLE_PAGE_ERROR",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore",
+        "pts:7daedf2f:ipl-2011:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "ROUTE_DIAGNOSTIC"
+      ],
+      "notes": "The shortened route returned ESPN's Page error. Coverage was completed through espn-ipl-2011-501252-full."
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501252-full",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501252",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.com/cricket/series/466304/scorecard/501252/rajasthan-royals-vs-royal-challengers-bangalore-55th-match-indian-premier-league-2011",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DH Yagnik †",
+        "KB Arun Karthik †,"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore",
+        "pts:7daedf2f:ipl-2011:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "Stable fully named full-scorecard route used after the shortened ESPN route returned a page error."
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501253",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501253",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501253",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2011:team-delhi-daredevils",
+        "pts:fe11caa6:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501254",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501254",
+      "teams": [
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501254",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501255",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501255",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501255",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MV Boucher †",
+        "KB Arun Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:7daedf2f:ipl-2011:team-royal-challengers-bangalore",
+        "pts:f3cb53a1:ipl-2011:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-shortcut-ipl-2011-501257",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501257",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501257",
+      "availability": "UNAVAILABLE_PAGE_ERROR",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2011:team-delhi-daredevils",
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "ROUTE_DIAGNOSTIC"
+      ],
+      "notes": "The shortened route returned ESPN's Page error. Coverage was completed through espn-ipl-2011-501257-full."
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501257-full",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501257",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.com/cricket/series/466304/scorecard/501257/kings-xi-punjab-vs-delhi-daredevils-60th-match-indian-premier-league-2011",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2011:team-delhi-daredevils",
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "Stable fully named full-scorecard route used after the shortened ESPN route returned a page error."
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501258",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501258",
+      "teams": [
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501258",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PR Shah †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501260",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501260",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501260",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "KB Arun Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:7daedf2f:ipl-2011:team-royal-challengers-bangalore",
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501261",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501261",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kochi-tuskers-kerala",
+          "teamName": "Kochi Tuskers Kerala"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501261",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "PA Patel (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:fe11caa6:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501264",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501264",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501264",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KH Devdhar †,",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501265",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501265",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501265",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "Robin Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2011:team-delhi-daredevils",
+        "pts:afa7e784:ipl-2011:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501266",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501266",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501266",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:fe11caa6:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501268",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501268",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501268",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:fe11caa6:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2011-501271",
+      "sourceFamilyId": "espn-scorecard-2011-v1",
+      "matchId": "501271",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/501271",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:fe11caa6:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2011-historical-route",
+      "sourceFamilyId": "official-ipl-historical-route-2011-v1",
+      "matchId": "501198",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2011/1",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2011:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The route redirected to the redesigned /en site without readable historical scorecard data or a keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "routeRecoveries": [
+    {
+      "matchId": "501210",
+      "failedUrl": "https://www.espn.in/cricket/series/8048/scorecard/501210",
+      "replacementSourceId": "espn-ipl-2011-501210-full",
+      "replacementUrl": "https://www.espn.com/cricket/series/466304/scorecard/501210/mumbai-indians-vs-kochi-tuskers-kerala-13th-match-indian-premier-league-2011"
+    },
+    {
+      "matchId": "501246",
+      "failedUrl": "https://www.espn.in/cricket/series/8048/scorecard/501246",
+      "replacementSourceId": "espn-ipl-2011-501246-full",
+      "replacementUrl": "https://www.espn.com/cricket/series/466304/scorecard/501246/mumbai-indians-vs-delhi-daredevils-49th-match-indian-premier-league-2011"
+    },
+    {
+      "matchId": "501247",
+      "failedUrl": "https://www.espn.in/cricket/series/8048/scorecard/501247",
+      "replacementSourceId": "espn-ipl-2011-501247-full",
+      "replacementUrl": "https://www.espn.com/cricket/series/466304/scorecard/501247/royal-challengers-bangalore-vs-kochi-tuskers-kerala-50th-match-indian-premier-league-2011"
+    },
+    {
+      "matchId": "501251",
+      "failedUrl": "https://www.espn.in/cricket/series/8048/scorecard/501251",
+      "replacementSourceId": "espn-ipl-2011-501251-full",
+      "replacementUrl": "https://www.espn.com/cricket/series/466304/scorecard/501251/kings-xi-punjab-vs-mumbai-indians-54th-match-indian-premier-league-2011"
+    },
+    {
+      "matchId": "501252",
+      "failedUrl": "https://www.espn.in/cricket/series/8048/scorecard/501252",
+      "replacementSourceId": "espn-ipl-2011-501252-full",
+      "replacementUrl": "https://www.espn.com/cricket/series/466304/scorecard/501252/rajasthan-royals-vs-royal-challengers-bangalore-55th-match-indian-premier-league-2011"
+    },
+    {
+      "matchId": "501257",
+      "failedUrl": "https://www.espn.in/cricket/series/8048/scorecard/501257",
+      "replacementSourceId": "espn-ipl-2011-501257-full",
+      "replacementUrl": "https://www.espn.com/cricket/series/466304/scorecard/501257/kings-xi-punjab-vs-delhi-daredevils-60th-match-indian-premier-league-2011"
+    }
+  ],
+  "sourcePresentationNotes": [
+    {
+      "matchId": "501201",
+      "sourceId": "espn-ipl-2011-501201",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    },
+    {
+      "matchId": "501204",
+      "sourceId": "espn-ipl-2011-501204",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    },
+    {
+      "matchId": "501213",
+      "sourceId": "espn-ipl-2011-501213",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    },
+    {
+      "matchId": "501216",
+      "sourceId": "espn-ipl-2011-501216",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    },
+    {
+      "matchId": "501223",
+      "sourceId": "espn-ipl-2011-501223",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    },
+    {
+      "matchId": "501227",
+      "sourceId": "espn-ipl-2011-501227",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    },
+    {
+      "matchId": "501230",
+      "sourceId": "espn-ipl-2011-501230",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    },
+    {
+      "matchId": "501233",
+      "sourceId": "espn-ipl-2011-501233",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    },
+    {
+      "matchId": "501238",
+      "sourceId": "espn-ipl-2011-501238",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    },
+    {
+      "matchId": "501243",
+      "sourceId": "espn-ipl-2011-501243",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    },
+    {
+      "matchId": "501246",
+      "sourceId": "espn-ipl-2011-501246-full",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    },
+    {
+      "matchId": "501253",
+      "sourceId": "espn-ipl-2011-501253",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    },
+    {
+      "matchId": "501257",
+      "sourceId": "espn-ipl-2011-501257-full",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    },
+    {
+      "matchId": "501265",
+      "sourceId": "espn-ipl-2011-501265",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2011."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:0c94f480:ipl-2011:team-delhi-daredevils",
+      "player": "UBT Chand",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "501201",
+        "501204"
+      ],
+      "sourceIds": [
+        "espn-ipl-2011-501201",
+        "espn-ipl-2011-501204"
+      ],
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:3a02626a:ipl-2011:team-rajasthan-royals",
+      "player": "AG Paunikar",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 4,
+      "appearancesReviewed": [
+        "501199"
+      ],
+      "sourceIds": [
+        "espn-ipl-2011-501199"
+      ],
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2011-501199",
+        "observedMarker": "†",
+        "observedText": "AG Paunikar †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:5748e866:ipl-2011:team-pune-warriors",
+      "player": "TD Paine",
+      "team": "Pune Warriors",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "501218"
+      ],
+      "sourceIds": [
+        "espn-ipl-2011-501218"
+      ],
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2011-501218",
+        "observedMarker": "†",
+        "observedText": "TD Paine †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore",
+      "player": "TM Dilshan",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 10,
+      "appearancesReviewed": [
+        "501200",
+        "501205",
+        "501208",
+        "501211",
+        "501222",
+        "501227",
+        "501232",
+        "501244",
+        "501247",
+        "501252"
+      ],
+      "sourceIds": [
+        "espn-ipl-2011-501200",
+        "espn-ipl-2011-501205",
+        "espn-ipl-2011-501208",
+        "espn-ipl-2011-501211",
+        "espn-ipl-2011-501222",
+        "espn-ipl-2011-501227",
+        "espn-ipl-2011-501232",
+        "espn-ipl-2011-501244",
+        "espn-ipl-2011-501247-full",
+        "espn-ipl-2011-501252-full"
+      ],
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:7daedf2f:ipl-2011:team-royal-challengers-bangalore",
+      "player": "KB Arun Karthik",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "501252"
+      ],
+      "sourceIds": [
+        "espn-ipl-2011-501252-full"
+      ],
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2011-501252-full",
+        "observedMarker": "†",
+        "observedText": "KB Arun Karthik †,"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation. Match 501247 was reviewed separately and excluded from the official-appearance denominator.",
+      "eventOnlyObservations": [
+        {
+          "matchId": "501247",
+          "participationType": "SUBSTITUTE_FIELDING_EVENT_ONLY",
+          "includedInOfficialAppearanceDenominator": false,
+          "notes": "Documented substitute-fielding/event-only involvement; not a canonical official playing-XI appearance for KB Arun Karthik."
+        }
+      ]
+    },
+    {
+      "playerTeamSeasonId": "pts:890946a0:ipl-2011:team-delhi-daredevils",
+      "player": "NV Ojha",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "501201"
+      ],
+      "sourceIds": [
+        "espn-ipl-2011-501201"
+      ],
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2011-501201",
+        "observedMarker": "†",
+        "observedText": "NV Ojha †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:95a2ea61:ipl-2011:team-chennai-super-kings",
+      "player": "S Anirudha",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 9,
+      "appearancesReviewed": [
+        "501198",
+        "501206",
+        "501211",
+        "501215",
+        "501221",
+        "501226",
+        "501228",
+        "501236",
+        "501240"
+      ],
+      "sourceIds": [
+        "espn-ipl-2011-501198",
+        "espn-ipl-2011-501206",
+        "espn-ipl-2011-501211",
+        "espn-ipl-2011-501215",
+        "espn-ipl-2011-501221",
+        "espn-ipl-2011-501226",
+        "espn-ipl-2011-501228",
+        "espn-ipl-2011-501236",
+        "espn-ipl-2011-501240"
+      ],
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:99d63244:ipl-2011:team-kochi-tuskers-kerala",
+      "player": "KM Jadhav",
+      "team": "Kochi Tuskers Kerala",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "501210",
+        "501215",
+        "501219",
+        "501225",
+        "501229",
+        "501261"
+      ],
+      "sourceIds": [
+        "espn-ipl-2011-501210-full",
+        "espn-ipl-2011-501215",
+        "espn-ipl-2011-501219",
+        "espn-ipl-2011-501225",
+        "espn-ipl-2011-501229",
+        "espn-ipl-2011-501261"
+      ],
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:afa7e784:ipl-2011:team-delhi-daredevils",
+      "player": "MS Wade",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "501213",
+        "501227",
+        "501265"
+      ],
+      "sourceIds": [
+        "espn-ipl-2011-501213",
+        "espn-ipl-2011-501227",
+        "espn-ipl-2011-501265"
+      ],
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala",
+      "player": "BB McCullum",
+      "team": "Kochi Tuskers Kerala",
+      "officialAppearances": 13,
+      "appearancesReviewed": [
+        "501200",
+        "501207",
+        "501210",
+        "501215",
+        "501219",
+        "501229",
+        "501233",
+        "501238",
+        "501242",
+        "501247",
+        "501254",
+        "501258",
+        "501261"
+      ],
+      "sourceIds": [
+        "espn-ipl-2011-501200",
+        "espn-ipl-2011-501207",
+        "espn-ipl-2011-501210-full",
+        "espn-ipl-2011-501215",
+        "espn-ipl-2011-501219",
+        "espn-ipl-2011-501229",
+        "espn-ipl-2011-501233",
+        "espn-ipl-2011-501238",
+        "espn-ipl-2011-501242",
+        "espn-ipl-2011-501247-full",
+        "espn-ipl-2011-501254",
+        "espn-ipl-2011-501258",
+        "espn-ipl-2011-501261"
+      ],
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:c03f1114:ipl-2011:team-kings-xi-punjab",
+      "player": "KD Karthik",
+      "team": "Kings XI Punjab",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "501202",
+        "501206",
+        "501212",
+        "501220",
+        "501223",
+        "501234",
+        "501237",
+        "501244",
+        "501248",
+        "501251",
+        "501254",
+        "501257",
+        "501260",
+        "501264"
+      ],
+      "sourceIds": [
+        "espn-ipl-2011-501202",
+        "espn-ipl-2011-501206",
+        "espn-ipl-2011-501212",
+        "espn-ipl-2011-501220",
+        "espn-ipl-2011-501223",
+        "espn-ipl-2011-501234",
+        "espn-ipl-2011-501237",
+        "espn-ipl-2011-501244",
+        "espn-ipl-2011-501248",
+        "espn-ipl-2011-501251-full",
+        "espn-ipl-2011-501254",
+        "espn-ipl-2011-501257-full",
+        "espn-ipl-2011-501260",
+        "espn-ipl-2011-501264"
+      ],
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:f3cb53a1:ipl-2011:team-kolkata-knight-riders",
+      "player": "MV Boucher",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 4,
+      "appearancesReviewed": [
+        "501239"
+      ],
+      "sourceIds": [
+        "espn-ipl-2011-501239"
+      ],
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2011-501239",
+        "observedMarker": "†",
+        "observedText": "MV Boucher †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:fe11caa6:ipl-2011:team-chennai-super-kings",
+      "player": "WP Saha",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 7,
+      "appearancesReviewed": [
+        "501245",
+        "501249",
+        "501253",
+        "501261",
+        "501266",
+        "501268",
+        "501271"
+      ],
+      "sourceIds": [
+        "espn-ipl-2011-501245",
+        "espn-ipl-2011-501249",
+        "espn-ipl-2011-501253",
+        "espn-ipl-2011-501261",
+        "espn-ipl-2011-501266",
+        "espn-ipl-2011-501268",
+        "espn-ipl-2011-501271"
+      ],
+      "sourceConventionId": "espn-scorecard-2011-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    }
+  ],
+  "capabilityFreezeExceptions": [],
+  "summary": {
+    "scopeCases": 13,
+    "positiveUsageFound": 5,
+    "reviewedUnknown": 8,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "targetScorecardsInspected": 60,
+    "controlOnlyScorecardsInspected": 0,
+    "totalReadableScorecardsInspected": 60,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 60,
+    "reusedTargetScorecards": 27,
+    "crossTeamReusedScorecards": 20,
+    "sameTeamMultiCandidateScorecards": 7,
+    "canonicalCandidateAppearances": 91,
+    "candidateAppearancesCoveredByInspectedScorecards": 91,
+    "candidateAppearancesSkippedAfterPositive": 0,
+    "failedEspnShortcutRoutes": 6,
+    "stableReplacementScorecards": 6,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}
