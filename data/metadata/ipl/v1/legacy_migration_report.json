@@ -609,6 +609,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2021-1254059",
         "manual:espn-ipl-2022-1304047",
         "manual:espn-ipl-2024-1426297",
         "stumping:1082603:2:11:0:0:4a8a2e3b",
@@ -932,6 +933,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2019-1178419",
         "stumping:419162:2:6:1:0:70d205c9",
         "stumping:501256:1:10:3:0:70d205c9"
       ],
@@ -974,6 +976,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2021-1254058",
         "manual:espn-ipl-2022-1304048",
         "manual:espn-ipl-2024-1422138",
         "manual:espn-ipl-2025-1473492",
@@ -1195,6 +1198,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2020-1216493",
         "manual:espn-ipl-2026-1527678",
         "stumping:1082595:1:8:3:0:919a3be2",
         "stumping:1082608:2:19:1:0:919a3be2",
@@ -1330,6 +1334,8 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2019-1175359",
+        "manual:espn-ipl-2020-1216500",
         "stumping:1136600:2:2:0:0:99b75528",
         "stumping:1473476:2:12:3:0:99b75528",
         "stumping:1473476:2:15:4:0:99b75528",
@@ -1571,6 +1577,9 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2019-1175361",
+        "manual:espn-ipl-2020-1216493",
+        "manual:espn-ipl-2021-1254061",
         "manual:espn-ipl-2025-1473454",
         "stumping:1136600:1:16:1:0:b17e2f24",
         "stumping:1426264:2:15:2:0:b17e2f24",
@@ -1779,6 +1788,8 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2019-1175357",
+        "manual:espn-ipl-2020-1216494",
         "stumping:1136573:2:0:5:0:c03f1114",
         "stumping:1136575:1:6:4:0:c03f1114",
         "stumping:1136609:1:11:0:0:c03f1114",
@@ -1923,6 +1934,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2021-1254058",
         "stumping:1216502:2:10:5:0:c4487b84",
         "stumping:501200:1:15:0:0:c4487b84",
         "stumping:501270:2:7:5:0:c4487b84",
@@ -2316,6 +2328,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2021-1254060",
         "stumping:1082609:1:15:2:0:fe11caa6",
         "stumping:1082609:1:9:0:0:fe11caa6",
         "stumping:1136580:1:7:0:0:fe11caa6",

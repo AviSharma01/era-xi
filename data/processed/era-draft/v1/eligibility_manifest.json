@@ -4,8 +4,8 @@
       "path": "eligibility.jsonl",
       "rows": 3392,
       "schemaVersion": "ipl-era-draft-eligibility-row/v1",
-      "sha256": "49e28d83c54db3f9c7dcae33dec7f860bfa90c07ab15cdaac1624d3705883764",
-      "sizeBytes": 1683761
+      "sha256": "8a04e7805aa44b0cacc99eb5b00e6511d123c9d057dc4f38c4380e8904cde8d1",
+      "sizeBytes": 1684217
     },
     {
       "path": "eligibility_review_queue.json",
@@ -15,8 +15,8 @@
       "sizeBytes": 16039
     }
   ],
-  "eligibilityAggregateHash": "d083f07614cf91d06fd69c92ad3470bf2d5789597b1fa865eece495e9cb14616",
-  "eligibilityManifestHash": "21f9550279ac8b25bc01f7303b3624a03483303ae6d0daa41cef008c7cf1c5ec",
+  "eligibilityAggregateHash": "3a9dceb5c19da9d99c8b1e0b5f1dd29de55bb3b654bba56fa6bf31cfeb28d3b0",
+  "eligibilityManifestHash": "9096f3b6275d64be84a615c77b25adffabe4e5d67ff77b3221f2a1f28bfdde03",
   "eligibilityVersion": "ipl-era-draft-eligibility/v1",
   "schemaFiles": [
     {
@@ -51,6 +51,6 @@
   "schemaVersion": "ipl-era-draft-eligibility-manifest/v1",
   "stage4AnalyticalManifestHash": "f437d9e03c1f1749b5a0b8b8c06a41e80c8f2d18e3d43d791b054014acf5998c",
   "stage4DatasetVersion": "cricsheet-ipl-analytics/v1",
-  "wicketkeeperMetadataManifestHash": "5689383fd7b2a9487c45a27f674db62b53784d635213970ce6f87e8ba7793d38",
+  "wicketkeeperMetadataManifestHash": "47af32b00c4d584f6d7ff87151391807fc2a19678948321bafdad5544997ca87",
   "wicketkeeperMetadataVersion": "ipl-wicketkeeper-metadata/v1"
 }

@@ -1,0 +1,2261 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2021-v1",
+  "seasonId": "ipl-2021",
+  "researchStatus": "COMPLETED_APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "5689383fd7b2a9487c45a27f674db62b53784d635213970ce6f87e8ba7793d38",
+  "scopePlayerTeamSeasonIds": [
+    "pts:1c17e270:ipl-2021:team-chennai-super-kings",
+    "pts:3241e3fd:ipl-2021:team-punjab-kings",
+    "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+    "pts:70d205c9:ipl-2021:team-chennai-super-kings",
+    "pts:752f7486:ipl-2021:team-mumbai-indians",
+    "pts:9418198b:ipl-2021:team-punjab-kings",
+    "pts:99b75528:ipl-2021:team-rajasthan-royals",
+    "pts:99d63244:ipl-2021:team-sunrisers-hyderabad",
+    "pts:9a46c4e5:ipl-2021:team-rajasthan-royals",
+    "pts:b17e2f24:ipl-2021:team-punjab-kings",
+    "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore",
+    "pts:fe11caa6:ipl-2021:team-sunrisers-hyderabad"
+  ],
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated keeper.",
+    "Every canonical official appearance was checked and none designates the candidate.",
+    "Substitute-fielding, event-only, and replacement involvement is separated from official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "identityNormalizations": [
+    {
+      "sourceRenderedName": "Prabhsimran Singh",
+      "canonicalDisplayName": "P Simran Singh",
+      "playerId": "9418198b",
+      "status": "ESTABLISHED_UNAMBIGUOUS_MAPPING",
+      "notes": "The mapping is consistent with committed 2025–2026 research ledgers and deterministic canonical identity evidence."
+    }
+  ],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2021-v1",
+      "publisher": "ESPN/Cricinfo",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "†,",
+        "(c) †",
+        "non-breaking-space before †"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1254058",
+          "knownKeeper": "Ishan Kishan",
+          "observedText": "Ishan Kishan †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1254058"
+        },
+        {
+          "matchId": "1254058",
+          "knownKeeper": "AB de Villiers",
+          "observedText": "AB de Villiers †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1254058"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Only a dagger terminating a playing-XI name was accepted; dismissal annotations, catches, stumpings text, and uncalibrated symbols were excluded."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2021-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1254058",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2021/1",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The historical route redirected to /en and returned an explicit 404."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2021-1254058",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254058",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254058",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2021:team-mumbai-indians",
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254059",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254059",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254059",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254060",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254060",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254060",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:fe11caa6:ipl-2021:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254061",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254061",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254061",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2021:team-punjab-kings",
+        "pts:99b75528:ipl-2021:team-rajasthan-royals",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254062",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254062",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254062",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2021:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254063",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254063",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254063",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore",
+        "pts:fe11caa6:ipl-2021:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254064",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254064",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254064",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2021:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254065",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254065",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254065",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "MS Dhoni (c) †,"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2021:team-punjab-kings",
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254066",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254066",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254066",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "JM Bairstow †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2021:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254067",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254067",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254067",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254068",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254068",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254068",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2021:team-punjab-kings",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254069",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254069",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254069",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings",
+        "pts:99b75528:ipl-2021:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254070",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254070",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254070",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2021:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254071",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254071",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254071",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "JM Bairstow †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2021:team-punjab-kings",
+        "pts:99d63244:ipl-2021:team-sunrisers-hyderabad",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254072",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254072",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254072",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254073",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254073",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254073",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "AB de Villiers †,"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2021:team-rajasthan-royals",
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254074",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254074",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254074",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2021:team-punjab-kings",
+        "pts:752f7486:ipl-2021:team-mumbai-indians",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254075",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254075",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254075",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2021:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254076",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254076",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254076",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings",
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254077",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254077",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254077",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "JM Bairstow †"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2021:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254078",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254078",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254078",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2021:team-punjab-kings",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254079",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254079",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254079",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254080",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254080",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254080",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Bairstow †",
+        "MS Dhoni (c) †,"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings",
+        "pts:99d63244:ipl-2021:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254081",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254081",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254081",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2021:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254083",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254083",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254083",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Prabhsimran Singh †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2021:team-punjab-kings",
+        "pts:9418198b:ipl-2021:team-punjab-kings",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings",
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254084",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254084",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254084",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †,",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254085",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254085",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254085",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "JM Bairstow †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2021:team-rajasthan-royals",
+        "pts:99d63244:ipl-2021:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254086",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254086",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254086",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Prabhsimran Singh †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:9418198b:ipl-2021:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254087",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254087",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254087",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KS Bharat †",
+        "KD Karthik †,"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254088",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254088",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254088",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2021:team-mumbai-indians",
+        "pts:fe11caa6:ipl-2021:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254089",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254089",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254089",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †,",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings",
+        "pts:9a46c4e5:ipl-2021:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254090",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254090",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254090",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KS Bharat †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2021:team-punjab-kings",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings",
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254091",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254091",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254091",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings",
+        "pts:fe11caa6:ipl-2021:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254093",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254093",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254093",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2021:team-mumbai-indians",
+        "pts:9a46c4e5:ipl-2021:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254094",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254094",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254094",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2021:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254095",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254095",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254095",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "KS Bharat †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore",
+        "pts:fe11caa6:ipl-2021:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254096",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254096",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254096",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "KD Karthik †,"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2021:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254098",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254098",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254098",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254099",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254099",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254099",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2021:team-punjab-kings",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254100",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254100",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254100",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:fe11caa6:ipl-2021:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254101",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254101",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254101",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "KS Bharat †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254102",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254102",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254102",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2021:team-punjab-kings",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254103",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254103",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254103",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "KS Bharat †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254104",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254104",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254104",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings",
+        "pts:752f7486:ipl-2021:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254105",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254105",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254105",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2021:team-sunrisers-hyderabad",
+        "pts:fe11caa6:ipl-2021:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254106",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254106",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254106",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "SV Samson (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:9a46c4e5:ipl-2021:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254108",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254108",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254108",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KS Bharat †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2021:team-mumbai-indians",
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254109",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254109",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254109",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:fe11caa6:ipl-2021:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254110",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254110",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254110",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "RR Pant (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2021:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254111",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254111",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254111",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson (c) †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2021:team-punjab-kings",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254113",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254113",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254113",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KS Bharat †,",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings",
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254114",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254114",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254114",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant (c) †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2021:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2021-1254117",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254117",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254117",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †,",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2021:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-shortcut-ipl-2021-1254107",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254107",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254107",
+      "availability": "UNAVAILABLE_PAGE_ERROR",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2021:team-punjab-kings",
+        "pts:99d63244:ipl-2021:team-sunrisers-hyderabad",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings",
+        "pts:fe11caa6:ipl-2021:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "ROUTE_DIAGNOSTIC"
+      ],
+      "notes": "The shortcut route returned ESPN's Page error. Coverage was completed through espncricinfo-ipl-2021-1254107-full."
+    },
+    {
+      "matchSourceId": "espn-shortcut-ipl-2021-1254115",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254115",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254115",
+      "availability": "UNAVAILABLE_PAGE_ERROR",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "ROUTE_DIAGNOSTIC"
+      ],
+      "notes": "The shortcut route returned ESPN's Page error. Coverage was completed through espncricinfo-ipl-2021-1254115-full."
+    },
+    {
+      "matchSourceId": "espncricinfo-ipl-2021-1254107-full",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254107",
+      "teams": [
+        {
+          "teamId": "team-punjab-kings",
+          "teamName": "Punjab Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.cricinfo.com/series/ipl-2021-1249214/sunrisers-hyderabad-vs-punjab-kings-37th-match-1254107/full-scorecard",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c)†",
+        "Wriddhiman Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2021:team-punjab-kings",
+        "pts:99d63244:ipl-2021:team-sunrisers-hyderabad",
+        "pts:b17e2f24:ipl-2021:team-punjab-kings",
+        "pts:fe11caa6:ipl-2021:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "The ESPN shortcut route returned a page error; this stable full-scorecard replacement supplied complete readable calibrated coverage."
+    },
+    {
+      "matchSourceId": "espncricinfo-ipl-2021-1254115-full",
+      "sourceFamilyId": "espn-scorecard-2021-v1",
+      "matchId": "1254115",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.cricinfo.com/series/ipl-2021-1249214/royal-challengers-bangalore-vs-kolkata-knight-riders-eliminator-1254115/full-scorecard",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Srikar Bharat †",
+        "Dinesh Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "The ESPN shortcut route returned a page error; this stable full-scorecard replacement supplied complete readable calibrated coverage."
+    },
+    {
+      "matchSourceId": "official-ipl-2021-historical-route",
+      "sourceFamilyId": "official-ipl-historical-route-2021-v1",
+      "matchId": "1254058",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2021/1",
+      "availability": "UNAVAILABLE_404",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2021:team-mumbai-indians",
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The route redirected to the redesigned /en site and returned an explicit 404; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:1c17e270:ipl-2021:team-chennai-super-kings",
+      "player": "RV Uthappa",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 4,
+      "appearancesReviewed": [
+        "1254094",
+        "1254110",
+        "1254114",
+        "1254117"
+      ],
+      "sourceIds": [
+        "espn-ipl-2021-1254094",
+        "espn-ipl-2021-1254110",
+        "espn-ipl-2021-1254114",
+        "espn-ipl-2021-1254117"
+      ],
+      "sourceConventionId": "espn-scorecard-2021-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:3241e3fd:ipl-2021:team-punjab-kings",
+      "player": "N Pooran",
+      "team": "Punjab Kings",
+      "officialAppearances": 12,
+      "appearancesReviewed": [
+        "1254061",
+        "1254065",
+        "1254068",
+        "1254071",
+        "1254074",
+        "1254078",
+        "1254083",
+        "1254090",
+        "1254099",
+        "1254102",
+        "1254107",
+        "1254111"
+      ],
+      "sourceIds": [
+        "espn-ipl-2021-1254061",
+        "espn-ipl-2021-1254065",
+        "espn-ipl-2021-1254068",
+        "espn-ipl-2021-1254071",
+        "espn-ipl-2021-1254074",
+        "espn-ipl-2021-1254078",
+        "espn-ipl-2021-1254083",
+        "espn-ipl-2021-1254090",
+        "espn-ipl-2021-1254099",
+        "espn-ipl-2021-1254102",
+        "espncricinfo-ipl-2021-1254107-full",
+        "espn-ipl-2021-1254111"
+      ],
+      "sourceConventionId": "espn-scorecard-2021-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+      "player": "MS Dhoni",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 16,
+      "appearancesReviewed": [
+        "1254059"
+      ],
+      "sourceIds": [
+        "espn-ipl-2021-1254059"
+      ],
+      "sourceConventionId": "espn-scorecard-2021-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2021-1254059",
+        "observedMarker": "†",
+        "observedText": "MS Dhoni (c) †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:70d205c9:ipl-2021:team-chennai-super-kings",
+      "player": "AT Rayudu",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 16,
+      "appearancesReviewed": [
+        "1254059",
+        "1254065",
+        "1254069",
+        "1254072",
+        "1254076",
+        "1254080",
+        "1254084",
+        "1254089",
+        "1254091",
+        "1254094",
+        "1254098",
+        "1254104",
+        "1254110",
+        "1254113",
+        "1254114",
+        "1254117"
+      ],
+      "sourceIds": [
+        "espn-ipl-2021-1254059",
+        "espn-ipl-2021-1254065",
+        "espn-ipl-2021-1254069",
+        "espn-ipl-2021-1254072",
+        "espn-ipl-2021-1254076",
+        "espn-ipl-2021-1254080",
+        "espn-ipl-2021-1254084",
+        "espn-ipl-2021-1254089",
+        "espn-ipl-2021-1254091",
+        "espn-ipl-2021-1254094",
+        "espn-ipl-2021-1254098",
+        "espn-ipl-2021-1254104",
+        "espn-ipl-2021-1254110",
+        "espn-ipl-2021-1254113",
+        "espn-ipl-2021-1254114",
+        "espn-ipl-2021-1254117"
+      ],
+      "sourceConventionId": "espn-scorecard-2021-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:752f7486:ipl-2021:team-mumbai-indians",
+      "player": "Ishan Kishan",
+      "team": "Mumbai Indians",
+      "officialAppearances": 10,
+      "appearancesReviewed": [
+        "1254058"
+      ],
+      "sourceIds": [
+        "espn-ipl-2021-1254058"
+      ],
+      "sourceConventionId": "espn-scorecard-2021-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2021-1254058",
+        "observedMarker": "†",
+        "observedText": "Ishan Kishan †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:9418198b:ipl-2021:team-punjab-kings",
+      "player": "P Simran Singh",
+      "team": "Punjab Kings",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1254083"
+      ],
+      "sourceIds": [
+        "espn-ipl-2021-1254083"
+      ],
+      "sourceConventionId": "espn-scorecard-2021-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2021-1254083",
+        "observedMarker": "†",
+        "observedText": "Prabhsimran Singh †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation. ESPN's Prabhsimran Singh rendering maps to canonical P Simran Singh (playerId 9418198b).",
+      "identityNormalization": {
+        "sourceRenderedName": "Prabhsimran Singh",
+        "canonicalDisplayName": "P Simran Singh",
+        "playerId": "9418198b",
+        "status": "ESTABLISHED_UNAMBIGUOUS_MAPPING"
+      }
+    },
+    {
+      "playerTeamSeasonId": "pts:99b75528:ipl-2021:team-rajasthan-royals",
+      "player": "JC Buttler",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 7,
+      "appearancesReviewed": [
+        "1254061",
+        "1254064",
+        "1254069",
+        "1254073",
+        "1254075",
+        "1254081",
+        "1254085"
+      ],
+      "sourceIds": [
+        "espn-ipl-2021-1254061",
+        "espn-ipl-2021-1254064",
+        "espn-ipl-2021-1254069",
+        "espn-ipl-2021-1254073",
+        "espn-ipl-2021-1254075",
+        "espn-ipl-2021-1254081",
+        "espn-ipl-2021-1254085"
+      ],
+      "sourceConventionId": "espn-scorecard-2021-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:99d63244:ipl-2021:team-sunrisers-hyderabad",
+      "player": "KM Jadhav",
+      "team": "Sunrisers Hyderabad",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "1254071",
+        "1254077",
+        "1254080",
+        "1254085",
+        "1254105",
+        "1254107"
+      ],
+      "sourceIds": [
+        "espn-ipl-2021-1254071",
+        "espn-ipl-2021-1254077",
+        "espn-ipl-2021-1254080",
+        "espn-ipl-2021-1254085",
+        "espn-ipl-2021-1254105",
+        "espncricinfo-ipl-2021-1254107-full"
+      ],
+      "sourceConventionId": "espn-scorecard-2021-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:9a46c4e5:ipl-2021:team-rajasthan-royals",
+      "player": "GD Phillips",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "1254089",
+        "1254093",
+        "1254106"
+      ],
+      "sourceIds": [
+        "espn-ipl-2021-1254089",
+        "espn-ipl-2021-1254093",
+        "espn-ipl-2021-1254106"
+      ],
+      "sourceConventionId": "espn-scorecard-2021-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2021:team-punjab-kings",
+      "player": "KL Rahul",
+      "team": "Punjab Kings",
+      "officialAppearances": 13,
+      "appearancesReviewed": [
+        "1254061"
+      ],
+      "sourceIds": [
+        "espn-ipl-2021-1254061"
+      ],
+      "sourceConventionId": "espn-scorecard-2021-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2021-1254061",
+        "observedMarker": "†",
+        "observedText": "KL Rahul (c) †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore",
+      "player": "AB de Villiers",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 15,
+      "appearancesReviewed": [
+        "1254058"
+      ],
+      "sourceIds": [
+        "espn-ipl-2021-1254058"
+      ],
+      "sourceConventionId": "espn-scorecard-2021-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2021-1254058",
+        "observedMarker": "†",
+        "observedText": "AB de Villiers †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:fe11caa6:ipl-2021:team-sunrisers-hyderabad",
+      "player": "WP Saha",
+      "team": "Sunrisers Hyderabad",
+      "officialAppearances": 9,
+      "appearancesReviewed": [
+        "1254060"
+      ],
+      "sourceIds": [
+        "espn-ipl-2021-1254060"
+      ],
+      "sourceConventionId": "espn-scorecard-2021-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2021-1254060",
+        "observedMarker": "†",
+        "observedText": "WP Saha †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    }
+  ],
+  "capabilityFreezeExceptions": [],
+  "summary": {
+    "scopeCases": 12,
+    "positiveUsageFound": 6,
+    "reviewedUnknown": 6,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "targetScorecardsInspected": 55,
+    "controlOnlyScorecardsInspected": 0,
+    "totalReadableScorecardsInspected": 55,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 55,
+    "reusedTargetScorecards": 36,
+    "crossTeamReusedScorecards": 23,
+    "sameTeamMultiCandidateScorecards": 13,
+    "canonicalCandidateAppearances": 113,
+    "candidateAppearancesCoveredByInspectedScorecards": 113,
+    "candidateAppearancesSkippedAfterPositive": 0,
+    "failedEspnShortcutRoutes": 2,
+    "stableReplacementScorecards": 2,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}

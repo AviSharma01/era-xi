@@ -1,0 +1,2476 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2020-v1",
+  "seasonId": "ipl-2020",
+  "researchStatus": "COMPLETED_APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "5689383fd7b2a9487c45a27f674db62b53784d635213970ce6f87e8ba7793d38",
+  "scopePlayerTeamSeasonIds": [
+    "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+    "pts:25f7b7d6:ipl-2020:team-kolkata-knight-riders",
+    "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+    "pts:39086549:ipl-2020:team-royal-challengers-bangalore",
+    "pts:69d03465:ipl-2020:team-delhi-capitals",
+    "pts:6eb146d2:ipl-2020:team-royal-challengers-bangalore",
+    "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+    "pts:752f7486:ipl-2020:team-mumbai-indians",
+    "pts:919a3be2:ipl-2020:team-delhi-capitals",
+    "pts:9418198b:ipl-2020:team-kings-xi-punjab",
+    "pts:99b75528:ipl-2020:team-rajasthan-royals",
+    "pts:99d63244:ipl-2020:team-chennai-super-kings",
+    "pts:b17e2f24:ipl-2020:team-kings-xi-punjab",
+    "pts:bd54eef5:ipl-2020:team-chennai-super-kings",
+    "pts:c03f1114:ipl-2020:team-kolkata-knight-riders",
+    "pts:f088b960:ipl-2020:team-kings-xi-punjab"
+  ],
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated keeper.",
+    "Every canonical official appearance was checked and none designates the candidate.",
+    "Substitute-fielding, event-only, and replacement involvement is separated from official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "identityNormalizations": [
+    {
+      "sourceRenderedName": "Prabhsimran Singh",
+      "canonicalDisplayName": "P Simran Singh",
+      "playerId": "9418198b",
+      "status": "ESTABLISHED_UNAMBIGUOUS_MAPPING",
+      "notes": "The mapping is consistent with committed 2025–2026 research ledgers and deterministic canonical identity evidence."
+    }
+  ],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "publisher": "ESPN/Cricinfo",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "†,",
+        "(c) †",
+        "non-breaking-space before †"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1216492",
+          "knownKeeper": "Q de Kock",
+          "observedText": "Q de Kock †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1216492"
+        },
+        {
+          "matchId": "1216492",
+          "knownKeeper": "MS Dhoni",
+          "observedText": "MS Dhoni (c) †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1216492"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Only a dagger terminating a playing-XI name was accepted; dismissal annotations, catches, stumpings text, and uncalibrated symbols were excluded."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2020-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1216492",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2020/1",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The historical route redirected to /en and exposed no readable scorecard or keeper-marker convention."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2020-1216492",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216492",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216492",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+        "pts:99d63244:ipl-2020:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216493",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216493",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216493",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:919a3be2:ipl-2020:team-delhi-capitals",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab",
+        "pts:f088b960:ipl-2020:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216494",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216494",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216494",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "AB de Villiers †,"
+      ],
+      "candidatesCovered": [
+        "pts:25f7b7d6:ipl-2020:team-kolkata-knight-riders",
+        "pts:6eb146d2:ipl-2020:team-royal-challengers-bangalore",
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216495",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216495",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216495",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2020:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216496",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216496",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216496",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+        "pts:99d63244:ipl-2020:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216497",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216497",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216497",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:919a3be2:ipl-2020:team-delhi-capitals",
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216498",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216498",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216498",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "JM Bairstow †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216499",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216499",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216499",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:39086549:ipl-2020:team-royal-challengers-bangalore",
+        "pts:6eb146d2:ipl-2020:team-royal-challengers-bangalore",
+        "pts:752f7486:ipl-2020:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216500",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216500",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216500",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:919a3be2:ipl-2020:team-delhi-capitals",
+        "pts:99b75528:ipl-2020:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216501",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216501",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216501",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik (c) †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+        "pts:99d63244:ipl-2020:team-chennai-super-kings",
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216502",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216502",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216502",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:39086549:ipl-2020:team-royal-challengers-bangalore",
+        "pts:6eb146d2:ipl-2020:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216503",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216503",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216503",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:752f7486:ipl-2020:team-mumbai-indians",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab",
+        "pts:f088b960:ipl-2020:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216504",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216504",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216504",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik (c) †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+        "pts:99b75528:ipl-2020:team-rajasthan-royals",
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216505",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216505",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216505",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:39086549:ipl-2020:team-royal-challengers-bangalore",
+        "pts:919a3be2:ipl-2020:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216506",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216506",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216506",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "MS Dhoni (c) †,"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab",
+        "pts:bd54eef5:ipl-2020:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216507",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216507",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216507",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Bairstow †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+        "pts:99b75528:ipl-2020:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216508",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216508",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216508",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216509",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216509",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216509",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "AT Carey †"
+      ],
+      "candidatesCovered": [
+        "pts:69d03465:ipl-2020:team-delhi-capitals",
+        "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+        "pts:99d63244:ipl-2020:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216510",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216510",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216510",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "JR Philippe †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:39086549:ipl-2020:team-royal-challengers-bangalore",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab",
+        "pts:f088b960:ipl-2020:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216511",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216511",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216511",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2020:team-mumbai-indians",
+        "pts:99b75528:ipl-2020:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216512",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216512",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216512",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "JM Bairstow †"
+      ],
+      "candidatesCovered": [
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216513",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216513",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216513",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "N Pooran †",
+        "MS Dhoni (c) †,"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+        "pts:99d63244:ipl-2020:team-chennai-super-kings",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab",
+        "pts:f088b960:ipl-2020:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216514",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216514",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216514",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+        "pts:6eb146d2:ipl-2020:team-royal-challengers-bangalore",
+        "pts:99b75528:ipl-2020:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216515",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216515",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216515",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:919a3be2:ipl-2020:team-delhi-capitals",
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216516",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216516",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216516",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Bairstow †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+        "pts:99d63244:ipl-2020:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216517",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216517",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216517",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:752f7486:ipl-2020:team-mumbai-indians",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216518",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216518",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216518",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson †",
+        "JM Bairstow †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+        "pts:99b75528:ipl-2020:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216519",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216519",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216519",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:919a3be2:ipl-2020:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216520",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216520",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216520",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab",
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216521",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216521",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216521",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+        "pts:752f7486:ipl-2020:team-mumbai-indians",
+        "pts:bd54eef5:ipl-2020:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216522",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216522",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216522",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+        "pts:6eb146d2:ipl-2020:team-royal-challengers-bangalore",
+        "pts:99b75528:ipl-2020:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216523",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216523",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216523",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik (c) †",
+        "Prabhsimran Singh †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:9418198b:ipl-2020:team-kings-xi-punjab",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab",
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216524",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216524",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216524",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:919a3be2:ipl-2020:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216525",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216525",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216525",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:6eb146d2:ipl-2020:team-royal-challengers-bangalore",
+        "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+        "pts:bd54eef5:ipl-2020:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216526",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216526",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216526",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2020:team-mumbai-indians",
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216527",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216527",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216527",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:99b75528:ipl-2020:team-rajasthan-royals",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab",
+        "pts:f088b960:ipl-2020:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216528",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216528",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216528",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "JM Bairstow †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2020:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216529",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216529",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216529",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AT Carey †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:69d03465:ipl-2020:team-delhi-capitals",
+        "pts:752f7486:ipl-2020:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216530",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216530",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216530",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+        "pts:99b75528:ipl-2020:team-rajasthan-royals",
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216531",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216531",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216531",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216532",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216532",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216532",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Bairstow †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:919a3be2:ipl-2020:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216533",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216533",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216533",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+        "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+        "pts:99b75528:ipl-2020:team-rajasthan-royals",
+        "pts:99d63244:ipl-2020:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216534",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216534",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216534",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JR Philippe †",
+        "JM Bairstow †"
+      ],
+      "candidatesCovered": [
+        "pts:39086549:ipl-2020:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216535",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216535",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216535",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2020:team-mumbai-indians",
+        "pts:919a3be2:ipl-2020:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216536",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216536",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216536",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+        "pts:bd54eef5:ipl-2020:team-chennai-super-kings",
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216537",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216537",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216537",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul (c) †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:99b75528:ipl-2020:team-rajasthan-royals",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216538",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216538",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216538",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "JM Bairstow †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2020:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216539",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216539",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216539",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:919a3be2:ipl-2020:team-delhi-capitals",
+        "pts:99d63244:ipl-2020:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216540",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216540",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216540",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:25f7b7d6:ipl-2020:team-kolkata-knight-riders",
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216541",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216541",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216541",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+        "pts:752f7486:ipl-2020:team-mumbai-indians",
+        "pts:99b75528:ipl-2020:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216542",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216542",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216542",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JM Bairstow †",
+        "Prabhsimran Singh †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:9418198b:ipl-2020:team-kings-xi-punjab",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216543",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216543",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216543",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AT Carey †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+        "pts:69d03465:ipl-2020:team-delhi-capitals",
+        "pts:99b75528:ipl-2020:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216544",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216544",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216544",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:6eb146d2:ipl-2020:team-royal-challengers-bangalore",
+        "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+        "pts:bd54eef5:ipl-2020:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216545",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216545",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216545",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:c03f1114:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216546",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216546",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216546",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "KL Rahul (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:919a3be2:ipl-2020:team-delhi-capitals",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1216547",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1216547",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216547",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:6eb146d2:ipl-2020:team-royal-challengers-bangalore",
+        "pts:752f7486:ipl-2020:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1237177",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1237177",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1237177",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2020:team-mumbai-indians",
+        "pts:919a3be2:ipl-2020:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1237180",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1237180",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1237180",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "SP Goswami †"
+      ],
+      "candidatesCovered": [
+        "pts:919a3be2:ipl-2020:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2020-1237181",
+      "sourceFamilyId": "espn-scorecard-2020-v1",
+      "matchId": "1237181",
+      "teams": [
+        {
+          "teamId": "team-delhi-capitals",
+          "teamName": "Delhi Capitals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1237181",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2020:team-mumbai-indians",
+        "pts:919a3be2:ipl-2020:team-delhi-capitals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2020-historical-route",
+      "sourceFamilyId": "official-ipl-historical-route-2020-v1",
+      "matchId": "1216492",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2020/1",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+        "pts:99d63244:ipl-2020:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The route redirected to the redesigned /en site without readable historical scorecard data or a keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+      "player": "RV Uthappa",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 12,
+      "appearancesReviewed": [
+        "1216496",
+        "1216504",
+        "1216507",
+        "1216514",
+        "1216518",
+        "1216522",
+        "1216527",
+        "1216530",
+        "1216533",
+        "1216537",
+        "1216541",
+        "1216543"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216496",
+        "espn-ipl-2020-1216504",
+        "espn-ipl-2020-1216507",
+        "espn-ipl-2020-1216514",
+        "espn-ipl-2020-1216518",
+        "espn-ipl-2020-1216522",
+        "espn-ipl-2020-1216527",
+        "espn-ipl-2020-1216530",
+        "espn-ipl-2020-1216533",
+        "espn-ipl-2020-1216537",
+        "espn-ipl-2020-1216541",
+        "espn-ipl-2020-1216543"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:25f7b7d6:ipl-2020:team-kolkata-knight-riders",
+      "player": "T Banton",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1216494",
+        "1216540"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216494",
+        "espn-ipl-2020-1216540"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+      "player": "N Pooran",
+      "team": "Kings XI Punjab",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1216513"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216513"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2020-1216513",
+        "observedMarker": "†",
+        "observedText": "N Pooran †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:39086549:ipl-2020:team-royal-challengers-bangalore",
+      "player": "JR Philippe",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "1216510"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216510"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2020-1216510",
+        "observedMarker": "†",
+        "observedText": "JR Philippe †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:69d03465:ipl-2020:team-delhi-capitals",
+      "player": "AT Carey",
+      "team": "Delhi Capitals",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "1216509"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216509"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2020-1216509",
+        "observedMarker": "†",
+        "observedText": "AT Carey †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:6eb146d2:ipl-2020:team-royal-challengers-bangalore",
+      "player": "Gurkeerat Singh",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 8,
+      "appearancesReviewed": [
+        "1216494",
+        "1216499",
+        "1216502",
+        "1216514",
+        "1216522",
+        "1216525",
+        "1216544",
+        "1216547"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216494",
+        "espn-ipl-2020-1216499",
+        "espn-ipl-2020-1216502",
+        "espn-ipl-2020-1216514",
+        "espn-ipl-2020-1216522",
+        "espn-ipl-2020-1216525",
+        "espn-ipl-2020-1216544",
+        "espn-ipl-2020-1216547"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+      "player": "AT Rayudu",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 12,
+      "appearancesReviewed": [
+        "1216492",
+        "1216501",
+        "1216506",
+        "1216509",
+        "1216513",
+        "1216516",
+        "1216521",
+        "1216525",
+        "1216528",
+        "1216533",
+        "1216536",
+        "1216544"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216492",
+        "espn-ipl-2020-1216501",
+        "espn-ipl-2020-1216506",
+        "espn-ipl-2020-1216509",
+        "espn-ipl-2020-1216513",
+        "espn-ipl-2020-1216516",
+        "espn-ipl-2020-1216521",
+        "espn-ipl-2020-1216525",
+        "espn-ipl-2020-1216528",
+        "espn-ipl-2020-1216533",
+        "espn-ipl-2020-1216536",
+        "espn-ipl-2020-1216544"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:752f7486:ipl-2020:team-mumbai-indians",
+      "player": "Ishan Kishan",
+      "team": "Mumbai Indians",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1216495",
+        "1216499",
+        "1216503",
+        "1216511",
+        "1216517",
+        "1216521",
+        "1216526",
+        "1216529",
+        "1216535",
+        "1216538",
+        "1216541",
+        "1216547",
+        "1237177",
+        "1237181"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216495",
+        "espn-ipl-2020-1216499",
+        "espn-ipl-2020-1216503",
+        "espn-ipl-2020-1216511",
+        "espn-ipl-2020-1216517",
+        "espn-ipl-2020-1216521",
+        "espn-ipl-2020-1216526",
+        "espn-ipl-2020-1216529",
+        "espn-ipl-2020-1216535",
+        "espn-ipl-2020-1216538",
+        "espn-ipl-2020-1216541",
+        "espn-ipl-2020-1216547",
+        "espn-ipl-2020-1237177",
+        "espn-ipl-2020-1237181"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:919a3be2:ipl-2020:team-delhi-capitals",
+      "player": "RR Pant",
+      "team": "Delhi Capitals",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1216493"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216493"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2020-1216493",
+        "observedMarker": "†",
+        "observedText": "RR Pant †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:9418198b:ipl-2020:team-kings-xi-punjab",
+      "player": "P Simran Singh",
+      "team": "Kings XI Punjab",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "1216523"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216523"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2020-1216523",
+        "observedMarker": "†",
+        "observedText": "Prabhsimran Singh †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation. ESPN's Prabhsimran Singh rendering maps to canonical P Simran Singh (playerId 9418198b).",
+      "identityNormalization": {
+        "sourceRenderedName": "Prabhsimran Singh",
+        "canonicalDisplayName": "P Simran Singh",
+        "playerId": "9418198b",
+        "status": "ESTABLISHED_UNAMBIGUOUS_MAPPING"
+      }
+    },
+    {
+      "playerTeamSeasonId": "pts:99b75528:ipl-2020:team-rajasthan-royals",
+      "player": "JC Buttler",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 13,
+      "appearancesReviewed": [
+        "1216500"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216500"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2020-1216500",
+        "observedMarker": "†",
+        "observedText": "JC Buttler †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:99d63244:ipl-2020:team-chennai-super-kings",
+      "player": "KM Jadhav",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 8,
+      "appearancesReviewed": [
+        "1216492",
+        "1216496",
+        "1216501",
+        "1216509",
+        "1216513",
+        "1216516",
+        "1216533",
+        "1216539"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216492",
+        "espn-ipl-2020-1216496",
+        "espn-ipl-2020-1216501",
+        "espn-ipl-2020-1216509",
+        "espn-ipl-2020-1216513",
+        "espn-ipl-2020-1216516",
+        "espn-ipl-2020-1216533",
+        "espn-ipl-2020-1216539"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2020:team-kings-xi-punjab",
+      "player": "KL Rahul",
+      "team": "Kings XI Punjab",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1216493"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216493"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2020-1216493",
+        "observedMarker": "†",
+        "observedText": "KL Rahul (c) †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:bd54eef5:ipl-2020:team-chennai-super-kings",
+      "player": "N Jagadeesan",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "1216506",
+        "1216521",
+        "1216525",
+        "1216536",
+        "1216544"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216506",
+        "espn-ipl-2020-1216521",
+        "espn-ipl-2020-1216525",
+        "espn-ipl-2020-1216536",
+        "espn-ipl-2020-1216544"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:c03f1114:ipl-2020:team-kolkata-knight-riders",
+      "player": "KD Karthik",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1216494"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216494"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2020-1216494",
+        "observedMarker": "†",
+        "observedText": "KD Karthik †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:f088b960:ipl-2020:team-kings-xi-punjab",
+      "player": "SN Khan",
+      "team": "Kings XI Punjab",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "1216493",
+        "1216503",
+        "1216510",
+        "1216513",
+        "1216527"
+      ],
+      "sourceIds": [
+        "espn-ipl-2020-1216493",
+        "espn-ipl-2020-1216503",
+        "espn-ipl-2020-1216510",
+        "espn-ipl-2020-1216513",
+        "espn-ipl-2020-1216527"
+      ],
+      "sourceConventionId": "espn-scorecard-2020-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    }
+  ],
+  "capabilityFreezeExceptions": [],
+  "summary": {
+    "scopeCases": 16,
+    "positiveUsageFound": 8,
+    "reviewedUnknown": 8,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "targetScorecardsInspected": 59,
+    "controlOnlyScorecardsInspected": 0,
+    "totalReadableScorecardsInspected": 59,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 59,
+    "reusedTargetScorecards": 48,
+    "crossTeamReusedScorecards": 39,
+    "sameTeamMultiCandidateScorecards": 9,
+    "canonicalCandidateAppearances": 145,
+    "candidateAppearancesCoveredByInspectedScorecards": 145,
+    "candidateAppearancesSkippedAfterPositive": 0,
+    "failedEspnShortcutRoutes": 0,
+    "stableReplacementScorecards": 0,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}

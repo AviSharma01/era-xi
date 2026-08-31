@@ -3527,6 +3527,1278 @@
       "locator": "Rendered scorecard XI keeper designations: MS Dhoni †; H Klaasen †",
       "supports": [],
       "notes": "Research batch usage-2024-followup-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175356",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Royal Challengers Bangalore, Indian Premier League 2019, 1st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175356",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; MS Dhoni (c) †,",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175357",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Sunrisers Hyderabad, Indian Premier League 2019, 2nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175357",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: JM Bairstow †; KD Karthik (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2019-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175359",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Kings XI Punjab, Indian Premier League 2019, 4th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175359",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: N Pooran †; JC Buttler †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2019-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175360",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Chennai Super Kings, Indian Premier League 2019, 5th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175360",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175361",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Kings XI Punjab, Indian Premier League 2019, 6th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175361",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik (c) †; KL Rahul †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2019-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175362",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Mumbai Indians, Indian Premier League 2019, 7th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175362",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175364",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Mumbai Indians, Indian Premier League 2019, 9th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175364",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175365",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Kolkata Knight Riders, Indian Premier League 2019, 10th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175365",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik (c) †; RR Pant †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175366",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Royal Challengers Bangalore, Indian Premier League 2019, 11th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175366",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: JM Bairstow †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175367",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Rajasthan Royals, Indian Premier League 2019, 12th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175367",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175368",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Delhi Capitals, Indian Premier League 2019, 13th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175368",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul †; RR Pant †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175369",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Royal Challengers Bangalore, Indian Premier League 2019, 14th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175369",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175370",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Chennai Super Kings, Indian Premier League 2019, 15th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175370",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1175372",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kolkata Knight Riders, Indian Premier League 2019, 17th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1175372",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; KD Karthik (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178393",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kings XI Punjab, Indian Premier League 2019, 18th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178393",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178394",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Mumbai Indians, Indian Premier League 2019, 19th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178394",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; JM Bairstow †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178395",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Delhi Capitals, Indian Premier League 2019, 20th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178395",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; RR Pant †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178396",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Kolkata Knight Riders, Indian Premier League 2019, 21st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178396",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: JC Buttler †; KD Karthik (c) †,",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178397",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Sunrisers Hyderabad, Indian Premier League 2019, 22nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178397",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: JM Bairstow †; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178398",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kolkata Knight Riders, Indian Premier League 2019, 23rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178398",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik (c) †; MS Dhoni (c) †,",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178399",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Kings XI Punjab, Indian Premier League 2019, 24th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178399",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178400",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Chennai Super Kings, Indian Premier League 2019, 25th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178400",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: JC Buttler †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178401",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Delhi Capitals, Indian Premier League 2019, 26th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178401",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik (c) †; RR Pant †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178402",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Rajasthan Royals, Indian Premier League 2019, 27th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178402",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178403",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Royal Challengers Bangalore, Indian Premier League 2019, 28th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178403",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: N Pooran †,; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178404",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Chennai Super Kings, Indian Premier League 2019, 29th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178404",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik (c) †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178406",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Royal Challengers Bangalore, Indian Premier League 2019, 31st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178406",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178408",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Chennai Super Kings, Indian Premier League 2019, 33rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178408",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SW Billings †; JM Bairstow †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178410",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Royal Challengers Bangalore, Indian Premier League 2019, 35th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178410",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; KD Karthik (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178414",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Chennai Super Kings, Indian Premier League 2019, 39th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178414",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178416",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Sunrisers Hyderabad, Indian Premier League 2019, 41st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178416",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: JM Bairstow †; MS Dhoni (c) †,",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178417",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kings XI Punjab, Indian Premier League 2019, 42nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178417",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; N Pooran †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178419",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Indian Premier League 2019, 44th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178419",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; AT Rayudu †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2019-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178421",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Royal Challengers Bangalore, Indian Premier League 2019, 46th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178421",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178422",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Mumbai Indians, Indian Premier League 2019, 47th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178422",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik (c) †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178424",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Rajasthan Royals, Indian Premier League 2019, 49th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178424",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178425",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Delhi Capitals, Indian Premier League 2019, 50th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178425",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; RR Pant †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178427",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Kolkata Knight Riders, Indian Premier League 2019, 52nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178427",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: N Pooran †; KD Karthik (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178429",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Sunrisers Hyderabad, Indian Premier League 2019, 54th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178429",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178430",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Chennai Super Kings, Indian Premier League 2019, 55th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178430",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; N Pooran †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1178431",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Kolkata Knight Riders, Indian Premier League 2019, 56th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1178431",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik (c) †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1181764",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Indian Premier League 2019, Qualifier 1 - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1181764",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2019-1181768",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Indian Premier League 2019, Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1181768",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2019-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216492",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Chennai Super Kings, Indian Premier League 2020, 1st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216492",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216493",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Kings XI Punjab, Indian Premier League 2020, 2nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216493",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant †; KL Rahul (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2020-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216494",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Royal Challengers Bangalore, Indian Premier League 2020, 39th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216494",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; AB de Villiers †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2020-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216495",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Mumbai Indians, Indian Premier League 2020, 56th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216495",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216496",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Chennai Super Kings, Indian Premier League 2020, 4th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216496",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216499",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Royal Challengers Bangalore, Indian Premier League 2020, 48th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216499",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AB de Villiers †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216500",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Delhi Capitals, Indian Premier League 2020, 23rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216500",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant †; JC Buttler †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2020-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216501",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Chennai Super Kings, Indian Premier League 2020, 21st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216501",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik (c) †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216502",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Sunrisers Hyderabad, Indian Premier League 2020, 52nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216502",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AB de Villiers †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216503",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Mumbai Indians, Indian Premier League 2020, 13th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216503",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; KL Rahul (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216504",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Kolkata Knight Riders, Indian Premier League 2020, 12th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216504",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik (c) †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216506",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kings XI Punjab, Indian Premier League 2020, 53rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216506",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; MS Dhoni (c) †,",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216507",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Rajasthan Royals, Indian Premier League 2020, 26th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216507",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: JM Bairstow †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216509",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Chennai Super Kings, Indian Premier League 2020, 34th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216509",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; AT Carey †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2020-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216510",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Royal Challengers Bangalore, Indian Premier League 2020, 6th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216510",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; JR Philippe †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2020-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216511",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Rajasthan Royals, Indian Premier League 2020, 20th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216511",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216513",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Chennai Super Kings, Indian Premier League 2020, 18th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216513",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: N Pooran †; MS Dhoni (c) †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2020-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216514",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Rajasthan Royals, Indian Premier League 2020, 15th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216514",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: JC Buttler †; AB de Villiers †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216516",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Sunrisers Hyderabad, Indian Premier League 2020, 14th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216516",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: JM Bairstow †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216517",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Kings XI Punjab, Indian Premier League 2020, 36th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216517",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; KL Rahul (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216518",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Sunrisers Hyderabad, Indian Premier League 2020, 40th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216518",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; JM Bairstow †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216521",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Indian Premier League 2020, 41st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216521",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216522",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Royal Challengers Bangalore, Indian Premier League 2020, 33rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216522",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; AB de Villiers †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216523",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Kolkata Knight Riders, Indian Premier League 2020, 24th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216523",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik (c) †; Prabhsimran Singh †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2020-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216525",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Royal Challengers Bangalore, Indian Premier League 2020, 25th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216525",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AB de Villiers †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216526",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Kolkata Knight Riders, Indian Premier League 2020, 32nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216526",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216527",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Kings XI Punjab, Indian Premier League 2020, 9th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216527",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216528",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Chennai Super Kings, Indian Premier League 2020, 29th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216528",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; JM Bairstow †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216529",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Delhi Capitals, Indian Premier League 2020, 27th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216529",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AT Carey †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216530",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Rajasthan Royals, Indian Premier League 2020, 54th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216530",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216533",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Rajasthan Royals, Indian Premier League 2020, 37th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216533",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216535",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Mumbai Indians, Indian Premier League 2020, 51st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216535",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216536",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kolkata Knight Riders, Indian Premier League 2020, 49th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216536",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216537",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Rajasthan Royals, Indian Premier League 2020, 50th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216537",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216538",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Sunrisers Hyderabad, Indian Premier League 2020, 17th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216538",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; JM Bairstow †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216539",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Delhi Capitals, Indian Premier League 2020, 7th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216539",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216540",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kolkata Knight Riders, Indian Premier League 2020, 28th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216540",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AB de Villiers †; KD Karthik (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216541",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Mumbai Indians, Indian Premier League 2020, 45th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216541",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216543",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Rajasthan Royals, Indian Premier League 2020, 30th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216543",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AT Carey †; JC Buttler †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216544",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Chennai Super Kings, Indian Premier League 2020, 44th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216544",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AB de Villiers †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1216547",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Mumbai Indians, Indian Premier League 2020, 10th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1216547",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AB de Villiers †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1237177",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Mumbai Indians, Indian Premier League 2020, Qualifier 1 - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1237177",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; RR Pant †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2020-1237181",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Mumbai Indians, Indian Premier League 2020, Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1237181",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2020-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254058",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Royal Challengers Bangalore, Indian Premier League 2021, 1st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254058",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Ishan Kishan †; AB de Villiers †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2021-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254059",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Delhi Capitals, Indian Premier League 2021, 2nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254059",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; RR Pant (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2021-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254060",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Kolkata Knight Riders, Indian Premier League 2021, 3rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254060",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; WP Saha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2021-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254061",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Punjab Kings, Indian Premier League 2021, 4th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254061",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; SV Samson (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2021-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254064",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Delhi Capitals, Indian Premier League 2021, 7th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254064",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254065",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Chennai Super Kings, Indian Premier League 2021, 8th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254065",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; MS Dhoni (c) †,",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254068",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Punjab Kings, Indian Premier League 2021, 11th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254068",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254069",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Rajasthan Royals, Indian Premier League 2021, 12th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254069",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254071",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Sunrisers Hyderabad, Indian Premier League 2021, 14th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254071",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; JM Bairstow †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254072",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Chennai Super Kings, Indian Premier League 2021, 15th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254072",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254073",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Rajasthan Royals, Indian Premier League 2021, 16th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254073",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; AB de Villiers †,",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254074",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Mumbai Indians, Indian Premier League 2021, 17th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254074",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; KL Rahul (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254075",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Kolkata Knight Riders, Indian Premier League 2021, 18th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254075",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254076",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Royal Challengers Bangalore, Indian Premier League 2021, 19th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254076",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; AB de Villiers †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254077",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Delhi Capitals, Indian Premier League 2021, 20th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254077",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; JM Bairstow †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254078",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Kolkata Knight Riders, Indian Premier League 2021, 21st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254078",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254080",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Sunrisers Hyderabad, Indian Premier League 2021, 23rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254080",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: JM Bairstow †; MS Dhoni (c) †,",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254081",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Rajasthan Royals, Indian Premier League 2021, 24th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254081",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254083",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Royal Challengers Bangalore, Indian Premier League 2021, 26th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254083",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Prabhsimran Singh †; AB de Villiers †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2021-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254084",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Chennai Super Kings, Indian Premier League 2021, 27th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254084",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †,; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254085",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Sunrisers Hyderabad, Indian Premier League 2021, 28th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254085",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; JM Bairstow †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254089",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Chennai Super Kings, Indian Premier League 2021, 47th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254089",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †,; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254090",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Punjab Kings, Indian Premier League 2021, 48th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254090",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KS Bharat †; KL Rahul (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254091",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Chennai Super Kings, Indian Premier League 2021, 44th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254091",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254093",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Mumbai Indians, Indian Premier League 2021, 51st Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254093",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; Ishan Kishan †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254094",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Punjab Kings, Indian Premier League 2021, 53rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254094",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KL Rahul (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254098",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kolkata Knight Riders, Indian Premier League 2021, 38th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254098",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254099",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Punjab Kings, Indian Premier League 2021, 42nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254099",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c) †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254102",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Punjab Kings, Indian Premier League 2021, 45th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254102",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; KL Rahul (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254104",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Indian Premier League 2021, 30th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254104",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254105",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Sunrisers Hyderabad, Indian Premier League 2021, 33rd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254105",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254106",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Rajasthan Royals, Indian Premier League 2021, 54th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254106",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; SV Samson (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espncricinfo-ipl-2021-1254107-full",
+      "publisher": "ESPN/Cricinfo",
+      "title": "SRH vs PBKS Cricket Scorecard, 37th Match at Sharjah, September 25, 2021",
+      "url": "https://www.cricinfo.com/series/ipl-2021-1249214/sunrisers-hyderabad-vs-punjab-kings-37th-match-1254107/full-scorecard",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul (c)†; Wriddhiman Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254110",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Chennai Super Kings, Indian Premier League 2021, 50th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254110",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; RR Pant (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254111",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Punjab Kings vs Rajasthan Royals, Indian Premier League 2021, 32nd Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254111",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson (c) †; KL Rahul (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254113",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Chennai Super Kings, Indian Premier League 2021, 35th Match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254113",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KS Bharat †,; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254114",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Chennai Super Kings, Indian Premier League 2021, Qualifier 1 - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254114",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RR Pant (c) †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2021-1254117",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kolkata Knight Riders, Indian Premier League 2021, Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1254117",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †,; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2021-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
     }
   ],
   "capabilityConfirmations": [
@@ -4292,6 +5564,158 @@
       ],
       "reviewStatus": "APPROVED",
       "notes": "Approved Kolkata Knight Riders 2022 season-usage assertion for B Indrajith from research batch usage-2022-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:3241e3fd:ipl-2019:team-kings-xi-punjab",
+      "sourceIds": [
+        "espn-ipl-2019-1175359"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kings XI Punjab 2019 season-usage assertion for N Pooran from research batch usage-2019-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+      "sourceIds": [
+        "espn-ipl-2020-1216513"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kings XI Punjab 2020 season-usage assertion for N Pooran from research batch usage-2020-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:39086549:ipl-2020:team-royal-challengers-bangalore",
+      "sourceIds": [
+        "espn-ipl-2020-1216510"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Royal Challengers Bangalore 2020 season-usage assertion for JR Philippe from research batch usage-2020-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+      "sourceIds": [
+        "espn-ipl-2021-1254059"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Chennai Super Kings 2021 season-usage assertion for MS Dhoni from research batch usage-2021-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:69d03465:ipl-2020:team-delhi-capitals",
+      "sourceIds": [
+        "espn-ipl-2020-1216509"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Capitals 2020 season-usage assertion for AT Carey from research batch usage-2020-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:70d205c9:ipl-2019:team-chennai-super-kings",
+      "sourceIds": [
+        "espn-ipl-2019-1178419"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Chennai Super Kings 2019 season-usage assertion for AT Rayudu from research batch usage-2019-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:752f7486:ipl-2021:team-mumbai-indians",
+      "sourceIds": [
+        "espn-ipl-2021-1254058"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Mumbai Indians 2021 season-usage assertion for Ishan Kishan from research batch usage-2021-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:919a3be2:ipl-2020:team-delhi-capitals",
+      "sourceIds": [
+        "espn-ipl-2020-1216493"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Capitals 2020 season-usage assertion for RR Pant from research batch usage-2020-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:9418198b:ipl-2020:team-kings-xi-punjab",
+      "sourceIds": [
+        "espn-ipl-2020-1216523"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kings XI Punjab 2020 season-usage assertion for P Simran Singh from research batch usage-2020-v1. ESPN's Prabhsimran Singh rendering uses the established canonical P Simran Singh identity."
+    },
+    {
+      "playerTeamSeasonId": "pts:9418198b:ipl-2021:team-punjab-kings",
+      "sourceIds": [
+        "espn-ipl-2021-1254083"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Punjab Kings 2021 season-usage assertion for P Simran Singh from research batch usage-2021-v1. ESPN's Prabhsimran Singh rendering uses the established canonical P Simran Singh identity."
+    },
+    {
+      "playerTeamSeasonId": "pts:99b75528:ipl-2019:team-rajasthan-royals",
+      "sourceIds": [
+        "espn-ipl-2019-1175359"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Rajasthan Royals 2019 season-usage assertion for JC Buttler from research batch usage-2019-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:99b75528:ipl-2020:team-rajasthan-royals",
+      "sourceIds": [
+        "espn-ipl-2020-1216500"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Rajasthan Royals 2020 season-usage assertion for JC Buttler from research batch usage-2020-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2019:team-kings-xi-punjab",
+      "sourceIds": [
+        "espn-ipl-2019-1175361"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kings XI Punjab 2019 season-usage assertion for KL Rahul from research batch usage-2019-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2020:team-kings-xi-punjab",
+      "sourceIds": [
+        "espn-ipl-2020-1216493"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kings XI Punjab 2020 season-usage assertion for KL Rahul from research batch usage-2020-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2021:team-punjab-kings",
+      "sourceIds": [
+        "espn-ipl-2021-1254061"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Punjab Kings 2021 season-usage assertion for KL Rahul from research batch usage-2021-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:c03f1114:ipl-2019:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2019-1175357"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2019 season-usage assertion for KD Karthik from research batch usage-2019-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:c03f1114:ipl-2020:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2020-1216494"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2020 season-usage assertion for KD Karthik from research batch usage-2020-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore",
+      "sourceIds": [
+        "espn-ipl-2021-1254058"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Royal Challengers Bangalore 2021 season-usage assertion for AB de Villiers from research batch usage-2021-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:fe11caa6:ipl-2021:team-sunrisers-hyderabad",
+      "sourceIds": [
+        "espn-ipl-2021-1254060"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Sunrisers Hyderabad 2021 season-usage assertion for WP Saha from research batch usage-2021-v1."
     }
   ],
   "reviewDispositions": [
@@ -5351,6 +6775,348 @@
         "espn-ipl-2022-1304115"
       ],
       "notes": "Research batch usage-2022-v1 reviewed every canonical official Delhi Capitals 2022 appearance for SN Khan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:1c17e270:ipl-2019:team-kolkata-knight-riders",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2019-1175357",
+        "espn-ipl-2019-1175361",
+        "espn-ipl-2019-1175365",
+        "espn-ipl-2019-1175372",
+        "espn-ipl-2019-1178396",
+        "espn-ipl-2019-1178398",
+        "espn-ipl-2019-1178401",
+        "espn-ipl-2019-1178404",
+        "espn-ipl-2019-1178410",
+        "espn-ipl-2019-1178422",
+        "espn-ipl-2019-1178427",
+        "espn-ipl-2019-1178431"
+      ],
+      "notes": "Research batch usage-2019-v1 reviewed every canonical official Kolkata Knight Riders 2019 appearance for RV Uthappa using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:1c17e270:ipl-2020:team-rajasthan-royals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2020-1216496",
+        "espn-ipl-2020-1216504",
+        "espn-ipl-2020-1216507",
+        "espn-ipl-2020-1216514",
+        "espn-ipl-2020-1216518",
+        "espn-ipl-2020-1216522",
+        "espn-ipl-2020-1216527",
+        "espn-ipl-2020-1216530",
+        "espn-ipl-2020-1216533",
+        "espn-ipl-2020-1216537",
+        "espn-ipl-2020-1216541",
+        "espn-ipl-2020-1216543"
+      ],
+      "notes": "Research batch usage-2020-v1 reviewed every canonical official Rajasthan Royals 2020 appearance for RV Uthappa using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:1c17e270:ipl-2021:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2021-1254094",
+        "espn-ipl-2021-1254110",
+        "espn-ipl-2021-1254114",
+        "espn-ipl-2021-1254117"
+      ],
+      "notes": "Research batch usage-2021-v1 reviewed every canonical official Chennai Super Kings 2021 appearance for RV Uthappa using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:235c2bb6:ipl-2019:team-royal-challengers-bangalore",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2019-1178410",
+        "espn-ipl-2019-1178421",
+        "espn-ipl-2019-1178424"
+      ],
+      "notes": "Research batch usage-2019-v1 reviewed every canonical official Royal Challengers Bangalore 2019 appearance for H Klaasen using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN. Match 1175372 substitute-fielding involvement was event-only and excluded from the three-official-appearance closure denominator."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:25f7b7d6:ipl-2020:team-kolkata-knight-riders",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2020-1216494",
+        "espn-ipl-2020-1216540"
+      ],
+      "notes": "Research batch usage-2020-v1 reviewed every canonical official Kolkata Knight Riders 2020 appearance for T Banton using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:3241e3fd:ipl-2021:team-punjab-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2021-1254061",
+        "espn-ipl-2021-1254065",
+        "espn-ipl-2021-1254068",
+        "espn-ipl-2021-1254071",
+        "espn-ipl-2021-1254074",
+        "espn-ipl-2021-1254078",
+        "espn-ipl-2021-1254083",
+        "espn-ipl-2021-1254090",
+        "espn-ipl-2021-1254099",
+        "espn-ipl-2021-1254102",
+        "espncricinfo-ipl-2021-1254107-full",
+        "espn-ipl-2021-1254111"
+      ],
+      "notes": "Research batch usage-2021-v1 reviewed every canonical official Punjab Kings 2021 appearance for N Pooran using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:6eb146d2:ipl-2019:team-royal-challengers-bangalore",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2019-1178421",
+        "espn-ipl-2019-1178424",
+        "espn-ipl-2019-1178429"
+      ],
+      "notes": "Research batch usage-2019-v1 reviewed every canonical official Royal Challengers Bangalore 2019 appearance for Gurkeerat Singh using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:6eb146d2:ipl-2020:team-royal-challengers-bangalore",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2020-1216494",
+        "espn-ipl-2020-1216499",
+        "espn-ipl-2020-1216502",
+        "espn-ipl-2020-1216514",
+        "espn-ipl-2020-1216522",
+        "espn-ipl-2020-1216525",
+        "espn-ipl-2020-1216544",
+        "espn-ipl-2020-1216547"
+      ],
+      "notes": "Research batch usage-2020-v1 reviewed every canonical official Royal Challengers Bangalore 2020 appearance for Gurkeerat Singh using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:70d205c9:ipl-2020:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2020-1216492",
+        "espn-ipl-2020-1216501",
+        "espn-ipl-2020-1216506",
+        "espn-ipl-2020-1216509",
+        "espn-ipl-2020-1216513",
+        "espn-ipl-2020-1216516",
+        "espn-ipl-2020-1216521",
+        "espn-ipl-2020-1216525",
+        "espn-ipl-2020-1216528",
+        "espn-ipl-2020-1216533",
+        "espn-ipl-2020-1216536",
+        "espn-ipl-2020-1216544"
+      ],
+      "notes": "Research batch usage-2020-v1 reviewed every canonical official Chennai Super Kings 2020 appearance for AT Rayudu using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:70d205c9:ipl-2021:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2021-1254059",
+        "espn-ipl-2021-1254065",
+        "espn-ipl-2021-1254069",
+        "espn-ipl-2021-1254072",
+        "espn-ipl-2021-1254076",
+        "espn-ipl-2021-1254080",
+        "espn-ipl-2021-1254084",
+        "espn-ipl-2021-1254089",
+        "espn-ipl-2021-1254091",
+        "espn-ipl-2021-1254094",
+        "espn-ipl-2021-1254098",
+        "espn-ipl-2021-1254104",
+        "espn-ipl-2021-1254110",
+        "espn-ipl-2021-1254113",
+        "espn-ipl-2021-1254114",
+        "espn-ipl-2021-1254117"
+      ],
+      "notes": "Research batch usage-2021-v1 reviewed every canonical official Chennai Super Kings 2021 appearance for AT Rayudu using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:752f7486:ipl-2019:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2019-1178394",
+        "espn-ipl-2019-1178399",
+        "espn-ipl-2019-1178402",
+        "espn-ipl-2019-1178406",
+        "espn-ipl-2019-1178431",
+        "espn-ipl-2019-1181764",
+        "espn-ipl-2019-1181768"
+      ],
+      "notes": "Research batch usage-2019-v1 reviewed every canonical official Mumbai Indians 2019 appearance for Ishan Kishan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:752f7486:ipl-2020:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2020-1216495",
+        "espn-ipl-2020-1216499",
+        "espn-ipl-2020-1216503",
+        "espn-ipl-2020-1216511",
+        "espn-ipl-2020-1216517",
+        "espn-ipl-2020-1216521",
+        "espn-ipl-2020-1216526",
+        "espn-ipl-2020-1216529",
+        "espn-ipl-2020-1216535",
+        "espn-ipl-2020-1216538",
+        "espn-ipl-2020-1216541",
+        "espn-ipl-2020-1216547",
+        "espn-ipl-2020-1237177",
+        "espn-ipl-2020-1237181"
+      ],
+      "notes": "Research batch usage-2020-v1 reviewed every canonical official Mumbai Indians 2020 appearance for Ishan Kishan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:99b75528:ipl-2021:team-rajasthan-royals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2021-1254061",
+        "espn-ipl-2021-1254064",
+        "espn-ipl-2021-1254069",
+        "espn-ipl-2021-1254073",
+        "espn-ipl-2021-1254075",
+        "espn-ipl-2021-1254081",
+        "espn-ipl-2021-1254085"
+      ],
+      "notes": "Research batch usage-2021-v1 reviewed every canonical official Rajasthan Royals 2021 appearance for JC Buttler using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:99d63244:ipl-2019:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2019-1175356",
+        "espn-ipl-2019-1175360",
+        "espn-ipl-2019-1175367",
+        "espn-ipl-2019-1175370",
+        "espn-ipl-2019-1178393",
+        "espn-ipl-2019-1178398",
+        "espn-ipl-2019-1178400",
+        "espn-ipl-2019-1178404",
+        "espn-ipl-2019-1178408",
+        "espn-ipl-2019-1178414",
+        "espn-ipl-2019-1178416",
+        "espn-ipl-2019-1178419",
+        "espn-ipl-2019-1178425",
+        "espn-ipl-2019-1178430"
+      ],
+      "notes": "Research batch usage-2019-v1 reviewed every canonical official Chennai Super Kings 2019 appearance for KM Jadhav using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:99d63244:ipl-2020:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2020-1216492",
+        "espn-ipl-2020-1216496",
+        "espn-ipl-2020-1216501",
+        "espn-ipl-2020-1216509",
+        "espn-ipl-2020-1216513",
+        "espn-ipl-2020-1216516",
+        "espn-ipl-2020-1216533",
+        "espn-ipl-2020-1216539"
+      ],
+      "notes": "Research batch usage-2020-v1 reviewed every canonical official Chennai Super Kings 2020 appearance for KM Jadhav using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:99d63244:ipl-2021:team-sunrisers-hyderabad",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2021-1254071",
+        "espn-ipl-2021-1254077",
+        "espn-ipl-2021-1254080",
+        "espn-ipl-2021-1254085",
+        "espn-ipl-2021-1254105",
+        "espncricinfo-ipl-2021-1254107-full"
+      ],
+      "notes": "Research batch usage-2021-v1 reviewed every canonical official Sunrisers Hyderabad 2021 appearance for KM Jadhav using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:9a46c4e5:ipl-2021:team-rajasthan-royals",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2021-1254089",
+        "espn-ipl-2021-1254093",
+        "espn-ipl-2021-1254106"
+      ],
+      "notes": "Research batch usage-2021-v1 reviewed every canonical official Rajasthan Royals 2021 appearance for GD Phillips using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:bd54eef5:ipl-2020:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2020-1216506",
+        "espn-ipl-2020-1216521",
+        "espn-ipl-2020-1216525",
+        "espn-ipl-2020-1216536",
+        "espn-ipl-2020-1216544"
+      ],
+      "notes": "Research batch usage-2020-v1 reviewed every canonical official Chennai Super Kings 2020 appearance for N Jagadeesan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:c4487b84:ipl-2019:team-royal-challengers-bangalore",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2019-1175356",
+        "espn-ipl-2019-1175362",
+        "espn-ipl-2019-1175366",
+        "espn-ipl-2019-1175369",
+        "espn-ipl-2019-1175372",
+        "espn-ipl-2019-1178395",
+        "espn-ipl-2019-1178403",
+        "espn-ipl-2019-1178406",
+        "espn-ipl-2019-1178414",
+        "espn-ipl-2019-1178417",
+        "espn-ipl-2019-1178421",
+        "espn-ipl-2019-1178424",
+        "espn-ipl-2019-1178429"
+      ],
+      "notes": "Research batch usage-2019-v1 reviewed every canonical official Royal Challengers Bangalore 2019 appearance for AB de Villiers using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:f088b960:ipl-2019:team-kings-xi-punjab",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2019-1175359",
+        "espn-ipl-2019-1175361",
+        "espn-ipl-2019-1175364",
+        "espn-ipl-2019-1175368",
+        "espn-ipl-2019-1178393",
+        "espn-ipl-2019-1178397",
+        "espn-ipl-2019-1178399",
+        "espn-ipl-2019-1178403"
+      ],
+      "notes": "Research batch usage-2019-v1 reviewed every canonical official Kings XI Punjab 2019 appearance for SN Khan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:f088b960:ipl-2020:team-kings-xi-punjab",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2020-1216493",
+        "espn-ipl-2020-1216503",
+        "espn-ipl-2020-1216510",
+        "espn-ipl-2020-1216513",
+        "espn-ipl-2020-1216527"
+      ],
+      "notes": "Research batch usage-2020-v1 reviewed every canonical official Kings XI Punjab 2020 appearance for SN Khan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
     }
   ]
 }
