@@ -6225,6 +6225,1766 @@
       "locator": "Rendered scorecard XI keeper designations: SP Goswami †; MS Dhoni (c) †,",
       "supports": [],
       "notes": "Research batch usage-2018-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-597998-full",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Delhi Capitals, Indian Premier League 2013, 1st match - Score Report | ESPN.com",
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/597998/kolkata-knight-riders-vs-delhi-daredevils-1st-match-indian-premier-league-2013",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; MS Bisla †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2013-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2013-597999",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Mumbai Indians, Indian Premier League 2013, 2nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/597999",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KB Arun Karthik †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598000",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Pune Warriors, Indian Premier League 2013, 3rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598000",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; RV Uthappa †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2013-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598001",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Rajasthan Royals, Indian Premier League 2013, 4th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598001",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MDKJ Perera †; NV Ojha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2013-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598002",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Indian Premier League 2013, 5th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598002",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598003",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Pune Warriors vs Kings XI Punjab, Indian Premier League 2013, 6th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598003",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RV Uthappa †; AC Gilchrist (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2013-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598004",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Royal Challengers Bangalore, Indian Premier League 2013, 7th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598004",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KB Arun Karthik †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598006",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Delhi Capitals, Indian Premier League 2013, 10th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598006",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; KM Jadhav †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598007",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Chennai Super Kings, Indian Premier League 2013, 11th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598007",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; MS Dhoni (c) †,",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598008",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kolkata Knight Riders, Indian Premier League 2013, 12th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598008",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Bisla †; KB Arun Karthik †,",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598009",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Pune Warriors vs Rajasthan Royals, Indian Premier League 2013, 13th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598009",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MDKJ Perera †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598010",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Sunrisers Hyderabad, Indian Premier League 2013, 14th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598010",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KM Jadhav †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598011",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Pune Warriors, Indian Premier League 2013, 15th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598011",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598012",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Royal Challengers Bangalore, Indian Premier League 2013, 16th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598012",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KB Arun Karthik †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598013",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Sunrisers Hyderabad, Indian Premier League 2013, 17th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598013",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Bisla †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598014",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Kings XI Punjab, Indian Premier League 2013, 18th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598014",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; SV Samson †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2013-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598015",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Pune Warriors, Indian Premier League 2013, 19th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598015",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RV Uthappa †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598016",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Kolkata Knight Riders, Indian Premier League 2013, 20th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598016",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; MS Bisla †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598017",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Delhi Capitals, Indian Premier League 2013, 21st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598017",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KM Jadhav †; KB Arun Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598018",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Pune Warriors vs Sunrisers Hyderabad, Indian Premier League 2013, 22nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598018",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598019",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Mumbai Indians, Indian Premier League 2013, 23rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598019",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: DH Yagnik †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598021",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Kings XI Punjab, Indian Premier League 2013, 25th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598021",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598022",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Chennai Super Kings, Indian Premier League 2013, 26th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598022",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: DB Das †; MS Dhoni (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2013-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598023",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Rajasthan Royals, Indian Premier League 2013, 27th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598023",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: DH Yagnik †; KB Arun Karthik †,",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598024",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Mumbai Indians, Indian Premier League 2013, 28th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598024",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; KM Jadhav †,",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598025",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Pune Warriors, Indian Premier League 2013, 29th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598025",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RV Uthappa †; AC Gilchrist (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598027",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Pune Warriors, Indian Premier League 2013, 31st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598027",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KB Arun Karthik †,; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598028",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Delhi Capitals, Indian Premier League 2013, 67th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598028",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; CM Gautam †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2013-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598029",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Mumbai Indians, Indian Premier League 2013, 33rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598029",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: DB Das †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598031",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Kings XI Punjab, Indian Premier League 2013, 35th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598031",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; MS Bisla †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598032",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Sunrisers Hyderabad, Indian Premier League 2013, 36th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598032",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KC Sangakkara (c) †; DH Yagnik †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2013-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598033",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Royal Challengers Bangalore, Indian Premier League 2013, 37th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598033",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; KB Arun Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598034",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kolkata Knight Riders, Indian Premier League 2013, 38th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598034",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; MS Bisla †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598035",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Pune Warriors, Indian Premier League 2013, 39th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598035",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KM Jadhav †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598036",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Royal Challengers Bangalore, Indian Premier League 2013, 40th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598036",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AB de Villiers †; SV Samson †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2013-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598037",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Kings XI Punjab, Indian Premier League 2013, 41st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598037",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; Gurkeerat Singh †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598038",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Pune Warriors vs Chennai Super Kings, Indian Premier League 2013, 42nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598038",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598039",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Mumbai Indians, Indian Premier League 2013, 43rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598039",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; KC Sangakkara (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598040",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Kolkata Knight Riders, Indian Premier League 2013, 44th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598040",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Bisla †; KM Jadhav †,",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598041",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kings XI Punjab, Indian Premier League 2013, 45th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598041",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; Gurkeerat Singh †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598042",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Pune Warriors vs Royal Challengers Bangalore, Indian Premier League 2013, 46th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598042",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KB Arun Karthik †,; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598043",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Rajasthan Royals, Indian Premier League 2013, 47th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598043",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: DH Yagnik †; MS Bisla †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598044",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Delhi Capitals, Indian Premier League 2013, 48th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598044",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KM Jadhav †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598045",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kings XI Punjab, Indian Premier League 2013, 63rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598045",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KB Arun Karthik †,; AC Gilchrist (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598046",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Chennai Super Kings, Indian Premier League 2013, 49th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598046",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598047",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Pune Warriors, Indian Premier League 2013, 50th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598047",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: M Rawat †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598048",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Sunrisers Hyderabad, Indian Premier League 2013, 9th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598048",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; KB Arun Karthik †,",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598049",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Delhi Capitals, Indian Premier League 2013, 52nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598049",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: CM Gautam †; SV Samson †,",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598050",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Kolkata Knight Riders, Indian Premier League 2013, 53rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598050",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; MS Bisla †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598051",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Chennai Super Kings, Indian Premier League 2013, 54th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598051",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598052",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Rajasthan Royals, Indian Premier League 2013, 55th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598052",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; DH Yagnik †,",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598053",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Pune Warriors vs Kolkata Knight Riders, Indian Premier League 2013, 56th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598053",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Bisla †; M Rawat †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598054",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Royal Challengers Bangalore, Indian Premier League 2013, 57th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598054",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AB de Villiers †; KM Jadhav †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598055",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Pune Warriors vs Mumbai Indians, Indian Premier League 2013, 58th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598055",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RV Uthappa †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598056",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Sunrisers Hyderabad, Indian Premier League 2013, 59th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598056",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; AC Gilchrist (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598057",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Royal Challengers Bangalore, Indian Premier League 2013, 60th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598057",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AB de Villiers †; MS Bisla †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598058",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Chennai Super Kings, Indian Premier League 2013, 61st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598058",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; DH Yagnik †,",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598059",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Kings XI Punjab, Indian Premier League 2013, 32nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598059",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KM Jadhav †; AC Gilchrist (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598060",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Sunrisers Hyderabad, Indian Premier League 2013, 62nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598060",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598061",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Pune Warriors, Indian Premier League 2013, 65th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598061",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RV Uthappa †; MS Bisla †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598062",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Delhi Capitals, Indian Premier League 2013, 64th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598062",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KM Jadhav †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598063",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Rajasthan Royals, Indian Premier League 2013, 66th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598063",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; DH Yagnik †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598064",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Royal Challengers Bangalore, Indian Premier League 2013, 51st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598064",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KB Arun Karthik †,; Gurkeerat Singh †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598065",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Rajasthan Royals, Indian Premier League 2013, 68th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598065",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598066",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Mumbai Indians, Indian Premier League 2013, 69th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598066",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598067",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Pune Warriors vs Delhi Capitals, Indian Premier League 2013, 71st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598067",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RV Uthappa †; CM Gautam †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598068",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Chennai Super Kings, Indian Premier League 2013, 70th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598068",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul †,; MS Dhoni (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2013-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598070",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Indian Premier League 2013, Qualifier 1 - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598070",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †,; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598071",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Sunrisers Hyderabad, Indian Premier League 2013, Eliminator - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598071",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; DH Yagnik †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598072",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Rajasthan Royals, Indian Premier League 2013, Qualifier 2 - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598072",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: DH Yagnik †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2013-598073",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Indian Premier League 2013, Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598073",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2013-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729279",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Kolkata Knight Riders, Pepsi Indian Premier League 2014, 1st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729279",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RV Uthappa †; CM Gautam †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729281",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Royal Challengers Bangalore, Pepsi Indian Premier League 2014, 2nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729281",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik (c) †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729283",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kings XI Punjab, Pepsi Indian Premier League 2014, 3rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729283",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; WP Saha †,",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729285",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Rajasthan Royals, Pepsi Indian Premier League 2014, 4th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729285",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul †; SV Samson †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2014-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729287",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Mumbai Indians, Pepsi Indian Premier League 2014, 5th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729287",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AP Tare †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729293",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Delhi Capitals, Pepsi Indian Premier League 2014, 8th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729293",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KD Karthik (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729295",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Sunrisers Hyderabad, Pepsi Indian Premier League 2014, 9th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729295",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †,; KL Rahul †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729297",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Chennai Super Kings, Pepsi Indian Premier League 2014, 10th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729297",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729299",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kolkata Knight Riders, Pepsi Indian Premier League 2014, 11th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729299",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RV Uthappa †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729301",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Delhi Capitals, Pepsi Indian Premier League 2014, 12th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729301",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †,; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729303",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Pepsi Indian Premier League 2014, 13th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729303",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: CM Gautam †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729305",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Royal Challengers Bangalore, Pepsi Indian Premier League 2014, 14th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729305",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729309",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Mumbai Indians, Pepsi Indian Premier League 2014, 16th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729309",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: CM Gautam †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729311",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Chennai Super Kings, Pepsi Indian Premier League 2014, 17th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729311",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KL Rahul †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729313",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Royal Challengers Bangalore, Pepsi Indian Premier League 2014, 18th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729313",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-729317",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Sunrisers Hyderabad, Pepsi Indian Premier League 2014, 20th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729317",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; CM Gautam †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-733971",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kolkata Knight Riders, Pepsi Indian Premier League 2014, 21st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733971",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-733973",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Kings XI Punjab, Pepsi Indian Premier League 2014, 22nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733973",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; CM Gautam †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-733975",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Rajasthan Royals, Pepsi Indian Premier League 2014, 23rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733975",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-733977",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Sunrisers Hyderabad, Pepsi Indian Premier League 2014, 24th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733977",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-733981",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Chennai Super Kings, Pepsi Indian Premier League 2014, 26th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733981",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-733983",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Royal Challengers Bangalore, Pepsi Indian Premier League 2014, 27th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733983",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: CM Gautam †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-733985",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Kolkata Knight Riders, Pepsi Indian Premier League 2014, 28th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733985",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-733987",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Chennai Super Kings, Pepsi Indian Premier League 2014, 29th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733987",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †,; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-733989",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Sunrisers Hyderabad, Pepsi Indian Premier League 2014, 30th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733989",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-733991",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kings XI Punjab, Pepsi Indian Premier League 2014, 31st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733991",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-733993",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Sunrisers Hyderabad, Pepsi Indian Premier League 2014, 32nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733993",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; NV Ojha †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-733995",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Chennai Super Kings, Pepsi Indian Premier League 2014, 33rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733995",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: CM Gautam †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-733999-full",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Rajasthan Royals, Pepsi Indian Premier League 2014, 35th match - Score Report | ESPN.com",
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/733999/royal-challengers-bangalore-vs-rajasthan-royals-35th-match-indian-premier-league-2014",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734001",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Mumbai Indians, Pepsi Indian Premier League 2014, 36th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734001",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; CM Gautam †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734003",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Rajasthan Royals, Pepsi Indian Premier League 2014, 37th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734003",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: DH Yagnik †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734005",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Delhi Capitals, Pepsi Indian Premier League 2014, 38th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734005",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; Q de Kock †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2014-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734007",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Kings XI Punjab, Pepsi Indian Premier League 2014, 39th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734007",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734009",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Mumbai Indians, Pepsi Indian Premier League 2014, 40th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734009",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: CM Gautam †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734011-full",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Delhi Capitals, Pepsi Indian Premier League 2014, 41st match - Score Report | ESPN.com",
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/734011/rajasthan-royals-vs-delhi-daredevils-41st-match-indian-premier-league-2014",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734013",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Royal Challengers Bangalore, Pepsi Indian Premier League 2014, 42nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734013",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734015",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Kolkata Knight Riders, Pepsi Indian Premier League 2014, 43rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734015",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734017",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Mumbai Indians, Pepsi Indian Premier League 2014, 44th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734017",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AP Tare †,; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734019",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Kings XI Punjab, Pepsi Indian Premier League 2014, 45th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734019",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734021",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Royal Challengers Bangalore, Pepsi Indian Premier League 2014, 46th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734021",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; NV Ojha †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734023",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Chennai Super Kings, Pepsi Indian Premier League 2014, 47th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734023",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734025",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Mumbai Indians, Pepsi Indian Premier League 2014, 48th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734025",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; AP Tare †,",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734027",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Royal Challengers Bangalore, Pepsi Indian Premier League 2014, 49th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734027",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RV Uthappa †; YV Takawale †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734031",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Delhi Capitals, Pepsi Indian Premier League 2014, 51st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734031",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AP Tare †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734035",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Chennai Super Kings, Pepsi Indian Premier League 2014, 53rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734035",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: YV Takawale †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734039",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Delhi Capitals, Pepsi Indian Premier League 2014, 55th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734039",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; WP Saha †,",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734041",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Rajasthan Royals, Pepsi Indian Premier League 2014, 56th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734041",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; AP Tare †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734045",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Chennai Super Kings, Pepsi Indian Premier League 2014, Eliminator - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734045",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AP Tare †; MS Dhoni (c) †,",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2014-734047",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kings XI Punjab, Pepsi Indian Premier League 2014, Qualifier 2 - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734047",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2014-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829705-full",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Mumbai Indians, Pepsi Indian Premier League 2015, 1st match - Score Report | ESPN.com",
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/829705/kolkata-knight-riders-vs-mumbai-indians-1st-match-indian-premier-league-2015",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: AP Tare †; RV Uthappa †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2015-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829707",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Delhi Capitals, Pepsi Indian Premier League 2015, 2nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829707",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; CM Gautam †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829709",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Rajasthan Royals, Pepsi Indian Premier League 2015, 3rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829709",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; WP Saha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2015-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829711",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Sunrisers Hyderabad, Pepsi Indian Premier League 2015, 4th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829711",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; NV Ojha †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829713",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Royal Challengers Bangalore, Pepsi Indian Premier League 2015, 5th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829713",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RV Uthappa †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829715",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Rajasthan Royals, Pepsi Indian Premier League 2015, 6th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829715",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KM Jadhav †,; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829717",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Kings XI Punjab, Pepsi Indian Premier League 2015, 7th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829717",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †,; AP Tare †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829719",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Sunrisers Hyderabad, Pepsi Indian Premier League 2015, 8th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829719",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; NV Ojha †,",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829721",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Mumbai Indians, Pepsi Indian Premier League 2015, 9th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829721",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829723",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Chennai Super Kings, Pepsi Indian Premier League 2015, 30th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829723",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829727",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Rajasthan Royals, Pepsi Indian Premier League 2015, 11th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829727",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829729",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Chennai Super Kings, Pepsi Indian Premier League 2015, 12th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829729",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829731",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Delhi Capitals, Pepsi Indian Premier League 2015, 13th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829731",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KM Jadhav †; NV Ojha †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829733",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Kolkata Knight Riders, Pepsi Indian Premier League 2015, 14th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829733",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829735",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Chennai Super Kings, Pepsi Indian Premier League 2015, 15th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829735",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; SV Samson †,",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829737",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Mumbai Indians, Pepsi Indian Premier League 2015, 16th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829737",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829741",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Kings XI Punjab, Pepsi Indian Premier League 2015, 18th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829741",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829743",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Kolkata Knight Riders, Pepsi Indian Premier League 2015, 19th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829743",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829745",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Chennai Super Kings, Pepsi Indian Premier League 2015, 20th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829745",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829747",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Mumbai Indians, Pepsi Indian Premier League 2015, 21st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829747",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KM Jadhav †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829749",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Royal Challengers Bangalore, Pepsi Indian Premier League 2015, 22nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829749",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; KD Karthik †,",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829751",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Sunrisers Hyderabad, Pepsi Indian Premier League 2015, 23rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829751",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; NV Ojha †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829753",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kings XI Punjab, Pepsi Indian Premier League 2015, 24th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829753",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829757",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Royal Challengers Bangalore, Pepsi Indian Premier League 2015, 26th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829757",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KM Jadhav †; KD Karthik †,",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829763",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Rajasthan Royals, Pepsi Indian Premier League 2015, 29th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829763",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; Sanju Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829765",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kolkata Knight Riders, Pepsi Indian Premier League 2015, 28th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829765",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829769",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Rajasthan Royals, Pepsi Indian Premier League 2015, 32nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829769",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829771",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kolkata Knight Riders, Pepsi Indian Premier League 2015, 33rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829771",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: RV Uthappa †; KD Karthik †,",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829773",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Chennai Super Kings, Pepsi Indian Premier League 2015, 34th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829773",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829775",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Mumbai Indians, Pepsi Indian Premier League 2015, 35th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829775",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829777",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Delhi Capitals, Pepsi Indian Premier League 2015, 36th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829777",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †,; KM Jadhav †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829779",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Royal Challengers Bangalore, Pepsi Indian Premier League 2015, 37th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829779",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829783",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Delhi Capitals, Pepsi Indian Premier League 2015, 39th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829783",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KM Jadhav †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829785",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kings XI Punjab, Pepsi Indian Premier League 2015, 40th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829785",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829787",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Sunrisers Hyderabad, Pepsi Indian Premier League 2015, 41st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829787",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829789",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Pepsi Indian Premier League 2015, 43rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829789",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829791",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Kings XI Punjab, Pepsi Indian Premier League 2015, 44th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829791",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829793",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Sunrisers Hyderabad, Pepsi Indian Premier League 2015, 45th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829793",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †,; Q de Kock †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2015-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829795",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Royal Challengers Bangalore, Pepsi Indian Premier League 2015, 46th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829795",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †,; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829797",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Rajasthan Royals, Pepsi Indian Premier League 2015, 47th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829797",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829799-full",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Kings XI Punjab, Pepsi Indian Premier League 2015, 48th match - Score Report | ESPN.com",
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/829799/sunrisers-hyderabad-vs-kings-xi-punjab-48th-match-indian-premier-league-2015",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; WP Saha †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829801",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Chennai Super Kings, Pepsi Indian Premier League 2015, 49th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829801",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; Q de Kock †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829803",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Royal Challengers Bangalore, Pepsi Indian Premier League 2015, 50th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829803",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829805",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Kolkata Knight Riders, Pepsi Indian Premier League 2015, 51st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829805",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829807",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Royal Challengers Bangalore, Pepsi Indian Premier League 2015, 52nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829807",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †,; KD Karthik †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829809",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Chennai Super Kings, Pepsi Indian Premier League 2015, 53rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829809",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829811",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Kolkata Knight Riders, Pepsi Indian Premier League 2015, 54th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829811",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: SV Samson †; RV Uthappa †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829813",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Delhi Capitals, Pepsi Indian Premier League 2015, 55th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829813",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: Q de Kock †; KD Karthik †,",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829815",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Sunrisers Hyderabad vs Mumbai Indians, Pepsi Indian Premier League 2015, 56th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829815",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; PA Patel †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829817",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Pepsi Indian Premier League 2015, Qualifier 1 - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829817",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829819",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Royal Challengers Bangalore, Pepsi Indian Premier League 2015, Eliminator - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829819",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; SV Samson †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829821",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Royal Challengers Bangalore, Pepsi Indian Premier League 2015, Qualifier 2 - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829821",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2015-829823",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Pepsi Indian Premier League 2015, Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/829823",
+      "accessedDate": "2026-08-31",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; MS Dhoni (c) †",
+      "supports": [],
+      "notes": "Research batch usage-2015-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
     }
   ],
   "capabilityConfirmations": [
@@ -7214,6 +8974,126 @@
       ],
       "reviewStatus": "APPROVED",
       "notes": "Approved Royal Challengers Bangalore 2018 season-usage assertion for PA Patel from research batch usage-2018-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:1c17e270:ipl-2013:team-pune-warriors",
+      "sourceIds": [
+        "espn-ipl-2013-598000"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Pune Warriors 2013 season-usage assertion for RV Uthappa from research batch usage-2013-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab",
+      "sourceIds": [
+        "espn-ipl-2013-598003"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kings XI Punjab 2013 season-usage assertion for AC Gilchrist from research batch usage-2013-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:30a2649b:ipl-2013:team-delhi-daredevils",
+      "sourceIds": [
+        "espn-ipl-2013-598028"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Daredevils 2013 season-usage assertion for CM Gautam from research batch usage-2013-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad",
+      "sourceIds": [
+        "espn-ipl-2013-598032"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Sunrisers Hyderabad 2013 season-usage assertion for KC Sangakkara from research batch usage-2013-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2013-598022"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2013 season-usage assertion for DB Das from research batch usage-2013-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:890946a0:ipl-2013:team-delhi-daredevils",
+      "sourceIds": [
+        "espn-ipl-2013-597998-full"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Daredevils 2013 season-usage assertion for NV Ojha from research batch usage-2013-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:a4cc73aa:ipl-2013:team-rajasthan-royals",
+      "sourceIds": [
+        "espn-ipl-2013-598014"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Rajasthan Royals 2013 season-usage assertion for SV Samson from research batch usage-2013-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2013:team-royal-challengers-bangalore",
+      "sourceIds": [
+        "espn-ipl-2013-598068"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Royal Challengers Bangalore 2013 season-usage assertion for KL Rahul from research batch usage-2013-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore",
+      "sourceIds": [
+        "espn-ipl-2013-598036"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Royal Challengers Bangalore 2013 season-usage assertion for AB de Villiers from research batch usage-2013-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:f21043a5:ipl-2013:team-rajasthan-royals",
+      "sourceIds": [
+        "espn-ipl-2013-598001"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Rajasthan Royals 2013 season-usage assertion for MDKJ Perera from research batch usage-2013-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:372455c4:ipl-2014:team-delhi-daredevils",
+      "sourceIds": [
+        "espn-ipl-2014-734005"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Daredevils 2014 season-usage assertion for Q de Kock from research batch usage-2014-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad",
+      "sourceIds": [
+        "espn-ipl-2014-729285"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Sunrisers Hyderabad 2014 season-usage assertion for KL Rahul from research batch usage-2014-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:372455c4:ipl-2015:team-delhi-daredevils",
+      "sourceIds": [
+        "espn-ipl-2015-829793"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Daredevils 2015 season-usage assertion for Q de Kock from research batch usage-2015-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:855a210c:ipl-2015:team-mumbai-indians",
+      "sourceIds": [
+        "espn-ipl-2015-829705-full"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Mumbai Indians 2015 season-usage assertion for AP Tare from research batch usage-2015-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:a4cc73aa:ipl-2015:team-rajasthan-royals",
+      "sourceIds": [
+        "espn-ipl-2015-829709"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Rajasthan Royals 2015 season-usage assertion for SV Samson from research batch usage-2015-v1."
     }
   ],
   "reviewDispositions": [
@@ -9035,6 +10915,327 @@
         "espn-ipl-2018-1136613"
       ],
       "notes": "Research batch usage-2018-v1 reviewed every canonical official Royal Challengers Bangalore 2018 appearance for SN Khan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2013-597998-full",
+        "espn-ipl-2013-598001",
+        "espn-ipl-2013-598006",
+        "espn-ipl-2013-598028",
+        "espn-ipl-2013-598035",
+        "espn-ipl-2013-598040",
+        "espn-ipl-2013-598044",
+        "espn-ipl-2013-598054",
+        "espn-ipl-2013-598062"
+      ],
+      "notes": "Research batch usage-2013-v1 reviewed every canonical official Delhi Daredevils 2013 appearance for UBT Chand using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:5bdcdb72:ipl-2013:team-royal-challengers-bangalore",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2013-597999",
+        "espn-ipl-2013-598004",
+        "espn-ipl-2013-598023",
+        "espn-ipl-2013-598027",
+        "espn-ipl-2013-598033"
+      ],
+      "notes": "Research batch usage-2013-v1 reviewed every canonical official Royal Challengers Bangalore 2013 appearance for TM Dilshan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:70d205c9:ipl-2013:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2013-597999",
+        "espn-ipl-2013-598002",
+        "espn-ipl-2013-598006",
+        "espn-ipl-2013-598011",
+        "espn-ipl-2013-598019",
+        "espn-ipl-2013-598024",
+        "espn-ipl-2013-598029",
+        "espn-ipl-2013-598033",
+        "espn-ipl-2013-598037",
+        "espn-ipl-2013-598039",
+        "espn-ipl-2013-598046",
+        "espn-ipl-2013-598050",
+        "espn-ipl-2013-598055",
+        "espn-ipl-2013-598060",
+        "espn-ipl-2013-598063",
+        "espn-ipl-2013-598066",
+        "espn-ipl-2013-598070",
+        "espn-ipl-2013-598072",
+        "espn-ipl-2013-598073"
+      ],
+      "notes": "Research batch usage-2013-v1 reviewed every canonical official Mumbai Indians 2013 appearance for AT Rayudu using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:855a210c:ipl-2013:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2013-598063",
+        "espn-ipl-2013-598066",
+        "espn-ipl-2013-598070",
+        "espn-ipl-2013-598072",
+        "espn-ipl-2013-598073"
+      ],
+      "notes": "Research batch usage-2013-v1 reviewed every canonical official Mumbai Indians 2013 appearance for AP Tare using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:fe11caa6:ipl-2013:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2013-598034",
+        "espn-ipl-2013-598038",
+        "espn-ipl-2013-598041"
+      ],
+      "notes": "Research batch usage-2013-v1 reviewed every canonical official Chennai Super Kings 2013 appearance for WP Saha using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:272d796e:ipl-2014:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2014-729317",
+        "espn-ipl-2014-733973",
+        "espn-ipl-2014-733983"
+      ],
+      "notes": "Research batch usage-2014-v1 reviewed every canonical official Mumbai Indians 2014 appearance for BR Dunk using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:70d205c9:ipl-2014:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2014-729279",
+        "espn-ipl-2014-729287",
+        "espn-ipl-2014-729303",
+        "espn-ipl-2014-729309",
+        "espn-ipl-2014-729317",
+        "espn-ipl-2014-733973",
+        "espn-ipl-2014-733983",
+        "espn-ipl-2014-733995",
+        "espn-ipl-2014-734001",
+        "espn-ipl-2014-734009",
+        "espn-ipl-2014-734017",
+        "espn-ipl-2014-734025",
+        "espn-ipl-2014-734031",
+        "espn-ipl-2014-734041",
+        "espn-ipl-2014-734045"
+      ],
+      "notes": "Research batch usage-2014-v1 reviewed every canonical official Mumbai Indians 2014 appearance for AT Rayudu using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:99d63244:ipl-2014:team-delhi-daredevils",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2014-729309",
+        "espn-ipl-2014-733975",
+        "espn-ipl-2014-733981",
+        "espn-ipl-2014-733985",
+        "espn-ipl-2014-733993",
+        "espn-ipl-2014-734005",
+        "espn-ipl-2014-734011-full",
+        "espn-ipl-2014-734019",
+        "espn-ipl-2014-734031",
+        "espn-ipl-2014-734039"
+      ],
+      "notes": "Research batch usage-2014-v1 reviewed every canonical official Delhi Daredevils 2014 appearance for KM Jadhav using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:b8a55852:ipl-2014:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2014-729283",
+        "espn-ipl-2014-729293",
+        "espn-ipl-2014-729297",
+        "espn-ipl-2014-729303",
+        "espn-ipl-2014-729311",
+        "espn-ipl-2014-733971",
+        "espn-ipl-2014-733981",
+        "espn-ipl-2014-733987",
+        "espn-ipl-2014-733995",
+        "espn-ipl-2014-734003",
+        "espn-ipl-2014-734013",
+        "espn-ipl-2014-734023",
+        "espn-ipl-2014-734045",
+        "espn-ipl-2014-734047"
+      ],
+      "notes": "Research batch usage-2014-v1 reviewed every canonical official Chennai Super Kings 2014 appearance for BB McCullum using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2014-729281",
+        "espn-ipl-2014-729287",
+        "espn-ipl-2014-729299",
+        "espn-ipl-2014-729305",
+        "espn-ipl-2014-729313",
+        "espn-ipl-2014-733977",
+        "espn-ipl-2014-733983",
+        "espn-ipl-2014-733991",
+        "espn-ipl-2014-733999-full",
+        "espn-ipl-2014-734005",
+        "espn-ipl-2014-734013",
+        "espn-ipl-2014-734021",
+        "espn-ipl-2014-734027",
+        "espn-ipl-2014-734035"
+      ],
+      "notes": "Research batch usage-2014-v1 reviewed every canonical official Royal Challengers Bangalore 2014 appearance for AB de Villiers using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:0c94f480:ipl-2015:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2015-829721",
+        "espn-ipl-2015-829737",
+        "espn-ipl-2015-829747",
+        "espn-ipl-2015-829751",
+        "espn-ipl-2015-829769",
+        "espn-ipl-2015-829775"
+      ],
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Mumbai Indians 2015 appearance for UBT Chand using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:5afd4539:ipl-2015:team-royal-challengers-bangalore",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2015-829737",
+        "espn-ipl-2015-829745"
+      ],
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Royal Challengers Bangalore 2015 appearance for MS Bisla using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:6eb146d2:ipl-2015:team-kings-xi-punjab",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2015-829733",
+        "espn-ipl-2015-829791",
+        "espn-ipl-2015-829799-full",
+        "espn-ipl-2015-829803",
+        "espn-ipl-2015-829809"
+      ],
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Kings XI Punjab 2015 appearance for Gurkeerat Singh using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:70d205c9:ipl-2015:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2015-829705-full",
+        "espn-ipl-2015-829717",
+        "espn-ipl-2015-829729",
+        "espn-ipl-2015-829737",
+        "espn-ipl-2015-829747",
+        "espn-ipl-2015-829751",
+        "espn-ipl-2015-829769",
+        "espn-ipl-2015-829775",
+        "espn-ipl-2015-829783",
+        "espn-ipl-2015-829789",
+        "espn-ipl-2015-829795",
+        "espn-ipl-2015-829805",
+        "espn-ipl-2015-829815",
+        "espn-ipl-2015-829817",
+        "espn-ipl-2015-829823"
+      ],
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Mumbai Indians 2015 appearance for AT Rayudu using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:b17e2f24:ipl-2015:team-sunrisers-hyderabad",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2015-829711",
+        "espn-ipl-2015-829719",
+        "espn-ipl-2015-829727",
+        "espn-ipl-2015-829731",
+        "espn-ipl-2015-829743",
+        "espn-ipl-2015-829751",
+        "espn-ipl-2015-829799-full",
+        "espn-ipl-2015-829807",
+        "espn-ipl-2015-829815"
+      ],
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Sunrisers Hyderabad 2015 appearance for KL Rahul using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:b8a55852:ipl-2015:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2015-829707",
+        "espn-ipl-2015-829711",
+        "espn-ipl-2015-829723",
+        "espn-ipl-2015-829729",
+        "espn-ipl-2015-829735",
+        "espn-ipl-2015-829745",
+        "espn-ipl-2015-829753",
+        "espn-ipl-2015-829765",
+        "espn-ipl-2015-829773",
+        "espn-ipl-2015-829779",
+        "espn-ipl-2015-829789",
+        "espn-ipl-2015-829797",
+        "espn-ipl-2015-829801",
+        "espn-ipl-2015-829809"
+      ],
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Chennai Super Kings 2015 appearance for BB McCullum using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:c4487b84:ipl-2015:team-royal-challengers-bangalore",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2015-829713",
+        "espn-ipl-2015-829719",
+        "espn-ipl-2015-829737",
+        "espn-ipl-2015-829745",
+        "espn-ipl-2015-829749",
+        "espn-ipl-2015-829757",
+        "espn-ipl-2015-829763",
+        "espn-ipl-2015-829771",
+        "espn-ipl-2015-829779",
+        "espn-ipl-2015-829785",
+        "espn-ipl-2015-829795",
+        "espn-ipl-2015-829803",
+        "espn-ipl-2015-829807",
+        "espn-ipl-2015-829813",
+        "espn-ipl-2015-829819",
+        "espn-ipl-2015-829821"
+      ],
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Royal Challengers Bangalore 2015 appearance for AB de Villiers using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:f088b960:ipl-2015:team-royal-challengers-bangalore",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2015-829745",
+        "espn-ipl-2015-829749",
+        "espn-ipl-2015-829757",
+        "espn-ipl-2015-829763",
+        "espn-ipl-2015-829771",
+        "espn-ipl-2015-829779",
+        "espn-ipl-2015-829785",
+        "espn-ipl-2015-829795",
+        "espn-ipl-2015-829803",
+        "espn-ipl-2015-829807",
+        "espn-ipl-2015-829813",
+        "espn-ipl-2015-829819",
+        "espn-ipl-2015-829821"
+      ],
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Royal Challengers Bangalore 2015 appearance for SN Khan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
     }
   ]
 }

@@ -168,6 +168,47 @@
   ],
   "closedSeasonUsageItems": [
     {
+      "canonicalDisplayName": "UBT Chand",
+      "notes": "Research batch usage-2013-v1 reviewed every canonical official Delhi Daredevils 2013 appearance for UBT Chand using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "0c94f480",
+      "playerTeamSeasonId": "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+      "reviewId": "usage:pts:0c94f480:ipl-2013:team-delhi-daredevils",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2013-597998-full",
+        "manual:espn-ipl-2013-598001",
+        "manual:espn-ipl-2013-598006",
+        "manual:espn-ipl-2013-598028",
+        "manual:espn-ipl-2013-598035",
+        "manual:espn-ipl-2013-598040",
+        "manual:espn-ipl-2013-598044",
+        "manual:espn-ipl-2013-598054",
+        "manual:espn-ipl-2013-598062"
+      ],
+      "seasonId": "ipl-2013",
+      "teamId": "team-delhi-daredevils"
+    },
+    {
+      "canonicalDisplayName": "UBT Chand",
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Mumbai Indians 2015 appearance for UBT Chand using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "0c94f480",
+      "playerTeamSeasonId": "pts:0c94f480:ipl-2015:team-mumbai-indians",
+      "reviewId": "usage:pts:0c94f480:ipl-2015:team-mumbai-indians",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2015-829721",
+        "manual:espn-ipl-2015-829737",
+        "manual:espn-ipl-2015-829747",
+        "manual:espn-ipl-2015-829751",
+        "manual:espn-ipl-2015-829769",
+        "manual:espn-ipl-2015-829775"
+      ],
+      "seasonId": "ipl-2015",
+      "teamId": "team-mumbai-indians"
+    },
+    {
       "canonicalDisplayName": "Anmolpreet Singh",
       "notes": "Research batch usage-2022-v1 reviewed every canonical official Mumbai Indians 2022 appearance for Anmolpreet Singh using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN. This supplemental case was activated by a bounded capability-freeze correction and was not part of the original queue snapshot.",
       "playerId": "1399b39c",
@@ -400,6 +441,22 @@
       "teamId": "team-kolkata-knight-riders"
     },
     {
+      "canonicalDisplayName": "BR Dunk",
+      "notes": "Research batch usage-2014-v1 reviewed every canonical official Mumbai Indians 2014 appearance for BR Dunk using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "272d796e",
+      "playerTeamSeasonId": "pts:272d796e:ipl-2014:team-mumbai-indians",
+      "reviewId": "usage:pts:272d796e:ipl-2014:team-mumbai-indians",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2014-729317",
+        "manual:espn-ipl-2014-733973",
+        "manual:espn-ipl-2014-733983"
+      ],
+      "seasonId": "ipl-2014",
+      "teamId": "team-mumbai-indians"
+    },
+    {
       "canonicalDisplayName": "N Pooran",
       "notes": "Research batch usage-2021-v1 reviewed every canonical official Punjab Kings 2021 appearance for N Pooran using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
       "playerId": "3241e3fd",
@@ -598,6 +655,39 @@
       "teamId": "team-delhi-capitals"
     },
     {
+      "canonicalDisplayName": "MS Bisla",
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Royal Challengers Bangalore 2015 appearance for MS Bisla using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "5afd4539",
+      "playerTeamSeasonId": "pts:5afd4539:ipl-2015:team-royal-challengers-bangalore",
+      "reviewId": "usage:pts:5afd4539:ipl-2015:team-royal-challengers-bangalore",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2015-829737",
+        "manual:espn-ipl-2015-829745"
+      ],
+      "seasonId": "ipl-2015",
+      "teamId": "team-royal-challengers-bangalore"
+    },
+    {
+      "canonicalDisplayName": "TM Dilshan",
+      "notes": "Research batch usage-2013-v1 reviewed every canonical official Royal Challengers Bangalore 2013 appearance for TM Dilshan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "5bdcdb72",
+      "playerTeamSeasonId": "pts:5bdcdb72:ipl-2013:team-royal-challengers-bangalore",
+      "reviewId": "usage:pts:5bdcdb72:ipl-2013:team-royal-challengers-bangalore",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2013-597999",
+        "manual:espn-ipl-2013-598004",
+        "manual:espn-ipl-2013-598023",
+        "manual:espn-ipl-2013-598027",
+        "manual:espn-ipl-2013-598033"
+      ],
+      "seasonId": "ipl-2013",
+      "teamId": "team-royal-challengers-bangalore"
+    },
+    {
       "canonicalDisplayName": "LG Pretorius",
       "notes": "Research batch usage-2026-v1 reviewed every canonical official Rajasthan Royals 2026 appearance for LG Pretorius using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
       "playerId": "60aa2db3",
@@ -628,6 +718,24 @@
       ],
       "seasonId": "ipl-2023",
       "teamId": "team-punjab-kings"
+    },
+    {
+      "canonicalDisplayName": "Gurkeerat Singh",
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Kings XI Punjab 2015 appearance for Gurkeerat Singh using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "6eb146d2",
+      "playerTeamSeasonId": "pts:6eb146d2:ipl-2015:team-kings-xi-punjab",
+      "reviewId": "usage:pts:6eb146d2:ipl-2015:team-kings-xi-punjab",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2015-829733",
+        "manual:espn-ipl-2015-829791",
+        "manual:espn-ipl-2015-829799-full",
+        "manual:espn-ipl-2015-829803",
+        "manual:espn-ipl-2015-829809"
+      ],
+      "seasonId": "ipl-2015",
+      "teamId": "team-kings-xi-punjab"
     },
     {
       "canonicalDisplayName": "Gurkeerat Singh",
@@ -699,6 +807,94 @@
       ],
       "seasonId": "ipl-2020",
       "teamId": "team-royal-challengers-bangalore"
+    },
+    {
+      "canonicalDisplayName": "AT Rayudu",
+      "notes": "Research batch usage-2013-v1 reviewed every canonical official Mumbai Indians 2013 appearance for AT Rayudu using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "70d205c9",
+      "playerTeamSeasonId": "pts:70d205c9:ipl-2013:team-mumbai-indians",
+      "reviewId": "usage:pts:70d205c9:ipl-2013:team-mumbai-indians",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2013-597999",
+        "manual:espn-ipl-2013-598002",
+        "manual:espn-ipl-2013-598006",
+        "manual:espn-ipl-2013-598011",
+        "manual:espn-ipl-2013-598019",
+        "manual:espn-ipl-2013-598024",
+        "manual:espn-ipl-2013-598029",
+        "manual:espn-ipl-2013-598033",
+        "manual:espn-ipl-2013-598037",
+        "manual:espn-ipl-2013-598039",
+        "manual:espn-ipl-2013-598046",
+        "manual:espn-ipl-2013-598050",
+        "manual:espn-ipl-2013-598055",
+        "manual:espn-ipl-2013-598060",
+        "manual:espn-ipl-2013-598063",
+        "manual:espn-ipl-2013-598066",
+        "manual:espn-ipl-2013-598070",
+        "manual:espn-ipl-2013-598072",
+        "manual:espn-ipl-2013-598073"
+      ],
+      "seasonId": "ipl-2013",
+      "teamId": "team-mumbai-indians"
+    },
+    {
+      "canonicalDisplayName": "AT Rayudu",
+      "notes": "Research batch usage-2014-v1 reviewed every canonical official Mumbai Indians 2014 appearance for AT Rayudu using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "70d205c9",
+      "playerTeamSeasonId": "pts:70d205c9:ipl-2014:team-mumbai-indians",
+      "reviewId": "usage:pts:70d205c9:ipl-2014:team-mumbai-indians",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2014-729279",
+        "manual:espn-ipl-2014-729287",
+        "manual:espn-ipl-2014-729303",
+        "manual:espn-ipl-2014-729309",
+        "manual:espn-ipl-2014-729317",
+        "manual:espn-ipl-2014-733973",
+        "manual:espn-ipl-2014-733983",
+        "manual:espn-ipl-2014-733995",
+        "manual:espn-ipl-2014-734001",
+        "manual:espn-ipl-2014-734009",
+        "manual:espn-ipl-2014-734017",
+        "manual:espn-ipl-2014-734025",
+        "manual:espn-ipl-2014-734031",
+        "manual:espn-ipl-2014-734041",
+        "manual:espn-ipl-2014-734045"
+      ],
+      "seasonId": "ipl-2014",
+      "teamId": "team-mumbai-indians"
+    },
+    {
+      "canonicalDisplayName": "AT Rayudu",
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Mumbai Indians 2015 appearance for AT Rayudu using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "70d205c9",
+      "playerTeamSeasonId": "pts:70d205c9:ipl-2015:team-mumbai-indians",
+      "reviewId": "usage:pts:70d205c9:ipl-2015:team-mumbai-indians",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2015-829705-full",
+        "manual:espn-ipl-2015-829717",
+        "manual:espn-ipl-2015-829729",
+        "manual:espn-ipl-2015-829737",
+        "manual:espn-ipl-2015-829747",
+        "manual:espn-ipl-2015-829751",
+        "manual:espn-ipl-2015-829769",
+        "manual:espn-ipl-2015-829775",
+        "manual:espn-ipl-2015-829783",
+        "manual:espn-ipl-2015-829789",
+        "manual:espn-ipl-2015-829795",
+        "manual:espn-ipl-2015-829805",
+        "manual:espn-ipl-2015-829815",
+        "manual:espn-ipl-2015-829817",
+        "manual:espn-ipl-2015-829823"
+      ],
+      "seasonId": "ipl-2015",
+      "teamId": "team-mumbai-indians"
     },
     {
       "canonicalDisplayName": "AT Rayudu",
@@ -976,6 +1172,24 @@
       ],
       "seasonId": "ipl-2026",
       "teamId": "team-chennai-super-kings"
+    },
+    {
+      "canonicalDisplayName": "AP Tare",
+      "notes": "Research batch usage-2013-v1 reviewed every canonical official Mumbai Indians 2013 appearance for AP Tare using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "855a210c",
+      "playerTeamSeasonId": "pts:855a210c:ipl-2013:team-mumbai-indians",
+      "reviewId": "usage:pts:855a210c:ipl-2013:team-mumbai-indians",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2013-598063",
+        "manual:espn-ipl-2013-598066",
+        "manual:espn-ipl-2013-598070",
+        "manual:espn-ipl-2013-598072",
+        "manual:espn-ipl-2013-598073"
+      ],
+      "seasonId": "ipl-2013",
+      "teamId": "team-mumbai-indians"
     },
     {
       "canonicalDisplayName": "AP Tare",
@@ -1313,6 +1527,29 @@
     },
     {
       "canonicalDisplayName": "KM Jadhav",
+      "notes": "Research batch usage-2014-v1 reviewed every canonical official Delhi Daredevils 2014 appearance for KM Jadhav using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "99d63244",
+      "playerTeamSeasonId": "pts:99d63244:ipl-2014:team-delhi-daredevils",
+      "reviewId": "usage:pts:99d63244:ipl-2014:team-delhi-daredevils",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2014-729309",
+        "manual:espn-ipl-2014-733975",
+        "manual:espn-ipl-2014-733981",
+        "manual:espn-ipl-2014-733985",
+        "manual:espn-ipl-2014-733993",
+        "manual:espn-ipl-2014-734005",
+        "manual:espn-ipl-2014-734011-full",
+        "manual:espn-ipl-2014-734019",
+        "manual:espn-ipl-2014-734031",
+        "manual:espn-ipl-2014-734039"
+      ],
+      "seasonId": "ipl-2014",
+      "teamId": "team-delhi-daredevils"
+    },
+    {
+      "canonicalDisplayName": "KM Jadhav",
       "notes": "Research batch usage-2019-v1 reviewed every canonical official Chennai Super Kings 2019 appearance for KM Jadhav using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
       "playerId": "99d63244",
       "playerTeamSeasonId": "pts:99d63244:ipl-2019:team-chennai-super-kings",
@@ -1544,6 +1781,28 @@
     },
     {
       "canonicalDisplayName": "KL Rahul",
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Sunrisers Hyderabad 2015 appearance for KL Rahul using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "b17e2f24",
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2015:team-sunrisers-hyderabad",
+      "reviewId": "usage:pts:b17e2f24:ipl-2015:team-sunrisers-hyderabad",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2015-829711",
+        "manual:espn-ipl-2015-829719",
+        "manual:espn-ipl-2015-829727",
+        "manual:espn-ipl-2015-829731",
+        "manual:espn-ipl-2015-829743",
+        "manual:espn-ipl-2015-829751",
+        "manual:espn-ipl-2015-829799-full",
+        "manual:espn-ipl-2015-829807",
+        "manual:espn-ipl-2015-829815"
+      ],
+      "seasonId": "ipl-2015",
+      "teamId": "team-sunrisers-hyderabad"
+    },
+    {
+      "canonicalDisplayName": "KL Rahul",
       "notes": "Research batch usage-2022-v1 reviewed every canonical official Lucknow Super Giants 2022 appearance for KL Rahul using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
       "playerId": "b17e2f24",
       "playerTeamSeasonId": "pts:b17e2f24:ipl-2022:team-lucknow-super-giants",
@@ -1620,6 +1879,60 @@
       ],
       "seasonId": "ipl-2024",
       "teamId": "team-delhi-capitals"
+    },
+    {
+      "canonicalDisplayName": "BB McCullum",
+      "notes": "Research batch usage-2014-v1 reviewed every canonical official Chennai Super Kings 2014 appearance for BB McCullum using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "b8a55852",
+      "playerTeamSeasonId": "pts:b8a55852:ipl-2014:team-chennai-super-kings",
+      "reviewId": "usage:pts:b8a55852:ipl-2014:team-chennai-super-kings",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2014-729283",
+        "manual:espn-ipl-2014-729293",
+        "manual:espn-ipl-2014-729297",
+        "manual:espn-ipl-2014-729303",
+        "manual:espn-ipl-2014-729311",
+        "manual:espn-ipl-2014-733971",
+        "manual:espn-ipl-2014-733981",
+        "manual:espn-ipl-2014-733987",
+        "manual:espn-ipl-2014-733995",
+        "manual:espn-ipl-2014-734003",
+        "manual:espn-ipl-2014-734013",
+        "manual:espn-ipl-2014-734023",
+        "manual:espn-ipl-2014-734045",
+        "manual:espn-ipl-2014-734047"
+      ],
+      "seasonId": "ipl-2014",
+      "teamId": "team-chennai-super-kings"
+    },
+    {
+      "canonicalDisplayName": "BB McCullum",
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Chennai Super Kings 2015 appearance for BB McCullum using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "b8a55852",
+      "playerTeamSeasonId": "pts:b8a55852:ipl-2015:team-chennai-super-kings",
+      "reviewId": "usage:pts:b8a55852:ipl-2015:team-chennai-super-kings",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2015-829707",
+        "manual:espn-ipl-2015-829711",
+        "manual:espn-ipl-2015-829723",
+        "manual:espn-ipl-2015-829729",
+        "manual:espn-ipl-2015-829735",
+        "manual:espn-ipl-2015-829745",
+        "manual:espn-ipl-2015-829753",
+        "manual:espn-ipl-2015-829765",
+        "manual:espn-ipl-2015-829773",
+        "manual:espn-ipl-2015-829779",
+        "manual:espn-ipl-2015-829789",
+        "manual:espn-ipl-2015-829797",
+        "manual:espn-ipl-2015-829801",
+        "manual:espn-ipl-2015-829809"
+      ],
+      "seasonId": "ipl-2015",
+      "teamId": "team-chennai-super-kings"
     },
     {
       "canonicalDisplayName": "BB McCullum",
@@ -1891,6 +2204,62 @@
       ],
       "seasonId": "ipl-2018",
       "teamId": "team-chennai-super-kings"
+    },
+    {
+      "canonicalDisplayName": "AB de Villiers",
+      "notes": "Research batch usage-2014-v1 reviewed every canonical official Royal Challengers Bangalore 2014 appearance for AB de Villiers using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "c4487b84",
+      "playerTeamSeasonId": "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore",
+      "reviewId": "usage:pts:c4487b84:ipl-2014:team-royal-challengers-bangalore",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2014-729281",
+        "manual:espn-ipl-2014-729287",
+        "manual:espn-ipl-2014-729299",
+        "manual:espn-ipl-2014-729305",
+        "manual:espn-ipl-2014-729313",
+        "manual:espn-ipl-2014-733977",
+        "manual:espn-ipl-2014-733983",
+        "manual:espn-ipl-2014-733991",
+        "manual:espn-ipl-2014-733999-full",
+        "manual:espn-ipl-2014-734005",
+        "manual:espn-ipl-2014-734013",
+        "manual:espn-ipl-2014-734021",
+        "manual:espn-ipl-2014-734027",
+        "manual:espn-ipl-2014-734035"
+      ],
+      "seasonId": "ipl-2014",
+      "teamId": "team-royal-challengers-bangalore"
+    },
+    {
+      "canonicalDisplayName": "AB de Villiers",
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Royal Challengers Bangalore 2015 appearance for AB de Villiers using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "c4487b84",
+      "playerTeamSeasonId": "pts:c4487b84:ipl-2015:team-royal-challengers-bangalore",
+      "reviewId": "usage:pts:c4487b84:ipl-2015:team-royal-challengers-bangalore",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2015-829713",
+        "manual:espn-ipl-2015-829719",
+        "manual:espn-ipl-2015-829737",
+        "manual:espn-ipl-2015-829745",
+        "manual:espn-ipl-2015-829749",
+        "manual:espn-ipl-2015-829757",
+        "manual:espn-ipl-2015-829763",
+        "manual:espn-ipl-2015-829771",
+        "manual:espn-ipl-2015-829779",
+        "manual:espn-ipl-2015-829785",
+        "manual:espn-ipl-2015-829795",
+        "manual:espn-ipl-2015-829803",
+        "manual:espn-ipl-2015-829807",
+        "manual:espn-ipl-2015-829813",
+        "manual:espn-ipl-2015-829819",
+        "manual:espn-ipl-2015-829821"
+      ],
+      "seasonId": "ipl-2015",
+      "teamId": "team-royal-challengers-bangalore"
     },
     {
       "canonicalDisplayName": "AB de Villiers",
@@ -2183,6 +2552,32 @@
     },
     {
       "canonicalDisplayName": "SN Khan",
+      "notes": "Research batch usage-2015-v1 reviewed every canonical official Royal Challengers Bangalore 2015 appearance for SN Khan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "f088b960",
+      "playerTeamSeasonId": "pts:f088b960:ipl-2015:team-royal-challengers-bangalore",
+      "reviewId": "usage:pts:f088b960:ipl-2015:team-royal-challengers-bangalore",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2015-829745",
+        "manual:espn-ipl-2015-829749",
+        "manual:espn-ipl-2015-829757",
+        "manual:espn-ipl-2015-829763",
+        "manual:espn-ipl-2015-829771",
+        "manual:espn-ipl-2015-829779",
+        "manual:espn-ipl-2015-829785",
+        "manual:espn-ipl-2015-829795",
+        "manual:espn-ipl-2015-829803",
+        "manual:espn-ipl-2015-829807",
+        "manual:espn-ipl-2015-829813",
+        "manual:espn-ipl-2015-829819",
+        "manual:espn-ipl-2015-829821"
+      ],
+      "seasonId": "ipl-2015",
+      "teamId": "team-royal-challengers-bangalore"
+    },
+    {
+      "canonicalDisplayName": "SN Khan",
       "notes": "Research batch usage-2016-v1 reviewed every canonical official Royal Challengers Bangalore 2016 appearance for SN Khan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
       "playerId": "f088b960",
       "playerTeamSeasonId": "pts:f088b960:ipl-2016:team-royal-challengers-bangalore",
@@ -2370,6 +2765,22 @@
       ],
       "seasonId": "ipl-2024",
       "teamId": "team-rajasthan-royals"
+    },
+    {
+      "canonicalDisplayName": "WP Saha",
+      "notes": "Research batch usage-2013-v1 reviewed every canonical official Chennai Super Kings 2013 appearance for WP Saha using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN.",
+      "playerId": "fe11caa6",
+      "playerTeamSeasonId": "pts:fe11caa6:ipl-2013:team-chennai-super-kings",
+      "reviewId": "usage:pts:fe11caa6:ipl-2013:team-chennai-super-kings",
+      "reviewStatus": "CLOSED_UNKNOWN",
+      "reviewType": "SEASON_USAGE",
+      "reviewedSourceRefs": [
+        "manual:espn-ipl-2013-598034",
+        "manual:espn-ipl-2013-598038",
+        "manual:espn-ipl-2013-598041"
+      ],
+      "seasonId": "ipl-2013",
+      "teamId": "team-chennai-super-kings"
     }
   ],
   "legacyCapabilityCandidateItems": [],
@@ -2442,36 +2853,6 @@
       "teamId": "team-delhi-daredevils"
     },
     {
-      "battingBalls": 158,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "UBT Chand",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 9,
-      "overlapsEligibilityCritical": false,
-      "playerId": "0c94f480",
-      "playerTeamSeasonId": "pts:0c94f480:ipl-2013:team-delhi-daredevils",
-      "reviewId": "usage:pts:0c94f480:ipl-2013:team-delhi-daredevils",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
-      "teamId": "team-delhi-daredevils"
-    },
-    {
-      "battingBalls": 83,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "UBT Chand",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 6,
-      "overlapsEligibilityCritical": false,
-      "playerId": "0c94f480",
-      "playerTeamSeasonId": "pts:0c94f480:ipl-2015:team-mumbai-indians",
-      "reviewId": "usage:pts:0c94f480:ipl-2015:team-mumbai-indians",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2015",
-      "teamId": "team-mumbai-indians"
-    },
-    {
       "battingBalls": 32,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "L Ronchi",
@@ -2502,36 +2883,6 @@
       "teamId": "team-mumbai-indians"
     },
     {
-      "battingBalls": 371,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "RV Uthappa",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 16,
-      "overlapsEligibilityCritical": false,
-      "playerId": "1c17e270",
-      "playerTeamSeasonId": "pts:1c17e270:ipl-2013:team-pune-warriors",
-      "reviewId": "usage:pts:1c17e270:ipl-2013:team-pune-warriors",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
-      "teamId": "team-pune-warriors"
-    },
-    {
-      "battingBalls": 35,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "BR Dunk",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 3,
-      "overlapsEligibilityCritical": false,
-      "playerId": "272d796e",
-      "playerTeamSeasonId": "pts:272d796e:ipl-2014:team-mumbai-indians",
-      "reviewId": "usage:pts:272d796e:ipl-2014:team-mumbai-indians",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2014",
-      "teamId": "team-mumbai-indians"
-    },
-    {
       "battingBalls": 143,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "AC Gilchrist",
@@ -2545,66 +2896,6 @@
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2012",
       "teamId": "team-kings-xi-punjab"
-    },
-    {
-      "battingBalls": 229,
-      "bowlingLegalBalls": 1,
-      "canonicalDisplayName": "AC Gilchrist",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 13,
-      "overlapsEligibilityCritical": false,
-      "playerId": "2b6e6dec",
-      "playerTeamSeasonId": "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab",
-      "reviewId": "usage:pts:2b6e6dec:ipl-2013:team-kings-xi-punjab",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
-      "teamId": "team-kings-xi-punjab"
-    },
-    {
-      "battingBalls": 34,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "CM Gautam",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 3,
-      "overlapsEligibilityCritical": false,
-      "playerId": "30a2649b",
-      "playerTeamSeasonId": "pts:30a2649b:ipl-2013:team-delhi-daredevils",
-      "reviewId": "usage:pts:30a2649b:ipl-2013:team-delhi-daredevils",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
-      "teamId": "team-delhi-daredevils"
-    },
-    {
-      "battingBalls": 130,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "Q de Kock",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 7,
-      "overlapsEligibilityCritical": false,
-      "playerId": "372455c4",
-      "playerTeamSeasonId": "pts:372455c4:ipl-2014:team-delhi-daredevils",
-      "reviewId": "usage:pts:372455c4:ipl-2014:team-delhi-daredevils",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2014",
-      "teamId": "team-delhi-daredevils"
-    },
-    {
-      "battingBalls": 77,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "Q de Kock",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 3,
-      "overlapsEligibilityCritical": false,
-      "playerId": "372455c4",
-      "playerTeamSeasonId": "pts:372455c4:ipl-2015:team-delhi-daredevils",
-      "reviewId": "usage:pts:372455c4:ipl-2015:team-delhi-daredevils",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2015",
-      "teamId": "team-delhi-daredevils"
     },
     {
       "battingBalls": 57,
@@ -2682,21 +2973,6 @@
       "teamId": "team-kings-xi-punjab"
     },
     {
-      "battingBalls": 30,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "MS Bisla",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 2,
-      "overlapsEligibilityCritical": false,
-      "playerId": "5afd4539",
-      "playerTeamSeasonId": "pts:5afd4539:ipl-2015:team-royal-challengers-bangalore",
-      "reviewId": "usage:pts:5afd4539:ipl-2015:team-royal-challengers-bangalore",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2015",
-      "teamId": "team-royal-challengers-bangalore"
-    },
-    {
       "battingBalls": 79,
       "bowlingLegalBalls": 6,
       "canonicalDisplayName": "TM Dilshan",
@@ -2772,21 +3048,6 @@
       "teamId": "team-royal-challengers-bangalore"
     },
     {
-      "battingBalls": 93,
-      "bowlingLegalBalls": 6,
-      "canonicalDisplayName": "TM Dilshan",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 5,
-      "overlapsEligibilityCritical": false,
-      "playerId": "5bdcdb72",
-      "playerTeamSeasonId": "pts:5bdcdb72:ipl-2013:team-royal-challengers-bangalore",
-      "reviewId": "usage:pts:5bdcdb72:ipl-2013:team-royal-challengers-bangalore",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
-      "teamId": "team-royal-challengers-bangalore"
-    },
-    {
       "battingBalls": 198,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "KC Sangakkara",
@@ -2817,21 +3078,6 @@
       "teamId": "team-deccan-chargers"
     },
     {
-      "battingBalls": 136,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "KC Sangakkara",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 9,
-      "overlapsEligibilityCritical": false,
-      "playerId": "6b71e6cf",
-      "playerTeamSeasonId": "pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad",
-      "reviewId": "usage:pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
-      "teamId": "team-sunrisers-hyderabad"
-    },
-    {
       "battingBalls": 52,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "Gurkeerat Singh",
@@ -2844,21 +3090,6 @@
       "reviewStatus": "PENDING",
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2012",
-      "teamId": "team-kings-xi-punjab"
-    },
-    {
-      "battingBalls": 39,
-      "bowlingLegalBalls": 54,
-      "canonicalDisplayName": "Gurkeerat Singh",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 5,
-      "overlapsEligibilityCritical": false,
-      "playerId": "6eb146d2",
-      "playerTeamSeasonId": "pts:6eb146d2:ipl-2015:team-kings-xi-punjab",
-      "reviewId": "usage:pts:6eb146d2:ipl-2015:team-kings-xi-punjab",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2015",
       "teamId": "team-kings-xi-punjab"
     },
     {
@@ -2892,21 +3123,6 @@
       "teamId": "team-kolkata-knight-riders"
     },
     {
-      "battingBalls": 74,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "DB Das",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 10,
-      "overlapsEligibilityCritical": false,
-      "playerId": "7050a1e7",
-      "playerTeamSeasonId": "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders",
-      "reviewId": "usage:pts:7050a1e7:ipl-2013:team-kolkata-knight-riders",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
-      "teamId": "team-kolkata-knight-riders"
-    },
-    {
       "battingBalls": 252,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "AT Rayudu",
@@ -2919,51 +3135,6 @@
       "reviewStatus": "PENDING",
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2012",
-      "teamId": "team-mumbai-indians"
-    },
-    {
-      "battingBalls": 231,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "AT Rayudu",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 19,
-      "overlapsEligibilityCritical": false,
-      "playerId": "70d205c9",
-      "playerTeamSeasonId": "pts:70d205c9:ipl-2013:team-mumbai-indians",
-      "reviewId": "usage:pts:70d205c9:ipl-2013:team-mumbai-indians",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
-      "teamId": "team-mumbai-indians"
-    },
-    {
-      "battingBalls": 287,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "AT Rayudu",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 15,
-      "overlapsEligibilityCritical": false,
-      "playerId": "70d205c9",
-      "playerTeamSeasonId": "pts:70d205c9:ipl-2014:team-mumbai-indians",
-      "reviewId": "usage:pts:70d205c9:ipl-2014:team-mumbai-indians",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2014",
-      "teamId": "team-mumbai-indians"
-    },
-    {
-      "battingBalls": 193,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "AT Rayudu",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 15,
-      "overlapsEligibilityCritical": false,
-      "playerId": "70d205c9",
-      "playerTeamSeasonId": "pts:70d205c9:ipl-2015:team-mumbai-indians",
-      "reviewId": "usage:pts:70d205c9:ipl-2015:team-mumbai-indians",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2015",
       "teamId": "team-mumbai-indians"
     },
     {
@@ -3012,36 +3183,6 @@
       "teamId": "team-royal-challengers-bangalore"
     },
     {
-      "battingBalls": 84,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "AP Tare",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 5,
-      "overlapsEligibilityCritical": false,
-      "playerId": "855a210c",
-      "playerTeamSeasonId": "pts:855a210c:ipl-2013:team-mumbai-indians",
-      "reviewId": "usage:pts:855a210c:ipl-2013:team-mumbai-indians",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
-      "teamId": "team-mumbai-indians"
-    },
-    {
-      "battingBalls": 17,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "AP Tare",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 2,
-      "overlapsEligibilityCritical": false,
-      "playerId": "855a210c",
-      "playerTeamSeasonId": "pts:855a210c:ipl-2015:team-mumbai-indians",
-      "reviewId": "usage:pts:855a210c:ipl-2015:team-mumbai-indians",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2015",
-      "teamId": "team-mumbai-indians"
-    },
-    {
       "battingBalls": 161,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "NV Ojha",
@@ -3054,21 +3195,6 @@
       "reviewStatus": "PENDING",
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2011",
-      "teamId": "team-delhi-daredevils"
-    },
-    {
-      "battingBalls": 10,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "NV Ojha",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 2,
-      "overlapsEligibilityCritical": false,
-      "playerId": "890946a0",
-      "playerTeamSeasonId": "pts:890946a0:ipl-2013:team-delhi-daredevils",
-      "reviewId": "usage:pts:890946a0:ipl-2013:team-delhi-daredevils",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
       "teamId": "team-delhi-daredevils"
     },
     {
@@ -3147,51 +3273,6 @@
       "teamId": "team-kochi-tuskers-kerala"
     },
     {
-      "battingBalls": 101,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "KM Jadhav",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 10,
-      "overlapsEligibilityCritical": false,
-      "playerId": "99d63244",
-      "playerTeamSeasonId": "pts:99d63244:ipl-2014:team-delhi-daredevils",
-      "reviewId": "usage:pts:99d63244:ipl-2014:team-delhi-daredevils",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2014",
-      "teamId": "team-delhi-daredevils"
-    },
-    {
-      "battingBalls": 178,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "SV Samson",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 11,
-      "overlapsEligibilityCritical": false,
-      "playerId": "a4cc73aa",
-      "playerTeamSeasonId": "pts:a4cc73aa:ipl-2013:team-rajasthan-royals",
-      "reviewId": "usage:pts:a4cc73aa:ipl-2013:team-rajasthan-royals",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
-      "teamId": "team-rajasthan-royals"
-    },
-    {
-      "battingBalls": 163,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "SV Samson",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 14,
-      "overlapsEligibilityCritical": false,
-      "playerId": "a4cc73aa",
-      "playerTeamSeasonId": "pts:a4cc73aa:ipl-2015:team-rajasthan-royals",
-      "reviewId": "usage:pts:a4cc73aa:ipl-2015:team-rajasthan-royals",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2015",
-      "teamId": "team-rajasthan-royals"
-    },
-    {
       "battingBalls": 33,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "MS Wade",
@@ -3205,51 +3286,6 @@
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2011",
       "teamId": "team-delhi-daredevils"
-    },
-    {
-      "battingBalls": 16,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "KL Rahul",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 5,
-      "overlapsEligibilityCritical": false,
-      "playerId": "b17e2f24",
-      "playerTeamSeasonId": "pts:b17e2f24:ipl-2013:team-royal-challengers-bangalore",
-      "reviewId": "usage:pts:b17e2f24:ipl-2013:team-royal-challengers-bangalore",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
-      "teamId": "team-royal-challengers-bangalore"
-    },
-    {
-      "battingBalls": 164,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "KL Rahul",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 11,
-      "overlapsEligibilityCritical": false,
-      "playerId": "b17e2f24",
-      "playerTeamSeasonId": "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad",
-      "reviewId": "usage:pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2014",
-      "teamId": "team-sunrisers-hyderabad"
-    },
-    {
-      "battingBalls": 126,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "KL Rahul",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 9,
-      "overlapsEligibilityCritical": false,
-      "playerId": "b17e2f24",
-      "playerTeamSeasonId": "pts:b17e2f24:ipl-2015:team-sunrisers-hyderabad",
-      "reviewId": "usage:pts:b17e2f24:ipl-2015:team-sunrisers-hyderabad",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2015",
-      "teamId": "team-sunrisers-hyderabad"
     },
     {
       "battingBalls": 297,
@@ -3342,36 +3378,6 @@
       "teamId": "team-kochi-tuskers-kerala"
     },
     {
-      "battingBalls": 333,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "BB McCullum",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 14,
-      "overlapsEligibilityCritical": false,
-      "playerId": "b8a55852",
-      "playerTeamSeasonId": "pts:b8a55852:ipl-2014:team-chennai-super-kings",
-      "reviewId": "usage:pts:b8a55852:ipl-2014:team-chennai-super-kings",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2014",
-      "teamId": "team-chennai-super-kings"
-    },
-    {
-      "battingBalls": 280,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "BB McCullum",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 14,
-      "overlapsEligibilityCritical": false,
-      "playerId": "b8a55852",
-      "playerTeamSeasonId": "pts:b8a55852:ipl-2015:team-chennai-super-kings",
-      "reviewId": "usage:pts:b8a55852:ipl-2015:team-chennai-super-kings",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2015",
-      "teamId": "team-chennai-super-kings"
-    },
-    {
       "battingBalls": 220,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "KD Karthik",
@@ -3432,51 +3438,6 @@
       "teamId": "team-delhi-daredevils"
     },
     {
-      "battingBalls": 219,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "AB de Villiers",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 14,
-      "overlapsEligibilityCritical": false,
-      "playerId": "c4487b84",
-      "playerTeamSeasonId": "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore",
-      "reviewId": "usage:pts:c4487b84:ipl-2013:team-royal-challengers-bangalore",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
-      "teamId": "team-royal-challengers-bangalore"
-    },
-    {
-      "battingBalls": 249,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "AB de Villiers",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 14,
-      "overlapsEligibilityCritical": false,
-      "playerId": "c4487b84",
-      "playerTeamSeasonId": "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore",
-      "reviewId": "usage:pts:c4487b84:ipl-2014:team-royal-challengers-bangalore",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2014",
-      "teamId": "team-royal-challengers-bangalore"
-    },
-    {
-      "battingBalls": 293,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "AB de Villiers",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 16,
-      "overlapsEligibilityCritical": false,
-      "playerId": "c4487b84",
-      "playerTeamSeasonId": "pts:c4487b84:ipl-2015:team-royal-challengers-bangalore",
-      "reviewId": "usage:pts:c4487b84:ipl-2015:team-royal-challengers-bangalore",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2015",
-      "teamId": "team-royal-challengers-bangalore"
-    },
-    {
       "battingBalls": 39,
       "bowlingLegalBalls": 0,
       "canonicalDisplayName": "M Rawat",
@@ -3489,36 +3450,6 @@
       "reviewStatus": "PENDING",
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2008",
-      "teamId": "team-rajasthan-royals"
-    },
-    {
-      "battingBalls": 71,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "SN Khan",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 13,
-      "overlapsEligibilityCritical": false,
-      "playerId": "f088b960",
-      "playerTeamSeasonId": "pts:f088b960:ipl-2015:team-royal-challengers-bangalore",
-      "reviewId": "usage:pts:f088b960:ipl-2015:team-royal-challengers-bangalore",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2015",
-      "teamId": "team-royal-challengers-bangalore"
-    },
-    {
-      "battingBalls": 13,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "MDKJ Perera",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 2,
-      "overlapsEligibilityCritical": false,
-      "playerId": "f21043a5",
-      "playerTeamSeasonId": "pts:f21043a5:ipl-2013:team-rajasthan-royals",
-      "reviewId": "usage:pts:f21043a5:ipl-2013:team-rajasthan-royals",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
       "teamId": "team-rajasthan-royals"
     },
     {
@@ -3610,30 +3541,15 @@
       "reviewType": "SEASON_USAGE",
       "seasonId": "ipl-2012",
       "teamId": "team-chennai-super-kings"
-    },
-    {
-      "battingBalls": 56,
-      "bowlingLegalBalls": 0,
-      "canonicalDisplayName": "WP Saha",
-      "currentlyG2EligibleByBattingOrBowling": true,
-      "officialAppearances": 3,
-      "overlapsEligibilityCritical": false,
-      "playerId": "fe11caa6",
-      "playerTeamSeasonId": "pts:fe11caa6:ipl-2013:team-chennai-super-kings",
-      "reviewId": "usage:pts:fe11caa6:ipl-2013:team-chennai-super-kings",
-      "reviewStatus": "PENDING",
-      "reviewType": "SEASON_USAGE",
-      "seasonId": "ipl-2013",
-      "teamId": "team-chennai-super-kings"
     }
   ],
   "summary": {
     "closedCapabilityReviews": 15,
-    "closedSeasonUsageReviews": 104,
-    "currentlyG2EligibleUsageReviews": 83,
+    "closedSeasonUsageReviews": 122,
+    "currentlyG2EligibleUsageReviews": 50,
     "eligibilityCriticalOverlap": 0,
     "legacyCapabilityCandidates": 0,
     "positiveDiscoveryComplete": true,
-    "seasonUsageReviews": 83
+    "seasonUsageReviews": 50
   }
 }

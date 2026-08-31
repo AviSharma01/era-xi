@@ -1,12 +1,12 @@
 # Canonical IPL Wicketkeeper Metadata v1
 
-Metadata manifest SHA-256: `74ab0b8eb27afda9d2cad1c441df2277bc77ee112ae2d69d4e0bec2a4b4565d7`
+Metadata manifest SHA-256: `369bbe3e7248010786668cf5541aec1f00a92da95066b7a86c31c4b4a195314a`
 
 ## Canonical confirmations
 
 - Stumping events: 388
 - Confirmed capability players: 104
-- Confirmed usage profiles: 234
+- Confirmed usage profiles: 249
 
 ## Automatic evidence
 
@@ -15,9 +15,9 @@ Metadata manifest SHA-256: `74ab0b8eb27afda9d2cad1c441df2277bc77ee112ae2d69d4e0b
 
 ## Review boundary
 
-- Season-usage review items: 83
+- Season-usage review items: 50
 - Unverified legacy capability candidates: 0
-- Closed-unknown season-usage reviews: 104
+- Closed-unknown season-usage reviews: 122
 - Closed-unknown capability reviews: 15
 - Positive keeper-capability discovery is frozen for the current 816-player match-participant registry.
 - Archive limitations: direct official role-labelled coverage is incomplete for parts of 2008-2015; some historical IPL evidence survives only through archived or staging material.

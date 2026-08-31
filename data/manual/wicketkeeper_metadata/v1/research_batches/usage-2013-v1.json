@@ -1,0 +1,2848 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2013-v1",
+  "seasonId": "ipl-2013",
+  "researchStatus": "COMPLETED_APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "74ab0b8eb27afda9d2cad1c441df2277bc77ee112ae2d69d4e0bec2a4b4565d7",
+  "scopePlayerTeamSeasonIds": [
+    "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+    "pts:1c17e270:ipl-2013:team-pune-warriors",
+    "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab",
+    "pts:30a2649b:ipl-2013:team-delhi-daredevils",
+    "pts:5bdcdb72:ipl-2013:team-royal-challengers-bangalore",
+    "pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad",
+    "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders",
+    "pts:70d205c9:ipl-2013:team-mumbai-indians",
+    "pts:855a210c:ipl-2013:team-mumbai-indians",
+    "pts:890946a0:ipl-2013:team-delhi-daredevils",
+    "pts:a4cc73aa:ipl-2013:team-rajasthan-royals",
+    "pts:b17e2f24:ipl-2013:team-royal-challengers-bangalore",
+    "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore",
+    "pts:f21043a5:ipl-2013:team-rajasthan-royals",
+    "pts:fe11caa6:ipl-2013:team-chennai-super-kings"
+  ],
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated keeper.",
+    "Every canonical official appearance was checked and none designates the candidate.",
+    "Substitute-fielding, event-only, and replacement involvement is separated from official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "identityNormalizations": [],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "publisher": "ESPN/Cricinfo",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "†,",
+        "(c) †",
+        "non-breaking-space before †"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "597999",
+          "knownKeeper": "KB Arun Karthik",
+          "observedText": "KB Arun Karthik †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/597999"
+        },
+        {
+          "matchId": "597999",
+          "knownKeeper": "KD Karthik",
+          "observedText": "KD Karthik †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/597999"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Only a dagger terminating a playing-XI name was accepted; dismissal annotations, catches, stumpings text, and uncalibrated symbols were excluded."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2013-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "597998",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2013/1",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The historical route redirected to the redesigned site and exposed no readable historical scorecard or keeper-marker convention."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-shortcut-ipl-2013-597998",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "597998",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/597998",
+      "availability": "UNAVAILABLE_PAGE_ERROR",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+        "pts:890946a0:ipl-2013:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "ROUTE_DIAGNOSTIC"
+      ],
+      "notes": "The shortcut route returned ESPN's Page error. Coverage was completed through espn-ipl-2013-597998-full."
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-597998-full",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "597998",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/597998/kolkata-knight-riders-vs-delhi-daredevils-1st-match-indian-premier-league-2013",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+        "pts:890946a0:ipl-2013:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "Stable fully named full-scorecard route used after the shortened ESPN route returned a page error."
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-597999",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "597999",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/597999",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KB Arun Karthik †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2013:team-royal-challengers-bangalore",
+        "pts:70d205c9:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598000",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598000",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598000",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors",
+        "pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598001",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598001",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598001",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MDKJ Perera †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+        "pts:890946a0:ipl-2013:team-delhi-daredevils",
+        "pts:f21043a5:ipl-2013:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598002",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598002",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598002",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598003",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598003",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598003",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors",
+        "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598004",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598004",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598004",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KB Arun Karthik †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2013:team-royal-challengers-bangalore",
+        "pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598006",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598006",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598006",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "KM Jadhav †"
+      ],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+        "pts:70d205c9:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598007",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598007",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598007",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "MS Dhoni (c) †,"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598008",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598008",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598008",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Bisla †",
+        "KB Arun Karthik †,"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2013:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598009",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598009",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598009",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MDKJ Perera †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors",
+        "pts:f21043a5:ipl-2013:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598010",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598010",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598010",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KM Jadhav †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598011",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598011",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598011",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors",
+        "pts:70d205c9:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598012",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598012",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598012",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KB Arun Karthik †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598013",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598013",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598013",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Bisla †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598014",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598014",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598014",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab",
+        "pts:a4cc73aa:ipl-2013:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598015",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598015",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598015",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598016",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598016",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598016",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab",
+        "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598017",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598017",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598017",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KM Jadhav †",
+        "KB Arun Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2013:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598018",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598018",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598018",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598019",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598019",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598019",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DH Yagnik †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598021",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598021",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598021",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598022",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598022",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598022",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DB Das †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598023",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598023",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598023",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DH Yagnik †",
+        "KB Arun Karthik †,"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2013:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598024",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598024",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598024",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "KM Jadhav †,"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598025",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598025",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598025",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors",
+        "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598027",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598027",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598027",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KB Arun Karthik †,",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors",
+        "pts:5bdcdb72:ipl-2013:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598028",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598028",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598028",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "CM Gautam †"
+      ],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+        "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab",
+        "pts:30a2649b:ipl-2013:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598029",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598029",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598029",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DB Das †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders",
+        "pts:70d205c9:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598031",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598031",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598031",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab",
+        "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598032",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598032",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598032",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara (c) †",
+        "DH Yagnik †,"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598033",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598033",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598033",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "KB Arun Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2013:team-royal-challengers-bangalore",
+        "pts:70d205c9:ipl-2013:team-mumbai-indians",
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598034",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598034",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598034",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders",
+        "pts:fe11caa6:ipl-2013:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598035",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598035",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598035",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KM Jadhav †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+        "pts:1c17e270:ipl-2013:team-pune-warriors"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598036",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598036",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598036",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2013:team-rajasthan-royals",
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598037",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598037",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598037",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "Gurkeerat Singh †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598038",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598038",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598038",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors",
+        "pts:fe11caa6:ipl-2013:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598039",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598039",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598039",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "KC Sangakkara (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad",
+        "pts:70d205c9:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598040",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598040",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598040",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Bisla †",
+        "KM Jadhav †,"
+      ],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+        "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598041",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598041",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598041",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "Gurkeerat Singh †"
+      ],
+      "candidatesCovered": [
+        "pts:fe11caa6:ipl-2013:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598042",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598042",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598042",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KB Arun Karthik †,",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors",
+        "pts:b17e2f24:ipl-2013:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598043",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598043",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598043",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DH Yagnik †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders",
+        "pts:a4cc73aa:ipl-2013:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598044",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598044",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598044",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KM Jadhav †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+        "pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598045",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598045",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598045",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KB Arun Karthik †,",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab",
+        "pts:b17e2f24:ipl-2013:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598046",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598046",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598046",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598047",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598047",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598047",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "M Rawat †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors",
+        "pts:a4cc73aa:ipl-2013:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598048",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598048",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598048",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "KB Arun Karthik †,"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad",
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598049",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598049",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598049",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "CM Gautam †",
+        "SV Samson †,"
+      ],
+      "candidatesCovered": [
+        "pts:30a2649b:ipl-2013:team-delhi-daredevils",
+        "pts:a4cc73aa:ipl-2013:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598050",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598050",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598050",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders",
+        "pts:70d205c9:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598051",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598051",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598051",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598052",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598052",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598052",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "DH Yagnik †,"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab",
+        "pts:a4cc73aa:ipl-2013:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598053",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598053",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598053",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Bisla †",
+        "M Rawat †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598054",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598054",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598054",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "KM Jadhav †"
+      ],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598055",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598055",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598055",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors",
+        "pts:70d205c9:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598056",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598056",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598056",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598057",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598057",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598057",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders",
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598058",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598058",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598058",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "DH Yagnik †,"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2013:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598059",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598059",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598059",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KM Jadhav †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598060",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598060",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598060",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598061",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598061",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598061",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors",
+        "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598062",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598062",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598062",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KM Jadhav †"
+      ],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2013:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598063",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598063",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598063",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "DH Yagnik †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2013:team-mumbai-indians",
+        "pts:855a210c:ipl-2013:team-mumbai-indians",
+        "pts:a4cc73aa:ipl-2013:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598064",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598064",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598064",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KB Arun Karthik †,",
+        "Gurkeerat Singh †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598065",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598065",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598065",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2013:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598066",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598066",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598066",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab",
+        "pts:70d205c9:ipl-2013:team-mumbai-indians",
+        "pts:855a210c:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598067",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598067",
+      "teams": [
+        {
+          "teamId": "team-pune-warriors",
+          "teamName": "Pune Warriors"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598067",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "CM Gautam †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2013:team-pune-warriors",
+        "pts:30a2649b:ipl-2013:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598068",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598068",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598068",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul †,",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2013:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598070",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598070",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598070",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †,",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2013:team-mumbai-indians",
+        "pts:855a210c:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598071",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598071",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598071",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "DH Yagnik †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2013:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598072",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598072",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598072",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DH Yagnik †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2013:team-mumbai-indians",
+        "pts:855a210c:ipl-2013:team-mumbai-indians",
+        "pts:a4cc73aa:ipl-2013:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2013-598073",
+      "sourceFamilyId": "espn-scorecard-2013-v1",
+      "matchId": "598073",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/598073",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2013:team-mumbai-indians",
+        "pts:855a210c:ipl-2013:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2013-historical-route",
+      "sourceFamilyId": "official-ipl-historical-route-2013-v1",
+      "matchId": "597998",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2013/1",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+        "pts:890946a0:ipl-2013:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The historical route redirected to the redesigned site without readable historical scorecard data or a keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "routeRecoveries": [
+    {
+      "matchId": "597998",
+      "failedUrl": "https://www.espn.in/cricket/series/8048/scorecard/597998",
+      "replacementSourceId": "espn-ipl-2013-597998-full",
+      "replacementUrl": "https://www.espn.com/cricket/series/8048/scorecard/597998/kolkata-knight-riders-vs-delhi-daredevils-1st-match-indian-premier-league-2013"
+    }
+  ],
+  "sourcePresentationNotes": [
+    {
+      "matchId": "597998",
+      "sourceId": "espn-ipl-2013-597998-full",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598001",
+      "sourceId": "espn-ipl-2013-598001",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598006",
+      "sourceId": "espn-ipl-2013-598006",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598010",
+      "sourceId": "espn-ipl-2013-598010",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598017",
+      "sourceId": "espn-ipl-2013-598017",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598024",
+      "sourceId": "espn-ipl-2013-598024",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598028",
+      "sourceId": "espn-ipl-2013-598028",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598035",
+      "sourceId": "espn-ipl-2013-598035",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598040",
+      "sourceId": "espn-ipl-2013-598040",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598044",
+      "sourceId": "espn-ipl-2013-598044",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598049",
+      "sourceId": "espn-ipl-2013-598049",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598054",
+      "sourceId": "espn-ipl-2013-598054",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598059",
+      "sourceId": "espn-ipl-2013-598059",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598062",
+      "sourceId": "espn-ipl-2013-598062",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    },
+    {
+      "matchId": "598067",
+      "sourceId": "espn-ipl-2013-598067",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2013."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:0c94f480:ipl-2013:team-delhi-daredevils",
+      "player": "UBT Chand",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 9,
+      "appearancesReviewed": [
+        "597998",
+        "598001",
+        "598006",
+        "598028",
+        "598035",
+        "598040",
+        "598044",
+        "598054",
+        "598062"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-597998-full",
+        "espn-ipl-2013-598001",
+        "espn-ipl-2013-598006",
+        "espn-ipl-2013-598028",
+        "espn-ipl-2013-598035",
+        "espn-ipl-2013-598040",
+        "espn-ipl-2013-598044",
+        "espn-ipl-2013-598054",
+        "espn-ipl-2013-598062"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:1c17e270:ipl-2013:team-pune-warriors",
+      "player": "RV Uthappa",
+      "team": "Pune Warriors",
+      "officialAppearances": 16,
+      "appearancesReviewed": [
+        "598000"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-598000"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2013-598000",
+        "observedMarker": "†",
+        "observedText": "RV Uthappa †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:2b6e6dec:ipl-2013:team-kings-xi-punjab",
+      "player": "AC Gilchrist",
+      "team": "Kings XI Punjab",
+      "officialAppearances": 13,
+      "appearancesReviewed": [
+        "598003"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-598003"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2013-598003",
+        "observedMarker": "†",
+        "observedText": "AC Gilchrist (c) †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:30a2649b:ipl-2013:team-delhi-daredevils",
+      "player": "CM Gautam",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "598028"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-598028"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2013-598028",
+        "observedMarker": "†",
+        "observedText": "CM Gautam †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:5bdcdb72:ipl-2013:team-royal-challengers-bangalore",
+      "player": "TM Dilshan",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "597999",
+        "598004",
+        "598023",
+        "598027",
+        "598033"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-597999",
+        "espn-ipl-2013-598004",
+        "espn-ipl-2013-598023",
+        "espn-ipl-2013-598027",
+        "espn-ipl-2013-598033"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:6b71e6cf:ipl-2013:team-sunrisers-hyderabad",
+      "player": "KC Sangakkara",
+      "team": "Sunrisers Hyderabad",
+      "officialAppearances": 9,
+      "appearancesReviewed": [
+        "598032"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-598032"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2013-598032",
+        "observedMarker": "†",
+        "observedText": "KC Sangakkara (c) †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:7050a1e7:ipl-2013:team-kolkata-knight-riders",
+      "player": "DB Das",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 10,
+      "appearancesReviewed": [
+        "598022"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-598022"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2013-598022",
+        "observedMarker": "†",
+        "observedText": "DB Das †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:70d205c9:ipl-2013:team-mumbai-indians",
+      "player": "AT Rayudu",
+      "team": "Mumbai Indians",
+      "officialAppearances": 19,
+      "appearancesReviewed": [
+        "597999",
+        "598002",
+        "598006",
+        "598011",
+        "598019",
+        "598024",
+        "598029",
+        "598033",
+        "598037",
+        "598039",
+        "598046",
+        "598050",
+        "598055",
+        "598060",
+        "598063",
+        "598066",
+        "598070",
+        "598072",
+        "598073"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-597999",
+        "espn-ipl-2013-598002",
+        "espn-ipl-2013-598006",
+        "espn-ipl-2013-598011",
+        "espn-ipl-2013-598019",
+        "espn-ipl-2013-598024",
+        "espn-ipl-2013-598029",
+        "espn-ipl-2013-598033",
+        "espn-ipl-2013-598037",
+        "espn-ipl-2013-598039",
+        "espn-ipl-2013-598046",
+        "espn-ipl-2013-598050",
+        "espn-ipl-2013-598055",
+        "espn-ipl-2013-598060",
+        "espn-ipl-2013-598063",
+        "espn-ipl-2013-598066",
+        "espn-ipl-2013-598070",
+        "espn-ipl-2013-598072",
+        "espn-ipl-2013-598073"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:855a210c:ipl-2013:team-mumbai-indians",
+      "player": "AP Tare",
+      "team": "Mumbai Indians",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "598063",
+        "598066",
+        "598070",
+        "598072",
+        "598073"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-598063",
+        "espn-ipl-2013-598066",
+        "espn-ipl-2013-598070",
+        "espn-ipl-2013-598072",
+        "espn-ipl-2013-598073"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:890946a0:ipl-2013:team-delhi-daredevils",
+      "player": "NV Ojha",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "597998"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-597998-full"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2013-597998-full",
+        "observedMarker": "†",
+        "observedText": "NV Ojha †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:a4cc73aa:ipl-2013:team-rajasthan-royals",
+      "player": "SV Samson",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 11,
+      "appearancesReviewed": [
+        "598014"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-598014"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2013-598014",
+        "observedMarker": "†",
+        "observedText": "SV Samson †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2013:team-royal-challengers-bangalore",
+      "player": "KL Rahul",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "598068"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-598068"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2013-598068",
+        "observedMarker": "†",
+        "observedText": "KL Rahul †,"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:c4487b84:ipl-2013:team-royal-challengers-bangalore",
+      "player": "AB de Villiers",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "598036"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-598036"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2013-598036",
+        "observedMarker": "†",
+        "observedText": "AB de Villiers †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:f21043a5:ipl-2013:team-rajasthan-royals",
+      "player": "MDKJ Perera",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "598001"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-598001"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2013-598001",
+        "observedMarker": "†",
+        "observedText": "MDKJ Perera †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:fe11caa6:ipl-2013:team-chennai-super-kings",
+      "player": "WP Saha",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "598034",
+        "598038",
+        "598041"
+      ],
+      "sourceIds": [
+        "espn-ipl-2013-598034",
+        "espn-ipl-2013-598038",
+        "espn-ipl-2013-598041"
+      ],
+      "sourceConventionId": "espn-scorecard-2013-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    }
+  ],
+  "capabilityFreezeExceptions": [],
+  "summary": {
+    "scopeCases": 15,
+    "positiveUsageFound": 10,
+    "reviewedUnknown": 5,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "targetScorecardsInspected": 71,
+    "controlOnlyScorecardsInspected": 0,
+    "totalReadableScorecardsInspected": 71,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 71,
+    "reusedTargetScorecards": 46,
+    "crossTeamReusedScorecards": 39,
+    "sameTeamMultiCandidateScorecards": 7,
+    "canonicalCandidateAppearances": 126,
+    "candidateAppearancesCoveredByInspectedScorecards": 126,
+    "candidateAppearancesSkippedAfterPositive": 0,
+    "failedEspnShortcutRoutes": 1,
+    "stableReplacementScorecards": 1,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}

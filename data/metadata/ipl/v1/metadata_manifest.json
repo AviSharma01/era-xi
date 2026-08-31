@@ -11,34 +11,34 @@
       "path": "player_capabilities.jsonl",
       "rows": 816,
       "schemaVersion": "ipl-wicketkeeper-capability/v1",
-      "sha256": "eab9fcebe5ce6ce1317e501d714a1bb91a17869044dc942d9eb7e7b313bfd99f",
-      "sizeBytes": 198287
+      "sha256": "5302ae78d43c33d8f1419a6e67da852936ad7332b6471b2b0d53fbd66f9041c3",
+      "sizeBytes": 198747
     },
     {
       "path": "player_team_season_usage.jsonl",
       "rows": 3392,
       "schemaVersion": "ipl-wicketkeeper-usage/v1",
-      "sha256": "1d8fa20e9984be48ec86aa61edb89d7aa17138d45b7a4985f917e615f432ce73",
-      "sizeBytes": 1133902
+      "sha256": "69f3a00561c7555933397fe5b253bfdc0322c4e23b1d4008b18f07eeb7ee0366",
+      "sizeBytes": 1134377
     },
     {
       "path": "legacy_migration_report.json",
       "rows": 147,
       "schemaVersion": "ipl-wicketkeeper-legacy-migration/v1",
-      "sha256": "b672031b7d9160d354a08c0b423747e6381fd9b2459a7e5ea4b0262b243693e3",
-      "sizeBytes": 103240
+      "sha256": "8bc11771f4b32d340154338c0077a81e30b0614514a1b93c7848264b5dc45a07",
+      "sizeBytes": 103640
     },
     {
       "path": "keeper_role_review_queue.json",
-      "rows": 202,
+      "rows": 187,
       "schemaVersion": "ipl-wicketkeeper-review-queue/v1",
-      "sha256": "b2afacaea035ad529d546c21859946b3b5593b30b5dc149d0021680b0c5c7e9a",
-      "sizeBytes": 158787
+      "sha256": "f8fd3ef64bd581c62f7e865f79a1a9790d4b88a348187395b1f6f0c05986c6dc",
+      "sizeBytes": 159339
     }
   ],
-  "manualOverlaySha256": "ccaed227d012fd0528159507be3b8461735ca3922e493f6d546c549bb0bcb83a",
-  "metadataAggregateHash": "cb96b27c35b16cfb2cc1be0cb5983dc66b6d6761ea08444fb7a125759b426c75",
-  "metadataManifestHash": "74ab0b8eb27afda9d2cad1c441df2277bc77ee112ae2d69d4e0bec2a4b4565d7",
+  "manualOverlaySha256": "94ad2d426b48dc700ac5fb73c33ae312855d835d061a2454ecb341dbdd0e447f",
+  "metadataAggregateHash": "84ed5ac98abe7d2d57c9e6bd0c75ff333e73dd3a9dd340d299506e4543352c75",
+  "metadataManifestHash": "369bbe3e7248010786668cf5541aec1f00a92da95066b7a86c31c4b4a195314a",
   "metadataVersion": "ipl-wicketkeeper-metadata/v1",
   "schemaFiles": [
     {

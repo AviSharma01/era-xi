@@ -1,0 +1,2017 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2014-v1",
+  "seasonId": "ipl-2014",
+  "researchStatus": "COMPLETED_APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "74ab0b8eb27afda9d2cad1c441df2277bc77ee112ae2d69d4e0bec2a4b4565d7",
+  "scopePlayerTeamSeasonIds": [
+    "pts:272d796e:ipl-2014:team-mumbai-indians",
+    "pts:372455c4:ipl-2014:team-delhi-daredevils",
+    "pts:70d205c9:ipl-2014:team-mumbai-indians",
+    "pts:99d63244:ipl-2014:team-delhi-daredevils",
+    "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad",
+    "pts:b8a55852:ipl-2014:team-chennai-super-kings",
+    "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+  ],
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated keeper.",
+    "Every canonical official appearance was checked and none designates the candidate.",
+    "Substitute-fielding, event-only, and replacement involvement is separated from official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "identityNormalizations": [],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2014-v1",
+      "publisher": "ESPN/Cricinfo",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "†,",
+        "(c) †",
+        "non-breaking-space before †"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "729279",
+          "knownKeeper": "RV Uthappa",
+          "observedText": "RV Uthappa †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/729279"
+        },
+        {
+          "matchId": "729279",
+          "knownKeeper": "CM Gautam",
+          "observedText": "CM Gautam †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/729279"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Only a dagger terminating a playing-XI name was accepted; dismissal annotations, catches, stumpings text, and uncalibrated symbols were excluded."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2014-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "729279",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2014/1",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The historical route redirected to the redesigned site and exposed no readable historical scorecard or keeper-marker convention."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2014-729279",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729279",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729279",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "CM Gautam †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2014:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729281",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729281",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729281",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik (c) †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729283",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729283",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729283",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "WP Saha †,"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729285",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729285",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729285",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729287",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729287",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729287",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AP Tare †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2014:team-mumbai-indians",
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729293",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729293",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729293",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729295",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729295",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729295",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †,",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729297",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729297",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729297",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729299",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729299",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729299",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729301",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729301",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729301",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †,",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2014:team-delhi-daredevils",
+        "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729303",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729303",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729303",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "CM Gautam †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2014:team-mumbai-indians",
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729305",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729305",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729305",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729309",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729309",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729309",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "CM Gautam †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2014:team-delhi-daredevils",
+        "pts:70d205c9:ipl-2014:team-mumbai-indians",
+        "pts:99d63244:ipl-2014:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729311",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729311",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729311",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad",
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729313",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729313",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729313",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-729317",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "729317",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/729317",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "CM Gautam †"
+      ],
+      "candidatesCovered": [
+        "pts:272d796e:ipl-2014:team-mumbai-indians",
+        "pts:70d205c9:ipl-2014:team-mumbai-indians",
+        "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-733971",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733971",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733971",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-733973",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733973",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733973",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "CM Gautam †"
+      ],
+      "candidatesCovered": [
+        "pts:272d796e:ipl-2014:team-mumbai-indians",
+        "pts:70d205c9:ipl-2014:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-733975",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733975",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733975",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2014:team-delhi-daredevils",
+        "pts:99d63244:ipl-2014:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-733977",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733977",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733977",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad",
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-733981",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733981",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733981",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2014:team-delhi-daredevils",
+        "pts:99d63244:ipl-2014:team-delhi-daredevils",
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-733983",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733983",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733983",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "CM Gautam †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:272d796e:ipl-2014:team-mumbai-indians",
+        "pts:70d205c9:ipl-2014:team-mumbai-indians",
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-733985",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733985",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733985",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2014:team-delhi-daredevils",
+        "pts:99d63244:ipl-2014:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-733987",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733987",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733987",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †,",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-733989",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733989",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733989",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-733991",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733991",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733991",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-733993",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733993",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733993",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2014:team-delhi-daredevils",
+        "pts:99d63244:ipl-2014:team-delhi-daredevils",
+        "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-733995",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733995",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733995",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "CM Gautam †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2014:team-mumbai-indians",
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-shortcut-ipl-2014-733999",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733999",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/733999",
+      "availability": "UNAVAILABLE_PAGE_ERROR",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "ROUTE_DIAGNOSTIC"
+      ],
+      "notes": "The shortcut route returned ESPN's Page error. Coverage was completed through espn-ipl-2014-733999-full."
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-733999-full",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "733999",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/733999/royal-challengers-bangalore-vs-rajasthan-royals-35th-match-indian-premier-league-2014",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "Stable fully named full-scorecard route used after the shortened ESPN route returned a page error."
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734001",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734001",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734001",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "CM Gautam †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2014:team-mumbai-indians",
+        "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734003",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734003",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734003",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DH Yagnik †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734005",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734005",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734005",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:372455c4:ipl-2014:team-delhi-daredevils",
+        "pts:99d63244:ipl-2014:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734007",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734007",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734007",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734009",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734009",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734009",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "CM Gautam †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2014:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-shortcut-ipl-2014-734011",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734011",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734011",
+      "availability": "UNAVAILABLE_PAGE_ERROR",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2014:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "ROUTE_DIAGNOSTIC"
+      ],
+      "notes": "The shortcut route returned ESPN's Page error. Coverage was completed through espn-ipl-2014-734011-full."
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734011-full",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734011",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/734011/rajasthan-royals-vs-delhi-daredevils-41st-match-indian-premier-league-2014",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2014:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "Stable fully named full-scorecard route used after the shortened ESPN route returned a page error."
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734013",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734013",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734013",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings",
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734015",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734015",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734015",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734017",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734017",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734017",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AP Tare †,",
+        "SV Samson †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2014:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734019",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734019",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734019",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2014:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734021",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734021",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734021",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734023",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734023",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734023",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734025",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734025",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734025",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "AP Tare †,"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2014:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734027",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734027",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734027",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "YV Takawale †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734031",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734031",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734031",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AP Tare †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2014:team-mumbai-indians",
+        "pts:99d63244:ipl-2014:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734035",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734035",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734035",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "YV Takawale †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734039",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734039",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734039",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "WP Saha †,"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2014:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734041",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734041",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734041",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SV Samson †",
+        "AP Tare †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2014:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734045",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734045",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734045",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AP Tare †",
+        "MS Dhoni (c) †,"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2014:team-mumbai-indians",
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2014-734047",
+      "sourceFamilyId": "espn-scorecard-2014-v1",
+      "matchId": "734047",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/734047",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2014:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2014-historical-route",
+      "sourceFamilyId": "official-ipl-historical-route-2014-v1",
+      "matchId": "729279",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2014/1",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2014:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The historical route redirected to the redesigned site without readable historical scorecard data or a keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "routeRecoveries": [
+    {
+      "matchId": "733999",
+      "failedUrl": "https://www.espn.in/cricket/series/8048/scorecard/733999",
+      "replacementSourceId": "espn-ipl-2014-733999-full",
+      "replacementUrl": "https://www.espn.com/cricket/series/8048/scorecard/733999/royal-challengers-bangalore-vs-rajasthan-royals-35th-match-indian-premier-league-2014"
+    },
+    {
+      "matchId": "734011",
+      "failedUrl": "https://www.espn.in/cricket/series/8048/scorecard/734011",
+      "replacementSourceId": "espn-ipl-2014-734011-full",
+      "replacementUrl": "https://www.espn.com/cricket/series/8048/scorecard/734011/rajasthan-royals-vs-delhi-daredevils-41st-match-indian-premier-league-2014"
+    }
+  ],
+  "sourcePresentationNotes": [
+    {
+      "matchId": "729281",
+      "sourceId": "espn-ipl-2014-729281",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2014."
+    },
+    {
+      "matchId": "729293",
+      "sourceId": "espn-ipl-2014-729293",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2014."
+    },
+    {
+      "matchId": "729301",
+      "sourceId": "espn-ipl-2014-729301",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2014."
+    },
+    {
+      "matchId": "729309",
+      "sourceId": "espn-ipl-2014-729309",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2014."
+    },
+    {
+      "matchId": "733975",
+      "sourceId": "espn-ipl-2014-733975",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2014."
+    },
+    {
+      "matchId": "733981",
+      "sourceId": "espn-ipl-2014-733981",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2014."
+    },
+    {
+      "matchId": "733985",
+      "sourceId": "espn-ipl-2014-733985",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2014."
+    },
+    {
+      "matchId": "733993",
+      "sourceId": "espn-ipl-2014-733993",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2014."
+    },
+    {
+      "matchId": "734005",
+      "sourceId": "espn-ipl-2014-734005",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2014."
+    },
+    {
+      "matchId": "734011",
+      "sourceId": "espn-ipl-2014-734011-full",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2014."
+    },
+    {
+      "matchId": "734019",
+      "sourceId": "espn-ipl-2014-734019",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2014."
+    },
+    {
+      "matchId": "734031",
+      "sourceId": "espn-ipl-2014-734031",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2014."
+    },
+    {
+      "matchId": "734039",
+      "sourceId": "espn-ipl-2014-734039",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2014."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:272d796e:ipl-2014:team-mumbai-indians",
+      "player": "BR Dunk",
+      "team": "Mumbai Indians",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "729317",
+        "733973",
+        "733983"
+      ],
+      "sourceIds": [
+        "espn-ipl-2014-729317",
+        "espn-ipl-2014-733973",
+        "espn-ipl-2014-733983"
+      ],
+      "sourceConventionId": "espn-scorecard-2014-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained. Match 734045 event-only involvement was reviewed separately and excluded from the three-appearance denominator.",
+      "eventOnlyObservations": [
+        {
+          "matchId": "734045",
+          "participationType": "EVENT_ONLY_INVOLVEMENT",
+          "includedInOfficialAppearanceDenominator": false,
+          "notes": "Documented fielding/event involvement; not a canonical official playing-XI appearance for BR Dunk."
+        }
+      ]
+    },
+    {
+      "playerTeamSeasonId": "pts:372455c4:ipl-2014:team-delhi-daredevils",
+      "player": "Q de Kock",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 7,
+      "appearancesReviewed": [
+        "734005"
+      ],
+      "sourceIds": [
+        "espn-ipl-2014-734005"
+      ],
+      "sourceConventionId": "espn-scorecard-2014-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2014-734005",
+        "observedMarker": "†",
+        "observedText": "Q de Kock †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:70d205c9:ipl-2014:team-mumbai-indians",
+      "player": "AT Rayudu",
+      "team": "Mumbai Indians",
+      "officialAppearances": 15,
+      "appearancesReviewed": [
+        "729279",
+        "729287",
+        "729303",
+        "729309",
+        "729317",
+        "733973",
+        "733983",
+        "733995",
+        "734001",
+        "734009",
+        "734017",
+        "734025",
+        "734031",
+        "734041",
+        "734045"
+      ],
+      "sourceIds": [
+        "espn-ipl-2014-729279",
+        "espn-ipl-2014-729287",
+        "espn-ipl-2014-729303",
+        "espn-ipl-2014-729309",
+        "espn-ipl-2014-729317",
+        "espn-ipl-2014-733973",
+        "espn-ipl-2014-733983",
+        "espn-ipl-2014-733995",
+        "espn-ipl-2014-734001",
+        "espn-ipl-2014-734009",
+        "espn-ipl-2014-734017",
+        "espn-ipl-2014-734025",
+        "espn-ipl-2014-734031",
+        "espn-ipl-2014-734041",
+        "espn-ipl-2014-734045"
+      ],
+      "sourceConventionId": "espn-scorecard-2014-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:99d63244:ipl-2014:team-delhi-daredevils",
+      "player": "KM Jadhav",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 10,
+      "appearancesReviewed": [
+        "729309",
+        "733975",
+        "733981",
+        "733985",
+        "733993",
+        "734005",
+        "734011",
+        "734019",
+        "734031",
+        "734039"
+      ],
+      "sourceIds": [
+        "espn-ipl-2014-729309",
+        "espn-ipl-2014-733975",
+        "espn-ipl-2014-733981",
+        "espn-ipl-2014-733985",
+        "espn-ipl-2014-733993",
+        "espn-ipl-2014-734005",
+        "espn-ipl-2014-734011-full",
+        "espn-ipl-2014-734019",
+        "espn-ipl-2014-734031",
+        "espn-ipl-2014-734039"
+      ],
+      "sourceConventionId": "espn-scorecard-2014-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:b17e2f24:ipl-2014:team-sunrisers-hyderabad",
+      "player": "KL Rahul",
+      "team": "Sunrisers Hyderabad",
+      "officialAppearances": 11,
+      "appearancesReviewed": [
+        "729285"
+      ],
+      "sourceIds": [
+        "espn-ipl-2014-729285"
+      ],
+      "sourceConventionId": "espn-scorecard-2014-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2014-729285",
+        "observedMarker": "†",
+        "observedText": "KL Rahul †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:b8a55852:ipl-2014:team-chennai-super-kings",
+      "player": "BB McCullum",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "729283",
+        "729293",
+        "729297",
+        "729303",
+        "729311",
+        "733971",
+        "733981",
+        "733987",
+        "733995",
+        "734003",
+        "734013",
+        "734023",
+        "734045",
+        "734047"
+      ],
+      "sourceIds": [
+        "espn-ipl-2014-729283",
+        "espn-ipl-2014-729293",
+        "espn-ipl-2014-729297",
+        "espn-ipl-2014-729303",
+        "espn-ipl-2014-729311",
+        "espn-ipl-2014-733971",
+        "espn-ipl-2014-733981",
+        "espn-ipl-2014-733987",
+        "espn-ipl-2014-733995",
+        "espn-ipl-2014-734003",
+        "espn-ipl-2014-734013",
+        "espn-ipl-2014-734023",
+        "espn-ipl-2014-734045",
+        "espn-ipl-2014-734047"
+      ],
+      "sourceConventionId": "espn-scorecard-2014-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:c4487b84:ipl-2014:team-royal-challengers-bangalore",
+      "player": "AB de Villiers",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "729281",
+        "729287",
+        "729299",
+        "729305",
+        "729313",
+        "733977",
+        "733983",
+        "733991",
+        "733999",
+        "734005",
+        "734013",
+        "734021",
+        "734027",
+        "734035"
+      ],
+      "sourceIds": [
+        "espn-ipl-2014-729281",
+        "espn-ipl-2014-729287",
+        "espn-ipl-2014-729299",
+        "espn-ipl-2014-729305",
+        "espn-ipl-2014-729313",
+        "espn-ipl-2014-733977",
+        "espn-ipl-2014-733983",
+        "espn-ipl-2014-733991",
+        "espn-ipl-2014-733999-full",
+        "espn-ipl-2014-734005",
+        "espn-ipl-2014-734013",
+        "espn-ipl-2014-734021",
+        "espn-ipl-2014-734027",
+        "espn-ipl-2014-734035"
+      ],
+      "sourceConventionId": "espn-scorecard-2014-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    }
+  ],
+  "capabilityFreezeExceptions": [],
+  "summary": {
+    "scopeCases": 7,
+    "positiveUsageFound": 2,
+    "reviewedUnknown": 5,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "targetScorecardsInspected": 49,
+    "controlOnlyScorecardsInspected": 0,
+    "totalReadableScorecardsInspected": 49,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 49,
+    "reusedTargetScorecards": 19,
+    "crossTeamReusedScorecards": 16,
+    "sameTeamMultiCandidateScorecards": 3,
+    "canonicalCandidateAppearances": 74,
+    "candidateAppearancesCoveredByInspectedScorecards": 74,
+    "candidateAppearancesSkippedAfterPositive": 0,
+    "failedEspnShortcutRoutes": 2,
+    "stableReplacementScorecards": 2,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}

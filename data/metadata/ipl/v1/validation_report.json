@@ -13,8 +13,8 @@
       "metric": "capabilityPlayers"
     },
     {
-      "actual": 234,
-      "expected": 234,
+      "actual": 249,
+      "expected": 249,
       "matches": true,
       "metric": "confirmedUsageProfiles"
     },
@@ -49,11 +49,11 @@
     "canonicalPlayers": 816,
     "capabilityPlayers": 104,
     "closedCapabilityReviews": 15,
-    "closedSeasonUsageReviews": 104,
+    "closedSeasonUsageReviews": 122,
     "confirmedUsageBelowTwoOfficialAppearances": 3,
-    "confirmedUsageProfiles": 234,
-    "confirmedUsageWithAtLeastTwoOfficialAppearances": 231,
-    "keeperRoleSeasonUsageReviews": 83,
+    "confirmedUsageProfiles": 249,
+    "confirmedUsageWithAtLeastTwoOfficialAppearances": 246,
+    "keeperRoleSeasonUsageReviews": 50,
     "legacyCapabilityCandidates": 0,
     "legacyConflictingNegatives": 7,
     "legacySupportedPositives": 16,
@@ -64,7 +64,7 @@
     "substituteStumpingEvents": 1
   },
   "errors": [],
-  "metadataManifestHash": "74ab0b8eb27afda9d2cad1c441df2277bc77ee112ae2d69d4e0bec2a4b4565d7",
+  "metadataManifestHash": "369bbe3e7248010786668cf5541aec1f00a92da95066b7a86c31c4b4a195314a",
   "metadataVersion": "ipl-wicketkeeper-metadata/v1",
   "schemaVersion": "ipl-wicketkeeper-metadata-validation/v1",
   "status": "passed"
