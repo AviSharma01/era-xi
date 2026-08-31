@@ -27,7 +27,7 @@ VALIDATION_SCHEMA_VERSION = "ipl-wicketkeeper-metadata-validation/v1"
 EXPECTED_BASELINES = {
     "stumpingEvents": 388,
     "capabilityPlayers": 104,
-    "confirmedUsageProfiles": 225,
+    "confirmedUsageProfiles": 234,
     "legacySupportedPositives": 16,
     "legacyUnverifiedPositives": 0,
     "legacyConflictingNegatives": 7,
@@ -182,12 +182,19 @@ def build_output_schemas() -> dict[str, dict[str, Any]]:
         "careerStumpings": integer, "stumpingEvidenceRefs": _array(_string(), unique=True),
         "canonicalCapabilityEvidenceRefs": _array(_string(), unique=True),
         "ipl2016Stumpings": integer, "ipl2016EvidenceRefs": _array(_string(), unique=True),
+        "ipl2016UsageStatus": _string(enum=["CONFIRMED", "UNKNOWN"]),
+        "ipl2016UsageEvidenceRefs": _array(_string(), unique=True),
+        "legacy2016UsageConflict": {"type": "boolean"},
         "canonicalCapabilityStatus": _string(enum=["CONFIRMED", "UNKNOWN"]),
     })
     legacy_report = _object({
         "schemaVersion": _string(enum=[LEGACY_REPORT_SCHEMA_VERSION]), "metadataVersion": _string(enum=[METADATA_VERSION]),
         "legacySourcePath": _string(), "legacySourceSha256": hash_string,
-        "summary": _object({"rows": integer, "supportedPositives": integer, "unverifiedPositives": integer, "conflictingNegatives": integer, "unsupportedNegatives": integer}),
+        "summary": _object({
+            "rows": integer, "supportedPositives": integer, "unverifiedPositives": integer,
+            "conflictingNegatives": integer, "unsupportedNegatives": integer,
+            "seasonSpecific2016UsageConflicts": integer,
+        }),
         "rows": _array(legacy_row),
     })
     usage_review = _object({
@@ -504,8 +511,20 @@ def build_wicketkeeper_metadata_files(
         if usage["status"] == "CONFIRMED" and capability_by_id[usage["playerId"]]["status"] != "CONFIRMED":
             raise WicketkeeperMetadataError(f"Confirmed usage did not imply capability: {usage['playerTeamSeasonId']}")
 
+    usage_by_id = {row["playerTeamSeasonId"]: row for row in usages}
+    season_2016_usage_by_player: dict[str, dict[str, Any]] = {}
+    for usage in usages:
+        if usage["seasonId"] != "ipl-2016":
+            continue
+        if usage["playerId"] in season_2016_usage_by_player:
+            raise WicketkeeperMetadataError(
+                f"Multiple IPL 2016 usage profiles for legacy player: {usage['playerId']}"
+            )
+        season_2016_usage_by_player[usage["playerId"]] = usage
+
     legacy_results: list[dict[str, Any]] = []
     legacy_counts: Counter[str] = Counter()
+    season_specific_2016_usage_conflicts = 0
     for row in sorted(legacy_rows, key=lambda item: item["playerId"]):
         player_id = row["playerId"]
         if player_id not in player_by_id or not isinstance(row.get("isWicketkeeper"), bool):
@@ -526,12 +545,21 @@ def build_wicketkeeper_metadata_files(
             ref for ref in refs
             if next(e for e in evidence if e["evidenceId"] == ref)["seasonId"] == "ipl-2016"
         ]
+        season_2016_usage = season_2016_usage_by_player[player_id]
+        season_2016_usage_conflict = (
+            not legacy_value and season_2016_usage["status"] == "CONFIRMED"
+        )
+        if season_2016_usage_conflict:
+            season_specific_2016_usage_conflicts += 1
         legacy_results.append({
             "playerId": player_id, "canonicalDisplayName": player_by_id[player_id]["canonicalDisplayName"],
             "legacyIsWicketkeeper": legacy_value, "classification": classification,
             "careerStumpings": len(refs), "stumpingEvidenceRefs": refs,
             "canonicalCapabilityEvidenceRefs": canonical_refs,
             "ipl2016Stumpings": len(season_2016_refs), "ipl2016EvidenceRefs": season_2016_refs,
+            "ipl2016UsageStatus": season_2016_usage["status"],
+            "ipl2016UsageEvidenceRefs": season_2016_usage["evidenceRefs"],
+            "legacy2016UsageConflict": season_2016_usage_conflict,
             "canonicalCapabilityStatus": capability_by_id[player_id]["status"],
         })
     legacy_summary = {
@@ -540,6 +568,7 @@ def build_wicketkeeper_metadata_files(
         "unverifiedPositives": legacy_counts["UNVERIFIED_POSITIVE"],
         "conflictingNegatives": legacy_counts["CONFLICTING_NEGATIVE"],
         "unsupportedNegatives": legacy_counts["UNSUPPORTED_NEGATIVE"],
+        "seasonSpecific2016UsageConflicts": season_specific_2016_usage_conflicts,
     }
     legacy_report = {
         "schemaVersion": LEGACY_REPORT_SCHEMA_VERSION, "metadataVersion": METADATA_VERSION,
@@ -547,7 +576,6 @@ def build_wicketkeeper_metadata_files(
         "summary": legacy_summary, "rows": legacy_results,
     }
 
-    usage_by_id = {row["playerTeamSeasonId"]: row for row in usages}
     eligibility_ids: set[str] = set()
     role_items: list[dict[str, Any]] = []
     for pts in pts_rows:

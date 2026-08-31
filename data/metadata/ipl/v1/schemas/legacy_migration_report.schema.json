@@ -68,6 +68,25 @@
             "minimum": 0,
             "type": "integer"
           },
+          "ipl2016UsageEvidenceRefs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "ipl2016UsageStatus": {
+            "enum": [
+              "CONFIRMED",
+              "UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "legacy2016UsageConflict": {
+            "type": "boolean"
+          },
           "legacyIsWicketkeeper": {
             "type": "boolean"
           },
@@ -94,6 +113,9 @@
           "canonicalCapabilityEvidenceRefs",
           "ipl2016Stumpings",
           "ipl2016EvidenceRefs",
+          "ipl2016UsageStatus",
+          "ipl2016UsageEvidenceRefs",
+          "legacy2016UsageConflict",
           "canonicalCapabilityStatus"
         ],
         "type": "object"
@@ -118,6 +140,10 @@
           "minimum": 0,
           "type": "integer"
         },
+        "seasonSpecific2016UsageConflicts": {
+          "minimum": 0,
+          "type": "integer"
+        },
         "supportedPositives": {
           "minimum": 0,
           "type": "integer"
@@ -136,7 +162,8 @@
         "supportedPositives",
         "unverifiedPositives",
         "conflictingNegatives",
-        "unsupportedNegatives"
+        "unsupportedNegatives",
+        "seasonSpecific2016UsageConflicts"
       ],
       "type": "object"
     }

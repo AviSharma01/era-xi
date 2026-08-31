@@ -1,0 +1,1979 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2018-v1",
+  "seasonId": "ipl-2018",
+  "researchStatus": "COMPLETED_APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "47af32b00c4d584f6d7ff87151391807fc2a19678948321bafdad5544997ca87",
+  "scopePlayerTeamSeasonIds": [
+    "pts:1c17e270:ipl-2018:team-kolkata-knight-riders",
+    "pts:541f85c9:ipl-2018:team-sunrisers-hyderabad",
+    "pts:70d205c9:ipl-2018:team-chennai-super-kings",
+    "pts:a4cc73aa:ipl-2018:team-rajasthan-royals",
+    "pts:b5da6c24:ipl-2018:team-royal-challengers-bangalore",
+    "pts:b8a55852:ipl-2018:team-royal-challengers-bangalore",
+    "pts:c16d4035:ipl-2018:team-chennai-super-kings",
+    "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore",
+    "pts:f088b960:ipl-2018:team-royal-challengers-bangalore"
+  ],
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated keeper.",
+    "Every canonical official appearance was checked and none designates the candidate.",
+    "Substitute-fielding, event-only, and replacement involvement is separated from official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "identityNormalizations": [],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2018-v1",
+      "publisher": "ESPN/Cricinfo",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "†,",
+        "(c) †",
+        "non-breaking-space before †"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1136561",
+          "knownKeeper": "Ishan Kishan",
+          "observedText": "Ishan Kishan †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1136561"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Only a dagger terminating a playing-XI name was accepted; dismissal annotations, catches, stumpings text, and uncalibrated symbols were excluded."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2018-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1136561",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2018/10668",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The historical route exposed no complete readable playing-XI scorecard or stable keeper-marker convention; complete calibrated ESPN coverage was used as the established fallback."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2018-1136561",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136561",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136561",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION",
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136563",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136563",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136563",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders",
+        "pts:b8a55852:ipl-2018:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore",
+        "pts:f088b960:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136564",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136564",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136564",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136565",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136565",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136565",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik (c) †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders",
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings",
+        "pts:c16d4035:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136566",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136566",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136566",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136568",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136568",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136568",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2018:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore",
+        "pts:f088b960:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136570",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136570",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136570",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik (c) †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136571",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136571",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136571",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals",
+        "pts:b8a55852:ipl-2018:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136572",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136572",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136572",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings",
+        "pts:c16d4035:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136573",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136573",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136573",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik (c) †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136574",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136574",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136574",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore",
+        "pts:f088b960:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136575",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136575",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136575",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders",
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136577",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136577",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136577",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings",
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals",
+        "pts:c16d4035:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136578",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136578",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136578",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik (c) †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136579",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136579",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136579",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "Q de Kock †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136580",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136580",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136580",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings",
+        "pts:c16d4035:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136581",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136581",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136581",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136584",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136584",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136584",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings",
+        "pts:c16d4035:ipl-2018:team-chennai-super-kings",
+        "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136586",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136586",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136586",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136587",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136587",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136587",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "Ishan Kishan †,"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings",
+        "pts:c16d4035:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136588",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136588",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136588",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136589",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136589",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136589",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders",
+        "pts:b8a55852:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136590",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136590",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136590",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136591",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136591",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136591",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Q de Kock †",
+        "Ishan Kishan †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136592",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136592",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136592",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136593",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136593",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136593",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders",
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136595",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136595",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136595",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings",
+        "pts:b5da6c24:ipl-2018:team-royal-challengers-bangalore",
+        "pts:b8a55852:ipl-2018:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136597",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136597",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136597",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †,",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136598",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136598",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136598",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136599",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136599",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136599",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:b5da6c24:ipl-2018:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136600",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136600",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136600",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136601",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136601",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136601",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136602",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136602",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136602",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "SP Goswami †,"
+      ],
+      "candidatesCovered": [
+        "pts:541f85c9:ipl-2018:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136603",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136603",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136603",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings",
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals",
+        "pts:c16d4035:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136604",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136604",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136604",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik (c) †",
+        "KL Rahul †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136605",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136605",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136605",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:b5da6c24:ipl-2018:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore",
+        "pts:f088b960:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136606",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136606",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136606",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Goswami †,",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:541f85c9:ipl-2018:team-sunrisers-hyderabad",
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings",
+        "pts:c16d4035:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136607",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136607",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136607",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Ishan Kishan †",
+        "JC Buttler †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136608",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136608",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136608",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:b5da6c24:ipl-2018:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore",
+        "pts:f088b960:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136609",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136609",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136609",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "JC Buttler †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders",
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136611",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136611",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136611",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "SP Goswami †,"
+      ],
+      "candidatesCovered": [
+        "pts:541f85c9:ipl-2018:team-sunrisers-hyderabad",
+        "pts:b5da6c24:ipl-2018:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore",
+        "pts:f088b960:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136612",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136612",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136612",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings",
+        "pts:c16d4035:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136613",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136613",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136613",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "H Klaasen †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals",
+        "pts:b5da6c24:ipl-2018:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore",
+        "pts:f088b960:ipl-2018:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136614",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136614",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136614",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Goswami †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders",
+        "pts:541f85c9:ipl-2018:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136616",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136616",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136616",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KL Rahul †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings",
+        "pts:c16d4035:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136617",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136617",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136617",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Goswami †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:541f85c9:ipl-2018:team-sunrisers-hyderabad",
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136618",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136618",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136618",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik (c) †",
+        "H Klaasen †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders",
+        "pts:a4cc73aa:ipl-2018:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136619",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136619",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136619",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2018:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2018-1136620",
+      "sourceFamilyId": "espn-scorecard-2018-v1",
+      "matchId": "1136620",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1136620",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Goswami †",
+        "MS Dhoni (c) †,"
+      ],
+      "candidatesCovered": [
+        "pts:541f85c9:ipl-2018:team-sunrisers-hyderabad",
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2018-historical-route",
+      "sourceFamilyId": "official-ipl-historical-route-2018-v1",
+      "matchId": "1136561",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2018/10668",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2018:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The historical route did not expose complete readable playing-XI data or a keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:1c17e270:ipl-2018:team-kolkata-knight-riders",
+      "player": "RV Uthappa",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 16,
+      "appearancesReviewed": [
+        "1136563",
+        "1136565",
+        "1136570",
+        "1136573",
+        "1136575",
+        "1136578",
+        "1136586",
+        "1136589",
+        "1136593",
+        "1136597",
+        "1136601",
+        "1136604",
+        "1136609",
+        "1136614",
+        "1136618",
+        "1136619"
+      ],
+      "sourceIds": [
+        "espn-ipl-2018-1136563",
+        "espn-ipl-2018-1136565",
+        "espn-ipl-2018-1136570",
+        "espn-ipl-2018-1136573",
+        "espn-ipl-2018-1136575",
+        "espn-ipl-2018-1136578",
+        "espn-ipl-2018-1136586",
+        "espn-ipl-2018-1136589",
+        "espn-ipl-2018-1136593",
+        "espn-ipl-2018-1136597",
+        "espn-ipl-2018-1136601",
+        "espn-ipl-2018-1136604",
+        "espn-ipl-2018-1136609",
+        "espn-ipl-2018-1136614",
+        "espn-ipl-2018-1136618",
+        "espn-ipl-2018-1136619"
+      ],
+      "sourceConventionId": "espn-scorecard-2018-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:541f85c9:ipl-2018:team-sunrisers-hyderabad",
+      "player": "SP Goswami",
+      "team": "Sunrisers Hyderabad",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "1136602"
+      ],
+      "sourceIds": [
+        "espn-ipl-2018-1136602"
+      ],
+      "sourceConventionId": "espn-scorecard-2018-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2018-1136602",
+        "observedMarker": "†",
+        "observedText": "SP Goswami †,"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:70d205c9:ipl-2018:team-chennai-super-kings",
+      "player": "AT Rayudu",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 16,
+      "appearancesReviewed": [
+        "1136561",
+        "1136565",
+        "1136572",
+        "1136577",
+        "1136580",
+        "1136584",
+        "1136587",
+        "1136590",
+        "1136593",
+        "1136595",
+        "1136603",
+        "1136606",
+        "1136612",
+        "1136616",
+        "1136617",
+        "1136620"
+      ],
+      "sourceIds": [
+        "espn-ipl-2018-1136561",
+        "espn-ipl-2018-1136565",
+        "espn-ipl-2018-1136572",
+        "espn-ipl-2018-1136577",
+        "espn-ipl-2018-1136580",
+        "espn-ipl-2018-1136584",
+        "espn-ipl-2018-1136587",
+        "espn-ipl-2018-1136590",
+        "espn-ipl-2018-1136593",
+        "espn-ipl-2018-1136595",
+        "espn-ipl-2018-1136603",
+        "espn-ipl-2018-1136606",
+        "espn-ipl-2018-1136612",
+        "espn-ipl-2018-1136616",
+        "espn-ipl-2018-1136617",
+        "espn-ipl-2018-1136620"
+      ],
+      "sourceConventionId": "espn-scorecard-2018-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:a4cc73aa:ipl-2018:team-rajasthan-royals",
+      "player": "SV Samson",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 15,
+      "appearancesReviewed": [
+        "1136564",
+        "1136566",
+        "1136571",
+        "1136575",
+        "1136577",
+        "1136581",
+        "1136588",
+        "1136592",
+        "1136598",
+        "1136600",
+        "1136603",
+        "1136607",
+        "1136609",
+        "1136613",
+        "1136618"
+      ],
+      "sourceIds": [
+        "espn-ipl-2018-1136564",
+        "espn-ipl-2018-1136566",
+        "espn-ipl-2018-1136571",
+        "espn-ipl-2018-1136575",
+        "espn-ipl-2018-1136577",
+        "espn-ipl-2018-1136581",
+        "espn-ipl-2018-1136588",
+        "espn-ipl-2018-1136592",
+        "espn-ipl-2018-1136598",
+        "espn-ipl-2018-1136600",
+        "espn-ipl-2018-1136603",
+        "espn-ipl-2018-1136607",
+        "espn-ipl-2018-1136609",
+        "espn-ipl-2018-1136613",
+        "espn-ipl-2018-1136618"
+      ],
+      "sourceConventionId": "espn-scorecard-2018-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:b5da6c24:ipl-2018:team-royal-challengers-bangalore",
+      "player": "PA Patel",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "1136595"
+      ],
+      "sourceIds": [
+        "espn-ipl-2018-1136595"
+      ],
+      "sourceConventionId": "espn-scorecard-2018-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2018-1136595",
+        "observedMarker": "†",
+        "observedText": "PA Patel †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:b8a55852:ipl-2018:team-royal-challengers-bangalore",
+      "player": "BB McCullum",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "1136563",
+        "1136568",
+        "1136571",
+        "1136589",
+        "1136591",
+        "1136595"
+      ],
+      "sourceIds": [
+        "espn-ipl-2018-1136563",
+        "espn-ipl-2018-1136568",
+        "espn-ipl-2018-1136571",
+        "espn-ipl-2018-1136589",
+        "espn-ipl-2018-1136591",
+        "espn-ipl-2018-1136595"
+      ],
+      "sourceConventionId": "espn-scorecard-2018-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:c16d4035:ipl-2018:team-chennai-super-kings",
+      "player": "SW Billings",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 10,
+      "appearancesReviewed": [
+        "1136565",
+        "1136572",
+        "1136577",
+        "1136580",
+        "1136584",
+        "1136587",
+        "1136603",
+        "1136606",
+        "1136612",
+        "1136616"
+      ],
+      "sourceIds": [
+        "espn-ipl-2018-1136565",
+        "espn-ipl-2018-1136572",
+        "espn-ipl-2018-1136577",
+        "espn-ipl-2018-1136580",
+        "espn-ipl-2018-1136584",
+        "espn-ipl-2018-1136587",
+        "espn-ipl-2018-1136603",
+        "espn-ipl-2018-1136606",
+        "espn-ipl-2018-1136612",
+        "espn-ipl-2018-1136616"
+      ],
+      "sourceConventionId": "espn-scorecard-2018-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:c4487b84:ipl-2018:team-royal-challengers-bangalore",
+      "player": "AB de Villiers",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 12,
+      "appearancesReviewed": [
+        "1136563",
+        "1136568",
+        "1136571",
+        "1136574",
+        "1136579",
+        "1136584",
+        "1136595",
+        "1136599",
+        "1136605",
+        "1136608",
+        "1136611",
+        "1136613"
+      ],
+      "sourceIds": [
+        "espn-ipl-2018-1136563",
+        "espn-ipl-2018-1136568",
+        "espn-ipl-2018-1136571",
+        "espn-ipl-2018-1136574",
+        "espn-ipl-2018-1136579",
+        "espn-ipl-2018-1136584",
+        "espn-ipl-2018-1136595",
+        "espn-ipl-2018-1136599",
+        "espn-ipl-2018-1136605",
+        "espn-ipl-2018-1136608",
+        "espn-ipl-2018-1136611",
+        "espn-ipl-2018-1136613"
+      ],
+      "sourceConventionId": "espn-scorecard-2018-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:f088b960:ipl-2018:team-royal-challengers-bangalore",
+      "player": "SN Khan",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 7,
+      "appearancesReviewed": [
+        "1136563",
+        "1136568",
+        "1136574",
+        "1136605",
+        "1136608",
+        "1136611",
+        "1136613"
+      ],
+      "sourceIds": [
+        "espn-ipl-2018-1136563",
+        "espn-ipl-2018-1136568",
+        "espn-ipl-2018-1136574",
+        "espn-ipl-2018-1136605",
+        "espn-ipl-2018-1136608",
+        "espn-ipl-2018-1136611",
+        "espn-ipl-2018-1136613"
+      ],
+      "sourceConventionId": "espn-scorecard-2018-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    }
+  ],
+  "capabilityFreezeExceptions": [],
+  "summary": {
+    "scopeCases": 9,
+    "positiveUsageFound": 2,
+    "reviewedUnknown": 7,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "targetScorecardsInspected": 49,
+    "controlOnlyScorecardsInspected": 0,
+    "totalReadableScorecardsInspected": 49,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 49,
+    "reusedTargetScorecards": 28,
+    "crossTeamReusedScorecards": 18,
+    "sameTeamMultiCandidateScorecards": 10,
+    "canonicalCandidateAppearances": 94,
+    "candidateAppearancesCoveredByInspectedScorecards": 94,
+    "candidateAppearancesSkippedAfterPositive": 0,
+    "failedEspnShortcutRoutes": 0,
+    "stableReplacementScorecards": 0,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}
+

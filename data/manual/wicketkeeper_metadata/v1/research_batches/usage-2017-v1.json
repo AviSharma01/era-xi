@@ -1,0 +1,2116 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2017-v1",
+  "seasonId": "ipl-2017",
+  "researchStatus": "COMPLETED_APPROVED_FOR_POPULATION",
+  "canonicalSemantics": "Research/workflow evidence only. Positive assertions require explicit calibrated keeper designation; reviewed absence remains canonical UNKNOWN and is not negative evidence.",
+  "snapshotMetadataManifestHash": "47af32b00c4d584f6d7ff87151391807fc2a19678948321bafdad5544997ca87",
+  "scopePlayerTeamSeasonIds": [
+    "pts:70d205c9:ipl-2017:team-mumbai-indians",
+    "pts:752f7486:ipl-2017:team-gujarat-lions",
+    "pts:855a210c:ipl-2017:team-delhi-daredevils",
+    "pts:890946a0:ipl-2017:team-sunrisers-hyderabad",
+    "pts:99b75528:ipl-2017:team-mumbai-indians",
+    "pts:a4cc73aa:ipl-2017:team-delhi-daredevils",
+    "pts:acc1aeda:ipl-2017:team-kolkata-knight-riders",
+    "pts:b8a55852:ipl-2017:team-gujarat-lions",
+    "pts:c03f1114:ipl-2017:team-gujarat-lions",
+    "pts:c16d4035:ipl-2017:team-delhi-daredevils",
+    "pts:c4487b84:ipl-2017:team-royal-challengers-bangalore"
+  ],
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention explicitly identifies the designated keeper.",
+    "Every canonical official appearance was checked and none designates the candidate.",
+    "Substitute-fielding, event-only, and replacement involvement is separated from official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "identityNormalizations": [],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2017-v1",
+      "publisher": "ESPN/Cricinfo",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "†,",
+        "(c) †",
+        "non-breaking-space before †"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1082595",
+          "knownKeeper": "RR Pant",
+          "observedText": "RR Pant †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/1082595"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Only a dagger terminating a playing-XI name was accepted; dismissal annotations, catches, stumpings text, and uncalibrated symbols were excluded."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2017-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "1082591",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2017/10606",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The historical route exposed no complete readable playing-XI scorecard or stable keeper-marker convention; complete calibrated ESPN coverage was used as the established fallback."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2017-1082591",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082591",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082591",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †,",
+        "KM Jadhav †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082592",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082592",
+      "teams": [
+        {
+          "teamId": "team-rising-pune-supergiant",
+          "teamName": "Rising Pune Supergiant"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082592",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2017:team-mumbai-indians",
+        "pts:99b75528:ipl-2017:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082593",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082593",
+      "teams": [
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082593",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "RV Uthappa †,"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2017:team-gujarat-lions",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082595",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082595",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082595",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Vishnu Vinod †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:855a210c:ipl-2017:team-delhi-daredevils",
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils",
+        "pts:c16d4035:ipl-2017:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION",
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082596",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082596",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082596",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "NV Ojha †,"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad",
+        "pts:b8a55852:ipl-2017:team-gujarat-lions",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082597",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082597",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082597",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2017:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082598",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082598",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082598",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Vishnu Vinod †",
+        "WP Saha †,"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2017:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082599",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082599",
+      "teams": [
+        {
+          "teamId": "team-rising-pune-supergiant",
+          "teamName": "Rising Pune Supergiant"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082599",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:855a210c:ipl-2017:team-delhi-daredevils",
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils",
+        "pts:c16d4035:ipl-2017:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082600",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082600",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082600",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad",
+        "pts:99b75528:ipl-2017:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082602",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082602",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082602",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KM Jadhav †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2017:team-mumbai-indians",
+        "pts:c4487b84:ipl-2017:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082603",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082603",
+      "teams": [
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        },
+        {
+          "teamId": "team-rising-pune-supergiant",
+          "teamName": "Rising Pune Supergiant"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082603",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2017:team-gujarat-lions",
+        "pts:b8a55852:ipl-2017:team-gujarat-lions",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082604",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082604",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082604",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082605",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082605",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082605",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils",
+        "pts:c16d4035:ipl-2017:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082606",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082606",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082606",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2017:team-gujarat-lions",
+        "pts:99b75528:ipl-2017:team-mumbai-indians",
+        "pts:b8a55852:ipl-2017:team-gujarat-lions",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082607",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082607",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-rising-pune-supergiant",
+          "teamName": "Rising Pune Supergiant"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082607",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "KM Jadhav †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2017:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082608",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082608",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082608",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils",
+        "pts:c16d4035:ipl-2017:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082609",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082609",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082609",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082610",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082610",
+      "teams": [
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082610",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KM Jadhav †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2017:team-gujarat-lions",
+        "pts:b8a55852:ipl-2017:team-gujarat-lions",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082611",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082611",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082611",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †,",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad",
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils",
+        "pts:c16d4035:ipl-2017:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082612",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082612",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082612",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2017:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082613",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082613",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082613",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2017:team-gujarat-lions",
+        "pts:b8a55852:ipl-2017:team-gujarat-lions",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082614",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082614",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082614",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:855a210c:ipl-2017:team-delhi-daredevils",
+        "pts:99b75528:ipl-2017:team-mumbai-indians",
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082615",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082615",
+      "teams": [
+        {
+          "teamId": "team-rising-pune-supergiant",
+          "teamName": "Rising Pune Supergiant"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082615",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †,",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082616",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082616",
+      "teams": [
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082616",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2017:team-gujarat-lions",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082617",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082617",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082617",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "KM Jadhav †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2017:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082618",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082618",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rising-pune-supergiant",
+          "teamName": "Rising Pune Supergiant"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082618",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2017:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082621",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082621",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082621",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KM Jadhav †",
+        "KD Karthik †,"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2017:team-gujarat-lions",
+        "pts:b8a55852:ipl-2017:team-gujarat-lions",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions",
+        "pts:c4487b84:ipl-2017:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082622",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082622",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082622",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils",
+        "pts:acc1aeda:ipl-2017:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082623",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082623",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082623",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †,",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082624",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082624",
+      "teams": [
+        {
+          "teamId": "team-rising-pune-supergiant",
+          "teamName": "Rising Pune Supergiant"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082624",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "KM Jadhav †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2017:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082625",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082625",
+      "teams": [
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082625",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2017:team-gujarat-lions",
+        "pts:99b75528:ipl-2017:team-mumbai-indians",
+        "pts:b8a55852:ipl-2017:team-gujarat-lions",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082626",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082626",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082626",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "WP Saha †,"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils",
+        "pts:c16d4035:ipl-2017:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082627",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082627",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082627",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †,",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad",
+        "pts:acc1aeda:ipl-2017:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082628",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082628",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082628",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KM Jadhav †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:99b75528:ipl-2017:team-mumbai-indians",
+        "pts:c4487b84:ipl-2017:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082629",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082629",
+      "teams": [
+        {
+          "teamId": "team-rising-pune-supergiant",
+          "teamName": "Rising Pune Supergiant"
+        },
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082629",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2017:team-gujarat-lions",
+        "pts:b8a55852:ipl-2017:team-gujarat-lions",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082630",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082630",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082630",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †,",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad",
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082631",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082631",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rising-pune-supergiant",
+          "teamName": "Rising Pune Supergiant"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082631",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Jackson †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:acc1aeda:ipl-2017:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082632",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082632",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082632",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2017:team-gujarat-lions",
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils",
+        "pts:b8a55852:ipl-2017:team-gujarat-lions",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082633",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082633",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082633",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "KM Jadhav †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2017:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082634",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082634",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-rising-pune-supergiant",
+          "teamName": "Rising Pune Supergiant"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082634",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082635",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082635",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082635",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082636",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082636",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082636",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KM Jadhav †",
+        "SP Jackson †,"
+      ],
+      "candidatesCovered": [
+        "pts:acc1aeda:ipl-2017:team-kolkata-knight-riders",
+        "pts:c4487b84:ipl-2017:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082637",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082637",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082637",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †,",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2017:team-gujarat-lions",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082638",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082638",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082638",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "NV Ojha †,"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082640",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082640",
+      "teams": [
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082640",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2017:team-gujarat-lions",
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082642",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082642",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-rising-pune-supergiant",
+          "teamName": "Rising Pune Supergiant"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082642",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RR Pant †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082643",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082643",
+      "teams": [
+        {
+          "teamId": "team-gujarat-lions",
+          "teamName": "Gujarat Lions"
+        },
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082643",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "NV Ojha †,"
+      ],
+      "candidatesCovered": [
+        "pts:752f7486:ipl-2017:team-gujarat-lions",
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad",
+        "pts:c03f1114:ipl-2017:team-gujarat-lions"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082644",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082644",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082644",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AT Rayudu †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2017:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082646",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082646",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082646",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Vishnu Vinod †",
+        "RR Pant †"
+      ],
+      "candidatesCovered": [
+        "pts:a4cc73aa:ipl-2017:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082647",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082647",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rising-pune-supergiant",
+          "teamName": "Rising Pune Supergiant"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082647",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2017:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082648",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082648",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082648",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082649",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082649",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082649",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "RV Uthappa †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2017:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2017-1082650",
+      "sourceFamilyId": "espn-scorecard-2017-v1",
+      "matchId": "1082650",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rising-pune-supergiant",
+          "teamName": "Rising Pune Supergiant"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/1082650",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "MS Dhoni †"
+      ],
+      "candidatesCovered": [
+        "pts:70d205c9:ipl-2017:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2017-historical-route",
+      "sourceFamilyId": "official-ipl-historical-route-2017-v1",
+      "matchId": "1082591",
+      "teams": [
+        {
+          "teamId": "team-sunrisers-hyderabad",
+          "teamName": "Sunrisers Hyderabad"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2017/10606",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:890946a0:ipl-2017:team-sunrisers-hyderabad"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The historical route did not expose complete readable playing-XI data or a keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:70d205c9:ipl-2017:team-mumbai-indians",
+      "player": "AT Rayudu",
+      "team": "Mumbai Indians",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "1082644"
+      ],
+      "sourceIds": [
+        "espn-ipl-2017-1082644"
+      ],
+      "sourceConventionId": "espn-scorecard-2017-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2017-1082644",
+        "observedMarker": "†",
+        "observedText": "AT Rayudu †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:752f7486:ipl-2017:team-gujarat-lions",
+      "player": "Ishan Kishan",
+      "team": "Gujarat Lions",
+      "officialAppearances": 11,
+      "appearancesReviewed": [
+        "1082603",
+        "1082606",
+        "1082610",
+        "1082613",
+        "1082621",
+        "1082625",
+        "1082629",
+        "1082632",
+        "1082637",
+        "1082640",
+        "1082643"
+      ],
+      "sourceIds": [
+        "espn-ipl-2017-1082603",
+        "espn-ipl-2017-1082606",
+        "espn-ipl-2017-1082610",
+        "espn-ipl-2017-1082613",
+        "espn-ipl-2017-1082621",
+        "espn-ipl-2017-1082625",
+        "espn-ipl-2017-1082629",
+        "espn-ipl-2017-1082632",
+        "espn-ipl-2017-1082637",
+        "espn-ipl-2017-1082640",
+        "espn-ipl-2017-1082643"
+      ],
+      "sourceConventionId": "espn-scorecard-2017-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:855a210c:ipl-2017:team-delhi-daredevils",
+      "player": "AP Tare",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "1082595",
+        "1082599",
+        "1082614"
+      ],
+      "sourceIds": [
+        "espn-ipl-2017-1082595",
+        "espn-ipl-2017-1082599",
+        "espn-ipl-2017-1082614"
+      ],
+      "sourceConventionId": "espn-scorecard-2017-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:890946a0:ipl-2017:team-sunrisers-hyderabad",
+      "player": "NV Ojha",
+      "team": "Sunrisers Hyderabad",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1082591"
+      ],
+      "sourceIds": [
+        "espn-ipl-2017-1082591"
+      ],
+      "sourceConventionId": "espn-scorecard-2017-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2017-1082591",
+        "observedMarker": "†",
+        "observedText": "NV Ojha †,"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:99b75528:ipl-2017:team-mumbai-indians",
+      "player": "JC Buttler",
+      "team": "Mumbai Indians",
+      "officialAppearances": 10,
+      "appearancesReviewed": [
+        "1082592",
+        "1082597",
+        "1082600",
+        "1082602",
+        "1082606",
+        "1082612",
+        "1082614",
+        "1082618",
+        "1082625",
+        "1082628"
+      ],
+      "sourceIds": [
+        "espn-ipl-2017-1082592",
+        "espn-ipl-2017-1082597",
+        "espn-ipl-2017-1082600",
+        "espn-ipl-2017-1082602",
+        "espn-ipl-2017-1082606",
+        "espn-ipl-2017-1082612",
+        "espn-ipl-2017-1082614",
+        "espn-ipl-2017-1082618",
+        "espn-ipl-2017-1082625",
+        "espn-ipl-2017-1082628"
+      ],
+      "sourceConventionId": "espn-scorecard-2017-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:a4cc73aa:ipl-2017:team-delhi-daredevils",
+      "player": "SV Samson",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1082595",
+        "1082599",
+        "1082605",
+        "1082608",
+        "1082611",
+        "1082614",
+        "1082622",
+        "1082626",
+        "1082630",
+        "1082632",
+        "1082635",
+        "1082640",
+        "1082642",
+        "1082646"
+      ],
+      "sourceIds": [
+        "espn-ipl-2017-1082595",
+        "espn-ipl-2017-1082599",
+        "espn-ipl-2017-1082605",
+        "espn-ipl-2017-1082608",
+        "espn-ipl-2017-1082611",
+        "espn-ipl-2017-1082614",
+        "espn-ipl-2017-1082622",
+        "espn-ipl-2017-1082626",
+        "espn-ipl-2017-1082630",
+        "espn-ipl-2017-1082632",
+        "espn-ipl-2017-1082635",
+        "espn-ipl-2017-1082640",
+        "espn-ipl-2017-1082642",
+        "espn-ipl-2017-1082646"
+      ],
+      "sourceConventionId": "espn-scorecard-2017-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:acc1aeda:ipl-2017:team-kolkata-knight-riders",
+      "player": "SP Jackson",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 4,
+      "appearancesReviewed": [
+        "1082631"
+      ],
+      "sourceIds": [
+        "espn-ipl-2017-1082631"
+      ],
+      "sourceConventionId": "espn-scorecard-2017-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2017-1082631",
+        "observedMarker": "†",
+        "observedText": "SP Jackson †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:b8a55852:ipl-2017:team-gujarat-lions",
+      "player": "BB McCullum",
+      "team": "Gujarat Lions",
+      "officialAppearances": 11,
+      "appearancesReviewed": [
+        "1082593",
+        "1082596",
+        "1082603",
+        "1082606",
+        "1082610",
+        "1082613",
+        "1082616",
+        "1082621",
+        "1082625",
+        "1082629",
+        "1082632"
+      ],
+      "sourceIds": [
+        "espn-ipl-2017-1082593",
+        "espn-ipl-2017-1082596",
+        "espn-ipl-2017-1082603",
+        "espn-ipl-2017-1082606",
+        "espn-ipl-2017-1082610",
+        "espn-ipl-2017-1082613",
+        "espn-ipl-2017-1082616",
+        "espn-ipl-2017-1082621",
+        "espn-ipl-2017-1082625",
+        "espn-ipl-2017-1082629",
+        "espn-ipl-2017-1082632"
+      ],
+      "sourceConventionId": "espn-scorecard-2017-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:c03f1114:ipl-2017:team-gujarat-lions",
+      "player": "KD Karthik",
+      "team": "Gujarat Lions",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "1082593"
+      ],
+      "sourceIds": [
+        "espn-ipl-2017-1082593"
+      ],
+      "sourceConventionId": "espn-scorecard-2017-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2017-1082593",
+        "observedMarker": "†",
+        "observedText": "KD Karthik †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:c16d4035:ipl-2017:team-delhi-daredevils",
+      "player": "SW Billings",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "1082595",
+        "1082599",
+        "1082605",
+        "1082608",
+        "1082611",
+        "1082626"
+      ],
+      "sourceIds": [
+        "espn-ipl-2017-1082595",
+        "espn-ipl-2017-1082599",
+        "espn-ipl-2017-1082605",
+        "espn-ipl-2017-1082608",
+        "espn-ipl-2017-1082611",
+        "espn-ipl-2017-1082626"
+      ],
+      "sourceConventionId": "espn-scorecard-2017-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:c4487b84:ipl-2017:team-royal-challengers-bangalore",
+      "player": "AB de Villiers",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 9,
+      "appearancesReviewed": [
+        "1082598",
+        "1082602",
+        "1082607",
+        "1082617",
+        "1082621",
+        "1082624",
+        "1082628",
+        "1082633",
+        "1082636"
+      ],
+      "sourceIds": [
+        "espn-ipl-2017-1082598",
+        "espn-ipl-2017-1082602",
+        "espn-ipl-2017-1082607",
+        "espn-ipl-2017-1082617",
+        "espn-ipl-2017-1082621",
+        "espn-ipl-2017-1082624",
+        "espn-ipl-2017-1082628",
+        "espn-ipl-2017-1082633",
+        "espn-ipl-2017-1082636"
+      ],
+      "sourceConventionId": "espn-scorecard-2017-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    }
+  ],
+  "capabilityFreezeExceptions": [],
+  "summary": {
+    "scopeCases": 11,
+    "positiveUsageFound": 4,
+    "reviewedUnknown": 7,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "targetScorecardsInspected": 53,
+    "controlOnlyScorecardsInspected": 0,
+    "totalReadableScorecardsInspected": 53,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 53,
+    "reusedTargetScorecards": 29,
+    "crossTeamReusedScorecards": 16,
+    "sameTeamMultiCandidateScorecards": 13,
+    "canonicalCandidateAppearances": 101,
+    "candidateAppearancesCoveredByInspectedScorecards": 101,
+    "candidateAppearancesSkippedAfterPositive": 0,
+    "failedEspnShortcutRoutes": 0,
+    "stableReplacementScorecards": 0,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}
+
