@@ -1,0 +1,2231 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2008-v1",
+  "seasonId": "ipl-2008",
+  "researchStatus": "APPROVED_FOR_POPULATION",
+  "snapshotMetadataManifestHash": "92feaaa0c6232f94355063c30f042ef773db064d420444d42db9ff6e8034a5ac",
+  "scopePlayerTeamSeasonIds": [
+    "pts:0aadc906:ipl-2008:team-mumbai-indians",
+    "pts:0fa5042b:ipl-2008:team-mumbai-indians",
+    "pts:1c17e270:ipl-2008:team-mumbai-indians",
+    "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+    "pts:5bdcdb72:ipl-2008:team-delhi-daredevils",
+    "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab",
+    "pts:7050a1e7:ipl-2008:team-kolkata-knight-riders",
+    "pts:75de770f:ipl-2008:team-kolkata-knight-riders",
+    "pts:b5da6c24:ipl-2008:team-chennai-super-kings",
+    "pts:b8a55852:ipl-2008:team-kolkata-knight-riders",
+    "pts:c4487b84:ipl-2008:team-delhi-daredevils",
+    "pts:de8d3876:ipl-2008:team-rajasthan-royals",
+    "pts:f48cf4da:ipl-2008:team-royal-challengers-bangalore"
+  ],
+  "scopeAudit": {
+    "originalQueueScopeCaseCount": 13,
+    "originalQueueScopePreserved": true,
+    "capabilityFreezeExceptionCasesWereNotOriginalQueueCases": true,
+    "supplementalUsageCasesWereNotOriginalQueueCases": true,
+    "notes": "The original scope IDs are preserved exactly from the committed queue snapshot. Exception and supplemental records are stored separately and do not rewrite the historical starting scope."
+  },
+  "canonicalSemantics": {
+    "capabilityDoesNotImplyUsage": true,
+    "positiveEvidenceOnly": true,
+    "absenceOfEvidenceStatus": "UNKNOWN",
+    "negativeUsageStatusExists": false
+  },
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention identifies the designated wicketkeeper.",
+    "Every official appearance was reviewed and none designates the candidate.",
+    "Substitute, event-only, and replacement involvement is separated from official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "publisher": "ESPN/Cricinfo",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "†,",
+        "(c) †",
+        "non-breaking-space before †",
+        "indexed or cross-domain presentation may render ‡"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "335985",
+          "knownKeeper": "MV Boucher",
+          "observedText": "MV Boucher †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/335985"
+        },
+        {
+          "matchId": "336003",
+          "knownKeeper": "WP Saha",
+          "observedText": "WP Saha †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/336003"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Only a dagger terminating a playing-XI name was accepted; dismissal annotations, catches, stumpings text, and uncalibrated symbols were excluded. Literal live-page observations used †."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2008-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "335982",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2008/1",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The historical route exposed no readable historical scorecard or keeper-marker convention; complete calibrated ESPN coverage was used as fallback."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2008-335982",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335982",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335982",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "BB McCullum †",
+        "MV Boucher †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2008:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335983",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335983",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335983",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KC Sangakkara †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab",
+        "pts:b5da6c24:ipl-2008:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335984",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335984",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335984",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "M Rawat †",
+        "KD Karthik †,"
+      ],
+      "candidatesCovered": [
+        "pts:de8d3876:ipl-2008:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335985",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335985",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335985",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "L Ronchi †",
+        "MV Boucher †"
+      ],
+      "candidatesCovered": [
+        "pts:0aadc906:ipl-2008:team-mumbai-indians",
+        "pts:0fa5042b:ipl-2008:team-mumbai-indians",
+        "pts:1c17e270:ipl-2008:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335986",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335986",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335986",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2008:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335987",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335987",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335987",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara †",
+        "Kamran Akmal †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335989",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335989",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335989",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "L Ronchi †"
+      ],
+      "candidatesCovered": [
+        "pts:0fa5042b:ipl-2008:team-mumbai-indians",
+        "pts:1c17e270:ipl-2008:team-mumbai-indians",
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:b5da6c24:ipl-2008:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335991",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335991",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335991",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara †",
+        "L Ronchi †"
+      ],
+      "candidatesCovered": [
+        "pts:0fa5042b:ipl-2008:team-mumbai-indians",
+        "pts:1c17e270:ipl-2008:team-mumbai-indians",
+        "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335992",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335992",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335992",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MV Boucher †",
+        "M Rawat †"
+      ],
+      "candidatesCovered": [
+        "pts:de8d3876:ipl-2008:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335993",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335993",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335993",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "BB McCullum †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:b5da6c24:ipl-2008:team-chennai-super-kings",
+        "pts:b8a55852:ipl-2008:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335994",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335994",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335994",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "L Ronchi †",
+        "AC Gilchrist †"
+      ],
+      "candidatesCovered": [
+        "pts:0fa5042b:ipl-2008:team-mumbai-indians",
+        "pts:1c17e270:ipl-2008:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335995",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335995",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335995",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "KC Sangakkara †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335996",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335996",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335996",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "MV Boucher †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:b5da6c24:ipl-2008:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335997",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335997",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335997",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "BB McCullum †",
+        "PR Shah †"
+      ],
+      "candidatesCovered": [
+        "pts:0aadc906:ipl-2008:team-mumbai-indians",
+        "pts:1c17e270:ipl-2008:team-mumbai-indians",
+        "pts:7050a1e7:ipl-2008:team-kolkata-knight-riders",
+        "pts:b8a55852:ipl-2008:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-335999",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "335999",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335999",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist †",
+        "KC Sangakkara †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336000",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336000",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336000",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "M Rawat †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2008:team-kolkata-knight-riders",
+        "pts:de8d3876:ipl-2008:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336001",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336001",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336001",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KD Karthik †,"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:b5da6c24:ipl-2008:team-chennai-super-kings",
+        "pts:c4487b84:ipl-2008:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336003",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336003",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336003",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab",
+        "pts:7050a1e7:ipl-2008:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336004",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336004",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336004",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "YV Takawale †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2008:team-mumbai-indians",
+        "pts:c4487b84:ipl-2008:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336005",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336005",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336005",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "M Rawat †,"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:b5da6c24:ipl-2008:team-chennai-super-kings",
+        "pts:de8d3876:ipl-2008:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336006",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336006",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336006",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "DT Patil †",
+        "U Kaul †,"
+      ],
+      "candidatesCovered": [
+        "pts:f48cf4da:ipl-2008:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336007",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336007",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336007",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:b5da6c24:ipl-2008:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336008",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336008",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336008",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "M Rawat †",
+        "YV Takawale †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2008:team-mumbai-indians",
+        "pts:de8d3876:ipl-2008:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336009",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336009",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336009",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AB de Villiers †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:c4487b84:ipl-2008:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336010",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336010",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336010",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "MV Boucher †"
+      ],
+      "candidatesCovered": [
+        "pts:75de770f:ipl-2008:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336011",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336011",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336011",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "M Rawat †,"
+      ],
+      "candidatesCovered": [
+        "pts:de8d3876:ipl-2008:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336012",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336012",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336012",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Goswami †",
+        "YV Takawale †,"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2008:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-shortcut-ipl-2008-336013",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336013",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336013",
+      "availability": "UNAVAILABLE_PAGE_ERROR",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "ROUTE_DIAGNOSTIC"
+      ],
+      "notes": "The shortened route returned ESPN's generic page. Coverage was completed through espn-ipl-2008-336013-full."
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336013-full",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336013",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/336013/chennai-super-kings-vs-kings-xi-punjab-31st-match-indian-premier-league-2007-08",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "U Kaul †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": "Stable fully named full-scorecard route used after the shortened ESPN route returned a page error."
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336014",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336014",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336014",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †,",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:75de770f:ipl-2008:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336015",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336015",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336015",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "M Rawat †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2008:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2008:team-delhi-daredevils",
+        "pts:de8d3876:ipl-2008:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336017",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336017",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336017",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "AB de Villiers †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2008:team-delhi-daredevils",
+        "pts:75de770f:ipl-2008:team-kolkata-knight-riders",
+        "pts:c4487b84:ipl-2008:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336018",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336018",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336018",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "YV Takawale †,"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2008:team-mumbai-indians",
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336019",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336019",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336019",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara †,",
+        "Kamran Akmal †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab",
+        "pts:de8d3876:ipl-2008:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336020",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336020",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336020",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †,",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2008:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336021",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336021",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336021",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "YV Takawale †,"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2008:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336022",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336022",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336022",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †,",
+        "U Kaul †,"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2008:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336023",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336023",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336023",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "M Rawat †,",
+        "DT Patil †"
+      ],
+      "candidatesCovered": [
+        "pts:de8d3876:ipl-2008:team-rajasthan-royals",
+        "pts:f48cf4da:ipl-2008:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336024",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336024",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336024",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "YV Takawale †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:0aadc906:ipl-2008:team-mumbai-indians",
+        "pts:1c17e270:ipl-2008:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336025",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336025",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336025",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "MS Dhoni (c) †,"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:7050a1e7:ipl-2008:team-kolkata-knight-riders",
+        "pts:b5da6c24:ipl-2008:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336026",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336026",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336026",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "SP Goswami †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2008:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2008:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336027",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336027",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336027",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "M Rawat †,"
+      ],
+      "candidatesCovered": [
+        "pts:7050a1e7:ipl-2008:team-kolkata-knight-riders",
+        "pts:de8d3876:ipl-2008:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336028",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336028",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336028",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "U Kaul †,",
+        "PR Shah †"
+      ],
+      "candidatesCovered": [
+        "pts:0aadc906:ipl-2008:team-mumbai-indians",
+        "pts:1c17e270:ipl-2008:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336029",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336029",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336029",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MV Boucher †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:b5da6c24:ipl-2008:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336031",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336031",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336031",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "KC Sangakkara †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336032",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336032",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336032",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PR Shah †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:0aadc906:ipl-2008:team-mumbai-indians",
+        "pts:1c17e270:ipl-2008:team-mumbai-indians",
+        "pts:5bdcdb72:ipl-2008:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336033",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336033",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336033",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "Kamran Akmal †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:b5da6c24:ipl-2008:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336035",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336035",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336035",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab",
+        "pts:7050a1e7:ipl-2008:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336036",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336036",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336036",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "YV Takawale †",
+        "Kamran Akmal †"
+      ],
+      "candidatesCovered": [
+        "pts:1c17e270:ipl-2008:team-mumbai-indians"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336037",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336037",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336037",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:b5da6c24:ipl-2008:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336038",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336038",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336038",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "M Rawat †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2008:team-delhi-daredevils",
+        "pts:de8d3876:ipl-2008:team-rajasthan-royals"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336039",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336039",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336039",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab",
+        "pts:b5da6c24:ipl-2008:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2008-336040",
+      "sourceFamilyId": "espn-scorecard-2008-v1",
+      "matchId": "336040",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336040",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PA Patel †",
+        "Kamran Akmal †"
+      ],
+      "candidatesCovered": [
+        "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+        "pts:b5da6c24:ipl-2008:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2008-historical-route",
+      "sourceFamilyId": "official-ipl-historical-route-2008-v1",
+      "matchId": "335982",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2008/1",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2008:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The route exposed no readable historical scorecard data or keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:0aadc906:ipl-2008:team-mumbai-indians",
+      "player": "PR Shah",
+      "team": "Mumbai Indians",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "335997"
+      ],
+      "sourceIds": [
+        "espn-ipl-2008-335997"
+      ],
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2008-335997",
+        "observedMarker": "†",
+        "observedText": "PR Shah †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:0fa5042b:ipl-2008:team-mumbai-indians",
+      "player": "L Ronchi",
+      "team": "Mumbai Indians",
+      "officialAppearances": 4,
+      "appearancesReviewed": [
+        "335985"
+      ],
+      "sourceIds": [
+        "espn-ipl-2008-335985"
+      ],
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2008-335985",
+        "observedMarker": "†",
+        "observedText": "L Ronchi †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:1c17e270:ipl-2008:team-mumbai-indians",
+      "player": "RV Uthappa",
+      "team": "Mumbai Indians",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "335985",
+        "335989",
+        "335991",
+        "335994",
+        "335997",
+        "336004",
+        "336008",
+        "336012",
+        "336018",
+        "336021",
+        "336024",
+        "336028",
+        "336032",
+        "336036"
+      ],
+      "sourceIds": [
+        "espn-ipl-2008-335985",
+        "espn-ipl-2008-335989",
+        "espn-ipl-2008-335991",
+        "espn-ipl-2008-335994",
+        "espn-ipl-2008-335997",
+        "espn-ipl-2008-336004",
+        "espn-ipl-2008-336008",
+        "espn-ipl-2008-336012",
+        "espn-ipl-2008-336018",
+        "espn-ipl-2008-336021",
+        "espn-ipl-2008-336024",
+        "espn-ipl-2008-336028",
+        "espn-ipl-2008-336032",
+        "espn-ipl-2008-336036"
+      ],
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+      "player": "MS Dhoni",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 16,
+      "appearancesReviewed": [
+        "335983"
+      ],
+      "sourceIds": [
+        "espn-ipl-2008-335983"
+      ],
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2008-335983",
+        "observedMarker": "†",
+        "observedText": "MS Dhoni (c) †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:5bdcdb72:ipl-2008:team-delhi-daredevils",
+      "player": "TM Dilshan",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 7,
+      "appearancesReviewed": [
+        "336015",
+        "336017",
+        "336020",
+        "336022",
+        "336026",
+        "336032",
+        "336038"
+      ],
+      "sourceIds": [
+        "espn-ipl-2008-336015",
+        "espn-ipl-2008-336017",
+        "espn-ipl-2008-336020",
+        "espn-ipl-2008-336022",
+        "espn-ipl-2008-336026",
+        "espn-ipl-2008-336032",
+        "espn-ipl-2008-336038"
+      ],
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab",
+      "player": "KC Sangakkara",
+      "team": "Kings XI Punjab",
+      "officialAppearances": 10,
+      "appearancesReviewed": [
+        "335983"
+      ],
+      "sourceIds": [
+        "espn-ipl-2008-335983"
+      ],
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2008-335983",
+        "observedMarker": "†",
+        "observedText": "KC Sangakkara †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation.",
+      "replacementContext": [
+        {
+          "matchId": "336003",
+          "type": "INJURY_ROLE_REPLACEMENT_OUT",
+          "role": "BATTER",
+          "replacementIn": "Yuvraj Singh",
+          "includedInOfficialAppearanceDenominator": true,
+          "notes": "KC Sangakkara was officially listed and explicitly designated KC Sangakkara †; the in-match injury replacement concerned the batter role and does not weaken keeper-usage evidence."
+        }
+      ]
+    },
+    {
+      "playerTeamSeasonId": "pts:7050a1e7:ipl-2008:team-kolkata-knight-riders",
+      "player": "DB Das",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "335997",
+        "336000",
+        "336003",
+        "336025",
+        "336027",
+        "336035"
+      ],
+      "sourceIds": [
+        "espn-ipl-2008-335997",
+        "espn-ipl-2008-336000",
+        "espn-ipl-2008-336003",
+        "espn-ipl-2008-336025",
+        "espn-ipl-2008-336027",
+        "espn-ipl-2008-336035"
+      ],
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:75de770f:ipl-2008:team-kolkata-knight-riders",
+      "player": "T Taibu",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 3,
+      "appearancesReviewed": [
+        "336010",
+        "336014",
+        "336017"
+      ],
+      "sourceIds": [
+        "espn-ipl-2008-336010",
+        "espn-ipl-2008-336014",
+        "espn-ipl-2008-336017"
+      ],
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:b5da6c24:ipl-2008:team-chennai-super-kings",
+      "player": "PA Patel",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 13,
+      "appearancesReviewed": [
+        "336029"
+      ],
+      "sourceIds": [
+        "espn-ipl-2008-336029"
+      ],
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2008-336029",
+        "observedMarker": "†",
+        "observedText": "PA Patel †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:b8a55852:ipl-2008:team-kolkata-knight-riders",
+      "player": "BB McCullum",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 4,
+      "appearancesReviewed": [
+        "335982"
+      ],
+      "sourceIds": [
+        "espn-ipl-2008-335982"
+      ],
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2008-335982",
+        "observedMarker": "†",
+        "observedText": "BB McCullum †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:c4487b84:ipl-2008:team-delhi-daredevils",
+      "player": "AB de Villiers",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "336009"
+      ],
+      "sourceIds": [
+        "espn-ipl-2008-336009"
+      ],
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2008-336009",
+        "observedMarker": "†",
+        "observedText": "AB de Villiers †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation.",
+      "eventOnlyObservations": [
+        {
+          "matchId": "336020",
+          "sourceId": "espn-ipl-2008-336020",
+          "involvement": "EVENT_ONLY_FIELDING",
+          "includedInOfficialAppearanceDenominator": false,
+          "notes": "Canonical analytics records event-only involvement outside AB de Villiers' six official appearances."
+        }
+      ]
+    },
+    {
+      "playerTeamSeasonId": "pts:de8d3876:ipl-2008:team-rajasthan-royals",
+      "player": "M Rawat",
+      "team": "Rajasthan Royals",
+      "officialAppearances": 11,
+      "appearancesReviewed": [
+        "335984"
+      ],
+      "sourceIds": [
+        "espn-ipl-2008-335984"
+      ],
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2008-335984",
+        "observedMarker": "†",
+        "observedText": "M Rawat †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:f48cf4da:ipl-2008:team-royal-challengers-bangalore",
+      "player": "DT Patil",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "336006"
+      ],
+      "sourceIds": [
+        "espn-ipl-2008-336006"
+      ],
+      "sourceConventionId": "espn-scorecard-2008-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2008-336006",
+        "observedMarker": "†",
+        "observedText": "DT Patil †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    }
+  ],
+  "supplementalCaseResults": [],
+  "capabilityFreezeExceptions": [],
+  "routeRecoveries": [
+    {
+      "matchId": "336013",
+      "failedUrl": "https://www.espn.in/cricket/series/8048/scorecard/336013",
+      "replacementSourceId": "espn-ipl-2008-336013-full",
+      "replacementUrl": "https://www.espn.com/cricket/series/8048/scorecard/336013/chennai-super-kings-vs-kings-xi-punjab-31st-match-indian-premier-league-2007-08"
+    }
+  ],
+  "sourcePresentationNotes": [
+    {
+      "matchId": "335984",
+      "sourceId": "espn-ipl-2008-335984",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2008."
+    },
+    {
+      "matchId": "335995",
+      "sourceId": "espn-ipl-2008-335995",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2008."
+    },
+    {
+      "matchId": "336001",
+      "sourceId": "espn-ipl-2008-336001",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2008."
+    },
+    {
+      "matchId": "336004",
+      "sourceId": "espn-ipl-2008-336004",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2008."
+    },
+    {
+      "matchId": "336009",
+      "sourceId": "espn-ipl-2008-336009",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2008."
+    },
+    {
+      "matchId": "336015",
+      "sourceId": "espn-ipl-2008-336015",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2008."
+    },
+    {
+      "matchId": "336017",
+      "sourceId": "espn-ipl-2008-336017",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2008."
+    },
+    {
+      "matchId": "336020",
+      "sourceId": "espn-ipl-2008-336020",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2008."
+    },
+    {
+      "matchId": "336022",
+      "sourceId": "espn-ipl-2008-336022",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2008."
+    },
+    {
+      "matchId": "336026",
+      "sourceId": "espn-ipl-2008-336026",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2008."
+    },
+    {
+      "matchId": "336032",
+      "sourceId": "espn-ipl-2008-336032",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2008."
+    },
+    {
+      "matchId": "336038",
+      "sourceId": "espn-ipl-2008-336038",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2008."
+    }
+  ],
+  "historicalIdentityNotes": [
+    "Canonical Stage 2 identities preserve historical franchise names and brand spells even where modern source titles use successor branding.",
+    "Kings XI Punjab and Royal Challengers Bangalore remain their canonical historical team identities for this batch."
+  ],
+  "identityNormalizations": [],
+  "summary": {
+    "scopeCases": 13,
+    "positiveUsageFound": 9,
+    "reviewedUnknown": 4,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "freezeExceptionPositiveUsageFound": 0,
+    "supplementalUsageReviews": 0,
+    "supplementalPositiveUsageFound": 0,
+    "targetScorecardsInspected": 52,
+    "targetScorecardRouteAttempts": 53,
+    "eventOnlyScorecardsInspected": 1,
+    "totalReadableScorecardsInspected": 52,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 52,
+    "reusedTargetScorecards": 34,
+    "crossTeamReusedScorecards": 23,
+    "sameTeamMultiCandidateScorecards": 11,
+    "canonicalCandidateAppearances": 101,
+    "candidateAppearancesCoveredByInspectedScorecards": 101,
+    "candidateAppearancesSkippedAfterPositive": 0,
+    "failedEspnShortcutRoutes": 1,
+    "stableReplacementScorecards": 1,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}

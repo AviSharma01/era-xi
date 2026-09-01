@@ -28,7 +28,7 @@
     "keeperOnlyAdmissions": 3,
     "playerTeamSeasons": 3392
   },
-  "eligibilityManifestHash": "96c510377a0d813376b4044c8ae6a84eeff1bd96ed1cb67ff0838e28342658f2",
+  "eligibilityManifestHash": "b3e6393851e999c23abbc120083b52e8bc444e747d9be7316e0ca73e07be38b6",
   "eligibilityVersion": "ipl-era-draft-eligibility/v1",
   "errors": [],
   "exclusionReasonCounts": {
@@ -43,7 +43,7 @@
   "qualifyingReasonCounts": {
     "BATTING_BALLS": 2415,
     "BOWLING_LEGAL_BALLS": 1880,
-    "WICKETKEEPING_USAGE": 254
+    "WICKETKEEPING_USAGE": 271
   },
   "schemaVersion": "ipl-era-draft-eligibility-validation/v1",
   "status": "passed"

@@ -743,6 +743,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2008-335983",
         "manual:espn-ipl-2021-1254059",
         "manual:espn-ipl-2022-1304047",
         "manual:espn-ipl-2024-1426297",
@@ -1970,6 +1971,8 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2008-336029",
+        "manual:espn-ipl-2009-392181",
         "manual:espn-ipl-2018-1136595",
         "stumping:1082625:1:8:1:0:b5da6c24",
         "stumping:1082649:1:4:3:0:b5da6c24",
@@ -2039,6 +2042,9 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2008-335982",
+        "manual:espn-ipl-2009-392184",
+        "manual:espn-ipl-2010-419158",
         "stumping:548357:1:19:3:0:b8a55852",
         "stumping:548370:2:15:2:0:b8a55852",
         "stumping:548375:2:15:4:0:b8a55852",
@@ -2324,6 +2330,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2008-336009",
         "manual:espn-ipl-2013-598036",
         "manual:espn-ipl-2021-1254058",
         "stumping:1216502:2:10:5:0:c4487b84",
@@ -2812,6 +2819,7 @@
     },
     {
       "canonicalCapabilityEvidenceRefs": [
+        "manual:espn-ipl-2009-392221",
         "manual:espn-ipl-2021-1254060",
         "stumping:1082609:1:15:2:0:fe11caa6",
         "stumping:1082609:1:9:0:0:fe11caa6",

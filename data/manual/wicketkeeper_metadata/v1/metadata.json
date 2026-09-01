@@ -9169,6 +9169,1459 @@
       "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KD Karthik †",
       "supports": [],
       "notes": "Research batch usage-2012-v1. Review evidence only; absence of a candidate marker is not canonical negative evidence."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335982",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kolkata Knight Riders, Indian Premier League 2008, 1st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335982",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: BB McCullum †; MV Boucher †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335983",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Chennai Super Kings, Indian Premier League 2008, 2nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335983",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KC Sangakkara †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335984",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Rajasthan Royals, Indian Premier League 2008, 3rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335984",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: M Rawat †; KD Karthik †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335985",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Royal Challengers Bangalore, Indian Premier League 2008, 5th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335985",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: L Ronchi †; MV Boucher †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335986",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Deccan Chargers, Indian Premier League 2008, 4th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335986",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist †; WP Saha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335987",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Kings XI Punjab, Indian Premier League 2008, 6th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335987",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KC Sangakkara †; Kamran Akmal †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335989",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Indian Premier League 2008, 8th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335989",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; L Ronchi †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335991",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Mumbai Indians, Indian Premier League 2008, 10th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335991",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KC Sangakkara †; L Ronchi †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335992",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Rajasthan Royals, Indian Premier League 2008, 12th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335992",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MV Boucher †; M Rawat †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335993",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kolkata Knight Riders, Indian Premier League 2008, 11th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335993",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: BB McCullum †; MS Dhoni (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335994",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Deccan Chargers, Indian Premier League 2008, 14th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335994",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: L Ronchi †; AC Gilchrist †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335995",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Delhi Capitals, Indian Premier League 2008, 13th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335995",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; KC Sangakkara †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335996",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Chennai Super Kings, Indian Premier League 2008, 15th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335996",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; MV Boucher †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335997",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Mumbai Indians, Indian Premier League 2008, 16th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335997",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: BB McCullum †; PR Shah †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-335999",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Deccan Chargers vs Kings XI Punjab, Indian Premier League 2008, 19th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/335999",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist †; KC Sangakkara †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336000",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Kolkata Knight Riders, Indian Premier League 2008, 18th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336000",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: M Rawat †; WP Saha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336001",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Delhi Capitals, Indian Premier League 2008, 20th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336001",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KD Karthik †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336003",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Kolkata Knight Riders, Indian Premier League 2008, 22nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336003",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KC Sangakkara †; WP Saha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336004",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Delhi Capitals, Indian Premier League 2008, 23rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336004",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: YV Takawale †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336005",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Chennai Super Kings, Indian Premier League 2008, 24th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336005",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; M Rawat †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336006",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kings XI Punjab, Indian Premier League 2008, 25th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336006",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: DT Patil †; U Kaul †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336007",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Deccan Chargers, Indian Premier League 2008, 26th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336007",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; AC Gilchrist (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336008",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Rajasthan Royals, Indian Premier League 2008, 27th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336008",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: M Rawat †; YV Takawale †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336009",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Chennai Super Kings, Indian Premier League 2008, 28th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336009",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: AB de Villiers †; MS Dhoni (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336010",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Royal Challengers Bangalore, Indian Premier League 2008, 29th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336010",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; MV Boucher †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336011",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Deccan Chargers, Indian Premier League 2008, 30th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336011",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; M Rawat †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336012",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Mumbai Indians, Indian Premier League 2008, 55th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336012",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: SP Goswami †; YV Takawale †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336013-full",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kings XI Punjab, Indian Premier League 2008, 31st match - Score Report | ESPN.com",
+      "url": "https://www.espn.com/cricket/series/8048/scorecard/336013/chennai-super-kings-vs-kings-xi-punjab-31st-match-indian-premier-league-2007-08",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; U Kaul †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336014",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Deccan Chargers vs Kolkata Knight Riders, Indian Premier League 2008, 32nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336014",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †,; AC Gilchrist (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336015",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Delhi Capitals, Indian Premier League 2008, 33rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336015",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; M Rawat †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336017",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Delhi Capitals, Indian Premier League 2008, 35th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336017",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; AB de Villiers †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336018",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Chennai Super Kings, Indian Premier League 2008, 36th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336018",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; YV Takawale †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336019",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Rajasthan Royals, Indian Premier League 2008, 56th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336019",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KC Sangakkara †,; Kamran Akmal †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336020",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Deccan Chargers, Indian Premier League 2008, 37th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336020",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †,; AC Gilchrist (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336021",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Kolkata Knight Riders, Indian Premier League 2008, 38th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336021",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; YV Takawale †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336022",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Kings XI Punjab, Indian Premier League 2008, 40th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336022",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †,; U Kaul †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336023",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Royal Challengers Bangalore, Indian Premier League 2008, 39th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336023",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: M Rawat †,; DT Patil †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336024",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Deccan Chargers vs Mumbai Indians, Indian Premier League 2008, 42nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336024",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: YV Takawale †; AC Gilchrist (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336025",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Chennai Super Kings, Indian Premier League 2008, 41st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336025",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; MS Dhoni (c) †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336026",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Delhi Capitals, Indian Premier League 2008, 43rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336026",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: SP Goswami †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336027",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Rajasthan Royals, Indian Premier League 2008, 44th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336027",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; M Rawat †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336028",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Kings XI Punjab, Indian Premier League 2008, 45th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336028",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: U Kaul †,; PR Shah †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336029",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Royal Challengers Bangalore, Indian Premier League 2008, 46th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336029",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MV Boucher †; PA Patel †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336031",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Deccan Chargers, Indian Premier League 2008, 48th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336031",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; KC Sangakkara †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336032",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Mumbai Indians, Indian Premier League 2008, 50th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336032",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: PR Shah †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336033",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Rajasthan Royals, Indian Premier League 2008, 49th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336033",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: Kamran Akmal †; PA Patel †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336035",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Kings XI Punjab, Indian Premier League 2008, 52nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336035",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KC Sangakkara †; WP Saha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336036",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Mumbai Indians, Indian Premier League 2008, 53rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336036",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: YV Takawale †; Kamran Akmal †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336037",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Deccan Chargers vs Chennai Super Kings, Indian Premier League 2008, 54th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336037",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; PA Patel †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336038",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Rajasthan Royals, Indian Premier League 2008, 1st Semi-Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336038",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: M Rawat †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336039",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kings XI Punjab, Indian Premier League 2008, 2nd Semi-Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336039",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KC Sangakkara †; PA Patel †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2008-336040",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Rajasthan Royals, Indian Premier League 2008, Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/336040",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: PA Patel †; Kamran Akmal †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2008-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392181",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Indian Premier League 2009, 1st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392181",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: PR Shah †; PA Patel †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392183",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Kings XI Punjab, Indian Premier League 2009, 3rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392183",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KC Sangakkara †; KD Karthik †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392184",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Deccan Chargers vs Kolkata Knight Riders, Indian Premier League 2009, 4th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392184",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: BB McCullum (c) †; AC Gilchrist (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392185",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Chennai Super Kings, Indian Premier League 2009, 5th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392185",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; RV Uthappa †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392186",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Kolkata Knight Riders, Indian Premier League 2009, 6th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392186",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KC Sangakkara †; BB McCullum (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392189",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Delhi Capitals, Indian Premier League 2009, 9th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392189",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; MS Dhoni (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392190",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Rajasthan Royals, Indian Premier League 2009, 10th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392190",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: M Rawat †,; BB McCullum (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392194",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Delhi Capitals, Indian Premier League 2009, 14th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392194",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MV Boucher †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392196",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Deccan Chargers, Indian Premier League 2009, 16th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392196",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; AC Gilchrist (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392197",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Mumbai Indians, Indian Premier League 2009, 17th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392197",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: PR Shah †,; BB McCullum (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392198",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Rajasthan Royals, Indian Premier League 2009, 18th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392198",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; M Rawat †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392199",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kolkata Knight Riders, Indian Premier League 2009, 19th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392199",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MN van Wyk †; MV Boucher †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392201",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Deccan Chargers vs Delhi Capitals, Indian Premier League 2009, 21st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392201",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392202",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Rajasthan Royals, Indian Premier League 2009, 22nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392202",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; M Rawat †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392203",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Mumbai Indians, Indian Premier League 2009, 23rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392203",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: PR Shah †,; MN van Wyk †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392204",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kings XI Punjab, Indian Premier League 2009, 24th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392204",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MV Boucher †; KC Sangakkara †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392206",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Delhi Capitals, Indian Premier League 2009, 26th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392206",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392207",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Kolkata Knight Riders, Indian Premier League 2009, 27th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392207",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MN van Wyk †; KC Sangakkara †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392208",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Mumbai Indians, Indian Premier League 2009, 28th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392208",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: PR Shah †,; MV Boucher †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392211",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Kolkata Knight Riders, Indian Premier League 2009, 31st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392211",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MN van Wyk †; KD Karthik †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392213",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Rajasthan Royals, Indian Premier League 2009, 33rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392213",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MV Boucher †; NV Ojha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392215",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Mumbai Indians, Indian Premier League 2009, 35th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392215",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: PR Shah †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392218",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Mumbai Indians, Indian Premier League 2009, 38th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392218",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: YV Takawale †,; MV Boucher †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392219",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Kolkata Knight Riders, Indian Premier League 2009, 39th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392219",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MN van Wyk †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392221",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kolkata Knight Riders, Indian Premier League 2009, 41st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392221",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; MV Boucher †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392223",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Deccan Chargers vs Delhi Capitals, Indian Premier League 2009, 43rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392223",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; AC Gilchrist (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392224",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Chennai Super Kings, Indian Premier League 2009, 44th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392224",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; MV Boucher †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392226",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Kings XI Punjab, Indian Premier League 2009, 46th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392226",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; KC Sangakkara †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392227",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Mumbai Indians, Indian Premier League 2009, 47th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392227",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: YV Takawale †,; MS Dhoni (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392228",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Deccan Chargers vs Kolkata Knight Riders, Indian Premier League 2009, 48th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392228",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; AC Gilchrist (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392230",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Rajasthan Royals, Indian Premier League 2009, 50th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392230",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; NV Ojha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392231",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kolkata Knight Riders, Indian Premier League 2009, 51st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392231",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; WP Saha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392232",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Delhi Capitals, Indian Premier League 2009, 52nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392232",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; MV Boucher †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392233",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Rajasthan Royals, Indian Premier League 2009, 53rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392233",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; SS Shaikh †",
+      "supports": [
+        "PLAYER_CAPABILITY",
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392234",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kings XI Punjab, Indian Premier League 2009, 54th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392234",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KC Sangakkara †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392235",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Mumbai Indians, Indian Premier League 2009, 55th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392235",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: PR Shah †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392236",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Deccan Chargers, Indian Premier League 2009, 56th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392236",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MV Boucher †,; AC Gilchrist (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392237",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Deccan Chargers vs Delhi Capitals, Indian Premier League 2009, 1st Semi-Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392237",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; AC Gilchrist (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392238",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Royal Challengers Bangalore, Indian Premier League 2009, 2nd Semi-Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392238",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; MV Boucher †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2009-392239",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Deccan Chargers vs Royal Challengers Bangalore, Indian Premier League 2009, Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392239",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; MV Boucher †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2009-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419108",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Delhi Capitals, Indian Premier League 2010, 3rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419108",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KC Sangakkara (c) †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419111",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Delhi Capitals, Indian Premier League 2010, 6th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419111",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419112",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kings XI Punjab, Indian Premier League 2010, 7th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419112",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KC Sangakkara (c) †,; MV Boucher †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419114",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Mumbai Indians, Indian Premier League 2010, 9th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419114",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: AP Tare †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419116",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Chennai Super Kings, Indian Premier League 2010, 11th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419116",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik (c) †; PA Patel †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419117",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Deccan Chargers vs Kings XI Punjab, Indian Premier League 2010, 12th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419117",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; KC Sangakkara (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419120",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Deccan Chargers vs Delhi Capitals, Indian Premier League 2010, 15th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419120",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; KD Karthik (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419121",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kings XI Punjab, Indian Premier League 2010, 16th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419121",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KC Sangakkara (c) †; PA Patel †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419124",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Rajasthan Royals, Indian Premier League 2010, 19th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419124",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; KC Sangakkara (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419127",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Kolkata Knight Riders, Indian Premier League 2010, 23rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419127",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; KC Sangakkara (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419128",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Delhi Capitals, Indian Premier League 2010, 20th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419128",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik (c) †; MV Boucher †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419131",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Kolkata Knight Riders, Indian Premier League 2010, 26th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419131",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; WP Saha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419132",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Kings XI Punjab, Indian Premier League 2010, 27th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419132",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Bisla †; AT Rayudu †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419134",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Rajasthan Royals, Indian Premier League 2010, 29th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419134",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; NV Ojha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419136",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kings XI Punjab vs Royal Challengers Bangalore, Indian Premier League 2010, 31st match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419136",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KC Sangakkara (c) †; RV Uthappa †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419137",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Rajasthan Royals, Indian Premier League 2010, 32nd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419137",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; NV Ojha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419139",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Kings XI Punjab, Indian Premier League 2010, 34th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419139",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †,; MS Bisla †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419140",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Royal Challengers Bangalore, Indian Premier League 2010, 35th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419140",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: KD Karthik †; RV Uthappa †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419143",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Rajasthan Royals vs Kings XI Punjab, Indian Premier League 2010, 38th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419143",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Bisla †; NV Ojha †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419144",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Delhi Capitals, Indian Premier League 2010, 39th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419144",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †,; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419148",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Royal Challengers Bangalore vs Kolkata Knight Riders, Indian Premier League 2010, 43rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419148",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; RV Uthappa †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419152",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Delhi Capitals, Indian Premier League 2010, 47th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419152",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: C Madan †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419153",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Kolkata Knight Riders, Indian Premier League 2010, 48th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419153",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: WP Saha †; MS Dhoni (c) †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419155",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Delhi Capitals, Indian Premier League 2010, 50th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419155",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419158",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Rajasthan Royals, Indian Premier League 2010, 53rd match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419158",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: NV Ojha †; BB McCullum †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419160",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Delhi Capitals vs Deccan Chargers, Indian Premier League 2010, 55th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419160",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: AC Gilchrist (c) †; KD Karthik †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419161",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Kolkata Knight Riders vs Mumbai Indians, Indian Premier League 2010, 56th match - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419161",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: AP Tare †; WP Saha †,",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419163",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Chennai Super Kings vs Deccan Chargers, Indian Premier League 2010, 2nd Semi-Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419163",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; AC Gilchrist (c) †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
+    },
+    {
+      "sourceId": "espn-ipl-2010-419165",
+      "publisher": "ESPN",
+      "title": "Full Scorecard of Mumbai Indians vs Chennai Super Kings, Indian Premier League 2010, Final - Score Report | ESPN.in",
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419165",
+      "accessedDate": "2026-09-01",
+      "locator": "Rendered scorecard XI keeper designations: MS Dhoni (c) †; AT Rayudu †",
+      "supports": [
+        "PLAYER_TEAM_SEASON_USAGE"
+      ],
+      "notes": "Research batch usage-2010-v1. Explicit calibrated match-XI designations support approved positive assertions; other candidate observations remain workflow evidence only."
     }
   ],
   "capabilityConfirmations": [
@@ -9612,6 +11065,14 @@
       ],
       "reviewStatus": "APPROVED",
       "notes": "Capability follows directly from an explicit calibrated match-XI wicketkeeper designation; no other season usage inferred."
+    },
+    {
+      "playerId": "5f5d3ad4",
+      "sourceIds": [
+        "espn-ipl-2009-392233"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Capability follows directly from the explicit calibrated match-XI designation SS Shaikh †; the same evidence confirms his only Stage 4 season usage."
     }
   ],
   "usageConfirmations": [
@@ -10342,6 +11803,142 @@
       ],
       "reviewStatus": "APPROVED",
       "notes": "Approved Deccan Chargers 2012 season-usage assertion for KC Sangakkara from research batch usage-2012-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:0aadc906:ipl-2008:team-mumbai-indians",
+      "sourceIds": [
+        "espn-ipl-2008-335997"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Mumbai Indians 2008 season-usage assertion for PR Shah from research batch usage-2008-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:0fa5042b:ipl-2008:team-mumbai-indians",
+      "sourceIds": [
+        "espn-ipl-2008-335985"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Mumbai Indians 2008 season-usage assertion for L Ronchi from research batch usage-2008-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:4a8a2e3b:ipl-2008:team-chennai-super-kings",
+      "sourceIds": [
+        "espn-ipl-2008-335983"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Chennai Super Kings 2008 season-usage assertion for MS Dhoni from research batch usage-2008-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:5afd4539:ipl-2010:team-kings-xi-punjab",
+      "sourceIds": [
+        "espn-ipl-2010-419132"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kings XI Punjab 2010 season-usage assertion for MS Bisla from research batch usage-2010-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:5f5d3ad4:ipl-2009:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2009-392233"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2009 season-usage assertion for SS Shaikh from supplemental capability-freeze exception in research batch usage-2009-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab",
+      "sourceIds": [
+        "espn-ipl-2008-335983"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kings XI Punjab 2008 season-usage assertion for KC Sangakkara from research batch usage-2008-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:710dd98c:ipl-2009:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2009-392199"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2009 season-usage assertion for MN van Wyk from research batch usage-2009-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:b5da6c24:ipl-2008:team-chennai-super-kings",
+      "sourceIds": [
+        "espn-ipl-2008-336029"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Chennai Super Kings 2008 season-usage assertion for PA Patel from research batch usage-2008-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:b5da6c24:ipl-2009:team-chennai-super-kings",
+      "sourceIds": [
+        "espn-ipl-2009-392181"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Chennai Super Kings 2009 season-usage assertion for PA Patel from research batch usage-2009-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:b8a55852:ipl-2008:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2008-335982"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2008 season-usage assertion for BB McCullum from research batch usage-2008-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:b8a55852:ipl-2009:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2009-392184"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2009 season-usage assertion for BB McCullum from research batch usage-2009-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:b8a55852:ipl-2010:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2010-419158"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2010 season-usage assertion for BB McCullum from research batch usage-2010-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:c4487b84:ipl-2008:team-delhi-daredevils",
+      "sourceIds": [
+        "espn-ipl-2008-336009"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Delhi Daredevils 2008 season-usage assertion for AB de Villiers from research batch usage-2008-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:de8d3876:ipl-2008:team-rajasthan-royals",
+      "sourceIds": [
+        "espn-ipl-2008-335984"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Rajasthan Royals 2008 season-usage assertion for M Rawat from research batch usage-2008-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore",
+      "sourceIds": [
+        "espn-ipl-2009-392194"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Royal Challengers Bangalore 2009 season-usage assertion for MV Boucher from research batch usage-2009-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:f48cf4da:ipl-2008:team-royal-challengers-bangalore",
+      "sourceIds": [
+        "espn-ipl-2008-336006"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Royal Challengers Bangalore 2008 season-usage assertion for DT Patil from research batch usage-2008-v1."
+    },
+    {
+      "playerTeamSeasonId": "pts:fe11caa6:ipl-2009:team-kolkata-knight-riders",
+      "sourceIds": [
+        "espn-ipl-2009-392221"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved Kolkata Knight Riders 2009 season-usage assertion for WP Saha from research batch usage-2009-v1."
     }
   ],
   "reviewDispositions": [
@@ -12723,6 +14320,177 @@
         "espn-ipl-2012-548343"
       ],
       "notes": "Research batch usage-2012-v1 reviewed every canonical official Chennai Super Kings 2012 appearance for WP Saha using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:1c17e270:ipl-2008:team-mumbai-indians",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2008-335985",
+        "espn-ipl-2008-335989",
+        "espn-ipl-2008-335991",
+        "espn-ipl-2008-335994",
+        "espn-ipl-2008-335997",
+        "espn-ipl-2008-336004",
+        "espn-ipl-2008-336008",
+        "espn-ipl-2008-336012",
+        "espn-ipl-2008-336018",
+        "espn-ipl-2008-336021",
+        "espn-ipl-2008-336024",
+        "espn-ipl-2008-336028",
+        "espn-ipl-2008-336032",
+        "espn-ipl-2008-336036"
+      ],
+      "notes": "Research batch usage-2008-v1 reviewed every canonical official Mumbai Indians 2008 appearance for RV Uthappa using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:541f85c9:ipl-2009:team-royal-challengers-bangalore",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2009-392199",
+        "espn-ipl-2009-392204"
+      ],
+      "notes": "Research batch usage-2009-v1 reviewed every canonical official Royal Challengers Bangalore 2009 appearance for SP Goswami using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:5bdcdb72:ipl-2008:team-delhi-daredevils",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2008-336015",
+        "espn-ipl-2008-336017",
+        "espn-ipl-2008-336020",
+        "espn-ipl-2008-336022",
+        "espn-ipl-2008-336026",
+        "espn-ipl-2008-336032",
+        "espn-ipl-2008-336038"
+      ],
+      "notes": "Research batch usage-2008-v1 reviewed every canonical official Delhi Daredevils 2008 appearance for TM Dilshan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2009-392183",
+        "espn-ipl-2009-392189",
+        "espn-ipl-2009-392194",
+        "espn-ipl-2009-392198",
+        "espn-ipl-2009-392201",
+        "espn-ipl-2009-392206",
+        "espn-ipl-2009-392211",
+        "espn-ipl-2009-392215",
+        "espn-ipl-2009-392219",
+        "espn-ipl-2009-392223",
+        "espn-ipl-2009-392226",
+        "espn-ipl-2009-392230",
+        "espn-ipl-2009-392235",
+        "espn-ipl-2009-392237"
+      ],
+      "notes": "Research batch usage-2009-v1 reviewed every canonical official Delhi Daredevils 2009 appearance for TM Dilshan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:5bdcdb72:ipl-2010:team-delhi-daredevils",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2010-419108",
+        "espn-ipl-2010-419111",
+        "espn-ipl-2010-419114",
+        "espn-ipl-2010-419116",
+        "espn-ipl-2010-419155",
+        "espn-ipl-2010-419160"
+      ],
+      "notes": "Research batch usage-2010-v1 reviewed every canonical official Delhi Daredevils 2010 appearance for TM Dilshan using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:7050a1e7:ipl-2008:team-kolkata-knight-riders",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2008-335997",
+        "espn-ipl-2008-336000",
+        "espn-ipl-2008-336003",
+        "espn-ipl-2008-336025",
+        "espn-ipl-2008-336027",
+        "espn-ipl-2008-336035"
+      ],
+      "notes": "Research batch usage-2008-v1 reviewed every canonical official Kolkata Knight Riders 2008 appearance for DB Das using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:75de770f:ipl-2008:team-kolkata-knight-riders",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2008-336010",
+        "espn-ipl-2008-336014",
+        "espn-ipl-2008-336017"
+      ],
+      "notes": "Research batch usage-2008-v1 reviewed every canonical official Kolkata Knight Riders 2008 appearance for T Taibu using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:95a2ea61:ipl-2010:team-chennai-super-kings",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2010-419137",
+        "espn-ipl-2010-419153",
+        "espn-ipl-2010-419163",
+        "espn-ipl-2010-419165"
+      ],
+      "notes": "Research batch usage-2010-v1 reviewed every canonical official Chennai Super Kings 2010 appearance for S Anirudha using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:99d63244:ipl-2010:team-delhi-daredevils",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2010-419128",
+        "espn-ipl-2010-419131",
+        "espn-ipl-2010-419134",
+        "espn-ipl-2010-419140",
+        "espn-ipl-2010-419144"
+      ],
+      "notes": "Research batch usage-2010-v1 reviewed every canonical official Delhi Daredevils 2010 appearance for KM Jadhav using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:c4487b84:ipl-2009:team-delhi-daredevils",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2009-392183",
+        "espn-ipl-2009-392189",
+        "espn-ipl-2009-392194",
+        "espn-ipl-2009-392198",
+        "espn-ipl-2009-392201",
+        "espn-ipl-2009-392206",
+        "espn-ipl-2009-392211",
+        "espn-ipl-2009-392215",
+        "espn-ipl-2009-392219",
+        "espn-ipl-2009-392223",
+        "espn-ipl-2009-392226",
+        "espn-ipl-2009-392230",
+        "espn-ipl-2009-392232",
+        "espn-ipl-2009-392235",
+        "espn-ipl-2009-392237"
+      ],
+      "notes": "Research batch usage-2009-v1 reviewed every canonical official Delhi Daredevils 2009 appearance for AB de Villiers using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
+    },
+    {
+      "scope": "PLAYER_TEAM_SEASON_USAGE",
+      "subjectId": "pts:c4487b84:ipl-2010:team-delhi-daredevils",
+      "status": "CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "espn-ipl-2010-419108",
+        "espn-ipl-2010-419111",
+        "espn-ipl-2010-419114",
+        "espn-ipl-2010-419116",
+        "espn-ipl-2010-419120",
+        "espn-ipl-2010-419128",
+        "espn-ipl-2010-419152"
+      ],
+      "notes": "Research batch usage-2010-v1 reviewed every canonical official Delhi Daredevils 2010 appearance for AB de Villiers using readable calibrated scorecards without finding an explicit wicketkeeper designation; canonical usage remains UNKNOWN."
     }
   ]
 }

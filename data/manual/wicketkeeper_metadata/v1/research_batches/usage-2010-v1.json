@@ -1,0 +1,1265 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2010-v1",
+  "seasonId": "ipl-2010",
+  "researchStatus": "APPROVED_FOR_POPULATION",
+  "snapshotMetadataManifestHash": "92feaaa0c6232f94355063c30f042ef773db064d420444d42db9ff6e8034a5ac",
+  "scopePlayerTeamSeasonIds": [
+    "pts:5afd4539:ipl-2010:team-kings-xi-punjab",
+    "pts:5bdcdb72:ipl-2010:team-delhi-daredevils",
+    "pts:95a2ea61:ipl-2010:team-chennai-super-kings",
+    "pts:99d63244:ipl-2010:team-delhi-daredevils",
+    "pts:b8a55852:ipl-2010:team-kolkata-knight-riders",
+    "pts:c4487b84:ipl-2010:team-delhi-daredevils"
+  ],
+  "scopeAudit": {
+    "originalQueueScopeCaseCount": 6,
+    "originalQueueScopePreserved": true,
+    "capabilityFreezeExceptionCasesWereNotOriginalQueueCases": true,
+    "supplementalUsageCasesWereNotOriginalQueueCases": true,
+    "notes": "The original scope IDs are preserved exactly from the committed queue snapshot. Exception and supplemental records are stored separately and do not rewrite the historical starting scope."
+  },
+  "canonicalSemantics": {
+    "capabilityDoesNotImplyUsage": true,
+    "positiveEvidenceOnly": true,
+    "absenceOfEvidenceStatus": "UNKNOWN",
+    "negativeUsageStatusExists": false
+  },
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention identifies the designated wicketkeeper.",
+    "Every official appearance was reviewed and none designates the candidate.",
+    "Substitute, event-only, and replacement involvement is separated from official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2010-v1",
+      "publisher": "ESPN/Cricinfo",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "†,",
+        "(c) †",
+        "non-breaking-space before †",
+        "indexed or cross-domain presentation may render ‡"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "419108",
+          "knownKeeper": "KD Karthik",
+          "observedText": "KD Karthik †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/419108"
+        },
+        {
+          "matchId": "419121",
+          "knownKeeper": "PA Patel",
+          "observedText": "PA Patel †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/419121"
+        },
+        {
+          "matchId": "419121",
+          "knownKeeper": "KC Sangakkara",
+          "observedText": "KC Sangakkara (c) †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/419121"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Only a dagger terminating a playing-XI name was accepted; dismissal annotations, catches, stumpings text, and uncalibrated symbols were excluded. Literal live-page observations used †."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2010-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "419106",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2010/1",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The historical route exposed no readable historical scorecard or keeper-marker convention; complete calibrated ESPN coverage was used as fallback."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2010-419108",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419108",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419108",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara (c) †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5afd4539:ipl-2010:team-kings-xi-punjab",
+        "pts:5bdcdb72:ipl-2010:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2010:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419111",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419111",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419111",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2010:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2010:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419112",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419112",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419112",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara (c) †,",
+        "MV Boucher †,"
+      ],
+      "candidatesCovered": [
+        "pts:5afd4539:ipl-2010:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419114",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419114",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419114",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AP Tare †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2010:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2010:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419116",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419116",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419116",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik (c) †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2010:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2010:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419117",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419117",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419117",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "KC Sangakkara (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:5afd4539:ipl-2010:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419120",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419120",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419120",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "KD Karthik (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2010:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419121",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419121",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419121",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara (c) †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:5afd4539:ipl-2010:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419124",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419124",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419124",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "KC Sangakkara (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:5afd4539:ipl-2010:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419127",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419127",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419127",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "KC Sangakkara (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:5afd4539:ipl-2010:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419128",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419128",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419128",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik (c) †",
+        "MV Boucher †"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2010:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2010:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419131",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419131",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419131",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2010:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419132",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419132",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419132",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Bisla †",
+        "AT Rayudu †"
+      ],
+      "candidatesCovered": [
+        "pts:5afd4539:ipl-2010:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419134",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419134",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419134",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2010:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419136",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419136",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419136",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara (c) †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:5afd4539:ipl-2010:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419137",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419137",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419137",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2010:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419139",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419139",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419139",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †,",
+        "MS Bisla †"
+      ],
+      "candidatesCovered": [
+        "pts:5afd4539:ipl-2010:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419140",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419140",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419140",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2010:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419143",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419143",
+      "teams": [
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419143",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Bisla †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:5afd4539:ipl-2010:team-kings-xi-punjab"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419144",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419144",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419144",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †,",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:99d63244:ipl-2010:team-delhi-daredevils",
+        "pts:b8a55852:ipl-2010:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419148",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419148",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419148",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2010:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419152",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419152",
+      "teams": [
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419152",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "C Madan †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2010:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419153",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419153",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419153",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "MS Dhoni (c) †,"
+      ],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2010:team-chennai-super-kings",
+        "pts:b8a55852:ipl-2010:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419155",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419155",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419155",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2010:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419158",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419158",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419158",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "BB McCullum †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2010:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419160",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419160",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419160",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2010:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419161",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419161",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419161",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AP Tare †",
+        "WP Saha †,"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2010:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419163",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419163",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419163",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2010:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2010-419165",
+      "sourceFamilyId": "espn-scorecard-2010-v1",
+      "matchId": "419165",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/419165",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "AT Rayudu †"
+      ],
+      "candidatesCovered": [
+        "pts:95a2ea61:ipl-2010:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2010-historical-route",
+      "sourceFamilyId": "official-ipl-historical-route-2010-v1",
+      "matchId": "419106",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2010/1",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The route exposed no readable historical scorecard data or keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:5afd4539:ipl-2010:team-kings-xi-punjab",
+      "player": "MS Bisla",
+      "team": "Kings XI Punjab",
+      "officialAppearances": 10,
+      "appearancesReviewed": [
+        "419132"
+      ],
+      "sourceIds": [
+        "espn-ipl-2010-419132"
+      ],
+      "sourceConventionId": "espn-scorecard-2010-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2010-419132",
+        "observedMarker": "†",
+        "observedText": "MS Bisla †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:5bdcdb72:ipl-2010:team-delhi-daredevils",
+      "player": "TM Dilshan",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 6,
+      "appearancesReviewed": [
+        "419108",
+        "419111",
+        "419114",
+        "419116",
+        "419155",
+        "419160"
+      ],
+      "sourceIds": [
+        "espn-ipl-2010-419108",
+        "espn-ipl-2010-419111",
+        "espn-ipl-2010-419114",
+        "espn-ipl-2010-419116",
+        "espn-ipl-2010-419155",
+        "espn-ipl-2010-419160"
+      ],
+      "sourceConventionId": "espn-scorecard-2010-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:95a2ea61:ipl-2010:team-chennai-super-kings",
+      "player": "S Anirudha",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 4,
+      "appearancesReviewed": [
+        "419137",
+        "419153",
+        "419163",
+        "419165"
+      ],
+      "sourceIds": [
+        "espn-ipl-2010-419137",
+        "espn-ipl-2010-419153",
+        "espn-ipl-2010-419163",
+        "espn-ipl-2010-419165"
+      ],
+      "sourceConventionId": "espn-scorecard-2010-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:99d63244:ipl-2010:team-delhi-daredevils",
+      "player": "KM Jadhav",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "419128",
+        "419131",
+        "419134",
+        "419140",
+        "419144"
+      ],
+      "sourceIds": [
+        "espn-ipl-2010-419128",
+        "espn-ipl-2010-419131",
+        "espn-ipl-2010-419134",
+        "espn-ipl-2010-419140",
+        "espn-ipl-2010-419144"
+      ],
+      "sourceConventionId": "espn-scorecard-2010-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:b8a55852:ipl-2010:team-kolkata-knight-riders",
+      "player": "BB McCullum",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "419158"
+      ],
+      "sourceIds": [
+        "espn-ipl-2010-419158"
+      ],
+      "sourceConventionId": "espn-scorecard-2010-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2010-419158",
+        "observedMarker": "†",
+        "observedText": "BB McCullum †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:c4487b84:ipl-2010:team-delhi-daredevils",
+      "player": "AB de Villiers",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 7,
+      "appearancesReviewed": [
+        "419108",
+        "419111",
+        "419114",
+        "419116",
+        "419120",
+        "419128",
+        "419152"
+      ],
+      "sourceIds": [
+        "espn-ipl-2010-419108",
+        "espn-ipl-2010-419111",
+        "espn-ipl-2010-419114",
+        "espn-ipl-2010-419116",
+        "espn-ipl-2010-419120",
+        "espn-ipl-2010-419128",
+        "espn-ipl-2010-419152"
+      ],
+      "sourceConventionId": "espn-scorecard-2010-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    }
+  ],
+  "supplementalCaseResults": [],
+  "capabilityFreezeExceptions": [],
+  "routeRecoveries": [],
+  "sourcePresentationNotes": [
+    {
+      "matchId": "419108",
+      "sourceId": "espn-ipl-2010-419108",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2010."
+    },
+    {
+      "matchId": "419111",
+      "sourceId": "espn-ipl-2010-419111",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2010."
+    },
+    {
+      "matchId": "419114",
+      "sourceId": "espn-ipl-2010-419114",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2010."
+    },
+    {
+      "matchId": "419116",
+      "sourceId": "espn-ipl-2010-419116",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2010."
+    },
+    {
+      "matchId": "419120",
+      "sourceId": "espn-ipl-2010-419120",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2010."
+    },
+    {
+      "matchId": "419128",
+      "sourceId": "espn-ipl-2010-419128",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2010."
+    },
+    {
+      "matchId": "419131",
+      "sourceId": "espn-ipl-2010-419131",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2010."
+    },
+    {
+      "matchId": "419134",
+      "sourceId": "espn-ipl-2010-419134",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2010."
+    },
+    {
+      "matchId": "419140",
+      "sourceId": "espn-ipl-2010-419140",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2010."
+    },
+    {
+      "matchId": "419144",
+      "sourceId": "espn-ipl-2010-419144",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2010."
+    },
+    {
+      "matchId": "419152",
+      "sourceId": "espn-ipl-2010-419152",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2010."
+    },
+    {
+      "matchId": "419155",
+      "sourceId": "espn-ipl-2010-419155",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2010."
+    },
+    {
+      "matchId": "419160",
+      "sourceId": "espn-ipl-2010-419160",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2010."
+    }
+  ],
+  "historicalIdentityNotes": [
+    "Canonical Stage 2 identities preserve historical franchise names and brand spells even where modern source titles use successor branding.",
+    "Kings XI Punjab and Royal Challengers Bangalore remain their canonical historical team identities for this batch."
+  ],
+  "identityNormalizations": [],
+  "summary": {
+    "scopeCases": 6,
+    "positiveUsageFound": 2,
+    "reviewedUnknown": 4,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 0,
+    "freezeExceptionPositiveUsageFound": 0,
+    "supplementalUsageReviews": 0,
+    "supplementalPositiveUsageFound": 0,
+    "targetScorecardsInspected": 29,
+    "targetScorecardRouteAttempts": 29,
+    "eventOnlyScorecardsInspected": 0,
+    "totalReadableScorecardsInspected": 29,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 29,
+    "reusedTargetScorecards": 7,
+    "crossTeamReusedScorecards": 3,
+    "sameTeamMultiCandidateScorecards": 4,
+    "canonicalCandidateAppearances": 37,
+    "candidateAppearancesCoveredByInspectedScorecards": 37,
+    "candidateAppearancesSkippedAfterPositive": 0,
+    "failedEspnShortcutRoutes": 0,
+    "stableReplacementScorecards": 0,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}

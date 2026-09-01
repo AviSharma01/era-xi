@@ -1,0 +1,1775 @@
+{
+  "schemaVersion": "ipl-wicketkeeper-usage-research-batch/v1",
+  "batchId": "usage-2009-v1",
+  "seasonId": "ipl-2009",
+  "researchStatus": "APPROVED_FOR_POPULATION",
+  "snapshotMetadataManifestHash": "92feaaa0c6232f94355063c30f042ef773db064d420444d42db9ff6e8034a5ac",
+  "scopePlayerTeamSeasonIds": [
+    "pts:541f85c9:ipl-2009:team-royal-challengers-bangalore",
+    "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+    "pts:710dd98c:ipl-2009:team-kolkata-knight-riders",
+    "pts:b5da6c24:ipl-2009:team-chennai-super-kings",
+    "pts:b8a55852:ipl-2009:team-kolkata-knight-riders",
+    "pts:c4487b84:ipl-2009:team-delhi-daredevils",
+    "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore",
+    "pts:fe11caa6:ipl-2009:team-kolkata-knight-riders"
+  ],
+  "scopeAudit": {
+    "originalQueueScopeCaseCount": 8,
+    "originalQueueScopePreserved": true,
+    "capabilityFreezeExceptionCasesWereNotOriginalQueueCases": true,
+    "supplementalUsageCasesWereNotOriginalQueueCases": true,
+    "notes": "The original scope IDs are preserved exactly from the committed queue snapshot. Exception and supplemental records are stored separately and do not rewrite the historical starting scope."
+  },
+  "canonicalSemantics": {
+    "capabilityDoesNotImplyUsage": true,
+    "positiveEvidenceOnly": true,
+    "absenceOfEvidenceStatus": "UNKNOWN",
+    "negativeUsageStatusExists": false
+  },
+  "closureCriterion": [
+    "Every canonical official appearance has a readable full scorecard.",
+    "The calibrated source convention identifies the designated wicketkeeper.",
+    "Every official appearance was reviewed and none designates the candidate.",
+    "Substitute, event-only, and replacement involvement is separated from official appearances.",
+    "No unresolved source gap remains."
+  ],
+  "sourceConventions": [
+    {
+      "sourceConventionId": "espn-scorecard-2009-v1",
+      "publisher": "ESPN/Cricinfo",
+      "observedMarker": "†",
+      "alternateObservedRenderings": [
+        "†,",
+        "(c) †",
+        "non-breaking-space before †",
+        "indexed or cross-domain presentation may render ‡"
+      ],
+      "normalizedInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerLocation": "Rendered batting XI or did-not-bat XI entry",
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "392184",
+          "knownKeeper": "AC Gilchrist",
+          "observedText": "AC Gilchrist (c) †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/392184"
+        },
+        {
+          "matchId": "392198",
+          "knownKeeper": "KD Karthik",
+          "observedText": "KD Karthik †",
+          "url": "https://www.espn.in/cricket/series/8048/scorecard/392198"
+        }
+      ],
+      "confidence": "HIGH",
+      "limitations": "No inline legend was visible. Only a dagger terminating a playing-XI name was accepted; dismissal annotations, catches, stumpings text, and uncalibrated symbols were excluded. Literal live-page observations used †."
+    },
+    {
+      "sourceConventionId": "official-ipl-historical-route-2009-v1",
+      "publisher": "Indian Premier League",
+      "observedMarker": null,
+      "alternateObservedRenderings": [],
+      "normalizedInterpretation": null,
+      "markerLocation": null,
+      "inlineLegendObserved": false,
+      "calibrationMatches": [
+        {
+          "matchId": "392181",
+          "knownKeeper": "Not evaluated",
+          "url": "https://www.iplt20.com/match/2009/1",
+          "observedText": null
+        }
+      ],
+      "confidence": "NOT_APPLICABLE",
+      "limitations": "The historical route exposed no readable historical scorecard or keeper-marker convention; complete calibrated ESPN coverage was used as fallback."
+    }
+  ],
+  "matchSources": [
+    {
+      "matchSourceId": "espn-ipl-2009-392181",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392181",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392181",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PR Shah †",
+        "PA Patel †"
+      ],
+      "candidatesCovered": [
+        "pts:b5da6c24:ipl-2009:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392183",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392183",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392183",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara †",
+        "KD Karthik †,"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392184",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392184",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392184",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "BB McCullum (c) †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392185",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392185",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392185",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "RV Uthappa †"
+      ],
+      "candidatesCovered": [
+        "pts:b5da6c24:ipl-2009:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392186",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392186",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392186",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KC Sangakkara †",
+        "BB McCullum (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392189",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392189",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392189",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:b5da6c24:ipl-2009:team-chennai-super-kings",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392190",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392190",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392190",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "M Rawat †,",
+        "BB McCullum (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392194",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392194",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392194",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MV Boucher †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils",
+        "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392196",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392196",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392196",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b5da6c24:ipl-2009:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392197",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392197",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392197",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PR Shah †,",
+        "BB McCullum (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392198",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392198",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392198",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "M Rawat †,"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392199",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392199",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392199",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MN van Wyk †",
+        "MV Boucher †"
+      ],
+      "candidatesCovered": [
+        "pts:541f85c9:ipl-2009:team-royal-challengers-bangalore",
+        "pts:710dd98c:ipl-2009:team-kolkata-knight-riders",
+        "pts:b8a55852:ipl-2009:team-kolkata-knight-riders",
+        "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore",
+        "pts:fe11caa6:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392201",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392201",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392201",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392202",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392202",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392202",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "M Rawat †"
+      ],
+      "candidatesCovered": [
+        "pts:b5da6c24:ipl-2009:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392203",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392203",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392203",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PR Shah †,",
+        "MN van Wyk †"
+      ],
+      "candidatesCovered": [
+        "pts:710dd98c:ipl-2009:team-kolkata-knight-riders",
+        "pts:b8a55852:ipl-2009:team-kolkata-knight-riders",
+        "pts:fe11caa6:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392204",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392204",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392204",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MV Boucher †",
+        "KC Sangakkara †"
+      ],
+      "candidatesCovered": [
+        "pts:541f85c9:ipl-2009:team-royal-challengers-bangalore",
+        "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392206",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392206",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392206",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392207",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392207",
+      "teams": [
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392207",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MN van Wyk †",
+        "KC Sangakkara †"
+      ],
+      "candidatesCovered": [
+        "pts:710dd98c:ipl-2009:team-kolkata-knight-riders",
+        "pts:b8a55852:ipl-2009:team-kolkata-knight-riders",
+        "pts:fe11caa6:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392208",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392208",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392208",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PR Shah †,",
+        "MV Boucher †,"
+      ],
+      "candidatesCovered": [
+        "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392211",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392211",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392211",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MN van Wyk †",
+        "KD Karthik †,"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:710dd98c:ipl-2009:team-kolkata-knight-riders",
+        "pts:b8a55852:ipl-2009:team-kolkata-knight-riders",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils",
+        "pts:fe11caa6:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392213",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392213",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392213",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MV Boucher †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392215",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392215",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392215",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PR Shah †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392218",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392218",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392218",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "YV Takawale †,",
+        "MV Boucher †"
+      ],
+      "candidatesCovered": [
+        "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392219",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392219",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392219",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MN van Wyk †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:710dd98c:ipl-2009:team-kolkata-knight-riders",
+        "pts:b8a55852:ipl-2009:team-kolkata-knight-riders",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils",
+        "pts:fe11caa6:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392221",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392221",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392221",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "MV Boucher †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2009:team-kolkata-knight-riders",
+        "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore",
+        "pts:fe11caa6:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392223",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392223",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392223",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392224",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392224",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392224",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "MV Boucher †"
+      ],
+      "candidatesCovered": [
+        "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392226",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392226",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392226",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "KC Sangakkara †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392227",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392227",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392227",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "YV Takawale †,",
+        "MS Dhoni (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b5da6c24:ipl-2009:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392228",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392228",
+      "teams": [
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392228",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "WP Saha †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:b8a55852:ipl-2009:team-kolkata-knight-riders",
+        "pts:fe11caa6:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392230",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392230",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392230",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "NV Ojha †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392231",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392231",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392231",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "WP Saha †"
+      ],
+      "candidatesCovered": [
+        "pts:b5da6c24:ipl-2009:team-chennai-super-kings",
+        "pts:b8a55852:ipl-2009:team-kolkata-knight-riders",
+        "pts:fe11caa6:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392232",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392232",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392232",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "MV Boucher †"
+      ],
+      "candidatesCovered": [
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils",
+        "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392233",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392233",
+      "teams": [
+        {
+          "teamId": "team-kolkata-knight-riders",
+          "teamName": "Kolkata Knight Riders"
+        },
+        {
+          "teamId": "team-rajasthan-royals",
+          "teamName": "Rajasthan Royals"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392233",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "NV Ojha †",
+        "SS Shaikh †"
+      ],
+      "candidatesCovered": [
+        "pts:5f5d3ad4:ipl-2009:team-kolkata-knight-riders",
+        "pts:b8a55852:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW",
+        "CAPABILITY_FREEZE_EXCEPTION"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392234",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392234",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-kings-xi-punjab",
+          "teamName": "Kings XI Punjab"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392234",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "KC Sangakkara †"
+      ],
+      "candidatesCovered": [
+        "pts:b5da6c24:ipl-2009:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392235",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392235",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392235",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "PR Shah †",
+        "KD Karthik †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392236",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392236",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392236",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MV Boucher †,",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392237",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392237",
+      "teams": [
+        {
+          "teamId": "team-delhi-daredevils",
+          "teamName": "Delhi Daredevils"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392237",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "KD Karthik †",
+        "AC Gilchrist (c) †"
+      ],
+      "candidatesCovered": [
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392238",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392238",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392238",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "MS Dhoni (c) †",
+        "MV Boucher †,"
+      ],
+      "candidatesCovered": [
+        "pts:b5da6c24:ipl-2009:team-chennai-super-kings",
+        "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "espn-ipl-2009-392239",
+      "sourceFamilyId": "espn-scorecard-2009-v1",
+      "matchId": "392239",
+      "teams": [
+        {
+          "teamId": "team-royal-challengers-bangalore",
+          "teamName": "Royal Challengers Bangalore"
+        },
+        {
+          "teamId": "team-deccan-chargers",
+          "teamName": "Deccan Chargers"
+        }
+      ],
+      "url": "https://www.espn.in/cricket/series/8048/scorecard/392239",
+      "availability": "AVAILABLE",
+      "observedKeeperMarker": "†",
+      "normalizedMarkerInterpretation": "MATCH_XI_WICKETKEEPER_DESIGNATION",
+      "markerObservations": [
+        "AC Gilchrist (c) †",
+        "MV Boucher †"
+      ],
+      "candidatesCovered": [
+        "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore"
+      ],
+      "purposes": [
+        "SCOPE_REVIEW"
+      ],
+      "notes": null
+    },
+    {
+      "matchSourceId": "official-ipl-2009-historical-route",
+      "sourceFamilyId": "official-ipl-historical-route-2009-v1",
+      "matchId": "392181",
+      "teams": [
+        {
+          "teamId": "team-chennai-super-kings",
+          "teamName": "Chennai Super Kings"
+        },
+        {
+          "teamId": "team-mumbai-indians",
+          "teamName": "Mumbai Indians"
+        }
+      ],
+      "url": "https://www.iplt20.com/match/2009/1",
+      "availability": "UNAVAILABLE_DYNAMIC_SCORECARD_DATA",
+      "observedKeeperMarker": null,
+      "normalizedMarkerInterpretation": null,
+      "markerObservations": [],
+      "candidatesCovered": [
+        "pts:b5da6c24:ipl-2009:team-chennai-super-kings"
+      ],
+      "purposes": [
+        "SOURCE_FAMILY_CALIBRATION"
+      ],
+      "notes": "The route exposed no readable historical scorecard data or keeper-marker convention; complete ESPN coverage was used as the established fallback."
+    }
+  ],
+  "caseResults": [
+    {
+      "playerTeamSeasonId": "pts:541f85c9:ipl-2009:team-royal-challengers-bangalore",
+      "player": "SP Goswami",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "392199",
+        "392204"
+      ],
+      "sourceIds": [
+        "espn-ipl-2009-392199",
+        "espn-ipl-2009-392204"
+      ],
+      "sourceConventionId": "espn-scorecard-2009-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+      "player": "TM Dilshan",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 14,
+      "appearancesReviewed": [
+        "392183",
+        "392189",
+        "392194",
+        "392198",
+        "392201",
+        "392206",
+        "392211",
+        "392215",
+        "392219",
+        "392223",
+        "392226",
+        "392230",
+        "392235",
+        "392237"
+      ],
+      "sourceIds": [
+        "espn-ipl-2009-392183",
+        "espn-ipl-2009-392189",
+        "espn-ipl-2009-392194",
+        "espn-ipl-2009-392198",
+        "espn-ipl-2009-392201",
+        "espn-ipl-2009-392206",
+        "espn-ipl-2009-392211",
+        "espn-ipl-2009-392215",
+        "espn-ipl-2009-392219",
+        "espn-ipl-2009-392223",
+        "espn-ipl-2009-392226",
+        "espn-ipl-2009-392230",
+        "espn-ipl-2009-392235",
+        "espn-ipl-2009-392237"
+      ],
+      "sourceConventionId": "espn-scorecard-2009-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:710dd98c:ipl-2009:team-kolkata-knight-riders",
+      "player": "MN van Wyk",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 5,
+      "appearancesReviewed": [
+        "392199"
+      ],
+      "sourceIds": [
+        "espn-ipl-2009-392199"
+      ],
+      "sourceConventionId": "espn-scorecard-2009-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2009-392199",
+        "observedMarker": "†",
+        "observedText": "MN van Wyk †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:b5da6c24:ipl-2009:team-chennai-super-kings",
+      "player": "PA Patel",
+      "team": "Chennai Super Kings",
+      "officialAppearances": 9,
+      "appearancesReviewed": [
+        "392181"
+      ],
+      "sourceIds": [
+        "espn-ipl-2009-392181"
+      ],
+      "sourceConventionId": "espn-scorecard-2009-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2009-392181",
+        "observedMarker": "†",
+        "observedText": "PA Patel †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:b8a55852:ipl-2009:team-kolkata-knight-riders",
+      "player": "BB McCullum",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 13,
+      "appearancesReviewed": [
+        "392184"
+      ],
+      "sourceIds": [
+        "espn-ipl-2009-392184"
+      ],
+      "sourceConventionId": "espn-scorecard-2009-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2009-392184",
+        "observedMarker": "†",
+        "observedText": "BB McCullum (c) †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:c4487b84:ipl-2009:team-delhi-daredevils",
+      "player": "AB de Villiers",
+      "team": "Delhi Daredevils",
+      "officialAppearances": 15,
+      "appearancesReviewed": [
+        "392183",
+        "392189",
+        "392194",
+        "392198",
+        "392201",
+        "392206",
+        "392211",
+        "392215",
+        "392219",
+        "392223",
+        "392226",
+        "392230",
+        "392232",
+        "392235",
+        "392237"
+      ],
+      "sourceIds": [
+        "espn-ipl-2009-392183",
+        "espn-ipl-2009-392189",
+        "espn-ipl-2009-392194",
+        "espn-ipl-2009-392198",
+        "espn-ipl-2009-392201",
+        "espn-ipl-2009-392206",
+        "espn-ipl-2009-392211",
+        "espn-ipl-2009-392215",
+        "espn-ipl-2009-392219",
+        "espn-ipl-2009-392223",
+        "espn-ipl-2009-392226",
+        "espn-ipl-2009-392230",
+        "espn-ipl-2009-392232",
+        "espn-ipl-2009-392235",
+        "espn-ipl-2009-392237"
+      ],
+      "sourceConventionId": "espn-scorecard-2009-v1",
+      "result": "REVIEWED_UNKNOWN",
+      "positiveLocator": null,
+      "evidenceStrength": "SUFFICIENT_FOR_WORKFLOW_CLOSURE",
+      "proposedCanonicalAction": "REMAIN_UNKNOWN",
+      "proposedReviewDisposition": "CLOSED_UNKNOWN",
+      "closureCriterionSatisfied": true,
+      "notes": "Every canonical official appearance had a readable calibrated scorecard; no unresolved source gap remained."
+    },
+    {
+      "playerTeamSeasonId": "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore",
+      "player": "MV Boucher",
+      "team": "Royal Challengers Bangalore",
+      "officialAppearances": 12,
+      "appearancesReviewed": [
+        "392194"
+      ],
+      "sourceIds": [
+        "espn-ipl-2009-392194"
+      ],
+      "sourceConventionId": "espn-scorecard-2009-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2009-392194",
+        "observedMarker": "†",
+        "observedText": "MV Boucher †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    },
+    {
+      "playerTeamSeasonId": "pts:fe11caa6:ipl-2009:team-kolkata-knight-riders",
+      "player": "WP Saha",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 8,
+      "appearancesReviewed": [
+        "392221"
+      ],
+      "sourceIds": [
+        "espn-ipl-2009-392221"
+      ],
+      "sourceConventionId": "espn-scorecard-2009-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2009-392221",
+        "observedMarker": "†",
+        "observedText": "WP Saha †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "notes": "Stopped candidate-specific research after the first accepted explicit keeper designation."
+    }
+  ],
+  "supplementalCaseResults": [
+    {
+      "playerTeamSeasonId": "pts:5f5d3ad4:ipl-2009:team-kolkata-knight-riders",
+      "player": "SS Shaikh",
+      "team": "Kolkata Knight Riders",
+      "officialAppearances": 2,
+      "appearancesReviewed": [
+        "392233"
+      ],
+      "sourceIds": [
+        "espn-ipl-2009-392233"
+      ],
+      "sourceConventionId": "espn-scorecard-2009-v1",
+      "result": "POSITIVE_USAGE_FOUND",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2009-392233",
+        "observedMarker": "†",
+        "observedText": "SS Shaikh †"
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCanonicalAction": "CONFIRMED",
+      "proposedReviewDisposition": null,
+      "closureCriterionSatisfied": null,
+      "activationReason": "CAPABILITY_FREEZE_EXCEPTION",
+      "notes": "Supplemental positive usage case discovered outside the original queue; linked capability and usage were approved together."
+    }
+  ],
+  "capabilityFreezeExceptions": [
+    {
+      "playerId": "5f5d3ad4",
+      "player": "SS Shaikh",
+      "playerTeamSeasonId": "pts:5f5d3ad4:ipl-2009:team-kolkata-knight-riders",
+      "discoveryStatus": "CAPABILITY_FREEZE_EXCEPTION_CONFIRMED",
+      "sourceId": "espn-ipl-2009-392233",
+      "sourceConventionId": "espn-scorecard-2009-v1",
+      "positiveLocator": {
+        "matchSourceId": "espn-ipl-2009-392233",
+        "observedMarker": "†",
+        "observedText": "SS Shaikh †"
+      },
+      "identityVerification": {
+        "canonicalPlayerId": "5f5d3ad4",
+        "registryReviewStatus": "approved",
+        "observedName": "SS Shaikh",
+        "mappingStatus": "EXACT_UNAMBIGUOUS"
+      },
+      "officialParticipationVerification": {
+        "teamId": "team-kolkata-knight-riders",
+        "seasonId": "ipl-2009",
+        "officialAppearances": 2,
+        "matchId": "392233",
+        "officialListed": true,
+        "eventOnly": false,
+        "recordedActions": [
+          "batting",
+          "fielding"
+        ]
+      },
+      "evidenceStrength": "HIGH",
+      "proposedCapabilityAction": "CONFIRMED",
+      "proposedUsageAction": "CONFIRMED",
+      "g2Impact": {
+        "before": "ELIGIBLE",
+        "after": "ELIGIBLE",
+        "admissionChange": false,
+        "basisBefore": "officialAppearances >= 2 and battingBalls >= 6"
+      },
+      "notes": "Discovered outside the original eight-case queue when a calibrated scorecard explicitly designated the player as the match-XI wicketkeeper. The season usage necessarily confirms player-level capability; SS Shaikh has no other Stage 4 profile."
+    }
+  ],
+  "routeRecoveries": [],
+  "sourcePresentationNotes": [
+    {
+      "matchId": "392183",
+      "sourceId": "espn-ipl-2009-392183",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392189",
+      "sourceId": "espn-ipl-2009-392189",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392194",
+      "sourceId": "espn-ipl-2009-392194",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392198",
+      "sourceId": "espn-ipl-2009-392198",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392201",
+      "sourceId": "espn-ipl-2009-392201",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392206",
+      "sourceId": "espn-ipl-2009-392206",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392211",
+      "sourceId": "espn-ipl-2009-392211",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392215",
+      "sourceId": "espn-ipl-2009-392215",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392219",
+      "sourceId": "espn-ipl-2009-392219",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392223",
+      "sourceId": "espn-ipl-2009-392223",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392226",
+      "sourceId": "espn-ipl-2009-392226",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392230",
+      "sourceId": "espn-ipl-2009-392230",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392232",
+      "sourceId": "espn-ipl-2009-392232",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392235",
+      "sourceId": "espn-ipl-2009-392235",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    },
+    {
+      "matchId": "392237",
+      "sourceId": "espn-ipl-2009-392237",
+      "note": "The modern ESPN title renders historical Delhi Daredevils as Delhi Capitals; canonical match/team identity remains Delhi Daredevils for IPL 2009."
+    }
+  ],
+  "historicalIdentityNotes": [
+    "Canonical Stage 2 identities preserve historical franchise names and brand spells even where modern source titles use successor branding.",
+    "Kings XI Punjab and Royal Challengers Bangalore remain their canonical historical team identities for this batch."
+  ],
+  "identityNormalizations": [],
+  "summary": {
+    "scopeCases": 8,
+    "positiveUsageFound": 5,
+    "reviewedUnknown": 3,
+    "sourceGaps": 0,
+    "capabilityFreezeExceptions": 1,
+    "freezeExceptionPositiveUsageFound": 1,
+    "supplementalUsageReviews": 1,
+    "supplementalPositiveUsageFound": 1,
+    "targetScorecardsInspected": 40,
+    "targetScorecardRouteAttempts": 40,
+    "eventOnlyScorecardsInspected": 0,
+    "totalReadableScorecardsInspected": 40,
+    "officialRouteAvailabilityFailures": 1,
+    "targetUpperBound": 40,
+    "reusedTargetScorecards": 23,
+    "crossTeamReusedScorecards": 9,
+    "sameTeamMultiCandidateScorecards": 14,
+    "canonicalCandidateAppearances": 78,
+    "candidateAppearancesCoveredByInspectedScorecards": 78,
+    "candidateAppearancesSkippedAfterPositive": 0,
+    "failedEspnShortcutRoutes": 0,
+    "stableReplacementScorecards": 0,
+    "uninspectedAppearancesOnlyBelongedToPositiveCases": true
+  }
+}
