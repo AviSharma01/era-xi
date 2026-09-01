@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "accessedDate": {
+      "pattern": "\\d{4}-\\d{2}-\\d{2}",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "batchId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "locator": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "publisher": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "sourceId": {
+      "minLength": 1,
+      "pattern": "[a-z0-9]+(?:[-:][a-z0-9]+)*",
+      "type": "string"
+    },
+    "sourceType": {
+      "enum": [
+        "OFFICIAL_IPL",
+        "OFFICIAL_CRICKET_BOARD",
+        "SECONDARY_CRICKET_DATABASE",
+        "INTERNAL_POLICY",
+        "OTHER"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "supports": {
+      "items": {
+        "enum": [
+          "CRICKET_NATION",
+          "IPL_ROSTER_STATUS"
+        ],
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "title": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "sourceId",
+    "batchId",
+    "sourceType",
+    "publisher",
+    "title",
+    "url",
+    "accessedDate",
+    "locator",
+    "supports",
+    "notes"
+  ],
+  "title": "Country/overseas source record",
+  "type": "object"
+}

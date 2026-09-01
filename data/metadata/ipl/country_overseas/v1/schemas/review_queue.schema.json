@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blocking": {
+      "type": "boolean"
+    },
+    "items": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "canonicalDisplayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "legacyLeadAvailable": {
+            "type": "boolean"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerTeamSeasonIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "reviewId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "PENDING"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "seasonIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "unresolvedFields": {
+            "items": {
+              "enum": [
+                "CRICKET_NATION",
+                "IPL_ROSTER_STATUS"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "reviewId",
+          "reviewStatus",
+          "playerId",
+          "canonicalDisplayName",
+          "playerTeamSeasonIds",
+          "seasonIds",
+          "legacyLeadAvailable",
+          "unresolvedFields"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "metadataVersion": {
+      "enum": [
+        "ipl-country-overseas-metadata/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-country-overseas-review-queue/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "scope": {
+      "enum": [
+        "G2_BLOCKING",
+        "NON_G2_BACKLOG"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "summary": {
+      "additionalProperties": false,
+      "properties": {
+        "legacyLeadPlayers": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "playerTeamSeasons": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "players": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "players",
+        "playerTeamSeasons",
+        "legacyLeadPlayers"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "metadataVersion",
+    "scope",
+    "blocking",
+    "summary",
+    "items"
+  ],
+  "title": "Country/overseas review queue",
+  "type": "object"
+}

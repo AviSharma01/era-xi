@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "legacySourcePath": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "legacySourceSha256": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "metadataVersion": {
+      "enum": [
+        "ipl-country-overseas-metadata/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "rows": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "canonicalCricketNationId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "canonicalDisplayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "canonicalIplRosterStatus": {
+            "enum": [
+              "INDIAN",
+              "OVERSEAS",
+              "UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "comparisonStatus": {
+            "enum": [
+              "UNVERIFIED",
+              "PARTIALLY_VERIFIED",
+              "SUPPORTED",
+              "CONFLICTING"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "evidenceRefs": {
+            "items": {
+              "minLength": 1,
+              "pattern": "source:.+",
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "identityStatus": {
+            "enum": [
+              "MATCHED"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "legacyCountry": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "legacyCricketNationIdLead": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "legacyIplRosterStatusLead": {
+            "enum": [
+              "INDIAN",
+              "OVERSEAS"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "legacyIsOverseas": {
+            "type": "boolean"
+          },
+          "legacyName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "playerId",
+          "canonicalDisplayName",
+          "legacyName",
+          "legacyCountry",
+          "legacyIsOverseas",
+          "legacyCricketNationIdLead",
+          "legacyIplRosterStatusLead",
+          "identityStatus",
+          "comparisonStatus",
+          "canonicalCricketNationId",
+          "canonicalIplRosterStatus",
+          "evidenceRefs"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-country-overseas-legacy-migration/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "summary": {
+      "additionalProperties": false,
+      "properties": {
+        "conflicting": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "identityMatched": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "partiallyVerified": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rows": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "supported": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unmatched": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unverified": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "rows",
+        "identityMatched",
+        "unverified",
+        "partiallyVerified",
+        "supported",
+        "conflicting",
+        "unmatched"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "metadataVersion",
+    "legacySourcePath",
+    "legacySourceSha256",
+    "summary",
+    "rows"
+  ],
+  "title": "Legacy country/overseas comparison",
+  "type": "object"
+}

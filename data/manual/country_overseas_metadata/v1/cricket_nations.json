@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "ipl-cricket-nation-catalog/v1",
+  "catalogVersion": "ipl-cricket-nations/v1",
+  "nations": [
+    {
+      "cricketNationId": "australia",
+      "displayName": "Australia",
+      "aliases": [],
+      "notes": []
+    },
+    {
+      "cricketNationId": "bangladesh",
+      "displayName": "Bangladesh",
+      "aliases": [],
+      "notes": []
+    },
+    {
+      "cricketNationId": "england",
+      "displayName": "England",
+      "aliases": [],
+      "notes": []
+    },
+    {
+      "cricketNationId": "india",
+      "displayName": "India",
+      "aliases": [],
+      "notes": []
+    },
+    {
+      "cricketNationId": "new-zealand",
+      "displayName": "New Zealand",
+      "aliases": [],
+      "notes": []
+    },
+    {
+      "cricketNationId": "south-africa",
+      "displayName": "South Africa",
+      "aliases": [],
+      "notes": []
+    },
+    {
+      "cricketNationId": "sri-lanka",
+      "displayName": "Sri Lanka",
+      "aliases": [],
+      "notes": []
+    },
+    {
+      "cricketNationId": "west-indies",
+      "displayName": "West Indies",
+      "aliases": [],
+      "notes": [
+        "Cricket jurisdiction spanning multiple sovereign states and territories; retained as a cricket entity rather than forced into an ISO-country model."
+      ]
+    }
+  ]
+}

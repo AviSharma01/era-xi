@@ -1,0 +1,67 @@
+{
+  "baselineComparisons": [
+    {
+      "actual": 816,
+      "expected": 816,
+      "matches": true,
+      "metric": "canonicalPlayers"
+    },
+    {
+      "actual": 3392,
+      "expected": 3392,
+      "matches": true,
+      "metric": "playerTeamSeasons"
+    },
+    {
+      "actual": 727,
+      "expected": 727,
+      "matches": true,
+      "metric": "g2Players"
+    },
+    {
+      "actual": 2992,
+      "expected": 2992,
+      "matches": true,
+      "metric": "g2Profiles"
+    },
+    {
+      "actual": 89,
+      "expected": 89,
+      "matches": true,
+      "metric": "nonG2Players"
+    },
+    {
+      "actual": 147,
+      "expected": 147,
+      "matches": true,
+      "metric": "legacyRows"
+    }
+  ],
+  "counts": {
+    "approvedPlayerDefaults": 0,
+    "approvedSeasonOverrides": 0,
+    "blockingG2Players": 727,
+    "blockingG2Profiles": 2992,
+    "canonicalPlayers": 816,
+    "g2Players": 727,
+    "g2Profiles": 2992,
+    "legacyConflicting": 0,
+    "legacyPartiallyVerified": 0,
+    "legacyRows": 147,
+    "legacySupported": 0,
+    "legacyUnverified": 147,
+    "nonG2BacklogItems": 89,
+    "nonG2Players": 89,
+    "playerTeamSeasons": 3392,
+    "unknownPlayerRosterStatuses": 816,
+    "unknownPtsRosterStatuses": 3392
+  },
+  "errors": [],
+  "foundationStatus": "READY_FOR_RESEARCH",
+  "g2EligibleIdSetSha256": "c0fa9b89561698b0c50a5dacdd4333293c9a7f2f1018ce291f1023d13c6281f3",
+  "g2GameInputReady": false,
+  "metadataManifestHash": "86a8c16add427eff701cc70fa4f4bf43990fe3d9ad4871e74ed19b41916fc9ab",
+  "metadataVersion": "ipl-country-overseas-metadata/v1",
+  "schemaVersion": "ipl-country-overseas-validation/v1",
+  "status": "passed"
+}

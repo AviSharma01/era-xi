@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "canonicalDisplayName": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "cricketNationEvidenceRefs": {
+      "items": {
+        "minLength": 1,
+        "pattern": "source:.+",
+        "type": "string"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "cricketNationId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "iplRosterStatus": {
+      "enum": [
+        "INDIAN",
+        "OVERSEAS",
+        "UNKNOWN"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "metadataVersion": {
+      "enum": [
+        "ipl-country-overseas-metadata/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "resolutionMethod": {
+      "enum": [
+        "UNRESOLVED",
+        "DIRECT_IPL_DESIGNATION",
+        "POLICY_DERIVED",
+        "MANUAL_REVIEW"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "reviewState": {
+      "enum": [
+        "PENDING",
+        "ROSTER_APPROVED_NATION_UNRESOLVED",
+        "APPROVED"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "rosterStatusEvidenceRefs": {
+      "items": {
+        "minLength": 1,
+        "pattern": "source:.+",
+        "type": "string"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-country-overseas-player-row/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "metadataVersion",
+    "playerId",
+    "canonicalDisplayName",
+    "cricketNationId",
+    "iplRosterStatus",
+    "resolutionMethod",
+    "cricketNationEvidenceRefs",
+    "rosterStatusEvidenceRefs",
+    "reviewState"
+  ],
+  "title": "Resolved player metadata row",
+  "type": "object"
+}

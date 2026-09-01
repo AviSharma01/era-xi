@@ -1,0 +1,145 @@
+{
+  "artifacts": [
+    {
+      "path": "cricket_nations.json",
+      "rows": 8,
+      "schemaVersion": "ipl-cricket-nation-catalog/v1",
+      "sha256": "793928b042188484db46d273f81865e356643df02c3a870776cc8a7f734c047d",
+      "sizeBytes": 1281
+    },
+    {
+      "path": "player_metadata.jsonl",
+      "rows": 816,
+      "schemaVersion": "ipl-country-overseas-player-row/v1",
+      "sha256": "36927340b363274bb0790e077b24ef791354088afdfe064cadec93758ab9351b",
+      "sizeBytes": 276679
+    },
+    {
+      "path": "player_team_season_metadata.jsonl",
+      "rows": 3392,
+      "schemaVersion": "ipl-country-overseas-pts-row/v1",
+      "sha256": "43c75a8ea20d9aff1952c04b87e8e8922e9712b11fbdc224c31431a04c20d453",
+      "sizeBytes": 1697616
+    },
+    {
+      "path": "g2_review_queue.json",
+      "rows": 727,
+      "schemaVersion": "ipl-country-overseas-review-queue/v1",
+      "sha256": "8f0dbbc086b7f2c3a3ef8e1afeef26dde962574265140675a3356166bac75a20",
+      "sizeBytes": 492675
+    },
+    {
+      "path": "non_g2_backlog.json",
+      "rows": 89,
+      "schemaVersion": "ipl-country-overseas-review-queue/v1",
+      "sha256": "93641c152870dfa0d4cab713dc83893bded3d8621c5530ce88a5f345e98da78d",
+      "sizeBytes": 39744
+    },
+    {
+      "path": "legacy_migration_report.json",
+      "rows": 147,
+      "schemaVersion": "ipl-country-overseas-legacy-migration/v1",
+      "sha256": "28c348add29f016ac8c6a4077aeeda045f967520c82f642422c0202b1ab136cd",
+      "sizeBytes": 69306
+    }
+  ],
+  "cricketNationCatalogSha256": "bed19bb4970f12ba36c415a4c3a50804587d7f3b19b169feeea00d78b4450200",
+  "eligibilityManifestFileSha256": "6b8cde98ed6c99d99120b558650ce6fbe9523c6f839d84e61d1fabddeeddd50b",
+  "eligibilityManifestHash": "b3e6393851e999c23abbc120083b52e8bc444e747d9be7316e0ca73e07be38b6",
+  "eligibilityVersion": "ipl-era-draft-eligibility/v1",
+  "g2EligibleIdSetSha256": "c0fa9b89561698b0c50a5dacdd4333293c9a7f2f1018ce291f1023d13c6281f3",
+  "legacyMetadataSha256": "8612b75cfbd40d99be6754f06fc867cc8e00b54d21874775f13c945e3c4c6405",
+  "manualMetadataSha256": "3c8ffb66d42410c0d71fe7fcb671e201755dcc02a79dc0d5c67198b4af6cddbe",
+  "metadataAggregateHash": "c93efc91ff1e6a787bc64a7eb8ed59b1c29fc171513e0baeb3fb4e463fa16e5b",
+  "metadataManifestHash": "86a8c16add427eff701cc70fa4f4bf43990fe3d9ad4871e74ed19b41916fc9ab",
+  "metadataVersion": "ipl-country-overseas-metadata/v1",
+  "schemaFiles": [
+    {
+      "path": "schemas/cricket_nation_catalog.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "cddd4821535b0af96cd9e1a6332ca358c53e4ab1bc9d4c8a5c1bf54199be5c08",
+      "sizeBytes": 1542
+    },
+    {
+      "path": "schemas/legacy_migration_report.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "61f10c70b3e970abfd185866100c565739d60fa4cfb32beef4a26939ef9171e9",
+      "sizeBytes": 4120
+    },
+    {
+      "path": "schemas/manual_metadata.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "52ee1d329f02aa77c385115f5ebc22a21005051878b912bc8111167c18ff283c",
+      "sizeBytes": 8131
+    },
+    {
+      "path": "schemas/metadata_manifest.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "58bd7b8158c889f3873909938b6d844c4add39cf55b17f3fefbafa172e0d9820",
+      "sizeBytes": 3909
+    },
+    {
+      "path": "schemas/player_default.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "e035be5c94dc27086a5d9b19f58828ccad795a35657fb023bea737b41346f533",
+      "sizeBytes": 1461
+    },
+    {
+      "path": "schemas/player_metadata.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "45a29aefccc45072affc6bd1fa627eeebae147fb84b433e7f60c8a3c617c0eab",
+      "sizeBytes": 1948
+    },
+    {
+      "path": "schemas/player_team_season_metadata.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "4843875c58ecc40a1f13079e2c36dde109fabdaf4d8ef49ab96ce37bceb1a0b6",
+      "sizeBytes": 2491
+    },
+    {
+      "path": "schemas/review_disposition.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "cd66cd9e2d902573c43d06269b601b9647332eeb1cff706d703aa1482cfd6584",
+      "sizeBytes": 1207
+    },
+    {
+      "path": "schemas/review_queue.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "072901459fadfda4aa615ac14fb6cbebef22e95c9f6bd6788e811c4afa2b2e12",
+      "sizeBytes": 3054
+    },
+    {
+      "path": "schemas/season_override.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "35558c78a79bc4c16c87ce7d5fc498087a709f156e55b20460e8eed3d86d687f",
+      "sizeBytes": 1581
+    },
+    {
+      "path": "schemas/source_evidence.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "bf676242da5e74d3523398c698eee014b810e04e226a2ef08939ef1d313d61dd",
+      "sizeBytes": 1540
+    },
+    {
+      "path": "schemas/validation_report.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "4804b70f865861b43f5cec786dc74c4b5cb5b8e244d5024978d948e22ec6420a",
+      "sizeBytes": 4287
+    }
+  ],
+  "schemaVersion": "ipl-country-overseas-manifest/v1",
+  "stage2RegistryAggregateHash": "9b23cafe4c2020b43fec7a3d80a13152270164b216ccd5cea3a1b552428ecac7",
+  "stage2RegistryVersion": "ipl-identities-v1"
+}

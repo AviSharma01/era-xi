@@ -1,0 +1,349 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "metadataVersion": {
+      "enum": [
+        "ipl-country-overseas-metadata/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerDefaults": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "cricketNationId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "cricketNationSourceIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "iplRosterStatus": {
+            "enum": [
+              "INDIAN",
+              "OVERSEAS",
+              "UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "notes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "resolutionMethod": {
+            "enum": [
+              "UNRESOLVED",
+              "DIRECT_IPL_DESIGNATION",
+              "POLICY_DERIVED",
+              "MANUAL_REVIEW"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "APPROVED"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "rosterStatusSourceIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "playerId",
+          "cricketNationId",
+          "iplRosterStatus",
+          "resolutionMethod",
+          "cricketNationSourceIds",
+          "rosterStatusSourceIds",
+          "reviewStatus",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "reviewDispositions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "dispositionId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "notes": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "APPROVED"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "scope": {
+            "enum": [
+              "PLAYER_DEFAULT",
+              "SEASON_OVERRIDE"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "seasonId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceIdsReviewed": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "status": {
+            "enum": [
+              "NATION_CLOSED_UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "dispositionId",
+          "scope",
+          "playerId",
+          "seasonId",
+          "status",
+          "sourceIdsReviewed",
+          "reviewStatus",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-country-overseas-manual/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "seasonOverrides": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "cricketNationId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "cricketNationSourceIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "iplRosterStatus": {
+            "enum": [
+              "INDIAN",
+              "OVERSEAS",
+              "UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "notes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "resolutionMethod": {
+            "enum": [
+              "UNRESOLVED",
+              "DIRECT_IPL_DESIGNATION",
+              "POLICY_DERIVED",
+              "MANUAL_REVIEW"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "APPROVED"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "rosterStatusSourceIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "seasonId": {
+            "minLength": 1,
+            "pattern": "ipl-[0-9]{4}",
+            "type": "string"
+          }
+        },
+        "required": [
+          "playerId",
+          "cricketNationId",
+          "iplRosterStatus",
+          "resolutionMethod",
+          "cricketNationSourceIds",
+          "rosterStatusSourceIds",
+          "reviewStatus",
+          "notes",
+          "seasonId"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "sources": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "accessedDate": {
+            "pattern": "\\d{4}-\\d{2}-\\d{2}",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "batchId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "locator": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "notes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "publisher": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceId": {
+            "minLength": 1,
+            "pattern": "[a-z0-9]+(?:[-:][a-z0-9]+)*",
+            "type": "string"
+          },
+          "sourceType": {
+            "enum": [
+              "OFFICIAL_IPL",
+              "OFFICIAL_CRICKET_BOARD",
+              "SECONDARY_CRICKET_DATABASE",
+              "INTERNAL_POLICY",
+              "OTHER"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "supports": {
+            "items": {
+              "enum": [
+                "CRICKET_NATION",
+                "IPL_ROSTER_STATUS"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "sourceId",
+          "batchId",
+          "sourceType",
+          "publisher",
+          "title",
+          "url",
+          "accessedDate",
+          "locator",
+          "supports",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "metadataVersion",
+    "sources",
+    "playerDefaults",
+    "seasonOverrides",
+    "reviewDispositions"
+  ],
+  "title": "Country/overseas manual metadata",
+  "type": "object"
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "catalogVersion": {
+      "enum": [
+        "ipl-cricket-nations/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "nations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "aliases": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "cricketNationId": {
+            "minLength": 1,
+            "pattern": "[a-z0-9]+(?:-[a-z0-9]+)*",
+            "type": "string"
+          },
+          "displayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "notes": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "cricketNationId",
+          "displayName",
+          "aliases",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-cricket-nation-catalog/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "catalogVersion",
+    "nations"
+  ],
+  "title": "IPL cricket-nation catalog",
+  "type": "object"
+}

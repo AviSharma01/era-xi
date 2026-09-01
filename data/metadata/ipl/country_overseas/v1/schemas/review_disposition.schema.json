@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "dispositionId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "notes": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reviewStatus": {
+      "enum": [
+        "APPROVED"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "scope": {
+      "enum": [
+        "PLAYER_DEFAULT",
+        "SEASON_OVERRIDE"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "seasonId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sourceIdsReviewed": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "status": {
+      "enum": [
+        "NATION_CLOSED_UNKNOWN"
+      ],
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "dispositionId",
+    "scope",
+    "playerId",
+    "seasonId",
+    "status",
+    "sourceIdsReviewed",
+    "reviewStatus",
+    "notes"
+  ],
+  "title": "Country/overseas review disposition",
+  "type": "object"
+}

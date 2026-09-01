@@ -1,0 +1,1540 @@
+{
+  "blocking": false,
+  "items": [
+    {
+      "canonicalDisplayName": "MG Neser",
+      "legacyLeadAvailable": false,
+      "playerId": "0164b064",
+      "playerTeamSeasonIds": [
+        "pts:0164b064:ipl-2013:team-kings-xi-punjab"
+      ],
+      "reviewId": "country-overseas:0164b064",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2013"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Liton Das",
+      "legacyLeadAvailable": false,
+      "playerId": "0404d43c",
+      "playerTeamSeasonIds": [
+        "pts:0404d43c:ipl-2023:team-kolkata-knight-riders"
+      ],
+      "reviewId": "country-overseas:0404d43c",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2023"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "SS Mundhe",
+      "legacyLeadAvailable": false,
+      "playerId": "0af3426f",
+      "playerTeamSeasonIds": [
+        "pts:0af3426f:ipl-2011:team-pune-warriors"
+      ],
+      "reviewId": "country-overseas:0af3426f",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2011"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Harmeet Singh",
+      "legacyLeadAvailable": false,
+      "playerId": "0bf15e52",
+      "playerTeamSeasonIds": [
+        "pts:0bf15e52:ipl-2013:team-rajasthan-royals"
+      ],
+      "reviewId": "country-overseas:0bf15e52",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2013"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "H Das",
+      "legacyLeadAvailable": false,
+      "playerId": "0ed0cdbf",
+      "playerTeamSeasonIds": [
+        "pts:0ed0cdbf:ipl-2008:team-deccan-chargers"
+      ],
+      "reviewId": "country-overseas:0ed0cdbf",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2008"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Subhransu Senapati",
+      "legacyLeadAvailable": false,
+      "playerId": "0edcb652",
+      "playerTeamSeasonIds": [
+        "pts:0edcb652:ipl-2023:team-chennai-super-kings"
+      ],
+      "reviewId": "country-overseas:0edcb652",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2023"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "DM Bravo",
+      "legacyLeadAvailable": false,
+      "playerId": "14b14cd8",
+      "playerTeamSeasonIds": [
+        "pts:14b14cd8:ipl-2017:team-kolkata-knight-riders"
+      ],
+      "reviewId": "country-overseas:14b14cd8",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2017"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "AA Kazi",
+      "legacyLeadAvailable": false,
+      "playerId": "16605a1b",
+      "playerTeamSeasonIds": [
+        "pts:16605a1b:ipl-2011:team-royal-challengers-bangalore"
+      ],
+      "reviewId": "country-overseas:16605a1b",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2011"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "X Thalaivan Sargunam",
+      "legacyLeadAvailable": false,
+      "playerId": "1763bc6c",
+      "playerTeamSeasonIds": [
+        "pts:1763bc6c:ipl-2013:team-sunrisers-hyderabad"
+      ],
+      "reviewId": "country-overseas:1763bc6c",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2013"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "CJ Green",
+      "legacyLeadAvailable": false,
+      "playerId": "19b9f399",
+      "playerTeamSeasonIds": [
+        "pts:19b9f399:ipl-2020:team-kolkata-knight-riders"
+      ],
+      "reviewId": "country-overseas:19b9f399",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2020"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "CJ Dala",
+      "legacyLeadAvailable": false,
+      "playerId": "1cb14aa4",
+      "playerTeamSeasonIds": [
+        "pts:1cb14aa4:ipl-2018:team-delhi-daredevils"
+      ],
+      "reviewId": "country-overseas:1cb14aa4",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2018"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "RR Bose",
+      "legacyLeadAvailable": false,
+      "playerId": "21ac077a",
+      "playerTeamSeasonIds": [
+        "pts:21ac077a:ipl-2009:team-kings-xi-punjab"
+      ],
+      "reviewId": "country-overseas:21ac077a",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2009"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Jalaj S Saxena",
+      "legacyLeadAvailable": false,
+      "playerId": "249abedf",
+      "playerTeamSeasonIds": [
+        "pts:249abedf:ipl-2021:team-punjab-kings"
+      ],
+      "reviewId": "country-overseas:249abedf",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2021"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "A Nel",
+      "legacyLeadAvailable": false,
+      "playerId": "2503e881",
+      "playerTeamSeasonIds": [
+        "pts:2503e881:ipl-2008:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:2503e881",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2008"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "R Goyal",
+      "legacyLeadAvailable": false,
+      "playerId": "266849c1",
+      "playerTeamSeasonIds": [
+        "pts:266849c1:ipl-2023:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:266849c1",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2023"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Mayank Rawat",
+      "legacyLeadAvailable": false,
+      "playerId": "2b801189",
+      "playerTeamSeasonIds": [
+        "pts:2b801189:ipl-2026:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:2b801189",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2026"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Mohammad Ashraful",
+      "legacyLeadAvailable": false,
+      "playerId": "2bb09eb2",
+      "playerTeamSeasonIds": [
+        "pts:2bb09eb2:ipl-2009:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:2bb09eb2",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2009"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "DAJ Bracewell",
+      "legacyLeadAvailable": false,
+      "playerId": "2e9fdf9b",
+      "playerTeamSeasonIds": [
+        "pts:2e9fdf9b:ipl-2012:team-delhi-daredevils"
+      ],
+      "reviewId": "country-overseas:2e9fdf9b",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2012"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "C Madan",
+      "legacyLeadAvailable": false,
+      "playerId": "2eeb4370",
+      "playerTeamSeasonIds": [
+        "pts:2eeb4370:ipl-2010:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:2eeb4370",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2010"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Younis Khan",
+      "legacyLeadAvailable": false,
+      "playerId": "33cb3411",
+      "playerTeamSeasonIds": [
+        "pts:33cb3411:ipl-2008:team-rajasthan-royals"
+      ],
+      "reviewId": "country-overseas:33cb3411",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2008"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "R Sanjay Yadav",
+      "legacyLeadAvailable": false,
+      "playerId": "33ffc3dd",
+      "playerTeamSeasonIds": [
+        "pts:33ffc3dd:ipl-2022:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:33ffc3dd",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2022"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "MP Breetzke",
+      "legacyLeadAvailable": false,
+      "playerId": "35f173a0",
+      "playerTeamSeasonIds": [
+        "pts:35f173a0:ipl-2025:team-lucknow-super-giants"
+      ],
+      "reviewId": "country-overseas:35f173a0",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2025"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Sediqullah Atal",
+      "legacyLeadAvailable": false,
+      "playerId": "3c28853f",
+      "playerTeamSeasonIds": [
+        "pts:3c28853f:ipl-2025:team-delhi-capitals"
+      ],
+      "reviewId": "country-overseas:3c28853f",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2025"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "P Ray Barman",
+      "legacyLeadAvailable": false,
+      "playerId": "441c72ae",
+      "playerTeamSeasonIds": [
+        "pts:441c72ae:ipl-2019:team-royal-challengers-bangalore"
+      ],
+      "reviewId": "country-overseas:441c72ae",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2019"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "T Vijay",
+      "legacyLeadAvailable": false,
+      "playerId": "51ec3919",
+      "playerTeamSeasonIds": [
+        "pts:51ec3919:ipl-2025:team-delhi-capitals",
+        "pts:51ec3919:ipl-2026:team-delhi-capitals"
+      ],
+      "reviewId": "country-overseas:51ec3919",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2025",
+        "ipl-2026"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "H Sharma",
+      "legacyLeadAvailable": false,
+      "playerId": "52294a79",
+      "playerTeamSeasonIds": [
+        "pts:52294a79:ipl-2023:team-royal-challengers-bangalore",
+        "pts:52294a79:ipl-2024:team-royal-challengers-bengaluru"
+      ],
+      "reviewId": "country-overseas:52294a79",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2023",
+        "ipl-2024"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Ravi Singh",
+      "legacyLeadAvailable": false,
+      "playerId": "548516a6",
+      "playerTeamSeasonIds": [
+        "pts:548516a6:ipl-2026:team-rajasthan-royals"
+      ],
+      "reviewId": "country-overseas:548516a6",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2026"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "AV Wankhade",
+      "legacyLeadAvailable": false,
+      "playerId": "5708d0b6",
+      "playerTeamSeasonIds": [
+        "pts:5708d0b6:ipl-2014:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:5708d0b6",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2014"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Tanush Kotian",
+      "legacyLeadAvailable": false,
+      "playerId": "5724e517",
+      "playerTeamSeasonIds": [
+        "pts:5724e517:ipl-2024:team-rajasthan-royals"
+      ],
+      "reviewId": "country-overseas:5724e517",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2024"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "A Dananjaya",
+      "legacyLeadAvailable": false,
+      "playerId": "5b16a806",
+      "playerTeamSeasonIds": [
+        "pts:5b16a806:ipl-2018:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:5b16a806",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2018"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "B Aparajith",
+      "legacyLeadAvailable": false,
+      "playerId": "5b627626",
+      "playerTeamSeasonIds": [
+        "pts:5b627626:ipl-2015:team-chennai-super-kings"
+      ],
+      "reviewId": "country-overseas:5b627626",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2015"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "BKG Mendis",
+      "legacyLeadAvailable": false,
+      "playerId": "5d1e7582",
+      "playerTeamSeasonIds": [
+        "pts:5d1e7582:ipl-2025:team-gujarat-titans"
+      ],
+      "reviewId": "country-overseas:5d1e7582",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2025"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "NJ Rimmington",
+      "legacyLeadAvailable": false,
+      "playerId": "6042bf26",
+      "playerTeamSeasonIds": [
+        "pts:6042bf26:ipl-2011:team-kings-xi-punjab"
+      ],
+      "reviewId": "country-overseas:6042bf26",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2011"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "GR Napier",
+      "legacyLeadAvailable": false,
+      "playerId": "611926bc",
+      "playerTeamSeasonIds": [
+        "pts:611926bc:ipl-2009:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:611926bc",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2009"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "A Mukund",
+      "legacyLeadAvailable": false,
+      "playerId": "6165bca6",
+      "playerTeamSeasonIds": [
+        "pts:6165bca6:ipl-2008:team-chennai-super-kings",
+        "pts:6165bca6:ipl-2011:team-chennai-super-kings",
+        "pts:6165bca6:ipl-2013:team-royal-challengers-bangalore"
+      ],
+      "reviewId": "country-overseas:6165bca6",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2008",
+        "ipl-2011",
+        "ipl-2013"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Karim Janat",
+      "legacyLeadAvailable": false,
+      "playerId": "62175638",
+      "playerTeamSeasonIds": [
+        "pts:62175638:ipl-2025:team-gujarat-titans"
+      ],
+      "reviewId": "country-overseas:62175638",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2025"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "KH Devdhar",
+      "legacyLeadAvailable": false,
+      "playerId": "62e07f92",
+      "playerTeamSeasonIds": [
+        "pts:62e07f92:ipl-2011:team-deccan-chargers"
+      ],
+      "reviewId": "country-overseas:62e07f92",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2011"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "S Sriram",
+      "legacyLeadAvailable": false,
+      "playerId": "64a4c383",
+      "playerTeamSeasonIds": [
+        "pts:64a4c383:ipl-2010:team-royal-challengers-bangalore",
+        "pts:64a4c383:ipl-2011:team-delhi-daredevils"
+      ],
+      "reviewId": "country-overseas:64a4c383",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2010",
+        "ipl-2011"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "RW Price",
+      "legacyLeadAvailable": false,
+      "playerId": "67af6f81",
+      "playerTeamSeasonIds": [
+        "pts:67af6f81:ipl-2011:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:67af6f81",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2011"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "DR Martyn",
+      "legacyLeadAvailable": false,
+      "playerId": "69762509",
+      "playerTeamSeasonIds": [
+        "pts:69762509:ipl-2010:team-rajasthan-royals"
+      ],
+      "reviewId": "country-overseas:69762509",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2010"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Sonu Yadav",
+      "legacyLeadAvailable": false,
+      "playerId": "6ab96cc2",
+      "playerTeamSeasonIds": [
+        "pts:6ab96cc2:ipl-2023:team-royal-challengers-bangalore"
+      ],
+      "reviewId": "country-overseas:6ab96cc2",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2023"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "C Ganapathy",
+      "legacyLeadAvailable": false,
+      "playerId": "798934ea",
+      "playerTeamSeasonIds": [
+        "pts:798934ea:ipl-2010:team-chennai-super-kings"
+      ],
+      "reviewId": "country-overseas:798934ea",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2010"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "RA Shaikh",
+      "legacyLeadAvailable": false,
+      "playerId": "7c390b03",
+      "playerTeamSeasonIds": [
+        "pts:7c390b03:ipl-2009:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:7c390b03",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2009"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "RR Bhatkal",
+      "legacyLeadAvailable": false,
+      "playerId": "7d3720ba",
+      "playerTeamSeasonIds": [
+        "pts:7d3720ba:ipl-2012:team-royal-challengers-bangalore"
+      ],
+      "reviewId": "country-overseas:7d3720ba",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2012"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "MB Parmar",
+      "legacyLeadAvailable": false,
+      "playerId": "86ae8ef2",
+      "playerTeamSeasonIds": [
+        "pts:86ae8ef2:ipl-2010:team-kolkata-knight-riders"
+      ],
+      "reviewId": "country-overseas:86ae8ef2",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2010"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Abdur Razzak",
+      "legacyLeadAvailable": false,
+      "playerId": "888e32bf",
+      "playerTeamSeasonIds": [
+        "pts:888e32bf:ipl-2008:team-royal-challengers-bangalore"
+      ],
+      "reviewId": "country-overseas:888e32bf",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2008"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "P Chopra",
+      "legacyLeadAvailable": false,
+      "playerId": "8ac93ca2",
+      "playerTeamSeasonIds": [
+        "pts:8ac93ca2:ipl-2018:team-rajasthan-royals",
+        "pts:8ac93ca2:ipl-2019:team-rajasthan-royals"
+      ],
+      "reviewId": "country-overseas:8ac93ca2",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2018",
+        "ipl-2019"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "D Jansen",
+      "legacyLeadAvailable": false,
+      "playerId": "8dc152d1",
+      "playerTeamSeasonIds": [
+        "pts:8dc152d1:ipl-2023:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:8dc152d1",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2023"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "I Malhotra",
+      "legacyLeadAvailable": false,
+      "playerId": "943fd425",
+      "playerTeamSeasonIds": [
+        "pts:943fd425:ipl-2011:team-deccan-chargers"
+      ],
+      "reviewId": "country-overseas:943fd425",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2011"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "SD Lad",
+      "legacyLeadAvailable": false,
+      "playerId": "9601c534",
+      "playerTeamSeasonIds": [
+        "pts:9601c534:ipl-2019:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:9601c534",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2019"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "S Joseph",
+      "legacyLeadAvailable": false,
+      "playerId": "97290faf",
+      "playerTeamSeasonIds": [
+        "pts:97290faf:ipl-2024:team-lucknow-super-giants"
+      ],
+      "reviewId": "country-overseas:97290faf",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2024"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Gurnoor Brar",
+      "legacyLeadAvailable": false,
+      "playerId": "99258814",
+      "playerTeamSeasonIds": [
+        "pts:99258814:ipl-2023:team-punjab-kings"
+      ],
+      "reviewId": "country-overseas:99258814",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2023"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Mohit Rathee",
+      "legacyLeadAvailable": false,
+      "playerId": "9a5f2863",
+      "playerTeamSeasonIds": [
+        "pts:9a5f2863:ipl-2023:team-punjab-kings"
+      ],
+      "reviewId": "country-overseas:9a5f2863",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2023"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "DV Malewar",
+      "legacyLeadAvailable": false,
+      "playerId": "9e6032fa",
+      "playerTeamSeasonIds": [
+        "pts:9e6032fa:ipl-2026:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:9e6032fa",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2026"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "RS Sodhi",
+      "legacyLeadAvailable": false,
+      "playerId": "a3ecf01f",
+      "playerTeamSeasonIds": [
+        "pts:a3ecf01f:ipl-2010:team-kings-xi-punjab"
+      ],
+      "reviewId": "country-overseas:a3ecf01f",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2010"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "A Tomar",
+      "legacyLeadAvailable": false,
+      "playerId": "aa5d8c9e",
+      "playerTeamSeasonIds": [
+        "pts:aa5d8c9e:ipl-2022:team-kolkata-knight-riders"
+      ],
+      "reviewId": "country-overseas:aa5d8c9e",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2022"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "DJ Malan",
+      "legacyLeadAvailable": false,
+      "playerId": "ad9c32a2",
+      "playerTeamSeasonIds": [
+        "pts:ad9c32a2:ipl-2021:team-punjab-kings"
+      ],
+      "reviewId": "country-overseas:ad9c32a2",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2021"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "S Midhun",
+      "legacyLeadAvailable": false,
+      "playerId": "ade90de7",
+      "playerTeamSeasonIds": [
+        "pts:ade90de7:ipl-2019:team-rajasthan-royals"
+      ],
+      "reviewId": "country-overseas:ade90de7",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2019"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "AR Bawne",
+      "legacyLeadAvailable": false,
+      "playerId": "afe3355a",
+      "playerTeamSeasonIds": [
+        "pts:afe3355a:ipl-2017:team-delhi-daredevils"
+      ],
+      "reviewId": "country-overseas:afe3355a",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2017"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "BJ Haddin",
+      "legacyLeadAvailable": false,
+      "playerId": "b0c772ee",
+      "playerTeamSeasonIds": [
+        "pts:b0c772ee:ipl-2011:team-kolkata-knight-riders"
+      ],
+      "reviewId": "country-overseas:b0c772ee",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2011"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Milind Kumar",
+      "legacyLeadAvailable": false,
+      "playerId": "b4296080",
+      "playerTeamSeasonIds": [
+        "pts:b4296080:ipl-2019:team-royal-challengers-bangalore"
+      ],
+      "reviewId": "country-overseas:b4296080",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2019"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "SS Agarwal",
+      "legacyLeadAvailable": false,
+      "playerId": "b51f72a5",
+      "playerTeamSeasonIds": [
+        "pts:b51f72a5:ipl-2017:team-gujarat-lions"
+      ],
+      "reviewId": "country-overseas:b51f72a5",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2017"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "AA Noffke",
+      "legacyLeadAvailable": false,
+      "playerId": "b69e69ed",
+      "playerTeamSeasonIds": [
+        "pts:b69e69ed:ipl-2008:team-royal-challengers-bangalore"
+      ],
+      "reviewId": "country-overseas:b69e69ed",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2008"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "JL Denly",
+      "legacyLeadAvailable": false,
+      "playerId": "bdadf7da",
+      "playerTeamSeasonIds": [
+        "pts:bdadf7da:ipl-2019:team-kolkata-knight-riders"
+      ],
+      "reviewId": "country-overseas:bdadf7da",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2019"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Tejas Baroka",
+      "legacyLeadAvailable": false,
+      "playerId": "c28e9f12",
+      "playerTeamSeasonIds": [
+        "pts:c28e9f12:ipl-2017:team-gujarat-lions"
+      ],
+      "reviewId": "country-overseas:c28e9f12",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2017"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "BR Sharath",
+      "legacyLeadAvailable": false,
+      "playerId": "c2dd89ea",
+      "playerTeamSeasonIds": [
+        "pts:c2dd89ea:ipl-2024:team-gujarat-titans"
+      ],
+      "reviewId": "country-overseas:c2dd89ea",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2024"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "PWA Mulder",
+      "legacyLeadAvailable": false,
+      "playerId": "c96f6ac5",
+      "playerTeamSeasonIds": [
+        "pts:c96f6ac5:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "reviewId": "country-overseas:c96f6ac5",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2025"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "T Mishra",
+      "legacyLeadAvailable": false,
+      "playerId": "c9cac448",
+      "playerTeamSeasonIds": [
+        "pts:c9cac448:ipl-2012:team-deccan-chargers"
+      ],
+      "reviewId": "country-overseas:c9cac448",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2012"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "RV Pawar",
+      "legacyLeadAvailable": false,
+      "playerId": "c9d33ef5",
+      "playerTeamSeasonIds": [
+        "pts:c9d33ef5:ipl-2008:team-mumbai-indians"
+      ],
+      "reviewId": "country-overseas:c9d33ef5",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2008"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Abdul Basith",
+      "legacyLeadAvailable": false,
+      "playerId": "cc777ffa",
+      "playerTeamSeasonIds": [
+        "pts:cc777ffa:ipl-2023:team-rajasthan-royals"
+      ],
+      "reviewId": "country-overseas:cc777ffa",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2023"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "LI Meriwala",
+      "legacyLeadAvailable": false,
+      "playerId": "d3611425",
+      "playerTeamSeasonIds": [
+        "pts:d3611425:ipl-2021:team-delhi-capitals"
+      ],
+      "reviewId": "country-overseas:d3611425",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2021"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "V Kaverappa",
+      "legacyLeadAvailable": false,
+      "playerId": "d4d929b0",
+      "playerTeamSeasonIds": [
+        "pts:d4d929b0:ipl-2024:team-punjab-kings"
+      ],
+      "reviewId": "country-overseas:d4d929b0",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2024"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Musheer Khan",
+      "legacyLeadAvailable": false,
+      "playerId": "d621b427",
+      "playerTeamSeasonIds": [
+        "pts:d621b427:ipl-2025:team-punjab-kings"
+      ],
+      "reviewId": "country-overseas:d621b427",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2025"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "P Prasanth",
+      "legacyLeadAvailable": false,
+      "playerId": "ddb00822",
+      "playerTeamSeasonIds": [
+        "pts:ddb00822:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "reviewId": "country-overseas:ddb00822",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2011"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "D Madushanka",
+      "legacyLeadAvailable": false,
+      "playerId": "de7d833e",
+      "playerTeamSeasonIds": [
+        "pts:de7d833e:ipl-2026:team-sunrisers-hyderabad"
+      ],
+      "reviewId": "country-overseas:de7d833e",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2026"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "RS Ghosh",
+      "legacyLeadAvailable": false,
+      "playerId": "dee07622",
+      "playerTeamSeasonIds": [
+        "pts:dee07622:ipl-2026:team-chennai-super-kings"
+      ],
+      "reviewId": "country-overseas:dee07622",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2026"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Mashrafe Mortaza",
+      "legacyLeadAvailable": false,
+      "playerId": "e186f49c",
+      "playerTeamSeasonIds": [
+        "pts:e186f49c:ipl-2009:team-kolkata-knight-riders"
+      ],
+      "reviewId": "country-overseas:e186f49c",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2009"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "BJ Dwarshuis",
+      "legacyLeadAvailable": false,
+      "playerId": "e1b9f3a9",
+      "playerTeamSeasonIds": [
+        "pts:e1b9f3a9:ipl-2026:team-punjab-kings"
+      ],
+      "reviewId": "country-overseas:e1b9f3a9",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2026"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Shivam Singh",
+      "legacyLeadAvailable": false,
+      "playerId": "e1d9ae9c",
+      "playerTeamSeasonIds": [
+        "pts:e1d9ae9c:ipl-2024:team-punjab-kings"
+      ],
+      "reviewId": "country-overseas:e1d9ae9c",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2024"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "KS Rathore",
+      "legacyLeadAvailable": false,
+      "playerId": "e3851766",
+      "playerTeamSeasonIds": [
+        "pts:e3851766:ipl-2025:team-rajasthan-royals"
+      ],
+      "reviewId": "country-overseas:e3851766",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2025"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "MS Bhandage",
+      "legacyLeadAvailable": false,
+      "playerId": "e96801ea",
+      "playerTeamSeasonIds": [
+        "pts:e96801ea:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "reviewId": "country-overseas:e96801ea",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2025"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "P Dharmani",
+      "legacyLeadAvailable": false,
+      "playerId": "eaa90ab4",
+      "playerTeamSeasonIds": [
+        "pts:eaa90ab4:ipl-2008:team-kings-xi-punjab"
+      ],
+      "reviewId": "country-overseas:eaa90ab4",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2008"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Sunny Gupta",
+      "legacyLeadAvailable": false,
+      "playerId": "ee3dfa89",
+      "playerTeamSeasonIds": [
+        "pts:ee3dfa89:ipl-2012:team-delhi-daredevils"
+      ],
+      "reviewId": "country-overseas:ee3dfa89",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2012"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Tanay Thyagarajan",
+      "legacyLeadAvailable": false,
+      "playerId": "f1809c03",
+      "playerTeamSeasonIds": [
+        "pts:f1809c03:ipl-2024:team-punjab-kings"
+      ],
+      "reviewId": "country-overseas:f1809c03",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2024"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "MJ Owen",
+      "legacyLeadAvailable": false,
+      "playerId": "f2c936d7",
+      "playerTeamSeasonIds": [
+        "pts:f2c936d7:ipl-2025:team-punjab-kings"
+      ],
+      "reviewId": "country-overseas:f2c936d7",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2025"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "DR Shorey",
+      "legacyLeadAvailable": false,
+      "playerId": "faa7365d",
+      "playerTeamSeasonIds": [
+        "pts:faa7365d:ipl-2018:team-chennai-super-kings",
+        "pts:faa7365d:ipl-2019:team-chennai-super-kings"
+      ],
+      "reviewId": "country-overseas:faa7365d",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2018",
+        "ipl-2019"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "Monu Kumar",
+      "legacyLeadAvailable": false,
+      "playerId": "fb24e76c",
+      "playerTeamSeasonIds": [
+        "pts:fb24e76c:ipl-2020:team-chennai-super-kings"
+      ],
+      "reviewId": "country-overseas:fb24e76c",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2020"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "IC Porel",
+      "legacyLeadAvailable": false,
+      "playerId": "fdf7491e",
+      "playerTeamSeasonIds": [
+        "pts:fdf7491e:ipl-2021:team-punjab-kings"
+      ],
+      "reviewId": "country-overseas:fdf7491e",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2021"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    },
+    {
+      "canonicalDisplayName": "JM Cox",
+      "legacyLeadAvailable": false,
+      "playerId": "ff154ecd",
+      "playerTeamSeasonIds": [
+        "pts:ff154ecd:ipl-2026:team-royal-challengers-bengaluru"
+      ],
+      "reviewId": "country-overseas:ff154ecd",
+      "reviewStatus": "PENDING",
+      "seasonIds": [
+        "ipl-2026"
+      ],
+      "unresolvedFields": [
+        "CRICKET_NATION",
+        "IPL_ROSTER_STATUS"
+      ]
+    }
+  ],
+  "metadataVersion": "ipl-country-overseas-metadata/v1",
+  "schemaVersion": "ipl-country-overseas-review-queue/v1",
+  "scope": "NON_G2_BACKLOG",
+  "summary": {
+    "legacyLeadPlayers": 0,
+    "playerTeamSeasons": 96,
+    "players": 89
+  }
+}

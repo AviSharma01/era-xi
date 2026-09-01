@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "baselineComparisons": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "actual": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "expected": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "matches": {
+            "type": "boolean"
+          },
+          "metric": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "metric",
+          "expected",
+          "actual",
+          "matches"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "counts": {
+      "additionalProperties": false,
+      "properties": {
+        "approvedPlayerDefaults": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "approvedSeasonOverrides": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "blockingG2Players": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "blockingG2Profiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "canonicalPlayers": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "g2Players": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "g2Profiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacyConflicting": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacyPartiallyVerified": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacyRows": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacySupported": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacyUnverified": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "nonG2BacklogItems": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "nonG2Players": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "playerTeamSeasons": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unknownPlayerRosterStatuses": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unknownPtsRosterStatuses": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "canonicalPlayers",
+        "playerTeamSeasons",
+        "g2Players",
+        "g2Profiles",
+        "nonG2Players",
+        "legacyRows",
+        "approvedPlayerDefaults",
+        "approvedSeasonOverrides",
+        "unknownPlayerRosterStatuses",
+        "unknownPtsRosterStatuses",
+        "blockingG2Players",
+        "blockingG2Profiles",
+        "nonG2BacklogItems",
+        "legacyUnverified",
+        "legacyPartiallyVerified",
+        "legacySupported",
+        "legacyConflicting"
+      ],
+      "type": "object"
+    },
+    "errors": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
+    "foundationStatus": {
+      "enum": [
+        "READY_FOR_RESEARCH"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "g2EligibleIdSetSha256": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "g2GameInputReady": {
+      "type": "boolean"
+    },
+    "metadataManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "metadataVersion": {
+      "enum": [
+        "ipl-country-overseas-metadata/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-country-overseas-validation/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "passed"
+      ],
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "metadataVersion",
+    "metadataManifestHash",
+    "status",
+    "foundationStatus",
+    "g2GameInputReady",
+    "g2EligibleIdSetSha256",
+    "baselineComparisons",
+    "counts",
+    "errors"
+  ],
+  "title": "Country/overseas validation report",
+  "type": "object"
+}

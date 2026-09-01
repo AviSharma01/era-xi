@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "cricketNationId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "cricketNationSourceIds": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "iplRosterStatus": {
+      "enum": [
+        "INDIAN",
+        "OVERSEAS",
+        "UNKNOWN"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "playerId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "resolutionMethod": {
+      "enum": [
+        "UNRESOLVED",
+        "DIRECT_IPL_DESIGNATION",
+        "POLICY_DERIVED",
+        "MANUAL_REVIEW"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "reviewStatus": {
+      "enum": [
+        "APPROVED"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "rosterStatusSourceIds": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "playerId",
+    "cricketNationId",
+    "iplRosterStatus",
+    "resolutionMethod",
+    "cricketNationSourceIds",
+    "rosterStatusSourceIds",
+    "reviewStatus",
+    "notes"
+  ],
+  "title": "Country/overseas player default",
+  "type": "object"
+}
