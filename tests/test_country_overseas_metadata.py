@@ -573,6 +573,35 @@ class ResolutionTests(unittest.TestCase):
         resolved = [{**row, "iplRosterStatus": "INDIAN", "reviewState": "APPROVED"} for row in profiles]
         validate_g2_game_input_ready(ELIGIBILITY, resolved)
 
+    def test_cross_season_nation_evidence_cannot_cover_roster_status(self) -> None:
+        metadata = manual()
+        metadata["sources"] = [
+            source("official-source"),
+            source("policy-source", ["IPL_ROSTER_STATUS"], "INTERNAL_POLICY"),
+        ]
+        metadata["seasonOverrides"] = [season_override(
+            season_id="ipl-2021",
+            nation="india",
+            roster_status="INDIAN",
+            nation_resolution_method="DIRECT_IPL_DESIGNATION",
+            roster_resolution_method="POLICY_DERIVED",
+            nation_refs=[evidence("official-source", ["ipl-2021"])],
+            roster_refs=[
+                evidence("official-source", ["ipl-2020"]),
+                evidence("policy-source", ["ipl-2020"]),
+            ],
+        )]
+        with self.assertRaisesRegex(
+            CountryOverseasMetadataError,
+            "roster-status evidence does not cover its season",
+        ):
+            resolve_metadata_rows(
+                players=PLAYERS,
+                eligibility_rows=ELIGIBILITY,
+                manual=metadata,
+                catalog=CATALOG,
+            )
+
 
 class RepositoryIntegrationTests(unittest.TestCase):
     @classmethod
@@ -585,7 +614,7 @@ class RepositoryIntegrationTests(unittest.TestCase):
         cls.legacy = json.loads(cls.files["legacy_migration_report.json"])
         cls.manifest = json.loads(cls.files["metadata_manifest.json"])
 
-    def test_exact_population_and_complete_2025_g2_coverage(self) -> None:
+    def test_exact_modern_bulk_population_and_2025_semantic_stability(self) -> None:
         self.assertEqual(len(self.players), 816)
         self.assertEqual(len(self.profiles), 3392)
         self.assertEqual(len({row["playerId"] for row in self.players}), 816)
@@ -594,54 +623,127 @@ class RepositoryIntegrationTests(unittest.TestCase):
         self.assertTrue(all(row["cricketNationId"] == "UNKNOWN" for row in self.players))
         self.assertTrue(all(row["iplRosterStatus"] == "UNKNOWN" for row in self.players))
         resolved = [row for row in self.profiles if row["iplRosterStatus"] != "UNKNOWN"]
-        self.assertEqual(len(resolved), 205)
+        self.assertEqual(len(resolved), 914)
         self.assertTrue(all(row["classificationBasis"] == "SEASON_OVERRIDE" for row in resolved))
-        self.assertEqual(sum(row["cricketNationId"] != "UNKNOWN" for row in resolved), 169)
+        self.assertEqual(sum(row["cricketNationId"] != "UNKNOWN" for row in resolved), 871)
         self.assertEqual(
             sum(row["rosterStatusResolutionMethod"] == "DIRECT_IPL_DESIGNATION" for row in resolved),
-            12,
+            91,
         )
         self.assertEqual(
             sum(row["rosterStatusResolutionMethod"] == "POLICY_DERIVED" for row in resolved),
-            193,
+            823,
         )
         self.assertEqual(
             sum(row["reviewState"] == "ROSTER_APPROVED_NATION_UNRESOLVED" for row in resolved),
-            36,
+            43,
         )
 
-        full_spans = {
-            "b1ad996b": {"ipl-2024", "ipl-2025", "ipl-2026"},
-            "85b3fab2": {"ipl-2023", "ipl-2024", "ipl-2025", "ipl-2026"},
-            "ad3b6e95": {"ipl-2023", "ipl-2024", "ipl-2025", "ipl-2026"},
-            "bcf325d2": {"ipl-2023", "ipl-2024", "ipl-2025", "ipl-2026"},
-            "aad0c365": {"ipl-2023", "ipl-2024", "ipl-2025", "ipl-2026"},
-            "3d284ca3": {"ipl-2023", "ipl-2024", "ipl-2025", "ipl-2026"},
-            "64839cb3": {"ipl-2022", "ipl-2023", "ipl-2024", "ipl-2025"},
-            "77b1aa15": {"ipl-2022", "ipl-2023", "ipl-2024", "ipl-2025"},
-            "7210d461": {"ipl-2022", "ipl-2023", "ipl-2024", "ipl-2025"},
-            "be24ead0": {"ipl-2022", "ipl-2024", "ipl-2025", "ipl-2026"},
+        target_expectations = {
+            "ipl-2022": (175, 113, 62, 175),
+            "ipl-2023": (192, 125, 67, 190),
+            "ipl-2024": (187, 118, 69, 187),
+            "ipl-2026": (184, 123, 61, 179),
         }
-        eligible_2025_ids = {
-            row["playerTeamSeasonId"]
-            for row in (
-                json.loads(line)
-                for line in Path("data/processed/era-draft/v1/eligibility.jsonl").read_text().splitlines()
-                if line
+        for season_id, (total, indian, overseas, nation_known) in target_expectations.items():
+            rows = [row for row in resolved if row["seasonId"] == season_id]
+            self.assertEqual(len(rows), total, season_id)
+            self.assertEqual(sum(row["iplRosterStatus"] == "INDIAN" for row in rows), indian)
+            self.assertEqual(sum(row["iplRosterStatus"] == "OVERSEAS" for row in rows), overseas)
+            self.assertEqual(sum(row["cricketNationId"] != "UNKNOWN" for row in rows), nation_known)
+
+        resolved_2025 = sorted(
+            (
+                row["playerTeamSeasonId"], row["cricketNationId"], row["iplRosterStatus"],
+                row["classificationBasis"], row["nationResolutionMethod"],
+                row["rosterStatusResolutionMethod"],
             )
-            if row["eligibilityStatus"] == "ELIGIBLE" and row["seasonId"] == "ipl-2025"
-        }
-        actual_ids = {row["playerTeamSeasonId"] for row in resolved}
-        expected_ids = {
-            row["playerTeamSeasonId"]
-            for row in self.profiles
-            if row["playerTeamSeasonId"] in eligible_2025_ids
-            or row["seasonId"] in full_spans.get(row["playerId"], set())
-        }
-        self.assertEqual(actual_ids, expected_ids)
-        resolved_2025 = [row for row in resolved if row["seasonId"] == "ipl-2025"]
+            for row in resolved if row["seasonId"] == "ipl-2025"
+        )
         self.assertEqual(len(resolved_2025), 176)
-        self.assertNotIn("UNKNOWN", {row["iplRosterStatus"] for row in resolved_2025})
+        semantic_hash = hashlib.sha256(
+            json.dumps(resolved_2025, separators=(",", ":")).encode()
+        ).hexdigest()
+        self.assertEqual(
+            semantic_hash,
+            "002246df23df51f34c482105912355c35baa1707a9789c56d22364689969f41d",
+        )
+
+    def test_modern_bulk_override_identity_and_evidence_scope(self) -> None:
+        manual_metadata = json.loads(
+            Path("data/manual/country_overseas_metadata/v1/metadata.json").read_text()
+        )
+        self.assertEqual(manual_metadata["playerDefaults"], [])
+        modern = [
+            row for row in manual_metadata["seasonOverrides"]
+            if (row.get("notes") or "").startswith("Approved modern-bulk")
+        ]
+        expected = {
+            "ipl-2022": (171, "2751863e97df7eb84ccd1a66dee7ac9b5d1e3a02422bdda40f36e59281271ac5"),
+            "ipl-2023": (184, "86976c303d299d6ab2df145dd3323c36a66b76d980b0ff807939f3f742453d95"),
+            "ipl-2024": (177, "bf218ebfcc665057d39dd295304c3c75ca1977d4dbb7822e647b9fef01438522"),
+            "ipl-2026": (177, "a7317ae7858ca95a55fa1ef9a503a82e63f6331ea3d5312e97f7f692404ecdad"),
+        }
+        self.assertEqual(len(modern), 709)
+        self.assertEqual({row["seasonId"] for row in modern}, set(expected))
+        sources = {row["sourceId"]: row for row in manual_metadata["sources"]}
+        for season_id, (count, expected_hash) in expected.items():
+            rows = [row for row in modern if row["seasonId"] == season_id]
+            self.assertEqual(len(rows), count)
+            keys = sorted(f'{row["playerId"]}:{row["seasonId"]}' for row in rows)
+            self.assertEqual(hashlib.sha256("\n".join(keys).encode()).hexdigest(), expected_hash)
+            for row in rows:
+                self.assertTrue(all(
+                    ref["temporalScope"] == {"type": "SEASON", "seasonIds": [season_id]}
+                    for ref in row["rosterStatusEvidenceRefs"]
+                ))
+                self.assertTrue(any(
+                    sources[ref["sourceId"]]["sourceType"] == "OFFICIAL_IPL"
+                    for ref in row["rosterStatusEvidenceRefs"]
+                ))
+
+        forbidden_identity_rows = {
+            "00ea847a": "Tanmay Agarwal",
+            "12314277": "Mohd Arslan Khan",
+            "1abb78f8": "Yash Thakur",
+            "244048f6": "Akash Singh",
+            "271f83cd": "Sanjay Yadav",
+            "28c78fb3": "Himmat Singh",
+            "2e171977": "Ansh Patel",
+            "5b615e7c": "Rahul Sharma",
+            "60500956": "Urvil Patel",
+            "800d2d97": "Divesh Sharma",
+            "82c10dac": "Adarsh Singh",
+            "85e0cf10": "Mamidi Krishna",
+            "ad427b5c": "Amit Yadav",
+            "b0f2baf4": "Swapnil Singh",
+            "b483905d": "Adarsh Singh",
+            "bb351c23": "Mohamed Ali",
+            "c33d8116": "Mohd Arslan Khan",
+            "e4cdf230": "Jason Roy",
+            "f088b960": "Salman Khan",
+            "f29185a1": "Ashok Sharma",
+            "fb2d1dda": "Nahid Rana",
+            "fb5f69e4": "Naman Tiwari",
+        }
+        for row in modern:
+            forbidden = forbidden_identity_rows.get(row["playerId"])
+            if forbidden is None:
+                continue
+            locators = [
+                str(ref["locator"].get("row"))
+                for ref in row["cricketNationEvidenceRefs"] + row["rosterStatusEvidenceRefs"]
+            ]
+            self.assertFalse(any(forbidden in locator for locator in locators), row["playerId"])
+
+        moeen_2022 = next(
+            row for row in modern
+            if row["playerId"] == "bb351c23" and row["seasonId"] == "ipl-2022"
+        )
+        self.assertEqual(
+            (moeen_2022["cricketNationId"], moeen_2022["iplRosterStatus"]),
+            ("england", "OVERSEAS"),
+        )
 
     def test_g2_identity_and_queue_separation(self) -> None:
         eligibility = [
@@ -654,8 +756,8 @@ class RepositoryIntegrationTests(unittest.TestCase):
         eligible_players = {row["playerId"] for row in eligible}
         self.assertEqual(len(eligible_ids), 2992)
         self.assertEqual(len(eligible_players), 727)
-        self.assertEqual(self.g2_queue["summary"]["players"], 710)
-        self.assertEqual(self.g2_queue["summary"]["playerTeamSeasons"], 2787)
+        self.assertEqual(self.g2_queue["summary"]["players"], 551)
+        self.assertEqual(self.g2_queue["summary"]["playerTeamSeasons"], 2078)
         self.assertEqual(self.backlog["summary"]["players"], 89)
         self.assertEqual(
             {pts_id for item in self.g2_queue["items"] for pts_id in item["playerTeamSeasonIds"]},
@@ -667,16 +769,8 @@ class RepositoryIntegrationTests(unittest.TestCase):
                 )["iplRosterStatus"] == "UNKNOWN"
             },
         )
-        closed_players = {
-            "b1ad996b", "85b3fab2", "ad3b6e95", "bcf325d2", "aad0c365",
-            "3d284ca3", "64839cb3", "77b1aa15", "7210d461", "be24ead0",
-            "08548b13", "1e030637", "36619795", "bafd0398", "c27b5a0e",
-            "cb9b8664", "cbf58a86",
-        }
-        self.assertEqual(
-            {item["playerId"] for item in self.g2_queue["items"]},
-            eligible_players - closed_players,
-        )
+        queued_players = {item["playerId"] for item in self.g2_queue["items"]}
+        self.assertEqual(len(eligible_players - queued_players), 176)
         self.assertFalse(
             {item["playerId"] for item in self.g2_queue["items"]}
             & {item["playerId"] for item in self.backlog["items"]}
@@ -687,21 +781,21 @@ class RepositoryIntegrationTests(unittest.TestCase):
         self.assertEqual(self.legacy["summary"], {
             "rows": 147,
             "identityMatched": 147,
-            "unverified": 104,
-            "partiallyVerified": 14,
-            "supported": 29,
+            "unverified": 80,
+            "partiallyVerified": 0,
+            "supported": 67,
             "conflicting": 0,
             "unmatched": 0,
         })
         self.assertTrue(all(row["identityStatus"] == "MATCHED" for row in self.legacy["rows"]))
         self.assertEqual(self.legacy["pilotComparisonSummary"], {
-            "players": 176,
-            "agrees": 29,
+            "players": 342,
+            "agrees": 67,
             "disagrees": 0,
-            "legacyAmbiguous": 14,
-            "notLegacyCovered": 133,
+            "legacyAmbiguous": 0,
+            "notLegacyCovered": 275,
         })
-        self.assertEqual(len(self.legacy["pilotComparisons"]), 176)
+        self.assertEqual(len(self.legacy["pilotComparisons"]), 342)
 
     def test_manifest_entries_match_generated_bytes(self) -> None:
         entries = self.manifest["artifacts"] + self.manifest["schemaFiles"]

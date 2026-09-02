@@ -33,6 +33,18 @@
       "notes": []
     },
     {
+      "cricketNationId": "ireland",
+      "displayName": "Ireland",
+      "aliases": [],
+      "notes": []
+    },
+    {
+      "cricketNationId": "namibia",
+      "displayName": "Namibia",
+      "aliases": [],
+      "notes": []
+    },
+    {
       "cricketNationId": "new-zealand",
       "displayName": "New Zealand",
       "aliases": [],
@@ -57,6 +69,12 @@
       "notes": [
         "Cricket jurisdiction spanning multiple sovereign states and territories; retained as a cricket entity rather than forced into an ISO-country model."
       ]
+    },
+    {
+      "cricketNationId": "zimbabwe",
+      "displayName": "Zimbabwe",
+      "aliases": [],
+      "notes": []
     }
   ]
 }

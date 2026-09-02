@@ -33,6 +33,18 @@
     },
     {
       "aliases": [],
+      "cricketNationId": "ireland",
+      "displayName": "Ireland",
+      "notes": []
+    },
+    {
+      "aliases": [],
+      "cricketNationId": "namibia",
+      "displayName": "Namibia",
+      "notes": []
+    },
+    {
+      "aliases": [],
       "cricketNationId": "new-zealand",
       "displayName": "New Zealand",
       "notes": []
@@ -56,6 +68,12 @@
       "notes": [
         "Cricket jurisdiction spanning multiple sovereign states and territories; retained as a cricket entity rather than forced into an ISO-country model."
       ]
+    },
+    {
+      "aliases": [],
+      "cricketNationId": "zimbabwe",
+      "displayName": "Zimbabwe",
+      "notes": []
     }
   ],
   "schemaVersion": "ipl-cricket-nation-catalog/v1"
