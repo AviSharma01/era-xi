@@ -24,9 +24,9 @@ DISPOSITION_SCHEMA_VERSION = "ipl-country-overseas-review-disposition/v1"
 PLAYER_ROW_SCHEMA_VERSION = "ipl-country-overseas-player-row/v3"
 PTS_ROW_SCHEMA_VERSION = "ipl-country-overseas-pts-row/v3"
 QUEUE_SCHEMA_VERSION = "ipl-country-overseas-review-queue/v1"
-LEGACY_REPORT_SCHEMA_VERSION = "ipl-country-overseas-legacy-migration/v2"
+LEGACY_REPORT_SCHEMA_VERSION = "ipl-country-overseas-legacy-migration/v3"
 MANIFEST_SCHEMA_VERSION = "ipl-country-overseas-manifest/v1"
-VALIDATION_SCHEMA_VERSION = "ipl-country-overseas-validation/v1"
+VALIDATION_SCHEMA_VERSION = "ipl-country-overseas-validation/v2"
 
 ROSTER_STATUSES = ["INDIAN", "OVERSEAS", "UNKNOWN"]
 CLASSIFICATION_BASES = ["PLAYER_DEFAULT", "SEASON_OVERRIDE"]
@@ -348,6 +348,31 @@ def build_schemas() -> dict[str, dict[str, Any]]:
             "unmatched": integer,
         }),
         "rows": _array(legacy_row),
+        "pilotComparisonSummary": _object({
+            "players": integer,
+            "agrees": integer,
+            "disagrees": integer,
+            "legacyAmbiguous": integer,
+            "notLegacyCovered": integer,
+        }),
+        "pilotComparisons": _array(_object({
+            "playerId": _string(),
+            "canonicalDisplayName": _string(),
+            "seasonIds": _array(_string(pattern=r"ipl-[0-9]{4}"), unique=True, minimum=1),
+            "playerTeamSeasonIds": _array(_string(), unique=True, minimum=1),
+            "canonicalCricketNationId": _string(),
+            "canonicalIplRosterStatus": _string(enum=ROSTER_STATUSES),
+            "legacyAvailable": {"type": "boolean"},
+            "legacyCricketNationIdLead": nullable_string,
+            "legacyIplRosterStatusLead": {
+                "type": ["string", "null"],
+                "enum": ["INDIAN", "OVERSEAS", None],
+            },
+            "comparisonStatus": _string(enum=[
+                "AGREES", "DISAGREES", "LEGACY_AMBIGUOUS", "NOT_LEGACY_COVERED"
+            ]),
+            "evidenceRefs": evidence_array,
+        })),
     })
     artifact = _object({
         "path": _string(),
@@ -384,7 +409,7 @@ def build_schemas() -> dict[str, dict[str, Any]]:
         "metadataVersion": _string(enum=[METADATA_VERSION]),
         "metadataManifestHash": hash_string,
         "status": _string(enum=["passed"]),
-        "foundationStatus": _string(enum=["READY_FOR_RESEARCH"]),
+        "foundationStatus": _string(enum=["READY_FOR_RESEARCH", "PARTIALLY_POPULATED"]),
         "g2GameInputReady": {"type": "boolean"},
         "g2EligibleIdSetSha256": hash_string,
         "baselineComparisons": _array(comparison),
@@ -394,7 +419,13 @@ def build_schemas() -> dict[str, dict[str, Any]]:
             "approvedSeasonOverrides", "unknownPlayerRosterStatuses",
             "unknownPtsRosterStatuses", "blockingG2Players", "blockingG2Profiles",
             "nonG2BacklogItems", "legacyUnverified", "legacyPartiallyVerified",
-            "legacySupported", "legacyConflicting",
+            "legacySupported", "legacyConflicting", "resolvedG2RosterProfiles",
+            "unknownG2RosterProfiles", "fullyResolvedG2Players",
+            "activeG2PlayerReviews", "resolvedG2CricketNationProfiles",
+            "unknownG2CricketNationProfiles", "directRosterProfiles",
+            "policyDerivedRosterProfiles", "manualReviewRosterProfiles",
+            "legacyPilotAgrees", "legacyPilotDisagrees",
+            "legacyPilotAmbiguous", "legacyPilotNotCovered",
         )}),
         "errors": _array(_string()),
     })
@@ -991,10 +1022,37 @@ def _build_legacy_report(
     legacy_bytes: bytes,
     player_by_id: dict[str, dict[str, Any]],
     generated_player_by_id: dict[str, dict[str, Any]],
+    resolved_pts: list[dict[str, Any]],
+    asserted_player_ids: set[str],
     catalog: dict[str, Any],
 ) -> dict[str, Any]:
     _assert_unique((row.get("playerId") for row in legacy_rows), "legacy player IDs")
     nation_by_display = {row["displayName"]: row["cricketNationId"] for row in catalog["nations"]}
+    legacy_by_id = {row["playerId"]: row for row in legacy_rows}
+    populated_by_player: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in resolved_pts:
+        if row["cricketNationId"] != "UNKNOWN" or row["iplRosterStatus"] != "UNKNOWN":
+            populated_by_player[row["playerId"]].append(row)
+
+    def canonical_values(player_id: str) -> tuple[str, str, list[dict[str, Any]]]:
+        profiles = populated_by_player.get(player_id, [])
+        nations = {row["cricketNationId"] for row in profiles if row["cricketNationId"] != "UNKNOWN"}
+        statuses = {row["iplRosterStatus"] for row in profiles if row["iplRosterStatus"] != "UNKNOWN"}
+        nation = next(iter(nations)) if len(nations) == 1 else "UNKNOWN"
+        roster = next(iter(statuses)) if len(statuses) == 1 else "UNKNOWN"
+        refs = _sorted_evidence_refs([
+            json.loads(value)
+            for value in sorted({
+                canonical_json_bytes(ref).decode("utf-8")
+                for profile in profiles
+                for ref in (
+                    profile["cricketNationEvidenceRefs"]
+                    + profile["rosterStatusEvidenceRefs"]
+                )
+            })
+        ])
+        return nation, roster, refs
+
     results = []
     for index, legacy in enumerate(legacy_rows):
         if not isinstance(legacy, dict):
@@ -1017,13 +1075,24 @@ def _build_legacy_report(
         canonical = generated_player_by_id[player_id]
         nation_lead = nation_by_display[country]
         roster_lead = "OVERSEAS" if is_overseas else "INDIAN"
-        known_nation = canonical["cricketNationId"] != "UNKNOWN"
-        known_roster = canonical["iplRosterStatus"] != "UNKNOWN"
+        profile_nation, profile_roster, profile_refs = canonical_values(player_id)
+        canonical_nation = (
+            canonical["cricketNationId"]
+            if canonical["cricketNationId"] != "UNKNOWN"
+            else profile_nation
+        )
+        canonical_roster = (
+            canonical["iplRosterStatus"]
+            if canonical["iplRosterStatus"] != "UNKNOWN"
+            else profile_roster
+        )
+        known_nation = canonical_nation != "UNKNOWN"
+        known_roster = canonical_roster != "UNKNOWN"
         comparisons = []
         if known_nation:
-            comparisons.append(canonical["cricketNationId"] == nation_lead)
+            comparisons.append(canonical_nation == nation_lead)
         if known_roster:
-            comparisons.append(canonical["iplRosterStatus"] == roster_lead)
+            comparisons.append(canonical_roster == roster_lead)
         if not comparisons:
             status = "UNVERIFIED"
         elif not all(comparisons):
@@ -1042,8 +1111,8 @@ def _build_legacy_report(
             "legacyIplRosterStatusLead": roster_lead,
             "identityStatus": "MATCHED",
             "comparisonStatus": status,
-            "canonicalCricketNationId": canonical["cricketNationId"],
-            "canonicalIplRosterStatus": canonical["iplRosterStatus"],
+            "canonicalCricketNationId": canonical_nation,
+            "canonicalIplRosterStatus": canonical_roster,
             "evidenceRefs": _sorted_evidence_refs([
                 json.loads(value)
                 for value in sorted({
@@ -1051,11 +1120,49 @@ def _build_legacy_report(
                     for ref in (
                         canonical["cricketNationEvidenceRefs"]
                         + canonical["rosterStatusEvidenceRefs"]
+                        + profile_refs
                     )
                 })
             ]),
         })
     results.sort(key=lambda row: row["playerId"])
+    pilot_comparisons = []
+    for player_id in sorted(asserted_player_ids):
+        profiles = sorted(
+            populated_by_player[player_id], key=lambda row: row["playerTeamSeasonId"]
+        )
+        nation, roster, refs = canonical_values(player_id)
+        legacy = legacy_by_id.get(player_id)
+        if legacy is None:
+            nation_lead = None
+            roster_lead = None
+            comparison_status = "NOT_LEGACY_COVERED"
+        else:
+            nation_lead = nation_by_display[legacy["country"]]
+            roster_lead = "OVERSEAS" if legacy["isOverseas"] else "INDIAN"
+            disagrees = (
+                (nation != "UNKNOWN" and nation != nation_lead)
+                or (roster != "UNKNOWN" and roster != roster_lead)
+            )
+            if disagrees:
+                comparison_status = "DISAGREES"
+            elif nation != "UNKNOWN" and roster != "UNKNOWN":
+                comparison_status = "AGREES"
+            else:
+                comparison_status = "LEGACY_AMBIGUOUS"
+        pilot_comparisons.append({
+            "playerId": player_id,
+            "canonicalDisplayName": player_by_id[player_id]["canonicalDisplayName"],
+            "seasonIds": sorted({row["seasonId"] for row in profiles}),
+            "playerTeamSeasonIds": [row["playerTeamSeasonId"] for row in profiles],
+            "canonicalCricketNationId": nation,
+            "canonicalIplRosterStatus": roster,
+            "legacyAvailable": legacy is not None,
+            "legacyCricketNationIdLead": nation_lead,
+            "legacyIplRosterStatusLead": roster_lead,
+            "comparisonStatus": comparison_status,
+            "evidenceRefs": refs,
+        })
     return {
         "schemaVersion": LEGACY_REPORT_SCHEMA_VERSION,
         "metadataVersion": METADATA_VERSION,
@@ -1071,6 +1178,18 @@ def _build_legacy_report(
             "unmatched": 0,
         },
         "rows": results,
+        "pilotComparisonSummary": {
+            "players": len(pilot_comparisons),
+            "agrees": sum(row["comparisonStatus"] == "AGREES" for row in pilot_comparisons),
+            "disagrees": sum(row["comparisonStatus"] == "DISAGREES" for row in pilot_comparisons),
+            "legacyAmbiguous": sum(
+                row["comparisonStatus"] == "LEGACY_AMBIGUOUS" for row in pilot_comparisons
+            ),
+            "notLegacyCovered": sum(
+                row["comparisonStatus"] == "NOT_LEGACY_COVERED" for row in pilot_comparisons
+            ),
+        },
+        "pilotComparisons": pilot_comparisons,
     }
 
 
@@ -1173,6 +1292,11 @@ def build_country_overseas_metadata_files(
         legacy_bytes=legacy_bytes,
         player_by_id=player_by_id,
         generated_player_by_id=generated_player_by_id,
+        resolved_pts=resolved_pts,
+        asserted_player_ids={
+            row["playerId"]
+            for row in manual["playerDefaults"] + manual["seasonOverrides"]
+        },
         catalog=catalog,
     )
 
@@ -1235,6 +1359,7 @@ def build_country_overseas_metadata_files(
         raise CountryOverseasMetadataError(f"Metadata manifest schema failure: {error}") from error
     files["metadata_manifest.json"] = pretty_json_bytes(manifest)
 
+    resolved_g2_rows = [resolved_by_id[pts_id] for pts_id in sorted(eligible_ids)]
     counts = {
         **actual_baselines,
         "approvedPlayerDefaults": len(manual["playerDefaults"]),
@@ -1252,13 +1377,47 @@ def build_country_overseas_metadata_files(
         "legacyPartiallyVerified": legacy_report["summary"]["partiallyVerified"],
         "legacySupported": legacy_report["summary"]["supported"],
         "legacyConflicting": legacy_report["summary"]["conflicting"],
+        "resolvedG2RosterProfiles": sum(
+            row["iplRosterStatus"] != "UNKNOWN" for row in resolved_g2_rows
+        ),
+        "unknownG2RosterProfiles": sum(
+            row["iplRosterStatus"] == "UNKNOWN" for row in resolved_g2_rows
+        ),
+        "fullyResolvedG2Players": len(eligible_player_ids) - len(g2_queue["items"]),
+        "activeG2PlayerReviews": len(g2_queue["items"]),
+        "resolvedG2CricketNationProfiles": sum(
+            row["cricketNationId"] != "UNKNOWN" for row in resolved_g2_rows
+        ),
+        "unknownG2CricketNationProfiles": sum(
+            row["cricketNationId"] == "UNKNOWN" for row in resolved_g2_rows
+        ),
+        "directRosterProfiles": sum(
+            row["rosterStatusResolutionMethod"] == "DIRECT_IPL_DESIGNATION"
+            for row in resolved_g2_rows
+        ),
+        "policyDerivedRosterProfiles": sum(
+            row["rosterStatusResolutionMethod"] == "POLICY_DERIVED"
+            for row in resolved_g2_rows
+        ),
+        "manualReviewRosterProfiles": sum(
+            row["rosterStatusResolutionMethod"] == "MANUAL_REVIEW"
+            for row in resolved_g2_rows
+        ),
+        "legacyPilotAgrees": legacy_report["pilotComparisonSummary"]["agrees"],
+        "legacyPilotDisagrees": legacy_report["pilotComparisonSummary"]["disagrees"],
+        "legacyPilotAmbiguous": legacy_report["pilotComparisonSummary"]["legacyAmbiguous"],
+        "legacyPilotNotCovered": legacy_report["pilotComparisonSummary"]["notLegacyCovered"],
     }
     validation_report = {
         "schemaVersion": VALIDATION_SCHEMA_VERSION,
         "metadataVersion": METADATA_VERSION,
         "metadataManifestHash": manifest["metadataManifestHash"],
         "status": "passed",
-        "foundationStatus": "READY_FOR_RESEARCH",
+        "foundationStatus": (
+            "PARTIALLY_POPULATED"
+            if manual["playerDefaults"] or manual["seasonOverrides"]
+            else "READY_FOR_RESEARCH"
+        ),
         "g2GameInputReady": counts["blockingG2Profiles"] == 0,
         "g2EligibleIdSetSha256": manifest["g2EligibleIdSetSha256"],
         "baselineComparisons": comparisons,
@@ -1275,21 +1434,26 @@ def build_country_overseas_metadata_files(
         "",
         f"Metadata manifest SHA-256: `{manifest['metadataManifestHash']}`",
         "",
-        "## Foundation",
+        "## Coverage",
         "",
         f"- Canonical players: {counts['canonicalPlayers']}",
         f"- Player-team-seasons: {counts['playerTeamSeasons']}",
         f"- G2 players: {counts['g2Players']}",
         f"- G2 profiles: {counts['g2Profiles']}",
+        f"- Resolved G2 roster profiles: {counts['resolvedG2RosterProfiles']}",
+        f"- UNKNOWN G2 roster profiles: {counts['unknownG2RosterProfiles']}",
+        f"- Resolved G2 cricket-nation profiles: {counts['resolvedG2CricketNationProfiles']}",
+        f"- UNKNOWN G2 cricket-nation profiles: {counts['unknownG2CricketNationProfiles']}",
+        f"- Fully resolved G2 players: {counts['fullyResolvedG2Players']}",
         f"- Blocking G2 review items: {counts['blockingG2Players']}",
         f"- Non-G2 backlog items: {counts['nonG2BacklogItems']}",
         f"- Unverified legacy leads: {counts['legacyUnverified']}",
         "",
         "## Status",
         "",
-        "- The deterministic metadata foundation is ready for research.",
-        "- No player country or IPL roster-status assertion has been approved.",
-        "- Every G2 profile remains fail-closed because IPL roster status is UNKNOWN.",
+        "- The approved Stage 2D pilot evidence is populated as season overrides.",
+        "- No player default was created; profile evidence retains its season-specific methods.",
+        "- Every remaining UNKNOWN G2 roster profile remains fail-closed.",
         "- Classic 2016 and wicketkeeper metadata are outside this artifact family and remain unchanged.",
         "",
     ]

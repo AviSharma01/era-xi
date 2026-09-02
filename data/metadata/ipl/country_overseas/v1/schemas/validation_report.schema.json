@@ -36,6 +36,10 @@
     "counts": {
       "additionalProperties": false,
       "properties": {
+        "activeG2PlayerReviews": {
+          "minimum": 0,
+          "type": "integer"
+        },
         "approvedPlayerDefaults": {
           "minimum": 0,
           "type": "integer"
@@ -56,6 +60,14 @@
           "minimum": 0,
           "type": "integer"
         },
+        "directRosterProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "fullyResolvedG2Players": {
+          "minimum": 0,
+          "type": "integer"
+        },
         "g2Players": {
           "minimum": 0,
           "type": "integer"
@@ -72,6 +84,22 @@
           "minimum": 0,
           "type": "integer"
         },
+        "legacyPilotAgrees": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacyPilotAmbiguous": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacyPilotDisagrees": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacyPilotNotCovered": {
+          "minimum": 0,
+          "type": "integer"
+        },
         "legacyRows": {
           "minimum": 0,
           "type": "integer"
@@ -84,6 +112,10 @@
           "minimum": 0,
           "type": "integer"
         },
+        "manualReviewRosterProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
         "nonG2BacklogItems": {
           "minimum": 0,
           "type": "integer"
@@ -93,6 +125,26 @@
           "type": "integer"
         },
         "playerTeamSeasons": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "policyDerivedRosterProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "resolvedG2CricketNationProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "resolvedG2RosterProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unknownG2CricketNationProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unknownG2RosterProfiles": {
           "minimum": 0,
           "type": "integer"
         },
@@ -122,7 +174,20 @@
         "legacyUnverified",
         "legacyPartiallyVerified",
         "legacySupported",
-        "legacyConflicting"
+        "legacyConflicting",
+        "resolvedG2RosterProfiles",
+        "unknownG2RosterProfiles",
+        "fullyResolvedG2Players",
+        "activeG2PlayerReviews",
+        "resolvedG2CricketNationProfiles",
+        "unknownG2CricketNationProfiles",
+        "directRosterProfiles",
+        "policyDerivedRosterProfiles",
+        "manualReviewRosterProfiles",
+        "legacyPilotAgrees",
+        "legacyPilotDisagrees",
+        "legacyPilotAmbiguous",
+        "legacyPilotNotCovered"
       ],
       "type": "object"
     },
@@ -136,7 +201,8 @@
     },
     "foundationStatus": {
       "enum": [
-        "READY_FOR_RESEARCH"
+        "READY_FOR_RESEARCH",
+        "PARTIALLY_POPULATED"
       ],
       "minLength": 1,
       "type": "string"
@@ -163,7 +229,7 @@
     },
     "schemaVersion": {
       "enum": [
-        "ipl-country-overseas-validation/v1"
+        "ipl-country-overseas-validation/v2"
       ],
       "minLength": 1,
       "type": "string"

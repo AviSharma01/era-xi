@@ -18,15 +18,15 @@
       "path": "player_team_season_metadata.jsonl",
       "rows": 3392,
       "schemaVersion": "ipl-country-overseas-pts-row/v3",
-      "sha256": "d8077cca79ddac7038259c6ce12b678badb89e3133b5e03d47a1587fbbb6ff1f",
-      "sizeBytes": 1867216
+      "sha256": "ddb6846b485314fd4e947247a47fc1bab09265dc995d9a5e9a70e57671bfd616",
+      "sizeBytes": 1947456
     },
     {
       "path": "g2_review_queue.json",
-      "rows": 727,
+      "rows": 717,
       "schemaVersion": "ipl-country-overseas-review-queue/v1",
-      "sha256": "8f0dbbc086b7f2c3a3ef8e1afeef26dde962574265140675a3356166bac75a20",
-      "sizeBytes": 492675
+      "sha256": "4088e9696e4338b01c3781555e4c83f6e2fa6fc1ee258b24a629df0c1c4d3f76",
+      "sizeBytes": 482446
     },
     {
       "path": "non_g2_backlog.json",
@@ -38,9 +38,9 @@
     {
       "path": "legacy_migration_report.json",
       "rows": 147,
-      "schemaVersion": "ipl-country-overseas-legacy-migration/v2",
-      "sha256": "29269996d673726f752ff745dccce8c58e0b3af990a84168d8a1a9cf76b7dfa9",
-      "sizeBytes": 69306
+      "schemaVersion": "ipl-country-overseas-legacy-migration/v3",
+      "sha256": "8f546f5d17b268da60b3357dbeecd5b5c350a4aec48e9711238fdf48fd6b9c23",
+      "sizeBytes": 212294
     }
   ],
   "cricketNationCatalogSha256": "bed19bb4970f12ba36c415a4c3a50804587d7f3b19b169feeea00d78b4450200",
@@ -49,9 +49,9 @@
   "eligibilityVersion": "ipl-era-draft-eligibility/v1",
   "g2EligibleIdSetSha256": "c0fa9b89561698b0c50a5dacdd4333293c9a7f2f1018ce291f1023d13c6281f3",
   "legacyMetadataSha256": "8612b75cfbd40d99be6754f06fc867cc8e00b54d21874775f13c945e3c4c6405",
-  "manualMetadataSha256": "d6c5279bc5b260506de60648094be76974eb1cd2d843887897c05ea7fbd2182b",
-  "metadataAggregateHash": "5be5df14aa37c5711384d837953afcbac8fd866204570b1c4c9b11ce68d351a7",
-  "metadataManifestHash": "1a91b6dca2af83045905dd603343ecc54071ac5091728d8157cd76fc96c34455",
+  "manualMetadataSha256": "242d59df2638415197cd607ff008a8adcfb7c7094baa7eef02cfc21da2219776",
+  "metadataAggregateHash": "07677ce0400f23016b65e9935fe27a44fd8eafb3e44050c1e811799afbd71184",
+  "metadataManifestHash": "57080adfeac866444efbe52de73e5e4533c7131871452c92f2f16c071e5c76f4",
   "metadataVersion": "ipl-country-overseas-metadata/v1",
   "schemaFiles": [
     {
@@ -65,8 +65,8 @@
       "path": "schemas/legacy_migration_report.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "e47e1dd7e3a959e40e0697bb57e9fee57a83433414e5f6179cf1d8af00dabb14",
-      "sizeBytes": 9042
+      "sha256": "d4cfec8e44df1757bc3977526dfa895b2670d69d57324c265edbc43e84932e8d",
+      "sizeBytes": 17316
     },
     {
       "path": "schemas/manual_metadata.schema.json",
@@ -135,8 +135,8 @@
       "path": "schemas/validation_report.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "4804b70f865861b43f5cec786dc74c4b5cb5b8e244d5024978d948e22ec6420a",
-      "sizeBytes": 4287
+      "sha256": "62a17ae1c3348381e14f264c53e3d937e8edd176df6742f821943f9d25b3613c",
+      "sizeBytes": 6079
     }
   ],
   "schemaVersion": "ipl-country-overseas-manifest/v1",

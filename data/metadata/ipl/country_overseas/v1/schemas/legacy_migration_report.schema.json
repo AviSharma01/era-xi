@@ -18,6 +18,289 @@
       "minLength": 1,
       "type": "string"
     },
+    "pilotComparisonSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "agrees": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "disagrees": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "legacyAmbiguous": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "notLegacyCovered": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "players": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "players",
+        "agrees",
+        "disagrees",
+        "legacyAmbiguous",
+        "notLegacyCovered"
+      ],
+      "type": "object"
+    },
+    "pilotComparisons": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "canonicalCricketNationId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "canonicalDisplayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "canonicalIplRosterStatus": {
+            "enum": [
+              "INDIAN",
+              "OVERSEAS",
+              "UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "comparisonStatus": {
+            "enum": [
+              "AGREES",
+              "DISAGREES",
+              "LEGACY_AMBIGUOUS",
+              "NOT_LEGACY_COVERED"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "evidenceRefs": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "locator": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "observedValue": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "page": {
+                      "minimum": 1,
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "row": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "section": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "table": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "page",
+                    "section",
+                    "table",
+                    "row",
+                    "observedValue",
+                    "text"
+                  ],
+                  "type": "object"
+                },
+                "sourceId": {
+                  "minLength": 1,
+                  "pattern": "[a-z0-9]+(?:[-:][a-z0-9]+)*",
+                  "type": "string"
+                },
+                "temporalScope": {
+                  "oneOf": [
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "seasonIds": {
+                          "items": {
+                            "minLength": 1,
+                            "pattern": "ipl-[0-9]{4}",
+                            "type": "string"
+                          },
+                          "minItems": 1,
+                          "type": "array",
+                          "uniqueItems": true
+                        },
+                        "type": {
+                          "enum": [
+                            "SEASON"
+                          ],
+                          "minLength": 1,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "seasonIds"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "seasonIds": {
+                          "items": {
+                            "minLength": 1,
+                            "pattern": "ipl-[0-9]{4}",
+                            "type": "string"
+                          },
+                          "minItems": 2,
+                          "type": "array",
+                          "uniqueItems": true
+                        },
+                        "type": {
+                          "enum": [
+                            "MULTI_SEASON"
+                          ],
+                          "minLength": 1,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "seasonIds"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "screenedSeasonIds": {
+                          "items": {
+                            "minLength": 1,
+                            "pattern": "ipl-[0-9]{4}",
+                            "type": "string"
+                          },
+                          "minItems": 1,
+                          "type": "array",
+                          "uniqueItems": true
+                        },
+                        "type": {
+                          "enum": [
+                            "PLAYER_DEFAULT"
+                          ],
+                          "minLength": 1,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "screenedSeasonIds"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "sourceId",
+                "locator",
+                "temporalScope"
+              ],
+              "type": "object"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "legacyAvailable": {
+            "type": "boolean"
+          },
+          "legacyCricketNationIdLead": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "legacyIplRosterStatusLead": {
+            "enum": [
+              "INDIAN",
+              "OVERSEAS",
+              null
+            ],
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerTeamSeasonIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "seasonIds": {
+            "items": {
+              "minLength": 1,
+              "pattern": "ipl-[0-9]{4}",
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "playerId",
+          "canonicalDisplayName",
+          "seasonIds",
+          "playerTeamSeasonIds",
+          "canonicalCricketNationId",
+          "canonicalIplRosterStatus",
+          "legacyAvailable",
+          "legacyCricketNationIdLead",
+          "legacyIplRosterStatusLead",
+          "comparisonStatus",
+          "evidenceRefs"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array"
+    },
     "rows": {
       "items": {
         "additionalProperties": false,
@@ -262,7 +545,7 @@
     },
     "schemaVersion": {
       "enum": [
-        "ipl-country-overseas-legacy-migration/v2"
+        "ipl-country-overseas-legacy-migration/v3"
       ],
       "minLength": 1,
       "type": "string"
@@ -317,7 +600,9 @@
     "legacySourcePath",
     "legacySourceSha256",
     "summary",
-    "rows"
+    "rows",
+    "pilotComparisonSummary",
+    "pilotComparisons"
   ],
   "title": "Legacy country/overseas comparison",
   "type": "object"

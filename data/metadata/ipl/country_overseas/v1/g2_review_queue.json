@@ -251,7 +251,6 @@
         "pts:04a418e8:ipl-2022:team-rajasthan-royals",
         "pts:04a418e8:ipl-2023:team-rajasthan-royals",
         "pts:04a418e8:ipl-2024:team-rajasthan-royals",
-        "pts:04a418e8:ipl-2025:team-rajasthan-royals",
         "pts:04a418e8:ipl-2026:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:04a418e8",
@@ -263,7 +262,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -514,7 +512,6 @@
         "pts:0a509d6b:ipl-2022:team-kolkata-knight-riders",
         "pts:0a509d6b:ipl-2023:team-kolkata-knight-riders",
         "pts:0a509d6b:ipl-2024:team-kolkata-knight-riders",
-        "pts:0a509d6b:ipl-2025:team-kolkata-knight-riders",
         "pts:0a509d6b:ipl-2026:team-kolkata-knight-riders"
       ],
       "reviewId": "country-overseas:0a509d6b",
@@ -525,7 +522,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -1005,7 +1001,6 @@
         "pts:12b610c2:ipl-2016:team-royal-challengers-bangalore",
         "pts:12b610c2:ipl-2017:team-royal-challengers-bangalore",
         "pts:12b610c2:ipl-2024:team-sunrisers-hyderabad",
-        "pts:12b610c2:ipl-2025:team-sunrisers-hyderabad",
         "pts:12b610c2:ipl-2026:team-sunrisers-hyderabad"
       ],
       "reviewId": "country-overseas:12b610c2",
@@ -1014,7 +1009,6 @@
         "ipl-2016",
         "ipl-2017",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -1797,7 +1791,6 @@
         "pts:235c2bb6:ipl-2019:team-royal-challengers-bangalore",
         "pts:235c2bb6:ipl-2023:team-sunrisers-hyderabad",
         "pts:235c2bb6:ipl-2024:team-sunrisers-hyderabad",
-        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad",
         "pts:235c2bb6:ipl-2026:team-sunrisers-hyderabad"
       ],
       "reviewId": "country-overseas:235c2bb6",
@@ -1807,7 +1800,6 @@
         "ipl-2019",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -1895,7 +1887,6 @@
         "pts:244048f6:ipl-2022:team-punjab-kings",
         "pts:244048f6:ipl-2023:team-punjab-kings",
         "pts:244048f6:ipl-2024:team-punjab-kings",
-        "pts:244048f6:ipl-2025:team-punjab-kings",
         "pts:244048f6:ipl-2026:team-punjab-kings"
       ],
       "reviewId": "country-overseas:244048f6",
@@ -1907,7 +1898,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -2095,7 +2085,6 @@
       "playerTeamSeasonIds": [
         "pts:26989d80:ipl-2022:team-sunrisers-hyderabad",
         "pts:26989d80:ipl-2024:team-punjab-kings",
-        "pts:26989d80:ipl-2025:team-punjab-kings",
         "pts:26989d80:ipl-2026:team-punjab-kings"
       ],
       "reviewId": "country-overseas:26989d80",
@@ -2103,7 +2092,6 @@
       "seasonIds": [
         "ipl-2022",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -2242,7 +2230,6 @@
         "pts:271f83cd:ipl-2022:team-mumbai-indians",
         "pts:271f83cd:ipl-2023:team-mumbai-indians",
         "pts:271f83cd:ipl-2024:team-mumbai-indians",
-        "pts:271f83cd:ipl-2025:team-mumbai-indians",
         "pts:271f83cd:ipl-2026:team-mumbai-indians"
       ],
       "reviewId": "country-overseas:271f83cd",
@@ -2259,7 +2246,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -2775,7 +2761,6 @@
         "pts:2e171977:ipl-2022:team-delhi-capitals",
         "pts:2e171977:ipl-2023:team-delhi-capitals",
         "pts:2e171977:ipl-2024:team-delhi-capitals",
-        "pts:2e171977:ipl-2025:team-delhi-capitals",
         "pts:2e171977:ipl-2026:team-delhi-capitals"
       ],
       "reviewId": "country-overseas:2e171977",
@@ -2792,7 +2777,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -2840,7 +2824,6 @@
         "pts:2e81a32d:ipl-2022:team-sunrisers-hyderabad",
         "pts:2e81a32d:ipl-2023:team-sunrisers-hyderabad",
         "pts:2e81a32d:ipl-2024:team-sunrisers-hyderabad",
-        "pts:2e81a32d:ipl-2025:team-royal-challengers-bengaluru",
         "pts:2e81a32d:ipl-2026:team-royal-challengers-bengaluru"
       ],
       "reviewId": "country-overseas:2e81a32d",
@@ -2860,7 +2843,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -2958,7 +2940,6 @@
         "pts:2f49c897:ipl-2022:team-royal-challengers-bangalore",
         "pts:2f49c897:ipl-2023:team-royal-challengers-bangalore",
         "pts:2f49c897:ipl-2024:team-royal-challengers-bengaluru",
-        "pts:2f49c897:ipl-2025:team-gujarat-titans",
         "pts:2f49c897:ipl-2026:team-gujarat-titans"
       ],
       "reviewId": "country-overseas:2f49c897",
@@ -2972,7 +2953,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -3162,7 +3142,6 @@
         "pts:3241e3fd:ipl-2022:team-sunrisers-hyderabad",
         "pts:3241e3fd:ipl-2023:team-lucknow-super-giants",
         "pts:3241e3fd:ipl-2024:team-lucknow-super-giants",
-        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants",
         "pts:3241e3fd:ipl-2026:team-lucknow-super-giants"
       ],
       "reviewId": "country-overseas:3241e3fd",
@@ -3174,7 +3153,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -3532,7 +3510,6 @@
         "pts:39a2dfa8:ipl-2022:team-gujarat-titans",
         "pts:39a2dfa8:ipl-2023:team-gujarat-titans",
         "pts:39a2dfa8:ipl-2024:team-gujarat-titans",
-        "pts:39a2dfa8:ipl-2025:team-gujarat-titans",
         "pts:39a2dfa8:ipl-2026:team-gujarat-titans"
       ],
       "reviewId": "country-overseas:39a2dfa8",
@@ -3547,7 +3524,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -3762,29 +3738,6 @@
       "reviewId": "country-overseas:3cea23da",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2026"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "PD Salt",
-      "legacyLeadAvailable": false,
-      "playerId": "3d284ca3",
-      "playerTeamSeasonIds": [
-        "pts:3d284ca3:ipl-2023:team-delhi-capitals",
-        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
-        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru",
-        "pts:3d284ca3:ipl-2026:team-royal-challengers-bengaluru"
-      ],
-      "reviewId": "country-overseas:3d284ca3",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2023",
-        "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -4223,7 +4176,6 @@
         "pts:45a43fe2:ipl-2022:team-chennai-super-kings",
         "pts:45a43fe2:ipl-2023:team-chennai-super-kings",
         "pts:45a43fe2:ipl-2024:team-chennai-super-kings",
-        "pts:45a43fe2:ipl-2025:team-chennai-super-kings",
         "pts:45a43fe2:ipl-2026:team-chennai-super-kings"
       ],
       "reviewId": "country-overseas:45a43fe2",
@@ -4234,7 +4186,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -4304,7 +4255,6 @@
         "pts:462411b3:ipl-2021:team-mumbai-indians",
         "pts:462411b3:ipl-2022:team-mumbai-indians",
         "pts:462411b3:ipl-2024:team-mumbai-indians",
-        "pts:462411b3:ipl-2025:team-mumbai-indians",
         "pts:462411b3:ipl-2026:team-mumbai-indians"
       ],
       "reviewId": "country-overseas:462411b3",
@@ -4321,7 +4271,6 @@
         "ipl-2021",
         "ipl-2022",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -4462,7 +4411,6 @@
         "pts:48a1d7b7:ipl-2022:team-rajasthan-royals",
         "pts:48a1d7b7:ipl-2023:team-rajasthan-royals",
         "pts:48a1d7b7:ipl-2024:team-rajasthan-royals",
-        "pts:48a1d7b7:ipl-2025:team-rajasthan-royals",
         "pts:48a1d7b7:ipl-2026:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:48a1d7b7",
@@ -4474,7 +4422,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -4549,8 +4496,7 @@
         "pts:495d42a5:ipl-2021:team-delhi-capitals",
         "pts:495d42a5:ipl-2022:team-rajasthan-royals",
         "pts:495d42a5:ipl-2023:team-rajasthan-royals",
-        "pts:495d42a5:ipl-2024:team-rajasthan-royals",
-        "pts:495d42a5:ipl-2025:team-chennai-super-kings"
+        "pts:495d42a5:ipl-2024:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:495d42a5",
       "reviewStatus": "PENDING",
@@ -4569,8 +4515,7 @@
         "ipl-2021",
         "ipl-2022",
         "ipl-2023",
-        "ipl-2024",
-        "ipl-2025"
+        "ipl-2024"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4598,8 +4543,7 @@
         "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
         "pts:4a8a2e3b:ipl-2022:team-chennai-super-kings",
         "pts:4a8a2e3b:ipl-2023:team-chennai-super-kings",
-        "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings",
-        "pts:4a8a2e3b:ipl-2025:team-chennai-super-kings"
+        "pts:4a8a2e3b:ipl-2024:team-chennai-super-kings"
       ],
       "reviewId": "country-overseas:4a8a2e3b",
       "reviewStatus": "PENDING",
@@ -4620,8 +4564,7 @@
         "ipl-2021",
         "ipl-2022",
         "ipl-2023",
-        "ipl-2024",
-        "ipl-2025"
+        "ipl-2024"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -5020,7 +4963,6 @@
         "pts:50c6bc2b:ipl-2022:team-punjab-kings",
         "pts:50c6bc2b:ipl-2023:team-punjab-kings",
         "pts:50c6bc2b:ipl-2024:team-punjab-kings",
-        "pts:50c6bc2b:ipl-2025:team-royal-challengers-bengaluru",
         "pts:50c6bc2b:ipl-2026:team-sunrisers-hyderabad"
       ],
       "reviewId": "country-overseas:50c6bc2b",
@@ -5031,7 +4973,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -5364,7 +5305,6 @@
         "pts:57ee1fde:ipl-2022:team-rajasthan-royals",
         "pts:57ee1fde:ipl-2023:team-rajasthan-royals",
         "pts:57ee1fde:ipl-2024:team-rajasthan-royals",
-        "pts:57ee1fde:ipl-2025:team-punjab-kings",
         "pts:57ee1fde:ipl-2026:team-punjab-kings"
       ],
       "reviewId": "country-overseas:57ee1fde",
@@ -5381,7 +5321,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -5500,7 +5439,6 @@
         "pts:5b7ab5a9:ipl-2022:team-kolkata-knight-riders",
         "pts:5b7ab5a9:ipl-2023:team-kolkata-knight-riders",
         "pts:5b7ab5a9:ipl-2024:team-kolkata-knight-riders",
-        "pts:5b7ab5a9:ipl-2025:team-kolkata-knight-riders",
         "pts:5b7ab5a9:ipl-2026:team-kolkata-knight-riders"
       ],
       "reviewId": "country-overseas:5b7ab5a9",
@@ -5511,7 +5449,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -5783,7 +5720,6 @@
         "pts:5f547c8b:ipl-2022:team-gujarat-titans",
         "pts:5f547c8b:ipl-2023:team-gujarat-titans",
         "pts:5f547c8b:ipl-2024:team-gujarat-titans",
-        "pts:5f547c8b:ipl-2025:team-gujarat-titans",
         "pts:5f547c8b:ipl-2026:team-gujarat-titans"
       ],
       "reviewId": "country-overseas:5f547c8b",
@@ -5797,7 +5733,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -6060,29 +5995,6 @@
         "ipl-2021",
         "ipl-2022",
         "ipl-2023"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "M Pathirana",
-      "legacyLeadAvailable": false,
-      "playerId": "64839cb3",
-      "playerTeamSeasonIds": [
-        "pts:64839cb3:ipl-2022:team-chennai-super-kings",
-        "pts:64839cb3:ipl-2023:team-chennai-super-kings",
-        "pts:64839cb3:ipl-2024:team-chennai-super-kings",
-        "pts:64839cb3:ipl-2025:team-chennai-super-kings"
-      ],
-      "reviewId": "country-overseas:64839cb3",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2022",
-        "ipl-2023",
-        "ipl-2024",
-        "ipl-2025"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -6596,7 +6508,6 @@
         "pts:6c19c6e5:ipl-2022:team-rajasthan-royals",
         "pts:6c19c6e5:ipl-2023:team-rajasthan-royals",
         "pts:6c19c6e5:ipl-2024:team-rajasthan-royals",
-        "pts:6c19c6e5:ipl-2025:team-rajasthan-royals",
         "pts:6c19c6e5:ipl-2026:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:6c19c6e5",
@@ -6607,7 +6518,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -6911,29 +6821,6 @@
       ]
     },
     {
-      "canonicalDisplayName": "Yash Dayal",
-      "legacyLeadAvailable": false,
-      "playerId": "7210d461",
-      "playerTeamSeasonIds": [
-        "pts:7210d461:ipl-2022:team-gujarat-titans",
-        "pts:7210d461:ipl-2023:team-gujarat-titans",
-        "pts:7210d461:ipl-2024:team-royal-challengers-bengaluru",
-        "pts:7210d461:ipl-2025:team-royal-challengers-bengaluru"
-      ],
-      "reviewId": "country-overseas:7210d461",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2022",
-        "ipl-2023",
-        "ipl-2024",
-        "ipl-2025"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "SC Ganguly",
       "legacyLeadAvailable": false,
       "playerId": "725529bc",
@@ -7057,7 +6944,6 @@
         "pts:740742ef:ipl-2022:team-mumbai-indians",
         "pts:740742ef:ipl-2023:team-mumbai-indians",
         "pts:740742ef:ipl-2024:team-mumbai-indians",
-        "pts:740742ef:ipl-2025:team-mumbai-indians",
         "pts:740742ef:ipl-2026:team-mumbai-indians"
       ],
       "reviewId": "country-overseas:740742ef",
@@ -7080,7 +6966,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -7272,29 +7157,6 @@
         "ipl-2019",
         "ipl-2020",
         "ipl-2021",
-        "ipl-2022",
-        "ipl-2023",
-        "ipl-2024",
-        "ipl-2025"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "Harshit Rana",
-      "legacyLeadAvailable": false,
-      "playerId": "77b1aa15",
-      "playerTeamSeasonIds": [
-        "pts:77b1aa15:ipl-2022:team-kolkata-knight-riders",
-        "pts:77b1aa15:ipl-2023:team-kolkata-knight-riders",
-        "pts:77b1aa15:ipl-2024:team-kolkata-knight-riders",
-        "pts:77b1aa15:ipl-2025:team-kolkata-knight-riders"
-      ],
-      "reviewId": "country-overseas:77b1aa15",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
@@ -7669,7 +7531,6 @@
         "pts:7dcb9bc9:ipl-2022:team-punjab-kings",
         "pts:7dcb9bc9:ipl-2023:team-punjab-kings",
         "pts:7dcb9bc9:ipl-2024:team-gujarat-titans",
-        "pts:7dcb9bc9:ipl-2025:team-gujarat-titans",
         "pts:7dcb9bc9:ipl-2026:team-gujarat-titans"
       ],
       "reviewId": "country-overseas:7dcb9bc9",
@@ -7679,7 +7540,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -7853,7 +7713,6 @@
         "pts:81c36ee9:ipl-2022:team-sunrisers-hyderabad",
         "pts:81c36ee9:ipl-2023:team-sunrisers-hyderabad",
         "pts:81c36ee9:ipl-2024:team-sunrisers-hyderabad",
-        "pts:81c36ee9:ipl-2025:team-punjab-kings",
         "pts:81c36ee9:ipl-2026:team-punjab-kings"
       ],
       "reviewId": "country-overseas:81c36ee9",
@@ -7863,7 +7722,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -8046,29 +7904,6 @@
       ]
     },
     {
-      "canonicalDisplayName": "T Stubbs",
-      "legacyLeadAvailable": false,
-      "playerId": "85b3fab2",
-      "playerTeamSeasonIds": [
-        "pts:85b3fab2:ipl-2023:team-mumbai-indians",
-        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
-        "pts:85b3fab2:ipl-2025:team-delhi-capitals",
-        "pts:85b3fab2:ipl-2026:team-delhi-capitals"
-      ],
-      "reviewId": "country-overseas:85b3fab2",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2023",
-        "ipl-2024",
-        "ipl-2025",
-        "ipl-2026"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "M Prasidh Krishna",
       "legacyLeadAvailable": false,
       "playerId": "85e0cf10",
@@ -8211,7 +8046,6 @@
         "pts:872b03f7:ipl-2022:team-lucknow-super-giants",
         "pts:872b03f7:ipl-2023:team-lucknow-super-giants",
         "pts:872b03f7:ipl-2024:team-lucknow-super-giants",
-        "pts:872b03f7:ipl-2025:team-lucknow-super-giants",
         "pts:872b03f7:ipl-2026:team-lucknow-super-giants"
       ],
       "reviewId": "country-overseas:872b03f7",
@@ -8220,7 +8054,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -8626,7 +8459,6 @@
         "pts:8d2c70ad:ipl-2022:team-delhi-capitals",
         "pts:8d2c70ad:ipl-2023:team-delhi-capitals",
         "pts:8d2c70ad:ipl-2024:team-delhi-capitals",
-        "pts:8d2c70ad:ipl-2025:team-delhi-capitals",
         "pts:8d2c70ad:ipl-2026:team-delhi-capitals"
       ],
       "reviewId": "country-overseas:8d2c70ad",
@@ -8640,7 +8472,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -9148,7 +8979,6 @@
         "pts:9418198b:ipl-2021:team-punjab-kings",
         "pts:9418198b:ipl-2023:team-punjab-kings",
         "pts:9418198b:ipl-2024:team-punjab-kings",
-        "pts:9418198b:ipl-2025:team-punjab-kings",
         "pts:9418198b:ipl-2026:team-punjab-kings"
       ],
       "reviewId": "country-overseas:9418198b",
@@ -9158,7 +8988,6 @@
         "ipl-2021",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -9548,7 +9377,6 @@
         "pts:99b75528:ipl-2022:team-rajasthan-royals",
         "pts:99b75528:ipl-2023:team-rajasthan-royals",
         "pts:99b75528:ipl-2024:team-rajasthan-royals",
-        "pts:99b75528:ipl-2025:team-gujarat-titans",
         "pts:99b75528:ipl-2026:team-gujarat-titans"
       ],
       "reviewId": "country-overseas:99b75528",
@@ -9563,7 +9391,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -9810,7 +9637,6 @@
         "pts:9d430b40:ipl-2022:team-kolkata-knight-riders",
         "pts:9d430b40:ipl-2023:team-kolkata-knight-riders",
         "pts:9d430b40:ipl-2024:team-kolkata-knight-riders",
-        "pts:9d430b40:ipl-2025:team-kolkata-knight-riders",
         "pts:9d430b40:ipl-2026:team-kolkata-knight-riders"
       ],
       "reviewId": "country-overseas:9d430b40",
@@ -9829,7 +9655,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -10328,7 +10153,6 @@
         "pts:a4cc73aa:ipl-2022:team-rajasthan-royals",
         "pts:a4cc73aa:ipl-2023:team-rajasthan-royals",
         "pts:a4cc73aa:ipl-2024:team-rajasthan-royals",
-        "pts:a4cc73aa:ipl-2025:team-rajasthan-royals",
         "pts:a4cc73aa:ipl-2026:team-chennai-super-kings"
       ],
       "reviewId": "country-overseas:a4cc73aa",
@@ -10346,7 +10170,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -10365,7 +10188,6 @@
         "pts:a4e37e47:ipl-2022:team-chennai-super-kings",
         "pts:a4e37e47:ipl-2023:team-chennai-super-kings",
         "pts:a4e37e47:ipl-2024:team-chennai-super-kings",
-        "pts:a4e37e47:ipl-2025:team-chennai-super-kings",
         "pts:a4e37e47:ipl-2026:team-chennai-super-kings"
       ],
       "reviewId": "country-overseas:a4e37e47",
@@ -10377,7 +10199,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -10645,29 +10466,6 @@
       ]
     },
     {
-      "canonicalDisplayName": "Nithish Kumar Reddy",
-      "legacyLeadAvailable": false,
-      "playerId": "aad0c365",
-      "playerTeamSeasonIds": [
-        "pts:aad0c365:ipl-2023:team-sunrisers-hyderabad",
-        "pts:aad0c365:ipl-2024:team-sunrisers-hyderabad",
-        "pts:aad0c365:ipl-2025:team-sunrisers-hyderabad",
-        "pts:aad0c365:ipl-2026:team-sunrisers-hyderabad"
-      ],
-      "reviewId": "country-overseas:aad0c365",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2023",
-        "ipl-2024",
-        "ipl-2025",
-        "ipl-2026"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "MF Maharoof",
       "legacyLeadAvailable": false,
       "playerId": "ab89348d",
@@ -10847,29 +10645,6 @@
         "ipl-2018",
         "ipl-2019",
         "ipl-2020"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "Abishek Porel",
-      "legacyLeadAvailable": false,
-      "playerId": "ad3b6e95",
-      "playerTeamSeasonIds": [
-        "pts:ad3b6e95:ipl-2023:team-delhi-capitals",
-        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
-        "pts:ad3b6e95:ipl-2025:team-delhi-capitals",
-        "pts:ad3b6e95:ipl-2026:team-delhi-capitals"
-      ],
-      "reviewId": "country-overseas:ad3b6e95",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2023",
-        "ipl-2024",
-        "ipl-2025",
-        "ipl-2026"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -11088,7 +10863,6 @@
         "pts:b0482a1d:ipl-2022:team-mumbai-indians",
         "pts:b0482a1d:ipl-2023:team-mumbai-indians",
         "pts:b0482a1d:ipl-2024:team-mumbai-indians",
-        "pts:b0482a1d:ipl-2025:team-mumbai-indians",
         "pts:b0482a1d:ipl-2026:team-mumbai-indians"
       ],
       "reviewId": "country-overseas:b0482a1d",
@@ -11097,7 +10871,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -11206,27 +10979,6 @@
         "ipl-2021",
         "ipl-2022",
         "ipl-2023",
-        "ipl-2024",
-        "ipl-2025",
-        "ipl-2026"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "MP Yadav",
-      "legacyLeadAvailable": false,
-      "playerId": "b1ad996b",
-      "playerTeamSeasonIds": [
-        "pts:b1ad996b:ipl-2024:team-lucknow-super-giants",
-        "pts:b1ad996b:ipl-2025:team-lucknow-super-giants",
-        "pts:b1ad996b:ipl-2026:team-lucknow-super-giants"
-      ],
-      "reviewId": "country-overseas:b1ad996b",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
         "ipl-2024",
         "ipl-2025",
         "ipl-2026"
@@ -11425,7 +11177,6 @@
         "pts:b4b99816:ipl-2022:team-gujarat-titans",
         "pts:b4b99816:ipl-2023:team-gujarat-titans",
         "pts:b4b99816:ipl-2024:team-gujarat-titans",
-        "pts:b4b99816:ipl-2025:team-gujarat-titans",
         "pts:b4b99816:ipl-2026:team-gujarat-titans"
       ],
       "reviewId": "country-overseas:b4b99816",
@@ -11438,7 +11189,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -11690,8 +11440,7 @@
         "pts:b681e71e:ipl-2021:team-royal-challengers-bangalore",
         "pts:b681e71e:ipl-2022:team-royal-challengers-bangalore",
         "pts:b681e71e:ipl-2023:team-royal-challengers-bangalore",
-        "pts:b681e71e:ipl-2024:team-royal-challengers-bengaluru",
-        "pts:b681e71e:ipl-2025:team-punjab-kings"
+        "pts:b681e71e:ipl-2024:team-royal-challengers-bengaluru"
       ],
       "reviewId": "country-overseas:b681e71e",
       "reviewStatus": "PENDING",
@@ -11707,8 +11456,7 @@
         "ipl-2021",
         "ipl-2022",
         "ipl-2023",
-        "ipl-2024",
-        "ipl-2025"
+        "ipl-2024"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -11923,7 +11671,6 @@
         "pts:ba607b88:ipl-2022:team-royal-challengers-bangalore",
         "pts:ba607b88:ipl-2023:team-royal-challengers-bangalore",
         "pts:ba607b88:ipl-2024:team-royal-challengers-bengaluru",
-        "pts:ba607b88:ipl-2025:team-royal-challengers-bengaluru",
         "pts:ba607b88:ipl-2026:team-royal-challengers-bengaluru"
       ],
       "reviewId": "country-overseas:ba607b88",
@@ -11946,7 +11693,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -12137,8 +11883,7 @@
         "pts:bbd41817:ipl-2021:team-kolkata-knight-riders",
         "pts:bbd41817:ipl-2022:team-kolkata-knight-riders",
         "pts:bbd41817:ipl-2023:team-kolkata-knight-riders",
-        "pts:bbd41817:ipl-2024:team-kolkata-knight-riders",
-        "pts:bbd41817:ipl-2025:team-kolkata-knight-riders"
+        "pts:bbd41817:ipl-2024:team-kolkata-knight-riders"
       ],
       "reviewId": "country-overseas:bbd41817",
       "reviewStatus": "PENDING",
@@ -12154,8 +11899,7 @@
         "ipl-2021",
         "ipl-2022",
         "ipl-2023",
-        "ipl-2024",
-        "ipl-2025"
+        "ipl-2024"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -12177,29 +11921,6 @@
         "ipl-2008",
         "ipl-2009",
         "ipl-2010"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "Dhruv Jurel",
-      "legacyLeadAvailable": false,
-      "playerId": "bcf325d2",
-      "playerTeamSeasonIds": [
-        "pts:bcf325d2:ipl-2023:team-rajasthan-royals",
-        "pts:bcf325d2:ipl-2024:team-rajasthan-royals",
-        "pts:bcf325d2:ipl-2025:team-rajasthan-royals",
-        "pts:bcf325d2:ipl-2026:team-rajasthan-royals"
-      ],
-      "reviewId": "country-overseas:bcf325d2",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2023",
-        "ipl-2024",
-        "ipl-2025",
-        "ipl-2026"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -12277,29 +11998,6 @@
         "ipl-2009",
         "ipl-2010",
         "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "Ramandeep Singh",
-      "legacyLeadAvailable": false,
-      "playerId": "be24ead0",
-      "playerTeamSeasonIds": [
-        "pts:be24ead0:ipl-2022:team-mumbai-indians",
-        "pts:be24ead0:ipl-2024:team-kolkata-knight-riders",
-        "pts:be24ead0:ipl-2025:team-kolkata-knight-riders",
-        "pts:be24ead0:ipl-2026:team-kolkata-knight-riders"
-      ],
-      "reviewId": "country-overseas:be24ead0",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2022",
-        "ipl-2024",
-        "ipl-2025",
-        "ipl-2026"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -13013,7 +12711,6 @@
         "pts:c740ea83:ipl-2021:team-royal-challengers-bangalore",
         "pts:c740ea83:ipl-2022:team-royal-challengers-bangalore",
         "pts:c740ea83:ipl-2024:team-royal-challengers-bengaluru",
-        "pts:c740ea83:ipl-2025:team-royal-challengers-bengaluru",
         "pts:c740ea83:ipl-2026:team-royal-challengers-bengaluru"
       ],
       "reviewId": "country-overseas:c740ea83",
@@ -13022,7 +12719,6 @@
         "ipl-2021",
         "ipl-2022",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -13395,7 +13091,6 @@
         "pts:ce820073:ipl-2022:team-punjab-kings",
         "pts:ce820073:ipl-2023:team-rajasthan-royals",
         "pts:ce820073:ipl-2024:team-rajasthan-royals",
-        "pts:ce820073:ipl-2025:team-rajasthan-royals",
         "pts:ce820073:ipl-2026:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:ce820073",
@@ -13413,7 +13108,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -13940,7 +13634,6 @@
         "pts:d5130a30:ipl-2022:team-gujarat-titans",
         "pts:d5130a30:ipl-2023:team-gujarat-titans",
         "pts:d5130a30:ipl-2024:team-gujarat-titans",
-        "pts:d5130a30:ipl-2025:team-gujarat-titans",
         "pts:d5130a30:ipl-2026:team-gujarat-titans"
       ],
       "reviewId": "country-overseas:d5130a30",
@@ -13949,7 +13642,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -13974,7 +13666,6 @@
         "pts:d67d5f00:ipl-2022:team-gujarat-titans",
         "pts:d67d5f00:ipl-2023:team-gujarat-titans",
         "pts:d67d5f00:ipl-2024:team-gujarat-titans",
-        "pts:d67d5f00:ipl-2025:team-lucknow-super-giants",
         "pts:d67d5f00:ipl-2026:team-delhi-capitals"
       ],
       "reviewId": "country-overseas:d67d5f00",
@@ -13992,7 +13683,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -14434,7 +14124,6 @@
         "pts:dbe50b21:ipl-2022:team-gujarat-titans",
         "pts:dbe50b21:ipl-2023:team-gujarat-titans",
         "pts:dbe50b21:ipl-2024:team-mumbai-indians",
-        "pts:dbe50b21:ipl-2025:team-mumbai-indians",
         "pts:dbe50b21:ipl-2026:team-mumbai-indians"
       ],
       "reviewId": "country-overseas:dbe50b21",
@@ -14450,7 +14139,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -14781,7 +14469,6 @@
         "pts:ded9240e:ipl-2021:team-kolkata-knight-riders",
         "pts:ded9240e:ipl-2022:team-kolkata-knight-riders",
         "pts:ded9240e:ipl-2024:team-sunrisers-hyderabad",
-        "pts:ded9240e:ipl-2025:team-sunrisers-hyderabad",
         "pts:ded9240e:ipl-2026:team-sunrisers-hyderabad"
       ],
       "reviewId": "country-overseas:ded9240e",
@@ -14793,7 +14480,6 @@
         "ipl-2021",
         "ipl-2022",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -14811,7 +14497,6 @@
         "pts:df064e1a:ipl-2022:team-lucknow-super-giants",
         "pts:df064e1a:ipl-2023:team-lucknow-super-giants",
         "pts:df064e1a:ipl-2024:team-lucknow-super-giants",
-        "pts:df064e1a:ipl-2025:team-lucknow-super-giants",
         "pts:df064e1a:ipl-2026:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:df064e1a",
@@ -14822,7 +14507,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -15594,7 +15278,6 @@
         "pts:eef2536f:ipl-2022:team-lucknow-super-giants",
         "pts:eef2536f:ipl-2023:team-lucknow-super-giants",
         "pts:eef2536f:ipl-2024:team-rajasthan-royals",
-        "pts:eef2536f:ipl-2025:team-lucknow-super-giants",
         "pts:eef2536f:ipl-2026:team-lucknow-super-giants"
       ],
       "reviewId": "country-overseas:eef2536f",
@@ -15605,7 +15288,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -15939,7 +15621,6 @@
         "pts:f29185a1:ipl-2022:team-sunrisers-hyderabad",
         "pts:f29185a1:ipl-2023:team-sunrisers-hyderabad",
         "pts:f29185a1:ipl-2024:team-sunrisers-hyderabad",
-        "pts:f29185a1:ipl-2025:team-sunrisers-hyderabad",
         "pts:f29185a1:ipl-2026:team-sunrisers-hyderabad"
       ],
       "reviewId": "country-overseas:f29185a1",
@@ -15952,7 +15633,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -16744,7 +16424,6 @@
         "pts:fe93fd9d:ipl-2022:team-chennai-super-kings",
         "pts:fe93fd9d:ipl-2023:team-chennai-super-kings",
         "pts:fe93fd9d:ipl-2024:team-chennai-super-kings",
-        "pts:fe93fd9d:ipl-2025:team-chennai-super-kings",
         "pts:fe93fd9d:ipl-2026:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:fe93fd9d",
@@ -16766,7 +16445,6 @@
         "ipl-2022",
         "ipl-2023",
         "ipl-2024",
-        "ipl-2025",
         "ipl-2026"
       ],
       "unresolvedFields": [
@@ -16896,7 +16574,7 @@
   "scope": "G2_BLOCKING",
   "summary": {
     "legacyLeadPlayers": 147,
-    "playerTeamSeasons": 2992,
-    "players": 727
+    "playerTeamSeasons": 2906,
+    "players": 717
   }
 }

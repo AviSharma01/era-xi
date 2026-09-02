@@ -2,6 +2,4018 @@
   "legacySourcePath": "data/manual/player_metadata_template.json",
   "legacySourceSha256": "8612b75cfbd40d99be6754f06fc867cc8e00b54d21874775f13c945e3c4c6405",
   "metadataVersion": "ipl-country-overseas-metadata/v1",
+  "pilotComparisonSummary": {
+    "agrees": 6,
+    "disagrees": 0,
+    "legacyAmbiguous": 14,
+    "notLegacyCovered": 37,
+    "players": 57
+  },
+  "pilotComparisons": [
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "R Parag",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "R Parag",
+            "section": "Rajasthan Royals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "04a418e8",
+      "playerTeamSeasonIds": [
+        "pts:04a418e8:ipl-2025:team-rajasthan-royals"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "RK Singh",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 2,
+            "row": "RK Singh",
+            "section": "Kolkata Knight Riders",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "0a509d6b",
+      "playerTeamSeasonIds": [
+        "pts:0a509d6b:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "TM Head",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": 2,
+            "row": "TM Head",
+            "section": "Sunrisers Hyderabad",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "australia",
+      "legacyIplRosterStatusLead": "OVERSEAS",
+      "playerId": "12b610c2",
+      "playerTeamSeasonIds": [
+        "pts:12b610c2:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "H Klaasen",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": 2,
+            "row": "H Klaasen",
+            "section": "Sunrisers Hyderabad",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "235c2bb6",
+      "playerTeamSeasonIds": [
+        "pts:235c2bb6:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "india",
+      "canonicalDisplayName": "Arshdeep Singh",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": 1,
+            "row": "List Sr.No. 5 — Arshdeep Singh",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=PCA"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Country=India",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "244048f6",
+      "playerTeamSeasonIds": [
+        "pts:244048f6:ipl-2025:team-punjab-kings"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "Shashank Singh",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "Shashank Singh",
+            "section": "Punjab Kings",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "26989d80",
+      "playerTeamSeasonIds": [
+        "pts:26989d80:ipl-2025:team-punjab-kings"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "SA Yadav",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "SA Yadav",
+            "section": "Mumbai Indians",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "271f83cd",
+      "playerTeamSeasonIds": [
+        "pts:271f83cd:ipl-2025:team-mumbai-indians"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "AR Patel",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "AR Patel",
+            "section": "Delhi Capitals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "2e171977",
+      "playerTeamSeasonIds": [
+        "pts:2e171977:ipl-2025:team-delhi-capitals"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "india",
+      "canonicalDisplayName": "B Kumar",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "AGREES",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": 2,
+            "row": "List Sr.No. 109 — Bhuvneshwar Kumar",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=UPCA"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Country=India",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "2e81a32d",
+      "playerTeamSeasonIds": [
+        "pts:2e81a32d:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "india",
+      "canonicalDisplayName": "Mohammed Siraj",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": 1,
+            "row": "List Sr.No. 12 — Mohammed Siraj",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=HYCA"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Country=India",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "2f49c897",
+      "playerTeamSeasonIds": [
+        "pts:2f49c897:ipl-2025:team-gujarat-titans"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "N Pooran",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": 2,
+            "row": "N Pooran",
+            "section": "Lucknow Super Giants",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "3241e3fd",
+      "playerTeamSeasonIds": [
+        "pts:3241e3fd:ipl-2025:team-lucknow-super-giants"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "R Tewatia",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "R Tewatia",
+            "section": "Gujarat Titans",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "39a2dfa8",
+      "playerTeamSeasonIds": [
+        "pts:39a2dfa8:ipl-2025:team-gujarat-titans"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "england",
+      "canonicalDisplayName": "PD Salt",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": null,
+            "row": "PD Salt",
+            "section": "Royal Challengers Bengaluru",
+            "table": "Official roster or registration record",
+            "text": "Explicit overseas marker"
+          },
+          "sourceId": "ipl-2026-retention-announcement",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2026"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Country=England",
+            "page": 1,
+            "row": "List Sr.No. 31 — Phil Salt",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=blank"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Country=England",
+            "page": null,
+            "row": "List Sr.No. 19 — Phil Salt",
+            "section": "Auction register",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2023-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Country=England",
+            "page": null,
+            "row": "List Sr.No. 19 — Phil Salt",
+            "section": "Official player registration",
+            "table": "Player register or replacement announcement",
+            "text": "State Association=blank"
+          },
+          "sourceId": "ipl-2023-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023",
+              "ipl-2024",
+              "ipl-2025",
+              "ipl-2026"
+            ],
+            "type": "MULTI_SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "England",
+            "page": null,
+            "row": "Phil Salt replacement for Jason Roy",
+            "section": "Kolkata Knight Riders",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2024-phil-salt-replacement",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "Country=England",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "PD Salt bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "PD Salt bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "3d284ca3",
+      "playerTeamSeasonIds": [
+        "pts:3d284ca3:ipl-2023:team-delhi-capitals",
+        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:3d284ca3:ipl-2026:team-royal-challengers-bengaluru"
+      ],
+      "seasonIds": [
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "RD Gaikwad",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "RD Gaikwad",
+            "section": "Chennai Super Kings",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "45a43fe2",
+      "playerTeamSeasonIds": [
+        "pts:45a43fe2:ipl-2025:team-chennai-super-kings"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "JJ Bumrah",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "JJ Bumrah",
+            "section": "Mumbai Indians",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "462411b3",
+      "playerTeamSeasonIds": [
+        "pts:462411b3:ipl-2025:team-mumbai-indians"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "SO Hetmyer",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": 1,
+            "row": "SO Hetmyer",
+            "section": "Rajasthan Royals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "48a1d7b7",
+      "playerTeamSeasonIds": [
+        "pts:48a1d7b7:ipl-2025:team-rajasthan-royals"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "india",
+      "canonicalDisplayName": "R Ashwin",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "AGREES",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": 1,
+            "row": "List Sr.No. 20 — R Ashwin",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=TNCA"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Country=India",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "495d42a5",
+      "playerTeamSeasonIds": [
+        "pts:495d42a5:ipl-2025:team-chennai-super-kings"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "MS Dhoni",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "MS Dhoni",
+            "section": "Chennai Super Kings",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "4a8a2e3b",
+      "playerTeamSeasonIds": [
+        "pts:4a8a2e3b:ipl-2025:team-chennai-super-kings"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "england",
+      "canonicalDisplayName": "LS Livingstone",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=England",
+            "page": 1,
+            "row": "List Sr.No. 8 — Liam Livingstone",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=blank"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "Country=England",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "50c6bc2b",
+      "playerTeamSeasonIds": [
+        "pts:50c6bc2b:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "india",
+      "canonicalDisplayName": "YS Chahal",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "AGREES",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": 1,
+            "row": "List Sr.No. 7 — Yuzvendra Chahal",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=HCA"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Country=India",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "57ee1fde",
+      "playerTeamSeasonIds": [
+        "pts:57ee1fde:ipl-2025:team-punjab-kings"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "CV Varun",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 2,
+            "row": "CV Varun",
+            "section": "Kolkata Knight Riders",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "5b7ab5a9",
+      "playerTeamSeasonIds": [
+        "pts:5b7ab5a9:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "Rashid Khan",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": 1,
+            "row": "Rashid Khan",
+            "section": "Gujarat Titans",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "5f547c8b",
+      "playerTeamSeasonIds": [
+        "pts:5f547c8b:ipl-2025:team-gujarat-titans"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "sri-lanka",
+      "canonicalDisplayName": "M Pathirana",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": 1,
+            "row": "M Pathirana",
+            "section": "Chennai Super Kings",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Country=Sri Lanka",
+            "page": null,
+            "row": "List Sr.No. 321 — Matheesha Pathirana",
+            "section": "Official player registration",
+            "table": "Player register or replacement announcement",
+            "text": "State Association=blank"
+          },
+          "sourceId": "ipl-2022-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2022",
+              "ipl-2023",
+              "ipl-2024",
+              "ipl-2025"
+            ],
+            "type": "MULTI_SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "M Pathirana bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2022"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "M Pathirana bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "M Pathirana bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "RETAINED",
+            "page": null,
+            "row": "M Pathirana",
+            "section": "Chennai Super Kings",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2023-retained-squads",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "RETAINED",
+            "page": null,
+            "row": "M Pathirana",
+            "section": "Chennai Super Kings",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2024-retention-article",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Sri Lanka",
+            "page": null,
+            "row": "21 April 2022 — Matheesha Pathirana",
+            "section": "Chennai Super Kings",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2022-announcements",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2022"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "64839cb3",
+      "playerTeamSeasonIds": [
+        "pts:64839cb3:ipl-2022:team-chennai-super-kings",
+        "pts:64839cb3:ipl-2023:team-chennai-super-kings",
+        "pts:64839cb3:ipl-2024:team-chennai-super-kings",
+        "pts:64839cb3:ipl-2025:team-chennai-super-kings"
+      ],
+      "seasonIds": [
+        "ipl-2022",
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "YBK Jaiswal",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "YBK Jaiswal",
+            "section": "Rajasthan Royals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "6c19c6e5",
+      "playerTeamSeasonIds": [
+        "pts:6c19c6e5:ipl-2025:team-rajasthan-royals"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "india",
+      "canonicalDisplayName": "Yash Dayal",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": null,
+            "row": "List Sr.No. 154 — Yash Dayal",
+            "section": "Auction register",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2022-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2022"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": null,
+            "row": "List Sr.No. 154 — Yash Dayal",
+            "section": "Official player registration",
+            "table": "Player register or replacement announcement",
+            "text": "State Association=Uttar Pradesh"
+          },
+          "sourceId": "ipl-2022-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2022",
+              "ipl-2023",
+              "ipl-2024",
+              "ipl-2025"
+            ],
+            "type": "MULTI_SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": null,
+            "row": "List Sr.No. 59 — Yash Dayal",
+            "section": "Auction register",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2024-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Yash Dayal bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2022"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Yash Dayal bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Yash Dayal bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "RETAINED",
+            "page": null,
+            "row": "Yash Dayal",
+            "section": "Gujarat Titans",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2023-retained-squads",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 2,
+            "row": "Yash Dayal",
+            "section": "Royal Challengers Bengaluru",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "7210d461",
+      "playerTeamSeasonIds": [
+        "pts:7210d461:ipl-2022:team-gujarat-titans",
+        "pts:7210d461:ipl-2023:team-gujarat-titans",
+        "pts:7210d461:ipl-2024:team-royal-challengers-bengaluru",
+        "pts:7210d461:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "seasonIds": [
+        "ipl-2022",
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "RG Sharma",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "RG Sharma",
+            "section": "Mumbai Indians",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "740742ef",
+      "playerTeamSeasonIds": [
+        "pts:740742ef:ipl-2025:team-mumbai-indians"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "india",
+      "canonicalDisplayName": "Harshit Rana",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Delhi",
+            "page": null,
+            "row": "15 April 2022 — Harshit Rana",
+            "section": "Kolkata Knight Riders",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2022-announcements",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2022"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Harshit Rana — Delhi",
+            "page": null,
+            "row": "15 April 2022 — Harshit Rana",
+            "section": "Official player registration",
+            "table": "Player register or replacement announcement",
+            "text": "KKR replacement registration"
+          },
+          "sourceId": "ipl-2022-announcements",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2022",
+              "ipl-2023",
+              "ipl-2024",
+              "ipl-2025"
+            ],
+            "type": "MULTI_SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Harshit Rana bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2022"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Harshit Rana bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Harshit Rana bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "RETAINED",
+            "page": null,
+            "row": "Harshit Rana",
+            "section": "Kolkata Knight Riders",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2023-retained-squads",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "RETAINED",
+            "page": null,
+            "row": "Harshit Rana",
+            "section": "Kolkata Knight Riders",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2024-retention-article",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 2,
+            "row": "Harshit Rana",
+            "section": "Kolkata Knight Riders",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "77b1aa15",
+      "playerTeamSeasonIds": [
+        "pts:77b1aa15:ipl-2022:team-kolkata-knight-riders",
+        "pts:77b1aa15:ipl-2023:team-kolkata-knight-riders",
+        "pts:77b1aa15:ipl-2024:team-kolkata-knight-riders",
+        "pts:77b1aa15:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "seasonIds": [
+        "ipl-2022",
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "M Shahrukh Khan",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "M Shahrukh Khan",
+            "section": "Gujarat Titans",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "7dcb9bc9",
+      "playerTeamSeasonIds": [
+        "pts:7dcb9bc9:ipl-2025:team-gujarat-titans"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "south-africa",
+      "canonicalDisplayName": "M Jansen",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=South Africa",
+            "page": 2,
+            "row": "List Sr.No. 92 — Marco Jansen",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=blank"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "Country=South Africa",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "81c36ee9",
+      "playerTeamSeasonIds": [
+        "pts:81c36ee9:ipl-2025:team-punjab-kings"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "south-africa",
+      "canonicalDisplayName": "T Stubbs",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": 1,
+            "row": "T Stubbs",
+            "section": "Delhi Capitals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": null,
+            "row": "T Stubbs",
+            "section": "Delhi Capitals",
+            "table": "Official roster or registration record",
+            "text": "Explicit overseas marker"
+          },
+          "sourceId": "ipl-2026-retention-announcement",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2026"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Country=South Africa",
+            "page": null,
+            "row": "List Sr.No. 21 — Tristan Stubbs",
+            "section": "Auction register",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2024-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Country=South Africa",
+            "page": null,
+            "row": "List Sr.No. 21 — Tristan Stubbs",
+            "section": "Official player registration",
+            "table": "Player register or replacement announcement",
+            "text": "State Association=blank"
+          },
+          "sourceId": "ipl-2024-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023",
+              "ipl-2024",
+              "ipl-2025",
+              "ipl-2026"
+            ],
+            "type": "MULTI_SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "T Stubbs bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "T Stubbs bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "RETAINED",
+            "page": null,
+            "row": "T Stubbs",
+            "section": "Mumbai Indians",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2023-retained-squads",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "85b3fab2",
+      "playerTeamSeasonIds": [
+        "pts:85b3fab2:ipl-2023:team-mumbai-indians",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2025:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2026:team-delhi-capitals"
+      ],
+      "seasonIds": [
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "A Badoni",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 2,
+            "row": "A Badoni",
+            "section": "Lucknow Super Giants",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "872b03f7",
+      "playerTeamSeasonIds": [
+        "pts:872b03f7:ipl-2025:team-lucknow-super-giants"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "Kuldeep Yadav",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "Kuldeep Yadav",
+            "section": "Delhi Capitals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "8d2c70ad",
+      "playerTeamSeasonIds": [
+        "pts:8d2c70ad:ipl-2025:team-delhi-capitals"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "P Simran Singh",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "P Simran Singh",
+            "section": "Punjab Kings",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "9418198b",
+      "playerTeamSeasonIds": [
+        "pts:9418198b:ipl-2025:team-punjab-kings"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "england",
+      "canonicalDisplayName": "JC Buttler",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "AGREES",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=England",
+            "page": 1,
+            "row": "List Sr.No. 1 — Jos Buttler",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=blank"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "Country=England",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "england",
+      "legacyIplRosterStatusLead": "OVERSEAS",
+      "playerId": "99b75528",
+      "playerTeamSeasonIds": [
+        "pts:99b75528:ipl-2025:team-gujarat-titans"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "SP Narine",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": 2,
+            "row": "SP Narine",
+            "section": "Kolkata Knight Riders",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "west-indies",
+      "legacyIplRosterStatusLead": "OVERSEAS",
+      "playerId": "9d430b40",
+      "playerTeamSeasonIds": [
+        "pts:9d430b40:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "SV Samson",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "SV Samson",
+            "section": "Rajasthan Royals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "a4cc73aa",
+      "playerTeamSeasonIds": [
+        "pts:a4cc73aa:ipl-2025:team-rajasthan-royals"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "S Dube",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "S Dube",
+            "section": "Chennai Super Kings",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "a4e37e47",
+      "playerTeamSeasonIds": [
+        "pts:a4e37e47:ipl-2025:team-chennai-super-kings"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "india",
+      "canonicalDisplayName": "Nithish Kumar Reddy",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": null,
+            "row": "List Sr.No. 208 — Nitish Kumar Reddy",
+            "section": "Auction register",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2023-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": null,
+            "row": "List Sr.No. 208 — Nitish Kumar Reddy",
+            "section": "Official player registration",
+            "table": "Player register or replacement announcement",
+            "text": "State Association=Andhra"
+          },
+          "sourceId": "ipl-2023-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023",
+              "ipl-2024",
+              "ipl-2025",
+              "ipl-2026"
+            ],
+            "type": "MULTI_SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Nithish Kumar Reddy bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Nithish Kumar Reddy bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Nithish Kumar Reddy bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2026"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "RETAINED",
+            "page": null,
+            "row": "Nithish Kumar Reddy",
+            "section": "Sunrisers Hyderabad",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2024-retention-article",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 2,
+            "row": "Nithish Kumar Reddy",
+            "section": "Sunrisers Hyderabad",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": null,
+            "row": "Nithish Kumar Reddy",
+            "section": "Sunrisers Hyderabad",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2026-retention-announcement",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2026"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "aad0c365",
+      "playerTeamSeasonIds": [
+        "pts:aad0c365:ipl-2023:team-sunrisers-hyderabad",
+        "pts:aad0c365:ipl-2024:team-sunrisers-hyderabad",
+        "pts:aad0c365:ipl-2025:team-sunrisers-hyderabad",
+        "pts:aad0c365:ipl-2026:team-sunrisers-hyderabad"
+      ],
+      "seasonIds": [
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "india",
+      "canonicalDisplayName": "Abishek Porel",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": null,
+            "row": "List Sr.No. 207 — Abishek Porel",
+            "section": "Auction register",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2023-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": null,
+            "row": "List Sr.No. 207 — Abishek Porel",
+            "section": "Official player registration",
+            "table": "Player register or replacement announcement",
+            "text": "State Association=Bengal"
+          },
+          "sourceId": "ipl-2023-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023",
+              "ipl-2024",
+              "ipl-2025",
+              "ipl-2026"
+            ],
+            "type": "MULTI_SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Abishek Porel bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Abishek Porel bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Abishek Porel bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2026"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "RETAINED",
+            "page": null,
+            "row": "Abishek Porel",
+            "section": "Delhi Capitals",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2024-retention-article",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "Abishek Porel",
+            "section": "Delhi Capitals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": null,
+            "row": "Abishek Porel",
+            "section": "Delhi Capitals",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2026-retention-announcement",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2026"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "ad3b6e95",
+      "playerTeamSeasonIds": [
+        "pts:ad3b6e95:ipl-2023:team-delhi-capitals",
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:ad3b6e95:ipl-2025:team-delhi-capitals",
+        "pts:ad3b6e95:ipl-2026:team-delhi-capitals"
+      ],
+      "seasonIds": [
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "Tilak Varma",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "Tilak Varma",
+            "section": "Mumbai Indians",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "b0482a1d",
+      "playerTeamSeasonIds": [
+        "pts:b0482a1d:ipl-2025:team-mumbai-indians"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "india",
+      "canonicalDisplayName": "MP Yadav",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": null,
+            "row": "List Sr.No. 248 — Mayank Yadav",
+            "section": "Official player registration",
+            "table": "Player register or replacement announcement",
+            "text": "State Association=Delhi"
+          },
+          "sourceId": "ipl-2022-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024",
+              "ipl-2025",
+              "ipl-2026"
+            ],
+            "type": "MULTI_SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "MP Yadav bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "MP Yadav bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2026"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "RETAINED",
+            "page": null,
+            "row": "MP Yadav",
+            "section": "Lucknow Super Giants",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2024-retention-article",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 2,
+            "row": "MP Yadav",
+            "section": "Lucknow Super Giants",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": null,
+            "row": "MP Yadav",
+            "section": "Lucknow Super Giants",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2026-retention-announcement",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2026"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "b1ad996b",
+      "playerTeamSeasonIds": [
+        "pts:b1ad996b:ipl-2024:team-lucknow-super-giants",
+        "pts:b1ad996b:ipl-2025:team-lucknow-super-giants",
+        "pts:b1ad996b:ipl-2026:team-lucknow-super-giants"
+      ],
+      "seasonIds": [
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "Shubman Gill",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "Shubman Gill",
+            "section": "Gujarat Titans",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "b4b99816",
+      "playerTeamSeasonIds": [
+        "pts:b4b99816:ipl-2025:team-gujarat-titans"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "australia",
+      "canonicalDisplayName": "GJ Maxwell",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "AGREES",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=Australia",
+            "page": 1,
+            "row": "List Sr.No. 23 — Glenn Maxwell",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=blank"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "Country=Australia",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "australia",
+      "legacyIplRosterStatusLead": "OVERSEAS",
+      "playerId": "b681e71e",
+      "playerTeamSeasonIds": [
+        "pts:b681e71e:ipl-2025:team-punjab-kings"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "V Kohli",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 2,
+            "row": "V Kohli",
+            "section": "Royal Challengers Bengaluru",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "ba607b88",
+      "playerTeamSeasonIds": [
+        "pts:ba607b88:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "AD Russell",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": 2,
+            "row": "AD Russell",
+            "section": "Kolkata Knight Riders",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "west-indies",
+      "legacyIplRosterStatusLead": "OVERSEAS",
+      "playerId": "bbd41817",
+      "playerTeamSeasonIds": [
+        "pts:bbd41817:ipl-2025:team-kolkata-knight-riders"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "india",
+      "canonicalDisplayName": "Dhruv Jurel",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": null,
+            "row": "List Sr.No. 233 — Dhruv Jurel",
+            "section": "Official player registration",
+            "table": "Player register or replacement announcement",
+            "text": "State Association=Uttar Pradesh"
+          },
+          "sourceId": "ipl-2022-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023",
+              "ipl-2024",
+              "ipl-2025",
+              "ipl-2026"
+            ],
+            "type": "MULTI_SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Dhruv Jurel bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Dhruv Jurel bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Dhruv Jurel bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2026"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "RETAINED",
+            "page": null,
+            "row": "Dhruv Jurel",
+            "section": "Rajasthan Royals",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2023-retained-squads",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2023"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "RETAINED",
+            "page": null,
+            "row": "Dhruv Jurel",
+            "section": "Rajasthan Royals",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2024-retention-article",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "Dhruv Jurel",
+            "section": "Rajasthan Royals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": null,
+            "row": "Dhruv Jurel",
+            "section": "Rajasthan Royals",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2026-retention-announcement",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2026"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "bcf325d2",
+      "playerTeamSeasonIds": [
+        "pts:bcf325d2:ipl-2023:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2025:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2026:team-rajasthan-royals"
+      ],
+      "seasonIds": [
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "india",
+      "canonicalDisplayName": "Ramandeep Singh",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": null,
+            "row": "List Sr.No. 225 — Ramandeep Singh",
+            "section": "Auction register",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2022-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2022"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": null,
+            "row": "List Sr.No. 225 — Ramandeep Singh",
+            "section": "Official player registration",
+            "table": "Player register or replacement announcement",
+            "text": "State Association=Punjab"
+          },
+          "sourceId": "ipl-2022-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2022",
+              "ipl-2024",
+              "ipl-2025",
+              "ipl-2026"
+            ],
+            "type": "MULTI_SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": null,
+            "row": "List Sr.No. 52 — Ramandeep Singh",
+            "section": "Auction register",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2024-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Ramandeep Singh bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2022"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Ramandeep Singh bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2024"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Ramandeep Singh bounded registration interpretation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official season evidence and official cricket-nation registration reviewed together"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2026"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 2,
+            "row": "Ramandeep Singh",
+            "section": "Kolkata Knight Riders",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": null,
+            "row": "Ramandeep Singh",
+            "section": "Kolkata Knight Riders",
+            "table": "Official roster or registration record",
+            "text": "Season registration/roster entry"
+          },
+          "sourceId": "ipl-2026-retention-announcement",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2026"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "be24ead0",
+      "playerTeamSeasonIds": [
+        "pts:be24ead0:ipl-2022:team-mumbai-indians",
+        "pts:be24ead0:ipl-2024:team-kolkata-knight-riders",
+        "pts:be24ead0:ipl-2025:team-kolkata-knight-riders",
+        "pts:be24ead0:ipl-2026:team-kolkata-knight-riders"
+      ],
+      "seasonIds": [
+        "ipl-2022",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "RM Patidar",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 2,
+            "row": "RM Patidar",
+            "section": "Royal Challengers Bengaluru",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "c740ea83",
+      "playerTeamSeasonIds": [
+        "pts:c740ea83:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "Sandeep Sharma",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "Sandeep Sharma",
+            "section": "Rajasthan Royals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "ce820073",
+      "playerTeamSeasonIds": [
+        "pts:ce820073:ipl-2025:team-rajasthan-royals"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "B Sai Sudharsan",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "B Sai Sudharsan",
+            "section": "Gujarat Titans",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "d5130a30",
+      "playerTeamSeasonIds": [
+        "pts:d5130a30:ipl-2025:team-gujarat-titans"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "south-africa",
+      "canonicalDisplayName": "DA Miller",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "AGREES",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=South Africa",
+            "page": 1,
+            "row": "List Sr.No. 9 — David Miller",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=blank"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "Country=South Africa",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "south-africa",
+      "legacyIplRosterStatusLead": "OVERSEAS",
+      "playerId": "d67d5f00",
+      "playerTeamSeasonIds": [
+        "pts:d67d5f00:ipl-2025:team-lucknow-super-giants"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "HH Pandya",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "HH Pandya",
+            "section": "Mumbai Indians",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "dbe50b21",
+      "playerTeamSeasonIds": [
+        "pts:dbe50b21:ipl-2025:team-mumbai-indians"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "PJ Cummins",
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": 2,
+            "row": "PJ Cummins",
+            "section": "Sunrisers Hyderabad",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "ded9240e",
+      "playerTeamSeasonIds": [
+        "pts:ded9240e:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "Ravi Bishnoi",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 2,
+            "row": "Ravi Bishnoi",
+            "section": "Lucknow Super Giants",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "df064e1a",
+      "playerTeamSeasonIds": [
+        "pts:df064e1a:ipl-2025:team-lucknow-super-giants"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "india",
+      "canonicalDisplayName": "Avesh Khan",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": 1,
+            "row": "List Sr.No. 36 — Avesh Khan",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=MPCA"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Country=India",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "eef2536f",
+      "playerTeamSeasonIds": [
+        "pts:eef2536f:ipl-2025:team-lucknow-super-giants"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "Abhishek Sharma",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 2,
+            "row": "Abhishek Sharma",
+            "section": "Sunrisers Hyderabad",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "f29185a1",
+      "playerTeamSeasonIds": [
+        "pts:f29185a1:ipl-2025:team-sunrisers-hyderabad"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "RA Jadeja",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "LEGACY_AMBIGUOUS",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "RA Jadeja",
+            "section": "Chennai Super Kings",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": true,
+      "legacyCricketNationIdLead": "india",
+      "legacyIplRosterStatusLead": "INDIAN",
+      "playerId": "fe93fd9d",
+      "playerTeamSeasonIds": [
+        "pts:fe93fd9d:ipl-2025:team-chennai-super-kings"
+      ],
+      "seasonIds": [
+        "ipl-2025"
+      ]
+    }
+  ],
   "rows": [
     {
       "canonicalCricketNationId": "UNKNOWN",
@@ -118,9 +4130,27 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "TM Head",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": 2,
+            "row": "TM Head",
+            "section": "Sunrisers Hyderabad",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "Australia",
       "legacyCricketNationIdLead": "australia",
@@ -272,9 +4302,44 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "SA Yadav",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "SA Yadav",
+            "section": "Mumbai Indians",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -328,9 +4393,44 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "AR Patel",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "AR Patel",
+            "section": "Delhi Capitals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -340,11 +4440,46 @@
       "playerId": "2e171977"
     },
     {
-      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalCricketNationId": "india",
       "canonicalDisplayName": "B Kumar",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "SUPPORTED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": 2,
+            "row": "List Sr.No. 109 — Bhuvneshwar Kumar",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=UPCA"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Country=India",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -552,9 +4687,44 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "JJ Bumrah",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "JJ Bumrah",
+            "section": "Mumbai Indians",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -564,11 +4734,46 @@
       "playerId": "462411b3"
     },
     {
-      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalCricketNationId": "india",
       "canonicalDisplayName": "R Ashwin",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "SUPPORTED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": 1,
+            "row": "List Sr.No. 20 — R Ashwin",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=TNCA"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Country=India",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -580,9 +4785,44 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "MS Dhoni",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "MS Dhoni",
+            "section": "Chennai Super Kings",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -662,11 +4902,46 @@
       "playerId": "56ab442f"
     },
     {
-      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalCricketNationId": "india",
       "canonicalDisplayName": "YS Chahal",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "SUPPORTED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=India",
+            "page": 1,
+            "row": "List Sr.No. 7 — Yuzvendra Chahal",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=HCA"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "Country=India",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -860,9 +5135,44 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "RG Sharma",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "RG Sharma",
+            "section": "Mumbai Indians",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -1042,9 +5352,44 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "Kuldeep Yadav",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "Kuldeep Yadav",
+            "section": "Delhi Capitals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -1166,11 +5511,46 @@
       "playerId": "98ae73b1"
     },
     {
-      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalCricketNationId": "england",
       "canonicalDisplayName": "JC Buttler",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "SUPPORTED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=England",
+            "page": 1,
+            "row": "List Sr.No. 1 — Jos Buttler",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=blank"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "Country=England",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "England",
       "legacyCricketNationIdLead": "england",
@@ -1210,9 +5590,27 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "SP Narine",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": 2,
+            "row": "SP Narine",
+            "section": "Kolkata Knight Riders",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "West Indies",
       "legacyCricketNationIdLead": "west-indies",
@@ -1266,9 +5664,44 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "SV Samson",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "SV Samson",
+            "section": "Rajasthan Royals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -1404,11 +5837,46 @@
       "playerId": "b5da6c24"
     },
     {
-      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalCricketNationId": "australia",
       "canonicalDisplayName": "GJ Maxwell",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "SUPPORTED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=Australia",
+            "page": 1,
+            "row": "List Sr.No. 23 — Glenn Maxwell",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=blank"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "Country=Australia",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "Australia",
       "legacyCricketNationIdLead": "australia",
@@ -1448,9 +5916,44 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "V Kohli",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 2,
+            "row": "V Kohli",
+            "section": "Royal Challengers Bengaluru",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -1476,9 +5979,27 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "AD Russell",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "*",
+            "page": 2,
+            "row": "AD Russell",
+            "section": "Kolkata Knight Riders",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "West Indies",
       "legacyCricketNationIdLead": "west-indies",
@@ -1630,9 +6151,44 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "Sandeep Sharma",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "Sandeep Sharma",
+            "section": "Rajasthan Royals",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -1698,11 +6254,46 @@
       "playerId": "d2a989fc"
     },
     {
-      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalCricketNationId": "south-africa",
       "canonicalDisplayName": "DA Miller",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "OVERSEAS",
+      "comparisonStatus": "SUPPORTED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "Country=South Africa",
+            "page": 1,
+            "row": "List Sr.No. 9 — David Miller",
+            "section": "IPL 2025 Auction List - 15.11.2024",
+            "table": "Auction register",
+            "text": "State Association=blank"
+          },
+          "sourceId": "ipl-2025-auction-register",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "OVERSEAS",
+            "page": null,
+            "row": "Country=South Africa",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "Official Country/State Association interpreted under the bounded offline policy"
+          },
+          "sourceId": "policy-ipl-auction-country-to-roster-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "South Africa",
       "legacyCricketNationIdLead": "south-africa",
@@ -1770,9 +6361,44 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "HH Pandya",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "HH Pandya",
+            "section": "Mumbai Indians",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -2036,9 +6662,44 @@
     {
       "canonicalCricketNationId": "UNKNOWN",
       "canonicalDisplayName": "RA Jadeja",
-      "canonicalIplRosterStatus": "UNKNOWN",
-      "comparisonStatus": "UNVERIFIED",
-      "evidenceRefs": [],
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "PARTIALLY_VERIFIED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "UNMARKED => INDIAN",
+            "page": null,
+            "row": "Complete 46-row retention reconciliation",
+            "section": "Approved interpretation policy",
+            "table": null,
+            "text": "46/46 rows, 10/10 markers, team totals and official legend reconciled"
+          },
+          "sourceId": "policy-closed-overseas-marker-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "UNMARKED",
+            "page": 1,
+            "row": "RA Jadeja",
+            "section": "Chennai Super Kings",
+            "table": "IPL 2025 - Retained Players",
+            "text": "* = Overseas player"
+          },
+          "sourceId": "ipl-2025-retained-players-pdf",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2025"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
       "identityStatus": "MATCHED",
       "legacyCountry": "India",
       "legacyCricketNationIdLead": "india",
@@ -2062,14 +6723,14 @@
       "playerId": "ffe699c0"
     }
   ],
-  "schemaVersion": "ipl-country-overseas-legacy-migration/v2",
+  "schemaVersion": "ipl-country-overseas-legacy-migration/v3",
   "summary": {
     "conflicting": 0,
     "identityMatched": 147,
-    "partiallyVerified": 0,
+    "partiallyVerified": 14,
     "rows": 147,
-    "supported": 0,
+    "supported": 6,
     "unmatched": 0,
-    "unverified": 147
+    "unverified": 127
   }
 }
