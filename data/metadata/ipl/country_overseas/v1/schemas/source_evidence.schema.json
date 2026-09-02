@@ -15,11 +15,25 @@
         "null"
       ]
     },
+    "contentSha256": {
+      "pattern": "[0-9a-f]{64}",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "locator": {
       "minLength": 1,
       "type": "string"
     },
     "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "publicationDate": {
+      "pattern": "\\d{4}-\\d{2}-\\d{2}",
       "type": [
         "string",
         "null"
@@ -76,7 +90,9 @@
     "publisher",
     "title",
     "url",
+    "publicationDate",
     "accessedDate",
+    "contentSha256",
     "locator",
     "supports",
     "notes"

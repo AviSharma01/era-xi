@@ -60,7 +60,7 @@
   "foundationStatus": "READY_FOR_RESEARCH",
   "g2EligibleIdSetSha256": "c0fa9b89561698b0c50a5dacdd4333293c9a7f2f1018ce291f1023d13c6281f3",
   "g2GameInputReady": false,
-  "metadataManifestHash": "86a8c16add427eff701cc70fa4f4bf43990fe3d9ad4871e74ed19b41916fc9ab",
+  "metadataManifestHash": "1a91b6dca2af83045905dd603343ecc54071ac5091728d8157cd76fc96c34455",
   "metadataVersion": "ipl-country-overseas-metadata/v1",
   "schemaVersion": "ipl-country-overseas-validation/v1",
   "status": "passed"

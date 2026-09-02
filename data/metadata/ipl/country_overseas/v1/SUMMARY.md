@@ -1,6 +1,6 @@
 # IPL Country / Overseas Metadata v1
 
-Metadata manifest SHA-256: `86a8c16add427eff701cc70fa4f4bf43990fe3d9ad4871e74ed19b41916fc9ab`
+Metadata manifest SHA-256: `1a91b6dca2af83045905dd603343ecc54071ac5091728d8157cd76fc96c34455`
 
 ## Foundation
 
@@ -15,6 +15,6 @@ Metadata manifest SHA-256: `86a8c16add427eff701cc70fa4f4bf43990fe3d9ad4871e74ed1
 ## Status
 
 - The deterministic metadata foundation is ready for research.
-- No player country or IPL roster-status assertion has been approved in Stage 1.
+- No player country or IPL roster-status assertion has been approved.
 - Every G2 profile remains fail-closed because IPL roster status is UNKNOWN.
 - Classic 2016 and wicketkeeper metadata are outside this artifact family and remain unchanged.

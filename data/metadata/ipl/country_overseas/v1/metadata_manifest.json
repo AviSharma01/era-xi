@@ -10,16 +10,16 @@
     {
       "path": "player_metadata.jsonl",
       "rows": 816,
-      "schemaVersion": "ipl-country-overseas-player-row/v1",
-      "sha256": "36927340b363274bb0790e077b24ef791354088afdfe064cadec93758ab9351b",
-      "sizeBytes": 276679
+      "schemaVersion": "ipl-country-overseas-player-row/v3",
+      "sha256": "bdeab5a1ef521955ace1d37c4422eefad615eebbab131af753cb46c642e8e58a",
+      "sizeBytes": 317479
     },
     {
       "path": "player_team_season_metadata.jsonl",
       "rows": 3392,
-      "schemaVersion": "ipl-country-overseas-pts-row/v1",
-      "sha256": "43c75a8ea20d9aff1952c04b87e8e8922e9712b11fbdc224c31431a04c20d453",
-      "sizeBytes": 1697616
+      "schemaVersion": "ipl-country-overseas-pts-row/v3",
+      "sha256": "d8077cca79ddac7038259c6ce12b678badb89e3133b5e03d47a1587fbbb6ff1f",
+      "sizeBytes": 1867216
     },
     {
       "path": "g2_review_queue.json",
@@ -38,8 +38,8 @@
     {
       "path": "legacy_migration_report.json",
       "rows": 147,
-      "schemaVersion": "ipl-country-overseas-legacy-migration/v1",
-      "sha256": "28c348add29f016ac8c6a4077aeeda045f967520c82f642422c0202b1ab136cd",
+      "schemaVersion": "ipl-country-overseas-legacy-migration/v2",
+      "sha256": "29269996d673726f752ff745dccce8c58e0b3af990a84168d8a1a9cf76b7dfa9",
       "sizeBytes": 69306
     }
   ],
@@ -49,9 +49,9 @@
   "eligibilityVersion": "ipl-era-draft-eligibility/v1",
   "g2EligibleIdSetSha256": "c0fa9b89561698b0c50a5dacdd4333293c9a7f2f1018ce291f1023d13c6281f3",
   "legacyMetadataSha256": "8612b75cfbd40d99be6754f06fc867cc8e00b54d21874775f13c945e3c4c6405",
-  "manualMetadataSha256": "3c8ffb66d42410c0d71fe7fcb671e201755dcc02a79dc0d5c67198b4af6cddbe",
-  "metadataAggregateHash": "c93efc91ff1e6a787bc64a7eb8ed59b1c29fc171513e0baeb3fb4e463fa16e5b",
-  "metadataManifestHash": "86a8c16add427eff701cc70fa4f4bf43990fe3d9ad4871e74ed19b41916fc9ab",
+  "manualMetadataSha256": "d6c5279bc5b260506de60648094be76974eb1cd2d843887897c05ea7fbd2182b",
+  "metadataAggregateHash": "5be5df14aa37c5711384d837953afcbac8fd866204570b1c4c9b11ce68d351a7",
+  "metadataManifestHash": "1a91b6dca2af83045905dd603343ecc54071ac5091728d8157cd76fc96c34455",
   "metadataVersion": "ipl-country-overseas-metadata/v1",
   "schemaFiles": [
     {
@@ -65,15 +65,15 @@
       "path": "schemas/legacy_migration_report.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "61f10c70b3e970abfd185866100c565739d60fa4cfb32beef4a26939ef9171e9",
-      "sizeBytes": 4120
+      "sha256": "e47e1dd7e3a959e40e0697bb57e9fee57a83433414e5f6179cf1d8af00dabb14",
+      "sizeBytes": 9042
     },
     {
       "path": "schemas/manual_metadata.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "52ee1d329f02aa77c385115f5ebc22a21005051878b912bc8111167c18ff283c",
-      "sizeBytes": 8131
+      "sha256": "16abe9baa9a50f17f287ae554ae5776737d95fbc9e7251af29ef8e8efc5ba113",
+      "sizeBytes": 31829
     },
     {
       "path": "schemas/metadata_manifest.schema.json",
@@ -86,22 +86,22 @@
       "path": "schemas/player_default.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "e035be5c94dc27086a5d9b19f58828ccad795a35657fb023bea737b41346f533",
-      "sizeBytes": 1461
+      "sha256": "3f08cc62a1ff80d136f60a2d6fa345e20f62fd7568fd95f309d701ddc535b806",
+      "sizeBytes": 11490
     },
     {
       "path": "schemas/player_metadata.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "45a29aefccc45072affc6bd1fa627eeebae147fb84b433e7f60c8a3c617c0eab",
-      "sizeBytes": 1948
+      "sha256": "05d8f7d4be6d0cbc13e7e4d2a1a29aeaeee33ccf7c87381e014c01ef997d7307",
+      "sizeBytes": 10297
     },
     {
       "path": "schemas/player_team_season_metadata.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "4843875c58ecc40a1f13079e2c36dde109fabdaf4d8ef49ab96ce37bceb1a0b6",
-      "sizeBytes": 2491
+      "sha256": "e7bd0c9bc112b94394b99c0f41bad321de26a748fe463ba602c30fd61581cc48",
+      "sizeBytes": 10840
     },
     {
       "path": "schemas/review_disposition.schema.json",
@@ -121,15 +121,15 @@
       "path": "schemas/season_override.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "35558c78a79bc4c16c87ce7d5fc498087a709f156e55b20460e8eed3d86d687f",
-      "sizeBytes": 1581
+      "sha256": "dad09b5a9d7d89092dd11d1f6928d98e6ea10e2892b30f99c6f451fd8a4c0362",
+      "sizeBytes": 10594
     },
     {
       "path": "schemas/source_evidence.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "bf676242da5e74d3523398c698eee014b810e04e226a2ef08939ef1d313d61dd",
-      "sizeBytes": 1540
+      "sha256": "245439fbdf136e9c652bca41b0d90b47587fcc1905a599e29ea274ff0c83c9da",
+      "sizeBytes": 1834
     },
     {
       "path": "schemas/validation_report.schema.json",

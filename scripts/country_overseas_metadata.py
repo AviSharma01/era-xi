@@ -14,17 +14,17 @@ from scripts.identity_registry.schemas import SchemaValidationError, validate_in
 
 
 METADATA_VERSION = "ipl-country-overseas-metadata/v1"
-MANUAL_SCHEMA_VERSION = "ipl-country-overseas-manual/v1"
+MANUAL_SCHEMA_VERSION = "ipl-country-overseas-manual/v3"
 CATALOG_SCHEMA_VERSION = "ipl-cricket-nation-catalog/v1"
 CATALOG_VERSION = "ipl-cricket-nations/v1"
-SOURCE_SCHEMA_VERSION = "ipl-country-overseas-source/v1"
-PLAYER_DEFAULT_SCHEMA_VERSION = "ipl-country-overseas-player-default/v1"
-SEASON_OVERRIDE_SCHEMA_VERSION = "ipl-country-overseas-season-override/v1"
+SOURCE_SCHEMA_VERSION = "ipl-country-overseas-source/v2"
+PLAYER_DEFAULT_SCHEMA_VERSION = "ipl-country-overseas-player-default/v3"
+SEASON_OVERRIDE_SCHEMA_VERSION = "ipl-country-overseas-season-override/v3"
 DISPOSITION_SCHEMA_VERSION = "ipl-country-overseas-review-disposition/v1"
-PLAYER_ROW_SCHEMA_VERSION = "ipl-country-overseas-player-row/v1"
-PTS_ROW_SCHEMA_VERSION = "ipl-country-overseas-pts-row/v1"
+PLAYER_ROW_SCHEMA_VERSION = "ipl-country-overseas-player-row/v3"
+PTS_ROW_SCHEMA_VERSION = "ipl-country-overseas-pts-row/v3"
 QUEUE_SCHEMA_VERSION = "ipl-country-overseas-review-queue/v1"
-LEGACY_REPORT_SCHEMA_VERSION = "ipl-country-overseas-legacy-migration/v1"
+LEGACY_REPORT_SCHEMA_VERSION = "ipl-country-overseas-legacy-migration/v2"
 MANIFEST_SCHEMA_VERSION = "ipl-country-overseas-manifest/v1"
 VALIDATION_SCHEMA_VERSION = "ipl-country-overseas-validation/v1"
 
@@ -147,7 +147,42 @@ def build_schemas() -> dict[str, dict[str, Any]]:
     nullable_string = {"type": ["string", "null"]}
     integer = {"type": "integer", "minimum": 0}
     string_array = _array(_string(), unique=True)
-    evidence_array = _array(_string(pattern=r"source:.+"), unique=True)
+    nullable_positive_integer = {"type": ["integer", "null"], "minimum": 1}
+    evidence_locator = _object({
+        "page": nullable_positive_integer,
+        "section": nullable_string,
+        "table": nullable_string,
+        "row": nullable_string,
+        "observedValue": nullable_string,
+        "text": nullable_string,
+    })
+    season_scope = _object({
+        "type": _string(enum=["SEASON"]),
+        "seasonIds": _array(
+            _string(pattern=r"ipl-[0-9]{4}"), unique=True, minimum=1
+        ),
+    })
+    multi_season_scope = _object({
+        "type": _string(enum=["MULTI_SEASON"]),
+        "seasonIds": _array(
+            _string(pattern=r"ipl-[0-9]{4}"), unique=True, minimum=2
+        ),
+    })
+    player_default_scope = _object({
+        "type": _string(enum=["PLAYER_DEFAULT"]),
+        "screenedSeasonIds": _array(
+            _string(pattern=r"ipl-[0-9]{4}"), unique=True, minimum=1
+        ),
+    })
+    evidence_temporal_scope = {
+        "oneOf": [season_scope, multi_season_scope, player_default_scope]
+    }
+    evidence_reference = _object({
+        "sourceId": _string(pattern=r"[a-z0-9]+(?:[-:][a-z0-9]+)*"),
+        "locator": evidence_locator,
+        "temporalScope": evidence_temporal_scope,
+    })
+    evidence_array = _array(evidence_reference, unique=True)
 
     nation = _object({
         "cricketNationId": _string(pattern=r"[a-z0-9]+(?:-[a-z0-9]+)*"),
@@ -173,7 +208,9 @@ def build_schemas() -> dict[str, dict[str, Any]]:
         "publisher": _string(),
         "title": _string(),
         "url": nullable_string,
+        "publicationDate": {"type": ["string", "null"], "pattern": r"\d{4}-\d{2}-\d{2}"},
         "accessedDate": {"type": ["string", "null"], "pattern": r"\d{4}-\d{2}-\d{2}"},
+        "contentSha256": {"type": ["string", "null"], "pattern": r"[0-9a-f]{64}"},
         "locator": _string(),
         "supports": _array(_string(enum=["CRICKET_NATION", "IPL_ROSTER_STATUS"]), unique=True, minimum=1),
         "notes": nullable_string,
@@ -182,16 +219,31 @@ def build_schemas() -> dict[str, dict[str, Any]]:
         "playerId": _string(),
         "cricketNationId": _string(),
         "iplRosterStatus": _string(enum=ROSTER_STATUSES),
-        "resolutionMethod": _string(enum=RESOLUTION_METHODS),
-        "cricketNationSourceIds": string_array,
-        "rosterStatusSourceIds": string_array,
+        "nationResolutionMethod": _string(enum=RESOLUTION_METHODS),
+        "rosterStatusResolutionMethod": _string(enum=RESOLUTION_METHODS),
+        "cricketNationEvidenceRefs": evidence_array,
+        "rosterStatusEvidenceRefs": evidence_array,
         "reviewStatus": _string(enum=["APPROVED"]),
         "notes": nullable_string,
     }
-    player_default = _object(assertion_common)
+    default_promotion = _object({
+        "screeningStatus": _string(enum=["FULL_COMMITTED_SPAN_SCREENED"]),
+        "screenedSeasonIds": _array(
+            _string(pattern=r"ipl-[0-9]{4}"), unique=True, minimum=1
+        ),
+        "contradictoryEvidenceFound": {"type": "boolean"},
+        "unresolvedTemporalChange": {"type": "boolean"},
+        "rationale": _string(),
+    })
+    player_default = _object({
+        **assertion_common,
+        "temporalScope": player_default_scope,
+        "defaultPromotion": default_promotion,
+    })
     season_override = _object({
         **assertion_common,
         "seasonId": _string(pattern=r"ipl-[0-9]{4}"),
+        "temporalScope": season_scope,
     })
     disposition = _object({
         "dispositionId": _string(),
@@ -218,7 +270,8 @@ def build_schemas() -> dict[str, dict[str, Any]]:
         "canonicalDisplayName": _string(),
         "cricketNationId": _string(),
         "iplRosterStatus": _string(enum=ROSTER_STATUSES),
-        "resolutionMethod": _string(enum=RESOLUTION_METHODS),
+        "nationResolutionMethod": _string(enum=RESOLUTION_METHODS),
+        "rosterStatusResolutionMethod": _string(enum=RESOLUTION_METHODS),
         "cricketNationEvidenceRefs": evidence_array,
         "rosterStatusEvidenceRefs": evidence_array,
         "reviewState": _string(enum=REVIEW_STATES),
@@ -234,7 +287,8 @@ def build_schemas() -> dict[str, dict[str, Any]]:
         "cricketNationId": _string(),
         "iplRosterStatus": _string(enum=ROSTER_STATUSES),
         "classificationBasis": _string(enum=CLASSIFICATION_BASES),
-        "resolutionMethod": _string(enum=RESOLUTION_METHODS),
+        "nationResolutionMethod": _string(enum=RESOLUTION_METHODS),
+        "rosterStatusResolutionMethod": _string(enum=RESOLUTION_METHODS),
         "cricketNationEvidenceRefs": evidence_array,
         "rosterStatusEvidenceRefs": evidence_array,
         "reviewState": _string(enum=REVIEW_STATES),
@@ -446,8 +500,25 @@ def _load_inputs(
     )
 
 
-def _source_refs(source_ids: list[str]) -> list[str]:
-    return [f"source:{source_id}" for source_id in sorted(source_ids)]
+def _sorted_evidence_refs(refs: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return sorted(refs, key=canonical_json_bytes)
+
+
+def _evidence_source_ids(refs: list[dict[str, Any]]) -> set[str]:
+    return {row["sourceId"] for row in refs}
+
+
+def _temporal_scope_seasons(scope: dict[str, Any]) -> list[str]:
+    if scope["type"] == "PLAYER_DEFAULT":
+        return scope["screenedSeasonIds"]
+    return scope["seasonIds"]
+
+
+def _assert_canonical_seasons(season_ids: list[str], label: str) -> None:
+    if season_ids != sorted(set(season_ids)):
+        raise CountryOverseasMetadataError(
+            f"{label} season IDs must be unique and canonically sorted"
+        )
 
 
 def _validate_manual_cross_references(
@@ -455,6 +526,7 @@ def _validate_manual_cross_references(
     catalog: dict[str, Any],
     player_by_id: dict[str, dict[str, Any]],
     valid_season_ids: set[str],
+    committed_seasons_by_player: dict[str, set[str]],
 ) -> tuple[
     dict[str, dict[str, Any]],
     dict[tuple[str, str], dict[str, Any]],
@@ -486,77 +558,182 @@ def _validate_manual_cross_references(
                 f"Source URL and accessedDate must either both be set or both be null: {source['sourceId']}"
             )
 
-    def validate_assertion(row: dict[str, Any], label: str) -> None:
+    def validate_evidence_refs(
+        refs: list[dict[str, Any]], label: str, supported_claim: str
+    ) -> set[str]:
+        rendered = [canonical_json_bytes(ref) for ref in refs]
+        _assert_unique(rendered, f"{label} evidence references")
+        referenced_sources: set[str] = set()
+        covered_seasons: set[str] = set()
+        for index, ref in enumerate(refs):
+            ref_label = f"{label} evidence reference {index}"
+            source_id = ref["sourceId"]
+            referenced_sources.add(source_id)
+            if source_id not in source_ids:
+                raise CountryOverseasMetadataError(
+                    f"{ref_label} references unknown source {source_id}"
+                )
+            if supported_claim not in source_by_id[source_id]["supports"]:
+                raise CountryOverseasMetadataError(
+                    f"{ref_label} source does not support {supported_claim}: {source_id}"
+                )
+            locator = ref["locator"]
+            if not any(value is not None for value in locator.values()):
+                raise CountryOverseasMetadataError(f"{ref_label} has an empty locator")
+            scope = ref["temporalScope"]
+            scope_seasons = _temporal_scope_seasons(scope)
+            _assert_canonical_seasons(scope_seasons, ref_label)
+            unknown_seasons = set(scope_seasons) - valid_season_ids
+            if unknown_seasons:
+                raise CountryOverseasMetadataError(
+                    f"{ref_label} references unknown seasons {sorted(unknown_seasons)}"
+                )
+            if scope["type"] == "SEASON" and len(scope_seasons) != 1:
+                raise CountryOverseasMetadataError(
+                    f"{ref_label} SEASON scope must contain exactly one season"
+                )
+            if scope["type"] == "MULTI_SEASON" and len(scope_seasons) < 2:
+                raise CountryOverseasMetadataError(
+                    f"{ref_label} MULTI_SEASON scope must contain at least two seasons"
+                )
+            covered_seasons.update(scope_seasons)
+        return covered_seasons
+
+    def validate_assertion(
+        row: dict[str, Any], label: str
+    ) -> tuple[set[str], set[str]]:
         player_id = row["playerId"]
         if player_id not in player_by_id:
             raise CountryOverseasMetadataError(f"{label} references unknown player {player_id}")
         nation_id = row["cricketNationId"]
         if nation_id != "UNKNOWN" and nation_id not in nation_ids:
             raise CountryOverseasMetadataError(f"{label} references unknown cricket nation {nation_id}")
-        nation_sources = set(row["cricketNationSourceIds"])
-        roster_sources = set(row["rosterStatusSourceIds"])
-        missing_sources = (nation_sources | roster_sources) - source_ids
-        if missing_sources:
-            raise CountryOverseasMetadataError(f"{label} references unknown sources {sorted(missing_sources)}")
-        wrong_nation_sources = sorted(
-            source_id
-            for source_id in nation_sources
-            if "CRICKET_NATION" not in source_by_id[source_id]["supports"]
+        nation_refs = row["cricketNationEvidenceRefs"]
+        roster_refs = row["rosterStatusEvidenceRefs"]
+        nation_coverage = validate_evidence_refs(
+            nation_refs, f"{label} cricket-nation", "CRICKET_NATION"
         )
-        wrong_roster_sources = sorted(
-            source_id
-            for source_id in roster_sources
-            if "IPL_ROSTER_STATUS" not in source_by_id[source_id]["supports"]
+        roster_coverage = validate_evidence_refs(
+            roster_refs, f"{label} roster-status", "IPL_ROSTER_STATUS"
         )
-        if wrong_nation_sources:
-            raise CountryOverseasMetadataError(
-                f"{label} uses sources that do not support cricket nation: {wrong_nation_sources}"
-            )
-        if wrong_roster_sources:
-            raise CountryOverseasMetadataError(
-                f"{label} uses sources that do not support IPL roster status: {wrong_roster_sources}"
-            )
-        if nation_id == "UNKNOWN" and nation_sources:
-            raise CountryOverseasMetadataError(f"{label} gives evidence to an UNKNOWN cricket nation")
-        if nation_id != "UNKNOWN" and not nation_sources:
-            raise CountryOverseasMetadataError(f"{label} has a known cricket nation without evidence")
-        roster_status = row["iplRosterStatus"]
-        if roster_status == "UNKNOWN":
-            if roster_sources:
-                raise CountryOverseasMetadataError(f"{label} gives evidence to an UNKNOWN roster status")
-            if row["resolutionMethod"] != "UNRESOLVED":
-                raise CountryOverseasMetadataError(f"{label} has UNKNOWN roster status with a resolved method")
-        else:
-            if not roster_sources:
-                raise CountryOverseasMetadataError(f"{label} has a known roster status without evidence")
-            if row["resolutionMethod"] == "UNRESOLVED":
-                raise CountryOverseasMetadataError(f"{label} has a known roster status with UNRESOLVED method")
-            roster_source_types = {
-                source_by_id[source_id]["sourceType"] for source_id in roster_sources
-            }
-            if (
-                row["resolutionMethod"] == "DIRECT_IPL_DESIGNATION"
-                and "OFFICIAL_IPL" not in roster_source_types
-            ):
+        nation_method = row["nationResolutionMethod"]
+        roster_method = row["rosterStatusResolutionMethod"]
+
+        def validate_field_method(
+            *,
+            field_label: str,
+            is_unknown: bool,
+            method: str,
+            refs: list[dict[str, Any]],
+            source_ids_for_field: set[str],
+        ) -> None:
+            if is_unknown:
+                if refs:
+                    raise CountryOverseasMetadataError(
+                        f"{label} gives evidence to an UNKNOWN {field_label}"
+                    )
+                if method != "UNRESOLVED":
+                    raise CountryOverseasMetadataError(
+                        f"{label} has UNKNOWN {field_label} with a resolved method"
+                    )
+                return
+            if not refs:
                 raise CountryOverseasMetadataError(
-                    f"{label} uses DIRECT_IPL_DESIGNATION without an OFFICIAL_IPL source"
+                    f"{label} has a known {field_label} without evidence"
                 )
-            if (
-                row["resolutionMethod"] == "POLICY_DERIVED"
-                and "INTERNAL_POLICY" not in roster_source_types
-            ):
+            if method == "UNRESOLVED":
                 raise CountryOverseasMetadataError(
-                    f"{label} uses POLICY_DERIVED without an INTERNAL_POLICY source"
+                    f"{label} has a known {field_label} with UNRESOLVED method"
+                )
+            source_types = {
+                source_by_id[source_id]["sourceType"]
+                for source_id in source_ids_for_field
+            }
+            if method == "DIRECT_IPL_DESIGNATION" and "OFFICIAL_IPL" not in source_types:
+                raise CountryOverseasMetadataError(
+                    f"{label} uses DIRECT_IPL_DESIGNATION for {field_label} "
+                    "without an OFFICIAL_IPL source"
+                )
+            if method == "POLICY_DERIVED" and "INTERNAL_POLICY" not in source_types:
+                raise CountryOverseasMetadataError(
+                    f"{label} uses POLICY_DERIVED for {field_label} "
+                    "without an INTERNAL_POLICY source"
                 )
 
+        validate_field_method(
+            field_label="cricket nation",
+            is_unknown=nation_id == "UNKNOWN",
+            method=nation_method,
+            refs=nation_refs,
+            source_ids_for_field=_evidence_source_ids(nation_refs),
+        )
+        roster_status = row["iplRosterStatus"]
+        validate_field_method(
+            field_label="roster status",
+            is_unknown=roster_status == "UNKNOWN",
+            method=roster_method,
+            refs=roster_refs,
+            source_ids_for_field=_evidence_source_ids(roster_refs),
+        )
+        return nation_coverage, roster_coverage
+
     for row in defaults:
-        validate_assertion(row, f"Player default {row['playerId']}")
+        label = f"Player default {row['playerId']}"
+        nation_coverage, roster_coverage = validate_assertion(row, label)
+        player_id = row["playerId"]
+        committed_seasons = committed_seasons_by_player.get(player_id, set())
+        scope = row["temporalScope"]
+        if scope["type"] != "PLAYER_DEFAULT":
+            raise CountryOverseasMetadataError(f"{label} must use PLAYER_DEFAULT temporal scope")
+        screened_seasons = scope["screenedSeasonIds"]
+        _assert_canonical_seasons(screened_seasons, f"{label} temporal scope")
+        promotion = row["defaultPromotion"]
+        promotion_seasons = promotion["screenedSeasonIds"]
+        _assert_canonical_seasons(promotion_seasons, f"{label} promotion")
+        if set(screened_seasons) != committed_seasons or set(promotion_seasons) != committed_seasons:
+            raise CountryOverseasMetadataError(
+                f"{label} must screen the full committed season span {sorted(committed_seasons)}"
+            )
+        if screened_seasons != promotion_seasons:
+            raise CountryOverseasMetadataError(
+                f"{label} temporal scope and promotion screening seasons disagree"
+            )
+        if promotion["contradictoryEvidenceFound"]:
+            raise CountryOverseasMetadataError(
+                f"{label} cannot be promoted while contradictory evidence exists"
+            )
+        if promotion["unresolvedTemporalChange"]:
+            raise CountryOverseasMetadataError(
+                f"{label} cannot be promoted with an unresolved temporal change"
+            )
+        if row["cricketNationId"] != "UNKNOWN" and nation_coverage != committed_seasons:
+            raise CountryOverseasMetadataError(
+                f"{label} cricket-nation evidence does not cover the full committed span"
+            )
+        if row["iplRosterStatus"] != "UNKNOWN" and roster_coverage != committed_seasons:
+            raise CountryOverseasMetadataError(
+                f"{label} roster-status evidence does not cover the full committed span"
+            )
     for row in overrides:
         if row["seasonId"] not in valid_season_ids:
             raise CountryOverseasMetadataError(
                 f"Season override references unknown season {row['seasonId']}"
             )
-        validate_assertion(row, f"Season override {row['playerId']} {row['seasonId']}")
+        label = f"Season override {row['playerId']} {row['seasonId']}"
+        nation_coverage, roster_coverage = validate_assertion(row, label)
+        scope = row["temporalScope"]
+        if scope["type"] != "SEASON" or scope["seasonIds"] != [row["seasonId"]]:
+            raise CountryOverseasMetadataError(
+                f"{label} temporal scope must match exactly its seasonId"
+            )
+        if row["cricketNationId"] != "UNKNOWN" and row["seasonId"] not in nation_coverage:
+            raise CountryOverseasMetadataError(
+                f"{label} cricket-nation evidence does not cover its season"
+            )
+        if row["iplRosterStatus"] != "UNKNOWN" and row["seasonId"] not in roster_coverage:
+            raise CountryOverseasMetadataError(
+                f"{label} roster-status evidence does not cover its season"
+            )
 
     disposition_subjects: set[tuple[str, str | None]] = set()
     for row in dispositions:
@@ -601,12 +778,21 @@ def resolve_metadata_rows(
     manual: dict[str, Any],
     catalog: dict[str, Any],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    schemas = build_schemas()
+    try:
+        validate_instance(manual, schemas["manual_metadata.schema.json"])
+        validate_instance(catalog, schemas["cricket_nation_catalog.schema.json"])
+    except SchemaValidationError as error:
+        raise CountryOverseasMetadataError(f"Manual input schema failure: {error}") from error
     player_by_id = {row["playerId"]: row for row in players}
     if len(player_by_id) != len(players):
         raise CountryOverseasMetadataError("Canonical registry contains duplicate player IDs")
     valid_season_ids = {row["seasonId"] for row in eligibility_rows}
+    committed_seasons_by_player: dict[str, set[str]] = defaultdict(set)
+    for row in eligibility_rows:
+        committed_seasons_by_player[row["playerId"]].add(row["seasonId"])
     default_by_id, override_by_key, disposition_subjects = _validate_manual_cross_references(
-        manual, catalog, player_by_id, valid_season_ids
+        manual, catalog, player_by_id, valid_season_ids, committed_seasons_by_player
     )
 
     generated_players: list[dict[str, Any]] = []
@@ -616,15 +802,17 @@ def resolve_metadata_rows(
         if assertion is None:
             nation_id = "UNKNOWN"
             roster_status = "UNKNOWN"
-            resolution_method = "UNRESOLVED"
+            nation_resolution_method = "UNRESOLVED"
+            roster_resolution_method = "UNRESOLVED"
             nation_refs: list[str] = []
             roster_refs: list[str] = []
         else:
             nation_id = assertion["cricketNationId"]
             roster_status = assertion["iplRosterStatus"]
-            resolution_method = assertion["resolutionMethod"]
-            nation_refs = _source_refs(assertion["cricketNationSourceIds"])
-            roster_refs = _source_refs(assertion["rosterStatusSourceIds"])
+            nation_resolution_method = assertion["nationResolutionMethod"]
+            roster_resolution_method = assertion["rosterStatusResolutionMethod"]
+            nation_refs = _sorted_evidence_refs(assertion["cricketNationEvidenceRefs"])
+            roster_refs = _sorted_evidence_refs(assertion["rosterStatusEvidenceRefs"])
         generated_players.append({
             "schemaVersion": PLAYER_ROW_SCHEMA_VERSION,
             "metadataVersion": METADATA_VERSION,
@@ -632,7 +820,8 @@ def resolve_metadata_rows(
             "canonicalDisplayName": player["canonicalDisplayName"],
             "cricketNationId": nation_id,
             "iplRosterStatus": roster_status,
-            "resolutionMethod": resolution_method,
+            "nationResolutionMethod": nation_resolution_method,
+            "rosterStatusResolutionMethod": roster_resolution_method,
             "cricketNationEvidenceRefs": nation_refs,
             "rosterStatusEvidenceRefs": roster_refs,
             "reviewState": _review_state(
@@ -656,7 +845,8 @@ def resolve_metadata_rows(
             basis = "PLAYER_DEFAULT"
             nation_id = source["cricketNationId"]
             roster_status = source["iplRosterStatus"]
-            resolution_method = source["resolutionMethod"]
+            nation_resolution_method = source["nationResolutionMethod"]
+            roster_resolution_method = source["rosterStatusResolutionMethod"]
             nation_refs = source["cricketNationEvidenceRefs"]
             roster_refs = source["rosterStatusEvidenceRefs"]
             review_state = source["reviewState"]
@@ -664,9 +854,10 @@ def resolve_metadata_rows(
             basis = "SEASON_OVERRIDE"
             nation_id = override["cricketNationId"]
             roster_status = override["iplRosterStatus"]
-            resolution_method = override["resolutionMethod"]
-            nation_refs = _source_refs(override["cricketNationSourceIds"])
-            roster_refs = _source_refs(override["rosterStatusSourceIds"])
+            nation_resolution_method = override["nationResolutionMethod"]
+            roster_resolution_method = override["rosterStatusResolutionMethod"]
+            nation_refs = _sorted_evidence_refs(override["cricketNationEvidenceRefs"])
+            roster_refs = _sorted_evidence_refs(override["rosterStatusEvidenceRefs"])
             review_state = _review_state(
                 cricket_nation_id=nation_id,
                 roster_status=roster_status,
@@ -683,7 +874,8 @@ def resolve_metadata_rows(
             "cricketNationId": nation_id,
             "iplRosterStatus": roster_status,
             "classificationBasis": basis,
-            "resolutionMethod": resolution_method,
+            "nationResolutionMethod": nation_resolution_method,
+            "rosterStatusResolutionMethod": roster_resolution_method,
             "cricketNationEvidenceRefs": nation_refs,
             "rosterStatusEvidenceRefs": roster_refs,
             "reviewState": review_state,
@@ -852,9 +1044,16 @@ def _build_legacy_report(
             "comparisonStatus": status,
             "canonicalCricketNationId": canonical["cricketNationId"],
             "canonicalIplRosterStatus": canonical["iplRosterStatus"],
-            "evidenceRefs": sorted(set(
-                canonical["cricketNationEvidenceRefs"] + canonical["rosterStatusEvidenceRefs"]
-            )),
+            "evidenceRefs": _sorted_evidence_refs([
+                json.loads(value)
+                for value in sorted({
+                    canonical_json_bytes(ref).decode("utf-8")
+                    for ref in (
+                        canonical["cricketNationEvidenceRefs"]
+                        + canonical["rosterStatusEvidenceRefs"]
+                    )
+                })
+            ]),
         })
     results.sort(key=lambda row: row["playerId"])
     return {
@@ -1089,7 +1288,7 @@ def build_country_overseas_metadata_files(
         "## Status",
         "",
         "- The deterministic metadata foundation is ready for research.",
-        "- No player country or IPL roster-status assertion has been approved in Stage 1.",
+        "- No player country or IPL roster-status assertion has been approved.",
         "- Every G2 profile remains fail-closed because IPL roster status is UNKNOWN.",
         "- Classic 2016 and wicketkeeper metadata are outside this artifact family and remain unchanged.",
         "",
