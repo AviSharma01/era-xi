@@ -45,6 +45,12 @@
     },
     {
       "aliases": [],
+      "cricketNationId": "nepal",
+      "displayName": "Nepal",
+      "notes": []
+    },
+    {
+      "aliases": [],
       "cricketNationId": "new-zealand",
       "displayName": "New Zealand",
       "notes": []
