@@ -3,6 +3,12 @@
   "catalogVersion": "ipl-cricket-nations/v1",
   "nations": [
     {
+      "cricketNationId": "afghanistan",
+      "displayName": "Afghanistan",
+      "aliases": [],
+      "notes": []
+    },
+    {
       "cricketNationId": "australia",
       "displayName": "Australia",
       "aliases": [],

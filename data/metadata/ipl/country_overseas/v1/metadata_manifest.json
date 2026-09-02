@@ -2,10 +2,10 @@
   "artifacts": [
     {
       "path": "cricket_nations.json",
-      "rows": 8,
+      "rows": 9,
       "schemaVersion": "ipl-cricket-nation-catalog/v1",
-      "sha256": "793928b042188484db46d273f81865e356643df02c3a870776cc8a7f734c047d",
-      "sizeBytes": 1281
+      "sha256": "e5f8d56d65aca551899635b1323da9440e5e77988719bdfd00a4eab9ff597ca9",
+      "sizeBytes": 1409
     },
     {
       "path": "player_metadata.jsonl",
@@ -18,15 +18,15 @@
       "path": "player_team_season_metadata.jsonl",
       "rows": 3392,
       "schemaVersion": "ipl-country-overseas-pts-row/v3",
-      "sha256": "ddb6846b485314fd4e947247a47fc1bab09265dc995d9a5e9a70e57671bfd616",
-      "sizeBytes": 1947456
+      "sha256": "6233ea4ece1e532529232f42ba0c352e9e792564da88d0c11330c979f1778bd4",
+      "sizeBytes": 2061118
     },
     {
       "path": "g2_review_queue.json",
-      "rows": 717,
+      "rows": 710,
       "schemaVersion": "ipl-country-overseas-review-queue/v1",
-      "sha256": "4088e9696e4338b01c3781555e4c83f6e2fa6fc1ee258b24a629df0c1c4d3f76",
-      "sizeBytes": 482446
+      "sha256": "ff86044d1fc57ae9cd44d15f7b91031d8687d66a0d18e436dfff305b3ae9732c",
+      "sizeBytes": 470816
     },
     {
       "path": "non_g2_backlog.json",
@@ -39,19 +39,19 @@
       "path": "legacy_migration_report.json",
       "rows": 147,
       "schemaVersion": "ipl-country-overseas-legacy-migration/v3",
-      "sha256": "8f546f5d17b268da60b3357dbeecd5b5c350a4aec48e9711238fdf48fd6b9c23",
-      "sizeBytes": 212294
+      "sha256": "ee5940fae3dc7f1df8570c0372c73d26767dd2aae5afc981cc538435052fef8b",
+      "sizeBytes": 425674
     }
   ],
-  "cricketNationCatalogSha256": "bed19bb4970f12ba36c415a4c3a50804587d7f3b19b169feeea00d78b4450200",
+  "cricketNationCatalogSha256": "9f6c2fe48af780ed1732e86359a40c468ae6a0dbbef6682bd845f9c675bf7aa7",
   "eligibilityManifestFileSha256": "6b8cde98ed6c99d99120b558650ce6fbe9523c6f839d84e61d1fabddeeddd50b",
   "eligibilityManifestHash": "b3e6393851e999c23abbc120083b52e8bc444e747d9be7316e0ca73e07be38b6",
   "eligibilityVersion": "ipl-era-draft-eligibility/v1",
   "g2EligibleIdSetSha256": "c0fa9b89561698b0c50a5dacdd4333293c9a7f2f1018ce291f1023d13c6281f3",
   "legacyMetadataSha256": "8612b75cfbd40d99be6754f06fc867cc8e00b54d21874775f13c945e3c4c6405",
-  "manualMetadataSha256": "242d59df2638415197cd607ff008a8adcfb7c7094baa7eef02cfc21da2219776",
-  "metadataAggregateHash": "07677ce0400f23016b65e9935fe27a44fd8eafb3e44050c1e811799afbd71184",
-  "metadataManifestHash": "57080adfeac866444efbe52de73e5e4533c7131871452c92f2f16c071e5c76f4",
+  "manualMetadataSha256": "72a3b2d7306cd17189f34b18f4ac3100c1ddda7083d12fe6d597b7cefb7dbefa",
+  "metadataAggregateHash": "9c851ed7332f21e966a44f06f5b219c691eeb73956a992abd94ba178e4f843ad",
+  "metadataManifestHash": "6313217438b9fccae27b1d2135ae1cca2f061aa3cbcd1047429300401fc05a91",
   "metadataVersion": "ipl-country-overseas-metadata/v1",
   "schemaFiles": [
     {

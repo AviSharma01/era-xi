@@ -585,45 +585,31 @@ class RepositoryIntegrationTests(unittest.TestCase):
         cls.legacy = json.loads(cls.files["legacy_migration_report.json"])
         cls.manifest = json.loads(cls.files["metadata_manifest.json"])
 
-    def test_exact_population_and_approved_pilot_only(self) -> None:
+    def test_exact_population_and_complete_2025_g2_coverage(self) -> None:
         self.assertEqual(len(self.players), 816)
         self.assertEqual(len(self.profiles), 3392)
         self.assertEqual(len({row["playerId"] for row in self.players}), 816)
         self.assertEqual(len({row["playerTeamSeasonId"] for row in self.profiles}), 3392)
-        # Stage 2D intentionally uses season overrides only; no player default is implied.
+        # Population intentionally uses season overrides only; no player default is implied.
         self.assertTrue(all(row["cricketNationId"] == "UNKNOWN" for row in self.players))
         self.assertTrue(all(row["iplRosterStatus"] == "UNKNOWN" for row in self.players))
         resolved = [row for row in self.profiles if row["iplRosterStatus"] != "UNKNOWN"]
-        self.assertEqual(len(resolved), 86)
+        self.assertEqual(len(resolved), 205)
         self.assertTrue(all(row["classificationBasis"] == "SEASON_OVERRIDE" for row in resolved))
-        self.assertEqual(sum(row["cricketNationId"] != "UNKNOWN" for row in resolved), 50)
+        self.assertEqual(sum(row["cricketNationId"] != "UNKNOWN" for row in resolved), 169)
         self.assertEqual(
             sum(row["rosterStatusResolutionMethod"] == "DIRECT_IPL_DESIGNATION" for row in resolved),
             12,
         )
         self.assertEqual(
             sum(row["rosterStatusResolutionMethod"] == "POLICY_DERIVED" for row in resolved),
-            74,
+            193,
         )
         self.assertEqual(
             sum(row["reviewState"] == "ROSTER_APPROVED_NATION_UNRESOLVED" for row in resolved),
             36,
         )
 
-        pilot_2025_ids = {
-            "45a43fe2", "64839cb3", "a4e37e47", "fe93fd9d", "4a8a2e3b",
-            "2e171977", "8d2c70ad", "85b3fab2", "ad3b6e95", "5f547c8b",
-            "b4b99816", "d5130a30", "39a2dfa8", "7dcb9bc9", "0a509d6b",
-            "5b7ab5a9", "9d430b40", "bbd41817", "77b1aa15", "be24ead0",
-            "3241e3fd", "df064e1a", "b1ad996b", "872b03f7", "462411b3",
-            "271f83cd", "dbe50b21", "740742ef", "b0482a1d", "26989d80",
-            "9418198b", "a4cc73aa", "6c19c6e5", "04a418e8", "bcf325d2",
-            "48a1d7b7", "ce820073", "ba607b88", "c740ea83", "7210d461",
-            "ded9240e", "f29185a1", "aad0c365", "235c2bb6", "12b610c2",
-            "99b75528", "244048f6", "57ee1fde", "50c6bc2b", "d67d5f00",
-            "2f49c897", "495d42a5", "b681e71e", "3d284ca3", "eef2536f",
-            "81c36ee9", "2e81a32d",
-        }
         full_spans = {
             "b1ad996b": {"ipl-2024", "ipl-2025", "ipl-2026"},
             "85b3fab2": {"ipl-2023", "ipl-2024", "ipl-2025", "ipl-2026"},
@@ -636,15 +622,26 @@ class RepositoryIntegrationTests(unittest.TestCase):
             "7210d461": {"ipl-2022", "ipl-2023", "ipl-2024", "ipl-2025"},
             "be24ead0": {"ipl-2022", "ipl-2024", "ipl-2025", "ipl-2026"},
         }
+        eligible_2025_ids = {
+            row["playerTeamSeasonId"]
+            for row in (
+                json.loads(line)
+                for line in Path("data/processed/era-draft/v1/eligibility.jsonl").read_text().splitlines()
+                if line
+            )
+            if row["eligibilityStatus"] == "ELIGIBLE" and row["seasonId"] == "ipl-2025"
+        }
         actual_ids = {row["playerTeamSeasonId"] for row in resolved}
         expected_ids = {
             row["playerTeamSeasonId"]
             for row in self.profiles
-            if (
-                row["seasonId"] == "ipl-2025" and row["playerId"] in pilot_2025_ids
-            ) or row["seasonId"] in full_spans.get(row["playerId"], set())
+            if row["playerTeamSeasonId"] in eligible_2025_ids
+            or row["seasonId"] in full_spans.get(row["playerId"], set())
         }
         self.assertEqual(actual_ids, expected_ids)
+        resolved_2025 = [row for row in resolved if row["seasonId"] == "ipl-2025"]
+        self.assertEqual(len(resolved_2025), 176)
+        self.assertNotIn("UNKNOWN", {row["iplRosterStatus"] for row in resolved_2025})
 
     def test_g2_identity_and_queue_separation(self) -> None:
         eligibility = [
@@ -657,8 +654,8 @@ class RepositoryIntegrationTests(unittest.TestCase):
         eligible_players = {row["playerId"] for row in eligible}
         self.assertEqual(len(eligible_ids), 2992)
         self.assertEqual(len(eligible_players), 727)
-        self.assertEqual(self.g2_queue["summary"]["players"], 717)
-        self.assertEqual(self.g2_queue["summary"]["playerTeamSeasons"], 2906)
+        self.assertEqual(self.g2_queue["summary"]["players"], 710)
+        self.assertEqual(self.g2_queue["summary"]["playerTeamSeasons"], 2787)
         self.assertEqual(self.backlog["summary"]["players"], 89)
         self.assertEqual(
             {pts_id for item in self.g2_queue["items"] for pts_id in item["playerTeamSeasonIds"]},
@@ -673,6 +670,8 @@ class RepositoryIntegrationTests(unittest.TestCase):
         closed_players = {
             "b1ad996b", "85b3fab2", "ad3b6e95", "bcf325d2", "aad0c365",
             "3d284ca3", "64839cb3", "77b1aa15", "7210d461", "be24ead0",
+            "08548b13", "1e030637", "36619795", "bafd0398", "c27b5a0e",
+            "cb9b8664", "cbf58a86",
         }
         self.assertEqual(
             {item["playerId"] for item in self.g2_queue["items"]},
@@ -688,21 +687,21 @@ class RepositoryIntegrationTests(unittest.TestCase):
         self.assertEqual(self.legacy["summary"], {
             "rows": 147,
             "identityMatched": 147,
-            "unverified": 127,
+            "unverified": 104,
             "partiallyVerified": 14,
-            "supported": 6,
+            "supported": 29,
             "conflicting": 0,
             "unmatched": 0,
         })
         self.assertTrue(all(row["identityStatus"] == "MATCHED" for row in self.legacy["rows"]))
         self.assertEqual(self.legacy["pilotComparisonSummary"], {
-            "players": 57,
-            "agrees": 6,
+            "players": 176,
+            "agrees": 29,
             "disagrees": 0,
             "legacyAmbiguous": 14,
-            "notLegacyCovered": 37,
+            "notLegacyCovered": 133,
         })
-        self.assertEqual(len(self.legacy["pilotComparisons"]), 57)
+        self.assertEqual(len(self.legacy["pilotComparisons"]), 176)
 
     def test_manifest_entries_match_generated_bytes(self) -> None:
         entries = self.manifest["artifacts"] + self.manifest["schemaFiles"]

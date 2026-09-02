@@ -3,6 +3,12 @@
   "nations": [
     {
       "aliases": [],
+      "cricketNationId": "afghanistan",
+      "displayName": "Afghanistan",
+      "notes": []
+    },
+    {
+      "aliases": [],
       "cricketNationId": "australia",
       "displayName": "Australia",
       "notes": []
