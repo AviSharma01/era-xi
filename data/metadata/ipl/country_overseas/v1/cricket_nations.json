@@ -63,6 +63,12 @@
     },
     {
       "aliases": [],
+      "cricketNationId": "pakistan",
+      "displayName": "Pakistan",
+      "notes": []
+    },
+    {
+      "aliases": [],
       "cricketNationId": "south-africa",
       "displayName": "South Africa",
       "notes": []
