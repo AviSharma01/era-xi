@@ -2,39 +2,20 @@
   "blocking": true,
   "items": [
     {
-      "canonicalDisplayName": "MA Agarwal",
-      "legacyLeadAvailable": true,
-      "playerId": "00ea847a",
-      "playerTeamSeasonIds": [
-        "pts:00ea847a:ipl-2011:team-royal-challengers-bangalore"
-      ],
-      "reviewId": "country-overseas:00ea847a",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "R Dravid",
       "legacyLeadAvailable": false,
       "playerId": "0184dc35",
       "playerTeamSeasonIds": [
         "pts:0184dc35:ipl-2008:team-royal-challengers-bangalore",
         "pts:0184dc35:ipl-2009:team-royal-challengers-bangalore",
-        "pts:0184dc35:ipl-2010:team-royal-challengers-bangalore",
-        "pts:0184dc35:ipl-2011:team-rajasthan-royals"
+        "pts:0184dc35:ipl-2010:team-royal-challengers-bangalore"
       ],
       "reviewId": "country-overseas:0184dc35",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -112,40 +93,6 @@
       ]
     },
     {
-      "canonicalDisplayName": "DH Yagnik",
-      "legacyLeadAvailable": false,
-      "playerId": "063b3673",
-      "playerTeamSeasonIds": [
-        "pts:063b3673:ipl-2011:team-rajasthan-royals"
-      ],
-      "reviewId": "country-overseas:063b3673",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "VR Aaron",
-      "legacyLeadAvailable": true,
-      "playerId": "0a3d54b9",
-      "playerTeamSeasonIds": [
-        "pts:0a3d54b9:ipl-2011:team-delhi-daredevils"
-      ],
-      "reviewId": "country-overseas:0a3d54b9",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "S Dhawan",
       "legacyLeadAvailable": true,
       "playerId": "0a476045",
@@ -189,15 +136,13 @@
       "playerId": "0aadc906",
       "playerTeamSeasonIds": [
         "pts:0aadc906:ipl-2008:team-mumbai-indians",
-        "pts:0aadc906:ipl-2009:team-mumbai-indians",
-        "pts:0aadc906:ipl-2011:team-rajasthan-royals"
+        "pts:0aadc906:ipl-2009:team-mumbai-indians"
       ],
       "reviewId": "country-overseas:0aadc906",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
-        "ipl-2009",
-        "ipl-2011"
+        "ipl-2009"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -219,40 +164,6 @@
         "ipl-2008",
         "ipl-2009",
         "ipl-2010"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "P Parameswaran",
-      "legacyLeadAvailable": false,
-      "playerId": "0c432afb",
-      "playerTeamSeasonIds": [
-        "pts:0c432afb:ipl-2011:team-kochi-tuskers-kerala"
-      ],
-      "reviewId": "country-overseas:0c432afb",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "UBT Chand",
-      "legacyLeadAvailable": false,
-      "playerId": "0c94f480",
-      "playerTeamSeasonIds": [
-        "pts:0c94f480:ipl-2011:team-delhi-daredevils"
-      ],
-      "reviewId": "country-overseas:0c94f480",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -350,32 +261,13 @@
       "playerId": "12eddf28",
       "playerTeamSeasonIds": [
         "pts:12eddf28:ipl-2009:team-deccan-chargers",
-        "pts:12eddf28:ipl-2010:team-deccan-chargers",
-        "pts:12eddf28:ipl-2011:team-kings-xi-punjab"
+        "pts:12eddf28:ipl-2010:team-deccan-chargers"
       ],
       "reviewId": "country-overseas:12eddf28",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "TG Southee",
-      "legacyLeadAvailable": true,
-      "playerId": "13c35c9e",
-      "playerTeamSeasonIds": [
-        "pts:13c35c9e:ipl-2011:team-chennai-super-kings"
-      ],
-      "reviewId": "country-overseas:13c35c9e",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -518,14 +410,12 @@
       "legacyLeadAvailable": false,
       "playerId": "2049f3a0",
       "playerTeamSeasonIds": [
-        "pts:2049f3a0:ipl-2010:team-kings-xi-punjab",
-        "pts:2049f3a0:ipl-2011:team-kings-xi-punjab"
+        "pts:2049f3a0:ipl-2010:team-kings-xi-punjab"
       ],
       "reviewId": "country-overseas:2049f3a0",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -571,14 +461,12 @@
       "legacyLeadAvailable": false,
       "playerId": "2498e163",
       "playerTeamSeasonIds": [
-        "pts:2498e163:ipl-2008:team-kings-xi-punjab",
-        "pts:2498e163:ipl-2011:team-delhi-daredevils"
+        "pts:2498e163:ipl-2008:team-kings-xi-punjab"
       ],
       "reviewId": "country-overseas:2498e163",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2008",
-        "ipl-2011"
+        "ipl-2008"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -590,14 +478,12 @@
       "legacyLeadAvailable": false,
       "playerId": "25eeb281",
       "playerTeamSeasonIds": [
-        "pts:25eeb281:ipl-2009:team-rajasthan-royals",
-        "pts:25eeb281:ipl-2011:team-kings-xi-punjab"
+        "pts:25eeb281:ipl-2009:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:25eeb281",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2009",
-        "ipl-2011"
+        "ipl-2009"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -609,14 +495,12 @@
       "legacyLeadAvailable": false,
       "playerId": "260fd380",
       "playerTeamSeasonIds": [
-        "pts:260fd380:ipl-2009:team-delhi-daredevils",
-        "pts:260fd380:ipl-2011:team-delhi-daredevils"
+        "pts:260fd380:ipl-2009:team-delhi-daredevils"
       ],
       "reviewId": "country-overseas:260fd380",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2009",
-        "ipl-2011"
+        "ipl-2009"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -662,35 +546,16 @@
       ]
     },
     {
-      "canonicalDisplayName": "K Upadhyay",
-      "legacyLeadAvailable": false,
-      "playerId": "27e71d47",
-      "playerTeamSeasonIds": [
-        "pts:27e71d47:ipl-2013:team-pune-warriors"
-      ],
-      "reviewId": "country-overseas:27e71d47",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2013"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "AA Jhunjhunwala",
       "legacyLeadAvailable": false,
       "playerId": "2815fe50",
       "playerTeamSeasonIds": [
-        "pts:2815fe50:ipl-2010:team-rajasthan-royals",
-        "pts:2815fe50:ipl-2011:team-pune-warriors"
+        "pts:2815fe50:ipl-2010:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:2815fe50",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -715,23 +580,6 @@
       ]
     },
     {
-      "canonicalDisplayName": "Harpreet Singh",
-      "legacyLeadAvailable": false,
-      "playerId": "28c78fb3",
-      "playerTeamSeasonIds": [
-        "pts:28c78fb3:ipl-2011:team-pune-warriors"
-      ],
-      "reviewId": "country-overseas:28c78fb3",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "Yashpal Singh",
       "legacyLeadAvailable": false,
       "playerId": "297b26da",
@@ -749,37 +597,18 @@
       ]
     },
     {
-      "canonicalDisplayName": "AA Chavan",
-      "legacyLeadAvailable": false,
-      "playerId": "29d72eb2",
-      "playerTeamSeasonIds": [
-        "pts:29d72eb2:ipl-2011:team-rajasthan-royals"
-      ],
-      "reviewId": "country-overseas:29d72eb2",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "AM Rahane",
       "legacyLeadAvailable": true,
       "playerId": "29e95537",
       "playerTeamSeasonIds": [
         "pts:29e95537:ipl-2008:team-mumbai-indians",
-        "pts:29e95537:ipl-2009:team-mumbai-indians",
-        "pts:29e95537:ipl-2011:team-rajasthan-royals"
+        "pts:29e95537:ipl-2009:team-mumbai-indians"
       ],
       "reviewId": "country-overseas:29e95537",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
-        "ipl-2009",
-        "ipl-2011"
+        "ipl-2009"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -792,32 +621,13 @@
       "playerId": "2a72fd4f",
       "playerTeamSeasonIds": [
         "pts:2a72fd4f:ipl-2009:team-deccan-chargers",
-        "pts:2a72fd4f:ipl-2010:team-deccan-chargers",
-        "pts:2a72fd4f:ipl-2011:team-deccan-chargers"
+        "pts:2a72fd4f:ipl-2010:team-deccan-chargers"
       ],
       "reviewId": "country-overseas:2a72fd4f",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "AN Ahmed",
-      "legacyLeadAvailable": false,
-      "playerId": "2af1b6d2",
-      "playerTeamSeasonIds": [
-        "pts:2af1b6d2:ipl-2011:team-mumbai-indians"
-      ],
-      "reviewId": "country-overseas:2af1b6d2",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -831,50 +641,14 @@
       "playerTeamSeasonIds": [
         "pts:2b6e6dec:ipl-2008:team-deccan-chargers",
         "pts:2b6e6dec:ipl-2009:team-deccan-chargers",
-        "pts:2b6e6dec:ipl-2010:team-deccan-chargers",
-        "pts:2b6e6dec:ipl-2011:team-kings-xi-punjab"
+        "pts:2b6e6dec:ipl-2010:team-deccan-chargers"
       ],
       "reviewId": "country-overseas:2b6e6dec",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "DJ Muthuswami",
-      "legacyLeadAvailable": false,
-      "playerId": "2c76b512",
-      "playerTeamSeasonIds": [
-        "pts:2c76b512:ipl-2015:team-delhi-daredevils"
-      ],
-      "reviewId": "country-overseas:2c76b512",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2015"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "B Kumar",
-      "legacyLeadAvailable": true,
-      "playerId": "2e81a32d",
-      "playerTeamSeasonIds": [
-        "pts:2e81a32d:ipl-2011:team-pune-warriors"
-      ],
-      "reviewId": "country-overseas:2e81a32d",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -894,23 +668,6 @@
       "seasonIds": [
         "ipl-2009",
         "ipl-2010"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "Sunny Singh",
-      "legacyLeadAvailable": false,
-      "playerId": "30e37810",
-      "playerTeamSeasonIds": [
-        "pts:30e37810:ipl-2011:team-kings-xi-punjab"
-      ],
-      "reviewId": "country-overseas:30e37810",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -941,16 +698,14 @@
       "playerTeamSeasonIds": [
         "pts:33a364a6:ipl-2008:team-delhi-daredevils",
         "pts:33a364a6:ipl-2009:team-delhi-daredevils",
-        "pts:33a364a6:ipl-2010:team-delhi-daredevils",
-        "pts:33a364a6:ipl-2011:team-kolkata-knight-riders"
+        "pts:33a364a6:ipl-2010:team-delhi-daredevils"
       ],
       "reviewId": "country-overseas:33a364a6",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -1072,40 +827,6 @@
       ]
     },
     {
-      "canonicalDisplayName": "AG Paunikar",
-      "legacyLeadAvailable": false,
-      "playerId": "3a02626a",
-      "playerTeamSeasonIds": [
-        "pts:3a02626a:ipl-2011:team-rajasthan-royals"
-      ],
-      "reviewId": "country-overseas:3a02626a",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "AUK Pathan",
-      "legacyLeadAvailable": false,
-      "playerId": "3ae3f034",
-      "playerTeamSeasonIds": [
-        "pts:3ae3f034:ipl-2011:team-royal-challengers-bangalore"
-      ],
-      "reviewId": "country-overseas:3ae3f034",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "YK Pathan",
       "legacyLeadAvailable": true,
       "playerId": "3c6ffae8",
@@ -1133,16 +854,14 @@
       "playerTeamSeasonIds": [
         "pts:3d7e087f:ipl-2008:team-rajasthan-royals",
         "pts:3d7e087f:ipl-2009:team-rajasthan-royals",
-        "pts:3d7e087f:ipl-2010:team-rajasthan-royals",
-        "pts:3d7e087f:ipl-2011:team-rajasthan-royals"
+        "pts:3d7e087f:ipl-2010:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:3d7e087f",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -1154,14 +873,12 @@
       "legacyLeadAvailable": true,
       "playerId": "3d8feaf8",
       "playerTeamSeasonIds": [
-        "pts:3d8feaf8:ipl-2010:team-deccan-chargers",
-        "pts:3d8feaf8:ipl-2011:team-pune-warriors"
+        "pts:3d8feaf8:ipl-2010:team-deccan-chargers"
       ],
       "reviewId": "country-overseas:3d8feaf8",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -1193,15 +910,13 @@
       "playerId": "3eac9d95",
       "playerTeamSeasonIds": [
         "pts:3eac9d95:ipl-2008:team-chennai-super-kings",
-        "pts:3eac9d95:ipl-2009:team-chennai-super-kings",
-        "pts:3eac9d95:ipl-2011:team-rajasthan-royals"
+        "pts:3eac9d95:ipl-2009:team-chennai-super-kings"
       ],
       "reviewId": "country-overseas:3eac9d95",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
-        "ipl-2009",
-        "ipl-2011"
+        "ipl-2009"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -1233,15 +948,13 @@
       "playerId": "3fca55af",
       "playerTeamSeasonIds": [
         "pts:3fca55af:ipl-2008:team-kings-xi-punjab",
-        "pts:3fca55af:ipl-2009:team-kings-xi-punjab",
-        "pts:3fca55af:ipl-2011:team-deccan-chargers"
+        "pts:3fca55af:ipl-2009:team-kings-xi-punjab"
       ],
       "reviewId": "country-overseas:3fca55af",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
-        "ipl-2009",
-        "ipl-2011"
+        "ipl-2009"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -1329,14 +1042,12 @@
       "legacyLeadAvailable": false,
       "playerId": "45c2196c",
       "playerTeamSeasonIds": [
-        "pts:45c2196c:ipl-2010:team-chennai-super-kings",
-        "pts:45c2196c:ipl-2011:team-chennai-super-kings"
+        "pts:45c2196c:ipl-2010:team-chennai-super-kings"
       ],
       "reviewId": "country-overseas:45c2196c",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -1513,23 +1224,6 @@
       ]
     },
     {
-      "canonicalDisplayName": "RN ten Doeschate",
-      "legacyLeadAvailable": false,
-      "playerId": "4ec07775",
-      "playerTeamSeasonIds": [
-        "pts:4ec07775:ipl-2011:team-kolkata-knight-riders"
-      ],
-      "reviewId": "country-overseas:4ec07775",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "SE Bond",
       "legacyLeadAvailable": false,
       "playerId": "4f629497",
@@ -1622,15 +1316,13 @@
       "playerId": "541f85c9",
       "playerTeamSeasonIds": [
         "pts:541f85c9:ipl-2008:team-royal-challengers-bangalore",
-        "pts:541f85c9:ipl-2009:team-royal-challengers-bangalore",
-        "pts:541f85c9:ipl-2011:team-kolkata-knight-riders"
+        "pts:541f85c9:ipl-2009:team-royal-challengers-bangalore"
       ],
       "reviewId": "country-overseas:541f85c9",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
-        "ipl-2009",
-        "ipl-2011"
+        "ipl-2009"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -1642,31 +1334,12 @@
       "legacyLeadAvailable": false,
       "playerId": "5451a2c1",
       "playerTeamSeasonIds": [
-        "pts:5451a2c1:ipl-2008:team-royal-challengers-bangalore",
-        "pts:5451a2c1:ipl-2011:team-deccan-chargers"
+        "pts:5451a2c1:ipl-2008:team-royal-challengers-bangalore"
       ],
       "reviewId": "country-overseas:5451a2c1",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2008",
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "TD Paine",
-      "legacyLeadAvailable": false,
-      "playerId": "5748e866",
-      "playerTeamSeasonIds": [
-        "pts:5748e866:ipl-2011:team-pune-warriors"
-      ],
-      "reviewId": "country-overseas:5748e866",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
+        "ipl-2008"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -1697,14 +1370,12 @@
       "legacyLeadAvailable": false,
       "playerId": "5afd4539",
       "playerTeamSeasonIds": [
-        "pts:5afd4539:ipl-2010:team-kings-xi-punjab",
-        "pts:5afd4539:ipl-2011:team-kolkata-knight-riders"
+        "pts:5afd4539:ipl-2010:team-kings-xi-punjab"
       ],
       "reviewId": "country-overseas:5afd4539",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -1716,14 +1387,12 @@
       "legacyLeadAvailable": false,
       "playerId": "5b040b81",
       "playerTeamSeasonIds": [
-        "pts:5b040b81:ipl-2009:team-rajasthan-royals",
-        "pts:5b040b81:ipl-2011:team-rajasthan-royals"
+        "pts:5b040b81:ipl-2009:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:5b040b81",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2009",
-        "ipl-2011"
+        "ipl-2009"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -1757,15 +1426,13 @@
       "playerId": "5bb5a915",
       "playerTeamSeasonIds": [
         "pts:5bb5a915:ipl-2009:team-rajasthan-royals",
-        "pts:5bb5a915:ipl-2010:team-rajasthan-royals",
-        "pts:5bb5a915:ipl-2011:team-delhi-daredevils"
+        "pts:5bb5a915:ipl-2010:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:5bb5a915",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -1800,16 +1467,14 @@
       "playerTeamSeasonIds": [
         "pts:5d096f3d:ipl-2008:team-kings-xi-punjab",
         "pts:5d096f3d:ipl-2009:team-kings-xi-punjab",
-        "pts:5d096f3d:ipl-2010:team-kings-xi-punjab",
-        "pts:5d096f3d:ipl-2011:team-kochi-tuskers-kerala"
+        "pts:5d096f3d:ipl-2010:team-kings-xi-punjab"
       ],
       "reviewId": "country-overseas:5d096f3d",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -1821,14 +1486,12 @@
       "legacyLeadAvailable": false,
       "playerId": "5d9a1a73",
       "playerTeamSeasonIds": [
-        "pts:5d9a1a73:ipl-2010:team-deccan-chargers",
-        "pts:5d9a1a73:ipl-2011:team-pune-warriors"
+        "pts:5d9a1a73:ipl-2010:team-deccan-chargers"
       ],
       "reviewId": "country-overseas:5d9a1a73",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -1952,14 +1615,12 @@
       "legacyLeadAvailable": true,
       "playerId": "626c5379",
       "playerTeamSeasonIds": [
-        "pts:626c5379:ipl-2010:team-mumbai-indians",
-        "pts:626c5379:ipl-2011:team-mumbai-indians"
+        "pts:626c5379:ipl-2010:team-mumbai-indians"
       ],
       "reviewId": "country-overseas:626c5379",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -2035,23 +1696,6 @@
       ]
     },
     {
-      "canonicalDisplayName": "Y Nagar",
-      "legacyLeadAvailable": false,
-      "playerId": "662c47a6",
-      "playerTeamSeasonIds": [
-        "pts:662c47a6:ipl-2011:team-delhi-daredevils"
-      ],
-      "reviewId": "country-overseas:662c47a6",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "AB Dinda",
       "legacyLeadAvailable": true,
       "playerId": "66b30f71",
@@ -2083,23 +1727,6 @@
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "JJ van der Wath",
-      "legacyLeadAvailable": false,
-      "playerId": "6821ac10",
-      "playerTeamSeasonIds": [
-        "pts:6821ac10:ipl-2011:team-royal-challengers-bangalore"
-      ],
-      "reviewId": "country-overseas:6821ac10",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -2145,14 +1772,12 @@
       "legacyLeadAvailable": false,
       "playerId": "6afb26d6",
       "playerTeamSeasonIds": [
-        "pts:6afb26d6:ipl-2010:team-deccan-chargers",
-        "pts:6afb26d6:ipl-2011:team-pune-warriors"
+        "pts:6afb26d6:ipl-2010:team-deccan-chargers"
       ],
       "reviewId": "country-overseas:6afb26d6",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -2187,16 +1812,14 @@
       "playerTeamSeasonIds": [
         "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab",
         "pts:6b71e6cf:ipl-2009:team-kings-xi-punjab",
-        "pts:6b71e6cf:ipl-2010:team-kings-xi-punjab",
-        "pts:6b71e6cf:ipl-2011:team-deccan-chargers"
+        "pts:6b71e6cf:ipl-2010:team-kings-xi-punjab"
       ],
       "reviewId": "country-overseas:6b71e6cf",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -2210,16 +1833,14 @@
       "playerTeamSeasonIds": [
         "pts:6b8eb6e5:ipl-2008:team-kings-xi-punjab",
         "pts:6b8eb6e5:ipl-2009:team-kings-xi-punjab",
-        "pts:6b8eb6e5:ipl-2010:team-kings-xi-punjab",
-        "pts:6b8eb6e5:ipl-2011:team-kochi-tuskers-kerala"
+        "pts:6b8eb6e5:ipl-2010:team-kings-xi-punjab"
       ],
       "reviewId": "country-overseas:6b8eb6e5",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -2241,23 +1862,6 @@
         "ipl-2008",
         "ipl-2009",
         "ipl-2010"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "ND Doshi",
-      "legacyLeadAvailable": false,
-      "playerId": "6ec424a9",
-      "playerTeamSeasonIds": [
-        "pts:6ec424a9:ipl-2011:team-rajasthan-royals"
-      ],
-      "reviewId": "country-overseas:6ec424a9",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -2343,14 +1947,12 @@
       "legacyLeadAvailable": true,
       "playerId": "70d205c9",
       "playerTeamSeasonIds": [
-        "pts:70d205c9:ipl-2010:team-mumbai-indians",
-        "pts:70d205c9:ipl-2011:team-mumbai-indians"
+        "pts:70d205c9:ipl-2010:team-mumbai-indians"
       ],
       "reviewId": "country-overseas:70d205c9",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -2381,16 +1983,14 @@
       "playerTeamSeasonIds": [
         "pts:725529bc:ipl-2008:team-kolkata-knight-riders",
         "pts:725529bc:ipl-2009:team-kolkata-knight-riders",
-        "pts:725529bc:ipl-2010:team-kolkata-knight-riders",
-        "pts:725529bc:ipl-2011:team-pune-warriors"
+        "pts:725529bc:ipl-2010:team-kolkata-knight-riders"
       ],
       "reviewId": "country-overseas:725529bc",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -2404,16 +2004,14 @@
       "playerTeamSeasonIds": [
         "pts:72861603:ipl-2008:team-rajasthan-royals",
         "pts:72861603:ipl-2009:team-rajasthan-royals",
-        "pts:72861603:ipl-2010:team-rajasthan-royals",
-        "pts:72861603:ipl-2011:team-pune-warriors"
+        "pts:72861603:ipl-2010:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:72861603",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -2514,14 +2112,12 @@
       "legacyLeadAvailable": false,
       "playerId": "7bf96684",
       "playerTeamSeasonIds": [
-        "pts:7bf96684:ipl-2010:team-kolkata-knight-riders",
-        "pts:7bf96684:ipl-2011:team-kochi-tuskers-kerala"
+        "pts:7bf96684:ipl-2010:team-kolkata-knight-riders"
       ],
       "reviewId": "country-overseas:7bf96684",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -2599,23 +2195,6 @@
       ]
     },
     {
-      "canonicalDisplayName": "KB Arun Karthik",
-      "legacyLeadAvailable": false,
-      "playerId": "7daedf2f",
-      "playerTeamSeasonIds": [
-        "pts:7daedf2f:ipl-2011:team-royal-challengers-bangalore"
-      ],
-      "reviewId": "country-overseas:7daedf2f",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "Misbah-ul-Haq",
       "legacyLeadAvailable": false,
       "playerId": "7eae4418",
@@ -2626,23 +2205,6 @@
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "AL Menaria",
-      "legacyLeadAvailable": false,
-      "playerId": "8291f939",
-      "playerTeamSeasonIds": [
-        "pts:8291f939:ipl-2011:team-rajasthan-royals"
-      ],
-      "reviewId": "country-overseas:8291f939",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -2671,14 +2233,12 @@
       "legacyLeadAvailable": true,
       "playerId": "85aae393",
       "playerTeamSeasonIds": [
-        "pts:85aae393:ipl-2010:team-kolkata-knight-riders",
-        "pts:85aae393:ipl-2011:team-kolkata-knight-riders"
+        "pts:85aae393:ipl-2010:team-kolkata-knight-riders"
       ],
       "reviewId": "country-overseas:85aae393",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -2784,15 +2344,13 @@
       "playerId": "890946a0",
       "playerTeamSeasonIds": [
         "pts:890946a0:ipl-2009:team-rajasthan-royals",
-        "pts:890946a0:ipl-2010:team-rajasthan-royals",
-        "pts:890946a0:ipl-2011:team-delhi-daredevils"
+        "pts:890946a0:ipl-2010:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:890946a0",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -2931,23 +2489,6 @@
       ]
     },
     {
-      "canonicalDisplayName": "S Rana",
-      "legacyLeadAvailable": false,
-      "playerId": "90edaaa9",
-      "playerTeamSeasonIds": [
-        "pts:90edaaa9:ipl-2011:team-pune-warriors"
-      ],
-      "reviewId": "country-overseas:90edaaa9",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "Z Khan",
       "legacyLeadAvailable": true,
       "playerId": "91a4a398",
@@ -2990,14 +2531,12 @@
       "legacyLeadAvailable": false,
       "playerId": "93a17209",
       "playerTeamSeasonIds": [
-        "pts:93a17209:ipl-2008:team-delhi-daredevils",
-        "pts:93a17209:ipl-2012:team-chennai-super-kings"
+        "pts:93a17209:ipl-2008:team-delhi-daredevils"
       ],
       "reviewId": "country-overseas:93a17209",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2008",
-        "ipl-2012"
+        "ipl-2008"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -3011,16 +2550,14 @@
       "playerTeamSeasonIds": [
         "pts:93b4fc78:ipl-2008:team-mumbai-indians",
         "pts:93b4fc78:ipl-2009:team-royal-challengers-bangalore",
-        "pts:93b4fc78:ipl-2010:team-royal-challengers-bangalore",
-        "pts:93b4fc78:ipl-2011:team-pune-warriors"
+        "pts:93b4fc78:ipl-2010:team-royal-challengers-bangalore"
       ],
       "reviewId": "country-overseas:93b4fc78",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -3045,35 +2582,16 @@
       ]
     },
     {
-      "canonicalDisplayName": "S Aravind",
-      "legacyLeadAvailable": true,
-      "playerId": "957532de",
-      "playerTeamSeasonIds": [
-        "pts:957532de:ipl-2011:team-royal-challengers-bangalore"
-      ],
-      "reviewId": "country-overseas:957532de",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "S Anirudha",
       "legacyLeadAvailable": false,
       "playerId": "95a2ea61",
       "playerTeamSeasonIds": [
-        "pts:95a2ea61:ipl-2010:team-chennai-super-kings",
-        "pts:95a2ea61:ipl-2011:team-chennai-super-kings"
+        "pts:95a2ea61:ipl-2010:team-chennai-super-kings"
       ],
       "reviewId": "country-overseas:95a2ea61",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -3127,14 +2645,12 @@
       "legacyLeadAvailable": true,
       "playerId": "99d63244",
       "playerTeamSeasonIds": [
-        "pts:99d63244:ipl-2010:team-delhi-daredevils",
-        "pts:99d63244:ipl-2011:team-kochi-tuskers-kerala"
+        "pts:99d63244:ipl-2010:team-delhi-daredevils"
       ],
       "reviewId": "country-overseas:99d63244",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -3152,23 +2668,6 @@
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "S Nadeem",
-      "legacyLeadAvailable": true,
-      "playerId": "9d80c5e1",
-      "playerTeamSeasonIds": [
-        "pts:9d80c5e1:ipl-2011:team-delhi-daredevils"
-      ],
-      "reviewId": "country-overseas:9d80c5e1",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -3383,37 +2882,18 @@
       ]
     },
     {
-      "canonicalDisplayName": "DJ Jacobs",
-      "legacyLeadAvailable": false,
-      "playerId": "a84468fe",
-      "playerTeamSeasonIds": [
-        "pts:a84468fe:ipl-2011:team-mumbai-indians"
-      ],
-      "reviewId": "country-overseas:a84468fe",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "TL Suman",
       "legacyLeadAvailable": false,
       "playerId": "aaa1b522",
       "playerTeamSeasonIds": [
         "pts:aaa1b522:ipl-2009:team-deccan-chargers",
-        "pts:aaa1b522:ipl-2010:team-deccan-chargers",
-        "pts:aaa1b522:ipl-2011:team-mumbai-indians"
+        "pts:aaa1b522:ipl-2010:team-deccan-chargers"
       ],
       "reviewId": "country-overseas:aaa1b522",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -3577,23 +3057,6 @@
       ]
     },
     {
-      "canonicalDisplayName": "RV Gomez",
-      "legacyLeadAvailable": false,
-      "playerId": "b2570b38",
-      "playerTeamSeasonIds": [
-        "pts:b2570b38:ipl-2011:team-kochi-tuskers-kerala"
-      ],
-      "reviewId": "country-overseas:b2570b38",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "T Thushara",
       "legacyLeadAvailable": false,
       "playerId": "b2ae53f5",
@@ -3634,23 +3097,6 @@
       ]
     },
     {
-      "canonicalDisplayName": "AC Thomas",
-      "legacyLeadAvailable": false,
-      "playerId": "b552a935",
-      "playerTeamSeasonIds": [
-        "pts:b552a935:ipl-2011:team-pune-warriors"
-      ],
-      "reviewId": "country-overseas:b552a935",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "BJ Hodge",
       "legacyLeadAvailable": false,
       "playerId": "b57f8a9a",
@@ -3678,16 +3124,14 @@
       "playerTeamSeasonIds": [
         "pts:b5da6c24:ipl-2008:team-chennai-super-kings",
         "pts:b5da6c24:ipl-2009:team-chennai-super-kings",
-        "pts:b5da6c24:ipl-2010:team-chennai-super-kings",
-        "pts:b5da6c24:ipl-2011:team-kochi-tuskers-kerala"
+        "pts:b5da6c24:ipl-2010:team-chennai-super-kings"
       ],
       "reviewId": "country-overseas:b5da6c24",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -3721,32 +3165,13 @@
       "playerId": "b63ab531",
       "playerTeamSeasonIds": [
         "pts:b63ab531:ipl-2008:team-kings-xi-punjab",
-        "pts:b63ab531:ipl-2009:team-kings-xi-punjab",
-        "pts:b63ab531:ipl-2011:team-royal-challengers-bangalore"
+        "pts:b63ab531:ipl-2009:team-kings-xi-punjab"
       ],
       "reviewId": "country-overseas:b63ab531",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
-        "ipl-2009",
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "GJ Maxwell",
-      "legacyLeadAvailable": true,
-      "playerId": "b681e71e",
-      "playerTeamSeasonIds": [
-        "pts:b681e71e:ipl-2012:team-delhi-daredevils"
-      ],
-      "reviewId": "country-overseas:b681e71e",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2012"
+        "ipl-2009"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -3759,15 +3184,13 @@
       "playerId": "b720a5d6",
       "playerTeamSeasonIds": [
         "pts:b720a5d6:ipl-2008:team-deccan-chargers",
-        "pts:b720a5d6:ipl-2009:team-deccan-chargers",
-        "pts:b720a5d6:ipl-2011:team-deccan-chargers"
+        "pts:b720a5d6:ipl-2009:team-deccan-chargers"
       ],
       "reviewId": "country-overseas:b720a5d6",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
-        "ipl-2009",
-        "ipl-2011"
+        "ipl-2009"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -3789,25 +3212,6 @@
         "ipl-2008",
         "ipl-2009",
         "ipl-2010"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "AJ Finch",
-      "legacyLeadAvailable": true,
-      "playerId": "b8d490fd",
-      "playerTeamSeasonIds": [
-        "pts:b8d490fd:ipl-2011:team-delhi-daredevils",
-        "pts:b8d490fd:ipl-2012:team-delhi-daredevils"
-      ],
-      "reviewId": "country-overseas:b8d490fd",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011",
-        "ipl-2012"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -3853,39 +3257,20 @@
       ]
     },
     {
-      "canonicalDisplayName": "Y Gnaneswara Rao",
-      "legacyLeadAvailable": false,
-      "playerId": "bae11797",
-      "playerTeamSeasonIds": [
-        "pts:bae11797:ipl-2011:team-kochi-tuskers-kerala"
-      ],
-      "reviewId": "country-overseas:bae11797",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "SK Warne",
       "legacyLeadAvailable": false,
       "playerId": "bb18be76",
       "playerTeamSeasonIds": [
         "pts:bb18be76:ipl-2008:team-rajasthan-royals",
         "pts:bb18be76:ipl-2009:team-rajasthan-royals",
-        "pts:bb18be76:ipl-2010:team-rajasthan-royals",
-        "pts:bb18be76:ipl-2011:team-rajasthan-royals"
+        "pts:bb18be76:ipl-2010:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:bb18be76",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -3935,39 +3320,20 @@
       ]
     },
     {
-      "canonicalDisplayName": "STR Binny",
-      "legacyLeadAvailable": true,
-      "playerId": "bd17b45f",
-      "playerTeamSeasonIds": [
-        "pts:bd17b45f:ipl-2011:team-rajasthan-royals"
-      ],
-      "reviewId": "country-overseas:bd17b45f",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "A Symonds",
       "legacyLeadAvailable": false,
       "playerId": "bd77eb62",
       "playerTeamSeasonIds": [
         "pts:bd77eb62:ipl-2008:team-deccan-chargers",
         "pts:bd77eb62:ipl-2009:team-deccan-chargers",
-        "pts:bd77eb62:ipl-2010:team-deccan-chargers",
-        "pts:bd77eb62:ipl-2011:team-mumbai-indians"
+        "pts:bd77eb62:ipl-2010:team-deccan-chargers"
       ],
       "reviewId": "country-overseas:bd77eb62",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4017,14 +3383,12 @@
       "legacyLeadAvailable": false,
       "playerId": "c15e2193",
       "playerTeamSeasonIds": [
-        "pts:c15e2193:ipl-2010:team-rajasthan-royals",
-        "pts:c15e2193:ipl-2011:team-rajasthan-royals"
+        "pts:c15e2193:ipl-2010:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:c15e2193",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4036,14 +3400,12 @@
       "legacyLeadAvailable": true,
       "playerId": "c18496e1",
       "playerTeamSeasonIds": [
-        "pts:c18496e1:ipl-2010:team-kings-xi-punjab",
-        "pts:c18496e1:ipl-2011:team-kings-xi-punjab"
+        "pts:c18496e1:ipl-2010:team-kings-xi-punjab"
       ],
       "reviewId": "country-overseas:c18496e1",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4074,14 +3436,12 @@
       "legacyLeadAvailable": false,
       "playerId": "c3a96caf",
       "playerTeamSeasonIds": [
-        "pts:c3a96caf:ipl-2010:team-kolkata-knight-riders",
-        "pts:c3a96caf:ipl-2011:team-kings-xi-punjab"
+        "pts:c3a96caf:ipl-2010:team-kolkata-knight-riders"
       ],
       "reviewId": "country-overseas:c3a96caf",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4155,15 +3515,13 @@
       "playerId": "c42aaf71",
       "playerTeamSeasonIds": [
         "pts:c42aaf71:ipl-2009:team-delhi-daredevils",
-        "pts:c42aaf71:ipl-2010:team-delhi-daredevils",
-        "pts:c42aaf71:ipl-2011:team-pune-warriors"
+        "pts:c42aaf71:ipl-2010:team-delhi-daredevils"
       ],
       "reviewId": "country-overseas:c42aaf71",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4192,35 +3550,16 @@
       ]
     },
     {
-      "canonicalDisplayName": "J Syed Mohammad",
-      "legacyLeadAvailable": false,
-      "playerId": "c64c2443",
-      "playerTeamSeasonIds": [
-        "pts:c64c2443:ipl-2011:team-royal-challengers-bangalore"
-      ],
-      "reviewId": "country-overseas:c64c2443",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "R McLaren",
       "legacyLeadAvailable": false,
       "playerId": "c654af19",
       "playerTeamSeasonIds": [
-        "pts:c654af19:ipl-2010:team-mumbai-indians",
-        "pts:c654af19:ipl-2011:team-kings-xi-punjab"
+        "pts:c654af19:ipl-2010:team-mumbai-indians"
       ],
       "reviewId": "country-overseas:c654af19",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4233,15 +3572,13 @@
       "playerId": "c69a7b5c",
       "playerTeamSeasonIds": [
         "pts:c69a7b5c:ipl-2009:team-rajasthan-royals",
-        "pts:c69a7b5c:ipl-2010:team-rajasthan-royals",
-        "pts:c69a7b5c:ipl-2011:team-rajasthan-royals"
+        "pts:c69a7b5c:ipl-2010:team-rajasthan-royals"
       ],
       "reviewId": "country-overseas:c69a7b5c",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4254,15 +3591,13 @@
       "playerId": "c8179c68",
       "playerTeamSeasonIds": [
         "pts:c8179c68:ipl-2009:team-chennai-super-kings",
-        "pts:c8179c68:ipl-2010:team-chennai-super-kings",
-        "pts:c8179c68:ipl-2011:team-chennai-super-kings"
+        "pts:c8179c68:ipl-2010:team-chennai-super-kings"
       ],
       "reviewId": "country-overseas:c8179c68",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4382,31 +3717,12 @@
       "legacyLeadAvailable": false,
       "playerId": "d1c94b25",
       "playerTeamSeasonIds": [
-        "pts:d1c94b25:ipl-2010:team-kolkata-knight-riders",
-        "pts:d1c94b25:ipl-2011:team-royal-challengers-bangalore"
+        "pts:d1c94b25:ipl-2010:team-kolkata-knight-riders"
       ],
       "reviewId": "country-overseas:d1c94b25",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "Anand Rajan",
-      "legacyLeadAvailable": false,
-      "playerId": "d2340a43",
-      "playerTeamSeasonIds": [
-        "pts:d2340a43:ipl-2011:team-deccan-chargers"
-      ],
-      "reviewId": "country-overseas:d2340a43",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4418,14 +3734,12 @@
       "legacyLeadAvailable": true,
       "playerId": "d2a6c0e6",
       "playerTeamSeasonIds": [
-        "pts:d2a6c0e6:ipl-2010:team-royal-challengers-bangalore",
-        "pts:d2a6c0e6:ipl-2011:team-kolkata-knight-riders"
+        "pts:d2a6c0e6:ipl-2010:team-royal-challengers-bangalore"
       ],
       "reviewId": "country-overseas:d2a6c0e6",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4438,15 +3752,13 @@
       "playerId": "d2a989fc",
       "playerTeamSeasonIds": [
         "pts:d2a989fc:ipl-2008:team-mumbai-indians",
-        "pts:d2a989fc:ipl-2009:team-mumbai-indians",
-        "pts:d2a989fc:ipl-2011:team-mumbai-indians"
+        "pts:d2a989fc:ipl-2009:team-mumbai-indians"
       ],
       "reviewId": "country-overseas:d2a989fc",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
-        "ipl-2009",
-        "ipl-2011"
+        "ipl-2009"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4460,16 +3772,14 @@
       "playerTeamSeasonIds": [
         "pts:d2c2b2d5:ipl-2008:team-mumbai-indians",
         "pts:d2c2b2d5:ipl-2009:team-mumbai-indians",
-        "pts:d2c2b2d5:ipl-2010:team-mumbai-indians",
-        "pts:d2c2b2d5:ipl-2011:team-mumbai-indians"
+        "pts:d2c2b2d5:ipl-2010:team-mumbai-indians"
       ],
       "reviewId": "country-overseas:d2c2b2d5",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4553,16 +3863,14 @@
       "playerTeamSeasonIds": [
         "pts:d7c6af50:ipl-2008:team-delhi-daredevils",
         "pts:d7c6af50:ipl-2009:team-delhi-daredevils",
-        "pts:d7c6af50:ipl-2010:team-delhi-daredevils",
-        "pts:d7c6af50:ipl-2011:team-royal-challengers-bangalore"
+        "pts:d7c6af50:ipl-2010:team-delhi-daredevils"
       ],
       "reviewId": "country-overseas:d7c6af50",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4575,15 +3883,13 @@
       "playerId": "d84378a4",
       "playerTeamSeasonIds": [
         "pts:d84378a4:ipl-2008:team-rajasthan-royals",
-        "pts:d84378a4:ipl-2010:team-kings-xi-punjab",
-        "pts:d84378a4:ipl-2011:team-royal-challengers-bangalore"
+        "pts:d84378a4:ipl-2010:team-kings-xi-punjab"
       ],
       "reviewId": "country-overseas:d84378a4",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4653,15 +3959,13 @@
       "playerId": "db584dad",
       "playerTeamSeasonIds": [
         "pts:db584dad:ipl-2009:team-kolkata-knight-riders",
-        "pts:db584dad:ipl-2010:team-kolkata-knight-riders",
-        "pts:db584dad:ipl-2011:team-royal-challengers-bangalore"
+        "pts:db584dad:ipl-2010:team-kolkata-knight-riders"
       ],
       "reviewId": "country-overseas:db584dad",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4679,23 +3983,6 @@
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2010"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "BA Bhatt",
-      "legacyLeadAvailable": false,
-      "playerId": "dc4686e6",
-      "playerTeamSeasonIds": [
-        "pts:dc4686e6:ipl-2011:team-kings-xi-punjab"
-      ],
-      "reviewId": "country-overseas:dc4686e6",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -4760,56 +4047,20 @@
       ]
     },
     {
-      "canonicalDisplayName": "SB Wagh",
-      "legacyLeadAvailable": false,
-      "playerId": "dddca1d6",
-      "playerTeamSeasonIds": [
-        "pts:dddca1d6:ipl-2011:team-pune-warriors"
-      ],
-      "reviewId": "country-overseas:dddca1d6",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
-      "canonicalDisplayName": "IR Jaggi",
-      "legacyLeadAvailable": false,
-      "playerId": "dded65e7",
-      "playerTeamSeasonIds": [
-        "pts:dded65e7:ipl-2011:team-deccan-chargers"
-      ],
-      "reviewId": "country-overseas:dded65e7",
-      "reviewStatus": "PENDING",
-      "seasonIds": [
-        "ipl-2011"
-      ],
-      "unresolvedFields": [
-        "CRICKET_NATION",
-        "IPL_ROSTER_STATUS"
-      ]
-    },
-    {
       "canonicalDisplayName": "VVS Laxman",
       "legacyLeadAvailable": false,
       "playerId": "de8cce37",
       "playerTeamSeasonIds": [
         "pts:de8cce37:ipl-2008:team-deccan-chargers",
         "pts:de8cce37:ipl-2009:team-deccan-chargers",
-        "pts:de8cce37:ipl-2010:team-deccan-chargers",
-        "pts:de8cce37:ipl-2011:team-kochi-tuskers-kerala"
+        "pts:de8cce37:ipl-2010:team-deccan-chargers"
       ],
       "reviewId": "country-overseas:de8cce37",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -5026,14 +4277,12 @@
       "legacyLeadAvailable": false,
       "playerId": "ef5da05c",
       "playerTeamSeasonIds": [
-        "pts:ef5da05c:ipl-2010:team-mumbai-indians",
-        "pts:ef5da05c:ipl-2011:team-mumbai-indians"
+        "pts:ef5da05c:ipl-2010:team-mumbai-indians"
       ],
       "reviewId": "country-overseas:ef5da05c",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -5106,16 +4355,14 @@
       "playerTeamSeasonIds": [
         "pts:f3cb53a1:ipl-2008:team-royal-challengers-bangalore",
         "pts:f3cb53a1:ipl-2009:team-royal-challengers-bangalore",
-        "pts:f3cb53a1:ipl-2010:team-royal-challengers-bangalore",
-        "pts:f3cb53a1:ipl-2011:team-kolkata-knight-riders"
+        "pts:f3cb53a1:ipl-2010:team-royal-challengers-bangalore"
       ],
       "reviewId": "country-overseas:f3cb53a1",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -5180,16 +4427,14 @@
       "playerTeamSeasonIds": [
         "pts:fa463154:ipl-2008:team-kolkata-knight-riders",
         "pts:fa463154:ipl-2009:team-kolkata-knight-riders",
-        "pts:fa463154:ipl-2010:team-kolkata-knight-riders",
-        "pts:fa463154:ipl-2011:team-delhi-daredevils"
+        "pts:fa463154:ipl-2010:team-kolkata-knight-riders"
       ],
       "reviewId": "country-overseas:fa463154",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -5218,14 +4463,12 @@
       "legacyLeadAvailable": false,
       "playerId": "fb693839",
       "playerTeamSeasonIds": [
-        "pts:fb693839:ipl-2010:team-delhi-daredevils",
-        "pts:fb693839:ipl-2011:team-kolkata-knight-riders"
+        "pts:fb693839:ipl-2010:team-delhi-daredevils"
       ],
       "reviewId": "country-overseas:fb693839",
       "reviewStatus": "PENDING",
       "seasonIds": [
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -5239,16 +4482,14 @@
       "playerTeamSeasonIds": [
         "pts:fd835ab3:ipl-2008:team-kolkata-knight-riders",
         "pts:fd835ab3:ipl-2009:team-kolkata-knight-riders",
-        "pts:fd835ab3:ipl-2010:team-kolkata-knight-riders",
-        "pts:fd835ab3:ipl-2011:team-kings-xi-punjab"
+        "pts:fd835ab3:ipl-2010:team-kolkata-knight-riders"
       ],
       "reviewId": "country-overseas:fd835ab3",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -5298,16 +4539,14 @@
       "playerTeamSeasonIds": [
         "pts:fe11caa6:ipl-2008:team-kolkata-knight-riders",
         "pts:fe11caa6:ipl-2009:team-kolkata-knight-riders",
-        "pts:fe11caa6:ipl-2010:team-kolkata-knight-riders",
-        "pts:fe11caa6:ipl-2011:team-chennai-super-kings"
+        "pts:fe11caa6:ipl-2010:team-kolkata-knight-riders"
       ],
       "reviewId": "country-overseas:fe11caa6",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -5321,16 +4560,14 @@
       "playerTeamSeasonIds": [
         "pts:fe763256:ipl-2008:team-deccan-chargers",
         "pts:fe763256:ipl-2009:team-deccan-chargers",
-        "pts:fe763256:ipl-2010:team-deccan-chargers",
-        "pts:fe763256:ipl-2011:team-delhi-daredevils"
+        "pts:fe763256:ipl-2010:team-deccan-chargers"
       ],
       "reviewId": "country-overseas:fe763256",
       "reviewStatus": "PENDING",
       "seasonIds": [
         "ipl-2008",
         "ipl-2009",
-        "ipl-2010",
-        "ipl-2011"
+        "ipl-2010"
       ],
       "unresolvedFields": [
         "CRICKET_NATION",
@@ -5378,8 +4615,8 @@
   "schemaVersion": "ipl-country-overseas-review-queue/v1",
   "scope": "G2_BLOCKING",
   "summary": {
-    "legacyLeadPlayers": 68,
-    "playerTeamSeasons": 556,
-    "players": 284
+    "legacyLeadPlayers": 59,
+    "playerTeamSeasons": 452,
+    "players": 247
   }
 }
