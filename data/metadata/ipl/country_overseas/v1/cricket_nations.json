@@ -51,6 +51,12 @@
     },
     {
       "aliases": [],
+      "cricketNationId": "netherlands",
+      "displayName": "Netherlands",
+      "notes": []
+    },
+    {
+      "aliases": [],
       "cricketNationId": "new-zealand",
       "displayName": "New Zealand",
       "notes": []
