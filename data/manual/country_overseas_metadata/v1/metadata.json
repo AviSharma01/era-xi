@@ -166099,6 +166099,76 @@
       }
     },
     {
+      "playerId": "ce4cc4d5",
+      "seasonId": "ipl-2011",
+      "cricketNationId": "UNKNOWN",
+      "iplRosterStatus": "INDIAN",
+      "nationResolutionMethod": "UNRESOLVED",
+      "rosterStatusResolutionMethod": "POLICY_DERIVED",
+      "cricketNationEvidenceRefs": [],
+      "rosterStatusEvidenceRefs": [
+        {
+          "sourceId": "policy-ipl-roster-2011-v1",
+          "locator": {
+            "page": null,
+            "section": "Approved IPL 2011 interpretation",
+            "table": "IPL 2011 policy",
+            "row": "R Ninan",
+            "observedValue": "INDIAN",
+            "text": "A complete target-season official playing XI containing four independently approved overseas players excludes a fifth overseas classification"
+          },
+          "temporalScope": {
+            "type": "SEASON",
+            "seasonIds": [
+              "ipl-2011"
+            ]
+          }
+        },
+        {
+          "sourceId": "ipl-2011-official-match-centres",
+          "locator": {
+            "page": null,
+            "section": "IPL 2011",
+            "table": "Official match scorecard",
+            "row": "R Ninan",
+            "observedValue": "Official playing XI, match 501208",
+            "text": "https://www.iplt20.com/matches/97780c68-71db-4bca-b456-370136e2e794/deccan-chargers-vs-royal-challengers-bangalore/scorecard — target-season official scorecard participation"
+          },
+          "temporalScope": {
+            "type": "SEASON",
+            "seasonIds": [
+              "ipl-2011"
+            ]
+          }
+        },
+        {
+          "sourceId": "ipl-playing-xi-overseas-limit",
+          "locator": {
+            "page": null,
+            "section": "Maximum-four playing-XI constraint",
+            "table": null,
+            "row": "R Ninan plus four identified overseas teammates",
+            "observedValue": "INDIAN",
+            "text": "Complete target-season XI already contains four independently approved overseas players: AB de Villiers, DL Vettori, JJ van der Wath, TM Dilshan"
+          },
+          "temporalScope": {
+            "type": "SEASON",
+            "seasonIds": [
+              "ipl-2011"
+            ]
+          }
+        }
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "Approved final residual resolution: 2011 roster status is independently established while the conflicting later nation records remain unresolved.",
+      "temporalScope": {
+        "type": "SEASON",
+        "seasonIds": [
+          "ipl-2011"
+        ]
+      }
+    },
+    {
       "playerId": "ce794613",
       "seasonId": "ipl-2017",
       "cricketNationId": "india",
@@ -209158,6 +209228,21 @@
       ],
       "reviewStatus": "APPROVED",
       "notes": "Roster status is independently established by a complete official XI and the maximum-four overseas constraint; cricket nation remains explicitly unresolved."
+    },
+    {
+      "dispositionId": "nation-unknown-ce4cc4d5-ipl-2011",
+      "scope": "SEASON_OVERRIDE",
+      "playerId": "ce4cc4d5",
+      "seasonId": "ipl-2011",
+      "status": "NATION_CLOSED_UNKNOWN",
+      "sourceIdsReviewed": [
+        "ipl-2011-official-match-centres",
+        "ipl-playing-xi-overseas-limit",
+        "ipl-2014-auction-register",
+        "ipl-2018-auction-register-historical"
+      ],
+      "reviewStatus": "APPROVED",
+      "notes": "The complete official RCB XI in IPL 2011 match 501208 contains four independently approved overseas players, establishing R Ninan's 2011 roster status as INDIAN under the maximum-four rule. Later official nation records conflict: the 2014 auction register lists Ryan Ninan as India, while the 2018 auction register lists Ryan Ninan as Australia. Neither later record is used to establish 2011 roster status, and cricket nation remains explicitly UNKNOWN."
     },
     {
       "dispositionId": "nation-unknown-ce820073-ipl-2025",

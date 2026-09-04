@@ -623,7 +623,7 @@ class RepositoryIntegrationTests(unittest.TestCase):
         self.assertTrue(all(row["cricketNationId"] == "UNKNOWN" for row in self.players))
         self.assertTrue(all(row["iplRosterStatus"] == "UNKNOWN" for row in self.players))
         resolved = [row for row in self.profiles if row["iplRosterStatus"] != "UNKNOWN"]
-        self.assertEqual(len(resolved), 2991)
+        self.assertEqual(len(resolved), 2992)
         self.assertTrue(all(row["classificationBasis"] == "SEASON_OVERRIDE" for row in resolved))
         self.assertEqual(sum(row["cricketNationId"] != "UNKNOWN" for row in resolved), 2842)
         self.assertEqual(
@@ -632,18 +632,18 @@ class RepositoryIntegrationTests(unittest.TestCase):
         )
         self.assertEqual(
             sum(row["rosterStatusResolutionMethod"] == "POLICY_DERIVED" for row in resolved),
-            2644,
+            2645,
         )
         self.assertEqual(
             sum(row["reviewState"] == "ROSTER_APPROVED_NATION_UNRESOLVED" for row in resolved),
-            149,
+            150,
         )
 
         target_expectations = {
             "ipl-2008": (150, 89, 61, 121),
             "ipl-2009": (148, 92, 56, 126),
             "ipl-2010": (153, 91, 62, 141),
-            "ipl-2011": (175, 109, 66, 175),
+            "ipl-2011": (176, 110, 66, 175),
             "ipl-2012": (166, 99, 67, 153),
             "ipl-2013": (173, 108, 65, 158),
             "ipl-2014": (137, 83, 54, 137),
@@ -667,7 +667,10 @@ class RepositoryIntegrationTests(unittest.TestCase):
             self.assertEqual(sum(row["cricketNationId"] != "UNKNOWN" for row in rows), nation_known)
 
         later_season_semantic_hashes = {
-            "ipl-2011": "18621772021dd30522c00367053dc91bca1720ca50ac7848f741f33f75f9437e",
+            "ipl-2008": "48c5fd6105ab63038295d54eac4b66f3a8fca042ed2ce555567650e9f6a6d58c",
+            "ipl-2009": "21437b27b0187673f171383ba272f4601cbc8c99dbe68014e4636fde04978994",
+            "ipl-2010": "548106a49ad59b1671388406123109d9d58c8238d16ba9986c87ee5eb804f690",
+            "ipl-2011": "3beaffed91614fb925170bd6122093f79f9a3d0b1eccc0cd741bb8ac8882415e",
             "ipl-2012": "1fb12f7bf13b4a008a763ad2249401e5ea3666c073c16c6f95b515b93ae2014b",
             "ipl-2013": "928c07220a27aceebb007360ff61b700d20957ad2b6ebea5de005b76cebb4c19",
             "ipl-2014": "dc0e012eb20f552678a766336c0533308a4a87cecd8cff5f0f70c23f52e9636f",
@@ -698,6 +701,22 @@ class RepositoryIntegrationTests(unittest.TestCase):
                 expected_hash,
                 season_id,
             )
+
+        preexisting_2011 = sorted(
+            (
+                row["playerTeamSeasonId"], row["cricketNationId"], row["iplRosterStatus"],
+                row["classificationBasis"], row["nationResolutionMethod"],
+                row["rosterStatusResolutionMethod"],
+            )
+            for row in resolved
+            if row["seasonId"] == "ipl-2011" and row["playerId"] != "ce4cc4d5"
+        )
+        self.assertEqual(
+            hashlib.sha256(
+                json.dumps(preexisting_2011, separators=(",", ":")).encode()
+            ).hexdigest(),
+            "18621772021dd30522c00367053dc91bca1720ca50ac7848f741f33f75f9437e",
+        )
 
     def test_2008_2010_bulk_override_identity_and_season_scoped_evidence(self) -> None:
         manual_metadata = json.loads(
@@ -766,7 +785,7 @@ class RepositoryIntegrationTests(unittest.TestCase):
             "ipl-2017": (143, "3c466bda771e425435a72862ca80da5128bb0d284567d1f402db014f797737c8"),
         }
         residuals = {
-            "ipl-2011": (1, "80700bc2cc889cb95c8c15635a770ddd9f85cd11d295d82f48dd14b099adb288"),
+            "ipl-2011": (0, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
             "ipl-2012": (0, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
             "ipl-2013": (0, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
             "ipl-2014": (0, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
@@ -869,14 +888,40 @@ class RepositoryIntegrationTests(unittest.TestCase):
             for item in self.g2_queue["items"]
             for pts_id in item["playerTeamSeasonIds"]
         }
-        self.assertIn(
+        self.assertNotIn(
             "pts:ce4cc4d5:ipl-2011:team-royal-challengers-bangalore",
             queued_ids,
         )
-        self.assertFalse(any(
-            row["playerId"] == "ce4cc4d5" and row["seasonId"] == "ipl-2011"
-            for row in manual_metadata["seasonOverrides"]
-        ))
+        ninan = next(
+            row for row in manual_metadata["seasonOverrides"]
+            if row["playerId"] == "ce4cc4d5" and row["seasonId"] == "ipl-2011"
+        )
+        self.assertEqual(
+            (ninan["cricketNationId"], ninan["iplRosterStatus"],
+             ninan["nationResolutionMethod"], ninan["rosterStatusResolutionMethod"]),
+            ("UNKNOWN", "INDIAN", "UNRESOLVED", "POLICY_DERIVED"),
+        )
+        self.assertEqual(ninan["cricketNationEvidenceRefs"], [])
+        self.assertEqual(
+            {ref["sourceId"] for ref in ninan["rosterStatusEvidenceRefs"]},
+            {
+                "ipl-2011-official-match-centres",
+                "ipl-playing-xi-overseas-limit",
+                "policy-ipl-roster-2011-v1",
+            },
+        )
+        disposition = next(
+            row for row in manual_metadata["reviewDispositions"]
+            if row["dispositionId"] == "nation-unknown-ce4cc4d5-ipl-2011"
+        )
+        self.assertEqual(
+            (disposition["status"], disposition["reviewStatus"]),
+            ("NATION_CLOSED_UNKNOWN", "APPROVED"),
+        )
+        self.assertTrue({
+            "ipl-2014-auction-register",
+            "ipl-2018-auction-register-historical",
+        } <= set(disposition["sourceIdsReviewed"]))
 
     def test_historical_bulk_override_identity_and_season_scoped_evidence(self) -> None:
         manual_metadata = json.loads(
@@ -1028,8 +1073,9 @@ class RepositoryIntegrationTests(unittest.TestCase):
         eligible_players = {row["playerId"] for row in eligible}
         self.assertEqual(len(eligible_ids), 2992)
         self.assertEqual(len(eligible_players), 727)
-        self.assertEqual(self.g2_queue["summary"]["players"], 1)
-        self.assertEqual(self.g2_queue["summary"]["playerTeamSeasons"], 1)
+        self.assertEqual(self.g2_queue["summary"]["players"], 0)
+        self.assertEqual(self.g2_queue["summary"]["playerTeamSeasons"], 0)
+        self.assertTrue(self.report["g2GameInputReady"])
         self.assertEqual(self.backlog["summary"]["players"], 89)
         self.assertEqual(
             {pts_id for item in self.g2_queue["items"] for pts_id in item["playerTeamSeasonIds"]},
@@ -1042,7 +1088,7 @@ class RepositoryIntegrationTests(unittest.TestCase):
             },
         )
         queued_players = {item["playerId"] for item in self.g2_queue["items"]}
-        self.assertEqual(len(eligible_players - queued_players), 726)
+        self.assertEqual(len(eligible_players - queued_players), 727)
         self.assertFalse(
             {item["playerId"] for item in self.g2_queue["items"]}
             & {item["playerId"] for item in self.backlog["items"]}
@@ -1061,13 +1107,13 @@ class RepositoryIntegrationTests(unittest.TestCase):
         })
         self.assertTrue(all(row["identityStatus"] == "MATCHED" for row in self.legacy["rows"]))
         self.assertEqual(self.legacy["pilotComparisonSummary"], {
-            "players": 726,
+            "players": 727,
             "agrees": 140,
             "disagrees": 0,
             "legacyAmbiguous": 7,
-            "notLegacyCovered": 579,
+            "notLegacyCovered": 580,
         })
-        self.assertEqual(len(self.legacy["pilotComparisons"]), 726)
+        self.assertEqual(len(self.legacy["pilotComparisons"]), 727)
 
     def test_manifest_entries_match_generated_bytes(self) -> None:
         entries = self.manifest["artifacts"] + self.manifest["schemaFiles"]

@@ -18,15 +18,15 @@
       "path": "player_team_season_metadata.jsonl",
       "rows": 3392,
       "schemaVersion": "ipl-country-overseas-pts-row/v3",
-      "sha256": "dead2b062eaa2d1c17ca4af54d79dffe0d89c625ef39064c0c1702ff0d70bb42",
-      "sizeBytes": 4643573
+      "sha256": "3438ff6041fd0c503ac8ec44bce5d74ba653531e90d9bcf257f6205ac834d3bd",
+      "sizeBytes": 4644851
     },
     {
       "path": "g2_review_queue.json",
-      "rows": 1,
+      "rows": 0,
       "schemaVersion": "ipl-country-overseas-review-queue/v1",
-      "sha256": "902bac33d3a7ad819084a63daa82f79cf87d46ec74ce52d78d94097859565bb7",
-      "sizeBytes": 719
+      "sha256": "c3a1ce058bf452394d43d05d1b7dfdd781fd9eaf4e3987a1bc414e5edb4c6d95",
+      "sizeBytes": 273
     },
     {
       "path": "non_g2_backlog.json",
@@ -39,8 +39,8 @@
       "path": "legacy_migration_report.json",
       "rows": 147,
       "schemaVersion": "ipl-country-overseas-legacy-migration/v3",
-      "sha256": "0de04368cb2cb3c11f5df5354b7ecfc1fb1863bd13e8b3ecf32fe9309355afb9",
-      "sizeBytes": 6854598
+      "sha256": "742bdf6d436324c70e072d393ac87c0e25378f74cd922885da7809a6c2a06c75",
+      "sizeBytes": 6857015
     }
   ],
   "cricketNationCatalogSha256": "1af127fdeeb8363046da9526aa9417ea85b2766adc7d77341b9711abe7fe3b41",
@@ -49,9 +49,9 @@
   "eligibilityVersion": "ipl-era-draft-eligibility/v1",
   "g2EligibleIdSetSha256": "c0fa9b89561698b0c50a5dacdd4333293c9a7f2f1018ce291f1023d13c6281f3",
   "legacyMetadataSha256": "8612b75cfbd40d99be6754f06fc867cc8e00b54d21874775f13c945e3c4c6405",
-  "manualMetadataSha256": "e47eb83849031fb80a923368963d48ba1fccd25c27abcdf070db43280144c0f0",
-  "metadataAggregateHash": "19fa73dbb0ee573a3d8d43f7708a204ae32e8a95fb8e9491d6504fa26467df40",
-  "metadataManifestHash": "3386c5a78829fdefa87b7545149b439e840cf83f656469b3c86f1c8d73c41ad4",
+  "manualMetadataSha256": "625e86970b4592642e25af5429033350a7632c24c8e0d8f9f521ca50280bfb9b",
+  "metadataAggregateHash": "a818f55084f5e6f819e7ef0b467ad73e5855138c109718a0967b6409f4c8f75d",
+  "metadataManifestHash": "51639df24ca357177152d293acc2b38587b3c737293402b3024966a0ff82046d",
   "metadataVersion": "ipl-country-overseas-metadata/v1",
   "schemaFiles": [
     {

@@ -1,6 +1,6 @@
 # IPL Country / Overseas Metadata v1
 
-Metadata manifest SHA-256: `3386c5a78829fdefa87b7545149b439e840cf83f656469b3c86f1c8d73c41ad4`
+Metadata manifest SHA-256: `51639df24ca357177152d293acc2b38587b3c737293402b3024966a0ff82046d`
 
 ## Coverage
 
@@ -8,12 +8,12 @@ Metadata manifest SHA-256: `3386c5a78829fdefa87b7545149b439e840cf83f656469b3c86f
 - Player-team-seasons: 3392
 - G2 players: 727
 - G2 profiles: 2992
-- Resolved G2 roster profiles: 2991
-- UNKNOWN G2 roster profiles: 1
+- Resolved G2 roster profiles: 2992
+- UNKNOWN G2 roster profiles: 0
 - Resolved G2 cricket-nation profiles: 2842
 - UNKNOWN G2 cricket-nation profiles: 150
-- Fully resolved G2 players: 726
-- Blocking G2 review items: 1
+- Fully resolved G2 players: 727
+- Blocking G2 review items: 0
 - Non-G2 backlog items: 89
 - Unverified legacy leads: 0
 

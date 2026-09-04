@@ -6,8 +6,8 @@
     "agrees": 140,
     "disagrees": 0,
     "legacyAmbiguous": 7,
-    "notLegacyCovered": 579,
-    "players": 726
+    "notLegacyCovered": 580,
+    "players": 727
   },
   "pilotComparisons": [
     {
@@ -123859,6 +123859,75 @@
       "seasonIds": [
         "ipl-2019",
         "ipl-2024"
+      ]
+    },
+    {
+      "canonicalCricketNationId": "UNKNOWN",
+      "canonicalDisplayName": "R Ninan",
+      "canonicalIplRosterStatus": "INDIAN",
+      "comparisonStatus": "NOT_LEGACY_COVERED",
+      "evidenceRefs": [
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "R Ninan plus four identified overseas teammates",
+            "section": "Maximum-four playing-XI constraint",
+            "table": null,
+            "text": "Complete target-season XI already contains four independently approved overseas players: AB de Villiers, DL Vettori, JJ van der Wath, TM Dilshan"
+          },
+          "sourceId": "ipl-playing-xi-overseas-limit",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2011"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "INDIAN",
+            "page": null,
+            "row": "R Ninan",
+            "section": "Approved IPL 2011 interpretation",
+            "table": "IPL 2011 policy",
+            "text": "A complete target-season official playing XI containing four independently approved overseas players excludes a fifth overseas classification"
+          },
+          "sourceId": "policy-ipl-roster-2011-v1",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2011"
+            ],
+            "type": "SEASON"
+          }
+        },
+        {
+          "locator": {
+            "observedValue": "Official playing XI, match 501208",
+            "page": null,
+            "row": "R Ninan",
+            "section": "IPL 2011",
+            "table": "Official match scorecard",
+            "text": "https://www.iplt20.com/matches/97780c68-71db-4bca-b456-370136e2e794/deccan-chargers-vs-royal-challengers-bangalore/scorecard — target-season official scorecard participation"
+          },
+          "sourceId": "ipl-2011-official-match-centres",
+          "temporalScope": {
+            "seasonIds": [
+              "ipl-2011"
+            ],
+            "type": "SEASON"
+          }
+        }
+      ],
+      "legacyAvailable": false,
+      "legacyCricketNationIdLead": null,
+      "legacyIplRosterStatusLead": null,
+      "playerId": "ce4cc4d5",
+      "playerTeamSeasonIds": [
+        "pts:ce4cc4d5:ipl-2011:team-royal-challengers-bangalore"
+      ],
+      "seasonIds": [
+        "ipl-2011"
       ]
     },
     {
