@@ -1,0 +1,78 @@
+{
+  "artifacts": [
+    {
+      "path": "player_batting_priors.jsonl",
+      "rows": 816,
+      "schemaVersion": "ipl-era-draft-player-batting-prior/v1",
+      "sha256": "14b0b7c6eff173d8094f24762e7c5cdb79709dcd33a3ef3d92e4390ce0772dc5",
+      "sizeBytes": 389476
+    },
+    {
+      "path": "player_team_season_roles.jsonl",
+      "rows": 2992,
+      "schemaVersion": "ipl-era-draft-player-team-season-role/v1",
+      "sha256": "499dbf481e779a5d808407a5c4608271fff7c57adc7a3aefcc53d8a58172c91d",
+      "sizeBytes": 6710785
+    },
+    {
+      "path": "review_queue.json",
+      "rows": 596,
+      "schemaVersion": "ipl-era-draft-player-role-review/v1",
+      "sha256": "5d7e47361ef569d2532a3e111535b84363337da55d4445cdcaf17467aceaac3b",
+      "sizeBytes": 338999
+    }
+  ],
+  "eligibilityManifestHash": "b3e6393851e999c23abbc120083b52e8bc444e747d9be7316e0ca73e07be38b6",
+  "eligibilityVersion": "ipl-era-draft-eligibility/v1",
+  "roleDataAggregateHash": "d6de5b78094a45faff32342e0781512d1e55ef5686a3b94a755db1b3769bf5e7",
+  "roleManifestHash": "3fbdac6396a21bb67d90210364a4b0f009bab51975f6e7c5eaa0161d664f6962",
+  "roleMetadataVersion": "ipl-era-draft-player-roles/v1",
+  "schemaFiles": [
+    {
+      "path": "schemas/player_batting_prior.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "ac2a83b6b1428beb2d8a1446615e6aaaddb1199ff06b0079680a505996aa94cb",
+      "sizeBytes": 3796
+    },
+    {
+      "path": "schemas/player_team_season_role.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "7abe94da894a49c64805e212566d61a3d3324ab4fad970b088d134b7aee9cc7a",
+      "sizeBytes": 12944
+    },
+    {
+      "path": "schemas/review_queue.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "26b9fc1f7df2fd2166a21f5efa9243e1994f5795eafab0a570184fa8e26de420",
+      "sizeBytes": 4951
+    },
+    {
+      "path": "schemas/role_manifest.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "f593e7d47f973203de81064e3e2aa47893014af3aba23de8a205577ca542c677",
+      "sizeBytes": 4233
+    },
+    {
+      "path": "schemas/validation_report.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "e41aa251dbd78015948fe8d08603f2c85bb7e31da7e4a22c78b7799f178bb5e5",
+      "sizeBytes": 6087
+    }
+  ],
+  "schemaVersion": "ipl-era-draft-player-role-manifest/v1",
+  "stage2RegistryAggregateHash": "9b23cafe4c2020b43fec7a3d80a13152270164b216ccd5cea3a1b552428ecac7",
+  "stage2RegistryVersion": "ipl-identities-v1",
+  "stage3DatasetVersion": "cricsheet-ipl-normalized/v1",
+  "stage3NormalizationManifestHash": "005da3be0fb64f946c869a8ab97cd9ea7e0c00e2e49f1bfb3d1c07e7726d6cec",
+  "stage3NormalizedMatchAggregateHash": "fb6a14f439124d57a8a39ff1c58a90ca0e5393e7d0a428b29f785600bea6eaaa",
+  "stage4AnalyticalManifestHash": "f437d9e03c1f1749b5a0b8b8c06a41e80c8f2d18e3d43d791b054014acf5998c",
+  "stage4DatasetVersion": "cricsheet-ipl-analytics/v1",
+  "trackingIssue": "https://github.com/AviSharma01/draft-simulator/issues/1",
+  "wicketkeeperMetadataManifestHash": "6dd387a4a32103273568dcf9eb8949c4e426bf309ea809372f767f89a0169a59",
+  "wicketkeeperMetadataVersion": "ipl-wicketkeeper-metadata/v1"
+}

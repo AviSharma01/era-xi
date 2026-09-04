@@ -1,0 +1,556 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "battingUsage": {
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "enum": [
+            "SEASON",
+            "SEASON_PLUS_PLAYER_HISTORY",
+            "SEASON_SPARSE",
+            "PLAYER_HISTORY_FALLBACK",
+            "UNOBSERVED"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "careerPriorEligible": {
+          "type": "boolean"
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "NONE"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "effectiveBandShares": {
+          "additionalProperties": false,
+          "properties": {
+            "LOWER_ORDER": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "MIDDLE_ORDER": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "OPENING": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "TAIL": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "TOP_ORDER": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "OPENING",
+            "TOP_ORDER",
+            "MIDDLE_ORDER",
+            "LOWER_ORDER",
+            "TAIL"
+          ],
+          "type": "object"
+        },
+        "otherProfileBandCounts": {
+          "additionalProperties": false,
+          "properties": {
+            "LOWER_ORDER": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "MIDDLE_ORDER": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "OPENING": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "TAIL": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "TOP_ORDER": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "OPENING",
+            "TOP_ORDER",
+            "MIDDLE_ORDER",
+            "LOWER_ORDER",
+            "TAIL"
+          ],
+          "type": "object"
+        },
+        "otherProfileInnings": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "primaryBands": {
+          "items": {
+            "enum": [
+              "OPENING",
+              "TOP_ORDER",
+              "MIDDLE_ORDER",
+              "LOWER_ORDER",
+              "TAIL"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "priorWeight": {
+          "maximum": 4,
+          "minimum": 0,
+          "type": "number"
+        },
+        "seasonBandCounts": {
+          "additionalProperties": false,
+          "properties": {
+            "LOWER_ORDER": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "MIDDLE_ORDER": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "OPENING": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "TAIL": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "TOP_ORDER": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "OPENING",
+            "TOP_ORDER",
+            "MIDDLE_ORDER",
+            "LOWER_ORDER",
+            "TAIL"
+          ],
+          "type": "object"
+        },
+        "seasonInnings": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "seasonPositionCounts": {
+          "additionalProperties": false,
+          "properties": {
+            "1": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "10": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "11": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "2": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "3": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "4": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "5": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "6": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "7": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "8": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "9": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11"
+          ],
+          "type": "object"
+        },
+        "slotFits": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "band": {
+                "enum": [
+                  "OPENING",
+                  "TOP_ORDER",
+                  "MIDDLE_ORDER",
+                  "LOWER_ORDER",
+                  "TAIL"
+                ],
+                "minLength": 1,
+                "type": "string"
+              },
+              "bandDistance": {
+                "maximum": 4,
+                "minimum": 0,
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "classification": {
+                "enum": [
+                  "NATURAL",
+                  "ACCEPTABLE",
+                  "OUT_OF_ROLE",
+                  "UNKNOWN"
+                ],
+                "minLength": 1,
+                "type": "string"
+              },
+              "position": {
+                "maximum": 11,
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "position",
+              "band",
+              "classification",
+              "bandDistance"
+            ],
+            "type": "object"
+          },
+          "maxItems": 11,
+          "minItems": 11,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "seasonInnings",
+        "seasonPositionCounts",
+        "seasonBandCounts",
+        "otherProfileInnings",
+        "otherProfileBandCounts",
+        "careerPriorEligible",
+        "priorWeight",
+        "effectiveBandShares",
+        "basis",
+        "confidence",
+        "primaryBands",
+        "slotFits"
+      ],
+      "type": "object"
+    },
+    "bowlingUsage": {
+      "additionalProperties": false,
+      "properties": {
+        "ballsPerBowlingMatch": {
+          "maximum": 24,
+          "minimum": 0,
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ballsPerOfficialAppearance": {
+          "maximum": 24,
+          "minimum": 0,
+          "type": "number"
+        },
+        "bowlingMatches": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "capacity": {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "NONE"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "legalBalls": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "officialAppearances": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "phases": {
+          "additionalProperties": false,
+          "properties": {
+            "death": {
+              "additionalProperties": false,
+              "properties": {
+                "legalBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "share": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "legalBalls",
+                "share"
+              ],
+              "type": "object"
+            },
+            "middle": {
+              "additionalProperties": false,
+              "properties": {
+                "legalBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "share": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "legalBalls",
+                "share"
+              ],
+              "type": "object"
+            },
+            "powerplay": {
+              "additionalProperties": false,
+              "properties": {
+                "legalBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "share": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "legalBalls",
+                "share"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "powerplay",
+            "middle",
+            "death"
+          ],
+          "type": "object"
+        },
+        "usageClass": {
+          "enum": [
+            "NONE",
+            "OCCASIONAL",
+            "SUPPORT",
+            "FRONTLINE"
+          ],
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "officialAppearances",
+        "bowlingMatches",
+        "legalBalls",
+        "ballsPerOfficialAppearance",
+        "ballsPerBowlingMatch",
+        "capacity",
+        "usageClass",
+        "confidence",
+        "phases"
+      ],
+      "type": "object"
+    },
+    "canonicalDisplayName": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "franchiseId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerTeamSeasonId": {
+      "minLength": 1,
+      "pattern": "pts:[^:]+:[^:]+:[^:]+",
+      "type": "string"
+    },
+    "roleMetadataVersion": {
+      "enum": [
+        "ipl-era-draft-player-roles/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "roleSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "allRounderLean": {
+          "enum": [
+            "BATTING",
+            "BALANCED",
+            "BOWLING",
+            null
+          ],
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "battingResponsibility": {
+          "enum": [
+            "CORE",
+            "LOWER",
+            "TAIL",
+            "UNKNOWN"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "isCanonical": {
+          "const": false
+        },
+        "role": {
+          "enum": [
+            "BATTER",
+            "ALL_ROUNDER",
+            "BOWLER",
+            "UNKNOWN"
+          ],
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "battingResponsibility",
+        "allRounderLean",
+        "isCanonical"
+      ],
+      "type": "object"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-player-team-season-role/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "seasonId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "teamId": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "roleMetadataVersion",
+    "playerTeamSeasonId",
+    "playerId",
+    "canonicalDisplayName",
+    "seasonId",
+    "teamId",
+    "franchiseId",
+    "battingUsage",
+    "bowlingUsage",
+    "roleSummary"
+  ],
+  "type": "object"
+}

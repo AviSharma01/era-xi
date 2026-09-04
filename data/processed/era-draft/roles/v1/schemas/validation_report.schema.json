@@ -1,0 +1,287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "baselineComparisons": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "actual": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "expected": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "matches": {
+            "type": "boolean"
+          },
+          "metric": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "metric",
+          "expected",
+          "actual",
+          "matches"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "battingBasisCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "PLAYER_HISTORY_FALLBACK": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "SEASON": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "SEASON_PLUS_PLAYER_HISTORY": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "SEASON_SPARSE": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "UNOBSERVED": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "SEASON",
+        "SEASON_PLUS_PLAYER_HISTORY",
+        "SEASON_SPARSE",
+        "PLAYER_HISTORY_FALLBACK",
+        "UNOBSERVED"
+      ],
+      "type": "object"
+    },
+    "battingEvidenceCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "HIGH": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "LOW": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "MEDIUM": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "NONE": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "NONE"
+      ],
+      "type": "object"
+    },
+    "bowlingEvidenceCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "HIGH": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "LOW": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "MEDIUM": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "NONE": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "NONE"
+      ],
+      "type": "object"
+    },
+    "bowlingUsageCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "FRONTLINE": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "NONE": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "OCCASIONAL": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "SUPPORT": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "NONE",
+        "OCCASIONAL",
+        "SUPPORT",
+        "FRONTLINE"
+      ],
+      "type": "object"
+    },
+    "counts": {
+      "additionalProperties": false,
+      "properties": {
+        "bowlingFamilyQueuePlayers": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "canonicalPlayers": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "fitResolvedProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "fitUnknownProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "g2Players": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "g2Profiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "keeperFieldsPresent": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "qualityFieldsPresent": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "seasonBattingObservedProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "stage4PlayerTeamSeasons": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "canonicalPlayers",
+        "stage4PlayerTeamSeasons",
+        "g2Players",
+        "g2Profiles",
+        "seasonBattingObservedProfiles",
+        "fitResolvedProfiles",
+        "fitUnknownProfiles",
+        "bowlingFamilyQueuePlayers",
+        "qualityFieldsPresent",
+        "keeperFieldsPresent"
+      ],
+      "type": "object"
+    },
+    "errors": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "roleCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "ALL_ROUNDER": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "BATTER": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "BOWLER": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "UNKNOWN": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "BATTER",
+        "ALL_ROUNDER",
+        "BOWLER",
+        "UNKNOWN"
+      ],
+      "type": "object"
+    },
+    "roleManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "roleMetadataVersion": {
+      "enum": [
+        "ipl-era-draft-player-roles/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-player-role-validation/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "passed"
+      ],
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "roleMetadataVersion",
+    "roleManifestHash",
+    "status",
+    "baselineComparisons",
+    "counts",
+    "battingEvidenceCounts",
+    "battingBasisCounts",
+    "bowlingUsageCounts",
+    "bowlingEvidenceCounts",
+    "roleCounts",
+    "errors"
+  ],
+  "type": "object"
+}

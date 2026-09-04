@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "battingFitItems": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "blockingForFoundation": {
+            "const": false
+          },
+          "canonicalDisplayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "derivedRole": {
+            "enum": [
+              "BATTER",
+              "ALL_ROUNDER",
+              "BOWLER",
+              "UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "otherProfileBattingInnings": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerTeamSeasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "PENDING"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewType": {
+            "enum": [
+              "BATTING_FIT"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "seasonBattingInnings": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "reviewId",
+          "reviewType",
+          "reviewStatus",
+          "playerTeamSeasonId",
+          "playerId",
+          "canonicalDisplayName",
+          "seasonId",
+          "teamId",
+          "seasonBattingInnings",
+          "otherProfileBattingInnings",
+          "derivedRole",
+          "blockingForFoundation"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "bowlingFamilyItems": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "blockingForBowlingFamilyCoverage": {
+            "const": true
+          },
+          "canonicalDisplayName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "maximumProfileLegalBalls": {
+            "minimum": 12,
+            "type": "integer"
+          },
+          "playerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "qualifyingProfileCount": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "qualifyingProfileIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "reviewId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "PENDING"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewType": {
+            "enum": [
+              "BOWLING_FAMILY"
+            ],
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "reviewId",
+          "reviewType",
+          "reviewStatus",
+          "playerId",
+          "canonicalDisplayName",
+          "qualifyingProfileIds",
+          "qualifyingProfileCount",
+          "maximumProfileLegalBalls",
+          "blockingForBowlingFamilyCoverage"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "completionBoundary": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "roleMetadataVersion": {
+      "enum": [
+        "ipl-era-draft-player-roles/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-player-role-review/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "scope": {
+      "enum": [
+        "G2_PLAYER_ROLES_AND_POSITION_FIT"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "summary": {
+      "additionalProperties": false,
+      "properties": {
+        "battingFitProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "bowlingFamilyPlayers": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "foundationBlockingItems": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "bowlingFamilyPlayers",
+        "battingFitProfiles",
+        "foundationBlockingItems"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "roleMetadataVersion",
+    "scope",
+    "summary",
+    "bowlingFamilyItems",
+    "battingFitItems",
+    "completionBoundary"
+  ],
+  "type": "object"
+}

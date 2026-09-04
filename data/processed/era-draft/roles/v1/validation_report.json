@@ -1,0 +1,112 @@
+{
+  "baselineComparisons": [
+    {
+      "actual": 816,
+      "expected": 816,
+      "matches": true,
+      "metric": "canonicalPlayers"
+    },
+    {
+      "actual": 3392,
+      "expected": 3392,
+      "matches": true,
+      "metric": "stage4PlayerTeamSeasons"
+    },
+    {
+      "actual": 727,
+      "expected": 727,
+      "matches": true,
+      "metric": "g2Players"
+    },
+    {
+      "actual": 2992,
+      "expected": 2992,
+      "matches": true,
+      "metric": "g2Profiles"
+    },
+    {
+      "actual": 2776,
+      "expected": 2776,
+      "matches": true,
+      "metric": "seasonBattingObservedProfiles"
+    },
+    {
+      "actual": 2901,
+      "expected": 2901,
+      "matches": true,
+      "metric": "fitResolvedProfiles"
+    },
+    {
+      "actual": 91,
+      "expected": 91,
+      "matches": true,
+      "metric": "fitUnknownProfiles"
+    },
+    {
+      "actual": 505,
+      "expected": 505,
+      "matches": true,
+      "metric": "bowlingFamilyQueuePlayers"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "matches": true,
+      "metric": "qualityFieldsPresent"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "matches": true,
+      "metric": "keeperFieldsPresent"
+    }
+  ],
+  "battingBasisCounts": {
+    "PLAYER_HISTORY_FALLBACK": 125,
+    "SEASON": 1785,
+    "SEASON_PLUS_PLAYER_HISTORY": 723,
+    "SEASON_SPARSE": 268,
+    "UNOBSERVED": 91
+  },
+  "battingEvidenceCounts": {
+    "HIGH": 1094,
+    "LOW": 1116,
+    "MEDIUM": 691,
+    "NONE": 91
+  },
+  "bowlingEvidenceCounts": {
+    "HIGH": 958,
+    "LOW": 301,
+    "MEDIUM": 708,
+    "NONE": 1025
+  },
+  "bowlingUsageCounts": {
+    "FRONTLINE": 1170,
+    "NONE": 1025,
+    "OCCASIONAL": 283,
+    "SUPPORT": 514
+  },
+  "counts": {
+    "bowlingFamilyQueuePlayers": 505,
+    "canonicalPlayers": 816,
+    "fitResolvedProfiles": 2901,
+    "fitUnknownProfiles": 91,
+    "g2Players": 727,
+    "g2Profiles": 2992,
+    "keeperFieldsPresent": 0,
+    "qualityFieldsPresent": 0,
+    "seasonBattingObservedProfiles": 2776,
+    "stage4PlayerTeamSeasons": 3392
+  },
+  "errors": [],
+  "roleCounts": {
+    "ALL_ROUNDER": 787,
+    "BATTER": 1308,
+    "BOWLER": 897,
+    "UNKNOWN": 0
+  },
+  "roleManifestHash": "3fbdac6396a21bb67d90210364a4b0f009bab51975f6e7c5eaa0161d664f6962",
+  "roleMetadataVersion": "ipl-era-draft-player-roles/v1",
+  "schemaVersion": "ipl-era-draft-player-role-validation/v1",
+  "status": "passed"
+}
