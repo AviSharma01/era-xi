@@ -1,0 +1,612 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "batting": {
+      "additionalProperties": false,
+      "properties": {
+        "calibration": {
+          "additionalProperties": false,
+          "properties": {
+            "production": {
+              "additionalProperties": false,
+              "properties": {
+                "mad": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "median": {
+                  "type": "number"
+                },
+                "robustSpread": {
+                  "minimum": 0,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "median",
+                "mad",
+                "robustSpread"
+              ],
+              "type": "object"
+            },
+            "scoring": {
+              "additionalProperties": false,
+              "properties": {
+                "mad": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "median": {
+                  "type": "number"
+                },
+                "robustSpread": {
+                  "minimum": 0,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "median",
+                "mad",
+                "robustSpread"
+              ],
+              "type": "object"
+            },
+            "survival": {
+              "additionalProperties": false,
+              "properties": {
+                "mad": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "median": {
+                  "type": "number"
+                },
+                "robustSpread": {
+                  "minimum": 0,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "median",
+                "mad",
+                "robustSpread"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "production",
+            "scoring",
+            "survival"
+          ],
+          "type": "object"
+        },
+        "establishedMinimumBalls": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "establishedMinimumDismissals": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "internalScoreFormula": {
+          "enum": [
+            "0.50 * zProduction + 0.275 * zScoring + 0.225 * zSurvival"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "modelId": {
+          "enum": [
+            "B50-M"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "productionFormula": {
+          "enum": [
+            "(runs / fullTeamBattingInnings) / allNormalBatterRunsPerInnings"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "scoringFormula": {
+          "enum": [
+            "ln(((runs + 90 * allNormalRunRatePerBall) / (balls + 90)) / allNormalRunRatePerBall)"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "scoringPriorBalls": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "survivalFormula": {
+          "enum": [
+            "ln(((runs + 4 * allNormalBattingAverage) / (dismissals + 4)) / allNormalBattingAverage)"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "survivalPriorDismissals": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "weights": {
+          "additionalProperties": false,
+          "properties": {
+            "production": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "scoring": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "survival": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            }
+          },
+          "required": [
+            "production",
+            "scoring",
+            "survival"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "modelId",
+        "productionFormula",
+        "scoringFormula",
+        "survivalFormula",
+        "internalScoreFormula",
+        "weights",
+        "scoringPriorBalls",
+        "survivalPriorDismissals",
+        "establishedMinimumBalls",
+        "establishedMinimumDismissals",
+        "calibration"
+      ],
+      "type": "object"
+    },
+    "bowling": {
+      "additionalProperties": false,
+      "properties": {
+        "calibration": {
+          "additionalProperties": false,
+          "properties": {
+            "economy": {
+              "additionalProperties": false,
+              "properties": {
+                "mad": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "median": {
+                  "type": "number"
+                },
+                "robustSpread": {
+                  "minimum": 0,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "median",
+                "mad",
+                "robustSpread"
+              ],
+              "type": "object"
+            },
+            "production": {
+              "additionalProperties": false,
+              "properties": {
+                "mad": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "median": {
+                  "type": "number"
+                },
+                "robustSpread": {
+                  "minimum": 0,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "median",
+                "mad",
+                "robustSpread"
+              ],
+              "type": "object"
+            },
+            "wicketRate": {
+              "additionalProperties": false,
+              "properties": {
+                "mad": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "median": {
+                  "type": "number"
+                },
+                "robustSpread": {
+                  "minimum": 0,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "median",
+                "mad",
+                "robustSpread"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "production",
+            "economy",
+            "wicketRate"
+          ],
+          "type": "object"
+        },
+        "economyFormula": {
+          "enum": [
+            "ln(allNormalEconomyPerSixBalls / (6 * (runsConceded + 108 * allNormalEconomyPerSixBalls / 6) / (legalBalls + 108)))"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "establishedMinimumLegalBalls": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "internalScoreFormula": {
+          "enum": [
+            "0.50 * zProduction + 0.275 * zEconomy + 0.225 * zWicketRate"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "modelId": {
+          "enum": [
+            "Q50-S"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "priorBalls": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "productionFormula": {
+          "enum": [
+            "(creditedWickets / fullTeamBowlingInnings) / allNormalCreditedWicketsPerInnings"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "weights": {
+          "additionalProperties": false,
+          "properties": {
+            "economy": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "production": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "wicketRate": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            }
+          },
+          "required": [
+            "production",
+            "economy",
+            "wicketRate"
+          ],
+          "type": "object"
+        },
+        "wicketDefinition": {
+          "enum": [
+            "CREDITED_BOWLER_WICKETS_ONLY"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "wicketRateFormula": {
+          "enum": [
+            "ln(((creditedWickets + 108 * allNormalWicketRatePerBall) / (legalBalls + 108)) / allNormalWicketRatePerBall)"
+          ],
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "modelId",
+        "productionFormula",
+        "economyFormula",
+        "wicketRateFormula",
+        "internalScoreFormula",
+        "weights",
+        "priorBalls",
+        "establishedMinimumLegalBalls",
+        "wicketDefinition",
+        "calibration"
+      ],
+      "type": "object"
+    },
+    "evidencePolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "battingEstablished": {
+          "enum": [
+            "balls >= 90 AND dismissals >= 4"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "battingLimited": {
+          "enum": [
+            "innings > 0 AND (balls < 90 OR dismissals < 4)"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "battingNone": {
+          "enum": [
+            "innings == 0"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "bowlingEstablished": {
+          "enum": [
+            "legalBalls >= 108"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "bowlingLimited": {
+          "enum": [
+            "deliveryRecords > 0 AND legalBalls < 108"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "bowlingNone": {
+          "enum": [
+            "deliveryRecords == 0"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "noneComponentOutput": {
+          "enum": [
+            "NULL_INTERNAL_SCORE_AND_RATING"
+          ],
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "battingNone",
+        "battingLimited",
+        "battingEstablished",
+        "bowlingNone",
+        "bowlingLimited",
+        "bowlingEstablished",
+        "noneComponentOutput"
+      ],
+      "type": "object"
+    },
+    "forbiddenInputs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "inputPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "calibrationMethod": {
+          "enum": [
+            "MEDIAN_MAD_TIMES_1_4826"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "calibrationPopulation": {
+          "enum": [
+            "G2_ESTABLISHED_PER_COMPONENT"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "seasonEnvironmentCohort": {
+          "enum": [
+            "all_normal"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "teamOpportunityDenominator": {
+          "enum": [
+            "FULL_TEAM_NORMAL_INNINGS"
+          ],
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "teamOpportunityDenominator",
+        "seasonEnvironmentCohort",
+        "calibrationPopulation",
+        "calibrationMethod"
+      ],
+      "type": "object"
+    },
+    "overall": {
+      "additionalProperties": false,
+      "properties": {
+        "primarySelection": {
+          "enum": [
+            "HIGHEST_AVAILABLE_COMPONENT"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "secondaryBonusCap": {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        "secondaryBonusEligibility": {
+          "enum": [
+            "BOTH_COMPONENTS_ESTABLISHED"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "secondaryBonusFormula": {
+          "enum": [
+            "min(0.20, 0.20 * max(0, min(B, Q)))"
+          ],
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "primarySelection",
+        "secondaryBonusEligibility",
+        "secondaryBonusFormula",
+        "secondaryBonusCap"
+      ],
+      "type": "object"
+    },
+    "qualityModelVersion": {
+      "enum": [
+        "ipl-era-draft-player-quality/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "ratingMapping": {
+      "additionalProperties": false,
+      "properties": {
+        "formula": {
+          "enum": [
+            "60 + 40 * tanh(internalScore / 1.8)"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "internalScorePublishedDecimalPlaces": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "ratingPublishedDecimalPlaces": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "tierDecisionInput": {
+          "enum": [
+            "UNROUNDED_INTERNAL_SCORE"
+          ],
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "formula",
+        "internalScorePublishedDecimalPlaces",
+        "ratingPublishedDecimalPlaces",
+        "tierDecisionInput"
+      ],
+      "type": "object"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-player-quality-model/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "tiers": {
+      "additionalProperties": false,
+      "properties": {
+        "limitedDFloor": {
+          "enum": [
+            "D_REQUIRES_ANY_ESTABLISHED_COMPONENT"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "limitedUpperTierCeiling": {
+          "type": "null"
+        },
+        "thresholds": {
+          "additionalProperties": false,
+          "properties": {
+            "A": {
+              "type": "number"
+            },
+            "B": {
+              "type": "number"
+            },
+            "C": {
+              "type": "number"
+            },
+            "S": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "S",
+            "A",
+            "B",
+            "C"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "thresholds",
+        "limitedDFloor",
+        "limitedUpperTierCeiling"
+      ],
+      "type": "object"
+    },
+    "trackingIssue": {
+      "minLength": 1,
+      "pattern": "https://github\\.com/.+/issues/[0-9]+",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "qualityModelVersion",
+    "trackingIssue",
+    "inputPolicy",
+    "batting",
+    "bowling",
+    "ratingMapping",
+    "evidencePolicy",
+    "overall",
+    "tiers",
+    "forbiddenInputs"
+  ],
+  "type": "object"
+}

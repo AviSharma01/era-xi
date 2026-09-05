@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifacts": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rows": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "schemaVersion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes",
+          "rows",
+          "schemaVersion"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "eligibilityManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "eligibilityVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "qualityDataAggregateHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "qualityManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "qualityModelVersion": {
+      "enum": [
+        "ipl-era-draft-player-quality/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "ratingInputs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rows": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "schemaVersion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "source": {
+            "enum": [
+              "STAGE_4_ANALYTICAL",
+              "G2_ELIGIBILITY"
+            ],
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "path",
+          "sha256",
+          "sizeBytes",
+          "rows",
+          "schemaVersion"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schemaFiles": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rows": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "schemaVersion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes",
+          "rows",
+          "schemaVersion"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-player-quality-manifest/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "stage4AnalyticalManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "stage4DatasetVersion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "trackingIssue": {
+      "minLength": 1,
+      "pattern": "https://github\\.com/.+/issues/[0-9]+",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "qualityModelVersion",
+    "trackingIssue",
+    "stage4DatasetVersion",
+    "stage4AnalyticalManifestHash",
+    "eligibilityVersion",
+    "eligibilityManifestHash",
+    "ratingInputs",
+    "artifacts",
+    "schemaFiles",
+    "qualityDataAggregateHash",
+    "qualityManifestHash"
+  ],
+  "type": "object"
+}

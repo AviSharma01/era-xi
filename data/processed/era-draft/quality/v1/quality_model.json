@@ -1,0 +1,115 @@
+{
+  "batting": {
+    "calibration": {
+      "production": {
+        "mad": 0.043950810181,
+        "median": 0.120970569574,
+        "robustSpread": 0.065161471174
+      },
+      "scoring": {
+        "mad": 0.057392879259,
+        "median": 0.002711403192,
+        "robustSpread": 0.085090682789
+      },
+      "survival": {
+        "mad": 0.171686322529,
+        "median": 0.083218634895,
+        "robustSpread": 0.254542141781
+      }
+    },
+    "establishedMinimumBalls": 90,
+    "establishedMinimumDismissals": 4,
+    "internalScoreFormula": "0.50 * zProduction + 0.275 * zScoring + 0.225 * zSurvival",
+    "modelId": "B50-M",
+    "productionFormula": "(runs / fullTeamBattingInnings) / allNormalBatterRunsPerInnings",
+    "scoringFormula": "ln(((runs + 90 * allNormalRunRatePerBall) / (balls + 90)) / allNormalRunRatePerBall)",
+    "scoringPriorBalls": 90,
+    "survivalFormula": "ln(((runs + 4 * allNormalBattingAverage) / (dismissals + 4)) / allNormalBattingAverage)",
+    "survivalPriorDismissals": 4,
+    "weights": {
+      "production": 0.5,
+      "scoring": 0.275,
+      "survival": 0.225
+    }
+  },
+  "bowling": {
+    "calibration": {
+      "economy": {
+        "mad": 0.055271184997,
+        "median": 0.010098153644,
+        "robustSpread": 0.081945058876
+      },
+      "production": {
+        "mad": 0.045802501772,
+        "median": 0.130529369108,
+        "robustSpread": 0.067906789128
+      },
+      "wicketRate": {
+        "mad": 0.135699008612,
+        "median": 0.007345474304,
+        "robustSpread": 0.201187350168
+      }
+    },
+    "economyFormula": "ln(allNormalEconomyPerSixBalls / (6 * (runsConceded + 108 * allNormalEconomyPerSixBalls / 6) / (legalBalls + 108)))",
+    "establishedMinimumLegalBalls": 108,
+    "internalScoreFormula": "0.50 * zProduction + 0.275 * zEconomy + 0.225 * zWicketRate",
+    "modelId": "Q50-S",
+    "priorBalls": 108,
+    "productionFormula": "(creditedWickets / fullTeamBowlingInnings) / allNormalCreditedWicketsPerInnings",
+    "weights": {
+      "economy": 0.275,
+      "production": 0.5,
+      "wicketRate": 0.225
+    },
+    "wicketDefinition": "CREDITED_BOWLER_WICKETS_ONLY",
+    "wicketRateFormula": "ln(((creditedWickets + 108 * allNormalWicketRatePerBall) / (legalBalls + 108)) / allNormalWicketRatePerBall)"
+  },
+  "evidencePolicy": {
+    "battingEstablished": "balls >= 90 AND dismissals >= 4",
+    "battingLimited": "innings > 0 AND (balls < 90 OR dismissals < 4)",
+    "battingNone": "innings == 0",
+    "bowlingEstablished": "legalBalls >= 108",
+    "bowlingLimited": "deliveryRecords > 0 AND legalBalls < 108",
+    "bowlingNone": "deliveryRecords == 0",
+    "noneComponentOutput": "NULL_INTERNAL_SCORE_AND_RATING"
+  },
+  "forbiddenInputs": [
+    "bowlingFamily",
+    "country",
+    "derivedRole",
+    "isOverseas",
+    "positionFit",
+    "wicketkeeperStatus"
+  ],
+  "inputPolicy": {
+    "calibrationMethod": "MEDIAN_MAD_TIMES_1_4826",
+    "calibrationPopulation": "G2_ESTABLISHED_PER_COMPONENT",
+    "seasonEnvironmentCohort": "all_normal",
+    "teamOpportunityDenominator": "FULL_TEAM_NORMAL_INNINGS"
+  },
+  "overall": {
+    "primarySelection": "HIGHEST_AVAILABLE_COMPONENT",
+    "secondaryBonusCap": 0.2,
+    "secondaryBonusEligibility": "BOTH_COMPONENTS_ESTABLISHED",
+    "secondaryBonusFormula": "min(0.20, 0.20 * max(0, min(B, Q)))"
+  },
+  "qualityModelVersion": "ipl-era-draft-player-quality/v1",
+  "ratingMapping": {
+    "formula": "60 + 40 * tanh(internalScore / 1.8)",
+    "internalScorePublishedDecimalPlaces": 6,
+    "ratingPublishedDecimalPlaces": 1,
+    "tierDecisionInput": "UNROUNDED_INTERNAL_SCORE"
+  },
+  "schemaVersion": "ipl-era-draft-player-quality-model/v1",
+  "tiers": {
+    "limitedDFloor": "D_REQUIRES_ANY_ESTABLISHED_COMPONENT",
+    "limitedUpperTierCeiling": null,
+    "thresholds": {
+      "A": 0.45,
+      "B": -0.45,
+      "C": -0.9,
+      "S": 0.9
+    }
+  },
+  "trackingIssue": "https://github.com/AviSharma01/draft-simulator/issues/3"
+}

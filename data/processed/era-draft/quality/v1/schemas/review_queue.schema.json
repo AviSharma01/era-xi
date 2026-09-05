@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blockingItems": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "reason": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewId": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "reviewId",
+          "reason"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "completionBoundary": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "limitedDFloorItems": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "overallInternalScore": {
+            "type": "number"
+          },
+          "overallRating": {
+            "maximum": 100,
+            "minimum": 20,
+            "type": "number"
+          },
+          "playerTeamSeasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "primaryComponent": {
+            "enum": [
+              "BATTING",
+              "BOWLING"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "primaryEvidenceState": {
+            "enum": [
+              "LIMITED"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "qualityTier": {
+            "enum": [
+              "S",
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reason": {
+            "enum": [
+              "LIMITED_UPPER_TIER",
+              "LIMITED_D_FLOOR"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "DIAGNOSTIC_ONLY"
+            ],
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "reviewId",
+          "reviewStatus",
+          "playerTeamSeasonId",
+          "primaryComponent",
+          "primaryEvidenceState",
+          "overallInternalScore",
+          "overallRating",
+          "qualityTier",
+          "reason"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "limitedUpperTierItems": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "overallInternalScore": {
+            "type": "number"
+          },
+          "overallRating": {
+            "maximum": 100,
+            "minimum": 20,
+            "type": "number"
+          },
+          "playerTeamSeasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "primaryComponent": {
+            "enum": [
+              "BATTING",
+              "BOWLING"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "primaryEvidenceState": {
+            "enum": [
+              "LIMITED"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "qualityTier": {
+            "enum": [
+              "S",
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reason": {
+            "enum": [
+              "LIMITED_UPPER_TIER",
+              "LIMITED_D_FLOOR"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewStatus": {
+            "enum": [
+              "DIAGNOSTIC_ONLY"
+            ],
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "reviewId",
+          "reviewStatus",
+          "playerTeamSeasonId",
+          "primaryComponent",
+          "primaryEvidenceState",
+          "overallInternalScore",
+          "overallRating",
+          "qualityTier",
+          "reason"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "qualityModelVersion": {
+      "enum": [
+        "ipl-era-draft-player-quality/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-player-quality-review/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "scope": {
+      "enum": [
+        "G2_PLAYER_QUALITY"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "summary": {
+      "additionalProperties": false,
+      "properties": {
+        "blockingCases": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "limitedDFloorCases": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "limitedUpperTierCases": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "blockingCases",
+        "limitedUpperTierCases",
+        "limitedDFloorCases"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "qualityModelVersion",
+    "scope",
+    "summary",
+    "blockingItems",
+    "limitedUpperTierItems",
+    "limitedDFloorItems",
+    "completionBoundary"
+  ],
+  "type": "object"
+}
