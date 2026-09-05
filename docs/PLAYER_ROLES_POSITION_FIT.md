@@ -43,11 +43,15 @@ capacity = min(1, legalBalls / (24 * officialAppearances))
 
 Powerplay, middle and death shares describe deployment only. They do not establish pace/spin style or bowling quality.
 
-## Sparse evidence and enrichment
+## Sparse evidence and bowling-family enrichment
 
 Batting and bowling confidence are independent. Sparse data remains visible through evidence counts, derivation basis and review queues instead of being hidden in one score.
 
-Cricsheet does not provide bowling style. A later enrichment phase must research provenance-backed player defaults with explicit season overrides and the values `PACE`, `SPIN`, `MIXED` or `UNKNOWN`. Unresolved players must not count toward either pace or spin coverage.
+Cricsheet does not provide bowling style. The 505-player G2 research universe is therefore resolved through provenance-backed player defaults with explicit season overrides reserved for genuine historical changes. The committed assertion layer preserves the raw source style and maps it through a closed deterministic lookup to `PACE`, `SPIN`, `MIXED` or `UNKNOWN`.
+
+An exact Cricsheet `identifier` to `key_cricinfo` bridge, paired with an explicit ESPNcricinfo `athlete.bowlStyle[].description` value and no conflicting evidence, is sufficient for approval. Missing, ambiguous or unrecognized source text remains `UNKNOWN`. Cross-source disagreement becomes `CONFLICT`; it never becomes `MIXED` automatically. `MIXED` requires one source record to state styles that genuinely span pace and spin.
+
+The research script is networked and records source locators and content hashes. The normal Stage 5 builder is offline: it validates the committed assertions, their self-hash, exact research-universe coverage, identity bridges, closed normalization, conflicts and provenance before emitting player bowling-family rows. No bowling family is inferred from workload, role, phase, wickets, economy, name or reputation.
 
 ## Consumer contract
 

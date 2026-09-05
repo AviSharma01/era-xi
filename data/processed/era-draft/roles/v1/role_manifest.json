@@ -15,25 +15,48 @@
       "sizeBytes": 6710785
     },
     {
+      "path": "player_bowling_families.jsonl",
+      "rows": 505,
+      "schemaVersion": "ipl-era-draft-player-bowling-family/v1",
+      "sha256": "89dae527c248a809ed1869cb718b83cd68e5ee1258b82ebcfe9d7c184491efca",
+      "sizeBytes": 378389
+    },
+    {
       "path": "review_queue.json",
-      "rows": 596,
+      "rows": 91,
       "schemaVersion": "ipl-era-draft-player-role-review/v1",
-      "sha256": "5d7e47361ef569d2532a3e111535b84363337da55d4445cdcaf17467aceaac3b",
-      "sizeBytes": 338999
+      "sha256": "4ce20d070dd0978fdcc0869b433b0f33fc90db18e0dd34419bc46be435ea8ad3",
+      "sizeBytes": 48384
     }
   ],
+  "bowlingFamilyMetadataHash": "d96e24d219cb70b173a82d38835026c443becb2797d7558e3c578b368f4ab836",
+  "bowlingFamilyMetadataSchemaVersion": "ipl-era-draft-bowling-family-manual/v1",
   "eligibilityManifestHash": "b3e6393851e999c23abbc120083b52e8bc444e747d9be7316e0ca73e07be38b6",
   "eligibilityVersion": "ipl-era-draft-eligibility/v1",
-  "roleDataAggregateHash": "d6de5b78094a45faff32342e0781512d1e55ef5686a3b94a755db1b3769bf5e7",
-  "roleManifestHash": "3fbdac6396a21bb67d90210364a4b0f009bab51975f6e7c5eaa0161d664f6962",
+  "roleDataAggregateHash": "98cdd572a5a335a78d693f5faf0f1b3a1325982e3d22e22b7e86aa308d744106",
+  "roleManifestHash": "b2b57fc619702ef85f87a411f812fd6285e99252e8bf24387c20e678de1ec8dd",
   "roleMetadataVersion": "ipl-era-draft-player-roles/v1",
   "schemaFiles": [
+    {
+      "path": "schemas/bowling_family_metadata.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "f02dc5ff69da7b004fec3a85d940b9a42f84415843b76625d9a3c1ef3eb3c35c",
+      "sizeBytes": 10182
+    },
     {
       "path": "schemas/player_batting_prior.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
       "sha256": "ac2a83b6b1428beb2d8a1446615e6aaaddb1199ff06b0079680a505996aa94cb",
       "sizeBytes": 3796
+    },
+    {
+      "path": "schemas/player_bowling_family.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "4f5aba553a2929a0b664f7c2dc54f13725a72cf49bba0b61b43cfb141587d49f",
+      "sizeBytes": 6426
     },
     {
       "path": "schemas/player_team_season_role.schema.json",
@@ -53,15 +76,15 @@
       "path": "schemas/role_manifest.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "f593e7d47f973203de81064e3e2aa47893014af3aba23de8a205577ca542c677",
-      "sizeBytes": 4233
+      "sha256": "f436b816d87631f441727dd5b8dba1f2c3389502d7540ecaa3e31503d481fe51",
+      "sizeBytes": 4598
     },
     {
       "path": "schemas/validation_report.schema.json",
       "rows": null,
       "schemaVersion": "json-schema/2020-12",
-      "sha256": "e41aa251dbd78015948fe8d08603f2c85bb7e31da7e4a22c78b7799f178bb5e5",
-      "sizeBytes": 6087
+      "sha256": "08e979d171b4ca26c238a979ca156834598bf02c6321d79e0c9d9eba62083b4b",
+      "sizeBytes": 7653
     }
   ],
   "schemaVersion": "ipl-era-draft-player-role-manifest/v1",

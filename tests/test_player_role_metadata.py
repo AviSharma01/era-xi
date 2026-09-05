@@ -13,6 +13,8 @@ from scripts.player_role_metadata import (
     derive_batting_usage,
     derive_bowling_usage,
     derive_role_summary,
+    normalize_bowling_family,
+    normalize_bowling_style_text,
     position_counts_to_bands,
     write_artifact_tree,
 )
@@ -101,6 +103,16 @@ class BattingMethodTests(unittest.TestCase):
 
 
 class BowlingMethodTests(unittest.TestCase):
+    def test_explicit_styles_use_the_closed_family_lookup(self) -> None:
+        self.assertEqual(normalize_bowling_style_text("Right-arm fast-medium"), "right arm fast medium")
+        self.assertEqual(normalize_bowling_family(["Right-arm fast-medium"]), "PACE")
+        self.assertEqual(normalize_bowling_family(["Slow left-arm orthodox"]), "SPIN")
+        self.assertEqual(normalize_bowling_family(["Right-arm medium", "Right-arm offbreak"]), "MIXED")
+
+    def test_missing_or_unrecognized_style_remains_unknown(self) -> None:
+        self.assertEqual(normalize_bowling_family([]), "UNKNOWN")
+        self.assertEqual(normalize_bowling_family(["Mystery bowling"]), "UNKNOWN")
+
     def test_workload_boundaries_use_only_balls_and_appearances(self) -> None:
         occasional = derive_bowling_usage(bowling_profile(matches=4, balls=59, powerplay=20, middle=30, death=9))
         support = derive_bowling_usage(bowling_profile(matches=4, balls=60, powerplay=20, middle=30, death=10))
@@ -139,6 +151,10 @@ class PlayerRoleIntegrationTests(unittest.TestCase):
             json.loads(line)
             for line in (cls.output_dir / "player_team_season_roles.jsonl").read_text().splitlines()
         ]
+        cls.families = [
+            json.loads(line)
+            for line in (cls.output_dir / "player_bowling_families.jsonl").read_text().splitlines()
+        ]
 
     @classmethod
     def tearDownClass(cls) -> None:
@@ -154,7 +170,9 @@ class PlayerRoleIntegrationTests(unittest.TestCase):
             "seasonBattingObservedProfiles": 2776,
             "fitResolvedProfiles": 2901,
             "fitUnknownProfiles": 91,
-            "bowlingFamilyQueuePlayers": 505,
+            "bowlingFamilyResearchPlayers": 505,
+            "bowlingFamilyResolvedPlayers": 505,
+            "bowlingFamilyQueuePlayers": 0,
             "qualityFieldsPresent": 0,
             "keeperFieldsPresent": 0,
         })
@@ -183,12 +201,41 @@ class PlayerRoleIntegrationTests(unittest.TestCase):
     def test_review_queues_match_the_approved_boundary(self) -> None:
         queue = json.loads((self.output_dir / "review_queue.json").read_text())
         self.assertEqual(queue["summary"], {
-            "bowlingFamilyPlayers": 505,
+            "bowlingFamilyPlayers": 0,
             "battingFitProfiles": 91,
             "foundationBlockingItems": 0,
         })
-        self.assertTrue(all(row["reviewStatus"] == "PENDING" for row in queue["bowlingFamilyItems"]))
+        self.assertEqual(queue["bowlingFamilyItems"], [])
         self.assertTrue(all(not row["blockingForFoundation"] for row in queue["battingFitItems"]))
+        batting_queue_bytes = (
+            json.dumps(queue["battingFitItems"], sort_keys=True, separators=(",", ":")) + "\n"
+        ).encode()
+        self.assertEqual(hashlib.sha256(batting_queue_bytes).hexdigest(), "895b6bb353de4cd231f9930f05acb75035577a4fd8b9d3bc45c4505e15951d74")
+
+    def test_bowling_family_enrichment_has_exact_approved_coverage(self) -> None:
+        self.assertEqual(len(self.families), 505)
+        self.assertEqual(len({row["playerId"] for row in self.families}), 505)
+        self.assertEqual(self.report["bowlingFamilyCounts"], {
+            "PACE": 325, "SPIN": 176, "MIXED": 4, "UNKNOWN": 0,
+        })
+        self.assertEqual(self.report["bowlingFamilySourceCounts"], {
+            "OFFICIAL_IPL_BCCI": 0,
+            "NATIONAL_CRICKET_BOARD": 0,
+            "ESPNCRICINFO": 505,
+            "STRONG_CRICKET_REFERENCE": 0,
+        })
+        self.assertTrue(all(row["resolutionStatus"] == "APPROVED" for row in self.families))
+        self.assertTrue(all(row["identityResolutionMethod"] == "CRICSHEET_REGISTER_EXACT_EXTERNAL_ID" for row in self.families))
+        self.assertTrue(all(row["rawBowlingStyles"] for row in self.families))
+        self.assertTrue(all(not row["seasonOverrides"] for row in self.families))
+
+    def test_phase_one_derived_artifacts_remain_byte_identical(self) -> None:
+        expected = {
+            "player_batting_priors.jsonl": "14b0b7c6eff173d8094f24762e7c5cdb79709dcd33a3ef3d92e4390ce0772dc5",
+            "player_team_season_roles.jsonl": "499dbf481e779a5d808407a5c4608271fff7c57adc7a3aefcc53d8a58172c91d",
+        }
+        for path, digest in expected.items():
+            self.assertEqual(hashlib.sha256((self.output_dir / path).read_bytes()).hexdigest(), digest)
 
     def test_build_is_byte_deterministic(self) -> None:
         second_files, second_report = build_player_role_metadata_files()

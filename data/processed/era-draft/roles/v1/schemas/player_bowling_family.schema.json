@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "assertionId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "bowlingFamily": {
+      "enum": [
+        "PACE",
+        "SPIN",
+        "MIXED",
+        "UNKNOWN"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "canonicalDisplayName": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidenceRefs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "contentSha256": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{64}",
+            "type": "string"
+          },
+          "locator": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "observedValues": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "sourceFamily": {
+            "enum": [
+              "OFFICIAL_IPL_BCCI",
+              "NATIONAL_CRICKET_BOARD",
+              "ESPNCRICINFO",
+              "STRONG_CRICKET_REFERENCE"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "url": {
+            "minLength": 1,
+            "pattern": "https://.+",
+            "type": "string"
+          }
+        },
+        "required": [
+          "sourceId",
+          "sourceFamily",
+          "url",
+          "locator",
+          "observedValues",
+          "contentSha256"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "externalPlayerId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "identityResolutionMethod": {
+      "enum": [
+        "CRICSHEET_REGISTER_EXACT_EXTERNAL_ID",
+        "MANUAL_MULTI_FIELD_MATCH"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerId": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{8}",
+      "type": "string"
+    },
+    "rawBowlingStyles": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "resolutionStatus": {
+      "enum": [
+        "APPROVED",
+        "UNKNOWN",
+        "PENDING",
+        "CONFLICT"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "roleMetadataVersion": {
+      "enum": [
+        "ipl-era-draft-player-roles/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-player-bowling-family/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "seasonOverrides": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "bowlingFamily": {
+            "enum": [
+              "PACE",
+              "SPIN",
+              "MIXED",
+              "UNKNOWN"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "evidenceRefs": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "contentSha256": {
+                  "minLength": 1,
+                  "pattern": "[0-9a-f]{64}",
+                  "type": "string"
+                },
+                "locator": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "observedValues": {
+                  "items": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                "sourceFamily": {
+                  "enum": [
+                    "OFFICIAL_IPL_BCCI",
+                    "NATIONAL_CRICKET_BOARD",
+                    "ESPNCRICINFO",
+                    "STRONG_CRICKET_REFERENCE"
+                  ],
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceId": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "url": {
+                  "minLength": 1,
+                  "pattern": "https://.+",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "sourceId",
+                "sourceFamily",
+                "url",
+                "locator",
+                "observedValues",
+                "contentSha256"
+              ],
+              "type": "object"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "notes": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "overrideId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "playerId": {
+            "minLength": 1,
+            "pattern": "[0-9a-f]{8}",
+            "type": "string"
+          },
+          "rawBowlingStyles": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "resolutionStatus": {
+            "enum": [
+              "APPROVED",
+              "UNKNOWN",
+              "PENDING",
+              "CONFLICT"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "seasonIds": {
+            "items": {
+              "minLength": 1,
+              "pattern": "ipl-[0-9]{4}",
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "overrideId",
+          "playerId",
+          "seasonIds",
+          "bowlingFamily",
+          "resolutionStatus",
+          "rawBowlingStyles",
+          "evidenceRefs",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "roleMetadataVersion",
+    "assertionId",
+    "playerId",
+    "canonicalDisplayName",
+    "bowlingFamily",
+    "resolutionStatus",
+    "rawBowlingStyles",
+    "identityResolutionMethod",
+    "externalPlayerId",
+    "evidenceRefs",
+    "seasonOverrides"
+  ],
+  "type": "object"
+}

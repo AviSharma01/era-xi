@@ -121,6 +121,62 @@
       ],
       "type": "object"
     },
+    "bowlingFamilyCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "MIXED": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "PACE": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "SPIN": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "UNKNOWN": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "PACE",
+        "SPIN",
+        "MIXED",
+        "UNKNOWN"
+      ],
+      "type": "object"
+    },
+    "bowlingFamilySourceCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "ESPNCRICINFO": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "NATIONAL_CRICKET_BOARD": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "OFFICIAL_IPL_BCCI": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "STRONG_CRICKET_REFERENCE": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "OFFICIAL_IPL_BCCI",
+        "NATIONAL_CRICKET_BOARD",
+        "ESPNCRICINFO",
+        "STRONG_CRICKET_REFERENCE"
+      ],
+      "type": "object"
+    },
     "bowlingUsageCounts": {
       "additionalProperties": false,
       "properties": {
@@ -153,6 +209,14 @@
       "additionalProperties": false,
       "properties": {
         "bowlingFamilyQueuePlayers": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "bowlingFamilyResearchPlayers": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "bowlingFamilyResolvedPlayers": {
           "minimum": 0,
           "type": "integer"
         },
@@ -201,6 +265,8 @@
         "seasonBattingObservedProfiles",
         "fitResolvedProfiles",
         "fitUnknownProfiles",
+        "bowlingFamilyResearchPlayers",
+        "bowlingFamilyResolvedPlayers",
         "bowlingFamilyQueuePlayers",
         "qualityFieldsPresent",
         "keeperFieldsPresent"
@@ -280,6 +346,8 @@
     "battingBasisCounts",
     "bowlingUsageCounts",
     "bowlingEvidenceCounts",
+    "bowlingFamilyCounts",
+    "bowlingFamilySourceCounts",
     "roleCounts",
     "errors"
   ],

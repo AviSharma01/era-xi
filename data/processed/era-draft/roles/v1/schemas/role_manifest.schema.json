@@ -42,6 +42,18 @@
       },
       "type": "array"
     },
+    "bowlingFamilyMetadataHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "bowlingFamilyMetadataSchemaVersion": {
+      "enum": [
+        "ipl-era-draft-bowling-family-manual/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
     "eligibilityManifestHash": {
       "minLength": 1,
       "pattern": "[0-9a-f]{64}",
@@ -177,6 +189,8 @@
     "eligibilityManifestHash",
     "wicketkeeperMetadataVersion",
     "wicketkeeperMetadataManifestHash",
+    "bowlingFamilyMetadataSchemaVersion",
+    "bowlingFamilyMetadataHash",
     "artifacts",
     "schemaFiles",
     "roleDataAggregateHash",

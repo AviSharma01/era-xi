@@ -2,7 +2,7 @@
 
 Tracking issue: [#1](https://github.com/AviSharma01/draft-simulator/issues/1)
 
-Role manifest SHA-256: `3fbdac6396a21bb67d90210364a4b0f009bab51975f6e7c5eaa0161d664f6962`
+Role manifest SHA-256: `b2b57fc619702ef85f87a411f812fd6285e99252e8bf24387c20e678de1ec8dd`
 
 ## Coverage
 
@@ -19,10 +19,19 @@ Role manifest SHA-256: `3fbdac6396a21bb67d90210364a4b0f009bab51975f6e7c5eaa0161d
 - Occasional: 283
 - None: 1,025
 
+## Bowling family
+
+- Pace: 325
+- Spin: 176
+- Mixed: 4
+- Unknown: 0
+
 ## Review boundary
 
 - Bowling-family research players: 505
+- Approved bowling-family players: 505
+- Residual bowling-family review players: 0
 - Optional batting-fit research profiles: 91
-- No bowling-family assertions are included in this deterministic foundation.
+- Bowling family is stored as player-default metadata with season overrides reserved for explicit temporal evidence.
 - Wicketkeeper capability and usage remain owned by the frozen wicketkeeper metadata family.
 - Classic 2016 artifacts and consumers are not modified.

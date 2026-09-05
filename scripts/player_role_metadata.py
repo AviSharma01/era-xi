@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
+import unicodedata
 from collections import Counter, defaultdict
 from copy import deepcopy
 from fractions import Fraction
@@ -30,6 +32,8 @@ PROFILE_SCHEMA_VERSION = "ipl-era-draft-player-team-season-role/v1"
 QUEUE_SCHEMA_VERSION = "ipl-era-draft-player-role-review/v1"
 MANIFEST_SCHEMA_VERSION = "ipl-era-draft-player-role-manifest/v1"
 VALIDATION_SCHEMA_VERSION = "ipl-era-draft-player-role-validation/v1"
+BOWLING_FAMILY_METADATA_SCHEMA_VERSION = "ipl-era-draft-bowling-family-manual/v1"
+PLAYER_BOWLING_FAMILY_SCHEMA_VERSION = "ipl-era-draft-player-bowling-family/v1"
 
 ISSUE_URL = "https://github.com/AviSharma01/draft-simulator/issues/1"
 
@@ -54,6 +58,53 @@ FULL_BOWLING_QUOTA_BALLS = 24
 SUPPORT_BOWLING_CAPACITY = Fraction(1, 4)
 FRONTLINE_BOWLING_CAPACITY = Fraction(3, 4)
 
+BOWLING_FAMILIES = ("PACE", "SPIN", "MIXED", "UNKNOWN")
+BOWLING_FAMILY_SOURCE_TYPES = (
+    "OFFICIAL_IPL_BCCI",
+    "NATIONAL_CRICKET_BOARD",
+    "ESPNCRICINFO",
+    "STRONG_CRICKET_REFERENCE",
+)
+
+# Closed mapping of normalized, explicitly stated bowling styles. New source
+# vocabulary must be reviewed and added here; unknown text never falls through
+# to a heuristic family guess.
+BOWLING_STYLE_FAMILY_MAP = {
+    "left arm fast": "PACE",
+    "left arm fast medium": "PACE",
+    "left arm medium": "PACE",
+    "left arm medium fast": "PACE",
+    "left arm pace": "PACE",
+    "right arm fast": "PACE",
+    "right arm fast medium": "PACE",
+    "right arm medium": "PACE",
+    "right arm medium fast": "PACE",
+    "right arm pace": "PACE",
+    "fast": "PACE",
+    "fast medium": "PACE",
+    "medium": "PACE",
+    "medium fast": "PACE",
+    "pace": "PACE",
+    "seam": "PACE",
+    "left arm chinaman": "SPIN",
+    "left arm orthodox": "SPIN",
+    "left arm unorthodox": "SPIN",
+    "left arm wrist spin": "SPIN",
+    "legbreak": "SPIN",
+    "legbreak googly": "SPIN",
+    "off break": "SPIN",
+    "off spin": "SPIN",
+    "offbreak": "SPIN",
+    "right arm legbreak": "SPIN",
+    "right arm legbreak googly": "SPIN",
+    "right arm off break": "SPIN",
+    "right arm off spin": "SPIN",
+    "right arm offbreak": "SPIN",
+    "slow left arm chinaman": "SPIN",
+    "slow left arm orthodox": "SPIN",
+    "slow left arm wrist spin": "SPIN",
+}
+
 EXPECTED_BASELINES = {
     "canonicalPlayers": 816,
     "stage4PlayerTeamSeasons": 3392,
@@ -62,7 +113,8 @@ EXPECTED_BASELINES = {
     "seasonBattingObservedProfiles": 2776,
     "fitResolvedProfiles": 2901,
     "fitUnknownProfiles": 91,
-    "bowlingFamilyQueuePlayers": 505,
+    "bowlingFamilyResearchPlayers": 505,
+    "bowlingFamilyQueuePlayers": 0,
     "qualityFieldsPresent": 0,
     "keeperFieldsPresent": 0,
 }
@@ -70,6 +122,31 @@ EXPECTED_BASELINES = {
 
 class PlayerRoleMetadataError(ValueError):
     pass
+
+
+def normalize_bowling_style_text(raw_style: str) -> str:
+    normalized = unicodedata.normalize("NFKC", raw_style).casefold()
+    normalized = normalized.replace("&", " and ")
+    normalized = re.sub(r"[\u2010-\u2015_/]+", " ", normalized)
+    normalized = re.sub(r"[^a-z0-9 ]+", " ", normalized)
+    return " ".join(normalized.split())
+
+
+def normalize_bowling_family(raw_styles: Iterable[str]) -> str:
+    styles = [style for style in raw_styles if isinstance(style, str) and style.strip()]
+    if not styles:
+        return "UNKNOWN"
+    families = {
+        BOWLING_STYLE_FAMILY_MAP.get(normalize_bowling_style_text(style))
+        for style in styles
+    }
+    if None in families:
+        return "UNKNOWN"
+    if families == {"PACE", "SPIN"}:
+        return "MIXED"
+    if len(families) == 1:
+        return next(iter(families))
+    return "UNKNOWN"
 
 
 def _string(*, enum: Iterable[str] | None = None, pattern: str | None = None, nullable: bool = False) -> dict[str, Any]:
@@ -128,6 +205,77 @@ def build_role_schemas() -> dict[str, dict[str, Any]]:
     hash_string = _string(pattern=r"[0-9a-f]{64}")
     band = _string(enum=BAND_ORDER)
     evidence = _string(enum=["HIGH", "MEDIUM", "LOW", "NONE"])
+    bowling_family = _string(enum=BOWLING_FAMILIES)
+    source_family = _string(enum=BOWLING_FAMILY_SOURCE_TYPES)
+    family_evidence_ref = _object({
+        "sourceId": _string(),
+        "sourceFamily": source_family,
+        "url": _string(pattern=r"https://.+"),
+        "locator": _string(),
+        "observedValues": {**_array(_string(), unique=True), "minItems": 1},
+        "contentSha256": hash_string,
+    })
+    family_assertion = _object({
+        "assertionId": _string(),
+        "playerId": _string(pattern=r"[0-9a-f]{8}"),
+        "canonicalDisplayName": _string(),
+        "bowlingFamily": bowling_family,
+        "resolutionStatus": _string(enum=["APPROVED", "UNKNOWN", "PENDING", "CONFLICT"]),
+        "rawBowlingStyles": _array(_string(), unique=True),
+        "identityMatch": _object({
+            "method": _string(enum=["CRICSHEET_REGISTER_EXACT_EXTERNAL_ID", "MANUAL_MULTI_FIELD_MATCH"]),
+            "cricsheetId": _string(pattern=r"[0-9a-f]{8}"),
+            "externalPlayerId": _string(),
+            "registerName": _string(),
+            "sourcePlayerName": _string(),
+            "sourceDateOfBirth": _string(nullable=True),
+        }),
+        "evidenceRefs": {**_array(family_evidence_ref), "minItems": 1},
+        "notes": _string(),
+    })
+    season_override = _object({
+        "overrideId": _string(),
+        "playerId": _string(pattern=r"[0-9a-f]{8}"),
+        "seasonIds": {**_array(_string(pattern=r"ipl-[0-9]{4}"), unique=True), "minItems": 1},
+        "bowlingFamily": bowling_family,
+        "resolutionStatus": _string(enum=["APPROVED", "UNKNOWN", "PENDING", "CONFLICT"]),
+        "rawBowlingStyles": _array(_string(), unique=True),
+        "evidenceRefs": {**_array(family_evidence_ref), "minItems": 1},
+        "notes": _string(),
+    })
+    family_source = _object({
+        "sourceId": _string(),
+        "sourceFamily": _string(enum=["IDENTITY_REGISTER", *BOWLING_FAMILY_SOURCE_TYPES]),
+        "publisher": _string(),
+        "title": _string(),
+        "url": _string(pattern=r"https://.+"),
+        "accessedDate": _string(pattern=r"[0-9]{4}-[0-9]{2}-[0-9]{2}"),
+        "contentSha256": hash_string,
+        "locator": _string(),
+    })
+    family_metadata = _object({
+        "schemaVersion": _string(enum=[BOWLING_FAMILY_METADATA_SCHEMA_VERSION]),
+        "roleMetadataVersion": _string(enum=[ROLE_METADATA_VERSION]),
+        "trackingIssue": _string(pattern=r"https://github\.com/.+/issues/[0-9]+"),
+        "sources": {**_array(family_source), "minItems": 2},
+        "playerDefaults": _array(family_assertion),
+        "seasonOverrides": _array(season_override),
+        "metadataHash": hash_string,
+    })
+    resolved_family = _object({
+        "schemaVersion": _string(enum=[PLAYER_BOWLING_FAMILY_SCHEMA_VERSION]),
+        "roleMetadataVersion": _string(enum=[ROLE_METADATA_VERSION]),
+        "assertionId": _string(),
+        "playerId": _string(pattern=r"[0-9a-f]{8}"),
+        "canonicalDisplayName": _string(),
+        "bowlingFamily": bowling_family,
+        "resolutionStatus": _string(enum=["APPROVED", "UNKNOWN", "PENDING", "CONFLICT"]),
+        "rawBowlingStyles": _array(_string(), unique=True),
+        "identityResolutionMethod": _string(enum=["CRICSHEET_REGISTER_EXACT_EXTERNAL_ID", "MANUAL_MULTI_FIELD_MATCH"]),
+        "externalPlayerId": _string(),
+        "evidenceRefs": {**_array(family_evidence_ref), "minItems": 1},
+        "seasonOverrides": _array(season_override),
+    })
     slot_fit = _object({
         "position": {"type": "integer", "minimum": 1, "maximum": 11},
         "band": band,
@@ -250,6 +398,8 @@ def build_role_schemas() -> dict[str, dict[str, Any]]:
         "eligibilityManifestHash": hash_string,
         "wicketkeeperMetadataVersion": _string(),
         "wicketkeeperMetadataManifestHash": hash_string,
+        "bowlingFamilyMetadataSchemaVersion": _string(enum=[BOWLING_FAMILY_METADATA_SCHEMA_VERSION]),
+        "bowlingFamilyMetadataHash": hash_string,
         "artifacts": _array(artifact),
         "schemaFiles": _array(artifact),
         "roleDataAggregateHash": hash_string,
@@ -258,6 +408,7 @@ def build_role_schemas() -> dict[str, dict[str, Any]]:
     summary_counts = _object({key: _integer() for key in (
         "canonicalPlayers", "stage4PlayerTeamSeasons", "g2Players", "g2Profiles",
         "seasonBattingObservedProfiles", "fitResolvedProfiles", "fitUnknownProfiles",
+        "bowlingFamilyResearchPlayers", "bowlingFamilyResolvedPlayers",
         "bowlingFamilyQueuePlayers", "qualityFieldsPresent", "keeperFieldsPresent",
     )})
     numeric_counts = _object({key: _integer() for key in (
@@ -281,12 +432,16 @@ def build_role_schemas() -> dict[str, dict[str, Any]]:
             "NONE", "OCCASIONAL", "SUPPORT", "FRONTLINE",
         )}),
         "bowlingEvidenceCounts": numeric_counts,
+        "bowlingFamilyCounts": _object({key: _integer() for key in BOWLING_FAMILIES}),
+        "bowlingFamilySourceCounts": _object({key: _integer() for key in BOWLING_FAMILY_SOURCE_TYPES}),
         "roleCounts": _object({key: _integer() for key in (
             "BATTER", "ALL_ROUNDER", "BOWLER", "UNKNOWN",
         )}),
         "errors": _array(_string()),
     })
     return {
+        "bowling_family_metadata.schema.json": {"$schema": "https://json-schema.org/draft/2020-12/schema", **family_metadata},
+        "player_bowling_family.schema.json": {"$schema": "https://json-schema.org/draft/2020-12/schema", **resolved_family},
         "player_batting_prior.schema.json": {"$schema": "https://json-schema.org/draft/2020-12/schema", **prior},
         "player_team_season_role.schema.json": {"$schema": "https://json-schema.org/draft/2020-12/schema", **profile},
         "review_queue.schema.json": {"$schema": "https://json-schema.org/draft/2020-12/schema", **queue},
@@ -537,6 +692,123 @@ def _assert_unique(rows: list[dict[str, Any]], key: str, label: str) -> dict[str
     return indexed
 
 
+def _validate_family_resolution(
+    assertion: dict[str, Any],
+    *,
+    label: str,
+    sources_by_id: dict[str, dict[str, Any]],
+) -> None:
+    raw_styles = assertion["rawBowlingStyles"]
+    normalized = normalize_bowling_family(raw_styles)
+    family = assertion["bowlingFamily"]
+    status = assertion["resolutionStatus"]
+    evidence_families: set[str] = set()
+    has_single_source_mixed_evidence = False
+    for evidence in assertion["evidenceRefs"]:
+        source = sources_by_id.get(evidence["sourceId"])
+        if source is None:
+            raise PlayerRoleMetadataError(f"{label} references unknown source {evidence['sourceId']}")
+        if evidence["sourceFamily"] != source["sourceFamily"]:
+            raise PlayerRoleMetadataError(f"{label} source-family provenance disagrees for {evidence['sourceId']}")
+        observed = [value for value in evidence["observedValues"] if value != "<missing>"]
+        evidence_family = normalize_bowling_family(observed)
+        if evidence_family != "UNKNOWN":
+            evidence_families.add(evidence_family)
+        if evidence_family == "MIXED":
+            has_single_source_mixed_evidence = True
+
+    cross_family_disagreement = {"PACE", "SPIN"}.issubset(evidence_families)
+    if cross_family_disagreement and not has_single_source_mixed_evidence and status != "CONFLICT":
+        raise PlayerRoleMetadataError(f"{label} contains a cross-family disagreement that is not CONFLICT")
+    if status == "APPROVED":
+        if family == "UNKNOWN" or normalized != family:
+            raise PlayerRoleMetadataError(f"{label} approved family does not match the closed style lookup")
+        if family == "MIXED" and not has_single_source_mixed_evidence:
+            raise PlayerRoleMetadataError(f"{label} MIXED lacks explicit mixed-family evidence in one source")
+    elif family != "UNKNOWN":
+        raise PlayerRoleMetadataError(f"{label} unresolved status must retain UNKNOWN family")
+
+
+def _load_bowling_family_metadata(
+    path: Path,
+    *,
+    schemas: dict[str, dict[str, Any]],
+    research_items: list[dict[str, Any]],
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    _, metadata = _read_json(path, "bowling-family metadata")
+    if not isinstance(metadata, dict):
+        raise PlayerRoleMetadataError("Bowling-family metadata must be an object")
+    try:
+        validate_instance(metadata, schemas["bowling_family_metadata.schema.json"], "bowlingFamilyMetadata")
+    except SchemaValidationError as error:
+        raise PlayerRoleMetadataError(f"Bowling-family metadata schema failure: {error}") from error
+    payload = deepcopy(metadata)
+    recorded_hash = payload.pop("metadataHash")
+    if recorded_hash != _sha256(canonical_json_bytes(payload)):
+        raise PlayerRoleMetadataError("Bowling-family metadata self-hash is invalid")
+
+    sources_by_id = _assert_unique(metadata["sources"], "sourceId", "bowling-family source ID")
+    assertions_by_id = _assert_unique(metadata["playerDefaults"], "playerId", "bowling-family player default")
+    if len({row["assertionId"] for row in metadata["playerDefaults"]}) != len(metadata["playerDefaults"]):
+        raise PlayerRoleMetadataError("Duplicate bowling-family assertion ID")
+    expected_players = {item["playerId"]: item for item in research_items}
+    if set(assertions_by_id) != set(expected_players):
+        missing = sorted(set(expected_players) - set(assertions_by_id))
+        extra = sorted(set(assertions_by_id) - set(expected_players))
+        raise PlayerRoleMetadataError(
+            f"Bowling-family defaults do not exactly cover the 505-player research universe; missing={missing}, extra={extra}"
+        )
+
+    for player_id, assertion in assertions_by_id.items():
+        expected = expected_players[player_id]
+        identity = assertion["identityMatch"]
+        if identity["cricsheetId"] != player_id:
+            raise PlayerRoleMetadataError(f"Bowling-family identity bridge disagrees for {player_id}")
+        if assertion["canonicalDisplayName"] != expected["canonicalDisplayName"]:
+            raise PlayerRoleMetadataError(f"Bowling-family canonical name drifted for {player_id}")
+        if identity["method"] == "CRICSHEET_REGISTER_EXACT_EXTERNAL_ID" and not identity["externalPlayerId"].isdigit():
+            raise PlayerRoleMetadataError(f"Exact external-ID bridge is invalid for {player_id}")
+        _validate_family_resolution(assertion, label=f"bowling-family default {player_id}", sources_by_id=sources_by_id)
+
+    overrides_by_player: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    override_ids: set[str] = set()
+    override_seasons: set[tuple[str, str]] = set()
+    for override in metadata["seasonOverrides"]:
+        player_id = override["playerId"]
+        if player_id not in assertions_by_id:
+            raise PlayerRoleMetadataError(f"Bowling-family override references an unscoped player: {player_id}")
+        if override["overrideId"] in override_ids:
+            raise PlayerRoleMetadataError(f"Duplicate bowling-family override ID: {override['overrideId']}")
+        override_ids.add(override["overrideId"])
+        for season_id in override["seasonIds"]:
+            key = (player_id, season_id)
+            if key in override_seasons:
+                raise PlayerRoleMetadataError(f"Overlapping bowling-family season override: {player_id} {season_id}")
+            override_seasons.add(key)
+            if season_id not in {profile_id.split(":")[2] for profile_id in expected_players[player_id]["qualifyingProfileIds"]}:
+                raise PlayerRoleMetadataError(f"Bowling-family override is outside qualifying G2 profiles: {player_id} {season_id}")
+        _validate_family_resolution(override, label=f"bowling-family override {override['overrideId']}", sources_by_id=sources_by_id)
+        overrides_by_player[player_id].append(override)
+
+    resolved_rows: list[dict[str, Any]] = []
+    for player_id, assertion in sorted(assertions_by_id.items()):
+        resolved_rows.append({
+            "schemaVersion": PLAYER_BOWLING_FAMILY_SCHEMA_VERSION,
+            "roleMetadataVersion": ROLE_METADATA_VERSION,
+            "assertionId": assertion["assertionId"],
+            "playerId": player_id,
+            "canonicalDisplayName": assertion["canonicalDisplayName"],
+            "bowlingFamily": assertion["bowlingFamily"],
+            "resolutionStatus": assertion["resolutionStatus"],
+            "rawBowlingStyles": assertion["rawBowlingStyles"],
+            "identityResolutionMethod": assertion["identityMatch"]["method"],
+            "externalPlayerId": assertion["identityMatch"]["externalPlayerId"],
+            "evidenceRefs": assertion["evidenceRefs"],
+            "seasonOverrides": sorted(overrides_by_player[player_id], key=lambda row: row["overrideId"]),
+        })
+    return metadata, resolved_rows
+
+
 def _sum_position_counts(target: dict[str, int], source: dict[str, int]) -> None:
     for position in range(1, 12):
         target[str(position)] += int(source[str(position)])
@@ -622,7 +894,9 @@ def build_player_role_metadata_files(
     analytical_dir: Path = Path("data/analytical/cricsheet-ipl/v1"),
     eligibility_dir: Path = Path("data/processed/era-draft/v1"),
     wicketkeeper_dir: Path = Path("data/metadata/ipl/v1"),
+    bowling_family_metadata_path: Path = Path("data/manual/player_role_metadata/v1/bowling_families.json"),
 ) -> tuple[dict[str, bytes], dict[str, Any]]:
+    schemas = build_role_schemas()
     verified_registry = load_verified_registry(registry_dir, policy_path=registry_policy_path)
     registry_manifest = verified_registry["manifest"]
     players = verified_registry["players"]
@@ -694,7 +968,7 @@ def build_player_role_metadata_files(
     profiles_by_player: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for row in profile_rows:
         profiles_by_player[row["playerId"]].append(row)
-    family_items = []
+    family_research_items = []
     for player_id, player_profiles in sorted(profiles_by_player.items()):
         qualifying = sorted(
             row["playerTeamSeasonId"]
@@ -708,7 +982,7 @@ def build_player_role_metadata_files(
             for profile in player_profiles
             if profile["playerTeamSeasonId"] in qualifying
         )
-        family_items.append({
+        family_research_items.append({
             "reviewId": f"bowling-family:{player_id}",
             "reviewType": "BOWLING_FAMILY",
             "reviewStatus": "PENDING",
@@ -719,6 +993,17 @@ def build_player_role_metadata_files(
             "maximumProfileLegalBalls": maximum,
             "blockingForBowlingFamilyCoverage": True,
         })
+    bowling_family_metadata, bowling_family_rows = _load_bowling_family_metadata(
+        bowling_family_metadata_path,
+        schemas=schemas,
+        research_items=family_research_items,
+    )
+    family_by_id = {row["playerId"]: row for row in bowling_family_rows}
+    family_items = [
+        item for item in family_research_items
+        if family_by_id[item["playerId"]]["resolutionStatus"] != "APPROVED"
+        or family_by_id[item["playerId"]]["bowlingFamily"] == "UNKNOWN"
+    ]
     fit_items = [{
         "reviewId": f"batting-fit:{row['playerTeamSeasonId']}",
         "reviewType": "BATTING_FIT",
@@ -745,8 +1030,8 @@ def build_player_role_metadata_files(
         "bowlingFamilyItems": family_items,
         "battingFitItems": fit_items,
         "completionBoundary": (
-            "The deterministic Stage 5 foundation is complete with explicit unknowns. "
-            "Bowling-family assertions and optional sourced batting-fit assertions are separate enrichment work."
+            "Stage 5 bowling-family enrichment is complete for approved assertions. "
+            "Any listed bowling-family item remains explicit and unresolved; optional batting-fit assertions remain separate work."
         ),
     }
 
@@ -767,6 +1052,8 @@ def build_player_role_metadata_files(
         "seasonBattingObservedProfiles": sum(row["battingUsage"]["seasonInnings"] > 0 for row in profile_rows),
         "fitResolvedProfiles": sum(row["battingUsage"]["basis"] != "UNOBSERVED" for row in profile_rows),
         "fitUnknownProfiles": len(fit_items),
+        "bowlingFamilyResearchPlayers": len(family_research_items),
+        "bowlingFamilyResolvedPlayers": sum(row["resolutionStatus"] == "APPROVED" for row in bowling_family_rows),
         "bowlingFamilyQueuePlayers": len(family_items),
         "qualityFieldsPresent": len(all_profile_fields & quality_fields),
         "keeperFieldsPresent": len(all_profile_fields & keeper_fields),
@@ -775,12 +1062,13 @@ def build_player_role_metadata_files(
     if any(not comparison["matches"] for comparison in comparisons):
         raise PlayerRoleMetadataError(f"Stage 5 baseline drift: {comparisons}")
 
-    schemas = build_role_schemas()
     try:
         for index, row in enumerate(prior_rows):
             validate_instance(row, schemas["player_batting_prior.schema.json"], f"prior[{index}]")
         for index, row in enumerate(profile_rows):
             validate_instance(row, schemas["player_team_season_role.schema.json"], f"profile[{index}]")
+        for index, row in enumerate(bowling_family_rows):
+            validate_instance(row, schemas["player_bowling_family.schema.json"], f"bowlingFamily[{index}]")
         validate_instance(review_queue, schemas["review_queue.schema.json"], "reviewQueue")
     except SchemaValidationError as error:
         raise PlayerRoleMetadataError(f"Stage 5 output schema failure: {error}") from error
@@ -788,6 +1076,7 @@ def build_player_role_metadata_files(
     files: dict[str, bytes] = {
         "player_batting_priors.jsonl": _jsonl_bytes(prior_rows),
         "player_team_season_roles.jsonl": _jsonl_bytes(profile_rows),
+        "player_bowling_families.jsonl": _jsonl_bytes(bowling_family_rows),
         "review_queue.json": pretty_json_bytes(review_queue),
     }
     for name, schema in schemas.items():
@@ -795,6 +1084,7 @@ def build_player_role_metadata_files(
     artifact_entries = [
         _artifact_entry("player_batting_priors.jsonl", files["player_batting_priors.jsonl"], PRIOR_SCHEMA_VERSION, len(prior_rows)),
         _artifact_entry("player_team_season_roles.jsonl", files["player_team_season_roles.jsonl"], PROFILE_SCHEMA_VERSION, len(profile_rows)),
+        _artifact_entry("player_bowling_families.jsonl", files["player_bowling_families.jsonl"], PLAYER_BOWLING_FAMILY_SCHEMA_VERSION, len(bowling_family_rows)),
         _artifact_entry("review_queue.json", files["review_queue.json"], QUEUE_SCHEMA_VERSION, len(family_items) + len(fit_items)),
     ]
     schema_entries = [
@@ -816,6 +1106,8 @@ def build_player_role_metadata_files(
         "eligibilityManifestHash": eligibility_manifest["eligibilityManifestHash"],
         "wicketkeeperMetadataVersion": keeper_manifest["metadataVersion"],
         "wicketkeeperMetadataManifestHash": keeper_manifest["metadataManifestHash"],
+        "bowlingFamilyMetadataSchemaVersion": bowling_family_metadata["schemaVersion"],
+        "bowlingFamilyMetadataHash": bowling_family_metadata["metadataHash"],
         "artifacts": artifact_entries,
         "schemaFiles": schema_entries,
         "roleDataAggregateHash": _aggregate_hash(files),
@@ -831,6 +1123,11 @@ def build_player_role_metadata_files(
     batting_basis = Counter(row["battingUsage"]["basis"] for row in profile_rows)
     bowling_usage = Counter(row["bowlingUsage"]["usageClass"] for row in profile_rows)
     bowling_evidence = Counter(row["bowlingUsage"]["confidence"] for row in profile_rows)
+    bowling_families = Counter(row["bowlingFamily"] for row in bowling_family_rows)
+    bowling_sources = Counter()
+    for row in bowling_family_rows:
+        for source_family in {evidence["sourceFamily"] for evidence in row["evidenceRefs"]}:
+            bowling_sources[source_family] += 1
     roles = Counter(row["roleSummary"]["role"] for row in profile_rows)
     validation_report = {
         "schemaVersion": VALIDATION_SCHEMA_VERSION,
@@ -845,6 +1142,8 @@ def build_player_role_metadata_files(
         )},
         "bowlingUsageCounts": {key: bowling_usage[key] for key in ("NONE", "OCCASIONAL", "SUPPORT", "FRONTLINE")},
         "bowlingEvidenceCounts": {key: bowling_evidence[key] for key in ("HIGH", "MEDIUM", "LOW", "NONE")},
+        "bowlingFamilyCounts": {key: bowling_families[key] for key in BOWLING_FAMILIES},
+        "bowlingFamilySourceCounts": {key: bowling_sources[key] for key in BOWLING_FAMILY_SOURCE_TYPES},
         "roleCounts": {key: roles[key] for key in ("BATTER", "ALL_ROUNDER", "BOWLER", "UNKNOWN")},
         "errors": [],
     }
@@ -865,10 +1164,14 @@ def build_player_role_metadata_files(
         f"- Profiles with unknown position fit: {actual['fitUnknownProfiles']:,}", "",
         "## Bowling usage", "",
         *[f"- {key.title()}: {bowling_usage[key]:,}" for key in ("FRONTLINE", "SUPPORT", "OCCASIONAL", "NONE")], "",
+        "## Bowling family", "",
+        *[f"- {key.title()}: {bowling_families[key]:,}" for key in BOWLING_FAMILIES], "",
         "## Review boundary", "",
-        f"- Bowling-family research players: {len(family_items):,}",
+        f"- Bowling-family research players: {len(family_research_items):,}",
+        f"- Approved bowling-family players: {actual['bowlingFamilyResolvedPlayers']:,}",
+        f"- Residual bowling-family review players: {len(family_items):,}",
         f"- Optional batting-fit research profiles: {len(fit_items):,}",
-        "- No bowling-family assertions are included in this deterministic foundation.",
+        "- Bowling family is stored as player-default metadata with season overrides reserved for explicit temporal evidence.",
         "- Wicketkeeper capability and usage remain owned by the frozen wicketkeeper metadata family.",
         "- Classic 2016 artifacts and consumers are not modified.", "",
     ]).encode("utf-8")
@@ -877,12 +1180,17 @@ def build_player_role_metadata_files(
 
 __all__ = [
     "BATTING_BANDS",
+    "BOWLING_FAMILY_METADATA_SCHEMA_VERSION",
+    "ISSUE_URL",
     "PlayerRoleMetadataError",
+    "ROLE_METADATA_VERSION",
     "build_player_role_metadata_files",
     "build_role_schemas",
     "derive_batting_usage",
     "derive_bowling_usage",
     "derive_role_summary",
+    "normalize_bowling_family",
+    "normalize_bowling_style_text",
     "position_counts_to_bands",
     "write_artifact_tree",
 ]
