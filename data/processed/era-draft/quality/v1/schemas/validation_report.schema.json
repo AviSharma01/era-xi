@@ -1,0 +1,456 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "baselineComparisons": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "actual": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "expected": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "matches": {
+            "type": "boolean"
+          },
+          "metric": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "metric",
+          "expected",
+          "actual",
+          "matches"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "battingEvidenceCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "ESTABLISHED": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "LIMITED": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "NONE": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "NONE",
+        "LIMITED",
+        "ESTABLISHED"
+      ],
+      "type": "object"
+    },
+    "bowlingEvidenceCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "ESTABLISHED": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "LIMITED": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "NONE": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "NONE",
+        "LIMITED",
+        "ESTABLISHED"
+      ],
+      "type": "object"
+    },
+    "componentDistributions": {
+      "additionalProperties": false,
+      "properties": {
+        "B": {
+          "additionalProperties": false,
+          "properties": {
+            "count": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "mad": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "maximum": {
+              "type": "number"
+            },
+            "median": {
+              "type": "number"
+            },
+            "minimum": {
+              "type": "number"
+            },
+            "p10": {
+              "type": "number"
+            },
+            "p25": {
+              "type": "number"
+            },
+            "p5": {
+              "type": "number"
+            },
+            "p75": {
+              "type": "number"
+            },
+            "p90": {
+              "type": "number"
+            },
+            "p95": {
+              "type": "number"
+            },
+            "robustSpread": {
+              "minimum": 0,
+              "type": "number"
+            }
+          },
+          "required": [
+            "count",
+            "minimum",
+            "p5",
+            "p10",
+            "p25",
+            "median",
+            "p75",
+            "p90",
+            "p95",
+            "maximum",
+            "mad",
+            "robustSpread"
+          ],
+          "type": "object"
+        },
+        "Q": {
+          "additionalProperties": false,
+          "properties": {
+            "count": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "mad": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "maximum": {
+              "type": "number"
+            },
+            "median": {
+              "type": "number"
+            },
+            "minimum": {
+              "type": "number"
+            },
+            "p10": {
+              "type": "number"
+            },
+            "p25": {
+              "type": "number"
+            },
+            "p5": {
+              "type": "number"
+            },
+            "p75": {
+              "type": "number"
+            },
+            "p90": {
+              "type": "number"
+            },
+            "p95": {
+              "type": "number"
+            },
+            "robustSpread": {
+              "minimum": 0,
+              "type": "number"
+            }
+          },
+          "required": [
+            "count",
+            "minimum",
+            "p5",
+            "p10",
+            "p25",
+            "median",
+            "p75",
+            "p90",
+            "p95",
+            "maximum",
+            "mad",
+            "robustSpread"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "B",
+        "Q"
+      ],
+      "type": "object"
+    },
+    "counts": {
+      "additionalProperties": false,
+      "properties": {
+        "battingEstablished": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "battingLimited": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "battingNone": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "battingPrimary": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "blockingReviewCases": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "bowlingEstablished": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "bowlingLimited": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "bowlingNone": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "bowlingPrimary": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "g2Players": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "g2Profiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "limitedDFloorCases": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "limitedUpperTierCases": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "secondaryBonusRecipients": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "g2Profiles",
+        "g2Players",
+        "battingNone",
+        "battingLimited",
+        "battingEstablished",
+        "bowlingNone",
+        "bowlingLimited",
+        "bowlingEstablished",
+        "battingPrimary",
+        "bowlingPrimary",
+        "secondaryBonusRecipients",
+        "limitedUpperTierCases",
+        "limitedDFloorCases",
+        "blockingReviewCases"
+      ],
+      "type": "object"
+    },
+    "errors": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "limitedPrimaryTierCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "A": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "B": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "C": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "D": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "S": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "S",
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "type": "object"
+    },
+    "overallPrimaryCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "BATTING": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "BOWLING": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "BATTING",
+        "BOWLING"
+      ],
+      "type": "object"
+    },
+    "qualityManifestHash": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{64}",
+      "type": "string"
+    },
+    "qualityModelVersion": {
+      "enum": [
+        "ipl-era-draft-player-quality/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "qualityTierCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "A": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "B": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "C": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "D": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "S": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "S",
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "type": "object"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-player-quality-validation/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "secondaryBonus": {
+      "additionalProperties": false,
+      "properties": {
+        "eligibleProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "maximum": {
+          "maximum": 0.2,
+          "minimum": 0,
+          "type": "number"
+        },
+        "medianAmongRecipients": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "p90AmongRecipients": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "recipientProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "eligibleProfiles",
+        "recipientProfiles",
+        "medianAmongRecipients",
+        "p90AmongRecipients",
+        "maximum"
+      ],
+      "type": "object"
+    },
+    "status": {
+      "enum": [
+        "passed"
+      ],
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "qualityModelVersion",
+    "qualityManifestHash",
+    "status",
+    "baselineComparisons",
+    "counts",
+    "battingEvidenceCounts",
+    "bowlingEvidenceCounts",
+    "componentDistributions",
+    "overallPrimaryCounts",
+    "secondaryBonus",
+    "qualityTierCounts",
+    "limitedPrimaryTierCounts",
+    "errors"
+  ],
+  "type": "object"
+}

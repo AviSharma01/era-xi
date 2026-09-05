@@ -1,0 +1,600 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "batting": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "battingRating": {
+              "type": "null"
+            },
+            "evidenceState": {
+              "enum": [
+                "NONE"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "inputs": {
+              "additionalProperties": false,
+              "properties": {
+                "balls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "dismissals": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "innings": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "runs": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "teamBattingInnings": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "innings",
+                "runs",
+                "balls",
+                "dismissals",
+                "teamBattingInnings"
+              ],
+              "type": "object"
+            },
+            "internalScore": {
+              "type": "null"
+            },
+            "primitives": {
+              "type": "null"
+            },
+            "seasonBaseline": {
+              "additionalProperties": false,
+              "properties": {
+                "average": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "batterRunsPerInnings": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "runRatePerBall": {
+                  "minimum": 0,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "runRatePerBall",
+                "average",
+                "batterRunsPerInnings"
+              ],
+              "type": "object"
+            },
+            "standardizedPrimitives": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "evidenceState",
+            "inputs",
+            "seasonBaseline",
+            "primitives",
+            "standardizedPrimitives",
+            "internalScore",
+            "battingRating"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "battingRating": {
+              "maximum": 100,
+              "minimum": 20,
+              "type": "number"
+            },
+            "evidenceState": {
+              "enum": [
+                "LIMITED",
+                "ESTABLISHED"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "inputs": {
+              "additionalProperties": false,
+              "properties": {
+                "balls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "dismissals": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "innings": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "runs": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "teamBattingInnings": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "innings",
+                "runs",
+                "balls",
+                "dismissals",
+                "teamBattingInnings"
+              ],
+              "type": "object"
+            },
+            "internalScore": {
+              "type": "number"
+            },
+            "primitives": {
+              "additionalProperties": false,
+              "properties": {
+                "production": {
+                  "type": "number"
+                },
+                "scoring": {
+                  "type": "number"
+                },
+                "survival": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "production",
+                "scoring",
+                "survival"
+              ],
+              "type": "object"
+            },
+            "seasonBaseline": {
+              "additionalProperties": false,
+              "properties": {
+                "average": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "batterRunsPerInnings": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "runRatePerBall": {
+                  "minimum": 0,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "runRatePerBall",
+                "average",
+                "batterRunsPerInnings"
+              ],
+              "type": "object"
+            },
+            "standardizedPrimitives": {
+              "additionalProperties": false,
+              "properties": {
+                "production": {
+                  "type": "number"
+                },
+                "scoring": {
+                  "type": "number"
+                },
+                "survival": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "production",
+                "scoring",
+                "survival"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "evidenceState",
+            "inputs",
+            "seasonBaseline",
+            "primitives",
+            "standardizedPrimitives",
+            "internalScore",
+            "battingRating"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "bowling": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "bowlingRating": {
+              "type": "null"
+            },
+            "evidenceState": {
+              "enum": [
+                "NONE"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "inputs": {
+              "additionalProperties": false,
+              "properties": {
+                "creditedWickets": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "deliveryRecords": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "innings": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "legalBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "runsConceded": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "teamBowlingInnings": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "innings",
+                "deliveryRecords",
+                "legalBalls",
+                "runsConceded",
+                "creditedWickets",
+                "teamBowlingInnings"
+              ],
+              "type": "object"
+            },
+            "internalScore": {
+              "type": "null"
+            },
+            "primitives": {
+              "type": "null"
+            },
+            "seasonBaseline": {
+              "additionalProperties": false,
+              "properties": {
+                "creditedWicketsPerInnings": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "economyPerSixBalls": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "wicketRatePerBall": {
+                  "minimum": 0,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "economyPerSixBalls",
+                "wicketRatePerBall",
+                "creditedWicketsPerInnings"
+              ],
+              "type": "object"
+            },
+            "standardizedPrimitives": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "evidenceState",
+            "inputs",
+            "seasonBaseline",
+            "primitives",
+            "standardizedPrimitives",
+            "internalScore",
+            "bowlingRating"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "bowlingRating": {
+              "maximum": 100,
+              "minimum": 20,
+              "type": "number"
+            },
+            "evidenceState": {
+              "enum": [
+                "LIMITED",
+                "ESTABLISHED"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "inputs": {
+              "additionalProperties": false,
+              "properties": {
+                "creditedWickets": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "deliveryRecords": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "innings": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "legalBalls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "runsConceded": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "teamBowlingInnings": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "innings",
+                "deliveryRecords",
+                "legalBalls",
+                "runsConceded",
+                "creditedWickets",
+                "teamBowlingInnings"
+              ],
+              "type": "object"
+            },
+            "internalScore": {
+              "type": "number"
+            },
+            "primitives": {
+              "additionalProperties": false,
+              "properties": {
+                "economy": {
+                  "type": "number"
+                },
+                "production": {
+                  "type": "number"
+                },
+                "wicketRate": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "production",
+                "economy",
+                "wicketRate"
+              ],
+              "type": "object"
+            },
+            "seasonBaseline": {
+              "additionalProperties": false,
+              "properties": {
+                "creditedWicketsPerInnings": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "economyPerSixBalls": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "wicketRatePerBall": {
+                  "minimum": 0,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "economyPerSixBalls",
+                "wicketRatePerBall",
+                "creditedWicketsPerInnings"
+              ],
+              "type": "object"
+            },
+            "standardizedPrimitives": {
+              "additionalProperties": false,
+              "properties": {
+                "economy": {
+                  "type": "number"
+                },
+                "production": {
+                  "type": "number"
+                },
+                "wicketRate": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "production",
+                "economy",
+                "wicketRate"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "evidenceState",
+            "inputs",
+            "seasonBaseline",
+            "primitives",
+            "standardizedPrimitives",
+            "internalScore",
+            "bowlingRating"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "canonicalDisplayName": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "franchiseId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "overall": {
+      "additionalProperties": false,
+      "properties": {
+        "evidenceState": {
+          "enum": [
+            "LIMITED",
+            "ESTABLISHED"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "internalScore": {
+          "type": "number"
+        },
+        "overallRating": {
+          "maximum": 100,
+          "minimum": 20,
+          "type": "number"
+        },
+        "primaryComponent": {
+          "enum": [
+            "BATTING",
+            "BOWLING"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "primaryInternalScore": {
+          "type": "number"
+        },
+        "secondaryBonus": {
+          "maximum": 0.2,
+          "minimum": 0,
+          "type": "number"
+        },
+        "tierDecision": {
+          "additionalProperties": false,
+          "properties": {
+            "establishedEvidenceSupportsD": {
+              "type": "boolean"
+            },
+            "limitedDFloorApplied": {
+              "type": "boolean"
+            },
+            "qualityTier": {
+              "enum": [
+                "S",
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "rawTier": {
+              "enum": [
+                "S",
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "rawTier",
+            "qualityTier",
+            "limitedDFloorApplied",
+            "establishedEvidenceSupportsD"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "primaryComponent",
+        "evidenceState",
+        "primaryInternalScore",
+        "secondaryBonus",
+        "internalScore",
+        "overallRating",
+        "tierDecision"
+      ],
+      "type": "object"
+    },
+    "playerId": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{8}",
+      "type": "string"
+    },
+    "playerTeamSeasonId": {
+      "minLength": 1,
+      "pattern": "pts:[^:]+:ipl-[0-9]{4}:[^:]+",
+      "type": "string"
+    },
+    "qualityModelVersion": {
+      "enum": [
+        "ipl-era-draft-player-quality/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-player-team-season-quality/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "seasonId": {
+      "minLength": 1,
+      "pattern": "ipl-[0-9]{4}",
+      "type": "string"
+    },
+    "teamId": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "qualityModelVersion",
+    "playerTeamSeasonId",
+    "playerId",
+    "canonicalDisplayName",
+    "seasonId",
+    "teamId",
+    "franchiseId",
+    "batting",
+    "bowling",
+    "overall"
+  ],
+  "type": "object"
+}

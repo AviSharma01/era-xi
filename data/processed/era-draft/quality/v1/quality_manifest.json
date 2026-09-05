@@ -1,0 +1,119 @@
+{
+  "artifacts": [
+    {
+      "path": "player_team_season_quality.jsonl",
+      "rows": 2992,
+      "schemaVersion": "ipl-era-draft-player-team-season-quality/v1",
+      "sha256": "5e9bf8586dd83ffa02a6f4281dfcae073fe03b91b4d7c10cc275b0fafef09ffb",
+      "sizeBytes": 4496352
+    },
+    {
+      "path": "player_quality_consumer.jsonl",
+      "rows": 2992,
+      "schemaVersion": "ipl-era-draft-player-quality-consumer/v1",
+      "sha256": "c4bc7ac8f16c29b322aaabe5fecace06bc3972baacd4345b511befea024ed6df",
+      "sizeBytes": 2175997
+    },
+    {
+      "path": "quality_model.json",
+      "rows": null,
+      "schemaVersion": "ipl-era-draft-player-quality-model/v1",
+      "sha256": "3edfd8ae76692ef8c720f93ed23772d0f827a3c90481d02f6633782cc708fdb1",
+      "sizeBytes": 3939
+    },
+    {
+      "path": "review_queue.json",
+      "rows": 636,
+      "schemaVersion": "ipl-era-draft-player-quality-review/v1",
+      "sha256": "b0347b0b7166f4d3d9b44b113e70146d6a7f65048857029f4607fcd7a131ada5",
+      "sizeBytes": 263728
+    }
+  ],
+  "eligibilityManifestHash": "b3e6393851e999c23abbc120083b52e8bc444e747d9be7316e0ca73e07be38b6",
+  "eligibilityVersion": "ipl-era-draft-eligibility/v1",
+  "qualityDataAggregateHash": "d034ec8b2c956bc56adc17c242d5be4d8130ffc38ee891ee7f5493ba783d8362",
+  "qualityManifestHash": "e52654b79689d7e3559d7ece62691d053a25821ce47dfa87bc7ac487ed68f045",
+  "qualityModelVersion": "ipl-era-draft-player-quality/v1",
+  "ratingInputs": [
+    {
+      "path": "player_team_seasons.jsonl",
+      "rows": 3392,
+      "schemaVersion": "cricsheet-ipl-player-team-season/v1",
+      "sha256": "acb768156e8c26802a18a130a39c66f6c1277cab06b90ec429f73b32acb90c4b",
+      "sizeBytes": 40767784,
+      "source": "STAGE_4_ANALYTICAL"
+    },
+    {
+      "path": "team_seasons.jsonl",
+      "rows": 166,
+      "schemaVersion": "cricsheet-ipl-team-season/v1",
+      "sha256": "1f66e5256d3d60aefb0c59288a699492b69841faf38923e63bb26e0ab442dae6",
+      "sizeBytes": 827999,
+      "source": "STAGE_4_ANALYTICAL"
+    },
+    {
+      "path": "season_environments.jsonl",
+      "rows": 19,
+      "schemaVersion": "cricsheet-ipl-season-environment/v1",
+      "sha256": "f5447b51db98e47e22425cab2923deeced5ef4fd2a87a462111a5afa26700a96",
+      "sizeBytes": 294735,
+      "source": "STAGE_4_ANALYTICAL"
+    },
+    {
+      "path": "eligibility.jsonl",
+      "rows": 3392,
+      "schemaVersion": "ipl-era-draft-eligibility-row/v1",
+      "sha256": "c6a05b88ba36e1e6255b1ed1edd0f888d3d82d014ec3e6dda62c913cd7924438",
+      "sizeBytes": 1685393,
+      "source": "G2_ELIGIBILITY"
+    }
+  ],
+  "schemaFiles": [
+    {
+      "path": "schemas/player_quality_consumer.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "925eaee860f9c24361b23624d83fa8b6d2137921af203ba9d598433225b13bd6",
+      "sizeBytes": 5152
+    },
+    {
+      "path": "schemas/player_team_season_quality.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "648a8514264c3768abda472ea5ea8ddef6b35e6bd8aba1520d05447c83eb0bbd",
+      "sizeBytes": 15758
+    },
+    {
+      "path": "schemas/quality_manifest.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "fafbe04f5c04bededd19f34253581cadce363f902c209ba162b6f5e23b8dac06",
+      "sizeBytes": 4296
+    },
+    {
+      "path": "schemas/quality_model.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "aa7f78e06d3540725fad22989cb9a651765c9f7e4817cc79b50786487cf7a75c",
+      "sizeBytes": 15237
+    },
+    {
+      "path": "schemas/review_queue.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "6ef938abb7c85f1f3bbdd5951cad85ab0b42cfbed8a916ca43be709bc5f7cea5",
+      "sizeBytes": 5410
+    },
+    {
+      "path": "schemas/validation_report.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "ce9a1d699462a0b8e35b3b007e8e845ec37cad49d2173bfa0bdb35fdb382d078",
+      "sizeBytes": 9727
+    }
+  ],
+  "schemaVersion": "ipl-era-draft-player-quality-manifest/v1",
+  "stage4AnalyticalManifestHash": "f437d9e03c1f1749b5a0b8b8c06a41e80c8f2d18e3d43d791b054014acf5998c",
+  "stage4DatasetVersion": "cricsheet-ipl-analytics/v1",
+  "trackingIssue": "https://github.com/AviSharma01/draft-simulator/issues/3"
+}

@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "batting": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "battingRating": {
+              "type": "null"
+            },
+            "evidenceState": {
+              "enum": [
+                "NONE"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "internalScore": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "evidenceState",
+            "internalScore",
+            "battingRating"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "battingRating": {
+              "maximum": 100,
+              "minimum": 20,
+              "type": "number"
+            },
+            "evidenceState": {
+              "enum": [
+                "LIMITED",
+                "ESTABLISHED"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "internalScore": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "evidenceState",
+            "internalScore",
+            "battingRating"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "bowling": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "bowlingRating": {
+              "type": "null"
+            },
+            "evidenceState": {
+              "enum": [
+                "NONE"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "internalScore": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "evidenceState",
+            "internalScore",
+            "bowlingRating"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "bowlingRating": {
+              "maximum": 100,
+              "minimum": 20,
+              "type": "number"
+            },
+            "evidenceState": {
+              "enum": [
+                "LIMITED",
+                "ESTABLISHED"
+              ],
+              "minLength": 1,
+              "type": "string"
+            },
+            "internalScore": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "evidenceState",
+            "internalScore",
+            "bowlingRating"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "canonicalDisplayName": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "franchiseId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "overall": {
+      "additionalProperties": false,
+      "properties": {
+        "evidenceState": {
+          "enum": [
+            "LIMITED",
+            "ESTABLISHED"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "internalScore": {
+          "type": "number"
+        },
+        "limitedDFloorApplied": {
+          "type": "boolean"
+        },
+        "overallRating": {
+          "maximum": 100,
+          "minimum": 20,
+          "type": "number"
+        },
+        "primaryComponent": {
+          "enum": [
+            "BATTING",
+            "BOWLING"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "primaryInternalScore": {
+          "type": "number"
+        },
+        "qualityTier": {
+          "enum": [
+            "S",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "secondaryBonus": {
+          "maximum": 0.2,
+          "minimum": 0,
+          "type": "number"
+        }
+      },
+      "required": [
+        "primaryComponent",
+        "evidenceState",
+        "primaryInternalScore",
+        "secondaryBonus",
+        "internalScore",
+        "overallRating",
+        "qualityTier",
+        "limitedDFloorApplied"
+      ],
+      "type": "object"
+    },
+    "playerId": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{8}",
+      "type": "string"
+    },
+    "playerTeamSeasonId": {
+      "minLength": 1,
+      "pattern": "pts:[^:]+:ipl-[0-9]{4}:[^:]+",
+      "type": "string"
+    },
+    "qualityModelVersion": {
+      "enum": [
+        "ipl-era-draft-player-quality/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-player-quality-consumer/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "seasonId": {
+      "minLength": 1,
+      "pattern": "ipl-[0-9]{4}",
+      "type": "string"
+    },
+    "teamId": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "qualityModelVersion",
+    "playerTeamSeasonId",
+    "playerId",
+    "canonicalDisplayName",
+    "seasonId",
+    "teamId",
+    "franchiseId",
+    "batting",
+    "bowling",
+    "overall"
+  ],
+  "type": "object"
+}

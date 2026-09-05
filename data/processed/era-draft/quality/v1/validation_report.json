@@ -1,0 +1,204 @@
+{
+  "baselineComparisons": [
+    {
+      "actual": 2992,
+      "expected": 2992,
+      "matches": true,
+      "metric": "g2Profiles"
+    },
+    {
+      "actual": 727,
+      "expected": 727,
+      "matches": true,
+      "metric": "g2Players"
+    },
+    {
+      "actual": 216,
+      "expected": 216,
+      "matches": true,
+      "metric": "battingNone"
+    },
+    {
+      "actual": 1698,
+      "expected": 1698,
+      "matches": true,
+      "metric": "battingLimited"
+    },
+    {
+      "actual": 1078,
+      "expected": 1078,
+      "matches": true,
+      "metric": "battingEstablished"
+    },
+    {
+      "actual": 1025,
+      "expected": 1025,
+      "matches": true,
+      "metric": "bowlingNone"
+    },
+    {
+      "actual": 943,
+      "expected": 943,
+      "matches": true,
+      "metric": "bowlingLimited"
+    },
+    {
+      "actual": 1024,
+      "expected": 1024,
+      "matches": true,
+      "metric": "bowlingEstablished"
+    },
+    {
+      "actual": 1593,
+      "expected": 1593,
+      "matches": true,
+      "metric": "battingPrimary"
+    },
+    {
+      "actual": 1399,
+      "expected": 1399,
+      "matches": true,
+      "metric": "bowlingPrimary"
+    },
+    {
+      "actual": 29,
+      "expected": 29,
+      "matches": true,
+      "metric": "secondaryBonusRecipients"
+    },
+    {
+      "actual": 10,
+      "expected": 10,
+      "matches": true,
+      "metric": "limitedUpperTierCases"
+    },
+    {
+      "actual": 626,
+      "expected": 626,
+      "matches": true,
+      "metric": "limitedDFloorCases"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "matches": true,
+      "metric": "blockingReviewCases"
+    },
+    {
+      "actual": 332,
+      "expected": 332,
+      "matches": true,
+      "metric": "tierS"
+    },
+    {
+      "actual": 318,
+      "expected": 318,
+      "matches": true,
+      "metric": "tierA"
+    },
+    {
+      "actual": 948,
+      "expected": 948,
+      "matches": true,
+      "metric": "tierB"
+    },
+    {
+      "actual": 1243,
+      "expected": 1243,
+      "matches": true,
+      "metric": "tierC"
+    },
+    {
+      "actual": 151,
+      "expected": 151,
+      "matches": true,
+      "metric": "tierD"
+    }
+  ],
+  "battingEvidenceCounts": {
+    "ESTABLISHED": 1078,
+    "LIMITED": 1698,
+    "NONE": 216
+  },
+  "bowlingEvidenceCounts": {
+    "ESTABLISHED": 1024,
+    "LIMITED": 943,
+    "NONE": 1025
+  },
+  "componentDistributions": {
+    "B": {
+      "count": 2776,
+      "mad": 0.407068,
+      "maximum": 3.33357,
+      "median": -0.972946,
+      "minimum": -2.223641,
+      "p10": -1.479668,
+      "p25": -1.267083,
+      "p5": -1.610401,
+      "p75": -0.201169,
+      "p90": 0.586407,
+      "p95": 1.087841,
+      "robustSpread": 0.603519
+    },
+    "Q": {
+      "count": 1967,
+      "mad": 0.540609,
+      "maximum": 2.582798,
+      "median": -0.610482,
+      "minimum": -2.201207,
+      "p10": -1.361335,
+      "p25": -1.091386,
+      "p5": -1.525412,
+      "p75": 0.086189,
+      "p90": 0.723618,
+      "p95": 1.118024,
+      "robustSpread": 0.801507
+    }
+  },
+  "counts": {
+    "battingEstablished": 1078,
+    "battingLimited": 1698,
+    "battingNone": 216,
+    "battingPrimary": 1593,
+    "blockingReviewCases": 0,
+    "bowlingEstablished": 1024,
+    "bowlingLimited": 943,
+    "bowlingNone": 1025,
+    "bowlingPrimary": 1399,
+    "g2Players": 727,
+    "g2Profiles": 2992,
+    "limitedDFloorCases": 626,
+    "limitedUpperTierCases": 10,
+    "secondaryBonusRecipients": 29
+  },
+  "errors": [],
+  "limitedPrimaryTierCounts": {
+    "A": 8,
+    "B": 142,
+    "C": 960,
+    "D": 33,
+    "S": 2
+  },
+  "overallPrimaryCounts": {
+    "BATTING": 1593,
+    "BOWLING": 1399
+  },
+  "qualityManifestHash": "e52654b79689d7e3559d7ece62691d053a25821ce47dfa87bc7ac487ed68f045",
+  "qualityModelVersion": "ipl-era-draft-player-quality/v1",
+  "qualityTierCounts": {
+    "A": 318,
+    "B": 948,
+    "C": 1243,
+    "D": 151,
+    "S": 332
+  },
+  "schemaVersion": "ipl-era-draft-player-quality-validation/v1",
+  "secondaryBonus": {
+    "eligibleProfiles": 183,
+    "maximum": 0.2,
+    "medianAmongRecipients": 0.035984,
+    "p90AmongRecipients": 0.143302,
+    "recipientProfiles": 29
+  },
+  "status": "passed"
+}
