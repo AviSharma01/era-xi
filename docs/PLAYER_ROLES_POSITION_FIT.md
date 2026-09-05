@@ -53,6 +53,27 @@ An exact Cricsheet `identifier` to `key_cricinfo` bridge, paired with an explici
 
 The research script is networked and records source locators and content hashes. The normal Stage 5 builder is offline: it validates the committed assertions, their self-hash, exact research-universe coverage, identity bridges, closed normalization, conflicts and provenance before emitting player bowling-family rows. No bowling family is inferred from workload, role, phase, wickets, economy, name or reputation.
 
+## Derived presentation roles
+
+The player-team-season presentation role is deterministic and non-canonical. Meaningful bowling means `SUPPORT` or `FRONTLINE`; meaningful batting means a primary `CORE` or `LOWER` responsibility.
+
+1. Meaningful batting plus meaningful bowling produces `ALL_ROUNDER` and preserves the derived `BATTING`, `BOWLING` or `BALANCED` lean.
+2. Remaining meaningful bowling produces `BOWLER`.
+3. Remaining profiles with frozen player-team-season wicketkeeper usage `CONFIRMED` produce `WICKETKEEPER_BATTER`.
+4. Remaining profiles with usable batting-position evidence produce `BATTER`.
+5. Anything without one of those signals remains `UNKNOWN`.
+
+Player-level keeper capability remains a separate future draft-eligibility signal and cannot change the historical season role by itself. Both season usage and capability are exposed as direct frozen references rather than re-inferred by Stage 5. Bowling family does not participate in the role or workload derivation.
+
 ## Consumer contract
 
-Downstream Era Draft code consumes categorical slot fit, confidence, basis, primary bands and band distance. Stage 5 does not publish rating multipliers. Team construction may aggregate bowling capacity and phase shares, but bowling balance remains a soft evaluation/simulation factor rather than draft legality.
+`player_role_consumer.jsonl` is the stable TypeScript-facing Stage 5 boundary. Each G2 player-team-season row exposes:
+
+- `derivedRole` and optional `allRounderLean`
+- `battingFit`: confidence, basis, primary bands, and ordered slot 1–11 records containing `slotBand`, categorical classification and nullable band distance
+- bowling capacity, workload class, evidence, family and powerplay/middle/death usage
+- direct frozen wicketkeeper metadata version, capability status/player reference and season-usage status/profile reference
+
+The contract publishes no ratings, tiers, multipliers, penalties, effective ratings, team boosts or bowling-balance selection rules. `UNKNOWN` batting fit has `NONE` confidence, no primary bands, and `UNKNOWN` slot classifications with null distance; this is neutral descriptive metadata rather than an automatic penalty.
+
+The TypeScript contract module validates the generated shape and enums but is not wired into Classic 2016 or the Era Draft runtime. Later Team Evaluation work may consume this boundary and separately define evaluation effects.

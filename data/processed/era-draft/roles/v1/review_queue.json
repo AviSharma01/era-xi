@@ -1276,7 +1276,7 @@
     }
   ],
   "bowlingFamilyItems": [],
-  "completionBoundary": "Stage 5 bowling-family enrichment is complete for approved assertions. Any listed bowling-family item remains explicit and unresolved; optional batting-fit assertions remain separate work.",
+  "completionBoundary": "Stage 5 role, fit, workload, bowling-family and consumer-contract work is complete. Optional batting-fit UNKNOWN items remain neutral descriptive evidence and are not blocking.",
   "roleMetadataVersion": "ipl-era-draft-player-roles/v1",
   "schemaVersion": "ipl-era-draft-player-role-review/v1",
   "scope": "G2_PLAYER_ROLES_AND_POSITION_FIT",

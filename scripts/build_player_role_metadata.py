@@ -41,6 +41,10 @@ def main() -> None:
     print(f"Unknown batting fit: {report['counts']['fitUnknownProfiles']}")
     print(f"Approved bowling families: {report['counts']['bowlingFamilyResolvedPlayers']}")
     print(f"Residual bowling-family queue: {report['counts']['bowlingFamilyQueuePlayers']}")
+    print(f"Consumer rows: {report['counts']['consumerProfiles']}")
+    print("Derived roles: " + ", ".join(
+        f"{role}={count}" for role, count in report["roleCounts"].items()
+    ))
 
 
 if __name__ == "__main__":

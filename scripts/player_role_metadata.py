@@ -34,6 +34,8 @@ MANIFEST_SCHEMA_VERSION = "ipl-era-draft-player-role-manifest/v1"
 VALIDATION_SCHEMA_VERSION = "ipl-era-draft-player-role-validation/v1"
 BOWLING_FAMILY_METADATA_SCHEMA_VERSION = "ipl-era-draft-bowling-family-manual/v1"
 PLAYER_BOWLING_FAMILY_SCHEMA_VERSION = "ipl-era-draft-player-bowling-family/v1"
+CONSUMER_SCHEMA_VERSION = "ipl-era-draft-player-role-consumer/v1"
+WICKETKEEPER_METADATA_VERSION = "ipl-wicketkeeper-metadata/v1"
 
 ISSUE_URL = "https://github.com/AviSharma01/draft-simulator/issues/1"
 
@@ -59,6 +61,8 @@ SUPPORT_BOWLING_CAPACITY = Fraction(1, 4)
 FRONTLINE_BOWLING_CAPACITY = Fraction(3, 4)
 
 BOWLING_FAMILIES = ("PACE", "SPIN", "MIXED", "UNKNOWN")
+DERIVED_ROLES = ("BATTER", "WICKETKEEPER_BATTER", "ALL_ROUNDER", "BOWLER", "UNKNOWN")
+ALL_ROUNDER_LEANS = ("BATTING", "BOWLING", "BALANCED")
 BOWLING_FAMILY_SOURCE_TYPES = (
     "OFFICIAL_IPL_BCCI",
     "NATIONAL_CRICKET_BOARD",
@@ -115,6 +119,7 @@ EXPECTED_BASELINES = {
     "fitUnknownProfiles": 91,
     "bowlingFamilyResearchPlayers": 505,
     "bowlingFamilyQueuePlayers": 0,
+    "consumerProfiles": 2992,
     "qualityFieldsPresent": 0,
     "keeperFieldsPresent": 0,
 }
@@ -335,10 +340,49 @@ def build_role_schemas() -> dict[str, dict[str, Any]]:
             "phases": _object({phase_name: phase for phase_name in ("powerplay", "middle", "death")}),
         }),
         "roleSummary": _object({
-            "role": _string(enum=["BATTER", "ALL_ROUNDER", "BOWLER", "UNKNOWN"]),
+            "role": _string(enum=DERIVED_ROLES),
             "battingResponsibility": _string(enum=["CORE", "LOWER", "TAIL", "UNKNOWN"]),
-            "allRounderLean": _string(enum=["BATTING", "BALANCED", "BOWLING"], nullable=True),
+            "allRounderLean": _string(enum=ALL_ROUNDER_LEANS, nullable=True),
             "isCanonical": {"const": False},
+        }),
+    })
+    consumer_slot_fit = _object({
+        "position": {"type": "integer", "minimum": 1, "maximum": 11},
+        "slotBand": band,
+        "classification": _string(enum=["NATURAL", "ACCEPTABLE", "OUT_OF_ROLE", "UNKNOWN"]),
+        "bandDistance": {"type": ["integer", "null"], "minimum": 0, "maximum": 4},
+    })
+    consumer = _object({
+        "schemaVersion": _string(enum=[CONSUMER_SCHEMA_VERSION]),
+        "roleMetadataVersion": _string(enum=[ROLE_METADATA_VERSION]),
+        "playerTeamSeasonId": _string(pattern=r"pts:[^:]+:[^:]+:[^:]+"),
+        "playerId": _string(pattern=r"[0-9a-f]{8}"),
+        "canonicalDisplayName": _string(),
+        "seasonId": _string(pattern=r"ipl-[0-9]{4}"),
+        "teamId": _string(),
+        "franchiseId": _string(),
+        "derivedRole": _string(enum=DERIVED_ROLES),
+        "allRounderLean": _string(enum=ALL_ROUNDER_LEANS, nullable=True),
+        "battingFit": _object({
+            "confidence": evidence,
+            "basis": _string(enum=[
+                "SEASON", "SEASON_PLUS_PLAYER_HISTORY", "SEASON_SPARSE",
+                "PLAYER_HISTORY_FALLBACK", "UNOBSERVED",
+            ]),
+            "primaryBands": _array(band, unique=True),
+            "slots": {**_array(consumer_slot_fit, unique=True), "minItems": 11, "maxItems": 11},
+        }),
+        "bowlingCapacity": _number(minimum=0, maximum=1),
+        "bowlingWorkloadClass": _string(enum=["NONE", "OCCASIONAL", "SUPPORT", "FRONTLINE"]),
+        "bowlingEvidence": evidence,
+        "bowlingFamily": bowling_family,
+        "phaseBowlingUsage": _object({phase_name: phase for phase_name in ("powerplay", "middle", "death")}),
+        "keeperMetadata": _object({
+            "metadataVersion": _string(enum=[WICKETKEEPER_METADATA_VERSION]),
+            "capabilityStatus": _string(enum=["CONFIRMED", "UNKNOWN"]),
+            "capabilityPlayerId": _string(pattern=r"[0-9a-f]{8}"),
+            "seasonUsageStatus": _string(enum=["CONFIRMED", "UNKNOWN"]),
+            "seasonUsagePlayerTeamSeasonId": _string(pattern=r"pts:[^:]+:[^:]+:[^:]+"),
         }),
     })
     family_review = _object({
@@ -363,7 +407,7 @@ def build_role_schemas() -> dict[str, dict[str, Any]]:
         "teamId": _string(),
         "seasonBattingInnings": _integer(),
         "otherProfileBattingInnings": _integer(),
-        "derivedRole": _string(enum=["BATTER", "ALL_ROUNDER", "BOWLER", "UNKNOWN"]),
+        "derivedRole": _string(enum=DERIVED_ROLES),
         "blockingForFoundation": {"const": False},
     })
     queue = _object({
@@ -409,7 +453,7 @@ def build_role_schemas() -> dict[str, dict[str, Any]]:
         "canonicalPlayers", "stage4PlayerTeamSeasons", "g2Players", "g2Profiles",
         "seasonBattingObservedProfiles", "fitResolvedProfiles", "fitUnknownProfiles",
         "bowlingFamilyResearchPlayers", "bowlingFamilyResolvedPlayers",
-        "bowlingFamilyQueuePlayers", "qualityFieldsPresent", "keeperFieldsPresent",
+        "bowlingFamilyQueuePlayers", "consumerProfiles", "qualityFieldsPresent", "keeperFieldsPresent",
     )})
     numeric_counts = _object({key: _integer() for key in (
         "HIGH", "MEDIUM", "LOW", "NONE",
@@ -434,14 +478,14 @@ def build_role_schemas() -> dict[str, dict[str, Any]]:
         "bowlingEvidenceCounts": numeric_counts,
         "bowlingFamilyCounts": _object({key: _integer() for key in BOWLING_FAMILIES}),
         "bowlingFamilySourceCounts": _object({key: _integer() for key in BOWLING_FAMILY_SOURCE_TYPES}),
-        "roleCounts": _object({key: _integer() for key in (
-            "BATTER", "ALL_ROUNDER", "BOWLER", "UNKNOWN",
-        )}),
+        "roleCounts": _object({key: _integer() for key in DERIVED_ROLES}),
+        "allRounderLeanCounts": _object({key: _integer() for key in (*ALL_ROUNDER_LEANS, "NONE")}),
         "errors": _array(_string()),
     })
     return {
         "bowling_family_metadata.schema.json": {"$schema": "https://json-schema.org/draft/2020-12/schema", **family_metadata},
         "player_bowling_family.schema.json": {"$schema": "https://json-schema.org/draft/2020-12/schema", **resolved_family},
+        "player_role_consumer.schema.json": {"$schema": "https://json-schema.org/draft/2020-12/schema", **consumer},
         "player_batting_prior.schema.json": {"$schema": "https://json-schema.org/draft/2020-12/schema", **prior},
         "player_team_season_role.schema.json": {"$schema": "https://json-schema.org/draft/2020-12/schema", **profile},
         "review_queue.schema.json": {"$schema": "https://json-schema.org/draft/2020-12/schema", **queue},
@@ -610,7 +654,13 @@ def derive_bowling_usage(profile: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def derive_role_summary(batting: dict[str, Any], bowling: dict[str, Any]) -> dict[str, Any]:
+def derive_role_summary(
+    batting: dict[str, Any],
+    bowling: dict[str, Any],
+    keeper_season_usage_status: str = "UNKNOWN",
+) -> dict[str, Any]:
+    if keeper_season_usage_status not in {"CONFIRMED", "UNKNOWN"}:
+        raise PlayerRoleMetadataError(f"Unknown wicketkeeper season-usage status: {keeper_season_usage_status}")
     primary = set(batting["primaryBands"])
     if primary & {"OPENING", "TOP_ORDER", "MIDDLE_ORDER"}:
         responsibility = "CORE"
@@ -633,6 +683,8 @@ def derive_role_summary(batting: dict[str, Any], bowling: dict[str, Any]) -> dic
             all_rounder_lean = "BALANCED"
     elif meaningful_bowling:
         role = "BOWLER"
+    elif keeper_season_usage_status == "CONFIRMED":
+        role = "WICKETKEEPER_BATTER"
     elif batting["basis"] != "UNOBSERVED":
         role = "BATTER"
     else:
@@ -642,6 +694,75 @@ def derive_role_summary(batting: dict[str, Any], bowling: dict[str, Any]) -> dic
         "battingResponsibility": responsibility,
         "allRounderLean": all_rounder_lean,
         "isCanonical": False,
+    }
+
+
+def _resolved_bowling_family(family: dict[str, Any] | None, season_id: str) -> str:
+    if family is None:
+        return "UNKNOWN"
+    resolved = family["bowlingFamily"] if family["resolutionStatus"] == "APPROVED" else "UNKNOWN"
+    for override in family["seasonOverrides"]:
+        if season_id in override["seasonIds"]:
+            return override["bowlingFamily"] if override["resolutionStatus"] == "APPROVED" else "UNKNOWN"
+    return resolved
+
+
+def build_player_role_consumer_row(
+    profile: dict[str, Any],
+    family: dict[str, Any] | None,
+    keeper_capability: dict[str, Any],
+    keeper_usage: dict[str, Any],
+) -> dict[str, Any]:
+    player_id = profile["playerId"]
+    pts_id = profile["playerTeamSeasonId"]
+    if keeper_capability["playerId"] != player_id:
+        raise PlayerRoleMetadataError(f"Keeper capability identity mismatch for {pts_id}")
+    if keeper_usage["playerId"] != player_id or keeper_usage["playerTeamSeasonId"] != pts_id:
+        raise PlayerRoleMetadataError(f"Keeper usage identity mismatch for {pts_id}")
+    if (
+        keeper_capability["metadataVersion"] != WICKETKEEPER_METADATA_VERSION
+        or keeper_usage["metadataVersion"] != WICKETKEEPER_METADATA_VERSION
+    ):
+        raise PlayerRoleMetadataError(f"Keeper metadata version mismatch for {pts_id}")
+    if family is not None and family["playerId"] != player_id:
+        raise PlayerRoleMetadataError(f"Bowling-family identity mismatch for {pts_id}")
+    if profile["bowlingUsage"]["legalBalls"] >= 12 and family is None:
+        raise PlayerRoleMetadataError(f"Meaningful bowler lacks researched bowling family: {pts_id}")
+
+    batting = profile["battingUsage"]
+    bowling = profile["bowlingUsage"]
+    role = profile["roleSummary"]
+    return {
+        "schemaVersion": CONSUMER_SCHEMA_VERSION,
+        "roleMetadataVersion": ROLE_METADATA_VERSION,
+        **{key: profile[key] for key in (
+            "playerTeamSeasonId", "playerId", "canonicalDisplayName", "seasonId", "teamId", "franchiseId",
+        )},
+        "derivedRole": role["role"],
+        "allRounderLean": role["allRounderLean"],
+        "battingFit": {
+            "confidence": batting["confidence"],
+            "basis": batting["basis"],
+            "primaryBands": deepcopy(batting["primaryBands"]),
+            "slots": [{
+                "position": slot["position"],
+                "slotBand": slot["band"],
+                "classification": slot["classification"],
+                "bandDistance": slot["bandDistance"],
+            } for slot in batting["slotFits"]],
+        },
+        "bowlingCapacity": bowling["capacity"],
+        "bowlingWorkloadClass": bowling["usageClass"],
+        "bowlingEvidence": bowling["confidence"],
+        "bowlingFamily": _resolved_bowling_family(family, profile["seasonId"]),
+        "phaseBowlingUsage": deepcopy(bowling["phases"]),
+        "keeperMetadata": {
+            "metadataVersion": keeper_capability["metadataVersion"],
+            "capabilityStatus": keeper_capability["status"],
+            "capabilityPlayerId": keeper_capability["playerId"],
+            "seasonUsageStatus": keeper_usage["status"],
+            "seasonUsagePlayerTeamSeasonId": keeper_usage["playerTeamSeasonId"],
+        },
     }
 
 
@@ -851,6 +972,8 @@ def _validate_profile_invariants(profile: dict[str, Any], source: dict[str, Any]
         raise PlayerRoleMetadataError(f"Bowling phase counts do not reconcile: {pts_id}")
     if profile["roleSummary"]["isCanonical"] is not False:
         raise PlayerRoleMetadataError(f"Derived role label became canonical: {pts_id}")
+    if (profile["roleSummary"]["role"] == "ALL_ROUNDER") != (profile["roleSummary"]["allRounderLean"] is not None):
+        raise PlayerRoleMetadataError(f"All-rounder lean does not match derived role: {pts_id}")
 
 
 def _build_prior_rows(players: list[dict[str, Any]], stage4_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -939,6 +1062,8 @@ def build_player_role_metadata_files(
         raise PlayerRoleMetadataError("Wicketkeeper metadata provenance differs from Stage 4")
     if eligibility_manifest["wicketkeeperMetadataManifestHash"] != keeper_manifest["metadataManifestHash"]:
         raise PlayerRoleMetadataError("Eligibility and wicketkeeper metadata manifests differ")
+    if keeper_manifest["metadataVersion"] != WICKETKEEPER_METADATA_VERSION:
+        raise PlayerRoleMetadataError("Wicketkeeper metadata version is unsupported by the Stage 5 consumer contract")
     if set(capability_by_id) != set(player_by_id) or set(usage_by_id) != set(stage4_by_id):
         raise PlayerRoleMetadataError("Wicketkeeper metadata identity coverage drifted")
     if g2_ids - set(stage4_by_id):
@@ -960,7 +1085,11 @@ def build_player_role_metadata_files(
             )},
             "battingUsage": batting,
             "bowlingUsage": bowling,
-            "roleSummary": derive_role_summary(batting, bowling),
+            "roleSummary": derive_role_summary(
+                batting,
+                bowling,
+                usage_by_id[pts_id]["status"],
+            ),
         }
         _validate_profile_invariants(profile, source)
         profile_rows.append(profile)
@@ -1004,6 +1133,15 @@ def build_player_role_metadata_files(
         if family_by_id[item["playerId"]]["resolutionStatus"] != "APPROVED"
         or family_by_id[item["playerId"]]["bowlingFamily"] == "UNKNOWN"
     ]
+    consumer_rows = [
+        build_player_role_consumer_row(
+            profile,
+            family_by_id.get(profile["playerId"]),
+            capability_by_id[profile["playerId"]],
+            usage_by_id[profile["playerTeamSeasonId"]],
+        )
+        for profile in profile_rows
+    ]
     fit_items = [{
         "reviewId": f"batting-fit:{row['playerTeamSeasonId']}",
         "reviewType": "BATTING_FIT",
@@ -1030,8 +1168,8 @@ def build_player_role_metadata_files(
         "bowlingFamilyItems": family_items,
         "battingFitItems": fit_items,
         "completionBoundary": (
-            "Stage 5 bowling-family enrichment is complete for approved assertions. "
-            "Any listed bowling-family item remains explicit and unresolved; optional batting-fit assertions remain separate work."
+            "Stage 5 role, fit, workload, bowling-family and consumer-contract work is complete. "
+            "Optional batting-fit UNKNOWN items remain neutral descriptive evidence and are not blocking."
         ),
     }
 
@@ -1055,6 +1193,7 @@ def build_player_role_metadata_files(
         "bowlingFamilyResearchPlayers": len(family_research_items),
         "bowlingFamilyResolvedPlayers": sum(row["resolutionStatus"] == "APPROVED" for row in bowling_family_rows),
         "bowlingFamilyQueuePlayers": len(family_items),
+        "consumerProfiles": len(consumer_rows),
         "qualityFieldsPresent": len(all_profile_fields & quality_fields),
         "keeperFieldsPresent": len(all_profile_fields & keeper_fields),
     }
@@ -1069,6 +1208,8 @@ def build_player_role_metadata_files(
             validate_instance(row, schemas["player_team_season_role.schema.json"], f"profile[{index}]")
         for index, row in enumerate(bowling_family_rows):
             validate_instance(row, schemas["player_bowling_family.schema.json"], f"bowlingFamily[{index}]")
+        for index, row in enumerate(consumer_rows):
+            validate_instance(row, schemas["player_role_consumer.schema.json"], f"consumer[{index}]")
         validate_instance(review_queue, schemas["review_queue.schema.json"], "reviewQueue")
     except SchemaValidationError as error:
         raise PlayerRoleMetadataError(f"Stage 5 output schema failure: {error}") from error
@@ -1077,6 +1218,7 @@ def build_player_role_metadata_files(
         "player_batting_priors.jsonl": _jsonl_bytes(prior_rows),
         "player_team_season_roles.jsonl": _jsonl_bytes(profile_rows),
         "player_bowling_families.jsonl": _jsonl_bytes(bowling_family_rows),
+        "player_role_consumer.jsonl": _jsonl_bytes(consumer_rows),
         "review_queue.json": pretty_json_bytes(review_queue),
     }
     for name, schema in schemas.items():
@@ -1085,6 +1227,7 @@ def build_player_role_metadata_files(
         _artifact_entry("player_batting_priors.jsonl", files["player_batting_priors.jsonl"], PRIOR_SCHEMA_VERSION, len(prior_rows)),
         _artifact_entry("player_team_season_roles.jsonl", files["player_team_season_roles.jsonl"], PROFILE_SCHEMA_VERSION, len(profile_rows)),
         _artifact_entry("player_bowling_families.jsonl", files["player_bowling_families.jsonl"], PLAYER_BOWLING_FAMILY_SCHEMA_VERSION, len(bowling_family_rows)),
+        _artifact_entry("player_role_consumer.jsonl", files["player_role_consumer.jsonl"], CONSUMER_SCHEMA_VERSION, len(consumer_rows)),
         _artifact_entry("review_queue.json", files["review_queue.json"], QUEUE_SCHEMA_VERSION, len(family_items) + len(fit_items)),
     ]
     schema_entries = [
@@ -1129,6 +1272,7 @@ def build_player_role_metadata_files(
         for source_family in {evidence["sourceFamily"] for evidence in row["evidenceRefs"]}:
             bowling_sources[source_family] += 1
     roles = Counter(row["roleSummary"]["role"] for row in profile_rows)
+    all_rounder_leans = Counter(row["roleSummary"]["allRounderLean"] or "NONE" for row in profile_rows)
     validation_report = {
         "schemaVersion": VALIDATION_SCHEMA_VERSION,
         "roleMetadataVersion": ROLE_METADATA_VERSION,
@@ -1144,7 +1288,8 @@ def build_player_role_metadata_files(
         "bowlingEvidenceCounts": {key: bowling_evidence[key] for key in ("HIGH", "MEDIUM", "LOW", "NONE")},
         "bowlingFamilyCounts": {key: bowling_families[key] for key in BOWLING_FAMILIES},
         "bowlingFamilySourceCounts": {key: bowling_sources[key] for key in BOWLING_FAMILY_SOURCE_TYPES},
-        "roleCounts": {key: roles[key] for key in ("BATTER", "ALL_ROUNDER", "BOWLER", "UNKNOWN")},
+        "roleCounts": {key: roles[key] for key in DERIVED_ROLES},
+        "allRounderLeanCounts": {key: all_rounder_leans[key] for key in (*ALL_ROUNDER_LEANS, "NONE")},
         "errors": [],
     }
     try:
@@ -1166,6 +1311,12 @@ def build_player_role_metadata_files(
         *[f"- {key.title()}: {bowling_usage[key]:,}" for key in ("FRONTLINE", "SUPPORT", "OCCASIONAL", "NONE")], "",
         "## Bowling family", "",
         *[f"- {key.title()}: {bowling_families[key]:,}" for key in BOWLING_FAMILIES], "",
+        "## Derived presentation roles", "",
+        *[f"- {key.replace('_', ' ').title()}: {roles[key]:,}" for key in DERIVED_ROLES], "",
+        "## Stable consumer contract", "",
+        f"- Player-team-season consumer rows: {len(consumer_rows):,}",
+        "- Exposes categorical batting fit, bowling workload/family/phase usage and frozen keeper references.",
+        "- Does not expose ratings, multipliers, penalties, boosts or bowling-balance legality.", "",
         "## Review boundary", "",
         f"- Bowling-family research players: {len(family_research_items):,}",
         f"- Approved bowling-family players: {actual['bowlingFamilyResolvedPlayers']:,}",
@@ -1181,10 +1332,12 @@ def build_player_role_metadata_files(
 __all__ = [
     "BATTING_BANDS",
     "BOWLING_FAMILY_METADATA_SCHEMA_VERSION",
+    "CONSUMER_SCHEMA_VERSION",
     "ISSUE_URL",
     "PlayerRoleMetadataError",
     "ROLE_METADATA_VERSION",
     "build_player_role_metadata_files",
+    "build_player_role_consumer_row",
     "build_role_schemas",
     "derive_batting_usage",
     "derive_bowling_usage",

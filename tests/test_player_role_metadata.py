@@ -9,6 +9,7 @@ from pathlib import Path
 
 from scripts.player_role_metadata import (
     PlayerRoleMetadataError,
+    build_player_role_consumer_row,
     build_player_role_metadata_files,
     derive_batting_usage,
     derive_bowling_usage,
@@ -139,6 +140,15 @@ class BowlingMethodTests(unittest.TestCase):
         self.assertEqual(role["allRounderLean"], "BATTING")
         self.assertFalse(role["isCanonical"])
 
+    def test_keeper_season_usage_changes_only_batting_only_presentation_role(self) -> None:
+        batting = derive_batting_usage(positions(**{"3": 8}), positions(**{"3": 8}))
+        no_bowling = derive_bowling_usage(bowling_profile())
+        self.assertEqual(derive_role_summary(batting, no_bowling, "UNKNOWN")["role"], "BATTER")
+        self.assertEqual(derive_role_summary(batting, no_bowling, "CONFIRMED")["role"], "WICKETKEEPER_BATTER")
+
+        meaningful = derive_bowling_usage(bowling_profile(matches=6, balls=120, powerplay=30, middle=60, death=30))
+        self.assertEqual(derive_role_summary(batting, meaningful, "CONFIRMED")["role"], "ALL_ROUNDER")
+
 
 class PlayerRoleIntegrationTests(unittest.TestCase):
     @classmethod
@@ -155,6 +165,19 @@ class PlayerRoleIntegrationTests(unittest.TestCase):
             json.loads(line)
             for line in (cls.output_dir / "player_bowling_families.jsonl").read_text().splitlines()
         ]
+        cls.family_by_id = {row["playerId"]: row for row in cls.families}
+        cls.consumers = [
+            json.loads(line)
+            for line in (cls.output_dir / "player_role_consumer.jsonl").read_text().splitlines()
+        ]
+        cls.keeper_capabilities = {
+            row["playerId"]: row
+            for row in map(json.loads, Path("data/metadata/ipl/v1/player_capabilities.jsonl").read_text().splitlines())
+        }
+        cls.keeper_usages = {
+            row["playerTeamSeasonId"]: row
+            for row in map(json.loads, Path("data/metadata/ipl/v1/player_team_season_usage.jsonl").read_text().splitlines())
+        }
 
     @classmethod
     def tearDownClass(cls) -> None:
@@ -173,6 +196,7 @@ class PlayerRoleIntegrationTests(unittest.TestCase):
             "bowlingFamilyResearchPlayers": 505,
             "bowlingFamilyResolvedPlayers": 505,
             "bowlingFamilyQueuePlayers": 0,
+            "consumerProfiles": 2992,
             "qualityFieldsPresent": 0,
             "keeperFieldsPresent": 0,
         })
@@ -229,13 +253,105 @@ class PlayerRoleIntegrationTests(unittest.TestCase):
         self.assertTrue(all(row["rawBowlingStyles"] for row in self.families))
         self.assertTrue(all(not row["seasonOverrides"] for row in self.families))
 
-    def test_phase_one_derived_artifacts_remain_byte_identical(self) -> None:
+    def test_committed_batting_fit_and_bowling_workload_remain_byte_identical(self) -> None:
+        self.assertEqual(
+            hashlib.sha256((self.output_dir / "player_batting_priors.jsonl").read_bytes()).hexdigest(),
+            "14b0b7c6eff173d8094f24762e7c5cdb79709dcd33a3ef3d92e4390ce0772dc5",
+        )
         expected = {
-            "player_batting_priors.jsonl": "14b0b7c6eff173d8094f24762e7c5cdb79709dcd33a3ef3d92e4390ce0772dc5",
-            "player_team_season_roles.jsonl": "499dbf481e779a5d808407a5c4608271fff7c57adc7a3aefcc53d8a58172c91d",
+            "battingUsage": "bfc6262a917e26faaced330108b0a578bd602bcaa83616b5c8935e958bc28d8e",
+            "bowlingUsage": "cb54d876f137d675dd757c83f16a90ace892d8fb83fdb859b753aa21df1fb8fa",
         }
-        for path, digest in expected.items():
-            self.assertEqual(hashlib.sha256((self.output_dir / path).read_bytes()).hexdigest(), digest)
+        for field, digest in expected.items():
+            content = b"".join(
+                (json.dumps({"playerTeamSeasonId": row["playerTeamSeasonId"], field: row[field]}, sort_keys=True, separators=(",", ":")) + "\n").encode()
+                for row in self.profiles
+            )
+            self.assertEqual(hashlib.sha256(content).hexdigest(), digest)
+
+    def test_derived_roles_and_all_rounder_leans_are_complete(self) -> None:
+        self.assertEqual(self.report["roleCounts"], {
+            "BATTER": 1037,
+            "WICKETKEEPER_BATTER": 271,
+            "ALL_ROUNDER": 787,
+            "BOWLER": 897,
+            "UNKNOWN": 0,
+        })
+        self.assertEqual(self.report["allRounderLeanCounts"], {
+            "BATTING": 153, "BOWLING": 373, "BALANCED": 261, "NONE": 2205,
+        })
+        self.assertEqual(len(self.consumers), 2992)
+        self.assertEqual(len({row["playerTeamSeasonId"] for row in self.consumers}), 2992)
+
+    def test_wicketkeeper_roles_and_references_come_from_frozen_metadata(self) -> None:
+        for profile, consumer in zip(self.profiles, self.consumers, strict=True):
+            capability = self.keeper_capabilities[profile["playerId"]]
+            usage = self.keeper_usages[profile["playerTeamSeasonId"]]
+            self.assertEqual(consumer["keeperMetadata"], {
+                "metadataVersion": capability["metadataVersion"],
+                "capabilityStatus": capability["status"],
+                "capabilityPlayerId": capability["playerId"],
+                "seasonUsageStatus": usage["status"],
+                "seasonUsagePlayerTeamSeasonId": usage["playerTeamSeasonId"],
+            })
+            if consumer["derivedRole"] == "WICKETKEEPER_BATTER":
+                self.assertEqual(capability["status"], "CONFIRMED")
+                self.assertEqual(usage["status"], "CONFIRMED")
+
+    def test_player_capability_alone_never_creates_historical_keeper_role(self) -> None:
+        capability_only_roles = []
+        for consumer in self.consumers:
+            keeper = consumer["keeperMetadata"]
+            if keeper["capabilityStatus"] == "CONFIRMED" and keeper["seasonUsageStatus"] == "UNKNOWN":
+                capability_only_roles.append(consumer["derivedRole"])
+        self.assertEqual(len(capability_only_roles), 141)
+        self.assertEqual(capability_only_roles.count("BATTER"), 136)
+        self.assertEqual(capability_only_roles.count("ALL_ROUNDER"), 5)
+        self.assertNotIn("WICKETKEEPER_BATTER", capability_only_roles)
+
+    def test_consumer_fit_and_workload_are_lossless_descriptive_views(self) -> None:
+        for profile, consumer in zip(self.profiles, self.consumers, strict=True):
+            batting = profile["battingUsage"]
+            bowling = profile["bowlingUsage"]
+            self.assertEqual(consumer["battingFit"], {
+                "confidence": batting["confidence"],
+                "basis": batting["basis"],
+                "primaryBands": batting["primaryBands"],
+                "slots": [{
+                    "position": slot["position"],
+                    "slotBand": slot["band"],
+                    "classification": slot["classification"],
+                    "bandDistance": slot["bandDistance"],
+                } for slot in batting["slotFits"]],
+            })
+            self.assertEqual(consumer["bowlingCapacity"], bowling["capacity"])
+            self.assertEqual(consumer["bowlingWorkloadClass"], bowling["usageClass"])
+            self.assertEqual(consumer["bowlingEvidence"], bowling["confidence"])
+            self.assertEqual(consumer["phaseBowlingUsage"], bowling["phases"])
+
+    def test_quality_fields_cannot_change_derived_role_or_fit(self) -> None:
+        profile = deepcopy(self.profiles[0])
+        family = self.family_by_id.get(profile["playerId"])
+        capability = self.keeper_capabilities[profile["playerId"]]
+        usage = self.keeper_usages[profile["playerTeamSeasonId"]]
+        before = build_player_role_consumer_row(profile, family, capability, usage)
+        profile.update({
+            "runs": 9999, "wickets": 999, "battingAverage": 99.9,
+            "strikeRate": 250, "economy": 1.0, "baseRating": 100, "tier": "S",
+        })
+        after = build_player_role_consumer_row(profile, family, capability, usage)
+        self.assertEqual(before, after)
+
+    def test_bowling_family_cannot_change_bowling_workload(self) -> None:
+        profile = next(row for row in self.profiles if row["playerId"] in self.family_by_id)
+        family = deepcopy(self.family_by_id[profile["playerId"]])
+        capability = self.keeper_capabilities[profile["playerId"]]
+        usage = self.keeper_usages[profile["playerTeamSeasonId"]]
+        before = build_player_role_consumer_row(profile, family, capability, usage)
+        family["bowlingFamily"] = "SPIN" if before["bowlingFamily"] != "SPIN" else "PACE"
+        after = build_player_role_consumer_row(profile, family, capability, usage)
+        for field in ("bowlingCapacity", "bowlingWorkloadClass", "bowlingEvidence", "phaseBowlingUsage"):
+            self.assertEqual(before[field], after[field])
 
     def test_build_is_byte_deterministic(self) -> None:
         second_files, second_report = build_player_role_metadata_files()

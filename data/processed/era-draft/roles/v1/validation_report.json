@@ -1,4 +1,10 @@
 {
+  "allRounderLeanCounts": {
+    "BALANCED": 261,
+    "BATTING": 153,
+    "BOWLING": 373,
+    "NONE": 2205
+  },
   "baselineComparisons": [
     {
       "actual": 816,
@@ -55,6 +61,12 @@
       "metric": "bowlingFamilyQueuePlayers"
     },
     {
+      "actual": 2992,
+      "expected": 2992,
+      "matches": true,
+      "metric": "consumerProfiles"
+    },
+    {
       "actual": 0,
       "expected": 0,
       "matches": true,
@@ -109,6 +121,7 @@
     "bowlingFamilyResearchPlayers": 505,
     "bowlingFamilyResolvedPlayers": 505,
     "canonicalPlayers": 816,
+    "consumerProfiles": 2992,
     "fitResolvedProfiles": 2901,
     "fitUnknownProfiles": 91,
     "g2Players": 727,
@@ -121,11 +134,12 @@
   "errors": [],
   "roleCounts": {
     "ALL_ROUNDER": 787,
-    "BATTER": 1308,
+    "BATTER": 1037,
     "BOWLER": 897,
-    "UNKNOWN": 0
+    "UNKNOWN": 0,
+    "WICKETKEEPER_BATTER": 271
   },
-  "roleManifestHash": "b2b57fc619702ef85f87a411f812fd6285e99252e8bf24387c20e678de1ec8dd",
+  "roleManifestHash": "214f03fd459df564f80fade045b97e18a30e6f43ca9eae4caac4cef8953459ba",
   "roleMetadataVersion": "ipl-era-draft-player-roles/v1",
   "schemaVersion": "ipl-era-draft-player-role-validation/v1",
   "status": "passed"

@@ -482,8 +482,8 @@
         "allRounderLean": {
           "enum": [
             "BATTING",
-            "BALANCED",
             "BOWLING",
+            "BALANCED",
             null
           ],
           "type": [
@@ -507,6 +507,7 @@
         "role": {
           "enum": [
             "BATTER",
+            "WICKETKEEPER_BATTER",
             "ALL_ROUNDER",
             "BOWLER",
             "UNKNOWN"

@@ -16,6 +16,7 @@
           "derivedRole": {
             "enum": [
               "BATTER",
+              "WICKETKEEPER_BATTER",
               "ALL_ROUNDER",
               "BOWLER",
               "UNKNOWN"

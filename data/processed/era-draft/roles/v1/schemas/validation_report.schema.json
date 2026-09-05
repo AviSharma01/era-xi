@@ -2,6 +2,34 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
   "properties": {
+    "allRounderLeanCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "BALANCED": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "BATTING": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "BOWLING": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "NONE": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "BATTING",
+        "BOWLING",
+        "BALANCED",
+        "NONE"
+      ],
+      "type": "object"
+    },
     "baselineComparisons": {
       "items": {
         "additionalProperties": false,
@@ -224,6 +252,10 @@
           "minimum": 0,
           "type": "integer"
         },
+        "consumerProfiles": {
+          "minimum": 0,
+          "type": "integer"
+        },
         "fitResolvedProfiles": {
           "minimum": 0,
           "type": "integer"
@@ -268,6 +300,7 @@
         "bowlingFamilyResearchPlayers",
         "bowlingFamilyResolvedPlayers",
         "bowlingFamilyQueuePlayers",
+        "consumerProfiles",
         "qualityFieldsPresent",
         "keeperFieldsPresent"
       ],
@@ -298,10 +331,15 @@
         "UNKNOWN": {
           "minimum": 0,
           "type": "integer"
+        },
+        "WICKETKEEPER_BATTER": {
+          "minimum": 0,
+          "type": "integer"
         }
       },
       "required": [
         "BATTER",
+        "WICKETKEEPER_BATTER",
         "ALL_ROUNDER",
         "BOWLER",
         "UNKNOWN"
@@ -349,6 +387,7 @@
     "bowlingFamilyCounts",
     "bowlingFamilySourceCounts",
     "roleCounts",
+    "allRounderLeanCounts",
     "errors"
   ],
   "type": "object"

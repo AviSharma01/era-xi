@@ -2,7 +2,7 @@
 
 Tracking issue: [#1](https://github.com/AviSharma01/draft-simulator/issues/1)
 
-Role manifest SHA-256: `b2b57fc619702ef85f87a411f812fd6285e99252e8bf24387c20e678de1ec8dd`
+Role manifest SHA-256: `214f03fd459df564f80fade045b97e18a30e6f43ca9eae4caac4cef8953459ba`
 
 ## Coverage
 
@@ -25,6 +25,20 @@ Role manifest SHA-256: `b2b57fc619702ef85f87a411f812fd6285e99252e8bf24387c20e678
 - Spin: 176
 - Mixed: 4
 - Unknown: 0
+
+## Derived presentation roles
+
+- Batter: 1,037
+- Wicketkeeper Batter: 271
+- All Rounder: 787
+- Bowler: 897
+- Unknown: 0
+
+## Stable consumer contract
+
+- Player-team-season consumer rows: 2,992
+- Exposes categorical batting fit, bowling workload/family/phase usage and frozen keeper references.
+- Does not expose ratings, multipliers, penalties, boosts or bowling-balance legality.
 
 ## Review boundary
 
