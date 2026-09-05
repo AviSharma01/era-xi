@@ -2,6 +2,7 @@
 AGENTS.md
 
 docs/*.md
+!docs/PLAYER_ROLES_POSITION_FIT.md
 
 # Full downloaded source data
 data/raw/cricsheet/
@@ -20,6 +21,9 @@ data/processed/**
 !data/processed/era-draft/
 !data/processed/era-draft/v1/
 !data/processed/era-draft/v1/**
+!data/processed/era-draft/roles/
+!data/processed/era-draft/roles/v1/
+!data/processed/era-draft/roles/v1/**
 
 # Large, reproducible Cricsheet audit details
 data/audit/cricsheet-ipl/v1/source_manifest.jsonl

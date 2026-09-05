@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "allRounderLean": {
+      "enum": [
+        "BATTING",
+        "BOWLING",
+        "BALANCED",
+        null
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "battingFit": {
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "enum": [
+            "SEASON",
+            "SEASON_PLUS_PLAYER_HISTORY",
+            "SEASON_SPARSE",
+            "PLAYER_HISTORY_FALLBACK",
+            "UNOBSERVED"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "NONE"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "primaryBands": {
+          "items": {
+            "enum": [
+              "OPENING",
+              "TOP_ORDER",
+              "MIDDLE_ORDER",
+              "LOWER_ORDER",
+              "TAIL"
+            ],
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "slots": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "bandDistance": {
+                "maximum": 4,
+                "minimum": 0,
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "classification": {
+                "enum": [
+                  "NATURAL",
+                  "ACCEPTABLE",
+                  "OUT_OF_ROLE",
+                  "UNKNOWN"
+                ],
+                "minLength": 1,
+                "type": "string"
+              },
+              "position": {
+                "maximum": 11,
+                "minimum": 1,
+                "type": "integer"
+              },
+              "slotBand": {
+                "enum": [
+                  "OPENING",
+                  "TOP_ORDER",
+                  "MIDDLE_ORDER",
+                  "LOWER_ORDER",
+                  "TAIL"
+                ],
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "position",
+              "slotBand",
+              "classification",
+              "bandDistance"
+            ],
+            "type": "object"
+          },
+          "maxItems": 11,
+          "minItems": 11,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "confidence",
+        "basis",
+        "primaryBands",
+        "slots"
+      ],
+      "type": "object"
+    },
+    "bowlingCapacity": {
+      "maximum": 1,
+      "minimum": 0,
+      "type": "number"
+    },
+    "bowlingEvidence": {
+      "enum": [
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "NONE"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "bowlingFamily": {
+      "enum": [
+        "PACE",
+        "SPIN",
+        "MIXED",
+        "UNKNOWN"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "bowlingWorkloadClass": {
+      "enum": [
+        "NONE",
+        "OCCASIONAL",
+        "SUPPORT",
+        "FRONTLINE"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "canonicalDisplayName": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "derivedRole": {
+      "enum": [
+        "BATTER",
+        "WICKETKEEPER_BATTER",
+        "ALL_ROUNDER",
+        "BOWLER",
+        "UNKNOWN"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "franchiseId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "keeperMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "capabilityPlayerId": {
+          "minLength": 1,
+          "pattern": "[0-9a-f]{8}",
+          "type": "string"
+        },
+        "capabilityStatus": {
+          "enum": [
+            "CONFIRMED",
+            "UNKNOWN"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "metadataVersion": {
+          "enum": [
+            "ipl-wicketkeeper-metadata/v1"
+          ],
+          "minLength": 1,
+          "type": "string"
+        },
+        "seasonUsagePlayerTeamSeasonId": {
+          "minLength": 1,
+          "pattern": "pts:[^:]+:[^:]+:[^:]+",
+          "type": "string"
+        },
+        "seasonUsageStatus": {
+          "enum": [
+            "CONFIRMED",
+            "UNKNOWN"
+          ],
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "metadataVersion",
+        "capabilityStatus",
+        "capabilityPlayerId",
+        "seasonUsageStatus",
+        "seasonUsagePlayerTeamSeasonId"
+      ],
+      "type": "object"
+    },
+    "phaseBowlingUsage": {
+      "additionalProperties": false,
+      "properties": {
+        "death": {
+          "additionalProperties": false,
+          "properties": {
+            "legalBalls": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "share": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "legalBalls",
+            "share"
+          ],
+          "type": "object"
+        },
+        "middle": {
+          "additionalProperties": false,
+          "properties": {
+            "legalBalls": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "share": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "legalBalls",
+            "share"
+          ],
+          "type": "object"
+        },
+        "powerplay": {
+          "additionalProperties": false,
+          "properties": {
+            "legalBalls": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "share": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "legalBalls",
+            "share"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "powerplay",
+        "middle",
+        "death"
+      ],
+      "type": "object"
+    },
+    "playerId": {
+      "minLength": 1,
+      "pattern": "[0-9a-f]{8}",
+      "type": "string"
+    },
+    "playerTeamSeasonId": {
+      "minLength": 1,
+      "pattern": "pts:[^:]+:[^:]+:[^:]+",
+      "type": "string"
+    },
+    "roleMetadataVersion": {
+      "enum": [
+        "ipl-era-draft-player-roles/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-player-role-consumer/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "seasonId": {
+      "minLength": 1,
+      "pattern": "ipl-[0-9]{4}",
+      "type": "string"
+    },
+    "teamId": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "roleMetadataVersion",
+    "playerTeamSeasonId",
+    "playerId",
+    "canonicalDisplayName",
+    "seasonId",
+    "teamId",
+    "franchiseId",
+    "derivedRole",
+    "allRounderLean",
+    "battingFit",
+    "bowlingCapacity",
+    "bowlingWorkloadClass",
+    "bowlingEvidence",
+    "bowlingFamily",
+    "phaseBowlingUsage",
+    "keeperMetadata"
+  ],
+  "type": "object"
+}

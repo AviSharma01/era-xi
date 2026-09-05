@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "bandCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "LOWER_ORDER": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "MIDDLE_ORDER": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "OPENING": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "TAIL": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "TOP_ORDER": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "OPENING",
+        "TOP_ORDER",
+        "MIDDLE_ORDER",
+        "LOWER_ORDER",
+        "TAIL"
+      ],
+      "type": "object"
+    },
+    "bandShares": {
+      "additionalProperties": false,
+      "properties": {
+        "LOWER_ORDER": {
+          "maximum": 1,
+          "minimum": 0,
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "MIDDLE_ORDER": {
+          "maximum": 1,
+          "minimum": 0,
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "OPENING": {
+          "maximum": 1,
+          "minimum": 0,
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "TAIL": {
+          "maximum": 1,
+          "minimum": 0,
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "TOP_ORDER": {
+          "maximum": 1,
+          "minimum": 0,
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "OPENING",
+        "TOP_ORDER",
+        "MIDDLE_ORDER",
+        "LOWER_ORDER",
+        "TAIL"
+      ],
+      "type": "object"
+    },
+    "battingInnings": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "canonicalDisplayName": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "playerId": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "positionCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "1": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "10": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "11": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "2": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "3": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "4": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "5": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "6": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "7": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "8": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "9": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "type": "object"
+    },
+    "profileCount": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "roleMetadataVersion": {
+      "enum": [
+        "ipl-era-draft-player-roles/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    },
+    "schemaVersion": {
+      "enum": [
+        "ipl-era-draft-player-batting-prior/v1"
+      ],
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "roleMetadataVersion",
+    "playerId",
+    "canonicalDisplayName",
+    "profileCount",
+    "battingInnings",
+    "positionCounts",
+    "bandCounts",
+    "bandShares"
+  ],
+  "type": "object"
+}
