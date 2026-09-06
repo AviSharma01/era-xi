@@ -1,0 +1,662 @@
+{
+  "environments": [
+    {
+      "allOutBallsHistogram": [
+        {
+          "balls": 88,
+          "count": 1
+        },
+        {
+          "balls": 91,
+          "count": 2
+        },
+        {
+          "balls": 92,
+          "count": 2
+        },
+        {
+          "balls": 97,
+          "count": 1
+        },
+        {
+          "balls": 98,
+          "count": 1
+        },
+        {
+          "balls": 106,
+          "count": 2
+        },
+        {
+          "balls": 107,
+          "count": 1
+        },
+        {
+          "balls": 110,
+          "count": 1
+        },
+        {
+          "balls": 111,
+          "count": 1
+        },
+        {
+          "balls": 112,
+          "count": 1
+        },
+        {
+          "balls": 113,
+          "count": 1
+        },
+        {
+          "balls": 114,
+          "count": 1
+        },
+        {
+          "balls": 115,
+          "count": 2
+        },
+        {
+          "balls": 116,
+          "count": 3
+        },
+        {
+          "balls": 117,
+          "count": 1
+        },
+        {
+          "balls": 118,
+          "count": 6
+        },
+        {
+          "balls": 119,
+          "count": 4
+        },
+        {
+          "balls": 120,
+          "count": 7
+        }
+      ],
+      "chase": {
+        "failed": 83,
+        "initialBiasRuns": 2.121035,
+        "successRateExcludingTies": 0.520231,
+        "successful": 90,
+        "tied": 2
+      },
+      "eraId": "era-foundation",
+      "label": "Foundation Era",
+      "regulationTieRate": 0.011429,
+      "runs": {
+        "allInningsMean": 151.774286,
+        "chaseInningsMean": 144.76,
+        "firstInningsMean": 158.788571,
+        "observedMaximum": 246,
+        "observedMinimum": 55,
+        "simulationMaximum": 276,
+        "simulationMinimum": 35,
+        "standardDeviation": 30.875564
+      },
+      "sample": {
+        "innings": 350,
+        "matches": 175
+      },
+      "schemaVersion": "ipl-era-simulation/v2",
+      "seasonIds": [
+        "ipl-2008",
+        "ipl-2009",
+        "ipl-2010"
+      ],
+      "sourceCohort": "all_normal",
+      "wickets": {
+        "mean": 6.017143,
+        "residualStandardDeviation": 2.553924,
+        "runSlope": -0.017571,
+        "standardDeviation": 2.61091
+      }
+    },
+    {
+      "allOutBallsHistogram": [
+        {
+          "balls": 77,
+          "count": 1
+        },
+        {
+          "balls": 92,
+          "count": 2
+        },
+        {
+          "balls": 99,
+          "count": 1
+        },
+        {
+          "balls": 101,
+          "count": 1
+        },
+        {
+          "balls": 102,
+          "count": 1
+        },
+        {
+          "balls": 103,
+          "count": 1
+        },
+        {
+          "balls": 104,
+          "count": 1
+        },
+        {
+          "balls": 105,
+          "count": 1
+        },
+        {
+          "balls": 106,
+          "count": 1
+        },
+        {
+          "balls": 110,
+          "count": 2
+        },
+        {
+          "balls": 111,
+          "count": 1
+        },
+        {
+          "balls": 112,
+          "count": 2
+        },
+        {
+          "balls": 113,
+          "count": 3
+        },
+        {
+          "balls": 114,
+          "count": 4
+        },
+        {
+          "balls": 115,
+          "count": 2
+        },
+        {
+          "balls": 116,
+          "count": 1
+        },
+        {
+          "balls": 117,
+          "count": 2
+        },
+        {
+          "balls": 118,
+          "count": 2
+        },
+        {
+          "balls": 119,
+          "count": 4
+        },
+        {
+          "balls": 120,
+          "count": 4
+        }
+      ],
+      "chase": {
+        "failed": 104,
+        "initialBiasRuns": 2.91276,
+        "successRateExcludingTies": 0.527273,
+        "successful": 116,
+        "tied": 2
+      },
+      "eraId": "era-expansion",
+      "label": "Expansion Era",
+      "regulationTieRate": 0.009009,
+      "runs": {
+        "allInningsMean": 148.855856,
+        "chaseInningsMean": 141.977477,
+        "firstInningsMean": 155.734234,
+        "observedMaximum": 263,
+        "observedMinimum": 61,
+        "simulationMaximum": 293,
+        "simulationMinimum": 41,
+        "standardDeviation": 29.229627
+      },
+      "sample": {
+        "innings": 444,
+        "matches": 222
+      },
+      "schemaVersion": "ipl-era-simulation/v2",
+      "seasonIds": [
+        "ipl-2011",
+        "ipl-2012",
+        "ipl-2013"
+      ],
+      "sourceCohort": "all_normal",
+      "wickets": {
+        "mean": 5.801802,
+        "residualStandardDeviation": 2.335311,
+        "runSlope": -0.028731,
+        "standardDeviation": 2.481716
+      }
+    },
+    {
+      "allOutBallsHistogram": [
+        {
+          "balls": 58,
+          "count": 1
+        },
+        {
+          "balls": 82,
+          "count": 2
+        },
+        {
+          "balls": 90,
+          "count": 1
+        },
+        {
+          "balls": 95,
+          "count": 1
+        },
+        {
+          "balls": 97,
+          "count": 1
+        },
+        {
+          "balls": 99,
+          "count": 1
+        },
+        {
+          "balls": 103,
+          "count": 1
+        },
+        {
+          "balls": 106,
+          "count": 1
+        },
+        {
+          "balls": 109,
+          "count": 1
+        },
+        {
+          "balls": 110,
+          "count": 2
+        },
+        {
+          "balls": 111,
+          "count": 1
+        },
+        {
+          "balls": 112,
+          "count": 1
+        },
+        {
+          "balls": 113,
+          "count": 1
+        },
+        {
+          "balls": 114,
+          "count": 3
+        },
+        {
+          "balls": 115,
+          "count": 1
+        },
+        {
+          "balls": 116,
+          "count": 2
+        },
+        {
+          "balls": 117,
+          "count": 2
+        },
+        {
+          "balls": 118,
+          "count": 3
+        },
+        {
+          "balls": 119,
+          "count": 5
+        },
+        {
+          "balls": 120,
+          "count": 5
+        }
+      ],
+      "chase": {
+        "failed": 105,
+        "initialBiasRuns": 5.162212,
+        "successRateExcludingTies": 0.549356,
+        "successful": 128,
+        "tied": 3
+      },
+      "eraId": "era-transition",
+      "label": "Transition Era",
+      "regulationTieRate": 0.012712,
+      "runs": {
+        "allInningsMean": 157.802966,
+        "chaseInningsMean": 151.440678,
+        "firstInningsMean": 164.165254,
+        "observedMaximum": 248,
+        "observedMinimum": 44,
+        "simulationMaximum": 278,
+        "simulationMinimum": 24,
+        "standardDeviation": 31.400862
+      },
+      "sample": {
+        "innings": 472,
+        "matches": 236
+      },
+      "schemaVersion": "ipl-era-simulation/v2",
+      "seasonIds": [
+        "ipl-2014",
+        "ipl-2015",
+        "ipl-2016",
+        "ipl-2017"
+      ],
+      "sourceCohort": "all_normal",
+      "wickets": {
+        "mean": 5.758475,
+        "residualStandardDeviation": 2.337001,
+        "runSlope": -0.018226,
+        "standardDeviation": 2.40606
+      }
+    },
+    {
+      "allOutBallsHistogram": [
+        {
+          "balls": 83,
+          "count": 1
+        },
+        {
+          "balls": 86,
+          "count": 1
+        },
+        {
+          "balls": 87,
+          "count": 1
+        },
+        {
+          "balls": 91,
+          "count": 1
+        },
+        {
+          "balls": 96,
+          "count": 1
+        },
+        {
+          "balls": 97,
+          "count": 2
+        },
+        {
+          "balls": 98,
+          "count": 1
+        },
+        {
+          "balls": 101,
+          "count": 1
+        },
+        {
+          "balls": 102,
+          "count": 1
+        },
+        {
+          "balls": 103,
+          "count": 1
+        },
+        {
+          "balls": 105,
+          "count": 1
+        },
+        {
+          "balls": 106,
+          "count": 3
+        },
+        {
+          "balls": 108,
+          "count": 1
+        },
+        {
+          "balls": 109,
+          "count": 3
+        },
+        {
+          "balls": 110,
+          "count": 1
+        },
+        {
+          "balls": 111,
+          "count": 1
+        },
+        {
+          "balls": 112,
+          "count": 1
+        },
+        {
+          "balls": 113,
+          "count": 3
+        },
+        {
+          "balls": 114,
+          "count": 3
+        },
+        {
+          "balls": 115,
+          "count": 1
+        },
+        {
+          "balls": 116,
+          "count": 5
+        },
+        {
+          "balls": 117,
+          "count": 2
+        },
+        {
+          "balls": 118,
+          "count": 7
+        },
+        {
+          "balls": 119,
+          "count": 2
+        },
+        {
+          "balls": 120,
+          "count": 6
+        }
+      ],
+      "chase": {
+        "failed": 137,
+        "initialBiasRuns": 5.491428,
+        "successRateExcludingTies": 0.552288,
+        "successful": 169,
+        "tied": 7
+      },
+      "eraId": "era-modern-pre-impact",
+      "label": "Modern Pre-Impact Era",
+      "regulationTieRate": 0.022364,
+      "runs": {
+        "allInningsMean": 162.247604,
+        "chaseInningsMean": 156.182109,
+        "firstInningsMean": 168.313099,
+        "observedMaximum": 245,
+        "observedMinimum": 60,
+        "simulationMaximum": 275,
+        "simulationMinimum": 40,
+        "standardDeviation": 29.799506
+      },
+      "sample": {
+        "innings": 626,
+        "matches": 313
+      },
+      "schemaVersion": "ipl-era-simulation/v2",
+      "seasonIds": [
+        "ipl-2018",
+        "ipl-2019",
+        "ipl-2020",
+        "ipl-2021",
+        "ipl-2022"
+      ],
+      "sourceCohort": "all_normal",
+      "wickets": {
+        "mean": 5.891374,
+        "residualStandardDeviation": 2.297736,
+        "runSlope": -0.022346,
+        "standardDeviation": 2.392284
+      }
+    },
+    {
+      "allOutBallsHistogram": [
+        {
+          "balls": 63,
+          "count": 1
+        },
+        {
+          "balls": 82,
+          "count": 1
+        },
+        {
+          "balls": 85,
+          "count": 1
+        },
+        {
+          "balls": 89,
+          "count": 1
+        },
+        {
+          "balls": 91,
+          "count": 1
+        },
+        {
+          "balls": 93,
+          "count": 1
+        },
+        {
+          "balls": 95,
+          "count": 1
+        },
+        {
+          "balls": 96,
+          "count": 1
+        },
+        {
+          "balls": 97,
+          "count": 2
+        },
+        {
+          "balls": 98,
+          "count": 1
+        },
+        {
+          "balls": 99,
+          "count": 3
+        },
+        {
+          "balls": 100,
+          "count": 1
+        },
+        {
+          "balls": 102,
+          "count": 1
+        },
+        {
+          "balls": 104,
+          "count": 1
+        },
+        {
+          "balls": 105,
+          "count": 1
+        },
+        {
+          "balls": 106,
+          "count": 1
+        },
+        {
+          "balls": 107,
+          "count": 1
+        },
+        {
+          "balls": 108,
+          "count": 1
+        },
+        {
+          "balls": 110,
+          "count": 3
+        },
+        {
+          "balls": 111,
+          "count": 2
+        },
+        {
+          "balls": 112,
+          "count": 4
+        },
+        {
+          "balls": 113,
+          "count": 3
+        },
+        {
+          "balls": 114,
+          "count": 4
+        },
+        {
+          "balls": 115,
+          "count": 3
+        },
+        {
+          "balls": 116,
+          "count": 4
+        },
+        {
+          "balls": 117,
+          "count": 3
+        },
+        {
+          "balls": 118,
+          "count": 4
+        },
+        {
+          "balls": 119,
+          "count": 6
+        },
+        {
+          "balls": 120,
+          "count": 8
+        }
+      ],
+      "chase": {
+        "failed": 137,
+        "initialBiasRuns": 2.66561,
+        "successRateExcludingTies": 0.520979,
+        "successful": 149,
+        "tied": 2
+      },
+      "eraId": "era-impact",
+      "label": "Impact Era",
+      "regulationTieRate": 0.006944,
+      "runs": {
+        "allInningsMean": 182.289931,
+        "chaseInningsMean": 174.875,
+        "firstInningsMean": 189.704861,
+        "observedMaximum": 287,
+        "observedMinimum": 59,
+        "simulationMaximum": 317,
+        "simulationMinimum": 39,
+        "standardDeviation": 35.634833
+      },
+      "sample": {
+        "innings": 576,
+        "matches": 288
+      },
+      "schemaVersion": "ipl-era-simulation/v2",
+      "seasonIds": [
+        "ipl-2023",
+        "ipl-2024",
+        "ipl-2025",
+        "ipl-2026"
+      ],
+      "sourceCohort": "all_normal",
+      "wickets": {
+        "mean": 6.116319,
+        "residualStandardDeviation": 2.292074,
+        "runSlope": -0.022827,
+        "standardDeviation": 2.432137
+      }
+    }
+  ],
+  "schemaVersion": "ipl-era-simulation/v2"
+}
