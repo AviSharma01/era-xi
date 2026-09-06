@@ -1,0 +1,1030 @@
+{
+  "eraId": "era-foundation",
+  "opponents": [
+    {
+      "candidateId": "opponent:team-chennai-super-kings:ipl-2010",
+      "eraId": "era-foundation",
+      "evaluation": {
+        "appliedPositionFitEffect": -0.128571,
+        "batting": 62.572857,
+        "battingCore": 65.757143,
+        "battingDepth": 35.2,
+        "bowling": 69.8,
+        "bowlingCapacity": 5.889305,
+        "overall": 66.186429,
+        "structuralBattingOrderEffect": -3.055714,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-chennai-super-kings",
+      "historical": {
+        "netRunRate": 0.42244,
+        "pointsPercentage": 0.59375
+      },
+      "review": {
+        "heuristicIsAdvisory": true,
+        "rationale": "The title-winning 2010 core is well represented, with Dhoni keeping, four overseas players, strong top-order continuity, and more than five deployment units.",
+        "reviewedOn": "2026-09-06",
+        "status": "APPROVED"
+      },
+      "seasonId": "ipl-2010",
+      "selectionHeuristic": {
+        "candidateScore": 1.209624,
+        "historicalPerformanceZ": 0.855136,
+        "qualityZ": 1.361548,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-chennai-super-kings",
+      "teamName": "Chennai Super Kings",
+      "xi": [
+        {
+          "displayName": "M Vijay",
+          "officialListMatchCount": 15,
+          "playerId": "4b57e452",
+          "playerTeamSeasonId": "pts:4b57e452:ipl-2010:team-chennai-super-kings",
+          "position": 1,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "ML Hayden",
+          "officialListMatchCount": 16,
+          "playerId": "d8699ab7",
+          "playerTeamSeasonId": "pts:d8699ab7:ipl-2010:team-chennai-super-kings",
+          "position": 2,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "SK Raina",
+          "officialListMatchCount": 16,
+          "playerId": "1dc12ab9",
+          "playerTeamSeasonId": "pts:1dc12ab9:ipl-2010:team-chennai-super-kings",
+          "position": 3,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "S Badrinath",
+          "officialListMatchCount": 16,
+          "playerId": "3576e47e",
+          "playerTeamSeasonId": "pts:3576e47e:ipl-2010:team-chennai-super-kings",
+          "position": 4,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "MS Dhoni",
+          "officialListMatchCount": 13,
+          "playerId": "4a8a2e3b",
+          "playerTeamSeasonId": "pts:4a8a2e3b:ipl-2010:team-chennai-super-kings",
+          "position": 5,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "DE Bollinger",
+          "officialListMatchCount": 8,
+          "playerId": "45c2196c",
+          "playerTeamSeasonId": "pts:45c2196c:ipl-2010:team-chennai-super-kings",
+          "position": 6,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "JA Morkel",
+          "officialListMatchCount": 14,
+          "playerId": "c3d35165",
+          "playerTeamSeasonId": "pts:c3d35165:ipl-2010:team-chennai-super-kings",
+          "position": 7,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "R Ashwin",
+          "officialListMatchCount": 12,
+          "playerId": "495d42a5",
+          "playerTeamSeasonId": "pts:495d42a5:ipl-2010:team-chennai-super-kings",
+          "position": 8,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "M Muralitharan",
+          "officialListMatchCount": 12,
+          "playerId": "4ba44e19",
+          "playerTeamSeasonId": "pts:4ba44e19:ipl-2010:team-chennai-super-kings",
+          "position": 9,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "L Balaji",
+          "officialListMatchCount": 7,
+          "playerId": "b2b50355",
+          "playerTeamSeasonId": "pts:b2b50355:ipl-2010:team-chennai-super-kings",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "SB Jakati",
+          "officialListMatchCount": 11,
+          "playerId": "c8179c68",
+          "playerTeamSeasonId": "pts:c8179c68:ipl-2010:team-chennai-super-kings",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-deccan-chargers:ipl-2009",
+      "eraId": "era-foundation",
+      "evaluation": {
+        "appliedPositionFitEffect": -0.128571,
+        "batting": 64.292857,
+        "battingCore": 67.957143,
+        "battingDepth": 32.6,
+        "bowling": 63.579167,
+        "bowlingCapacity": 4.448959,
+        "overall": 63.936012,
+        "structuralBattingOrderEffect": -3.535714,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-deccan-chargers",
+      "historical": {
+        "netRunRate": 0.257041,
+        "pointsPercentage": 0.5625
+      },
+      "review": {
+        "heuristicIsAdvisory": true,
+        "rationale": "The championship season supplies the Gilchrist-led batting core and a legal four-overseas XI; Ojha and RP Singh anchor a multi-option attack.",
+        "reviewedOn": "2026-09-06",
+        "status": "APPROVED"
+      },
+      "seasonId": "ipl-2009",
+      "selectionHeuristic": {
+        "candidateScore": 0.789248,
+        "historicalPerformanceZ": 0.596582,
+        "qualityZ": 0.871819,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-deccan-chargers",
+      "teamName": "Deccan Chargers",
+      "xi": [
+        {
+          "displayName": "AC Gilchrist",
+          "officialListMatchCount": 16,
+          "playerId": "2b6e6dec",
+          "playerTeamSeasonId": "pts:2b6e6dec:ipl-2009:team-deccan-chargers",
+          "position": 1,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "HH Gibbs",
+          "officialListMatchCount": 14,
+          "playerId": "e1d1b294",
+          "playerTeamSeasonId": "pts:e1d1b294:ipl-2009:team-deccan-chargers",
+          "position": 2,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "TL Suman",
+          "officialListMatchCount": 12,
+          "playerId": "aaa1b522",
+          "playerTeamSeasonId": "pts:aaa1b522:ipl-2009:team-deccan-chargers",
+          "position": 3,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "DR Smith",
+          "officialListMatchCount": 8,
+          "playerId": "35205dfc",
+          "playerTeamSeasonId": "pts:35205dfc:ipl-2009:team-deccan-chargers",
+          "position": 4,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "RG Sharma",
+          "officialListMatchCount": 16,
+          "playerId": "740742ef",
+          "playerTeamSeasonId": "pts:740742ef:ipl-2009:team-deccan-chargers",
+          "position": 5,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "A Symonds",
+          "officialListMatchCount": 8,
+          "playerId": "bd77eb62",
+          "playerTeamSeasonId": "pts:bd77eb62:ipl-2009:team-deccan-chargers",
+          "position": 6,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "Y Venugopal Rao",
+          "officialListMatchCount": 16,
+          "playerId": "fe763256",
+          "playerTeamSeasonId": "pts:fe763256:ipl-2009:team-deccan-chargers",
+          "position": 7,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "DB Ravi Teja",
+          "officialListMatchCount": 9,
+          "playerId": "b720a5d6",
+          "playerTeamSeasonId": "pts:b720a5d6:ipl-2009:team-deccan-chargers",
+          "position": 8,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "PP Ojha",
+          "officialListMatchCount": 15,
+          "playerId": "6c6591ab",
+          "playerTeamSeasonId": "pts:6c6591ab:ipl-2009:team-deccan-chargers",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "Shoaib Ahmed",
+          "officialListMatchCount": 8,
+          "playerId": "8a668774",
+          "playerTeamSeasonId": "pts:8a668774:ipl-2009:team-deccan-chargers",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "RP Singh",
+          "officialListMatchCount": 16,
+          "playerId": "c3d1402f",
+          "playerTeamSeasonId": "pts:c3d1402f:ipl-2009:team-deccan-chargers",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-delhi-daredevils:ipl-2009",
+      "eraId": "era-foundation",
+      "evaluation": {
+        "appliedPositionFitEffect": 0.0,
+        "batting": 60.68,
+        "battingCore": 64.0,
+        "battingDepth": 30.8,
+        "bowling": 70.36333,
+        "bowlingCapacity": 4.773985,
+        "overall": 65.521665,
+        "structuralBattingOrderEffect": -3.577143,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-delhi",
+      "historical": {
+        "netRunRate": 0.207423,
+        "pointsPercentage": 0.666667
+      },
+      "review": {
+        "heuristicIsAdvisory": true,
+        "rationale": "The table-leading 2009 side has a credible Sehwag-Gambhir-de Villiers top order, Karthik keeping, three overseas players, and five deployable bowling options.",
+        "reviewedOn": "2026-09-06",
+        "status": "APPROVED"
+      },
+      "seasonId": "ipl-2009",
+      "selectionHeuristic": {
+        "candidateScore": 1.204998,
+        "historicalPerformanceZ": 1.177264,
+        "qualityZ": 1.216884,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-delhi-daredevils",
+      "teamName": "Delhi Daredevils",
+      "xi": [
+        {
+          "displayName": "V Sehwag",
+          "officialListMatchCount": 11,
+          "playerId": "8ba8195d",
+          "playerTeamSeasonId": "pts:8ba8195d:ipl-2009:team-delhi-daredevils",
+          "position": 1,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "G Gambhir",
+          "officialListMatchCount": 15,
+          "playerId": "bb345e0b",
+          "playerTeamSeasonId": "pts:bb345e0b:ipl-2009:team-delhi-daredevils",
+          "position": 2,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "AB de Villiers",
+          "officialListMatchCount": 15,
+          "playerId": "c4487b84",
+          "playerTeamSeasonId": "pts:c4487b84:ipl-2009:team-delhi-daredevils",
+          "position": 3,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "KD Karthik",
+          "officialListMatchCount": 15,
+          "playerId": "c03f1114",
+          "playerTeamSeasonId": "pts:c03f1114:ipl-2009:team-delhi-daredevils",
+          "position": 4,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "TM Dilshan",
+          "officialListMatchCount": 14,
+          "playerId": "5bdcdb72",
+          "playerTeamSeasonId": "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+          "position": 5,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "A Mishra",
+          "officialListMatchCount": 11,
+          "playerId": "6b19d823",
+          "playerTeamSeasonId": "pts:6b19d823:ipl-2009:team-delhi-daredevils",
+          "position": 6,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "M Manhas",
+          "officialListMatchCount": 10,
+          "playerId": "c42aaf71",
+          "playerTeamSeasonId": "pts:c42aaf71:ipl-2009:team-delhi-daredevils",
+          "position": 7,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "R Bhatia",
+          "officialListMatchCount": 8,
+          "playerId": "33a364a6",
+          "playerTeamSeasonId": "pts:33a364a6:ipl-2009:team-delhi-daredevils",
+          "position": 8,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "A Nehra",
+          "officialListMatchCount": 13,
+          "playerId": "96fd40ae",
+          "playerTeamSeasonId": "pts:96fd40ae:ipl-2009:team-delhi-daredevils",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "PJ Sangwan",
+          "officialListMatchCount": 13,
+          "playerId": "9fc0ef64",
+          "playerTeamSeasonId": "pts:9fc0ef64:ipl-2009:team-delhi-daredevils",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "DP Nannes",
+          "officialListMatchCount": 13,
+          "playerId": "c404f58a",
+          "playerTeamSeasonId": "pts:c404f58a:ipl-2009:team-delhi-daredevils",
+          "position": 11,
+          "rosterStatus": "OVERSEAS"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-kolkata-knight-riders:ipl-2010",
+      "eraId": "era-foundation",
+      "evaluation": {
+        "appliedPositionFitEffect": -0.282143,
+        "batting": 55.458571,
+        "battingCore": 58.028571,
+        "battingDepth": 35.15,
+        "bowling": 58.908114,
+        "bowlingCapacity": 5.654449,
+        "overall": 57.183343,
+        "structuralBattingOrderEffect": -2.287857,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-kolkata-knight-riders",
+      "historical": {
+        "netRunRate": -0.340913,
+        "pointsPercentage": 0.5
+      },
+      "review": {
+        "heuristicIsAdvisory": true,
+        "rationale": "The strongest KKR Foundation candidate retains the Ganguly-Gayle core, Saha as keeper, only three overseas players, and complete pace-spin deployment capacity despite weaker historical performance.",
+        "reviewedOn": "2026-09-06",
+        "status": "APPROVED"
+      },
+      "seasonId": "ipl-2010",
+      "selectionHeuristic": {
+        "candidateScore": -0.467072,
+        "historicalPerformanceZ": -0.162329,
+        "qualityZ": -0.597677,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-kolkata-knight-riders",
+      "teamName": "Kolkata Knight Riders",
+      "xi": [
+        {
+          "displayName": "SC Ganguly",
+          "officialListMatchCount": 14,
+          "playerId": "725529bc",
+          "playerTeamSeasonId": "pts:725529bc:ipl-2010:team-kolkata-knight-riders",
+          "position": 1,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "CH Gayle",
+          "officialListMatchCount": 9,
+          "playerId": "db584dad",
+          "playerTeamSeasonId": "pts:db584dad:ipl-2010:team-kolkata-knight-riders",
+          "position": 2,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "MK Tiwary",
+          "officialListMatchCount": 13,
+          "playerId": "26e5cabf",
+          "playerTeamSeasonId": "pts:26e5cabf:ipl-2010:team-kolkata-knight-riders",
+          "position": 3,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "AD Mathews",
+          "officialListMatchCount": 14,
+          "playerId": "896d78ad",
+          "playerTeamSeasonId": "pts:896d78ad:ipl-2010:team-kolkata-knight-riders",
+          "position": 4,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "CA Pujara",
+          "officialListMatchCount": 10,
+          "playerId": "d4f9dbd4",
+          "playerTeamSeasonId": "pts:d4f9dbd4:ipl-2010:team-kolkata-knight-riders",
+          "position": 5,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "AB Agarkar",
+          "officialListMatchCount": 7,
+          "playerId": "fa463154",
+          "playerTeamSeasonId": "pts:fa463154:ipl-2010:team-kolkata-knight-riders",
+          "position": 6,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "WP Saha",
+          "officialListMatchCount": 13,
+          "playerId": "fe11caa6",
+          "playerTeamSeasonId": "pts:fe11caa6:ipl-2010:team-kolkata-knight-riders",
+          "position": 7,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "SE Bond",
+          "officialListMatchCount": 8,
+          "playerId": "4f629497",
+          "playerTeamSeasonId": "pts:4f629497:ipl-2010:team-kolkata-knight-riders",
+          "position": 8,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "I Sharma",
+          "officialListMatchCount": 7,
+          "playerId": "5bb1a1c4",
+          "playerTeamSeasonId": "pts:5bb1a1c4:ipl-2010:team-kolkata-knight-riders",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "AB Dinda",
+          "officialListMatchCount": 7,
+          "playerId": "66b30f71",
+          "playerTeamSeasonId": "pts:66b30f71:ipl-2010:team-kolkata-knight-riders",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "M Kartik",
+          "officialListMatchCount": 10,
+          "playerId": "abfeb126",
+          "playerTeamSeasonId": "pts:abfeb126:ipl-2010:team-kolkata-knight-riders",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-mumbai-indians:ipl-2010",
+      "eraId": "era-foundation",
+      "evaluation": {
+        "appliedPositionFitEffect": -0.257143,
+        "batting": 59.014643,
+        "battingCore": 61.071429,
+        "battingDepth": 43.075,
+        "bowling": 66.806188,
+        "bowlingCapacity": 5.028618,
+        "overall": 62.910415,
+        "structuralBattingOrderEffect": -4.971071,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-mumbai-indians",
+      "historical": {
+        "netRunRate": 0.902824,
+        "pointsPercentage": 0.6875
+      },
+      "review": {
+        "heuristicIsAdvisory": true,
+        "rationale": "The finalist 2010 XI has Tendulkar, Pollard and Malinga, four overseas players, a legitimate keeper-capable selection, and balanced five-unit bowling deployment.",
+        "reviewedOn": "2026-09-06",
+        "status": "APPROVED"
+      },
+      "seasonId": "ipl-2010",
+      "selectionHeuristic": {
+        "candidateScore": 0.964533,
+        "historicalPerformanceZ": 1.701636,
+        "qualityZ": 0.648632,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-mumbai-indians",
+      "teamName": "Mumbai Indians",
+      "xi": [
+        {
+          "displayName": "S Dhawan",
+          "officialListMatchCount": 10,
+          "playerId": "0a476045",
+          "playerTeamSeasonId": "pts:0a476045:ipl-2010:team-mumbai-indians",
+          "position": 1,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "SR Tendulkar",
+          "officialListMatchCount": 15,
+          "playerId": "d2c2b2d5",
+          "playerTeamSeasonId": "pts:d2c2b2d5:ipl-2010:team-mumbai-indians",
+          "position": 2,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "SS Tiwary",
+          "officialListMatchCount": 16,
+          "playerId": "709b0bac",
+          "playerTeamSeasonId": "pts:709b0bac:ipl-2010:team-mumbai-indians",
+          "position": 3,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "R Sathish",
+          "officialListMatchCount": 12,
+          "playerId": "626c5379",
+          "playerTeamSeasonId": "pts:626c5379:ipl-2010:team-mumbai-indians",
+          "position": 4,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "AT Rayudu",
+          "officialListMatchCount": 14,
+          "playerId": "70d205c9",
+          "playerTeamSeasonId": "pts:70d205c9:ipl-2010:team-mumbai-indians",
+          "position": 5,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "KA Pollard",
+          "officialListMatchCount": 14,
+          "playerId": "a757b0d8",
+          "playerTeamSeasonId": "pts:a757b0d8:ipl-2010:team-mumbai-indians",
+          "position": 6,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "R McLaren",
+          "officialListMatchCount": 10,
+          "playerId": "c654af19",
+          "playerTeamSeasonId": "pts:c654af19:ipl-2010:team-mumbai-indians",
+          "position": 7,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "DJ Bravo",
+          "officialListMatchCount": 10,
+          "playerId": "87e562a9",
+          "playerTeamSeasonId": "pts:87e562a9:ipl-2010:team-mumbai-indians",
+          "position": 8,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "Harbhajan Singh",
+          "officialListMatchCount": 15,
+          "playerId": "8b5b6769",
+          "playerTeamSeasonId": "pts:8b5b6769:ipl-2010:team-mumbai-indians",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "Z Khan",
+          "officialListMatchCount": 14,
+          "playerId": "91a4a398",
+          "playerTeamSeasonId": "pts:91a4a398:ipl-2010:team-mumbai-indians",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "SL Malinga",
+          "officialListMatchCount": 13,
+          "playerId": "a12e1d51",
+          "playerTeamSeasonId": "pts:a12e1d51:ipl-2010:team-mumbai-indians",
+          "position": 11,
+          "rosterStatus": "OVERSEAS"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-kings-xi-punjab:ipl-2008",
+      "eraId": "era-foundation",
+      "evaluation": {
+        "appliedPositionFitEffect": -0.025,
+        "batting": 61.273929,
+        "battingCore": 63.957143,
+        "battingDepth": 37.375,
+        "bowling": 66.172,
+        "bowlingCapacity": 4.960633,
+        "overall": 63.722964,
+        "structuralBattingOrderEffect": -3.115357,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-punjab",
+      "historical": {
+        "netRunRate": 0.289925,
+        "pointsPercentage": 0.666667
+      },
+      "review": {
+        "heuristicIsAdvisory": true,
+        "rationale": "The 2008 semifinalist preserves the Marsh-Sangakkara-Yuvraj batting identity, uses exactly four overseas players, and has full bowling deployment coverage.",
+        "reviewedOn": "2026-09-06",
+        "status": "APPROVED"
+      },
+      "seasonId": "ipl-2008",
+      "selectionHeuristic": {
+        "candidateScore": 0.812015,
+        "historicalPerformanceZ": 0.780653,
+        "qualityZ": 0.825456,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-kings-xi-punjab",
+      "teamName": "Kings XI Punjab",
+      "xi": [
+        {
+          "displayName": "JR Hopes",
+          "officialListMatchCount": 11,
+          "playerId": "2498e163",
+          "playerTeamSeasonId": "pts:2498e163:ipl-2008:team-kings-xi-punjab",
+          "position": 1,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "SE Marsh",
+          "officialListMatchCount": 11,
+          "playerId": "508a1ea7",
+          "playerTeamSeasonId": "pts:508a1ea7:ipl-2008:team-kings-xi-punjab",
+          "position": 2,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "KC Sangakkara",
+          "officialListMatchCount": 10,
+          "playerId": "6b71e6cf",
+          "playerTeamSeasonId": "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab",
+          "position": 3,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "Yuvraj Singh",
+          "officialListMatchCount": 15,
+          "playerId": "1c914163",
+          "playerTeamSeasonId": "pts:1c914163:ipl-2008:team-kings-xi-punjab",
+          "position": 4,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "DPMD Jayawardene",
+          "officialListMatchCount": 13,
+          "playerId": "d18f9182",
+          "playerTeamSeasonId": "pts:d18f9182:ipl-2008:team-kings-xi-punjab",
+          "position": 5,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "PP Chawla",
+          "officialListMatchCount": 15,
+          "playerId": "98ae73b1",
+          "playerTeamSeasonId": "pts:98ae73b1:ipl-2008:team-kings-xi-punjab",
+          "position": 6,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "IK Pathan",
+          "officialListMatchCount": 14,
+          "playerId": "5fa06777",
+          "playerTeamSeasonId": "pts:5fa06777:ipl-2008:team-kings-xi-punjab",
+          "position": 7,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "K Goel",
+          "officialListMatchCount": 7,
+          "playerId": "a1f1829d",
+          "playerTeamSeasonId": "pts:a1f1829d:ipl-2008:team-kings-xi-punjab",
+          "position": 8,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "VRV Singh",
+          "officialListMatchCount": 13,
+          "playerId": "034b4b7d",
+          "playerTeamSeasonId": "pts:034b4b7d:ipl-2008:team-kings-xi-punjab",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "RR Powar",
+          "officialListMatchCount": 5,
+          "playerId": "5d096f3d",
+          "playerTeamSeasonId": "pts:5d096f3d:ipl-2008:team-kings-xi-punjab",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "S Sreesanth",
+          "officialListMatchCount": 15,
+          "playerId": "6b8eb6e5",
+          "playerTeamSeasonId": "pts:6b8eb6e5:ipl-2008:team-kings-xi-punjab",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-rajasthan-royals:ipl-2008",
+      "eraId": "era-foundation",
+      "evaluation": {
+        "appliedPositionFitEffect": 0.0,
+        "batting": 59.727857,
+        "battingCore": 62.414286,
+        "battingDepth": 35.55,
+        "bowling": 75.92,
+        "bowlingCapacity": 4.900512,
+        "overall": 67.823929,
+        "structuralBattingOrderEffect": -2.915,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-rajasthan-royals",
+      "historical": {
+        "netRunRate": 0.893748,
+        "pointsPercentage": 0.8125
+      },
+      "review": {
+        "heuristicIsAdvisory": true,
+        "rationale": "The inaugural champion is the clearest Foundation representative, with Smith, Watson, Pathan and Warne, a legal overseas count, keeper coverage, and the strongest reviewed V2 bowling mark.",
+        "reviewedOn": "2026-09-06",
+        "status": "APPROVED"
+      },
+      "seasonId": "ipl-2008",
+      "selectionHeuristic": {
+        "candidateScore": 1.685728,
+        "historicalPerformanceZ": 1.610668,
+        "qualityZ": 1.717896,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-rajasthan-royals",
+      "teamName": "Rajasthan Royals",
+      "xi": [
+        {
+          "displayName": "GC Smith",
+          "officialListMatchCount": 11,
+          "playerId": "72861603",
+          "playerTeamSeasonId": "pts:72861603:ipl-2008:team-rajasthan-royals",
+          "position": 1,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "SA Asnodkar",
+          "officialListMatchCount": 9,
+          "playerId": "ae091d39",
+          "playerTeamSeasonId": "pts:ae091d39:ipl-2008:team-rajasthan-royals",
+          "position": 2,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "YK Pathan",
+          "officialListMatchCount": 16,
+          "playerId": "3c6ffae8",
+          "playerTeamSeasonId": "pts:3c6ffae8:ipl-2008:team-rajasthan-royals",
+          "position": 3,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "SR Watson",
+          "officialListMatchCount": 15,
+          "playerId": "4329fbb5",
+          "playerTeamSeasonId": "pts:4329fbb5:ipl-2008:team-rajasthan-royals",
+          "position": 4,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "M Kaif",
+          "officialListMatchCount": 16,
+          "playerId": "d84378a4",
+          "playerTeamSeasonId": "pts:d84378a4:ipl-2008:team-rajasthan-royals",
+          "position": 5,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "SK Warne",
+          "officialListMatchCount": 15,
+          "playerId": "bb18be76",
+          "playerTeamSeasonId": "pts:bb18be76:ipl-2008:team-rajasthan-royals",
+          "position": 6,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "RA Jadeja",
+          "officialListMatchCount": 14,
+          "playerId": "fe93fd9d",
+          "playerTeamSeasonId": "pts:fe93fd9d:ipl-2008:team-rajasthan-royals",
+          "position": 7,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "Sohail Tanvir",
+          "officialListMatchCount": 11,
+          "playerId": "64d43928",
+          "playerTeamSeasonId": "pts:64d43928:ipl-2008:team-rajasthan-royals",
+          "position": 8,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "SK Trivedi",
+          "officialListMatchCount": 15,
+          "playerId": "3d7e087f",
+          "playerTeamSeasonId": "pts:3d7e087f:ipl-2008:team-rajasthan-royals",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "M Rawat",
+          "officialListMatchCount": 11,
+          "playerId": "de8d3876",
+          "playerTeamSeasonId": "pts:de8d3876:ipl-2008:team-rajasthan-royals",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "MM Patel",
+          "officialListMatchCount": 15,
+          "playerId": "f0f628c7",
+          "playerTeamSeasonId": "pts:f0f628c7:ipl-2008:team-rajasthan-royals",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+      "eraId": "era-foundation",
+      "evaluation": {
+        "appliedPositionFitEffect": -0.128571,
+        "batting": 61.465357,
+        "battingCore": 64.757143,
+        "battingDepth": 33.125,
+        "bowling": 66.3,
+        "bowlingCapacity": 5.101636,
+        "overall": 63.882679,
+        "structuralBattingOrderEffect": -3.163214,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-royal-challengers",
+      "historical": {
+        "netRunRate": 0.24414,
+        "pointsPercentage": 0.5
+      },
+      "review": {
+        "heuristicIsAdvisory": true,
+        "rationale": "The 2010 playoff side provides Kallis, Pietersen, Kohli and a proven Kumble-Steyn attack, with a confirmed keeper, four overseas players, and full deployment capacity.",
+        "reviewedOn": "2026-09-06",
+        "status": "APPROVED"
+      },
+      "seasonId": "ipl-2010",
+      "selectionHeuristic": {
+        "candidateScore": 0.659494,
+        "historicalPerformanceZ": 0.19115,
+        "qualityZ": 0.860213,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-royal-challengers-bangalore",
+      "teamName": "Royal Challengers Bangalore",
+      "xi": [
+        {
+          "displayName": "JH Kallis",
+          "officialListMatchCount": 16,
+          "playerId": "86dc8f2e",
+          "playerTeamSeasonId": "pts:86dc8f2e:ipl-2010:team-royal-challengers-bangalore",
+          "position": 1,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "MK Pandey",
+          "officialListMatchCount": 13,
+          "playerId": "93b4fc78",
+          "playerTeamSeasonId": "pts:93b4fc78:ipl-2010:team-royal-challengers-bangalore",
+          "position": 2,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "KP Pietersen",
+          "officialListMatchCount": 7,
+          "playerId": "39f01cdb",
+          "playerTeamSeasonId": "pts:39f01cdb:ipl-2010:team-royal-challengers-bangalore",
+          "position": 3,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "RV Uthappa",
+          "officialListMatchCount": 16,
+          "playerId": "1c17e270",
+          "playerTeamSeasonId": "pts:1c17e270:ipl-2010:team-royal-challengers-bangalore",
+          "position": 4,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "V Kohli",
+          "officialListMatchCount": 16,
+          "playerId": "ba607b88",
+          "playerTeamSeasonId": "pts:ba607b88:ipl-2010:team-royal-challengers-bangalore",
+          "position": 5,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "R Dravid",
+          "officialListMatchCount": 16,
+          "playerId": "0184dc35",
+          "playerTeamSeasonId": "pts:0184dc35:ipl-2010:team-royal-challengers-bangalore",
+          "position": 6,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "CL White",
+          "officialListMatchCount": 7,
+          "playerId": "d0513f63",
+          "playerTeamSeasonId": "pts:d0513f63:ipl-2010:team-royal-challengers-bangalore",
+          "position": 7,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "R Vinay Kumar",
+          "officialListMatchCount": 14,
+          "playerId": "41eb4a4f",
+          "playerTeamSeasonId": "pts:41eb4a4f:ipl-2010:team-royal-challengers-bangalore",
+          "position": 8,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "A Kumble",
+          "officialListMatchCount": 16,
+          "playerId": "0c2730df",
+          "playerTeamSeasonId": "pts:0c2730df:ipl-2010:team-royal-challengers-bangalore",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "DW Steyn",
+          "officialListMatchCount": 15,
+          "playerId": "8fd1a8f5",
+          "playerTeamSeasonId": "pts:8fd1a8f5:ipl-2010:team-royal-challengers-bangalore",
+          "position": 10,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "P Kumar",
+          "officialListMatchCount": 12,
+          "playerId": "e938e1bc",
+          "playerTeamSeasonId": "pts:e938e1bc:ipl-2010:team-royal-challengers-bangalore",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": "ipl-era-simulation/v2"
+}

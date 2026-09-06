@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "environments": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "allOutBallsHistogram": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "balls": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "count": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "balls",
+                "count"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "chase": {
+            "additionalProperties": false,
+            "properties": {
+              "failed": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "initialBiasRuns": {
+                "type": "number"
+              },
+              "successRateExcludingTies": {
+                "type": "number"
+              },
+              "successful": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "tied": {
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "failed",
+              "initialBiasRuns",
+              "successRateExcludingTies",
+              "successful",
+              "tied"
+            ],
+            "type": "object"
+          },
+          "eraId": {
+            "enum": [
+              "era-foundation",
+              "era-expansion",
+              "era-transition",
+              "era-modern-pre-impact",
+              "era-impact"
+            ],
+            "type": "string"
+          },
+          "label": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "regulationTieRate": {
+            "type": "number"
+          },
+          "runs": {
+            "additionalProperties": false,
+            "properties": {
+              "allInningsMean": {
+                "type": "number"
+              },
+              "chaseInningsMean": {
+                "type": "number"
+              },
+              "firstInningsMean": {
+                "type": "number"
+              },
+              "observedMaximum": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "observedMinimum": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "simulationMaximum": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "simulationMinimum": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "standardDeviation": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "allInningsMean",
+              "chaseInningsMean",
+              "firstInningsMean",
+              "observedMaximum",
+              "observedMinimum",
+              "simulationMaximum",
+              "simulationMinimum",
+              "standardDeviation"
+            ],
+            "type": "object"
+          },
+          "sample": {
+            "additionalProperties": false,
+            "properties": {
+              "innings": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "matches": {
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "innings",
+              "matches"
+            ],
+            "type": "object"
+          },
+          "schemaVersion": {
+            "const": "ipl-era-simulation/v2"
+          },
+          "seasonIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "sourceCohort": {
+            "const": "all_normal"
+          },
+          "wickets": {
+            "additionalProperties": false,
+            "properties": {
+              "mean": {
+                "type": "number"
+              },
+              "residualStandardDeviation": {
+                "type": "number"
+              },
+              "runSlope": {
+                "type": "number"
+              },
+              "standardDeviation": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "mean",
+              "residualStandardDeviation",
+              "runSlope",
+              "standardDeviation"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "allOutBallsHistogram",
+          "chase",
+          "eraId",
+          "label",
+          "regulationTieRate",
+          "runs",
+          "sample",
+          "schemaVersion",
+          "seasonIds",
+          "sourceCohort",
+          "wickets"
+        ],
+        "type": "object"
+      },
+      "maxItems": 5,
+      "minItems": 5,
+      "type": "array"
+    },
+    "schemaVersion": {
+      "const": "ipl-era-simulation/v2"
+    }
+  },
+  "required": [
+    "environments",
+    "schemaVersion"
+  ],
+  "type": "object"
+}

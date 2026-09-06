@@ -1,0 +1,144 @@
+{
+  "schemaVersion": "ipl-era-simulation-opponent-review/v1",
+  "reviewStatus": "APPROVED",
+  "reviewedOn": "2026-09-06",
+  "reviewNotes": "Each XI was checked for recognizable season representation, an actual wicketkeeper, no more than four overseas players, batting-order plausibility under Stage 5 fit evidence, and usable bowling capacity. The 70/30 score selected the season within each lineage but is not treated as immutable historical truth.",
+  "opponents": [
+    {
+      "candidateId": "opponent:team-chennai-super-kings:ipl-2010",
+      "rationale": "The title-winning 2010 core is well represented, with Dhoni keeping, four overseas players, strong top-order continuity, and more than five deployment units.",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:4b57e452:ipl-2010:team-chennai-super-kings",
+        "pts:d8699ab7:ipl-2010:team-chennai-super-kings",
+        "pts:1dc12ab9:ipl-2010:team-chennai-super-kings",
+        "pts:3576e47e:ipl-2010:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2010:team-chennai-super-kings",
+        "pts:45c2196c:ipl-2010:team-chennai-super-kings",
+        "pts:c3d35165:ipl-2010:team-chennai-super-kings",
+        "pts:495d42a5:ipl-2010:team-chennai-super-kings",
+        "pts:4ba44e19:ipl-2010:team-chennai-super-kings",
+        "pts:b2b50355:ipl-2010:team-chennai-super-kings",
+        "pts:c8179c68:ipl-2010:team-chennai-super-kings"
+      ]
+    },
+    {
+      "candidateId": "opponent:team-deccan-chargers:ipl-2009",
+      "rationale": "The championship season supplies the Gilchrist-led batting core and a legal four-overseas XI; Ojha and RP Singh anchor a multi-option attack.",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:2b6e6dec:ipl-2009:team-deccan-chargers",
+        "pts:e1d1b294:ipl-2009:team-deccan-chargers",
+        "pts:aaa1b522:ipl-2009:team-deccan-chargers",
+        "pts:35205dfc:ipl-2009:team-deccan-chargers",
+        "pts:740742ef:ipl-2009:team-deccan-chargers",
+        "pts:bd77eb62:ipl-2009:team-deccan-chargers",
+        "pts:fe763256:ipl-2009:team-deccan-chargers",
+        "pts:b720a5d6:ipl-2009:team-deccan-chargers",
+        "pts:6c6591ab:ipl-2009:team-deccan-chargers",
+        "pts:8a668774:ipl-2009:team-deccan-chargers",
+        "pts:c3d1402f:ipl-2009:team-deccan-chargers"
+      ]
+    },
+    {
+      "candidateId": "opponent:team-delhi-daredevils:ipl-2009",
+      "rationale": "The table-leading 2009 side has a credible Sehwag-Gambhir-de Villiers top order, Karthik keeping, three overseas players, and five deployable bowling options.",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:8ba8195d:ipl-2009:team-delhi-daredevils",
+        "pts:bb345e0b:ipl-2009:team-delhi-daredevils",
+        "pts:c4487b84:ipl-2009:team-delhi-daredevils",
+        "pts:c03f1114:ipl-2009:team-delhi-daredevils",
+        "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+        "pts:6b19d823:ipl-2009:team-delhi-daredevils",
+        "pts:c42aaf71:ipl-2009:team-delhi-daredevils",
+        "pts:33a364a6:ipl-2009:team-delhi-daredevils",
+        "pts:96fd40ae:ipl-2009:team-delhi-daredevils",
+        "pts:9fc0ef64:ipl-2009:team-delhi-daredevils",
+        "pts:c404f58a:ipl-2009:team-delhi-daredevils"
+      ]
+    },
+    {
+      "candidateId": "opponent:team-kolkata-knight-riders:ipl-2010",
+      "rationale": "The strongest KKR Foundation candidate retains the Ganguly-Gayle core, Saha as keeper, only three overseas players, and complete pace-spin deployment capacity despite weaker historical performance.",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:725529bc:ipl-2010:team-kolkata-knight-riders",
+        "pts:db584dad:ipl-2010:team-kolkata-knight-riders",
+        "pts:26e5cabf:ipl-2010:team-kolkata-knight-riders",
+        "pts:896d78ad:ipl-2010:team-kolkata-knight-riders",
+        "pts:d4f9dbd4:ipl-2010:team-kolkata-knight-riders",
+        "pts:fa463154:ipl-2010:team-kolkata-knight-riders",
+        "pts:fe11caa6:ipl-2010:team-kolkata-knight-riders",
+        "pts:4f629497:ipl-2010:team-kolkata-knight-riders",
+        "pts:5bb1a1c4:ipl-2010:team-kolkata-knight-riders",
+        "pts:66b30f71:ipl-2010:team-kolkata-knight-riders",
+        "pts:abfeb126:ipl-2010:team-kolkata-knight-riders"
+      ]
+    },
+    {
+      "candidateId": "opponent:team-mumbai-indians:ipl-2010",
+      "rationale": "The finalist 2010 XI has Tendulkar, Pollard and Malinga, four overseas players, a legitimate keeper-capable selection, and balanced five-unit bowling deployment.",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:0a476045:ipl-2010:team-mumbai-indians",
+        "pts:d2c2b2d5:ipl-2010:team-mumbai-indians",
+        "pts:709b0bac:ipl-2010:team-mumbai-indians",
+        "pts:626c5379:ipl-2010:team-mumbai-indians",
+        "pts:70d205c9:ipl-2010:team-mumbai-indians",
+        "pts:a757b0d8:ipl-2010:team-mumbai-indians",
+        "pts:c654af19:ipl-2010:team-mumbai-indians",
+        "pts:87e562a9:ipl-2010:team-mumbai-indians",
+        "pts:8b5b6769:ipl-2010:team-mumbai-indians",
+        "pts:91a4a398:ipl-2010:team-mumbai-indians",
+        "pts:a12e1d51:ipl-2010:team-mumbai-indians"
+      ]
+    },
+    {
+      "candidateId": "opponent:team-kings-xi-punjab:ipl-2008",
+      "rationale": "The 2008 semifinalist preserves the Marsh-Sangakkara-Yuvraj batting identity, uses exactly four overseas players, and has full bowling deployment coverage.",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:2498e163:ipl-2008:team-kings-xi-punjab",
+        "pts:508a1ea7:ipl-2008:team-kings-xi-punjab",
+        "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab",
+        "pts:1c914163:ipl-2008:team-kings-xi-punjab",
+        "pts:d18f9182:ipl-2008:team-kings-xi-punjab",
+        "pts:98ae73b1:ipl-2008:team-kings-xi-punjab",
+        "pts:5fa06777:ipl-2008:team-kings-xi-punjab",
+        "pts:a1f1829d:ipl-2008:team-kings-xi-punjab",
+        "pts:034b4b7d:ipl-2008:team-kings-xi-punjab",
+        "pts:5d096f3d:ipl-2008:team-kings-xi-punjab",
+        "pts:6b8eb6e5:ipl-2008:team-kings-xi-punjab"
+      ]
+    },
+    {
+      "candidateId": "opponent:team-rajasthan-royals:ipl-2008",
+      "rationale": "The inaugural champion is the clearest Foundation representative, with Smith, Watson, Pathan and Warne, a legal overseas count, keeper coverage, and the strongest reviewed V2 bowling mark.",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:72861603:ipl-2008:team-rajasthan-royals",
+        "pts:ae091d39:ipl-2008:team-rajasthan-royals",
+        "pts:3c6ffae8:ipl-2008:team-rajasthan-royals",
+        "pts:4329fbb5:ipl-2008:team-rajasthan-royals",
+        "pts:d84378a4:ipl-2008:team-rajasthan-royals",
+        "pts:bb18be76:ipl-2008:team-rajasthan-royals",
+        "pts:fe93fd9d:ipl-2008:team-rajasthan-royals",
+        "pts:64d43928:ipl-2008:team-rajasthan-royals",
+        "pts:3d7e087f:ipl-2008:team-rajasthan-royals",
+        "pts:de8d3876:ipl-2008:team-rajasthan-royals",
+        "pts:f0f628c7:ipl-2008:team-rajasthan-royals"
+      ]
+    },
+    {
+      "candidateId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+      "rationale": "The 2010 playoff side provides Kallis, Pietersen, Kohli and a proven Kumble-Steyn attack, with a confirmed keeper, four overseas players, and full deployment capacity.",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:86dc8f2e:ipl-2010:team-royal-challengers-bangalore",
+        "pts:93b4fc78:ipl-2010:team-royal-challengers-bangalore",
+        "pts:39f01cdb:ipl-2010:team-royal-challengers-bangalore",
+        "pts:1c17e270:ipl-2010:team-royal-challengers-bangalore",
+        "pts:ba607b88:ipl-2010:team-royal-challengers-bangalore",
+        "pts:0184dc35:ipl-2010:team-royal-challengers-bangalore",
+        "pts:d0513f63:ipl-2010:team-royal-challengers-bangalore",
+        "pts:41eb4a4f:ipl-2010:team-royal-challengers-bangalore",
+        "pts:0c2730df:ipl-2010:team-royal-challengers-bangalore",
+        "pts:8fd1a8f5:ipl-2010:team-royal-challengers-bangalore",
+        "pts:e938e1bc:ipl-2010:team-royal-challengers-bangalore"
+      ]
+    }
+  ]
+}

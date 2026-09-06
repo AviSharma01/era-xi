@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "inputHashes": {
+      "additionalProperties": {
+        "pattern": "[0-9a-f]{64}",
+        "type": "string"
+      },
+      "type": "object"
+    },
+    "opponentContentEraIds": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "outputCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "environments": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "foundationCandidates": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "foundationOpponents": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "environments",
+        "foundationCandidates",
+        "foundationOpponents"
+      ],
+      "type": "object"
+    },
+    "schemaVersion": {
+      "const": "ipl-era-simulation/v2"
+    }
+  },
+  "required": [
+    "inputHashes",
+    "opponentContentEraIds",
+    "outputCounts",
+    "schemaVersion"
+  ],
+  "type": "object"
+}

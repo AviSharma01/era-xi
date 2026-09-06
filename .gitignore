@@ -27,6 +27,9 @@ data/processed/**
 !data/processed/era-draft/quality/
 !data/processed/era-draft/quality/v1/
 !data/processed/era-draft/quality/v1/**
+!data/processed/era-draft/simulation/
+!data/processed/era-draft/simulation/v2/
+!data/processed/era-draft/simulation/v2/**
 
 # Large, reproducible Cricsheet audit details
 data/audit/cricsheet-ipl/v1/source_manifest.jsonl

@@ -1,0 +1,235 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "eraId": {
+      "const": "era-foundation"
+    },
+    "opponents": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "candidateId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "eraId": {
+            "const": "era-foundation"
+          },
+          "evaluation": {
+            "additionalProperties": false,
+            "properties": {
+              "appliedPositionFitEffect": {
+                "type": "number"
+              },
+              "batting": {
+                "type": "number"
+              },
+              "battingCore": {
+                "type": "number"
+              },
+              "battingDepth": {
+                "type": "number"
+              },
+              "bowling": {
+                "type": "number"
+              },
+              "bowlingCapacity": {
+                "type": "number"
+              },
+              "overall": {
+                "type": "number"
+              },
+              "structuralBattingOrderEffect": {
+                "type": "number"
+              },
+              "uncoveredBowlingUnits": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "battingCore",
+              "battingDepth",
+              "batting",
+              "bowling",
+              "overall",
+              "structuralBattingOrderEffect",
+              "appliedPositionFitEffect",
+              "bowlingCapacity",
+              "uncoveredBowlingUnits"
+            ],
+            "type": "object"
+          },
+          "franchiseId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "historical": {
+            "additionalProperties": false,
+            "properties": {
+              "netRunRate": {
+                "type": "number"
+              },
+              "pointsPercentage": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "pointsPercentage",
+              "netRunRate"
+            ],
+            "type": "object"
+          },
+          "review": {
+            "additionalProperties": false,
+            "properties": {
+              "heuristicIsAdvisory": {
+                "const": true
+              },
+              "rationale": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "reviewedOn": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "status": {
+                "const": "APPROVED"
+              }
+            },
+            "required": [
+              "heuristicIsAdvisory",
+              "rationale",
+              "reviewedOn",
+              "status"
+            ],
+            "type": "object"
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "selectionHeuristic": {
+            "additionalProperties": false,
+            "properties": {
+              "candidateScore": {
+                "type": "number"
+              },
+              "historicalPerformanceZ": {
+                "type": "number"
+              },
+              "qualityZ": {
+                "type": "number"
+              },
+              "weights": {
+                "additionalProperties": false,
+                "properties": {
+                  "historicalPerformance": {
+                    "const": 0.3
+                  },
+                  "v2Quality": {
+                    "const": 0.7
+                  }
+                },
+                "required": [
+                  "historicalPerformance",
+                  "v2Quality"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "candidateScore",
+              "historicalPerformanceZ",
+              "qualityZ",
+              "weights"
+            ],
+            "type": "object"
+          },
+          "teamId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "xi": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "displayName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "officialListMatchCount": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "playerId": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "playerTeamSeasonId": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "position": {
+                  "maximum": 11,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "rosterStatus": {
+                  "enum": [
+                    "INDIAN",
+                    "OVERSEAS"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "displayName",
+                "officialListMatchCount",
+                "playerId",
+                "playerTeamSeasonId",
+                "position",
+                "rosterStatus"
+              ],
+              "type": "object"
+            },
+            "maxItems": 11,
+            "minItems": 11,
+            "type": "array"
+          }
+        },
+        "required": [
+          "candidateId",
+          "eraId",
+          "evaluation",
+          "franchiseId",
+          "historical",
+          "seasonId",
+          "selectionHeuristic",
+          "teamId",
+          "teamName",
+          "xi",
+          "review"
+        ],
+        "type": "object"
+      },
+      "maxItems": 8,
+      "minItems": 8,
+      "type": "array"
+    },
+    "schemaVersion": {
+      "const": "ipl-era-simulation/v2"
+    }
+  },
+  "required": [
+    "eraId",
+    "opponents",
+    "schemaVersion"
+  ],
+  "type": "object"
+}

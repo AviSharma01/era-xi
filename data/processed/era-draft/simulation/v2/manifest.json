@@ -1,0 +1,21 @@
+{
+  "inputHashes": {
+    "data/analytical/cricsheet-ipl/v1/match_summaries.jsonl": "389827acfea133281206a0a86d8d7f32816d33338ee98f57d062f55d914938eb",
+    "data/analytical/cricsheet-ipl/v1/player_team_seasons.jsonl": "acb768156e8c26802a18a130a39c66f6c1277cab06b90ec429f73b32acb90c4b",
+    "data/analytical/cricsheet-ipl/v1/team_seasons.jsonl": "1f66e5256d3d60aefb0c59288a699492b69841faf38923e63bb26e0ab442dae6",
+    "data/manual/era-simulation/v2/foundation_opponents.json": "e397bcbe52ee9ded756e5e457a92e403a6b8ebb4db662e237187e114c81e8d07",
+    "data/metadata/ipl/country_overseas/v1/player_team_season_metadata.jsonl": "3438ff6041fd0c503ac8ec44bce5d74ba653531e90d9bcf257f6205ac834d3bd",
+    "data/processed/era-draft/quality/v1/player_quality_consumer.jsonl": "c4bc7ac8f16c29b322aaabe5fecace06bc3972baacd4345b511befea024ed6df",
+    "data/processed/era-draft/roles/v1/player_role_consumer.jsonl": "cdbdb64c7a48fe534a17e504e336f42a2e28a8c81e6c8b30b8f031dd3b78c51c",
+    "data/registries/ipl/v1/eras.json": "bad0d8e31a1b880d315f473d39007795032cd4a70e0ab5ad5a8d0d0cc556e819"
+  },
+  "opponentContentEraIds": [
+    "era-foundation"
+  ],
+  "outputCounts": {
+    "environments": 5,
+    "foundationCandidates": 24,
+    "foundationOpponents": 8
+  },
+  "schemaVersion": "ipl-era-simulation/v2"
+}
