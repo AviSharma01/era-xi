@@ -1,0 +1,441 @@
+{
+  "schemaVersion": "ipl-era-simulation-v2-validation/v1",
+  "model": {
+    "schemaVersion": "ipl-era-draft-simulation/v2",
+    "calibrationStatus": "PROVISIONAL",
+    "runsCoefficient": 1.07,
+    "wicketsCoefficient": 0.08,
+    "superOverLogitCoefficient": 0.04
+  },
+  "acceptance": {
+    "passed": true,
+    "strengthResponseRules": {
+      "sampledDifferentials": [
+        -10,
+        -5,
+        0,
+        5,
+        10
+      ],
+      "bands": {
+        "0": {
+          "minimum": 0.46,
+          "maximum": 0.54
+        },
+        "5": {
+          "minimum": 0.58,
+          "maximum": 0.68
+        },
+        "10": {
+          "minimum": 0.68,
+          "maximum": 0.8
+        }
+      },
+      "bandBoundsInclusive": true,
+      "monotonicity": "strictly_increasing"
+    },
+    "checks": {
+      "coefficientsRemainProvisional": true,
+      "eraEnvironmentTracking": true,
+      "equalStrengthNeutral": true,
+      "plusFiveStrengthBand": true,
+      "plusTenStrengthBand": true,
+      "strengthMonotonic": true,
+      "structureAndFitIsolated": true,
+      "fitCapRespected": true,
+      "capacityMonotonic": true,
+      "occasionalOnlyMateriallyWeak": true,
+      "descriptiveDiagnosticsNeutral": true,
+      "runtimeArtifactAgreement": true
+    }
+  },
+  "matchMonteCarloByEra": {
+    "era-foundation": {
+      "iterations": 5000,
+      "averageFirstInningsRuns": 159.0358,
+      "averageAllInningsRuns": 151.151,
+      "averageWickets": 6.0369,
+      "chaseSuccessRate": 0.5156,
+      "regulationTieRate": 0.009,
+      "equalTeamAWinRate": 0.5012,
+      "nrrRunStandardDeviationProxy": 29.200606,
+      "observedSuccessfulChaseBallRange": {
+        "minimum": 39,
+        "maximum": 120
+      },
+      "target": {
+        "firstInningsRuns": 158.788571,
+        "wickets": 6.017143,
+        "chaseRate": 0.520231,
+        "regulationTieRate": 0.011429
+      }
+    },
+    "era-expansion": {
+      "iterations": 5000,
+      "averageFirstInningsRuns": 155.979,
+      "averageAllInningsRuns": 148.7482,
+      "averageWickets": 5.936,
+      "chaseSuccessRate": 0.5244,
+      "regulationTieRate": 0.0112,
+      "equalTeamAWinRate": 0.5012,
+      "nrrRunStandardDeviationProxy": 27.586149,
+      "observedSuccessfulChaseBallRange": {
+        "minimum": 41,
+        "maximum": 120
+      },
+      "target": {
+        "firstInningsRuns": 155.734234,
+        "wickets": 5.801802,
+        "chaseRate": 0.527273,
+        "regulationTieRate": 0.009009
+      }
+    },
+    "era-transition": {
+      "iterations": 5000,
+      "averageFirstInningsRuns": 164.426,
+      "averageAllInningsRuns": 157.1172,
+      "averageWickets": 5.8377,
+      "chaseSuccessRate": 0.5432,
+      "regulationTieRate": 0.0096,
+      "equalTeamAWinRate": 0.5022,
+      "nrrRunStandardDeviationProxy": 29.530138,
+      "observedSuccessfulChaseBallRange": {
+        "minimum": 39,
+        "maximum": 120
+      },
+      "target": {
+        "firstInningsRuns": 164.165254,
+        "wickets": 5.758475,
+        "chaseRate": 0.549356,
+        "regulationTieRate": 0.012712
+      }
+    },
+    "era-modern-pre-impact": {
+      "iterations": 5000,
+      "averageFirstInningsRuns": 168.5584,
+      "averageAllInningsRuns": 161.769,
+      "averageWickets": 5.9952,
+      "chaseSuccessRate": 0.5488,
+      "regulationTieRate": 0.0082,
+      "equalTeamAWinRate": 0.5008,
+      "nrrRunStandardDeviationProxy": 27.990656,
+      "observedSuccessfulChaseBallRange": {
+        "minimum": 44,
+        "maximum": 120
+      },
+      "target": {
+        "firstInningsRuns": 168.313099,
+        "wickets": 5.891374,
+        "chaseRate": 0.552288,
+        "regulationTieRate": 0.022364
+      }
+    },
+    "era-impact": {
+      "iterations": 5000,
+      "averageFirstInningsRuns": 190.0008,
+      "averageAllInningsRuns": 180.9144,
+      "averageWickets": 6.2251,
+      "chaseSuccessRate": 0.5184,
+      "regulationTieRate": 0.0084,
+      "equalTeamAWinRate": 0.5014,
+      "nrrRunStandardDeviationProxy": 33.698497,
+      "observedSuccessfulChaseBallRange": {
+        "minimum": 41,
+        "maximum": 120
+      },
+      "target": {
+        "firstInningsRuns": 189.704861,
+        "wickets": 6.116319,
+        "chaseRate": 0.520979,
+        "regulationTieRate": 0.006944
+      }
+    }
+  },
+  "foundationLeagueMonteCarlo": {
+    "iterations": 5000,
+    "model": {
+      "schemaVersion": "ipl-era-draft-simulation/v2",
+      "calibrationStatus": "PROVISIONAL",
+      "runsCoefficient": 1.07,
+      "wicketsCoefficient": 0.08,
+      "superOverLogitCoefficient": 0.04
+    },
+    "winProbabilityByStrengthDifferential": [
+      {
+        "requestedStrengthDifferential": -10,
+        "runCount": 5000,
+        "wins": 1552,
+        "winRate": 0.3104,
+        "acceptanceBand": null,
+        "passesAcceptanceBand": null
+      },
+      {
+        "requestedStrengthDifferential": -5,
+        "runCount": 5000,
+        "wins": 2063,
+        "winRate": 0.4126,
+        "acceptanceBand": null,
+        "passesAcceptanceBand": null
+      },
+      {
+        "requestedStrengthDifferential": 0,
+        "runCount": 5000,
+        "wins": 2554,
+        "winRate": 0.5108,
+        "acceptanceBand": {
+          "minimum": 0.46,
+          "maximum": 0.54,
+          "inclusive": true
+        },
+        "passesAcceptanceBand": true
+      },
+      {
+        "requestedStrengthDifferential": 5,
+        "runCount": 5000,
+        "wins": 3023,
+        "winRate": 0.6046,
+        "acceptanceBand": {
+          "minimum": 0.58,
+          "maximum": 0.68,
+          "inclusive": true
+        },
+        "passesAcceptanceBand": true
+      },
+      {
+        "requestedStrengthDifferential": 10,
+        "runCount": 5000,
+        "wins": 3421,
+        "winRate": 0.6842,
+        "acceptanceBand": {
+          "minimum": 0.68,
+          "maximum": 0.8,
+          "inclusive": true
+        },
+        "passesAcceptanceBand": true
+      }
+    ],
+    "userStandingDistribution": [
+      {
+        "position": 1,
+        "count": 536,
+        "rate": 0.1072
+      },
+      {
+        "position": 2,
+        "count": 582,
+        "rate": 0.1164
+      },
+      {
+        "position": 3,
+        "count": 634,
+        "rate": 0.1268
+      },
+      {
+        "position": 4,
+        "count": 684,
+        "rate": 0.1368
+      },
+      {
+        "position": 5,
+        "count": 699,
+        "rate": 0.1398
+      },
+      {
+        "position": 6,
+        "count": 691,
+        "rate": 0.1382
+      },
+      {
+        "position": 7,
+        "count": 679,
+        "rate": 0.1358
+      },
+      {
+        "position": 8,
+        "count": 495,
+        "rate": 0.099
+      }
+    ],
+    "userQualificationRate": 0.4872,
+    "userFinalRate": 0.2228,
+    "userChampionshipRate": 0.1028,
+    "userNrrDistribution": {
+      "mean": 0.001722,
+      "standardDeviation": 0.57869,
+      "minimum": -2.083021,
+      "maximum": 2.093729
+    },
+    "opponentOmissionFrequency": [
+      {
+        "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+        "omitted": 632,
+        "selected": 4368,
+        "omissionRate": 0.1264
+      },
+      {
+        "teamId": "opponent:team-deccan-chargers:ipl-2009",
+        "omitted": 597,
+        "selected": 4403,
+        "omissionRate": 0.1194
+      },
+      {
+        "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+        "omitted": 644,
+        "selected": 4356,
+        "omissionRate": 0.1288
+      },
+      {
+        "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+        "omitted": 652,
+        "selected": 4348,
+        "omissionRate": 0.1304
+      },
+      {
+        "teamId": "opponent:team-mumbai-indians:ipl-2010",
+        "omitted": 618,
+        "selected": 4382,
+        "omissionRate": 0.1236
+      },
+      {
+        "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+        "omitted": 608,
+        "selected": 4392,
+        "omissionRate": 0.1216
+      },
+      {
+        "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+        "omitted": 616,
+        "selected": 4384,
+        "omissionRate": 0.1232
+      },
+      {
+        "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+        "omitted": 633,
+        "selected": 4367,
+        "omissionRate": 0.1266
+      }
+    ],
+    "matchDistribution": {
+      "iterations": 5000,
+      "averageFirstInningsRuns": 159.0358,
+      "averageAllInningsRuns": 151.151,
+      "averageWickets": 6.0369,
+      "chaseSuccessRate": 0.5156,
+      "regulationTieRate": 0.009,
+      "equalTeamAWinRate": 0.5012,
+      "nrrRunStandardDeviationProxy": 29.200606,
+      "observedSuccessfulChaseBallRange": {
+        "minimum": 39,
+        "maximum": 120
+      },
+      "target": {
+        "firstInningsRuns": 158.788571,
+        "wickets": 6.017143,
+        "chaseRate": 0.520231,
+        "regulationTieRate": 0.011429
+      }
+    }
+  },
+  "sensitivity": {
+    "sourceOpponent": "opponent:team-chennai-super-kings:ipl-2010",
+    "storedEvaluationMatchesRuntime": true,
+    "structuralOrder": {
+      "baselineBatting": 62.572857,
+      "degradedBatting": 43.756786,
+      "battingDelta": -18.816071,
+      "bowlingUnchanged": true,
+      "structuralEffect": -18.850357,
+      "fitEffect": -3.15
+    },
+    "positionFit": {
+      "baselineEffect": -0.128571,
+      "forcedEffect": -4,
+      "cap": 4,
+      "capRespected": true,
+      "battingDelta": -3.871429,
+      "bowlingUnchanged": true
+    },
+    "bowlingCapacity": {
+      "levels": [
+        {
+          "factor": 1,
+          "bowling": 69.8,
+          "uncoveredUnits": 0
+        },
+        {
+          "factor": 0.75,
+          "bowling": 69.118324,
+          "uncoveredUnits": 0
+        },
+        {
+          "factor": 0.5,
+          "bowling": 56.145058,
+          "uncoveredUnits": 1.073797
+        },
+        {
+          "factor": 0.25,
+          "bowling": 38.072529,
+          "uncoveredUnits": 3.036898
+        },
+        {
+          "factor": 0,
+          "bowling": 20,
+          "uncoveredUnits": 5
+        }
+      ],
+      "monotonic": true,
+      "occasionalOnlyBowling": 35.435,
+      "occasionalOnlyDelta": -34.365
+    },
+    "descriptiveDiagnostics": {
+      "strengthUnchanged": true
+    },
+    "illustrativeWinRates": [
+      {
+        "case": "baseline",
+        "winRate": 0.507,
+        "strength": {
+          "batting": 62.572857142857146,
+          "bowling": 69.8,
+          "overall": 66.18642857142856
+        }
+      },
+      {
+        "case": "reversed-order",
+        "winRate": 0.3128,
+        "strength": {
+          "batting": 43.75678571428572,
+          "bowling": 69.8,
+          "overall": 56.77839285714286
+        }
+      },
+      {
+        "case": "forced-fit-cap",
+        "winRate": 0.4542,
+        "strength": {
+          "batting": 58.70142857142857,
+          "bowling": 69.8,
+          "overall": 64.25071428571428
+        }
+      },
+      {
+        "case": "occasional-only",
+        "winRate": 0.2018,
+        "strength": {
+          "batting": 62.572857142857146,
+          "bowling": 35.435,
+          "overall": 49.003928571428574
+        }
+      }
+    ],
+    "baselineTeam": {
+      "teamId": "baseline",
+      "displayName": "baseline",
+      "strength": {
+        "batting": 62.572857142857146,
+        "bowling": 69.8,
+        "overall": 66.18642857142856
+      }
+    }
+  }
+}
