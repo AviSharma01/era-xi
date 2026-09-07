@@ -1,6 +1,7 @@
 import type { EraDraftCatalog, EraDraftTeamSeason } from "./eraDraftData.js";
 import { assertEraDraftState } from "./eraDraftInvariants.js";
 import { evaluateSelectionLegality, teamSeasonHasViableSelection } from "./eraDraftLegality.js";
+import { evaluateEraDraftXi } from "./eraDraftReveal.js";
 import {
   rankRecoveryTeamSeasons,
   selectNormalSpinTeamSeason,
@@ -22,6 +23,8 @@ import {
   type EraDraftTransitionResult,
   type LockPlayerCommand,
   type RespinCommand,
+  type RevealXiCommand,
+  type RevealedState,
   type SetupState,
   type SpinCommand,
   type TeamSeasonId,
@@ -68,6 +71,7 @@ export function reduceEraDraft(
     case "SPIN": return spin(catalog, state, command);
     case "LOCK_PLAYER": return lockPlayer(catalog, state, command);
     case "RESPIN": return respin(catalog, state, command);
+    case "REVEAL_XI": return revealXi(catalog, state, command);
   }
 }
 
@@ -237,6 +241,36 @@ function respin(
     history: [...state.history, event],
     currentSpin: currentSpin(resolved, "RESPIN", respinOrdinal),
   } satisfies AwaitingPickState);
+  assertEraDraftState(catalog, next);
+  return { ok: true, state: next, event };
+}
+
+function revealXi(
+  catalog: EraDraftCatalog,
+  state: EraDraftState,
+  command: RevealXiCommand,
+): EraDraftTransitionResult {
+  if (state.phase !== "XI_COMPLETE") {
+    return rejected(state, command, "INVALID_PHASE", "An XI can only be revealed from XI_COMPLETE.");
+  }
+
+  // Evaluation happens before any next-state object is constructed, so a data
+  // or evaluator failure cannot partially advance authoritative state.
+  const evaluation = evaluateEraDraftXi(catalog, state);
+  const revision = state.revision + 1;
+  const event = freezeState({
+    revision,
+    command: "REVEAL_XI",
+    payload: {},
+    resultingPhase: "REVEALED",
+  } satisfies EraDraftHistoryEntry);
+  const next = freezeState({
+    ...state,
+    phase: "REVEALED",
+    revision,
+    history: [...state.history, event],
+    evaluation,
+  } satisfies RevealedState);
   assertEraDraftState(catalog, next);
   return { ok: true, state: next, event };
 }

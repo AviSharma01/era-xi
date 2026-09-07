@@ -1,4 +1,12 @@
-import type { EraId } from "./teamEvaluationV2.js";
+import type {
+  BowlingFamily,
+  BowlingWorkloadClass,
+  DerivedRole,
+  FitClassification,
+  KeeperStatus,
+} from "./playerRoleContract.js";
+import type { QualityTier } from "./playerQualityContract.js";
+import type { EraId, IplRosterStatus, TeamEvaluationV2 } from "./teamEvaluationV2.js";
 
 export const ERA_DRAFT_ENGINE_VERSION = "ipl-era-draft-engine/v1" as const;
 export const ERA_DRAFT_STATE_SCHEMA_VERSION = "ipl-era-draft-state/v1" as const;
@@ -58,7 +66,11 @@ export type RespinCommand = {
   readonly type: "RESPIN";
 };
 
-export type EraDraftCommand = ChooseEraCommand | SpinCommand | LockPlayerCommand | RespinCommand;
+export type RevealXiCommand = {
+  readonly type: "REVEAL_XI";
+};
+
+export type EraDraftCommand = ChooseEraCommand | SpinCommand | LockPlayerCommand | RespinCommand | RevealXiCommand;
 
 export type ChooseEraHistoryEntry = {
   readonly revision: number;
@@ -102,11 +114,19 @@ export type RespinHistoryEntry = {
   readonly resultingRespinStatus: "USED";
 };
 
+export type RevealXiHistoryEntry = {
+  readonly revision: number;
+  readonly command: "REVEAL_XI";
+  readonly payload: Record<string, never>;
+  readonly resultingPhase: "REVEALED";
+};
+
 export type EraDraftHistoryEntry =
   | ChooseEraHistoryEntry
   | SpinHistoryEntry
   | LockPlayerHistoryEntry
-  | RespinHistoryEntry;
+  | RespinHistoryEntry
+  | RevealXiHistoryEntry;
 
 type EraDraftStateCommon = {
   readonly engineVersion: typeof ERA_DRAFT_ENGINE_VERSION;
@@ -140,7 +160,14 @@ export type XiCompleteState = EraDraftStateCommon & {
   readonly eraId: EraId;
 };
 
-export type EraDraftState = SetupState | AwaitingSpinState | AwaitingPickState | XiCompleteState;
+export type RevealedState = EraDraftStateCommon & {
+  readonly phase: "REVEALED";
+  readonly eraId: EraId;
+  readonly evaluation: TeamEvaluationV2;
+};
+
+export type EraDraftState = SetupState | AwaitingSpinState | AwaitingPickState | XiCompleteState | RevealedState;
+export type EraDraftHiddenState = Exclude<EraDraftState, RevealedState>;
 
 export type EraDraftSelectionRejectionCode =
   | "PLAYER_NOT_FOUND"
@@ -212,7 +239,7 @@ export class EraDraftInvariantError extends Error {
   }
 }
 
-export type DraftCandidateIdentityView = {
+export type DraftPlayerFactsView = {
   readonly playerTeamSeasonId: string;
   readonly playerId: string;
   readonly playerName: string;
@@ -222,10 +249,24 @@ export type DraftCandidateIdentityView = {
   readonly teamName: string;
   readonly franchiseId: string;
   readonly franchiseName: string;
+  readonly rosterStatus: Exclude<IplRosterStatus, "UNKNOWN">;
+  readonly keeperCapability: KeeperStatus;
+  readonly derivedRole: DerivedRole;
+  readonly bowlingWorkloadClass: BowlingWorkloadClass;
+  readonly bowlingFamily: BowlingFamily;
+};
+
+export type DraftPickView = DraftPlayerFactsView & {
+  readonly pickNumber: number;
+  readonly battingPosition: EraDraftPick["battingPosition"];
+  readonly fit: FitClassification;
+};
+
+export type DraftCandidateIdentityView = DraftPlayerFactsView & {
   readonly available: boolean;
   readonly positions: readonly {
     readonly battingPosition: EraDraftPick["battingPosition"];
-    readonly fit: "NATURAL" | "ACCEPTABLE" | "OUT_OF_ROLE" | "UNKNOWN";
+    readonly fit: FitClassification;
     readonly available: boolean;
     readonly reasons: readonly EraDraftSelectionRejection[];
   }[];
@@ -241,6 +282,7 @@ export type AwaitingSpinPublicView = {
   readonly revision: number;
   readonly eraId: EraId;
   readonly eraLabel: string;
+  readonly picks: readonly DraftPickView[];
 };
 
 export type AwaitingPickPublicView = {
@@ -248,6 +290,7 @@ export type AwaitingPickPublicView = {
   readonly revision: number;
   readonly eraId: EraId;
   readonly eraLabel: string;
+  readonly picks: readonly DraftPickView[];
   readonly currentSpin: {
     readonly spinOrdinal: number;
     readonly teamSeasonId: TeamSeasonId;
@@ -266,6 +309,34 @@ export type XiCompletePublicView = {
   readonly revision: number;
   readonly eraId: EraId;
   readonly eraLabel: string;
+  readonly picks: readonly DraftPickView[];
 };
 
 export type EraDraftPublicView = SetupPublicView | AwaitingSpinPublicView | AwaitingPickPublicView | XiCompletePublicView;
+
+export type RevealPlayerView = DraftPlayerFactsView & {
+  readonly battingPosition: EraDraftPick["battingPosition"];
+  readonly fit: FitClassification;
+  readonly battingRating: number | null;
+  readonly bowlingRating: number | null;
+  readonly overallRating: number;
+  readonly qualityTier: QualityTier;
+};
+
+export type EraDraftRevealView = {
+  readonly phase: "REVEALED";
+  readonly revision: number;
+  readonly eraId: EraId;
+  readonly eraLabel: string;
+  readonly picks: readonly DraftPickView[];
+  readonly players: readonly RevealPlayerView[];
+  readonly evaluation: {
+    readonly version: TeamEvaluationV2["version"];
+    readonly battingContributions: TeamEvaluationV2["battingContributions"];
+    readonly bowlingDeployment: TeamEvaluationV2["bowlingDeployment"];
+    readonly baseStrength: TeamEvaluationV2["baseStrength"];
+    readonly adjustedStrength: TeamEvaluationV2["adjustedStrength"];
+    readonly diagnostics: TeamEvaluationV2["diagnostics"];
+    readonly effects: TeamEvaluationV2["effects"];
+  };
+};
