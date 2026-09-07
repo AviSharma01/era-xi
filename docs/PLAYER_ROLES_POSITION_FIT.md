@@ -76,4 +76,4 @@ Player-level keeper capability remains a separate future draft-eligibility signa
 
 The contract publishes no ratings, tiers, multipliers, penalties, effective ratings, team boosts or bowling-balance selection rules. `UNKNOWN` batting fit has `NONE` confidence, no primary bands, and `UNKNOWN` slot classifications with null distance; this is neutral descriptive metadata rather than an automatic penalty.
 
-The TypeScript contract module validates the generated shape and enums but is not wired into Classic 2016 or the Era Draft runtime. Later Team Evaluation work may consume this boundary and separately define evaluation effects.
+The TypeScript contract module validates the generated shape and enums. Classic 2016 remains separate; Era Draft consumes this boundary for draft-facing roles and categorical fit, then delegates revealed evaluation effects to Team Evaluation V2.
