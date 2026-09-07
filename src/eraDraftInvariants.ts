@@ -1,6 +1,7 @@
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { evaluateFutureCompletion, teamSeasonHasViableSelection } from "./eraDraftLegality.js";
 import { evaluateEraDraftXi } from "./eraDraftReveal.js";
+import { assertEraDraftSeasonResult } from "./eraDraftSimulation.js";
 import {
   ERA_DRAFT_ENGINE_VERSION,
   ERA_DRAFT_STATE_SCHEMA_VERSION,
@@ -49,7 +50,10 @@ export function assertEraDraftState(catalog: EraDraftCatalog, state: EraDraftSta
   validatePicks(catalog, state);
 
   if (state.phase === "SETUP") {
-    if ("eraId" in state || "currentSpin" in state || state.history.length !== 0 || state.picks.length !== 0) {
+    if (
+      "eraId" in state || "currentSpin" in state || "evaluation" in state || "season" in state
+      || state.history.length !== 0 || state.picks.length !== 0
+    ) {
       fail("INVALID_SETUP_STATE", "SETUP cannot contain an era, spin, picks, or accepted history.");
     }
     return;
@@ -60,7 +64,7 @@ export function assertEraDraftState(catalog: EraDraftCatalog, state: EraDraftSta
   const feasibility = evaluateFutureCompletion(catalog, state.eraId, state.picks);
 
   if (state.phase === "XI_COMPLETE") {
-    if ("currentSpin" in state || "evaluation" in state || state.picks.length !== 11) {
+    if ("currentSpin" in state || "evaluation" in state || "season" in state || state.picks.length !== 11) {
       fail("INVALID_XI_COMPLETE_STATE", "XI_COMPLETE requires exactly eleven picks, no active spin, and no evaluation.");
     }
     const positions = [...state.picks].map((pick) => pick.battingPosition).sort((left, right) => left - right);
@@ -71,7 +75,7 @@ export function assertEraDraftState(catalog: EraDraftCatalog, state: EraDraftSta
   }
 
   if (state.phase === "REVEALED") {
-    if ("currentSpin" in state || state.picks.length !== 11 || !state.evaluation) {
+    if ("currentSpin" in state || "season" in state || state.picks.length !== 11 || !state.evaluation) {
       fail("INVALID_REVEALED_STATE", "REVEALED requires exactly eleven picks, no active spin, and an evaluation.");
     }
     const positions = [...state.picks].map((pick) => pick.battingPosition).sort((left, right) => left - right);
@@ -88,17 +92,40 @@ export function assertEraDraftState(catalog: EraDraftCatalog, state: EraDraftSta
     return;
   }
 
+  if (state.phase === "GAME_COMPLETE") {
+    if ("currentSpin" in state || state.picks.length !== 11 || !state.evaluation || !state.season) {
+      fail("INVALID_GAME_COMPLETE_STATE", "GAME_COMPLETE requires a revealed XI and completed season result.");
+    }
+    const positions = [...state.picks].map((pick) => pick.battingPosition).sort((left, right) => left - right);
+    if (positions.some((position, index) => position !== index + 1) || !feasibility.feasible) {
+      fail("INVALID_GAME_COMPLETE_XI", "Completed game must retain the legal drafted XI.");
+    }
+    const expectedEvaluation = evaluateEraDraftXi(catalog, { ...state, phase: "XI_COMPLETE" });
+    if (JSON.stringify(state.evaluation) !== JSON.stringify(expectedEvaluation)) {
+      fail("GAME_COMPLETE_EVALUATION_MISMATCH", "Completed game evaluation differs from the drafted XI.");
+    }
+    try {
+      assertEraDraftSeasonResult(catalog, state, state.season);
+    } catch (error) {
+      if (error instanceof EraDraftInvariantError) throw error;
+      fail("GAME_COMPLETE_SIMULATION_MISMATCH", error instanceof Error ? error.message : "Invalid completed simulation.");
+    }
+    return;
+  }
+
   if (!feasibility.feasible) {
     fail("NO_VIABLE_TEAM_SEASON", "Incomplete Era Draft state has no existential legal completion.");
   }
   if (state.phase === "AWAITING_SPIN") {
-    if ("currentSpin" in state || state.picks.length >= 11) {
+    if ("currentSpin" in state || "evaluation" in state || "season" in state || state.picks.length >= 11) {
       fail("INVALID_AWAITING_SPIN_STATE", "AWAITING_SPIN cannot contain a current spin or complete XI.");
     }
     return;
   }
 
-  if (state.picks.length >= 11) fail("INVALID_AWAITING_PICK_STATE", "AWAITING_PICK cannot contain a complete XI.");
+  if ("evaluation" in state || "season" in state || state.picks.length >= 11) {
+    fail("INVALID_AWAITING_PICK_STATE", "AWAITING_PICK cannot contain evaluation, season, or a complete XI.");
+  }
   validateCurrentSpin(catalog, state);
   if (!teamSeasonHasViableSelection(catalog, state.eraId, state.picks, state.currentSpin.teamSeasonId)) {
     fail("DEAD_CURRENT_SPIN", "AWAITING_PICK cannot expose a team-season without a feasible player-slot selection.");
@@ -170,6 +197,12 @@ function validateHistory(catalog: EraDraftCatalog, state: EraDraftState): void {
         }
         activeTeamSeasonId = undefined;
         replayPhase = "REVEALED";
+        break;
+      case "SIMULATE_SEASON":
+        if (replayPhase !== "REVEALED" || selectedEra !== "era-foundation") {
+          fail("INVALID_HISTORY_SEQUENCE", "Invalid SIMULATE_SEASON history entry.");
+        }
+        replayPhase = "GAME_COMPLETE";
         break;
     }
     if (entry.resultingPhase !== replayPhase) fail("HISTORY_PHASE_MISMATCH", "History resulting phase is invalid.");

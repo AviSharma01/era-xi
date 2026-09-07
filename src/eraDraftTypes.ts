@@ -6,10 +6,13 @@ import type {
   KeeperStatus,
 } from "./playerRoleContract.js";
 import type { QualityTier } from "./playerQualityContract.js";
+import type { LeagueResultV2, SimulationTeamV2 } from "./simulationV2.js";
 import type { EraId, IplRosterStatus, TeamEvaluationV2 } from "./teamEvaluationV2.js";
 
 export const ERA_DRAFT_ENGINE_VERSION = "ipl-era-draft-engine/v1" as const;
 export const ERA_DRAFT_STATE_SCHEMA_VERSION = "ipl-era-draft-state/v1" as const;
+export const ERA_DRAFT_SAVE_VERSION = "ipl-era-draft-save/v1" as const;
+export const ERA_DRAFT_SIMULATION_SEED_VERSION = "ipl-era-draft-simulation-seeds/v1" as const;
 
 export type TeamSeasonId = `ts:${string}:${string}`;
 
@@ -70,7 +73,17 @@ export type RevealXiCommand = {
   readonly type: "REVEAL_XI";
 };
 
-export type EraDraftCommand = ChooseEraCommand | SpinCommand | LockPlayerCommand | RespinCommand | RevealXiCommand;
+export type SimulateSeasonCommand = {
+  readonly type: "SIMULATE_SEASON";
+};
+
+export type EraDraftCommand =
+  | ChooseEraCommand
+  | SpinCommand
+  | LockPlayerCommand
+  | RespinCommand
+  | RevealXiCommand
+  | SimulateSeasonCommand;
 
 export type ChooseEraHistoryEntry = {
   readonly revision: number;
@@ -121,12 +134,20 @@ export type RevealXiHistoryEntry = {
   readonly resultingPhase: "REVEALED";
 };
 
+export type SimulateSeasonHistoryEntry = {
+  readonly revision: number;
+  readonly command: "SIMULATE_SEASON";
+  readonly payload: Record<string, never>;
+  readonly resultingPhase: "GAME_COMPLETE";
+};
+
 export type EraDraftHistoryEntry =
   | ChooseEraHistoryEntry
   | SpinHistoryEntry
   | LockPlayerHistoryEntry
   | RespinHistoryEntry
-  | RevealXiHistoryEntry;
+  | RevealXiHistoryEntry
+  | SimulateSeasonHistoryEntry;
 
 type EraDraftStateCommon = {
   readonly engineVersion: typeof ERA_DRAFT_ENGINE_VERSION;
@@ -166,8 +187,45 @@ export type RevealedState = EraDraftStateCommon & {
   readonly evaluation: TeamEvaluationV2;
 };
 
-export type EraDraftState = SetupState | AwaitingSpinState | AwaitingPickState | XiCompleteState | RevealedState;
-export type EraDraftHiddenState = Exclude<EraDraftState, RevealedState>;
+export type EraDraftSimulationSeedBundle = {
+  readonly version: typeof ERA_DRAFT_SIMULATION_SEED_VERSION;
+  readonly gameIdentityHash: string;
+  readonly opponentCompositionSeed: string;
+  readonly matchSimulationSeed: string;
+};
+
+export type EraDraftUserOutcome = {
+  readonly leaguePosition: number;
+  readonly qualified: boolean;
+  readonly champion: boolean;
+};
+
+export type EraDraftSeasonResult = {
+  readonly stage7Versions: {
+    readonly simulationVersion: LeagueResultV2["version"];
+    readonly environmentSchemaVersion: string;
+  };
+  readonly seedBundle: EraDraftSimulationSeedBundle;
+  readonly userTeam: SimulationTeamV2;
+  readonly league: LeagueResultV2;
+  readonly userOutcome: EraDraftUserOutcome;
+};
+
+export type GameCompleteState = EraDraftStateCommon & {
+  readonly phase: "GAME_COMPLETE";
+  readonly eraId: "era-foundation";
+  readonly evaluation: TeamEvaluationV2;
+  readonly season: EraDraftSeasonResult;
+};
+
+export type EraDraftState =
+  | SetupState
+  | AwaitingSpinState
+  | AwaitingPickState
+  | XiCompleteState
+  | RevealedState
+  | GameCompleteState;
+export type EraDraftHiddenState = Exclude<EraDraftState, RevealedState | GameCompleteState>;
 
 export type EraDraftSelectionRejectionCode =
   | "PLAYER_NOT_FOUND"
@@ -186,7 +244,8 @@ export type EraDraftCommandRejectionCode =
   | "UNKNOWN_ERA"
   | EraDraftSelectionRejectionCode
   | "RESPIN_UNAVAILABLE"
-  | "RESPIN_REPLACEMENT_UNAVAILABLE";
+  | "RESPIN_REPLACEMENT_UNAVAILABLE"
+  | "SIMULATION_CONTENT_UNAVAILABLE";
 
 export type EraDraftSelectionRejection = {
   readonly code: EraDraftSelectionRejectionCode;
@@ -200,6 +259,7 @@ export type EraDraftCommandRejection = {
   readonly command: EraDraftCommand["type"];
   readonly phase: EraDraftState["phase"];
   readonly reasons?: readonly EraDraftSelectionRejection[];
+  readonly context?: Readonly<Record<string, unknown>>;
 };
 
 export type EraDraftTransitionResult =

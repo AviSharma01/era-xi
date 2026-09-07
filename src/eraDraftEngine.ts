@@ -2,6 +2,7 @@ import type { EraDraftCatalog, EraDraftTeamSeason } from "./eraDraftData.js";
 import { assertEraDraftState } from "./eraDraftInvariants.js";
 import { evaluateSelectionLegality, teamSeasonHasViableSelection } from "./eraDraftLegality.js";
 import { evaluateEraDraftXi } from "./eraDraftReveal.js";
+import { simulateEraDraftSeason } from "./eraDraftSimulation.js";
 import {
   rankRecoveryTeamSeasons,
   selectNormalSpinTeamSeason,
@@ -22,11 +23,13 @@ import {
   type EraDraftState,
   type EraDraftTransitionResult,
   type LockPlayerCommand,
+  type GameCompleteState,
   type RespinCommand,
   type RevealXiCommand,
   type RevealedState,
   type SetupState,
   type SpinCommand,
+  type SimulateSeasonCommand,
   type TeamSeasonId,
   type XiCompleteState,
 } from "./eraDraftTypes.js";
@@ -72,6 +75,7 @@ export function reduceEraDraft(
     case "LOCK_PLAYER": return lockPlayer(catalog, state, command);
     case "RESPIN": return respin(catalog, state, command);
     case "REVEAL_XI": return revealXi(catalog, state, command);
+    case "SIMULATE_SEASON": return simulateSeason(catalog, state, command);
   }
 }
 
@@ -275,6 +279,45 @@ function revealXi(
   return { ok: true, state: next, event };
 }
 
+function simulateSeason(
+  catalog: EraDraftCatalog,
+  state: EraDraftState,
+  command: SimulateSeasonCommand,
+): EraDraftTransitionResult {
+  if (state.phase !== "REVEALED") {
+    return rejected(state, command, "INVALID_PHASE", "A season can only be simulated from REVEALED.");
+  }
+  if (state.eraId !== "era-foundation") {
+    return rejected(
+      state,
+      command,
+      "SIMULATION_CONTENT_UNAVAILABLE",
+      `Curated opponent content is unavailable for ${state.eraId}.`,
+      undefined,
+      { eraId: state.eraId, missingContent: "CURATED_OPPONENT_PROFILES" },
+    );
+  }
+
+  const season = simulateEraDraftSeason(catalog, state);
+  const revision = state.revision + 1;
+  const event = freezeState({
+    revision,
+    command: "SIMULATE_SEASON",
+    payload: {},
+    resultingPhase: "GAME_COMPLETE",
+  } satisfies EraDraftHistoryEntry);
+  const next = freezeState({
+    ...state,
+    phase: "GAME_COMPLETE",
+    eraId: "era-foundation",
+    revision,
+    history: [...state.history, event],
+    season,
+  } satisfies GameCompleteState);
+  assertEraDraftState(catalog, next);
+  return { ok: true, state: next, event };
+}
+
 function resolveViableSpin(
   catalog: EraDraftCatalog,
   state: AwaitingSpinState | AwaitingPickState,
@@ -339,6 +382,7 @@ function rejected(
   code: EraDraftCommandRejection["code"],
   message: string,
   reasons?: readonly EraDraftSelectionRejection[],
+  context?: Readonly<Record<string, unknown>>,
 ): EraDraftTransitionResult {
   return {
     ok: false,
@@ -350,6 +394,7 @@ function rejected(
       command: command.type,
       phase: state.phase,
       ...(reasons ? { reasons } : {}),
+      ...(context ? { context } : {}),
     }),
   };
 }
