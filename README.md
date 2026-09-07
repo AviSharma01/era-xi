@@ -8,7 +8,7 @@ A historical IPL drafting game inspired by EraBall. Spin a franchise-season, cho
 - Historical player-season data from Cricsheet
 - Position locking, overseas limit, wicketkeeper validation, respin, and franchise cooldown
 - CLI and localhost web interface
-- Era Draft role/fit metadata and quality ratings/tiers are complete; runtime/gameplay integration remains future work
+- Era Draft supports all five eras through draft and reveal, with deterministic persistence/replay and complete Foundation league/playoff simulation; later-era season simulation awaits curated opponents
 
 ## Run Locally
 
