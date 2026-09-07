@@ -4,6 +4,7 @@ import test from "node:test";
 import { loadEraDraftCatalog } from "./eraDraftData.js";
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
 import { assertEraDraftState } from "./eraDraftInvariants.js";
+import { evaluateFutureCompletion, evaluateSelectionLegality, getOpenBattingPositions } from "./eraDraftLegality.js";
 import { projectEraDraftPublicState } from "./eraDraftProjection.js";
 import { selectNormalSpinTeamSeason } from "./eraDraftRng.js";
 import { EraDraftInvariantError, type AwaitingPickState } from "./eraDraftTypes.js";
@@ -35,6 +36,7 @@ test("new game and accepted commands follow SETUP -> AWAITING_SPIN -> AWAITING_P
     seasonId: "ipl-2008",
     teamId: "team-mumbai-indians",
     franchiseId: "franchise-mumbai-indians",
+    recovery: null,
   });
   assert.equal(spun.state.revision, 2);
   assert.equal(spun.state.rngCounters.normalSpin, 1);
@@ -50,6 +52,9 @@ test("new game and accepted commands follow SETUP -> AWAITING_SPIN -> AWAITING_P
       command: "SPIN",
       payload: {},
       resultingPhase: "AWAITING_PICK",
+      spinOrdinal: 0,
+      triggeringTeamSeasonId: "ts:team-mumbai-indians:ipl-2008",
+      skippedDeadTeamSeasonIds: [],
       selectedTeamSeasonId: "ts:team-mumbai-indians:ipl-2008",
     },
   ]);
@@ -138,7 +143,7 @@ test("current spin and safe projection contain only the selected team-season can
     return internal?.teamSeasonId === state.currentSpin.teamSeasonId && internal.eraId === state.eraId;
   }));
   const candidateKeys = [
-    "franchiseId", "franchiseName", "playerId", "playerName", "playerTeamSeasonId",
+    "available", "franchiseId", "franchiseName", "playerId", "playerName", "playerTeamSeasonId", "positions",
     "seasonId", "seasonYear", "teamId", "teamName",
   ];
   assert.deepEqual(Object.keys(view.candidates[0]!).sort(), candidateKeys);
@@ -146,6 +151,80 @@ test("current spin and safe projection contain only the selected team-season can
   assert.ok(Object.isFrozen(view));
   assert.ok(Object.isFrozen(view.candidates));
   assert.ok(Object.isFrozen(view.candidates[0]!));
+});
+
+test("adversarial real-era drafting remains completable through ten picks and finishes with a keeper", () => {
+  const eraId = "era-foundation" as const;
+  const keeperIds = new Set(catalog.getKeeperCapablePlayerIds(eraId));
+  let state = requiredState(reduceEraDraft(
+    catalog,
+    createEraDraftGame({ catalog, rootSeed: "adversarial-0" }),
+    { type: "CHOOSE_ERA", eraId },
+  ));
+  let duplicateCandidatesEncountered = 0;
+
+  for (let pickIndex = 0; pickIndex < 10; pickIndex += 1) {
+    state = requiredState(reduceEraDraft(catalog, state, { type: "SPIN" }));
+    assert.equal(state.phase, "AWAITING_PICK");
+    if (state.phase !== "AWAITING_PICK") return;
+    const activeState = state;
+    const draftedIds = new Set(activeState.picks.map((pick) => pick.playerId));
+    const candidates = catalog.getCandidatesForTeamSeason(activeState.currentSpin.teamSeasonId);
+    duplicateCandidatesEncountered += candidates.filter((player) => draftedIds.has(player.playerId)).length;
+    const overseasCount = activeState.picks.filter((pick) =>
+      catalog.getPlayer(pick.playerTeamSeasonId)!.rosterStatus === "OVERSEAS").length;
+    const orderedCandidates = [...candidates].sort((left, right) => {
+      const keeperOrder = Number(keeperIds.has(left.playerId)) - Number(keeperIds.has(right.playerId));
+      if (keeperOrder !== 0) return keeperOrder;
+      if (overseasCount < 4) {
+        const overseasOrder = Number(right.rosterStatus === "OVERSEAS") - Number(left.rosterStatus === "OVERSEAS");
+        if (overseasOrder !== 0) return overseasOrder;
+      }
+      return left.playerTeamSeasonId.localeCompare(right.playerTeamSeasonId);
+    });
+    const awkwardPositions = [...getOpenBattingPositions(activeState.picks)]
+      .sort((left, right) => Math.abs(right - 6) - Math.abs(left - 6) || right - left);
+    const choice = orderedCandidates.flatMap((player) => awkwardPositions.map((battingPosition) => ({ player, battingPosition })))
+      .find(({ player, battingPosition }) => evaluateSelectionLegality(catalog, {
+        eraId,
+        picks: activeState.picks,
+        activeTeamSeasonId: activeState.currentSpin.teamSeasonId,
+      }, { playerTeamSeasonId: player.playerTeamSeasonId, battingPosition }).available);
+    assert.ok(choice);
+    state = requiredState(reduceEraDraft(catalog, state, {
+      type: "LOCK_PLAYER",
+      playerTeamSeasonId: choice.player.playerTeamSeasonId,
+      battingPosition: choice.battingPosition,
+    }));
+    assert.equal(evaluateFutureCompletion(catalog, eraId, state.picks).feasible, true);
+  }
+
+  assert.equal(state.phase, "AWAITING_SPIN");
+  assert.equal(state.picks.length, 10);
+  assert.equal(state.picks.filter((pick) => catalog.getPlayer(pick.playerTeamSeasonId)!.rosterStatus === "OVERSEAS").length, 4);
+  assert.equal(state.picks.some((pick) => keeperIds.has(pick.playerId)), false);
+  assert.ok(duplicateCandidatesEncountered > 0);
+  assert.deepEqual(state.picks.map((pick) => pick.battingPosition), [11, 1, 10, 2, 9, 3, 8, 4, 7, 5]);
+
+  state = requiredState(reduceEraDraft(catalog, state, { type: "SPIN" }));
+  assert.equal(state.phase, "AWAITING_PICK");
+  if (state.phase !== "AWAITING_PICK") return;
+  const finalSpinState = state;
+  const finalChoice = catalog.getCandidatesForTeamSeason(finalSpinState.currentSpin.teamSeasonId)
+    .find((player) => evaluateSelectionLegality(catalog, {
+      eraId,
+      picks: finalSpinState.picks,
+      activeTeamSeasonId: finalSpinState.currentSpin.teamSeasonId,
+    }, { playerTeamSeasonId: player.playerTeamSeasonId, battingPosition: 6 }).available)!;
+  state = requiredState(reduceEraDraft(catalog, state, {
+    type: "LOCK_PLAYER",
+    playerTeamSeasonId: finalChoice.playerTeamSeasonId,
+    battingPosition: 6,
+  }));
+  assert.equal(state.phase, "XI_COMPLETE");
+  assert.equal(state.picks.length, 11);
+  assert.equal(state.picks.some((pick) => keeperIds.has(pick.playerId)), true);
+  assertEraDraftState(catalog, state);
 });
 
 test("invariant violations are typed system failures rather than command rejections", () => {
@@ -164,7 +243,7 @@ test("invariant violations are typed system failures rather than command rejecti
   } as AwaitingPickState;
   assert.throws(
     () => assertEraDraftState(catalog, mismatchedHistory),
-    (error) => error instanceof EraDraftInvariantError && error.code === "INVALID_AWAITING_PICK_HISTORY",
+    (error) => error instanceof EraDraftInvariantError && error.code === "HISTORY_TEAM_SEASON_MISMATCH",
   );
 });
 

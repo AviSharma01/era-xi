@@ -140,6 +140,7 @@ export interface EraDraftCatalog {
   getEraForSeason(seasonId: string): EraId | undefined;
   getTeamSeason(teamSeasonId: TeamSeasonId): EraDraftTeamSeason | undefined;
   getTeamSeasonsForEra(eraId: EraId): readonly EraDraftTeamSeason[];
+  getEligibilityRow(playerTeamSeasonId: string): EraDraftEligibilityRow | undefined;
   getPlayer(playerTeamSeasonId: string): EraDraftPlayerRecord | undefined;
   getCandidatesForTeamSeason(teamSeasonId: TeamSeasonId): readonly EraDraftPlayerRecord[];
   getPlayerVariantsForEra(eraId: EraId, playerId: string): readonly EraDraftPlayerRecord[];
@@ -486,6 +487,7 @@ export function buildEraDraftCatalog(documents: EraDraftCatalogDocuments): EraDr
     eraBySeason,
     teamSeasonById,
     teamSeasonsByEra,
+    eligibilityById,
     playerById,
     candidatesByTeamSeason,
     variantsByEraPlayer,
@@ -503,6 +505,7 @@ class EraDraftCatalogImpl implements EraDraftCatalog {
   readonly #eraBySeason: ReadonlyMap<string, EraId>;
   readonly #teamSeasonById: ReadonlyMap<TeamSeasonId, EraDraftTeamSeason>;
   readonly #teamSeasonsByEra: ReadonlyMap<EraId, readonly EraDraftTeamSeason[]>;
+  readonly #eligibilityById: ReadonlyMap<string, EraDraftEligibilityRow>;
   readonly #playerById: ReadonlyMap<string, EraDraftPlayerRecord>;
   readonly #candidatesByTeamSeason: ReadonlyMap<TeamSeasonId, readonly EraDraftPlayerRecord[]>;
   readonly #variantsByEraPlayer: ReadonlyMap<string, readonly EraDraftPlayerRecord[]>;
@@ -518,6 +521,7 @@ class EraDraftCatalogImpl implements EraDraftCatalog {
     eraBySeason: Map<string, EraId>;
     teamSeasonById: Map<TeamSeasonId, EraDraftTeamSeason>;
     teamSeasonsByEra: Map<EraId, EraDraftTeamSeason[]>;
+    eligibilityById: Map<string, EraDraftEligibilityRow>;
     playerById: Map<string, EraDraftPlayerRecord>;
     candidatesByTeamSeason: Map<TeamSeasonId, EraDraftPlayerRecord[]>;
     variantsByEraPlayer: Map<string, EraDraftPlayerRecord[]>;
@@ -532,6 +536,7 @@ class EraDraftCatalogImpl implements EraDraftCatalog {
     this.#eraBySeason = input.eraBySeason;
     this.#teamSeasonById = input.teamSeasonById;
     this.#teamSeasonsByEra = input.teamSeasonsByEra;
+    this.#eligibilityById = input.eligibilityById;
     this.#playerById = input.playerById;
     this.#candidatesByTeamSeason = input.candidatesByTeamSeason;
     this.#variantsByEraPlayer = input.variantsByEraPlayer;
@@ -547,6 +552,7 @@ class EraDraftCatalogImpl implements EraDraftCatalog {
   getEraForSeason(seasonId: string): EraId | undefined { return this.#eraBySeason.get(seasonId); }
   getTeamSeason(teamSeasonId: TeamSeasonId): EraDraftTeamSeason | undefined { return this.#teamSeasonById.get(teamSeasonId); }
   getTeamSeasonsForEra(eraId: EraId): readonly EraDraftTeamSeason[] { return this.#teamSeasonsByEra.get(eraId) ?? []; }
+  getEligibilityRow(playerTeamSeasonId: string): EraDraftEligibilityRow | undefined { return this.#eligibilityById.get(playerTeamSeasonId); }
   getPlayer(playerTeamSeasonId: string): EraDraftPlayerRecord | undefined { return this.#playerById.get(playerTeamSeasonId); }
   getCandidatesForTeamSeason(teamSeasonId: TeamSeasonId): readonly EraDraftPlayerRecord[] { return this.#candidatesByTeamSeason.get(teamSeasonId) ?? []; }
   getPlayerVariantsForEra(eraId: EraId, playerId: string): readonly EraDraftPlayerRecord[] { return this.#variantsByEraPlayer.get(`${eraId}\u001f${playerId}`) ?? []; }

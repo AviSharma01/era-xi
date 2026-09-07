@@ -23,16 +23,20 @@ export type EraDraftRngCounters = {
 };
 
 export type EraDraftRespinState = {
-  readonly status: "AVAILABLE";
+  readonly status: "AVAILABLE" | "USED";
 };
 
 export type CurrentSpin = {
   readonly spinOrdinal: number;
-  readonly origin: "NORMAL";
+  readonly origin: "NORMAL" | "RESPIN";
   readonly teamSeasonId: TeamSeasonId;
   readonly seasonId: string;
   readonly teamId: string;
   readonly franchiseId: string;
+  readonly recovery: {
+    readonly triggeringTeamSeasonId: TeamSeasonId;
+    readonly skippedDeadTeamSeasonIds: readonly TeamSeasonId[];
+  } | null;
 };
 
 export type ChooseEraCommand = {
@@ -44,7 +48,17 @@ export type SpinCommand = {
   readonly type: "SPIN";
 };
 
-export type EraDraftCommand = ChooseEraCommand | SpinCommand;
+export type LockPlayerCommand = {
+  readonly type: "LOCK_PLAYER";
+  readonly playerTeamSeasonId: string;
+  readonly battingPosition: number;
+};
+
+export type RespinCommand = {
+  readonly type: "RESPIN";
+};
+
+export type EraDraftCommand = ChooseEraCommand | SpinCommand | LockPlayerCommand | RespinCommand;
 
 export type ChooseEraHistoryEntry = {
   readonly revision: number;
@@ -58,10 +72,41 @@ export type SpinHistoryEntry = {
   readonly command: "SPIN";
   readonly payload: Record<string, never>;
   readonly resultingPhase: "AWAITING_PICK";
+  readonly spinOrdinal: number;
+  readonly triggeringTeamSeasonId: TeamSeasonId;
+  readonly skippedDeadTeamSeasonIds: readonly TeamSeasonId[];
   readonly selectedTeamSeasonId: TeamSeasonId;
 };
 
-export type EraDraftHistoryEntry = ChooseEraHistoryEntry | SpinHistoryEntry;
+export type LockPlayerHistoryEntry = {
+  readonly revision: number;
+  readonly command: "LOCK_PLAYER";
+  readonly payload: {
+    readonly playerTeamSeasonId: string;
+    readonly playerId: string;
+    readonly battingPosition: EraDraftPick["battingPosition"];
+  };
+  readonly resultingPhase: "AWAITING_SPIN" | "XI_COMPLETE";
+};
+
+export type RespinHistoryEntry = {
+  readonly revision: number;
+  readonly command: "RESPIN";
+  readonly payload: Record<string, never>;
+  readonly resultingPhase: "AWAITING_PICK";
+  readonly respinOrdinal: number;
+  readonly discardedTeamSeasonId: TeamSeasonId;
+  readonly triggeringTeamSeasonId: TeamSeasonId;
+  readonly skippedDeadTeamSeasonIds: readonly TeamSeasonId[];
+  readonly replacementTeamSeasonId: TeamSeasonId;
+  readonly resultingRespinStatus: "USED";
+};
+
+export type EraDraftHistoryEntry =
+  | ChooseEraHistoryEntry
+  | SpinHistoryEntry
+  | LockPlayerHistoryEntry
+  | RespinHistoryEntry;
 
 type EraDraftStateCommon = {
   readonly engineVersion: typeof ERA_DRAFT_ENGINE_VERSION;
@@ -90,9 +135,36 @@ export type AwaitingPickState = EraDraftStateCommon & {
   readonly currentSpin: CurrentSpin;
 };
 
-export type EraDraftState = SetupState | AwaitingSpinState | AwaitingPickState;
+export type XiCompleteState = EraDraftStateCommon & {
+  readonly phase: "XI_COMPLETE";
+  readonly eraId: EraId;
+};
 
-export type EraDraftCommandRejectionCode = "INVALID_PHASE" | "UNKNOWN_ERA";
+export type EraDraftState = SetupState | AwaitingSpinState | AwaitingPickState | XiCompleteState;
+
+export type EraDraftSelectionRejectionCode =
+  | "PLAYER_NOT_FOUND"
+  | "PLAYER_NOT_G2_ELIGIBLE"
+  | "PLAYER_NOT_IN_CURRENT_SPIN"
+  | "DUPLICATE_CANONICAL_PLAYER"
+  | "INVALID_POSITION"
+  | "POSITION_OCCUPIED"
+  | "ROSTER_STATUS_UNRESOLVED"
+  | "OVERSEAS_LIMIT"
+  | "FUTURE_XI_IMPOSSIBLE";
+
+export type EraDraftCommandRejectionCode =
+  | "INVALID_PHASE"
+  | "NO_ACTIVE_SPIN"
+  | "UNKNOWN_ERA"
+  | EraDraftSelectionRejectionCode
+  | "RESPIN_UNAVAILABLE"
+  | "RESPIN_REPLACEMENT_UNAVAILABLE";
+
+export type EraDraftSelectionRejection = {
+  readonly code: EraDraftSelectionRejectionCode;
+  readonly message: string;
+};
 
 export type EraDraftCommandRejection = {
   readonly kind: "COMMAND_REJECTED";
@@ -100,6 +172,7 @@ export type EraDraftCommandRejection = {
   readonly message: string;
   readonly command: EraDraftCommand["type"];
   readonly phase: EraDraftState["phase"];
+  readonly reasons?: readonly EraDraftSelectionRejection[];
 };
 
 export type EraDraftTransitionResult =
@@ -149,6 +222,13 @@ export type DraftCandidateIdentityView = {
   readonly teamName: string;
   readonly franchiseId: string;
   readonly franchiseName: string;
+  readonly available: boolean;
+  readonly positions: readonly {
+    readonly battingPosition: EraDraftPick["battingPosition"];
+    readonly fit: "NATURAL" | "ACCEPTABLE" | "OUT_OF_ROLE" | "UNKNOWN";
+    readonly available: boolean;
+    readonly reasons: readonly EraDraftSelectionRejection[];
+  }[];
 };
 
 export type SetupPublicView = {
@@ -181,4 +261,11 @@ export type AwaitingPickPublicView = {
   readonly candidates: readonly DraftCandidateIdentityView[];
 };
 
-export type EraDraftPublicView = SetupPublicView | AwaitingSpinPublicView | AwaitingPickPublicView;
+export type XiCompletePublicView = {
+  readonly phase: "XI_COMPLETE";
+  readonly revision: number;
+  readonly eraId: EraId;
+  readonly eraLabel: string;
+};
+
+export type EraDraftPublicView = SetupPublicView | AwaitingSpinPublicView | AwaitingPickPublicView | XiCompletePublicView;

@@ -13,7 +13,7 @@
     "build:stage7-data": "python3 scripts/build_era_simulation_v2_data.py",
     "simulate:v2": "npm run build && node dist/simulationV2Harness.js",
     "validate:stage7": "npm run build && node dist/simulationV2Harness.js --mode validate --iterations 5000 --output data/processed/era-draft/simulation/v2/validation_report.json",
-    "test": "npm run build && node --test dist/draftClassic.test.js dist/playerRoleContract.test.js dist/playerQualityContract.test.js dist/stage7Data.test.js dist/teamEvaluation.test.js dist/teamEvaluationV2.test.js dist/teamBoostV1.test.js dist/simulationV1.test.js dist/simulationV2.test.js dist/webApp.test.js dist/eraDraftData.test.js dist/eraDraftEngine.test.js",
+    "test": "npm run build && node --test dist/draftClassic.test.js dist/playerRoleContract.test.js dist/playerQualityContract.test.js dist/stage7Data.test.js dist/teamEvaluation.test.js dist/teamEvaluationV2.test.js dist/teamBoostV1.test.js dist/simulationV1.test.js dist/simulationV2.test.js dist/webApp.test.js dist/eraDraftData.test.js dist/eraDraftEngine.test.js dist/eraDraftLegality.test.js dist/eraDraftFeasibility.test.js dist/eraDraftRespin.test.js",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

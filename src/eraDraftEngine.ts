@@ -1,6 +1,11 @@
-import type { EraDraftCatalog } from "./eraDraftData.js";
+import type { EraDraftCatalog, EraDraftTeamSeason } from "./eraDraftData.js";
 import { assertEraDraftState } from "./eraDraftInvariants.js";
-import { selectNormalSpinTeamSeason } from "./eraDraftRng.js";
+import { evaluateSelectionLegality, teamSeasonHasViableSelection } from "./eraDraftLegality.js";
+import {
+  rankRecoveryTeamSeasons,
+  selectNormalSpinTeamSeason,
+  selectRespinTeamSeason,
+} from "./eraDraftRng.js";
 import {
   ERA_DRAFT_ENGINE_VERSION,
   ERA_DRAFT_STATE_SCHEMA_VERSION,
@@ -11,11 +16,23 @@ import {
   type EraDraftCommand,
   type EraDraftCommandRejection,
   type EraDraftHistoryEntry,
+  type EraDraftPick,
+  type EraDraftSelectionRejection,
   type EraDraftState,
   type EraDraftTransitionResult,
+  type LockPlayerCommand,
+  type RespinCommand,
   type SetupState,
   type SpinCommand,
+  type TeamSeasonId,
+  type XiCompleteState,
 } from "./eraDraftTypes.js";
+
+type ResolvedSpin = {
+  readonly selected: EraDraftTeamSeason;
+  readonly triggeringTeamSeasonId: TeamSeasonId;
+  readonly skippedDeadTeamSeasonIds: readonly TeamSeasonId[];
+};
 
 export function createEraDraftGame(input: {
   readonly catalog: EraDraftCatalog;
@@ -46,8 +63,12 @@ export function reduceEraDraft(
   command: EraDraftCommand,
 ): EraDraftTransitionResult {
   assertEraDraftState(catalog, state);
-  if (command.type === "CHOOSE_ERA") return chooseEra(catalog, state, command);
-  return spin(catalog, state, command);
+  switch (command.type) {
+    case "CHOOSE_ERA": return chooseEra(catalog, state, command);
+    case "SPIN": return spin(catalog, state, command);
+    case "LOCK_PLAYER": return lockPlayer(catalog, state, command);
+    case "RESPIN": return respin(catalog, state, command);
+  }
 }
 
 function chooseEra(
@@ -82,32 +103,200 @@ function spin(
 ): EraDraftTransitionResult {
   if (state.phase !== "AWAITING_SPIN") return rejected(state, command, "INVALID_PHASE", "A normal spin requires AWAITING_SPIN.");
   const spinOrdinal = state.rngCounters.normalSpin;
-  const selected = selectNormalSpinTeamSeason(catalog, state.rootSeed, state.eraId, spinOrdinal);
+  const triggering = selectNormalSpinTeamSeason(catalog, state.rootSeed, state.eraId, spinOrdinal);
+  const resolved = resolveViableSpin(catalog, state, triggering, `normal:${spinOrdinal}:${triggering.teamSeasonId}`);
+  if (!resolved) {
+    throw new EraDraftInvariantError("NO_VIABLE_TEAM_SEASON", `No viable team-season remains in ${state.eraId}.`);
+  }
   const revision = state.revision + 1;
   const event = freezeState({
     revision,
     command: "SPIN",
     payload: {},
     resultingPhase: "AWAITING_PICK",
-    selectedTeamSeasonId: selected.teamSeasonId,
+    spinOrdinal,
+    triggeringTeamSeasonId: resolved.triggeringTeamSeasonId,
+    skippedDeadTeamSeasonIds: resolved.skippedDeadTeamSeasonIds,
+    selectedTeamSeasonId: resolved.selected.teamSeasonId,
   } satisfies EraDraftHistoryEntry);
+  const recovered = resolved.skippedDeadTeamSeasonIds.length > 0;
   const next = freezeState({
     ...state,
     phase: "AWAITING_PICK",
     revision,
-    rngCounters: { ...state.rngCounters, normalSpin: spinOrdinal + 1 },
-    history: [...state.history, event],
-    currentSpin: {
-      spinOrdinal,
-      origin: "NORMAL",
-      teamSeasonId: selected.teamSeasonId,
-      seasonId: selected.seasonId,
-      teamId: selected.teamId,
-      franchiseId: selected.franchiseId,
+    rngCounters: {
+      ...state.rngCounters,
+      normalSpin: spinOrdinal + 1,
+      deadSpinRecovery: state.rngCounters.deadSpinRecovery + (recovered ? 1 : 0),
     },
+    history: [...state.history, event],
+    currentSpin: currentSpin(resolved, "NORMAL", spinOrdinal),
   } satisfies AwaitingPickState);
   assertEraDraftState(catalog, next);
   return { ok: true, state: next, event };
+}
+
+function lockPlayer(
+  catalog: EraDraftCatalog,
+  state: EraDraftState,
+  command: LockPlayerCommand,
+): EraDraftTransitionResult {
+  if (state.phase !== "AWAITING_PICK") {
+    return rejected(state, command, "INVALID_PHASE", "A player can only be locked from AWAITING_PICK.");
+  }
+  if (!state.currentSpin) return rejected(state, command, "NO_ACTIVE_SPIN", "No active spin is available.");
+  const legality = evaluateSelectionLegality(catalog, {
+    eraId: state.eraId,
+    picks: state.picks,
+    activeTeamSeasonId: state.currentSpin.teamSeasonId,
+  }, command);
+  if (!legality.available) {
+    const primary = legality.reasons[0]!;
+    return rejected(state, command, primary.code, primary.message, legality.reasons);
+  }
+  const player = legality.player!;
+  const battingPosition = command.battingPosition as EraDraftPick["battingPosition"];
+  const pick = freezeState({
+    pickNumber: state.picks.length + 1,
+    playerTeamSeasonId: player.playerTeamSeasonId,
+    playerId: player.playerId,
+    seasonId: player.seasonId,
+    teamId: player.teamId,
+    franchiseId: player.franchiseId,
+    teamSeasonId: player.teamSeasonId,
+    battingPosition,
+  } satisfies EraDraftPick);
+  const picks = freezeState([...state.picks, pick]);
+  const resultingPhase = picks.length === 11 ? "XI_COMPLETE" : "AWAITING_SPIN";
+  const revision = state.revision + 1;
+  const event = freezeState({
+    revision,
+    command: "LOCK_PLAYER",
+    payload: { playerTeamSeasonId: player.playerTeamSeasonId, playerId: player.playerId, battingPosition },
+    resultingPhase,
+  } satisfies EraDraftHistoryEntry);
+  const { currentSpin: _clearedSpin, ...withoutSpin } = state;
+  const next = freezeState({
+    ...withoutSpin,
+    phase: resultingPhase,
+    revision,
+    picks,
+    history: [...state.history, event],
+  } satisfies AwaitingSpinState | XiCompleteState);
+  assertEraDraftState(catalog, next);
+  return { ok: true, state: next, event };
+}
+
+function respin(
+  catalog: EraDraftCatalog,
+  state: EraDraftState,
+  command: RespinCommand,
+): EraDraftTransitionResult {
+  if (state.phase !== "AWAITING_PICK") return rejected(state, command, "INVALID_PHASE", "A respin requires AWAITING_PICK.");
+  if (state.respin.status !== "AVAILABLE") return rejected(state, command, "RESPIN_UNAVAILABLE", "The voluntary respin has already been used.");
+  const respinOrdinal = state.rngCounters.voluntaryRespin;
+  const discardedTeamSeasonId = state.currentSpin.teamSeasonId;
+  const triggering = selectRespinTeamSeason(catalog, state.rootSeed, state.eraId, respinOrdinal, discardedTeamSeasonId);
+  if (!triggering) {
+    return rejected(state, command, "RESPIN_REPLACEMENT_UNAVAILABLE", "No replacement team-season is available for this respin.");
+  }
+  const excluded = new Set<string>([discardedTeamSeasonId]);
+  const resolved = resolveViableSpin(
+    catalog,
+    state,
+    triggering,
+    `respin:${respinOrdinal}:${discardedTeamSeasonId}:${triggering.teamSeasonId}`,
+    excluded,
+  );
+  if (!resolved) {
+    return rejected(state, command, "RESPIN_REPLACEMENT_UNAVAILABLE", "No viable replacement exists outside the discarded team-season.");
+  }
+  const revision = state.revision + 1;
+  const event = freezeState({
+    revision,
+    command: "RESPIN",
+    payload: {},
+    resultingPhase: "AWAITING_PICK",
+    respinOrdinal,
+    discardedTeamSeasonId,
+    triggeringTeamSeasonId: resolved.triggeringTeamSeasonId,
+    skippedDeadTeamSeasonIds: resolved.skippedDeadTeamSeasonIds,
+    replacementTeamSeasonId: resolved.selected.teamSeasonId,
+    resultingRespinStatus: "USED",
+  } satisfies EraDraftHistoryEntry);
+  const recovered = resolved.skippedDeadTeamSeasonIds.length > 0;
+  const next = freezeState({
+    ...state,
+    revision,
+    rngCounters: {
+      ...state.rngCounters,
+      voluntaryRespin: respinOrdinal + 1,
+      deadSpinRecovery: state.rngCounters.deadSpinRecovery + (recovered ? 1 : 0),
+    },
+    respin: { status: "USED" },
+    history: [...state.history, event],
+    currentSpin: currentSpin(resolved, "RESPIN", respinOrdinal),
+  } satisfies AwaitingPickState);
+  assertEraDraftState(catalog, next);
+  return { ok: true, state: next, event };
+}
+
+function resolveViableSpin(
+  catalog: EraDraftCatalog,
+  state: AwaitingSpinState | AwaitingPickState,
+  triggering: EraDraftTeamSeason,
+  triggerContext: string,
+  excludedTeamSeasonIds: ReadonlySet<string> = new Set(),
+): ResolvedSpin | undefined {
+  if (
+    !excludedTeamSeasonIds.has(triggering.teamSeasonId)
+    && teamSeasonHasViableSelection(catalog, state.eraId, state.picks, triggering.teamSeasonId)
+  ) {
+    return freezeState({ selected: triggering, triggeringTeamSeasonId: triggering.teamSeasonId, skippedDeadTeamSeasonIds: [] });
+  }
+
+  const skipped: TeamSeasonId[] = excludedTeamSeasonIds.has(triggering.teamSeasonId) ? [] : [triggering.teamSeasonId];
+  const excluded = new Set(excludedTeamSeasonIds);
+  excluded.add(triggering.teamSeasonId);
+  const ranked = rankRecoveryTeamSeasons(
+    catalog,
+    state.rootSeed,
+    state.eraId,
+    state.rngCounters.deadSpinRecovery,
+    triggerContext,
+    excluded,
+  );
+  for (const candidate of ranked) {
+    if (teamSeasonHasViableSelection(catalog, state.eraId, state.picks, candidate.teamSeasonId)) {
+      return freezeState({
+        selected: candidate,
+        triggeringTeamSeasonId: triggering.teamSeasonId,
+        skippedDeadTeamSeasonIds: skipped,
+      });
+    }
+    skipped.push(candidate.teamSeasonId);
+  }
+  return undefined;
+}
+
+function currentSpin(
+  resolved: ResolvedSpin,
+  origin: "NORMAL" | "RESPIN",
+  spinOrdinal: number,
+): AwaitingPickState["currentSpin"] {
+  const recovered = resolved.skippedDeadTeamSeasonIds.length > 0;
+  return freezeState({
+    spinOrdinal,
+    origin,
+    teamSeasonId: resolved.selected.teamSeasonId,
+    seasonId: resolved.selected.seasonId,
+    teamId: resolved.selected.teamId,
+    franchiseId: resolved.selected.franchiseId,
+    recovery: recovered ? {
+      triggeringTeamSeasonId: resolved.triggeringTeamSeasonId,
+      skippedDeadTeamSeasonIds: resolved.skippedDeadTeamSeasonIds,
+    } : null,
+  });
 }
 
 function rejected(
@@ -115,11 +304,19 @@ function rejected(
   command: EraDraftCommand,
   code: EraDraftCommandRejection["code"],
   message: string,
+  reasons?: readonly EraDraftSelectionRejection[],
 ): EraDraftTransitionResult {
   return {
     ok: false,
     state,
-    error: freezeState({ kind: "COMMAND_REJECTED", code, message, command: command.type, phase: state.phase }),
+    error: freezeState({
+      kind: "COMMAND_REJECTED",
+      code,
+      message,
+      command: command.type,
+      phase: state.phase,
+      ...(reasons ? { reasons } : {}),
+    }),
   };
 }
 
