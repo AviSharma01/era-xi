@@ -3,6 +3,7 @@ import test from "node:test";
 
 import { loadEraDraftCatalog } from "./eraDraftData.js";
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
+import { projectEraDraftOpponentComposition } from "./eraDraftOpponentComposition.js";
 import { accepted, revealEraXi, wrapEraDraftCatalog } from "./eraDraftPhase4TestSupport.js";
 import { deriveEraDraftSimulationSeeds } from "./eraDraftSimulation.js";
 import { selectNormalSpinTeamSeason } from "./eraDraftRng.js";
@@ -34,6 +35,8 @@ test("SIMULATE_SEASON is legal only from REVEALED and Foundation reaches GAME_CO
   });
   assert.equal(first.season.league.teams.length, 8);
   assert.equal(first.season.league.teams.filter((team) => team.teamId !== "user").length, 7);
+  assert.deepEqual(first.season.opponentComposition.fullPoolProfileIds, catalog.getFoundationOpponents().map((profile) => profile.candidateId));
+  assert.deepEqual(first.season.opponentComposition.shortlistedProfileIds, first.season.opponentComposition.fullPoolProfileIds);
   assert.equal(catalog.getFoundationOpponents().length, 8);
   const expectedComposition = selectLeagueOpponentsV2(
     first.season.seedBundle.opponentCompositionSeed,
@@ -59,33 +62,39 @@ test("SIMULATE_SEASON is legal only from REVEALED and Foundation reaches GAME_CO
   assert.equal(repeated.state, first);
 });
 
-test("later eras reject unavailable simulation content without any state change", () => {
+test("all later eras deterministically reach GAME_COMPLETE through the real reducer path", () => {
   const laterEras: readonly EraId[] = [
     "era-expansion", "era-transition", "era-modern-pre-impact", "era-impact",
   ];
   for (const eraId of laterEras) {
-    const revealed = revealEraXi(catalog, `phase-4-unavailable-${eraId}`, eraId);
-    const snapshot = JSON.stringify(revealed);
-    const result = reduceEraDraft(catalog, revealed, { type: "SIMULATE_SEASON" });
-    assert.equal(result.ok, false);
-    if (result.ok) continue;
-    assert.equal(result.error.code, "SIMULATION_CONTENT_UNAVAILABLE");
-    assert.deepEqual(result.error.context, { eraId, missingContent: "CURATED_OPPONENT_PROFILES" });
-    assert.equal(result.state, revealed);
-    assert.equal(JSON.stringify(result.state), snapshot);
-    assert.equal(result.state.revision, revealed.revision);
-    assert.deepEqual(result.state.rngCounters, revealed.rngCounters);
-    assert.deepEqual(result.state.history, revealed.history);
+    const revealed = revealEraXi(catalog, `stage9a-all-era-${eraId}`, eraId);
+    const first = accepted(reduceEraDraft(catalog, revealed, { type: "SIMULATE_SEASON" }));
+    const second = accepted(reduceEraDraft(catalog, revealed, { type: "SIMULATE_SEASON" }));
+    assert.deepEqual(second, first);
+    assert.equal(first.phase, "GAME_COMPLETE");
+    if (first.phase !== "GAME_COMPLETE") continue;
+    assert.equal(first.eraId, eraId);
+    const view = projectEraDraftOpponentComposition(first.season);
+    assert.equal(view.fullPoolProfileIds.length, catalog.getOpponentProfiles(eraId).length);
+    assert.equal(view.shortlistedProfileIds.length, 8);
+    assert.equal(new Set(view.shortlistedProfileIds).size, 8);
+    assert.equal(view.actualOpponentProfileIds.length, 7);
+    assert.ok(view.shortlistedProfileIds.includes(view.omittedShortlistedProfileId));
+    assert.ok(view.actualOpponentProfileIds.every((id) => view.shortlistedProfileIds.includes(id)));
+    assert.equal(first.season.league.leagueMatches.length, 56);
+    assert.ok(first.season.league.standings.every((row) => row.played === 14));
+    assert.equal(first.season.league.playoffs.length, 4);
+    assert.ok(first.season.league.teams.some((team) => team.teamId === first.season.league.championTeamId));
   }
 });
 
-test("missing required Foundation content is a typed atomic system failure", () => {
+test("missing required era content is a typed atomic system failure", () => {
   const revealed = revealEraXi(catalog, "phase-4-corrupt-content", "era-foundation");
-  const broken = wrapEraDraftCatalog(catalog, { getFoundationOpponents: () => [] });
+  const broken = wrapEraDraftCatalog(catalog, { getOpponentProfiles: () => [] });
   const snapshot = JSON.stringify(revealed);
   assert.throws(
     () => reduceEraDraft(broken, revealed, { type: "SIMULATE_SEASON" }),
-    (error) => error instanceof EraDraftDataError && error.code === "MISSING_FOUNDATION_SIMULATION_CONTENT",
+    (error) => error instanceof EraDraftDataError && error.code === "MISSING_ERA_SIMULATION_CONTENT",
   );
   assert.equal(JSON.stringify(revealed), snapshot);
 });

@@ -95,11 +95,12 @@ test("all 41 Phase 2 strengths agree with the runtime-compatible frozen Team Eva
   }
 });
 
-test("Phase 2 files do not enable later-era Stage 8 simulation", () => {
+test("Phase 2 frozen profiles are integrated as later-era runtime content", () => {
   const catalog = loadEraDraftCatalog(root);
-  for (const eraId of ["era-expansion", "era-transition", "era-modern-pre-impact", "era-impact"] as const) {
-    assert.deepEqual(catalog.getSimulationContent(eraId), { status: "UNAVAILABLE", opponentCount: 0 });
-    assert.throws(() => loadEraOpponentProfilesV2(eraId, root), /No curated opponent content is frozen/);
+  const expected = { "era-expansion": 11, "era-transition": 10, "era-modern-pre-impact": 10, "era-impact": 10 } as const;
+  for (const eraId of Object.keys(expected) as (keyof typeof expected)[]) {
+    assert.deepEqual(catalog.getSimulationContent(eraId), { status: "AVAILABLE", opponentCount: expected[eraId] });
+    assert.deepEqual(catalog.getOpponentProfiles(eraId), loadEraOpponentProfilesV2(eraId, root));
   }
 });
 

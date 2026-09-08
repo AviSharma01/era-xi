@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { canonicalSha256 } from "./eraDraftCanonical.js";
+import { FOUNDATION_SIMULATION_COMPATIBILITY_FINGERPRINT } from "./eraDraftCompatibility.js";
 import { loadEraDraftCatalog } from "./eraDraftData.js";
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
 import { evaluateSelectionLegality, getOpenBattingPositions } from "./eraDraftLegality.js";
@@ -13,6 +14,7 @@ import {
 import { accepted, draftEraXi, wrapEraDraftCatalog } from "./eraDraftPhase4TestSupport.js";
 import { selectNormalSpinTeamSeason } from "./eraDraftRng.js";
 import { EraDraftDataError, EraDraftInvariantError, type EraDraftState } from "./eraDraftTypes.js";
+import { ERA_IDS } from "./teamEvaluationV2.js";
 
 const catalog = loadEraDraftCatalog();
 
@@ -153,6 +155,48 @@ test("restore fails closed on malformed shapes, versions, drift, and invalid aut
     row.seasonSnapshot.result.league.championTeamId = "tampered";
     row.seasonSnapshot.resultHash = canonicalSha256(row.seasonSnapshot.result);
   }, "INVALID_CHAMPION");
+});
+
+test("GAME_COMPLETE persistence round-trips and rejects composition tampering in every era", () => {
+  for (const eraId of ERA_IDS) {
+    const xi = draftEraXi(catalog, `stage9a-persistence:${eraId}`, eraId);
+    const revealed = accepted(reduceEraDraft(catalog, xi, { type: "REVEAL_XI" }));
+    const complete = accepted(reduceEraDraft(catalog, revealed, { type: "SIMULATE_SEASON" }));
+    assert.equal(complete.phase, "GAME_COMPLETE");
+    if (complete.phase !== "GAME_COMPLETE") continue;
+    const serialized = serializeEraDraftState(complete);
+    const restored = restoreEraDraftState(catalog, serialized);
+    assert.deepEqual(restored, complete);
+    assert.equal(canonicalEraDraftStateHash(restored), canonicalEraDraftStateHash(complete));
+    assert.deepEqual(
+      (restored as typeof complete).season.opponentComposition,
+      complete.season.opponentComposition,
+    );
+
+    for (const mutate of [
+      (row: any) => { row.seasonSnapshot.result.opponentComposition.fullPoolProfileIds[0] = "opponent:tampered:full"; },
+      (row: any) => { row.seasonSnapshot.result.opponentComposition.shortlistedProfileIds[0] = "opponent:tampered:shortlist"; },
+      (row: any) => { row.seasonSnapshot.result.opponentComposition.shortlistedProfileIds.reverse(); },
+      (row: any) => { row.seasonSnapshot.result.opponentComposition.eraId = eraId === "era-impact" ? "era-foundation" : "era-impact"; },
+    ]) {
+      corruptAndReject(complete, (row) => {
+        mutate(row);
+        row.seasonSnapshot.resultHash = canonicalSha256(row.seasonSnapshot.result);
+      }, "OPPONENT_COMPOSITION_PROVENANCE_MISMATCH");
+    }
+    corruptAndReject(complete, (row) => {
+      row.seasonSnapshot.result.league.omittedOpponentTeamId = "opponent:tampered:omitted";
+    }, "TAMPERED_SIMULATION_RESULT");
+  }
+});
+
+test("terminal restore uses the current catalog fingerprint even for Foundation compatibility seeds", () => {
+  const xi = draftEraXi(catalog, "stage9a-foundation-current-drift", "era-foundation");
+  const revealed = accepted(reduceEraDraft(catalog, xi, { type: "REVEAL_XI" }));
+  const complete = accepted(reduceEraDraft(catalog, revealed, { type: "SIMULATE_SEASON" }));
+  const row = JSON.parse(serializeEraDraftState(complete));
+  row.catalogFingerprint = FOUNDATION_SIMULATION_COMPATIBILITY_FINGERPRINT;
+  assertDataFailure(() => restoreEraDraftState(catalog, JSON.stringify(row)), "CATALOG_FINGERPRINT_MISMATCH");
 });
 
 function lockFirstLegal(activeCatalog: typeof catalog, state: EraDraftState): EraDraftState {

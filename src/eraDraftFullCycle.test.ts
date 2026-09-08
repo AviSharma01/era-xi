@@ -28,12 +28,7 @@ test("deterministic headless validation completes all eras and Foundation full c
     assert.equal(result.deterministic.perEra[eraId].completionRate, 1);
     assert.equal(result.deterministic.perEra[eraId].deadEnds, 0);
   }
-  for (const eraId of ERA_IDS.slice(1)) {
-    assert.equal(
-      result.deterministic.laterEraExpectedSimulationRejections[eraId],
-      result.deterministic.perEra[eraId].completed,
-    );
-  }
+  assert.equal(result.deterministic.acceptance.allEraSimulationContentAvailable, true);
 });
 
 test("same validation seed produces byte-identical non-timing reports", () => {

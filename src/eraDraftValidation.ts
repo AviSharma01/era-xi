@@ -100,7 +100,6 @@ type ValidationCounters = {
   illegalCompletedXis: number;
   nondeterministicResults: number;
   unexpectedDeadEnds: number;
-  laterEraExpectedSimulationRejections: Record<string, number>;
   duplicatePressureAttempts: number;
   overseasPressureAttempts: number;
   keeperFeasibilityPressureAttempts: number;
@@ -169,7 +168,6 @@ export function runEraDraftValidation(options: EraDraftValidationOptions) {
     illegalCompletedXis: 0,
     nondeterministicResults: 0,
     unexpectedDeadEnds: 0,
-    laterEraExpectedSimulationRejections: {},
     duplicatePressureAttempts: 0,
     overseasPressureAttempts: 0,
     keeperFeasibilityPressureAttempts: 0,
@@ -244,7 +242,6 @@ export function runEraDraftValidation(options: EraDraftValidationOptions) {
     illegalCompletedXiCount: counters.illegalCompletedXis,
     nondeterministicResultCount: counters.nondeterministicResults,
     unexpectedDeadEndCount: counters.unexpectedDeadEnds,
-    laterEraExpectedSimulationRejections: sortedRecord(counters.laterEraExpectedSimulationRejections),
     foundation: summarizeFoundation(foundation),
     acceptance: {
       passed: acceptancePassed(counters, eras, options),
@@ -257,8 +254,7 @@ export function runEraDraftValidation(options: EraDraftValidationOptions) {
       nondeterministicOutputs: counters.nondeterministicResults === 0,
       unexpectedDeadEnds: counters.unexpectedDeadEnds === 0,
       legalDraftCompletionRate: round(totalCompleted(eras) / totalCycles),
-      laterEraSimulationRejectionsExact: ERA_IDS.slice(1).every((eraId) =>
-        counters.laterEraExpectedSimulationRejections[eraId] === eras[eraId].completed),
+      allEraSimulationContentAvailable: ERA_IDS.every((eraId) => catalog.getSimulationContent(eraId).status === "AVAILABLE"),
       foundationStructuresValid: foundation.cycles === options.foundationCycles,
     },
   };
@@ -306,10 +302,6 @@ export function runEraDraftValidation(options: EraDraftValidationOptions) {
         replayCompleted(catalog, complete, counters);
       } else {
         replayCompleted(catalog, reveal, counters);
-        if (eraId !== "era-foundation") {
-          outcome.expectRejected({ type: "SIMULATE_SEASON" }, "SIMULATION_CONTENT_UNAVAILABLE");
-          increment(counters.laterEraExpectedSimulationRejections, eraId);
-        }
       }
     } catch (error) {
       eras[eraId].deadEnds += 1;
@@ -879,6 +871,7 @@ function withDeadTeamSeasons(base: EraDraftCatalog, dead: ReadonlySet<string>): 
     getKeeperCapablePlayerIds: (id) => base.getKeeperCapablePlayerIds(id),
     getSimulationContent: (id) => base.getSimulationContent(id),
     getEnvironment: (id) => base.getEnvironment(id),
+    getOpponentProfiles: (id) => base.getOpponentProfiles(id),
     getFoundationOpponents: () => base.getFoundationOpponents(),
   };
 }
@@ -1006,8 +999,7 @@ function acceptancePassed(counters: ValidationCounters, eras: Record<EraId, EraA
     && counters.replayEventMismatches === 0 && counters.replayFinalHashMismatches === 0
     && counters.serializationFailures === 0 && counters.restoreDivergences === 0
     && counters.nondeterministicResults === 0 && counters.unexpectedDeadEnds === 0
-    && totalCompleted(eras) === total
-    && ERA_IDS.slice(1).every((eraId) => counters.laterEraExpectedSimulationRejections[eraId] === eras[eraId].completed);
+    && totalCompleted(eras) === total;
 }
 
 function increment(record: Record<string, number>, key: string, amount = 1): void {

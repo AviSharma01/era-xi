@@ -287,17 +287,6 @@ function simulateSeason(
   if (state.phase !== "REVEALED") {
     return rejected(state, command, "INVALID_PHASE", "A season can only be simulated from REVEALED.");
   }
-  if (state.eraId !== "era-foundation") {
-    return rejected(
-      state,
-      command,
-      "SIMULATION_CONTENT_UNAVAILABLE",
-      `Curated opponent content is unavailable for ${state.eraId}.`,
-      undefined,
-      { eraId: state.eraId, missingContent: "CURATED_OPPONENT_PROFILES" },
-    );
-  }
-
   const season = simulateEraDraftSeason(catalog, state);
   const revision = state.revision + 1;
   const event = freezeState({
@@ -309,7 +298,7 @@ function simulateSeason(
   const next = freezeState({
     ...state,
     phase: "GAME_COMPLETE",
-    eraId: "era-foundation",
+    eraId: state.eraId,
     revision,
     history: [...state.history, event],
     season,

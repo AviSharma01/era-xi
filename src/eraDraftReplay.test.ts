@@ -13,6 +13,7 @@ import { accepted, draftEraXi, wrapEraDraftCatalog } from "./eraDraftPhase4TestS
 import { replayEraDraftGame, replayEraDraftState } from "./eraDraftReplay.js";
 import { selectNormalSpinTeamSeason } from "./eraDraftRng.js";
 import { EraDraftDataError, type AwaitingPickState, type EraDraftState } from "./eraDraftTypes.js";
+import { ERA_IDS } from "./teamEvaluationV2.js";
 
 const catalog = loadEraDraftCatalog();
 
@@ -68,6 +69,21 @@ test("complete-game original, restored, and replayed canonical hashes are identi
   assert.equal(canonicalEraDraftStateHash(replayed), hash);
   assert.equal(serializeEraDraftState(restored), serializeEraDraftState(original));
   assert.equal(serializeEraDraftState(replayed), serializeEraDraftState(original));
+});
+
+test("accepted-command replay recomputes identical GAME_COMPLETE results for every era", () => {
+  for (const eraId of ERA_IDS) {
+    const xi = draftEraXi(catalog, `stage9a-replay:${eraId}`, eraId);
+    const revealed = accepted(reduceEraDraft(catalog, xi, { type: "REVEAL_XI" }));
+    const original = accepted(reduceEraDraft(catalog, revealed, { type: "SIMULATE_SEASON" }));
+    const replayed = replayEraDraftState(catalog, original);
+    assert.deepEqual(replayed, original, eraId);
+    assert.equal(canonicalEraDraftStateHash(replayed), canonicalEraDraftStateHash(original), eraId);
+    if (original.phase === "GAME_COMPLETE" && replayed.phase === "GAME_COMPLETE") {
+      assert.deepEqual(replayed.season.opponentComposition, original.season.opponentComposition, eraId);
+      assert.deepEqual(replayed.season.league, original.season.league, eraId);
+    }
+  }
 });
 
 test("rejected commands never enter replay history", () => {

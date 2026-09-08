@@ -177,6 +177,7 @@ function makeCatalog(definitions: readonly PlayerDefinition[], metadataMarker = 
     getKeeperCapablePlayerIds: (eraId) => eraId === "era-foundation" ? keepers : [],
     getSimulationContent: () => ({ status: "UNAVAILABLE", opponentCount: 0 }),
     getEnvironment: () => undefined,
+    getOpponentProfiles: () => [],
     getFoundationOpponents: () => [],
   };
 }

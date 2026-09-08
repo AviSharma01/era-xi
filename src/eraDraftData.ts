@@ -2,6 +2,8 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
+import { canonicalJson } from "./eraDraftCanonical.js";
+
 import {
   parsePlayerQualityConsumer,
   PLAYER_QUALITY_CONSUMER_SCHEMA_VERSION,
@@ -15,15 +17,19 @@ import {
   type PlayerRoleConsumer,
 } from "./playerRoleContract.js";
 import {
+  EXPECTED_OPPONENT_PROFILE_COUNTS,
+  loadAllEraOpponentProfilesV2,
   loadEraEnvironmentsV2,
-  loadFoundationOpponentProfilesV2,
+  type EraOpponentProfileV2,
   type FoundationOpponentProfileV2,
 } from "./stage7Data.js";
 import {
   ERA_IDS,
+  evaluateCompletedEraXi,
   TEAM_EVALUATION_V2_VERSION,
   type EraDefinitionV2,
   type EraId,
+  type EraXiPlayerInput,
   type IplRosterStatus,
 } from "./teamEvaluationV2.js";
 import { SIMULATION_V2_VERSION, type EraEnvironmentV2 } from "./simulationV2.js";
@@ -55,9 +61,22 @@ const PATHS = {
   rosterManifest: "data/metadata/ipl/country_overseas/v1/metadata_manifest.json",
   roster: "data/metadata/ipl/country_overseas/v1/player_team_season_metadata.jsonl",
   simulationManifest: "data/processed/era-draft/simulation/v2/manifest.json",
+  phase2Manifest: "data/processed/era-draft/simulation/v2/stage9a_phase2_manifest.json",
   environments: "data/processed/era-draft/simulation/v2/era_environments.json",
   foundationOpponents: "data/processed/era-draft/simulation/v2/foundation_opponents.json",
+  expansionOpponents: "data/processed/era-draft/simulation/v2/expansion_opponents.json",
+  transitionOpponents: "data/processed/era-draft/simulation/v2/transition_opponents.json",
+  modernPreImpactOpponents: "data/processed/era-draft/simulation/v2/modern_pre_impact_opponents.json",
+  impactOpponents: "data/processed/era-draft/simulation/v2/impact_opponents.json",
 } as const;
+
+const OPPONENT_PATHS: Readonly<Record<EraId, string>> = {
+  "era-foundation": PATHS.foundationOpponents,
+  "era-expansion": PATHS.expansionOpponents,
+  "era-transition": PATHS.transitionOpponents,
+  "era-modern-pre-impact": PATHS.modernPreImpactOpponents,
+  "era-impact": PATHS.impactOpponents,
+};
 
 export type EraDraftEra = EraDefinitionV2 & {
   readonly label: string;
@@ -116,7 +135,7 @@ export type EraDraftTeamSeason = {
 };
 
 export type SimulationContentAvailability =
-  | { readonly status: "AVAILABLE"; readonly opponentCount: 8 }
+  | { readonly status: "AVAILABLE"; readonly opponentCount: number }
   | { readonly status: "UNAVAILABLE"; readonly opponentCount: 0 };
 
 export type EraDraftCatalogDiagnostics = {
@@ -125,6 +144,7 @@ export type EraDraftCatalogDiagnostics = {
   readonly eras: number;
   readonly environments: number;
   readonly foundationOpponents: number;
+  readonly opponentsByEra: Readonly<Record<EraId, number>>;
   readonly unknownG2RosterStatuses: number;
   readonly teamSeasonsByEra: Readonly<Record<EraId, number>>;
   readonly simulationContentByEra: Readonly<Record<EraId, SimulationContentAvailability>>;
@@ -147,6 +167,7 @@ export interface EraDraftCatalog {
   getKeeperCapablePlayerIds(eraId: EraId): readonly string[];
   getSimulationContent(eraId: EraId): SimulationContentAvailability;
   getEnvironment(eraId: EraId): EraEnvironmentV2 | undefined;
+  getOpponentProfiles(eraId: EraId): readonly EraOpponentProfileV2[];
   getFoundationOpponents(): readonly FoundationOpponentProfileV2[];
 }
 
@@ -192,6 +213,7 @@ export type EraDraftCatalogDocuments = {
   readonly qualities: readonly PlayerQualityConsumer[];
   readonly roster: readonly EraDraftRosterRow[];
   readonly environments: readonly EraEnvironmentV2[];
+  readonly opponentProfiles: readonly EraOpponentProfileV2[];
   readonly foundationOpponents: readonly FoundationOpponentProfileV2[];
   readonly opponentContentEraIds: readonly string[];
 };
@@ -247,9 +269,9 @@ export function loadEraDraftCatalogDocuments(root = process.cwd()): EraDraftCata
 
   const simulationManifest = jsonDocument(source(PATHS.simulationManifest), "simulation manifest");
   requireVersion(simulationManifest, "schemaVersion", STAGE7_DATA_VERSION, "simulation manifest");
-  const opponentContentEraIds = stringArray(simulationManifest.opponentContentEraIds, "simulation manifest opponentContentEraIds");
-  if (opponentContentEraIds.length !== 1 || opponentContentEraIds[0] !== "era-foundation") {
-    throw new EraDraftDataError("UNSUPPORTED_SIMULATION_CONTENT", "Stage 8 expects only Foundation opponent content.");
+  const stage7OpponentContentEraIds = stringArray(simulationManifest.opponentContentEraIds, "simulation manifest opponentContentEraIds");
+  if (stage7OpponentContentEraIds.length !== 1 || stage7OpponentContentEraIds[0] !== "era-foundation") {
+    throw new EraDraftDataError("INVALID_STAGE7_MANIFEST", "The frozen Stage 7 manifest must describe only Foundation opponent content.");
   }
 
   source(PATHS.environments);
@@ -261,19 +283,36 @@ export function loadEraDraftCatalogDocuments(root = process.cwd()): EraDraftCata
     }
   }
 
+  const phase2Manifest = jsonDocument(source(PATHS.phase2Manifest), "Stage 9A Phase 2 manifest");
+  requireVersion(phase2Manifest, "schemaVersion", "ipl-era-opponent-content-phase2-manifest/v1", "Stage 9A Phase 2 manifest");
+  requireVersion(phase2Manifest, "contentVersion", "ipl-era-opponent-content-phase2/v1", "Stage 9A Phase 2 manifest");
+  if (phase2Manifest.totalLaterEraProfiles !== 41 || phase2Manifest.totalProfilesIncludingFoundation !== 49
+    || phase2Manifest.unresolvedReviewCount !== 0) {
+    throw new EraDraftDataError("INVALID_PHASE2_MANIFEST", "Stage 9A Phase 2 manifest does not describe the frozen 41-profile review result.");
+  }
+  if (phase2Manifest.foundationOpponentArtifactSha256 !== source(PATHS.foundationOpponents).sha256) {
+    throw new EraDraftDataError("FOUNDATION_ARTIFACT_MISMATCH", "The Phase 2 manifest does not reference the frozen Foundation artifact.");
+  }
+  for (const eraId of ERA_IDS.filter((value) => value !== "era-foundation")) {
+    const path = OPPONENT_PATHS[eraId];
+    verifyListedFile(source(path), phase2Manifest.artifacts, path.split("/").at(-1)!, "Stage 9A Phase 2 manifest");
+  }
+
   const erasDoc = jsonDocument(source(PATHS.eras), "era registry");
   const seasonsDoc = jsonDocument(source(PATHS.seasons), "season registry");
   const teamsDoc = jsonDocument(source(PATHS.teams), "team registry");
   const franchisesDoc = jsonDocument(source(PATHS.franchises), "franchise registry");
 
   let environments: EraEnvironmentV2[];
-  let foundationOpponents: FoundationOpponentProfileV2[];
+  let opponentProfilesByEra: Readonly<Record<EraId, readonly EraOpponentProfileV2[]>>;
   try {
     environments = loadEraEnvironmentsV2(root);
-    foundationOpponents = loadFoundationOpponentProfilesV2(root);
+    opponentProfilesByEra = loadAllEraOpponentProfilesV2(root);
   } catch (error) {
-    throw new EraDraftDataError("INVALID_STAGE7_CONTENT", "Stage 7 environments or Foundation opponents are invalid.", {}, { cause: error });
+    throw new EraDraftDataError("INVALID_SIMULATION_CONTENT", "Era environments or frozen all-era opponents are invalid.", {}, { cause: error });
   }
+  const opponentProfiles = ERA_IDS.flatMap((eraId) => opponentProfilesByEra[eraId]);
+  const foundationOpponents = opponentProfilesByEra["era-foundation"] as readonly FoundationOpponentProfileV2[];
 
   const fingerprintSources = [...loaded.values()]
     .map(({ relativePath, sha256: hash }) => ({ relativePath, sha256: hash }))
@@ -312,8 +351,9 @@ export function loadEraDraftCatalogDocuments(root = process.cwd()): EraDraftCata
     qualities: jsonLines(source(PATHS.qualities), (value, label) => parsePlayerQualityConsumer(value, label)),
     roster: jsonLines(source(PATHS.roster), parseRoster),
     environments,
+    opponentProfiles,
     foundationOpponents,
-    opponentContentEraIds,
+    opponentContentEraIds: [...ERA_IDS],
   });
 }
 
@@ -454,25 +494,48 @@ export function buildEraDraftCatalog(documents: EraDraftCatalogDocuments): EraDr
     const era = required(eraById, eraId, "era");
     assertExactSet([...environment.seasonIds], [...era.seasonIds], `${eraId} environment seasons`);
   }
-  if (documents.foundationOpponents.length !== 8) {
-    throw new EraDraftDataError("FOUNDATION_OPPONENT_COUNT_MISMATCH", `Expected 8 Foundation opponents, found ${documents.foundationOpponents.length}.`);
+  assertExactSet(documents.opponentContentEraIds, ERA_IDS, "opponent-content era IDs");
+  const opponentsByEra = new Map<EraId, EraOpponentProfileV2[]>(ERA_IDS.map((eraId) => [eraId, []]));
+  const opponentById = uniqueMap(documents.opponentProfiles, (item) => item.candidateId, "opponent candidate ID");
+  for (const profile of documents.opponentProfiles) {
+    validateOpponentProfile(profile, eraById, teamById, franchiseById, playerById);
+    opponentsByEra.get(profile.eraId)!.push(profile);
   }
-  if (documents.opponentContentEraIds.length !== 1 || documents.opponentContentEraIds[0] !== "era-foundation") {
-    throw new EraDraftDataError("UNSUPPORTED_SIMULATION_CONTENT", "Only Foundation opponent content may be available in Stage 8 Phase 1.");
+  for (const eraId of ERA_IDS) {
+    const profiles = opponentsByEra.get(eraId)!;
+    const expectedCount = EXPECTED_OPPONENT_PROFILE_COUNTS[eraId];
+    if (profiles.length !== expectedCount) {
+      throw new EraDraftDataError("OPPONENT_COUNT_MISMATCH", `${eraId} expected ${expectedCount} frozen opponents, found ${profiles.length}.`);
+    }
+    if (new Set(profiles.map((profile) => profile.franchiseId)).size !== profiles.length) {
+      throw new EraDraftDataError("DUPLICATE_OPPONENT_LINEAGE", `${eraId} opponents must represent distinct canonical franchise lineages.`);
+    }
+    if (eraId === "era-foundation") profiles.sort((left, right) => left.candidateId.localeCompare(right.candidateId));
+    Object.freeze(profiles);
+  }
+  if (documents.foundationOpponents.length !== EXPECTED_OPPONENT_PROFILE_COUNTS["era-foundation"]
+    || documents.foundationOpponents.some((profile) => {
+      const authoritative = opponentById.get(profile.candidateId);
+      return !authoritative || canonicalJson(authoritative) !== canonicalJson(profile);
+    })) {
+    throw new EraDraftDataError("FOUNDATION_OPPONENT_ALIAS_MISMATCH", "Foundation opponent compatibility view must reference the all-era Foundation pool exactly.");
   }
 
-  const simulationContentByEra = Object.fromEntries(ERA_IDS.map((eraId) => [
+  const simulationContentByEra = Object.fromEntries(ERA_IDS.map((eraId) => [eraId, {
+    status: "AVAILABLE" as const,
+    opponentCount: opponentsByEra.get(eraId)!.length,
+  }])) as Record<EraId, SimulationContentAvailability>;
+  const opponentsByEraCounts = Object.fromEntries(ERA_IDS.map((eraId) => [
     eraId,
-    eraId === "era-foundation"
-      ? { status: "AVAILABLE" as const, opponentCount: 8 as const }
-      : { status: "UNAVAILABLE" as const, opponentCount: 0 as const },
-  ])) as Record<EraId, SimulationContentAvailability>;
+    opponentsByEra.get(eraId)!.length,
+  ])) as Record<EraId, number>;
   const diagnostics = freezeDeep({
     eligibleProfiles: eligible.length,
     canonicalPlayers: canonicalPlayers.size,
     eras: eraById.size,
     environments: environmentByEra.size,
-    foundationOpponents: documents.foundationOpponents.length,
+    foundationOpponents: opponentsByEraCounts["era-foundation"],
+    opponentsByEra: opponentsByEraCounts,
     unknownG2RosterStatuses: 0,
     teamSeasonsByEra: teamSeasonCounts,
     simulationContentByEra,
@@ -494,7 +557,7 @@ export function buildEraDraftCatalog(documents: EraDraftCatalogDocuments): EraDr
     keeperIdsByEra,
     simulationContentByEra,
     environmentByEra,
-    foundationOpponents: [...documents.foundationOpponents].sort((a, b) => a.candidateId.localeCompare(b.candidateId)),
+    opponentsByEra,
   });
 }
 
@@ -512,7 +575,7 @@ class EraDraftCatalogImpl implements EraDraftCatalog {
   readonly #keeperIdsByEra: ReadonlyMap<EraId, ReadonlySet<string>>;
   readonly #simulationContentByEra: Readonly<Record<EraId, SimulationContentAvailability>>;
   readonly #environmentByEra: ReadonlyMap<EraId, EraEnvironmentV2>;
-  readonly #foundationOpponents: readonly FoundationOpponentProfileV2[];
+  readonly #opponentsByEra: ReadonlyMap<EraId, readonly EraOpponentProfileV2[]>;
 
   constructor(input: {
     fingerprint: string;
@@ -528,7 +591,7 @@ class EraDraftCatalogImpl implements EraDraftCatalog {
     keeperIdsByEra: Map<EraId, Set<string>>;
     simulationContentByEra: Readonly<Record<EraId, SimulationContentAvailability>>;
     environmentByEra: Map<EraId, EraEnvironmentV2>;
-    foundationOpponents: FoundationOpponentProfileV2[];
+    opponentsByEra: Map<EraId, EraOpponentProfileV2[]>;
   }) {
     this.fingerprint = input.fingerprint;
     this.diagnostics = input.diagnostics;
@@ -543,7 +606,7 @@ class EraDraftCatalogImpl implements EraDraftCatalog {
     this.#keeperIdsByEra = input.keeperIdsByEra;
     this.#simulationContentByEra = input.simulationContentByEra;
     this.#environmentByEra = input.environmentByEra;
-    this.#foundationOpponents = Object.freeze(input.foundationOpponents);
+    this.#opponentsByEra = input.opponentsByEra;
     Object.freeze(this);
   }
 
@@ -559,7 +622,70 @@ class EraDraftCatalogImpl implements EraDraftCatalog {
   getKeeperCapablePlayerIds(eraId: EraId): readonly string[] { return Object.freeze([...(this.#keeperIdsByEra.get(eraId) ?? [])].sort()); }
   getSimulationContent(eraId: EraId): SimulationContentAvailability { return this.#simulationContentByEra[eraId]; }
   getEnvironment(eraId: EraId): EraEnvironmentV2 | undefined { return this.#environmentByEra.get(eraId); }
-  getFoundationOpponents(): readonly FoundationOpponentProfileV2[] { return this.#foundationOpponents; }
+  getOpponentProfiles(eraId: EraId): readonly EraOpponentProfileV2[] { return this.#opponentsByEra.get(eraId) ?? []; }
+  getFoundationOpponents(): readonly FoundationOpponentProfileV2[] {
+    return this.getOpponentProfiles("era-foundation") as readonly FoundationOpponentProfileV2[];
+  }
+}
+
+function validateOpponentProfile(
+  profile: EraOpponentProfileV2,
+  eraById: ReadonlyMap<EraId, EraDraftEra>,
+  teamById: ReadonlyMap<string, RegistryTeam>,
+  franchiseById: ReadonlyMap<string, RegistryFranchise>,
+  playerById: ReadonlyMap<string, EraDraftPlayerRecord>,
+): void {
+  const era = required(eraById, profile.eraId, "opponent era");
+  const team = required(teamById, profile.teamId, "opponent team");
+  const franchise = required(franchiseById, profile.franchiseId, "opponent franchise");
+  if (profile.candidateId !== `opponent:${profile.teamId}:${profile.seasonId}`
+    || team.franchiseId !== profile.franchiseId || team.canonicalName !== profile.teamName
+    || (profile.franchiseName !== undefined && profile.franchiseName !== franchise.canonicalName)
+    || !team.activeSeasonIds.includes(profile.seasonId) || !era.seasonIds.includes(profile.seasonId)) {
+    throw new EraDraftDataError("OPPONENT_IDENTITY_MISMATCH", `${profile.candidateId} disagrees with canonical team, franchise, season, or era identity.`);
+  }
+  if (profile.review.status !== "APPROVED" || profile.xi.length !== 11
+    || new Set(profile.xi.map((item) => item.playerTeamSeasonId)).size !== 11
+    || new Set(profile.xi.map((item) => item.playerId)).size !== 11
+    || profile.xi.some((item, index) => item.position !== index + 1)) {
+    throw new EraDraftDataError("ILLEGAL_OPPONENT_XI", `${profile.candidateId} is not an approved, ordered, unique XI.`);
+  }
+  let confirmedKeepers = 0;
+  const xiPlayers = profile.xi.map((item): EraXiPlayerInput => {
+    const player = required(playerById, item.playerTeamSeasonId, "opponent player");
+    if (player.playerId !== item.playerId || player.canonicalDisplayName !== item.displayName
+      || player.teamId !== profile.teamId || player.franchiseId !== profile.franchiseId
+      || player.seasonId !== profile.seasonId || player.eraId !== profile.eraId
+      || player.rosterStatus !== item.rosterStatus || !Number.isInteger(item.officialListMatchCount)
+      || item.officialListMatchCount < 0) {
+      throw new EraDraftDataError("OPPONENT_PLAYER_IDENTITY_MISMATCH", `${item.playerTeamSeasonId} does not join exactly to ${profile.candidateId}.`);
+    }
+    if (player.role.keeperMetadata.capabilityStatus === "CONFIRMED") confirmedKeepers += 1;
+    return {
+      position: item.position as EraXiPlayerInput["position"],
+      role: player.role,
+      quality: player.quality,
+      rosterStatus: player.rosterStatus,
+    };
+  });
+  if (confirmedKeepers < 1 || xiPlayers.filter((item) => item.rosterStatus === "OVERSEAS").length > 4) {
+    throw new EraDraftDataError("ILLEGAL_OPPONENT_XI", `${profile.candidateId} violates keeper or overseas legality.`);
+  }
+  const actual = evaluateCompletedEraXi({ era, players: xiPlayers });
+  const expected = {
+    battingCore: rounded(actual.baseStrength.battingCore),
+    battingDepth: rounded(actual.baseStrength.battingDepth),
+    batting: rounded(actual.adjustedStrength.batting),
+    bowling: rounded(actual.adjustedStrength.bowling),
+    overall: rounded(actual.adjustedStrength.overall),
+    structuralBattingOrderEffect: rounded(actual.diagnostics.structuralBattingOrderEffect),
+    appliedPositionFitEffect: rounded(actual.diagnostics.appliedPositionFitEffect),
+    bowlingCapacity: rounded(actual.diagnostics.bowlingCapacity),
+    uncoveredBowlingUnits: rounded(actual.diagnostics.uncoveredBowlingUnits),
+  };
+  if ((Object.keys(expected) as (keyof typeof expected)[]).some((key) => profile.evaluation[key] !== expected[key])) {
+    throw new EraDraftDataError("OPPONENT_EVALUATION_MISMATCH", `${profile.candidateId} does not match frozen Team Evaluation V2 output.`);
+  }
 }
 
 function parseEras(document: Record<string, unknown>): EraDraftEra[] {
@@ -794,6 +920,10 @@ function canonicalFingerprintInput(input: EraDraftCatalogFingerprintInput): EraD
 
 function sha256(value: string): string {
   return createHash("sha256").update(value).digest("hex");
+}
+
+function rounded(value: number): number {
+  return Math.round((value + Number.EPSILON) * 1_000_000) / 1_000_000;
 }
 
 function freezeDeep<T>(value: T): T {
