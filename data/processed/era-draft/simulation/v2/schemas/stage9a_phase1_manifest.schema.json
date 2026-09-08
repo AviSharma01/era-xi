@@ -1,0 +1,239 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifacts": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rows": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "schemaVersion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes",
+          "rows",
+          "schemaVersion"
+        ],
+        "type": "object"
+      },
+      "minItems": 2,
+      "type": "array"
+    },
+    "candidateCountsByEra": {
+      "additionalProperties": false,
+      "properties": {
+        "era-expansion": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-foundation": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-impact": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-modern-pre-impact": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-transition": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "era-foundation",
+        "era-expansion",
+        "era-transition",
+        "era-modern-pre-impact",
+        "era-impact"
+      ],
+      "type": "object"
+    },
+    "contentVersion": {
+      "const": "ipl-era-opponent-content-phase1/v1"
+    },
+    "foundationSimulationCompatibilityFingerprint": {
+      "const": "03054faff39520da6a835e0aaecb1a9887ca82291d9ba0a5923540c862793808"
+    },
+    "inputs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "lineageCountsByEra": {
+      "additionalProperties": false,
+      "properties": {
+        "era-expansion": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-foundation": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-impact": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-modern-pre-impact": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-transition": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "era-foundation",
+        "era-expansion",
+        "era-transition",
+        "era-modern-pre-impact",
+        "era-impact"
+      ],
+      "type": "object"
+    },
+    "opponentContentDataAggregateHash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "phase1ManifestHash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "profileTerminology": {
+      "const": "representative historical season XI"
+    },
+    "reviewStatusCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "foundationApproved": {
+          "const": 8
+        },
+        "laterEraApproved": {
+          "const": 0
+        },
+        "laterEraPending": {
+          "const": 41
+        }
+      },
+      "required": [
+        "foundationApproved",
+        "laterEraPending",
+        "laterEraApproved"
+      ],
+      "type": "object"
+    },
+    "schemaFiles": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rows": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "schemaVersion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes",
+          "rows",
+          "schemaVersion"
+        ],
+        "type": "object"
+      },
+      "minItems": 4,
+      "type": "array"
+    },
+    "schemaVersion": {
+      "const": "ipl-era-opponent-content-phase1-manifest/v1"
+    },
+    "trackingIssue": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "contentVersion",
+    "trackingIssue",
+    "profileTerminology",
+    "foundationSimulationCompatibilityFingerprint",
+    "inputs",
+    "artifacts",
+    "schemaFiles",
+    "candidateCountsByEra",
+    "lineageCountsByEra",
+    "reviewStatusCounts",
+    "opponentContentDataAggregateHash",
+    "phase1ManifestHash"
+  ],
+  "type": "object"
+}

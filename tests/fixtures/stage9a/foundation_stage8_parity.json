@@ -1,0 +1,3015 @@
+{
+  "schemaVersion": "ipl-era-draft-foundation-stage8-parity/v1",
+  "capturedFrom": {
+    "commit": "22e5af3",
+    "catalogFingerprint": "03054faff39520da6a835e0aaecb1a9887ca82291d9ba0a5923540c862793808",
+    "foundationSimulationCompatibilityFingerprint": "03054faff39520da6a835e0aaecb1a9887ca82291d9ba0a5923540c862793808"
+  },
+  "foundationOpponentArtifact": {
+    "path": "data/processed/era-draft/simulation/v2/foundation_opponents.json",
+    "sha256": "c904df120bf8920f6967c13f04bd1725826e5e20cfa31291a49934187c373a0c"
+  },
+  "runtimeProfileIds": [
+    "opponent:team-chennai-super-kings:ipl-2010",
+    "opponent:team-deccan-chargers:ipl-2009",
+    "opponent:team-delhi-daredevils:ipl-2009",
+    "opponent:team-kings-xi-punjab:ipl-2008",
+    "opponent:team-kolkata-knight-riders:ipl-2010",
+    "opponent:team-mumbai-indians:ipl-2010",
+    "opponent:team-rajasthan-royals:ipl-2008",
+    "opponent:team-royal-challengers-bangalore:ipl-2010"
+  ],
+  "profiles": [
+    {
+      "candidateId": "opponent:team-chennai-super-kings:ipl-2010",
+      "orderedXi": [
+        {
+          "position": 1,
+          "playerTeamSeasonId": "pts:4b57e452:ipl-2010:team-chennai-super-kings",
+          "playerId": "4b57e452"
+        },
+        {
+          "position": 2,
+          "playerTeamSeasonId": "pts:d8699ab7:ipl-2010:team-chennai-super-kings",
+          "playerId": "d8699ab7"
+        },
+        {
+          "position": 3,
+          "playerTeamSeasonId": "pts:1dc12ab9:ipl-2010:team-chennai-super-kings",
+          "playerId": "1dc12ab9"
+        },
+        {
+          "position": 4,
+          "playerTeamSeasonId": "pts:3576e47e:ipl-2010:team-chennai-super-kings",
+          "playerId": "3576e47e"
+        },
+        {
+          "position": 5,
+          "playerTeamSeasonId": "pts:4a8a2e3b:ipl-2010:team-chennai-super-kings",
+          "playerId": "4a8a2e3b"
+        },
+        {
+          "position": 6,
+          "playerTeamSeasonId": "pts:45c2196c:ipl-2010:team-chennai-super-kings",
+          "playerId": "45c2196c"
+        },
+        {
+          "position": 7,
+          "playerTeamSeasonId": "pts:c3d35165:ipl-2010:team-chennai-super-kings",
+          "playerId": "c3d35165"
+        },
+        {
+          "position": 8,
+          "playerTeamSeasonId": "pts:495d42a5:ipl-2010:team-chennai-super-kings",
+          "playerId": "495d42a5"
+        },
+        {
+          "position": 9,
+          "playerTeamSeasonId": "pts:4ba44e19:ipl-2010:team-chennai-super-kings",
+          "playerId": "4ba44e19"
+        },
+        {
+          "position": 10,
+          "playerTeamSeasonId": "pts:b2b50355:ipl-2010:team-chennai-super-kings",
+          "playerId": "b2b50355"
+        },
+        {
+          "position": 11,
+          "playerTeamSeasonId": "pts:c8179c68:ipl-2010:team-chennai-super-kings",
+          "playerId": "c8179c68"
+        }
+      ],
+      "evaluation": {
+        "appliedPositionFitEffect": -0.128571,
+        "batting": 62.572857,
+        "battingCore": 65.757143,
+        "battingDepth": 35.2,
+        "bowling": 69.8,
+        "bowlingCapacity": 5.889305,
+        "overall": 66.186429,
+        "structuralBattingOrderEffect": -3.055714,
+        "uncoveredBowlingUnits": 0
+      }
+    },
+    {
+      "candidateId": "opponent:team-deccan-chargers:ipl-2009",
+      "orderedXi": [
+        {
+          "position": 1,
+          "playerTeamSeasonId": "pts:2b6e6dec:ipl-2009:team-deccan-chargers",
+          "playerId": "2b6e6dec"
+        },
+        {
+          "position": 2,
+          "playerTeamSeasonId": "pts:e1d1b294:ipl-2009:team-deccan-chargers",
+          "playerId": "e1d1b294"
+        },
+        {
+          "position": 3,
+          "playerTeamSeasonId": "pts:aaa1b522:ipl-2009:team-deccan-chargers",
+          "playerId": "aaa1b522"
+        },
+        {
+          "position": 4,
+          "playerTeamSeasonId": "pts:35205dfc:ipl-2009:team-deccan-chargers",
+          "playerId": "35205dfc"
+        },
+        {
+          "position": 5,
+          "playerTeamSeasonId": "pts:740742ef:ipl-2009:team-deccan-chargers",
+          "playerId": "740742ef"
+        },
+        {
+          "position": 6,
+          "playerTeamSeasonId": "pts:bd77eb62:ipl-2009:team-deccan-chargers",
+          "playerId": "bd77eb62"
+        },
+        {
+          "position": 7,
+          "playerTeamSeasonId": "pts:fe763256:ipl-2009:team-deccan-chargers",
+          "playerId": "fe763256"
+        },
+        {
+          "position": 8,
+          "playerTeamSeasonId": "pts:b720a5d6:ipl-2009:team-deccan-chargers",
+          "playerId": "b720a5d6"
+        },
+        {
+          "position": 9,
+          "playerTeamSeasonId": "pts:6c6591ab:ipl-2009:team-deccan-chargers",
+          "playerId": "6c6591ab"
+        },
+        {
+          "position": 10,
+          "playerTeamSeasonId": "pts:8a668774:ipl-2009:team-deccan-chargers",
+          "playerId": "8a668774"
+        },
+        {
+          "position": 11,
+          "playerTeamSeasonId": "pts:c3d1402f:ipl-2009:team-deccan-chargers",
+          "playerId": "c3d1402f"
+        }
+      ],
+      "evaluation": {
+        "appliedPositionFitEffect": -0.128571,
+        "batting": 64.292857,
+        "battingCore": 67.957143,
+        "battingDepth": 32.6,
+        "bowling": 63.579167,
+        "bowlingCapacity": 4.448959,
+        "overall": 63.936012,
+        "structuralBattingOrderEffect": -3.535714,
+        "uncoveredBowlingUnits": 0
+      }
+    },
+    {
+      "candidateId": "opponent:team-delhi-daredevils:ipl-2009",
+      "orderedXi": [
+        {
+          "position": 1,
+          "playerTeamSeasonId": "pts:8ba8195d:ipl-2009:team-delhi-daredevils",
+          "playerId": "8ba8195d"
+        },
+        {
+          "position": 2,
+          "playerTeamSeasonId": "pts:bb345e0b:ipl-2009:team-delhi-daredevils",
+          "playerId": "bb345e0b"
+        },
+        {
+          "position": 3,
+          "playerTeamSeasonId": "pts:c4487b84:ipl-2009:team-delhi-daredevils",
+          "playerId": "c4487b84"
+        },
+        {
+          "position": 4,
+          "playerTeamSeasonId": "pts:c03f1114:ipl-2009:team-delhi-daredevils",
+          "playerId": "c03f1114"
+        },
+        {
+          "position": 5,
+          "playerTeamSeasonId": "pts:5bdcdb72:ipl-2009:team-delhi-daredevils",
+          "playerId": "5bdcdb72"
+        },
+        {
+          "position": 6,
+          "playerTeamSeasonId": "pts:6b19d823:ipl-2009:team-delhi-daredevils",
+          "playerId": "6b19d823"
+        },
+        {
+          "position": 7,
+          "playerTeamSeasonId": "pts:c42aaf71:ipl-2009:team-delhi-daredevils",
+          "playerId": "c42aaf71"
+        },
+        {
+          "position": 8,
+          "playerTeamSeasonId": "pts:33a364a6:ipl-2009:team-delhi-daredevils",
+          "playerId": "33a364a6"
+        },
+        {
+          "position": 9,
+          "playerTeamSeasonId": "pts:96fd40ae:ipl-2009:team-delhi-daredevils",
+          "playerId": "96fd40ae"
+        },
+        {
+          "position": 10,
+          "playerTeamSeasonId": "pts:9fc0ef64:ipl-2009:team-delhi-daredevils",
+          "playerId": "9fc0ef64"
+        },
+        {
+          "position": 11,
+          "playerTeamSeasonId": "pts:c404f58a:ipl-2009:team-delhi-daredevils",
+          "playerId": "c404f58a"
+        }
+      ],
+      "evaluation": {
+        "appliedPositionFitEffect": 0,
+        "batting": 60.68,
+        "battingCore": 64,
+        "battingDepth": 30.8,
+        "bowling": 70.36333,
+        "bowlingCapacity": 4.773985,
+        "overall": 65.521665,
+        "structuralBattingOrderEffect": -3.577143,
+        "uncoveredBowlingUnits": 0
+      }
+    },
+    {
+      "candidateId": "opponent:team-kings-xi-punjab:ipl-2008",
+      "orderedXi": [
+        {
+          "position": 1,
+          "playerTeamSeasonId": "pts:2498e163:ipl-2008:team-kings-xi-punjab",
+          "playerId": "2498e163"
+        },
+        {
+          "position": 2,
+          "playerTeamSeasonId": "pts:508a1ea7:ipl-2008:team-kings-xi-punjab",
+          "playerId": "508a1ea7"
+        },
+        {
+          "position": 3,
+          "playerTeamSeasonId": "pts:6b71e6cf:ipl-2008:team-kings-xi-punjab",
+          "playerId": "6b71e6cf"
+        },
+        {
+          "position": 4,
+          "playerTeamSeasonId": "pts:1c914163:ipl-2008:team-kings-xi-punjab",
+          "playerId": "1c914163"
+        },
+        {
+          "position": 5,
+          "playerTeamSeasonId": "pts:d18f9182:ipl-2008:team-kings-xi-punjab",
+          "playerId": "d18f9182"
+        },
+        {
+          "position": 6,
+          "playerTeamSeasonId": "pts:98ae73b1:ipl-2008:team-kings-xi-punjab",
+          "playerId": "98ae73b1"
+        },
+        {
+          "position": 7,
+          "playerTeamSeasonId": "pts:5fa06777:ipl-2008:team-kings-xi-punjab",
+          "playerId": "5fa06777"
+        },
+        {
+          "position": 8,
+          "playerTeamSeasonId": "pts:a1f1829d:ipl-2008:team-kings-xi-punjab",
+          "playerId": "a1f1829d"
+        },
+        {
+          "position": 9,
+          "playerTeamSeasonId": "pts:034b4b7d:ipl-2008:team-kings-xi-punjab",
+          "playerId": "034b4b7d"
+        },
+        {
+          "position": 10,
+          "playerTeamSeasonId": "pts:5d096f3d:ipl-2008:team-kings-xi-punjab",
+          "playerId": "5d096f3d"
+        },
+        {
+          "position": 11,
+          "playerTeamSeasonId": "pts:6b8eb6e5:ipl-2008:team-kings-xi-punjab",
+          "playerId": "6b8eb6e5"
+        }
+      ],
+      "evaluation": {
+        "appliedPositionFitEffect": -0.025,
+        "batting": 61.273929,
+        "battingCore": 63.957143,
+        "battingDepth": 37.375,
+        "bowling": 66.172,
+        "bowlingCapacity": 4.960633,
+        "overall": 63.722964,
+        "structuralBattingOrderEffect": -3.115357,
+        "uncoveredBowlingUnits": 0
+      }
+    },
+    {
+      "candidateId": "opponent:team-kolkata-knight-riders:ipl-2010",
+      "orderedXi": [
+        {
+          "position": 1,
+          "playerTeamSeasonId": "pts:725529bc:ipl-2010:team-kolkata-knight-riders",
+          "playerId": "725529bc"
+        },
+        {
+          "position": 2,
+          "playerTeamSeasonId": "pts:db584dad:ipl-2010:team-kolkata-knight-riders",
+          "playerId": "db584dad"
+        },
+        {
+          "position": 3,
+          "playerTeamSeasonId": "pts:26e5cabf:ipl-2010:team-kolkata-knight-riders",
+          "playerId": "26e5cabf"
+        },
+        {
+          "position": 4,
+          "playerTeamSeasonId": "pts:896d78ad:ipl-2010:team-kolkata-knight-riders",
+          "playerId": "896d78ad"
+        },
+        {
+          "position": 5,
+          "playerTeamSeasonId": "pts:d4f9dbd4:ipl-2010:team-kolkata-knight-riders",
+          "playerId": "d4f9dbd4"
+        },
+        {
+          "position": 6,
+          "playerTeamSeasonId": "pts:fa463154:ipl-2010:team-kolkata-knight-riders",
+          "playerId": "fa463154"
+        },
+        {
+          "position": 7,
+          "playerTeamSeasonId": "pts:fe11caa6:ipl-2010:team-kolkata-knight-riders",
+          "playerId": "fe11caa6"
+        },
+        {
+          "position": 8,
+          "playerTeamSeasonId": "pts:4f629497:ipl-2010:team-kolkata-knight-riders",
+          "playerId": "4f629497"
+        },
+        {
+          "position": 9,
+          "playerTeamSeasonId": "pts:5bb1a1c4:ipl-2010:team-kolkata-knight-riders",
+          "playerId": "5bb1a1c4"
+        },
+        {
+          "position": 10,
+          "playerTeamSeasonId": "pts:66b30f71:ipl-2010:team-kolkata-knight-riders",
+          "playerId": "66b30f71"
+        },
+        {
+          "position": 11,
+          "playerTeamSeasonId": "pts:abfeb126:ipl-2010:team-kolkata-knight-riders",
+          "playerId": "abfeb126"
+        }
+      ],
+      "evaluation": {
+        "appliedPositionFitEffect": -0.282143,
+        "batting": 55.458571,
+        "battingCore": 58.028571,
+        "battingDepth": 35.15,
+        "bowling": 58.908114,
+        "bowlingCapacity": 5.654449,
+        "overall": 57.183343,
+        "structuralBattingOrderEffect": -2.287857,
+        "uncoveredBowlingUnits": 0
+      }
+    },
+    {
+      "candidateId": "opponent:team-mumbai-indians:ipl-2010",
+      "orderedXi": [
+        {
+          "position": 1,
+          "playerTeamSeasonId": "pts:0a476045:ipl-2010:team-mumbai-indians",
+          "playerId": "0a476045"
+        },
+        {
+          "position": 2,
+          "playerTeamSeasonId": "pts:d2c2b2d5:ipl-2010:team-mumbai-indians",
+          "playerId": "d2c2b2d5"
+        },
+        {
+          "position": 3,
+          "playerTeamSeasonId": "pts:709b0bac:ipl-2010:team-mumbai-indians",
+          "playerId": "709b0bac"
+        },
+        {
+          "position": 4,
+          "playerTeamSeasonId": "pts:626c5379:ipl-2010:team-mumbai-indians",
+          "playerId": "626c5379"
+        },
+        {
+          "position": 5,
+          "playerTeamSeasonId": "pts:70d205c9:ipl-2010:team-mumbai-indians",
+          "playerId": "70d205c9"
+        },
+        {
+          "position": 6,
+          "playerTeamSeasonId": "pts:a757b0d8:ipl-2010:team-mumbai-indians",
+          "playerId": "a757b0d8"
+        },
+        {
+          "position": 7,
+          "playerTeamSeasonId": "pts:c654af19:ipl-2010:team-mumbai-indians",
+          "playerId": "c654af19"
+        },
+        {
+          "position": 8,
+          "playerTeamSeasonId": "pts:87e562a9:ipl-2010:team-mumbai-indians",
+          "playerId": "87e562a9"
+        },
+        {
+          "position": 9,
+          "playerTeamSeasonId": "pts:8b5b6769:ipl-2010:team-mumbai-indians",
+          "playerId": "8b5b6769"
+        },
+        {
+          "position": 10,
+          "playerTeamSeasonId": "pts:91a4a398:ipl-2010:team-mumbai-indians",
+          "playerId": "91a4a398"
+        },
+        {
+          "position": 11,
+          "playerTeamSeasonId": "pts:a12e1d51:ipl-2010:team-mumbai-indians",
+          "playerId": "a12e1d51"
+        }
+      ],
+      "evaluation": {
+        "appliedPositionFitEffect": -0.257143,
+        "batting": 59.014643,
+        "battingCore": 61.071429,
+        "battingDepth": 43.075,
+        "bowling": 66.806188,
+        "bowlingCapacity": 5.028618,
+        "overall": 62.910415,
+        "structuralBattingOrderEffect": -4.971071,
+        "uncoveredBowlingUnits": 0
+      }
+    },
+    {
+      "candidateId": "opponent:team-rajasthan-royals:ipl-2008",
+      "orderedXi": [
+        {
+          "position": 1,
+          "playerTeamSeasonId": "pts:72861603:ipl-2008:team-rajasthan-royals",
+          "playerId": "72861603"
+        },
+        {
+          "position": 2,
+          "playerTeamSeasonId": "pts:ae091d39:ipl-2008:team-rajasthan-royals",
+          "playerId": "ae091d39"
+        },
+        {
+          "position": 3,
+          "playerTeamSeasonId": "pts:3c6ffae8:ipl-2008:team-rajasthan-royals",
+          "playerId": "3c6ffae8"
+        },
+        {
+          "position": 4,
+          "playerTeamSeasonId": "pts:4329fbb5:ipl-2008:team-rajasthan-royals",
+          "playerId": "4329fbb5"
+        },
+        {
+          "position": 5,
+          "playerTeamSeasonId": "pts:d84378a4:ipl-2008:team-rajasthan-royals",
+          "playerId": "d84378a4"
+        },
+        {
+          "position": 6,
+          "playerTeamSeasonId": "pts:bb18be76:ipl-2008:team-rajasthan-royals",
+          "playerId": "bb18be76"
+        },
+        {
+          "position": 7,
+          "playerTeamSeasonId": "pts:fe93fd9d:ipl-2008:team-rajasthan-royals",
+          "playerId": "fe93fd9d"
+        },
+        {
+          "position": 8,
+          "playerTeamSeasonId": "pts:64d43928:ipl-2008:team-rajasthan-royals",
+          "playerId": "64d43928"
+        },
+        {
+          "position": 9,
+          "playerTeamSeasonId": "pts:3d7e087f:ipl-2008:team-rajasthan-royals",
+          "playerId": "3d7e087f"
+        },
+        {
+          "position": 10,
+          "playerTeamSeasonId": "pts:de8d3876:ipl-2008:team-rajasthan-royals",
+          "playerId": "de8d3876"
+        },
+        {
+          "position": 11,
+          "playerTeamSeasonId": "pts:f0f628c7:ipl-2008:team-rajasthan-royals",
+          "playerId": "f0f628c7"
+        }
+      ],
+      "evaluation": {
+        "appliedPositionFitEffect": 0,
+        "batting": 59.727857,
+        "battingCore": 62.414286,
+        "battingDepth": 35.55,
+        "bowling": 75.92,
+        "bowlingCapacity": 4.900512,
+        "overall": 67.823929,
+        "structuralBattingOrderEffect": -2.915,
+        "uncoveredBowlingUnits": 0
+      }
+    },
+    {
+      "candidateId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+      "orderedXi": [
+        {
+          "position": 1,
+          "playerTeamSeasonId": "pts:86dc8f2e:ipl-2010:team-royal-challengers-bangalore",
+          "playerId": "86dc8f2e"
+        },
+        {
+          "position": 2,
+          "playerTeamSeasonId": "pts:93b4fc78:ipl-2010:team-royal-challengers-bangalore",
+          "playerId": "93b4fc78"
+        },
+        {
+          "position": 3,
+          "playerTeamSeasonId": "pts:39f01cdb:ipl-2010:team-royal-challengers-bangalore",
+          "playerId": "39f01cdb"
+        },
+        {
+          "position": 4,
+          "playerTeamSeasonId": "pts:1c17e270:ipl-2010:team-royal-challengers-bangalore",
+          "playerId": "1c17e270"
+        },
+        {
+          "position": 5,
+          "playerTeamSeasonId": "pts:ba607b88:ipl-2010:team-royal-challengers-bangalore",
+          "playerId": "ba607b88"
+        },
+        {
+          "position": 6,
+          "playerTeamSeasonId": "pts:0184dc35:ipl-2010:team-royal-challengers-bangalore",
+          "playerId": "0184dc35"
+        },
+        {
+          "position": 7,
+          "playerTeamSeasonId": "pts:d0513f63:ipl-2010:team-royal-challengers-bangalore",
+          "playerId": "d0513f63"
+        },
+        {
+          "position": 8,
+          "playerTeamSeasonId": "pts:41eb4a4f:ipl-2010:team-royal-challengers-bangalore",
+          "playerId": "41eb4a4f"
+        },
+        {
+          "position": 9,
+          "playerTeamSeasonId": "pts:0c2730df:ipl-2010:team-royal-challengers-bangalore",
+          "playerId": "0c2730df"
+        },
+        {
+          "position": 10,
+          "playerTeamSeasonId": "pts:8fd1a8f5:ipl-2010:team-royal-challengers-bangalore",
+          "playerId": "8fd1a8f5"
+        },
+        {
+          "position": 11,
+          "playerTeamSeasonId": "pts:e938e1bc:ipl-2010:team-royal-challengers-bangalore",
+          "playerId": "e938e1bc"
+        }
+      ],
+      "evaluation": {
+        "appliedPositionFitEffect": -0.128571,
+        "batting": 61.465357,
+        "battingCore": 64.757143,
+        "battingDepth": 33.125,
+        "bowling": 66.3,
+        "bowlingCapacity": 5.101636,
+        "overall": 63.882679,
+        "structuralBattingOrderEffect": -3.163214,
+        "uncoveredBowlingUnits": 0
+      }
+    }
+  ],
+  "compositionCases": [
+    {
+      "compositionSeed": "stage9a-parity-00",
+      "selectedProfileIds": [
+        "opponent:team-kings-xi-punjab:ipl-2008",
+        "opponent:team-rajasthan-royals:ipl-2008",
+        "opponent:team-delhi-daredevils:ipl-2009",
+        "opponent:team-royal-challengers-bangalore:ipl-2010",
+        "opponent:team-chennai-super-kings:ipl-2010",
+        "opponent:team-kolkata-knight-riders:ipl-2010",
+        "opponent:team-mumbai-indians:ipl-2010"
+      ],
+      "omittedProfileId": "opponent:team-deccan-chargers:ipl-2009"
+    },
+    {
+      "compositionSeed": "stage9a-parity-01",
+      "selectedProfileIds": [
+        "opponent:team-kolkata-knight-riders:ipl-2010",
+        "opponent:team-kings-xi-punjab:ipl-2008",
+        "opponent:team-rajasthan-royals:ipl-2008",
+        "opponent:team-royal-challengers-bangalore:ipl-2010",
+        "opponent:team-chennai-super-kings:ipl-2010",
+        "opponent:team-mumbai-indians:ipl-2010",
+        "opponent:team-delhi-daredevils:ipl-2009"
+      ],
+      "omittedProfileId": "opponent:team-deccan-chargers:ipl-2009"
+    },
+    {
+      "compositionSeed": "stage9a-parity-02",
+      "selectedProfileIds": [
+        "opponent:team-deccan-chargers:ipl-2009",
+        "opponent:team-mumbai-indians:ipl-2010",
+        "opponent:team-rajasthan-royals:ipl-2008",
+        "opponent:team-royal-challengers-bangalore:ipl-2010",
+        "opponent:team-delhi-daredevils:ipl-2009",
+        "opponent:team-kings-xi-punjab:ipl-2008",
+        "opponent:team-chennai-super-kings:ipl-2010"
+      ],
+      "omittedProfileId": "opponent:team-kolkata-knight-riders:ipl-2010"
+    },
+    {
+      "compositionSeed": "stage9a-parity-03",
+      "selectedProfileIds": [
+        "opponent:team-kolkata-knight-riders:ipl-2010",
+        "opponent:team-mumbai-indians:ipl-2010",
+        "opponent:team-deccan-chargers:ipl-2009",
+        "opponent:team-kings-xi-punjab:ipl-2008",
+        "opponent:team-delhi-daredevils:ipl-2009",
+        "opponent:team-royal-challengers-bangalore:ipl-2010",
+        "opponent:team-rajasthan-royals:ipl-2008"
+      ],
+      "omittedProfileId": "opponent:team-chennai-super-kings:ipl-2010"
+    },
+    {
+      "compositionSeed": "stage9a-parity-04",
+      "selectedProfileIds": [
+        "opponent:team-deccan-chargers:ipl-2009",
+        "opponent:team-royal-challengers-bangalore:ipl-2010",
+        "opponent:team-kolkata-knight-riders:ipl-2010",
+        "opponent:team-kings-xi-punjab:ipl-2008",
+        "opponent:team-chennai-super-kings:ipl-2010",
+        "opponent:team-mumbai-indians:ipl-2010",
+        "opponent:team-rajasthan-royals:ipl-2008"
+      ],
+      "omittedProfileId": "opponent:team-delhi-daredevils:ipl-2009"
+    },
+    {
+      "compositionSeed": "stage9a-parity-05",
+      "selectedProfileIds": [
+        "opponent:team-royal-challengers-bangalore:ipl-2010",
+        "opponent:team-delhi-daredevils:ipl-2009",
+        "opponent:team-rajasthan-royals:ipl-2008",
+        "opponent:team-kolkata-knight-riders:ipl-2010",
+        "opponent:team-mumbai-indians:ipl-2010",
+        "opponent:team-deccan-chargers:ipl-2009",
+        "opponent:team-chennai-super-kings:ipl-2010"
+      ],
+      "omittedProfileId": "opponent:team-kings-xi-punjab:ipl-2008"
+    },
+    {
+      "compositionSeed": "stage9a-parity-06",
+      "selectedProfileIds": [
+        "opponent:team-delhi-daredevils:ipl-2009",
+        "opponent:team-mumbai-indians:ipl-2010",
+        "opponent:team-kings-xi-punjab:ipl-2008",
+        "opponent:team-kolkata-knight-riders:ipl-2010",
+        "opponent:team-chennai-super-kings:ipl-2010",
+        "opponent:team-deccan-chargers:ipl-2009",
+        "opponent:team-rajasthan-royals:ipl-2008"
+      ],
+      "omittedProfileId": "opponent:team-royal-challengers-bangalore:ipl-2010"
+    },
+    {
+      "compositionSeed": "stage9a-parity-07",
+      "selectedProfileIds": [
+        "opponent:team-royal-challengers-bangalore:ipl-2010",
+        "opponent:team-delhi-daredevils:ipl-2009",
+        "opponent:team-mumbai-indians:ipl-2010",
+        "opponent:team-kings-xi-punjab:ipl-2008",
+        "opponent:team-chennai-super-kings:ipl-2010",
+        "opponent:team-kolkata-knight-riders:ipl-2010",
+        "opponent:team-rajasthan-royals:ipl-2008"
+      ],
+      "omittedProfileId": "opponent:team-deccan-chargers:ipl-2009"
+    },
+    {
+      "compositionSeed": "stage9a-parity-08",
+      "selectedProfileIds": [
+        "opponent:team-kings-xi-punjab:ipl-2008",
+        "opponent:team-kolkata-knight-riders:ipl-2010",
+        "opponent:team-chennai-super-kings:ipl-2010",
+        "opponent:team-rajasthan-royals:ipl-2008",
+        "opponent:team-deccan-chargers:ipl-2009",
+        "opponent:team-mumbai-indians:ipl-2010",
+        "opponent:team-royal-challengers-bangalore:ipl-2010"
+      ],
+      "omittedProfileId": "opponent:team-delhi-daredevils:ipl-2009"
+    },
+    {
+      "compositionSeed": "stage9a-parity-09",
+      "selectedProfileIds": [
+        "opponent:team-mumbai-indians:ipl-2010",
+        "opponent:team-delhi-daredevils:ipl-2009",
+        "opponent:team-kolkata-knight-riders:ipl-2010",
+        "opponent:team-rajasthan-royals:ipl-2008",
+        "opponent:team-kings-xi-punjab:ipl-2008",
+        "opponent:team-royal-challengers-bangalore:ipl-2010",
+        "opponent:team-deccan-chargers:ipl-2009"
+      ],
+      "omittedProfileId": "opponent:team-chennai-super-kings:ipl-2010"
+    },
+    {
+      "compositionSeed": "stage9a-parity-10",
+      "selectedProfileIds": [
+        "opponent:team-rajasthan-royals:ipl-2008",
+        "opponent:team-mumbai-indians:ipl-2010",
+        "opponent:team-chennai-super-kings:ipl-2010",
+        "opponent:team-kolkata-knight-riders:ipl-2010",
+        "opponent:team-royal-challengers-bangalore:ipl-2010",
+        "opponent:team-kings-xi-punjab:ipl-2008",
+        "opponent:team-deccan-chargers:ipl-2009"
+      ],
+      "omittedProfileId": "opponent:team-delhi-daredevils:ipl-2009"
+    },
+    {
+      "compositionSeed": "stage9a-parity-11",
+      "selectedProfileIds": [
+        "opponent:team-chennai-super-kings:ipl-2010",
+        "opponent:team-kolkata-knight-riders:ipl-2010",
+        "opponent:team-kings-xi-punjab:ipl-2008",
+        "opponent:team-mumbai-indians:ipl-2010",
+        "opponent:team-deccan-chargers:ipl-2009",
+        "opponent:team-royal-challengers-bangalore:ipl-2010",
+        "opponent:team-rajasthan-royals:ipl-2008"
+      ],
+      "omittedProfileId": "opponent:team-delhi-daredevils:ipl-2009"
+    }
+  ],
+  "fixedGame": {
+    "rootSeed": "stage9a-foundation-golden-v1",
+    "userXi": [
+      {
+        "battingPosition": 1,
+        "playerTeamSeasonId": "pts:0aadc906:ipl-2008:team-mumbai-indians",
+        "playerId": "0aadc906",
+        "seasonId": "ipl-2008",
+        "teamId": "team-mumbai-indians",
+        "franchiseId": "franchise-mumbai-indians"
+      },
+      {
+        "battingPosition": 2,
+        "playerTeamSeasonId": "pts:0a476045:ipl-2009:team-mumbai-indians",
+        "playerId": "0a476045",
+        "seasonId": "ipl-2009",
+        "teamId": "team-mumbai-indians",
+        "franchiseId": "franchise-mumbai-indians"
+      },
+      {
+        "battingPosition": 3,
+        "playerTeamSeasonId": "pts:1dc12ab9:ipl-2008:team-chennai-super-kings",
+        "playerId": "1dc12ab9",
+        "seasonId": "ipl-2008",
+        "teamId": "team-chennai-super-kings",
+        "franchiseId": "franchise-chennai-super-kings"
+      },
+      {
+        "battingPosition": 4,
+        "playerTeamSeasonId": "pts:29e95537:ipl-2009:team-mumbai-indians",
+        "playerId": "29e95537",
+        "seasonId": "ipl-2009",
+        "teamId": "team-mumbai-indians",
+        "franchiseId": "franchise-mumbai-indians"
+      },
+      {
+        "battingPosition": 5,
+        "playerTeamSeasonId": "pts:3576e47e:ipl-2009:team-chennai-super-kings",
+        "playerId": "3576e47e",
+        "seasonId": "ipl-2009",
+        "teamId": "team-chennai-super-kings",
+        "franchiseId": "franchise-chennai-super-kings"
+      },
+      {
+        "battingPosition": 6,
+        "playerTeamSeasonId": "pts:0a4ebc61:ipl-2009:team-rajasthan-royals",
+        "playerId": "0a4ebc61",
+        "seasonId": "ipl-2009",
+        "teamId": "team-rajasthan-royals",
+        "franchiseId": "franchise-rajasthan-royals"
+      },
+      {
+        "battingPosition": 7,
+        "playerTeamSeasonId": "pts:034b4b7d:ipl-2009:team-kings-xi-punjab",
+        "playerId": "034b4b7d",
+        "seasonId": "ipl-2009",
+        "teamId": "team-kings-xi-punjab",
+        "franchiseId": "franchise-punjab"
+      },
+      {
+        "battingPosition": 8,
+        "playerTeamSeasonId": "pts:1c914163:ipl-2010:team-kings-xi-punjab",
+        "playerId": "1c914163",
+        "seasonId": "ipl-2010",
+        "teamId": "team-kings-xi-punjab",
+        "franchiseId": "franchise-punjab"
+      },
+      {
+        "battingPosition": 9,
+        "playerTeamSeasonId": "pts:260fd380:ipl-2009:team-delhi-daredevils",
+        "playerId": "260fd380",
+        "seasonId": "ipl-2009",
+        "teamId": "team-delhi-daredevils",
+        "franchiseId": "franchise-delhi"
+      },
+      {
+        "battingPosition": 10,
+        "playerTeamSeasonId": "pts:11df3dc8:ipl-2010:team-rajasthan-royals",
+        "playerId": "11df3dc8",
+        "seasonId": "ipl-2010",
+        "teamId": "team-rajasthan-royals",
+        "franchiseId": "franchise-rajasthan-royals"
+      },
+      {
+        "battingPosition": 11,
+        "playerTeamSeasonId": "pts:0184dc35:ipl-2010:team-royal-challengers-bangalore",
+        "playerId": "0184dc35",
+        "seasonId": "ipl-2010",
+        "teamId": "team-royal-challengers-bangalore",
+        "franchiseId": "franchise-royal-challengers"
+      }
+    ],
+    "seedBundle": {
+      "version": "ipl-era-draft-simulation-seeds/v1",
+      "gameIdentityHash": "bd44f4ffffabea0bf41a53f85c2e762362ccdb0786674b0d03044ae2f5faf28e",
+      "opponentCompositionSeed": "18a84305f8776d06e37d446cebafa1046052fe1e28129a6abd51b3a247a55819",
+      "matchSimulationSeed": "894edd02a7a3fc150e6df74b2ba5b36f767da5694e11c2d05497f519279522b1"
+    },
+    "leagueResult": {
+      "version": "ipl-era-draft-simulation/v2",
+      "compositionSeed": "18a84305f8776d06e37d446cebafa1046052fe1e28129a6abd51b3a247a55819",
+      "simulationSeed": "894edd02a7a3fc150e6df74b2ba5b36f767da5694e11c2d05497f519279522b1",
+      "omittedOpponentTeamId": "opponent:team-mumbai-indians:ipl-2010",
+      "teams": [
+        {
+          "teamId": "user",
+          "displayName": "Era Draft XI",
+          "strength": {
+            "batting": 42.57750000000001,
+            "bowling": 34.354932133333335,
+            "overall": 38.466216066666675
+          }
+        },
+        {
+          "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "displayName": "Chennai Super Kings 2010",
+          "strength": {
+            "batting": 62.572857,
+            "bowling": 69.8,
+            "overall": 66.186429
+          }
+        },
+        {
+          "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "displayName": "Rajasthan Royals 2008",
+          "strength": {
+            "batting": 59.727857,
+            "bowling": 75.92,
+            "overall": 67.823929
+          }
+        },
+        {
+          "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "displayName": "Kings XI Punjab 2008",
+          "strength": {
+            "batting": 61.273929,
+            "bowling": 66.172,
+            "overall": 63.722964
+          }
+        },
+        {
+          "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "displayName": "Royal Challengers Bangalore 2010",
+          "strength": {
+            "batting": 61.465357,
+            "bowling": 66.3,
+            "overall": 63.882679
+          }
+        },
+        {
+          "teamId": "opponent:team-deccan-chargers:ipl-2009",
+          "displayName": "Deccan Chargers 2009",
+          "strength": {
+            "batting": 64.292857,
+            "bowling": 63.579167,
+            "overall": 63.936012
+          }
+        },
+        {
+          "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "displayName": "Delhi Daredevils 2009",
+          "strength": {
+            "batting": 60.68,
+            "bowling": 70.36333,
+            "overall": 65.521665
+          }
+        },
+        {
+          "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "displayName": "Kolkata Knight Riders 2010",
+          "strength": {
+            "batting": 55.458571,
+            "bowling": 58.908114,
+            "overall": 57.183343
+          }
+        }
+      ],
+      "schedule": [
+        {
+          "matchId": "league-r1-m1",
+          "round": 1,
+          "leg": 1,
+          "homeTeamId": "user",
+          "awayTeamId": "opponent:team-kolkata-knight-riders:ipl-2010"
+        },
+        {
+          "matchId": "league-r1-m2",
+          "round": 1,
+          "leg": 1,
+          "homeTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "awayTeamId": "opponent:team-chennai-super-kings:ipl-2010"
+        },
+        {
+          "matchId": "league-r1-m3",
+          "round": 1,
+          "leg": 1,
+          "homeTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "awayTeamId": "opponent:team-deccan-chargers:ipl-2009"
+        },
+        {
+          "matchId": "league-r1-m4",
+          "round": 1,
+          "leg": 1,
+          "homeTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "awayTeamId": "opponent:team-kings-xi-punjab:ipl-2008"
+        },
+        {
+          "matchId": "league-r2-m1",
+          "round": 2,
+          "leg": 1,
+          "homeTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "awayTeamId": "user"
+        },
+        {
+          "matchId": "league-r2-m2",
+          "round": 2,
+          "leg": 1,
+          "homeTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "awayTeamId": "opponent:team-deccan-chargers:ipl-2009"
+        },
+        {
+          "matchId": "league-r2-m3",
+          "round": 2,
+          "leg": 1,
+          "homeTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "awayTeamId": "opponent:team-chennai-super-kings:ipl-2010"
+        },
+        {
+          "matchId": "league-r2-m4",
+          "round": 2,
+          "leg": 1,
+          "homeTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "awayTeamId": "opponent:team-kings-xi-punjab:ipl-2008"
+        },
+        {
+          "matchId": "league-r3-m1",
+          "round": 3,
+          "leg": 1,
+          "homeTeamId": "user",
+          "awayTeamId": "opponent:team-deccan-chargers:ipl-2009"
+        },
+        {
+          "matchId": "league-r3-m2",
+          "round": 3,
+          "leg": 1,
+          "homeTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "awayTeamId": "opponent:team-delhi-daredevils:ipl-2009"
+        },
+        {
+          "matchId": "league-r3-m3",
+          "round": 3,
+          "leg": 1,
+          "homeTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "awayTeamId": "opponent:team-kings-xi-punjab:ipl-2008"
+        },
+        {
+          "matchId": "league-r3-m4",
+          "round": 3,
+          "leg": 1,
+          "homeTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "awayTeamId": "opponent:team-chennai-super-kings:ipl-2010"
+        },
+        {
+          "matchId": "league-r4-m1",
+          "round": 4,
+          "leg": 1,
+          "homeTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "awayTeamId": "user"
+        },
+        {
+          "matchId": "league-r4-m2",
+          "round": 4,
+          "leg": 1,
+          "homeTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "awayTeamId": "opponent:team-kings-xi-punjab:ipl-2008"
+        },
+        {
+          "matchId": "league-r4-m3",
+          "round": 4,
+          "leg": 1,
+          "homeTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "awayTeamId": "opponent:team-delhi-daredevils:ipl-2009"
+        },
+        {
+          "matchId": "league-r4-m4",
+          "round": 4,
+          "leg": 1,
+          "homeTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "awayTeamId": "opponent:team-chennai-super-kings:ipl-2010"
+        },
+        {
+          "matchId": "league-r5-m1",
+          "round": 5,
+          "leg": 1,
+          "homeTeamId": "user",
+          "awayTeamId": "opponent:team-kings-xi-punjab:ipl-2008"
+        },
+        {
+          "matchId": "league-r5-m2",
+          "round": 5,
+          "leg": 1,
+          "homeTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "awayTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010"
+        },
+        {
+          "matchId": "league-r5-m3",
+          "round": 5,
+          "leg": 1,
+          "homeTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "awayTeamId": "opponent:team-chennai-super-kings:ipl-2010"
+        },
+        {
+          "matchId": "league-r5-m4",
+          "round": 5,
+          "leg": 1,
+          "homeTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "awayTeamId": "opponent:team-delhi-daredevils:ipl-2009"
+        },
+        {
+          "matchId": "league-r6-m1",
+          "round": 6,
+          "leg": 1,
+          "homeTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "awayTeamId": "user"
+        },
+        {
+          "matchId": "league-r6-m2",
+          "round": 6,
+          "leg": 1,
+          "homeTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "awayTeamId": "opponent:team-chennai-super-kings:ipl-2010"
+        },
+        {
+          "matchId": "league-r6-m3",
+          "round": 6,
+          "leg": 1,
+          "homeTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "awayTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010"
+        },
+        {
+          "matchId": "league-r6-m4",
+          "round": 6,
+          "leg": 1,
+          "homeTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "awayTeamId": "opponent:team-delhi-daredevils:ipl-2009"
+        },
+        {
+          "matchId": "league-r7-m1",
+          "round": 7,
+          "leg": 1,
+          "homeTeamId": "user",
+          "awayTeamId": "opponent:team-chennai-super-kings:ipl-2010"
+        },
+        {
+          "matchId": "league-r7-m2",
+          "round": 7,
+          "leg": 1,
+          "homeTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "awayTeamId": "opponent:team-rajasthan-royals:ipl-2008"
+        },
+        {
+          "matchId": "league-r7-m3",
+          "round": 7,
+          "leg": 1,
+          "homeTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "awayTeamId": "opponent:team-delhi-daredevils:ipl-2009"
+        },
+        {
+          "matchId": "league-r7-m4",
+          "round": 7,
+          "leg": 1,
+          "homeTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "awayTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010"
+        },
+        {
+          "matchId": "league-r8-m1",
+          "round": 8,
+          "leg": 2,
+          "homeTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "awayTeamId": "user"
+        },
+        {
+          "matchId": "league-r8-m2",
+          "round": 8,
+          "leg": 2,
+          "homeTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "awayTeamId": "opponent:team-delhi-daredevils:ipl-2009"
+        },
+        {
+          "matchId": "league-r8-m3",
+          "round": 8,
+          "leg": 2,
+          "homeTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "awayTeamId": "opponent:team-rajasthan-royals:ipl-2008"
+        },
+        {
+          "matchId": "league-r8-m4",
+          "round": 8,
+          "leg": 2,
+          "homeTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "awayTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010"
+        },
+        {
+          "matchId": "league-r9-m1",
+          "round": 9,
+          "leg": 2,
+          "homeTeamId": "user",
+          "awayTeamId": "opponent:team-delhi-daredevils:ipl-2009"
+        },
+        {
+          "matchId": "league-r9-m2",
+          "round": 9,
+          "leg": 2,
+          "homeTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "awayTeamId": "opponent:team-kolkata-knight-riders:ipl-2010"
+        },
+        {
+          "matchId": "league-r9-m3",
+          "round": 9,
+          "leg": 2,
+          "homeTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "awayTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010"
+        },
+        {
+          "matchId": "league-r9-m4",
+          "round": 9,
+          "leg": 2,
+          "homeTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "awayTeamId": "opponent:team-rajasthan-royals:ipl-2008"
+        },
+        {
+          "matchId": "league-r10-m1",
+          "round": 10,
+          "leg": 2,
+          "homeTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "awayTeamId": "user"
+        },
+        {
+          "matchId": "league-r10-m2",
+          "round": 10,
+          "leg": 2,
+          "homeTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "awayTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010"
+        },
+        {
+          "matchId": "league-r10-m3",
+          "round": 10,
+          "leg": 2,
+          "homeTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "awayTeamId": "opponent:team-kolkata-knight-riders:ipl-2010"
+        },
+        {
+          "matchId": "league-r10-m4",
+          "round": 10,
+          "leg": 2,
+          "homeTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "awayTeamId": "opponent:team-rajasthan-royals:ipl-2008"
+        },
+        {
+          "matchId": "league-r11-m1",
+          "round": 11,
+          "leg": 2,
+          "homeTeamId": "user",
+          "awayTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010"
+        },
+        {
+          "matchId": "league-r11-m2",
+          "round": 11,
+          "leg": 2,
+          "homeTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "awayTeamId": "opponent:team-deccan-chargers:ipl-2009"
+        },
+        {
+          "matchId": "league-r11-m3",
+          "round": 11,
+          "leg": 2,
+          "homeTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "awayTeamId": "opponent:team-rajasthan-royals:ipl-2008"
+        },
+        {
+          "matchId": "league-r11-m4",
+          "round": 11,
+          "leg": 2,
+          "homeTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "awayTeamId": "opponent:team-kolkata-knight-riders:ipl-2010"
+        },
+        {
+          "matchId": "league-r12-m1",
+          "round": 12,
+          "leg": 2,
+          "homeTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "awayTeamId": "user"
+        },
+        {
+          "matchId": "league-r12-m2",
+          "round": 12,
+          "leg": 2,
+          "homeTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "awayTeamId": "opponent:team-rajasthan-royals:ipl-2008"
+        },
+        {
+          "matchId": "league-r12-m3",
+          "round": 12,
+          "leg": 2,
+          "homeTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "awayTeamId": "opponent:team-deccan-chargers:ipl-2009"
+        },
+        {
+          "matchId": "league-r12-m4",
+          "round": 12,
+          "leg": 2,
+          "homeTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "awayTeamId": "opponent:team-kolkata-knight-riders:ipl-2010"
+        },
+        {
+          "matchId": "league-r13-m1",
+          "round": 13,
+          "leg": 2,
+          "homeTeamId": "user",
+          "awayTeamId": "opponent:team-rajasthan-royals:ipl-2008"
+        },
+        {
+          "matchId": "league-r13-m2",
+          "round": 13,
+          "leg": 2,
+          "homeTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "awayTeamId": "opponent:team-kings-xi-punjab:ipl-2008"
+        },
+        {
+          "matchId": "league-r13-m3",
+          "round": 13,
+          "leg": 2,
+          "homeTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "awayTeamId": "opponent:team-kolkata-knight-riders:ipl-2010"
+        },
+        {
+          "matchId": "league-r13-m4",
+          "round": 13,
+          "leg": 2,
+          "homeTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "awayTeamId": "opponent:team-deccan-chargers:ipl-2009"
+        },
+        {
+          "matchId": "league-r14-m1",
+          "round": 14,
+          "leg": 2,
+          "homeTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "awayTeamId": "user"
+        },
+        {
+          "matchId": "league-r14-m2",
+          "round": 14,
+          "leg": 2,
+          "homeTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "awayTeamId": "opponent:team-kolkata-knight-riders:ipl-2010"
+        },
+        {
+          "matchId": "league-r14-m3",
+          "round": 14,
+          "leg": 2,
+          "homeTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "awayTeamId": "opponent:team-kings-xi-punjab:ipl-2008"
+        },
+        {
+          "matchId": "league-r14-m4",
+          "round": 14,
+          "leg": 2,
+          "homeTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "awayTeamId": "opponent:team-deccan-chargers:ipl-2009"
+        }
+      ],
+      "leagueMatches": [
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r1-m1",
+          "firstBattingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "chasingTeamId": "user",
+          "innings": [
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 189,
+              "wickets": 5,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "user",
+              "runs": 138,
+              "wickets": 10,
+              "balls": 119,
+              "allOut": true
+            }
+          ],
+          "winnerTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "loserTeamId": "user",
+          "resultType": "runs",
+          "margin": 51
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r1-m2",
+          "firstBattingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "chasingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "innings": [
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 210,
+              "wickets": 2,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 106,
+              "wickets": 7,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "loserTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "resultType": "runs",
+          "margin": 104
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r1-m3",
+          "firstBattingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "chasingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "innings": [
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 184,
+              "wickets": 2,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 165,
+              "wickets": 6,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "loserTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "resultType": "runs",
+          "margin": 19
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r1-m4",
+          "firstBattingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "chasingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "innings": [
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 191,
+              "wickets": 6,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 152,
+              "wickets": 7,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "loserTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "resultType": "runs",
+          "margin": 39
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r2-m1",
+          "firstBattingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "chasingTeamId": "user",
+          "innings": [
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 204,
+              "wickets": 0,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "user",
+              "runs": 128,
+              "wickets": 9,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "loserTeamId": "user",
+          "resultType": "runs",
+          "margin": 76
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r2-m2",
+          "firstBattingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "chasingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 196,
+              "wickets": 7,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 111,
+              "wickets": 8,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "loserTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "resultType": "runs",
+          "margin": 85
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r2-m3",
+          "firstBattingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "chasingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 180,
+              "wickets": 7,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 168,
+              "wickets": 4,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "loserTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "resultType": "runs",
+          "margin": 12
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r2-m4",
+          "firstBattingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "chasingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "innings": [
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 165,
+              "wickets": 10,
+              "balls": 115,
+              "allOut": true
+            },
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 122,
+              "wickets": 10,
+              "balls": 118,
+              "allOut": true
+            }
+          ],
+          "winnerTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "loserTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "resultType": "runs",
+          "margin": 43
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r3-m1",
+          "firstBattingTeamId": "user",
+          "chasingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "innings": [
+            {
+              "teamId": "user",
+              "runs": 110,
+              "wickets": 10,
+              "balls": 120,
+              "allOut": true
+            },
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 111,
+              "wickets": 7,
+              "balls": 66,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "loserTeamId": "user",
+          "resultType": "wickets",
+          "margin": 3
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r3-m2",
+          "firstBattingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "chasingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "innings": [
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 184,
+              "wickets": 8,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 158,
+              "wickets": 8,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "loserTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "resultType": "runs",
+          "margin": 26
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r3-m3",
+          "firstBattingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "chasingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 97,
+              "wickets": 9,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 98,
+              "wickets": 9,
+              "balls": 72,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "loserTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "resultType": "wickets",
+          "margin": 1
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r3-m4",
+          "firstBattingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "chasingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 131,
+              "wickets": 10,
+              "balls": 98,
+              "allOut": true
+            },
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 132,
+              "wickets": 8,
+              "balls": 100,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "loserTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "resultType": "wickets",
+          "margin": 2
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r4-m1",
+          "firstBattingTeamId": "user",
+          "chasingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "innings": [
+            {
+              "teamId": "user",
+              "runs": 151,
+              "wickets": 8,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 152,
+              "wickets": 3,
+              "balls": 92,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "loserTeamId": "user",
+          "resultType": "wickets",
+          "margin": 7
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r4-m2",
+          "firstBattingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "chasingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "innings": [
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 162,
+              "wickets": 5,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 163,
+              "wickets": 6,
+              "balls": 113,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "loserTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "resultType": "wickets",
+          "margin": 4
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r4-m3",
+          "firstBattingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "chasingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "innings": [
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 127,
+              "wickets": 10,
+              "balls": 110,
+              "allOut": true
+            },
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 128,
+              "wickets": 8,
+              "balls": 99,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "loserTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "resultType": "wickets",
+          "margin": 2
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r4-m4",
+          "firstBattingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "chasingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 147,
+              "wickets": 1,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 148,
+              "wickets": 6,
+              "balls": 119,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "loserTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "resultType": "wickets",
+          "margin": 4
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r5-m1",
+          "firstBattingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "chasingTeamId": "user",
+          "innings": [
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 145,
+              "wickets": 1,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "user",
+              "runs": 146,
+              "wickets": 9,
+              "balls": 108,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "user",
+          "loserTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "resultType": "wickets",
+          "margin": 1
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r5-m2",
+          "firstBattingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "chasingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "innings": [
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 99,
+              "wickets": 7,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 100,
+              "wickets": 5,
+              "balls": 91,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "loserTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "resultType": "wickets",
+          "margin": 5
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r5-m3",
+          "firstBattingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "chasingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 147,
+              "wickets": 0,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 148,
+              "wickets": 3,
+              "balls": 99,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "loserTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "resultType": "wickets",
+          "margin": 7
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r5-m4",
+          "firstBattingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "chasingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 183,
+              "wickets": 0,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 154,
+              "wickets": 4,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "loserTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "resultType": "runs",
+          "margin": 29
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r6-m1",
+          "firstBattingTeamId": "user",
+          "chasingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "innings": [
+            {
+              "teamId": "user",
+              "runs": 73,
+              "wickets": 8,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 74,
+              "wickets": 8,
+              "balls": 50,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "loserTeamId": "user",
+          "resultType": "wickets",
+          "margin": 2
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r6-m2",
+          "firstBattingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "chasingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "innings": [
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 157,
+              "wickets": 9,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 140,
+              "wickets": 8,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "loserTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "resultType": "runs",
+          "margin": 17
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r6-m3",
+          "firstBattingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "chasingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 191,
+              "wickets": 4,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 175,
+              "wickets": 10,
+              "balls": 88,
+              "allOut": true
+            }
+          ],
+          "winnerTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "loserTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "resultType": "runs",
+          "margin": 16
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r6-m4",
+          "firstBattingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "chasingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "innings": [
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 221,
+              "wickets": 5,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 177,
+              "wickets": 8,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "loserTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "resultType": "runs",
+          "margin": 44
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r7-m1",
+          "firstBattingTeamId": "user",
+          "chasingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "innings": [
+            {
+              "teamId": "user",
+              "runs": 138,
+              "wickets": 10,
+              "balls": 98,
+              "allOut": true
+            },
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 139,
+              "wickets": 3,
+              "balls": 99,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "loserTeamId": "user",
+          "resultType": "wickets",
+          "margin": 7
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r7-m2",
+          "firstBattingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "chasingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "innings": [
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 148,
+              "wickets": 7,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 149,
+              "wickets": 5,
+              "balls": 110,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "loserTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "resultType": "wickets",
+          "margin": 5
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r7-m3",
+          "firstBattingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "chasingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "innings": [
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 163,
+              "wickets": 5,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 139,
+              "wickets": 8,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "loserTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "resultType": "runs",
+          "margin": 24
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r7-m4",
+          "firstBattingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "chasingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "innings": [
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 198,
+              "wickets": 2,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 199,
+              "wickets": 2,
+              "balls": 99,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "loserTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "resultType": "wickets",
+          "margin": 8
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r8-m1",
+          "firstBattingTeamId": "user",
+          "chasingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "innings": [
+            {
+              "teamId": "user",
+              "runs": 160,
+              "wickets": 6,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 161,
+              "wickets": 7,
+              "balls": 109,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "loserTeamId": "user",
+          "resultType": "wickets",
+          "margin": 3
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r8-m2",
+          "firstBattingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "chasingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 161,
+              "wickets": 4,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 98,
+              "wickets": 10,
+              "balls": 92,
+              "allOut": true
+            }
+          ],
+          "winnerTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "loserTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "resultType": "runs",
+          "margin": 63
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r8-m3",
+          "firstBattingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "chasingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "innings": [
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 166,
+              "wickets": 4,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 167,
+              "wickets": 8,
+              "balls": 117,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "loserTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "resultType": "wickets",
+          "margin": 2
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r8-m4",
+          "firstBattingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "chasingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 165,
+              "wickets": 4,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 166,
+              "wickets": 5,
+              "balls": 107,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "loserTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "resultType": "wickets",
+          "margin": 5
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r9-m1",
+          "firstBattingTeamId": "user",
+          "chasingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "innings": [
+            {
+              "teamId": "user",
+              "runs": 137,
+              "wickets": 6,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 138,
+              "wickets": 7,
+              "balls": 89,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "loserTeamId": "user",
+          "resultType": "wickets",
+          "margin": 3
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r9-m2",
+          "firstBattingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "chasingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 188,
+              "wickets": 7,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 189,
+              "wickets": 5,
+              "balls": 113,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "loserTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "resultType": "wickets",
+          "margin": 5
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r9-m3",
+          "firstBattingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "chasingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 166,
+              "wickets": 5,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 123,
+              "wickets": 7,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "loserTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "resultType": "runs",
+          "margin": 43
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r9-m4",
+          "firstBattingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "chasingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "innings": [
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 163,
+              "wickets": 10,
+              "balls": 88,
+              "allOut": true
+            },
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 145,
+              "wickets": 8,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "loserTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "resultType": "runs",
+          "margin": 18
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r10-m1",
+          "firstBattingTeamId": "user",
+          "chasingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "innings": [
+            {
+              "teamId": "user",
+              "runs": 147,
+              "wickets": 10,
+              "balls": 116,
+              "allOut": true
+            },
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 148,
+              "wickets": 6,
+              "balls": 96,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "loserTeamId": "user",
+          "resultType": "wickets",
+          "margin": 4
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r10-m2",
+          "firstBattingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "chasingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 148,
+              "wickets": 3,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 149,
+              "wickets": 6,
+              "balls": 112,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "loserTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "resultType": "wickets",
+          "margin": 4
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r10-m3",
+          "firstBattingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "chasingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 116,
+              "wickets": 5,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 101,
+              "wickets": 8,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "loserTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "resultType": "runs",
+          "margin": 15
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r10-m4",
+          "firstBattingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "chasingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 170,
+              "wickets": 6,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 138,
+              "wickets": 9,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "loserTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "resultType": "runs",
+          "margin": 32
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r11-m1",
+          "firstBattingTeamId": "user",
+          "chasingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "innings": [
+            {
+              "teamId": "user",
+              "runs": 218,
+              "wickets": 5,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 219,
+              "wickets": 8,
+              "balls": 112,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "loserTeamId": "user",
+          "resultType": "wickets",
+          "margin": 2
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r11-m2",
+          "firstBattingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "chasingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "innings": [
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 129,
+              "wickets": 6,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 130,
+              "wickets": 9,
+              "balls": 86,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "loserTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "resultType": "wickets",
+          "margin": 1
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r11-m3",
+          "firstBattingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "chasingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "innings": [
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 161,
+              "wickets": 6,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 133,
+              "wickets": 8,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "loserTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "resultType": "runs",
+          "margin": 28
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r11-m4",
+          "firstBattingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "chasingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 147,
+              "wickets": 6,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 148,
+              "wickets": 6,
+              "balls": 93,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "loserTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "resultType": "wickets",
+          "margin": 4
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r12-m1",
+          "firstBattingTeamId": "user",
+          "chasingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "innings": [
+            {
+              "teamId": "user",
+              "runs": 88,
+              "wickets": 10,
+              "balls": 114,
+              "allOut": true
+            },
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 89,
+              "wickets": 6,
+              "balls": 45,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "loserTeamId": "user",
+          "resultType": "wickets",
+          "margin": 4
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r12-m2",
+          "firstBattingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "chasingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "innings": [
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 140,
+              "wickets": 3,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 141,
+              "wickets": 4,
+              "balls": 101,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "loserTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "resultType": "wickets",
+          "margin": 6
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r12-m3",
+          "firstBattingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "chasingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "innings": [
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 165,
+              "wickets": 5,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 166,
+              "wickets": 6,
+              "balls": 85,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "loserTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "resultType": "wickets",
+          "margin": 4
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r12-m4",
+          "firstBattingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "chasingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 189,
+              "wickets": 2,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 101,
+              "wickets": 7,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "loserTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "resultType": "runs",
+          "margin": 88
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r13-m1",
+          "firstBattingTeamId": "user",
+          "chasingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "innings": [
+            {
+              "teamId": "user",
+              "runs": 160,
+              "wickets": 6,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 161,
+              "wickets": 7,
+              "balls": 107,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "loserTeamId": "user",
+          "resultType": "wickets",
+          "margin": 3
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r13-m2",
+          "firstBattingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "chasingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "innings": [
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 160,
+              "wickets": 5,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 141,
+              "wickets": 2,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "loserTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "resultType": "runs",
+          "margin": 19
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r13-m3",
+          "firstBattingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "chasingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 146,
+              "wickets": 4,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 147,
+              "wickets": 7,
+              "balls": 97,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "loserTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "resultType": "wickets",
+          "margin": 3
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r13-m4",
+          "firstBattingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "chasingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "innings": [
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 129,
+              "wickets": 4,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 130,
+              "wickets": 9,
+              "balls": 70,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "loserTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "resultType": "wickets",
+          "margin": 1
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r14-m1",
+          "firstBattingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "chasingTeamId": "user",
+          "innings": [
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 150,
+              "wickets": 6,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "user",
+              "runs": 151,
+              "wickets": 9,
+              "balls": 104,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "user",
+          "loserTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "resultType": "wickets",
+          "margin": 1
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r14-m2",
+          "firstBattingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "chasingTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 169,
+              "wickets": 3,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+              "runs": 138,
+              "wickets": 9,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "loserTeamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "resultType": "runs",
+          "margin": 31
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r14-m3",
+          "firstBattingTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "chasingTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "innings": [
+            {
+              "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+              "runs": 162,
+              "wickets": 6,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+              "runs": 137,
+              "wickets": 8,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "loserTeamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "resultType": "runs",
+          "margin": 25
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "league-r14-m4",
+          "firstBattingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "chasingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "innings": [
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 146,
+              "wickets": 3,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 139,
+              "wickets": 0,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "loserTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "resultType": "runs",
+          "margin": 7
+        }
+      ],
+      "standings": [
+        {
+          "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "displayName": "Rajasthan Royals 2008",
+          "played": 14,
+          "won": 11,
+          "lost": 3,
+          "points": 22,
+          "runsFor": 2026,
+          "ballsFacedForNrr": 1515,
+          "runsAgainst": 1923,
+          "ballsBowledForNrr": 1660,
+          "position": 1,
+          "netRunRate": 1.0731599665990696,
+          "qualified": true
+        },
+        {
+          "teamId": "opponent:team-deccan-chargers:ipl-2009",
+          "displayName": "Deccan Chargers 2009",
+          "played": 14,
+          "won": 9,
+          "lost": 5,
+          "points": 18,
+          "runsFor": 2287,
+          "ballsFacedForNrr": 1505,
+          "runsAgainst": 2144,
+          "ballsBowledForNrr": 1599,
+          "position": 2,
+          "netRunRate": 1.0725798308328098,
+          "qualified": true
+        },
+        {
+          "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "displayName": "Chennai Super Kings 2010",
+          "played": 14,
+          "won": 9,
+          "lost": 5,
+          "points": 18,
+          "runsFor": 2138,
+          "ballsFacedForNrr": 1617,
+          "runsAgainst": 2037,
+          "ballsBowledForNrr": 1602,
+          "position": 3,
+          "netRunRate": 0.3039961643492948,
+          "qualified": true
+        },
+        {
+          "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "displayName": "Royal Challengers Bangalore 2010",
+          "played": 14,
+          "won": 9,
+          "lost": 5,
+          "points": 18,
+          "runsFor": 2273,
+          "ballsFacedForNrr": 1600,
+          "runsAgainst": 2238,
+          "ballsBowledForNrr": 1611,
+          "position": 4,
+          "netRunRate": 0.1885544692737433,
+          "qualified": true
+        },
+        {
+          "teamId": "opponent:team-delhi-daredevils:ipl-2009",
+          "displayName": "Delhi Daredevils 2009",
+          "played": 14,
+          "won": 7,
+          "lost": 7,
+          "points": 14,
+          "runsFor": 2154,
+          "ballsFacedForNrr": 1599,
+          "runsAgainst": 2101,
+          "ballsBowledForNrr": 1651,
+          "position": 5,
+          "netRunRate": 0.4471790932324824,
+          "qualified": false
+        },
+        {
+          "teamId": "opponent:team-kolkata-knight-riders:ipl-2010",
+          "displayName": "Kolkata Knight Riders 2010",
+          "played": 14,
+          "won": 5,
+          "lost": 9,
+          "points": 10,
+          "runsFor": 2006,
+          "ballsFacedForNrr": 1587,
+          "runsAgainst": 2218,
+          "ballsBowledForNrr": 1646,
+          "position": 6,
+          "netRunRate": -0.5009336950205237,
+          "qualified": false
+        },
+        {
+          "teamId": "opponent:team-kings-xi-punjab:ipl-2008",
+          "displayName": "Kings XI Punjab 2008",
+          "played": 14,
+          "won": 4,
+          "lost": 10,
+          "points": 8,
+          "runsFor": 1922,
+          "ballsFacedForNrr": 1605,
+          "runsAgainst": 2010,
+          "ballsBowledForNrr": 1566,
+          "position": 7,
+          "netRunRate": -0.5161026963153938,
+          "qualified": false
+        },
+        {
+          "teamId": "user",
+          "displayName": "Era Draft XI",
+          "played": 14,
+          "won": 2,
+          "lost": 12,
+          "points": 4,
+          "runsFor": 1945,
+          "ballsFacedForNrr": 1652,
+          "runsAgainst": 2080,
+          "ballsBowledForNrr": 1345,
+          "position": 8,
+          "netRunRate": -2.2146457600115212,
+          "qualified": false
+        }
+      ],
+      "playoffs": [
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "playoff-qualifier-1",
+          "firstBattingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "chasingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "innings": [
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 144,
+              "wickets": 4,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 145,
+              "wickets": 8,
+              "balls": 101,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "loserTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "resultType": "wickets",
+          "margin": 2,
+          "stage": "qualifier_1"
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "playoff-eliminator",
+          "firstBattingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "chasingTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 204,
+              "wickets": 5,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+              "runs": 188,
+              "wickets": 9,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "loserTeamId": "opponent:team-royal-challengers-bangalore:ipl-2010",
+          "resultType": "runs",
+          "margin": 16,
+          "stage": "eliminator"
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "playoff-qualifier-2",
+          "firstBattingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "chasingTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "innings": [
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 178,
+              "wickets": 9,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-chennai-super-kings:ipl-2010",
+              "runs": 145,
+              "wickets": 7,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "loserTeamId": "opponent:team-chennai-super-kings:ipl-2010",
+          "resultType": "runs",
+          "margin": 33,
+          "stage": "qualifier_2"
+        },
+        {
+          "version": "ipl-era-draft-simulation/v2",
+          "matchId": "playoff-final",
+          "firstBattingTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "chasingTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "innings": [
+            {
+              "teamId": "opponent:team-rajasthan-royals:ipl-2008",
+              "runs": 192,
+              "wickets": 6,
+              "balls": 120,
+              "allOut": false
+            },
+            {
+              "teamId": "opponent:team-deccan-chargers:ipl-2009",
+              "runs": 83,
+              "wickets": 5,
+              "balls": 120,
+              "allOut": false
+            }
+          ],
+          "winnerTeamId": "opponent:team-rajasthan-royals:ipl-2008",
+          "loserTeamId": "opponent:team-deccan-chargers:ipl-2009",
+          "resultType": "runs",
+          "margin": 109,
+          "stage": "final"
+        }
+      ],
+      "championTeamId": "opponent:team-rajasthan-royals:ipl-2008"
+    },
+    "leagueResultCanonicalSha256": "c8ef8e6b3011f89fcc6b3faa73c897087bda274d1fc633bde473b4e57967f1d6"
+  }
+}
