@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "eraId": {
+      "enum": [
+        "era-expansion",
+        "era-transition",
+        "era-modern-pre-impact",
+        "era-impact"
+      ]
+    },
+    "opponents": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "approvalStatus": {
+            "const": "APPROVED"
+          },
+          "candidateId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "eraId": {
+            "enum": [
+              "era-expansion",
+              "era-transition",
+              "era-modern-pre-impact",
+              "era-impact"
+            ]
+          },
+          "franchiseId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "membershipChanges": {
+            "additionalProperties": false,
+            "properties": {
+              "includedPlayerTeamSeasonIds": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "omittedPlayerTeamSeasonIds": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "includedPlayerTeamSeasonIds",
+              "omittedPlayerTeamSeasonIds"
+            ],
+            "type": "object"
+          },
+          "orderedPlayerTeamSeasonIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 11,
+            "minItems": 11,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "overrideRationale": {
+            "minLength": 1,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "overrideType": {
+            "enum": [
+              "NONE",
+              "ORDER_ONLY",
+              "MEMBERSHIP_AND_ORDER"
+            ]
+          },
+          "rationale": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reviewedOn": {
+            "const": "2026-09-08"
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "xiProvenance": {
+            "enum": [
+              "BASELINE_ACCEPTED",
+              "REVIEWED_OVERRIDE"
+            ]
+          }
+        },
+        "required": [
+          "eraId",
+          "franchiseId",
+          "teamId",
+          "seasonId",
+          "candidateId",
+          "orderedPlayerTeamSeasonIds",
+          "approvalStatus",
+          "reviewedOn",
+          "rationale",
+          "xiProvenance",
+          "overrideType",
+          "overrideRationale",
+          "membershipChanges"
+        ],
+        "type": "object"
+      },
+      "maxItems": 11,
+      "minItems": 10,
+      "type": "array"
+    },
+    "profileTerminology": {
+      "const": "representative historical season XI"
+    },
+    "reviewNotes": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reviewStatus": {
+      "const": "APPROVED"
+    },
+    "reviewedOn": {
+      "const": "2026-09-08"
+    },
+    "schemaVersion": {
+      "const": "ipl-era-opponent-content-phase2-review/v1"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "eraId",
+    "profileTerminology",
+    "reviewStatus",
+    "reviewedOn",
+    "reviewNotes",
+    "opponents"
+  ],
+  "type": "object"
+}

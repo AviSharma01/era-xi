@@ -1,0 +1,340 @@
+{
+  "schemaVersion": "ipl-era-opponent-content-phase2-review/v1",
+  "eraId": "era-expansion",
+  "profileTerminology": "representative historical season XI",
+  "reviewStatus": "APPROVED",
+  "reviewedOn": "2026-09-08",
+  "reviewNotes": "Human-approved Expansion selections freeze one representative season and exact legal XI per canonical lineage. Advisory rankings remain evidence rather than selection authority.",
+  "opponents": [
+    {
+      "eraId": "era-expansion",
+      "franchiseId": "franchise-chennai-super-kings",
+      "teamId": "team-chennai-super-kings",
+      "seasonId": "ipl-2013",
+      "candidateId": "opponent:team-chennai-super-kings:ipl-2013",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:48fd7349:ipl-2013:team-chennai-super-kings",
+        "pts:4b57e452:ipl-2013:team-chennai-super-kings",
+        "pts:1dc12ab9:ipl-2013:team-chennai-super-kings",
+        "pts:3576e47e:ipl-2013:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2013:team-chennai-super-kings",
+        "pts:87e562a9:ipl-2013:team-chennai-super-kings",
+        "pts:fe93fd9d:ipl-2013:team-chennai-super-kings",
+        "pts:c3d35165:ipl-2013:team-chennai-super-kings",
+        "pts:495d42a5:ipl-2013:team-chennai-super-kings",
+        "pts:759ac88f:ipl-2013:team-chennai-super-kings",
+        "pts:fb66ce1f:ipl-2013:team-chennai-super-kings"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The mature Dhoni–Raina core, supported by Bravo and Jadeja, combines strong participation, competitiveness and balanced pace-spin construction as the clearest Expansion-era CSK representation.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-expansion",
+      "franchiseId": "franchise-deccan-chargers",
+      "teamId": "team-deccan-chargers",
+      "seasonId": "ipl-2011",
+      "candidateId": "opponent:team-deccan-chargers:ipl-2011",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:0a476045:ipl-2011:team-deccan-chargers",
+        "pts:3fca55af:ipl-2011:team-deccan-chargers",
+        "pts:6b71e6cf:ipl-2011:team-deccan-chargers",
+        "pts:2e8994e7:ipl-2011:team-deccan-chargers",
+        "pts:5451a2c1:ipl-2011:team-deccan-chargers",
+        "pts:2a2e6343:ipl-2011:team-deccan-chargers",
+        "pts:b720a5d6:ipl-2011:team-deccan-chargers",
+        "pts:6b19d823:ipl-2011:team-deccan-chargers",
+        "pts:5bb1a1c4:ipl-2011:team-deccan-chargers",
+        "pts:6c6591ab:ipl-2011:team-deccan-chargers",
+        "pts:8fd1a8f5:ipl-2011:team-deccan-chargers"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2011 side preserves the later Deccan identity through Dhawan, Sangakkara, Duminy, Steyn, Mishra and Ojha in a legal, balanced representative XI.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-expansion",
+      "franchiseId": "franchise-delhi",
+      "teamId": "team-delhi-daredevils",
+      "seasonId": "ipl-2012",
+      "candidateId": "opponent:team-delhi-daredevils:ipl-2012",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:8ba8195d:ipl-2012:team-delhi-daredevils",
+        "pts:d18f9182:ipl-2012:team-delhi-daredevils",
+        "pts:39f01cdb:ipl-2012:team-delhi-daredevils",
+        "pts:b61a3e1a:ipl-2012:team-delhi-daredevils",
+        "pts:fe763256:ipl-2012:team-delhi-daredevils",
+        "pts:5fa06777:ipl-2012:team-delhi-daredevils",
+        "pts:890946a0:ipl-2012:team-delhi-daredevils",
+        "pts:662c47a6:ipl-2012:team-delhi-daredevils",
+        "pts:5bb5a915:ipl-2012:team-delhi-daredevils",
+        "pts:9d80c5e1:ipl-2012:team-delhi-daredevils",
+        "pts:cc1e8c68:ipl-2012:team-delhi-daredevils"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The table-leading 2012 Delhi side captures the Sehwag-led identity with Jayawardene, Pietersen and Morkel while retaining credible keeper and bowling coverage.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-expansion",
+      "franchiseId": "franchise-kochi-tuskers-kerala",
+      "teamId": "team-kochi-tuskers-kerala",
+      "seasonId": "ipl-2011",
+      "candidateId": "opponent:team-kochi-tuskers-kerala:ipl-2011",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:b8a55852:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:d18f9182:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:b5da6c24:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:b57f8a9a:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:fe93fd9d:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:b2570b38:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:41eb4a4f:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:99d63244:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:0c432afb:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:6b8eb6e5:ipl-2011:team-kochi-tuskers-kerala",
+        "pts:c3d1402f:ipl-2011:team-kochi-tuskers-kerala"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "Kochi’s only season is represented by its recognizable McCullum–Jayawardene–Jadeja core, with legal keeper and overseas construction and a credible pace-spin attack.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-expansion",
+      "franchiseId": "franchise-kolkata-knight-riders",
+      "teamId": "team-kolkata-knight-riders",
+      "seasonId": "ipl-2012",
+      "candidateId": "opponent:team-kolkata-knight-riders:ipl-2012",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:b8a55852:ipl-2012:team-kolkata-knight-riders",
+        "pts:bb345e0b:ipl-2012:team-kolkata-knight-riders",
+        "pts:86dc8f2e:ipl-2012:team-kolkata-knight-riders",
+        "pts:26e5cabf:ipl-2012:team-kolkata-knight-riders",
+        "pts:3c6ffae8:ipl-2012:team-kolkata-knight-riders",
+        "pts:b1451597:ipl-2012:team-kolkata-knight-riders",
+        "pts:7050a1e7:ipl-2012:team-kolkata-knight-riders",
+        "pts:33a364a6:ipl-2012:team-kolkata-knight-riders",
+        "pts:85aae393:ipl-2012:team-kolkata-knight-riders",
+        "pts:9d430b40:ipl-2012:team-kolkata-knight-riders",
+        "pts:dd09ff8e:ipl-2012:team-kolkata-knight-riders"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2012 XI is the first fully recognizable Gambhir–Narine-era KKR and preserves the historically defining title-season core despite not maximizing Team Evaluation.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-expansion",
+      "franchiseId": "franchise-mumbai-indians",
+      "teamId": "team-mumbai-indians",
+      "seasonId": "ipl-2013",
+      "candidateId": "opponent:team-mumbai-indians:ipl-2013",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:35205dfc:ipl-2013:team-mumbai-indians",
+        "pts:d2c2b2d5:ipl-2013:team-mumbai-indians",
+        "pts:c03f1114:ipl-2013:team-mumbai-indians",
+        "pts:740742ef:ipl-2013:team-mumbai-indians",
+        "pts:a757b0d8:ipl-2013:team-mumbai-indians",
+        "pts:70d205c9:ipl-2013:team-mumbai-indians",
+        "pts:8b5b6769:ipl-2013:team-mumbai-indians",
+        "pts:f5180fe6:ipl-2013:team-mumbai-indians",
+        "pts:6c6591ab:ipl-2013:team-mumbai-indians",
+        "pts:a12e1d51:ipl-2013:team-mumbai-indians",
+        "pts:d2a989fc:ipl-2013:team-mumbai-indians"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2013 XI captures Mumbai’s first-title transition through Tendulkar, Rohit, Pollard, Malinga and Johnson with strong continuity and complete bowling coverage.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-expansion",
+      "franchiseId": "franchise-pune-warriors",
+      "teamId": "team-pune-warriors",
+      "seasonId": "ipl-2011",
+      "candidateId": "opponent:team-pune-warriors:ipl-2011",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:91ffa6c6:ipl-2011:team-pune-warriors",
+        "pts:93b4fc78:ipl-2011:team-pune-warriors",
+        "pts:c42aaf71:ipl-2011:team-pune-warriors",
+        "pts:1c17e270:ipl-2011:team-pune-warriors",
+        "pts:1c914163:ipl-2011:team-pune-warriors",
+        "pts:5d9a1a73:ipl-2011:team-pune-warriors",
+        "pts:6afb26d6:ipl-2011:team-pune-warriors",
+        "pts:3a60e0b5:ipl-2011:team-pune-warriors",
+        "pts:abfeb126:ipl-2011:team-pune-warriors",
+        "pts:b552a935:ipl-2011:team-pune-warriors",
+        "pts:dddca1d6:ipl-2011:team-pune-warriors"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2011 XI is Pune Warriors’ most recognizable and functional representation, centered on Yuvraj, Uthappa and Ryder with a more credible overall construction than 2012.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-expansion",
+      "franchiseId": "franchise-punjab",
+      "teamId": "team-kings-xi-punjab",
+      "seasonId": "ipl-2011",
+      "candidateId": "opponent:team-kings-xi-punjab:ipl-2011",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:25eeb281:ipl-2011:team-kings-xi-punjab",
+        "pts:2b6e6dec:ipl-2011:team-kings-xi-punjab",
+        "pts:508a1ea7:ipl-2011:team-kings-xi-punjab",
+        "pts:a45a5e8d:ipl-2011:team-kings-xi-punjab",
+        "pts:c03f1114:ipl-2011:team-kings-xi-punjab",
+        "pts:98ae73b1:ipl-2011:team-kings-xi-punjab",
+        "pts:fd835ab3:ipl-2011:team-kings-xi-punjab",
+        "pts:12eddf28:ipl-2011:team-kings-xi-punjab",
+        "pts:2049f3a0:ipl-2011:team-kings-xi-punjab",
+        "pts:dc4686e6:ipl-2011:team-kings-xi-punjab",
+        "pts:e938e1bc:ipl-2011:team-kings-xi-punjab"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2011 XI captures the Gilchrist–Marsh Punjab batting identity while retaining Karthik as keeper and a varied attack led by Harris, Chawla and Praveen Kumar.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-expansion",
+      "franchiseId": "franchise-rajasthan-royals",
+      "teamId": "team-rajasthan-royals",
+      "seasonId": "ipl-2013",
+      "candidateId": "opponent:team-rajasthan-royals:ipl-2013",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:0184dc35:ipl-2013:team-rajasthan-royals",
+        "pts:29e95537:ipl-2013:team-rajasthan-royals",
+        "pts:4329fbb5:ipl-2013:team-rajasthan-royals",
+        "pts:a4cc73aa:ipl-2013:team-rajasthan-royals",
+        "pts:b57f8a9a:ipl-2013:team-rajasthan-royals",
+        "pts:063b3673:ipl-2013:team-rajasthan-royals",
+        "pts:bd17b45f:ipl-2013:team-rajasthan-royals",
+        "pts:557153ca:ipl-2013:team-rajasthan-royals",
+        "pts:3d7e087f:ipl-2013:team-rajasthan-royals",
+        "pts:808f425a:ipl-2013:team-rajasthan-royals",
+        "pts:99b202b3:ipl-2013:team-rajasthan-royals"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2013 XI represents Rajasthan’s Dravid–Rahane–Watson core and playoff run, with Samson emerging and a credible mixed bowling attack.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-expansion",
+      "franchiseId": "franchise-royal-challengers",
+      "teamId": "team-royal-challengers-bangalore",
+      "seasonId": "ipl-2011",
+      "candidateId": "opponent:team-royal-challengers-bangalore:ipl-2011",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:00ea847a:ipl-2011:team-royal-challengers-bangalore",
+        "pts:5bdcdb72:ipl-2011:team-royal-challengers-bangalore",
+        "pts:db584dad:ipl-2011:team-royal-challengers-bangalore",
+        "pts:ba607b88:ipl-2011:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2011:team-royal-challengers-bangalore",
+        "pts:709b0bac:ipl-2011:team-royal-challengers-bangalore",
+        "pts:d84378a4:ipl-2011:team-royal-challengers-bangalore",
+        "pts:66cf56a5:ipl-2011:team-royal-challengers-bangalore",
+        "pts:91a4a398:ipl-2011:team-royal-challengers-bangalore",
+        "pts:957532de:ipl-2011:team-royal-challengers-bangalore",
+        "pts:d7c6af50:ipl-2011:team-royal-challengers-bangalore"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2011 XI preserves the formative Gayle–Kohli–de Villiers identity and Final run, making it more historically representative than the higher-rated 2013 alternative.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-expansion",
+      "franchiseId": "franchise-sunrisers-hyderabad",
+      "teamId": "team-sunrisers-hyderabad",
+      "seasonId": "ipl-2013",
+      "candidateId": "opponent:team-sunrisers-hyderabad:ipl-2013",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:0a476045:ipl-2013:team-sunrisers-hyderabad",
+        "pts:b5da6c24:ipl-2013:team-sunrisers-hyderabad",
+        "pts:94253925:ipl-2013:team-sunrisers-hyderabad",
+        "pts:0f12f9df:ipl-2013:team-sunrisers-hyderabad",
+        "pts:d0513f63:ipl-2013:team-sunrisers-hyderabad",
+        "pts:1c2a64cd:ipl-2013:team-sunrisers-hyderabad",
+        "pts:c03c6200:ipl-2013:team-sunrisers-hyderabad",
+        "pts:119678fd:ipl-2013:team-sunrisers-hyderabad",
+        "pts:5bb1a1c4:ipl-2013:team-sunrisers-hyderabad",
+        "pts:6b19d823:ipl-2013:team-sunrisers-hyderabad",
+        "pts:8fd1a8f5:ipl-2013:team-sunrisers-hyderabad"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The inaugural 2013 Sunrisers side preserves the franchise’s early Dhawan-led batting and Steyn–Mishra bowling identity in a legal representative XI.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    }
+  ]
+}

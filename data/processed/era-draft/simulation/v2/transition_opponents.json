@@ -1,0 +1,2102 @@
+{
+  "eraId": "era-transition",
+  "opponents": [
+    {
+      "candidateId": "opponent:team-chennai-super-kings:ipl-2015",
+      "contentStatus": "APPROVED_FROZEN_PROFILE",
+      "diagnostics": {
+        "bowlingCoverage": {
+          "bowlingCapacity": 4.935584,
+          "familyCapacity": {
+            "PACE": 3.435233,
+            "SPIN": 1.500351,
+            "UNKNOWN": 0.0
+          },
+          "normalizedBowlingUnitsAvailable": 6.042135,
+          "phaseCapacity": {
+            "death": 0.904989,
+            "middle": 2.291335,
+            "powerplay": 1.739259
+          },
+          "uncoveredBowlingUnits": 0.0,
+          "workloadCounts": {
+            "FRONTLINE": 4,
+            "NONE": 3,
+            "OCCASIONAL": 2,
+            "SUPPORT": 2
+          }
+        },
+        "dataCompleteness": {
+          "confirmedKeeperCandidateCount": 2,
+          "eligiblePlayerCount": 14,
+          "issues": [],
+          "joinedPlayerCount": 14,
+          "status": "COMPLETE",
+          "unresolvedRosterStatusCount": 0
+        },
+        "legality": {
+          "confirmedKeeperCount": 2,
+          "overseasCount": 4,
+          "playerCount": 11,
+          "uniqueCanonicalPlayerCount": 11
+        },
+        "officialParticipation": {
+          "xiMatchCountMaximum": 17,
+          "xiMatchCountMinimum": 10,
+          "xiMatchCountTotal": 171
+        },
+        "positionFitCounts": {
+          "ACCEPTABLE": 0,
+          "NATURAL": 10,
+          "OUT_OF_ROLE": 0,
+          "UNKNOWN": 1
+        },
+        "replacementContext": {
+          "diagnosticOnly": true,
+          "representativeXiEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          },
+          "teamSeasonEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          }
+        },
+        "reviewFlags": [
+          "UNKNOWN_POSITION_FIT_PRESENT"
+        ]
+      },
+      "eraId": "era-transition",
+      "evaluation": {
+        "appliedPositionFitEffect": 0.0,
+        "batting": 55.453929,
+        "battingCore": 57.857143,
+        "battingDepth": 33.825,
+        "bowling": 73.805912,
+        "bowlingCapacity": 4.935584,
+        "overall": 64.62992,
+        "structuralBattingOrderEffect": -3.331786,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-chennai-super-kings",
+      "franchiseName": "Chennai Super Kings",
+      "historical": {
+        "netRunRate": 0.391459,
+        "pointsPercentage": 0.588235
+      },
+      "profileTerminology": "representative historical season XI",
+      "review": {
+        "heuristicIsAdvisory": true,
+        "membershipChanges": {
+          "includedPlayerTeamSeasonIds": [],
+          "omittedPlayerTeamSeasonIds": []
+        },
+        "overrideRationale": "retain the complete representative CSK membership while placing Bravo and Jadeja ahead of Ashwin in a credible batting order",
+        "overrideType": "ORDER_ONLY",
+        "rationale": "The 2015 finalist preserves CSK’s complete pre-suspension Dhoni–Raina core, with a reviewed order that places Bravo and Jadeja ahead of Ashwin.",
+        "reviewedOn": "2026-09-08",
+        "selectionAuthority": "HUMAN_APPROVED_MANUAL_REVIEW",
+        "status": "APPROVED",
+        "xiProvenance": "REVIEWED_OVERRIDE"
+      },
+      "schemaVersion": "ipl-era-opponent-profile/v2",
+      "seasonId": "ipl-2015",
+      "selectionHeuristic": {
+        "advisoryOnly": true,
+        "candidateScore": 0.88623,
+        "historicalPerformanceZ": 0.655824,
+        "qualityZ": 0.984975,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-chennai-super-kings",
+      "teamName": "Chennai Super Kings",
+      "xi": [
+        {
+          "displayName": "DR Smith",
+          "officialListMatchCount": 16,
+          "playerId": "35205dfc",
+          "playerTeamSeasonId": "pts:35205dfc:ipl-2015:team-chennai-super-kings",
+          "position": 1,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "BB McCullum",
+          "officialListMatchCount": 14,
+          "playerId": "b8a55852",
+          "playerTeamSeasonId": "pts:b8a55852:ipl-2015:team-chennai-super-kings",
+          "position": 2,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "SK Raina",
+          "officialListMatchCount": 17,
+          "playerId": "1dc12ab9",
+          "playerTeamSeasonId": "pts:1dc12ab9:ipl-2015:team-chennai-super-kings",
+          "position": 3,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "F du Plessis",
+          "officialListMatchCount": 17,
+          "playerId": "3355b542",
+          "playerTeamSeasonId": "pts:3355b542:ipl-2015:team-chennai-super-kings",
+          "position": 4,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "MS Dhoni",
+          "officialListMatchCount": 17,
+          "playerId": "4a8a2e3b",
+          "playerTeamSeasonId": "pts:4a8a2e3b:ipl-2015:team-chennai-super-kings",
+          "position": 5,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "DJ Bravo",
+          "officialListMatchCount": 17,
+          "playerId": "87e562a9",
+          "playerTeamSeasonId": "pts:87e562a9:ipl-2015:team-chennai-super-kings",
+          "position": 6,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "RA Jadeja",
+          "officialListMatchCount": 17,
+          "playerId": "fe93fd9d",
+          "playerTeamSeasonId": "pts:fe93fd9d:ipl-2015:team-chennai-super-kings",
+          "position": 7,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "R Ashwin",
+          "officialListMatchCount": 14,
+          "playerId": "495d42a5",
+          "playerTeamSeasonId": "pts:495d42a5:ipl-2015:team-chennai-super-kings",
+          "position": 8,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "MM Sharma",
+          "officialListMatchCount": 16,
+          "playerId": "759ac88f",
+          "playerTeamSeasonId": "pts:759ac88f:ipl-2015:team-chennai-super-kings",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "A Nehra",
+          "officialListMatchCount": 16,
+          "playerId": "96fd40ae",
+          "playerTeamSeasonId": "pts:96fd40ae:ipl-2015:team-chennai-super-kings",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "IC Pandey",
+          "officialListMatchCount": 10,
+          "playerId": "e0407c01",
+          "playerTeamSeasonId": "pts:e0407c01:ipl-2015:team-chennai-super-kings",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-delhi-daredevils:ipl-2016",
+      "contentStatus": "APPROVED_FROZEN_PROFILE",
+      "diagnostics": {
+        "bowlingCoverage": {
+          "bowlingCapacity": 4.614484,
+          "familyCapacity": {
+            "PACE": 3.336805,
+            "SPIN": 1.277679,
+            "UNKNOWN": 0.0
+          },
+          "normalizedBowlingUnitsAvailable": 5.573611,
+          "phaseCapacity": {
+            "death": 0.842261,
+            "middle": 2.313889,
+            "powerplay": 1.458332
+          },
+          "uncoveredBowlingUnits": 0.0,
+          "workloadCounts": {
+            "FRONTLINE": 4,
+            "NONE": 4,
+            "OCCASIONAL": 1,
+            "SUPPORT": 2
+          }
+        },
+        "dataCompleteness": {
+          "confirmedKeeperCandidateCount": 4,
+          "eligiblePlayerCount": 18,
+          "issues": [],
+          "joinedPlayerCount": 18,
+          "status": "COMPLETE",
+          "unresolvedRosterStatusCount": 0
+        },
+        "legality": {
+          "confirmedKeeperCount": 3,
+          "overseasCount": 4,
+          "playerCount": 11,
+          "uniqueCanonicalPlayerCount": 11
+        },
+        "officialParticipation": {
+          "xiMatchCountMaximum": 14,
+          "xiMatchCountMinimum": 8,
+          "xiMatchCountTotal": 123
+        },
+        "positionFitCounts": {
+          "ACCEPTABLE": 0,
+          "NATURAL": 11,
+          "OUT_OF_ROLE": 0,
+          "UNKNOWN": 0
+        },
+        "replacementContext": {
+          "diagnosticOnly": true,
+          "representativeXiEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          },
+          "teamSeasonEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          }
+        },
+        "reviewFlags": []
+      },
+      "eraId": "era-transition",
+      "evaluation": {
+        "appliedPositionFitEffect": 0.0,
+        "batting": 58.635,
+        "battingCore": 61.3,
+        "battingDepth": 34.65,
+        "bowling": 62.220082,
+        "bowlingCapacity": 4.614484,
+        "overall": 60.427541,
+        "structuralBattingOrderEffect": -2.665,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-delhi",
+      "franchiseName": "Delhi",
+      "historical": {
+        "netRunRate": -0.1808,
+        "pointsPercentage": 0.5
+      },
+      "profileTerminology": "representative historical season XI",
+      "review": {
+        "heuristicIsAdvisory": true,
+        "membershipChanges": {
+          "includedPlayerTeamSeasonIds": [],
+          "omittedPlayerTeamSeasonIds": []
+        },
+        "overrideRationale": null,
+        "overrideType": "NONE",
+        "rationale": "The 2016 XI captures Delhi’s youth transition through de Kock, Pant, Nair and Samson while retaining Duminy, Morris, Mishra and Zaheer for balance.",
+        "reviewedOn": "2026-09-08",
+        "selectionAuthority": "HUMAN_APPROVED_MANUAL_REVIEW",
+        "status": "APPROVED",
+        "xiProvenance": "BASELINE_ACCEPTED"
+      },
+      "schemaVersion": "ipl-era-opponent-profile/v2",
+      "seasonId": "ipl-2016",
+      "selectionHeuristic": {
+        "advisoryOnly": true,
+        "candidateScore": -0.046777,
+        "historicalPerformanceZ": -0.074748,
+        "qualityZ": -0.034789,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-delhi-daredevils",
+      "teamName": "Delhi Daredevils",
+      "xi": [
+        {
+          "displayName": "Q de Kock",
+          "officialListMatchCount": 13,
+          "playerId": "372455c4",
+          "playerTeamSeasonId": "pts:372455c4:ipl-2016:team-delhi-daredevils",
+          "position": 1,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "RR Pant",
+          "officialListMatchCount": 10,
+          "playerId": "919a3be2",
+          "playerTeamSeasonId": "pts:919a3be2:ipl-2016:team-delhi-daredevils",
+          "position": 2,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "KK Nair",
+          "officialListMatchCount": 14,
+          "playerId": "944533a5",
+          "playerTeamSeasonId": "pts:944533a5:ipl-2016:team-delhi-daredevils",
+          "position": 3,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "JP Duminy",
+          "officialListMatchCount": 10,
+          "playerId": "2e8994e7",
+          "playerTeamSeasonId": "pts:2e8994e7:ipl-2016:team-delhi-daredevils",
+          "position": 4,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "SV Samson",
+          "officialListMatchCount": 14,
+          "playerId": "a4cc73aa",
+          "playerTeamSeasonId": "pts:a4cc73aa:ipl-2016:team-delhi-daredevils",
+          "position": 5,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "CR Brathwaite",
+          "officialListMatchCount": 8,
+          "playerId": "e342e5fb",
+          "playerTeamSeasonId": "pts:e342e5fb:ipl-2016:team-delhi-daredevils",
+          "position": 6,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "CH Morris",
+          "officialListMatchCount": 12,
+          "playerId": "fb66ce1f",
+          "playerTeamSeasonId": "pts:fb66ce1f:ipl-2016:team-delhi-daredevils",
+          "position": 7,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "P Negi",
+          "officialListMatchCount": 8,
+          "playerId": "f62772e5",
+          "playerTeamSeasonId": "pts:f62772e5:ipl-2016:team-delhi-daredevils",
+          "position": 8,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "A Mishra",
+          "officialListMatchCount": 14,
+          "playerId": "6b19d823",
+          "playerTeamSeasonId": "pts:6b19d823:ipl-2016:team-delhi-daredevils",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "Mohammed Shami",
+          "officialListMatchCount": 8,
+          "playerId": "8cf9814c",
+          "playerTeamSeasonId": "pts:8cf9814c:ipl-2016:team-delhi-daredevils",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "Z Khan",
+          "officialListMatchCount": 12,
+          "playerId": "91a4a398",
+          "playerTeamSeasonId": "pts:91a4a398:ipl-2016:team-delhi-daredevils",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-gujarat-lions:ipl-2016",
+      "contentStatus": "APPROVED_FROZEN_PROFILE",
+      "diagnostics": {
+        "bowlingCoverage": {
+          "bowlingCapacity": 5.21699,
+          "familyCapacity": {
+            "PACE": 2.988021,
+            "SPIN": 2.228969,
+            "UNKNOWN": 0.0
+          },
+          "normalizedBowlingUnitsAvailable": 6.37672,
+          "phaseCapacity": {
+            "death": 0.870362,
+            "middle": 2.821925,
+            "powerplay": 1.524702
+          },
+          "uncoveredBowlingUnits": 0.0,
+          "workloadCounts": {
+            "FRONTLINE": 4,
+            "NONE": 3,
+            "OCCASIONAL": 1,
+            "SUPPORT": 3
+          }
+        },
+        "dataCompleteness": {
+          "confirmedKeeperCandidateCount": 4,
+          "eligiblePlayerCount": 17,
+          "issues": [],
+          "joinedPlayerCount": 17,
+          "status": "COMPLETE",
+          "unresolvedRosterStatusCount": 0
+        },
+        "legality": {
+          "confirmedKeeperCount": 2,
+          "overseasCount": 4,
+          "playerCount": 11,
+          "uniqueCanonicalPlayerCount": 11
+        },
+        "officialParticipation": {
+          "xiMatchCountMaximum": 16,
+          "xiMatchCountMinimum": 7,
+          "xiMatchCountTotal": 146
+        },
+        "positionFitCounts": {
+          "ACCEPTABLE": 2,
+          "NATURAL": 9,
+          "OUT_OF_ROLE": 0,
+          "UNKNOWN": 0
+        },
+        "replacementContext": {
+          "diagnosticOnly": true,
+          "representativeXiEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          },
+          "teamSeasonEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          }
+        },
+        "reviewFlags": []
+      },
+      "eraId": "era-transition",
+      "evaluation": {
+        "appliedPositionFitEffect": -0.153571,
+        "batting": 54.873214,
+        "battingCore": 57.171429,
+        "battingDepth": 35.725,
+        "bowling": 62.871259,
+        "bowlingCapacity": 5.21699,
+        "overall": 58.872237,
+        "structuralBattingOrderEffect": -2.758929,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-gujarat-lions",
+      "franchiseName": "Gujarat Lions",
+      "historical": {
+        "netRunRate": -0.395469,
+        "pointsPercentage": 0.5625
+      },
+      "profileTerminology": "representative historical season XI",
+      "review": {
+        "heuristicIsAdvisory": true,
+        "membershipChanges": {
+          "includedPlayerTeamSeasonIds": [],
+          "omittedPlayerTeamSeasonIds": []
+        },
+        "overrideRationale": "retain membership while placing Bravo and Jadeja ahead of Kulkarni",
+        "overrideType": "ORDER_ONLY",
+        "rationale": "Gujarat Lions’ inaugural playoff side is represented by its McCullum–Smith–Raina top order and varied Jadeja–Bravo-led attack, with a corrected lower-order sequence.",
+        "reviewedOn": "2026-09-08",
+        "selectionAuthority": "HUMAN_APPROVED_MANUAL_REVIEW",
+        "status": "APPROVED",
+        "xiProvenance": "REVIEWED_OVERRIDE"
+      },
+      "schemaVersion": "ipl-era-opponent-profile/v2",
+      "seasonId": "ipl-2016",
+      "selectionHeuristic": {
+        "advisoryOnly": true,
+        "candidateScore": -0.190867,
+        "historicalPerformanceZ": 0.170694,
+        "qualityZ": -0.345822,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-gujarat-lions",
+      "teamName": "Gujarat Lions",
+      "xi": [
+        {
+          "displayName": "DR Smith",
+          "officialListMatchCount": 12,
+          "playerId": "35205dfc",
+          "playerTeamSeasonId": "pts:35205dfc:ipl-2016:team-gujarat-lions",
+          "position": 1,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "BB McCullum",
+          "officialListMatchCount": 16,
+          "playerId": "b8a55852",
+          "playerTeamSeasonId": "pts:b8a55852:ipl-2016:team-gujarat-lions",
+          "position": 2,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "SK Raina",
+          "officialListMatchCount": 15,
+          "playerId": "1dc12ab9",
+          "playerTeamSeasonId": "pts:1dc12ab9:ipl-2016:team-gujarat-lions",
+          "position": 3,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "KD Karthik",
+          "officialListMatchCount": 16,
+          "playerId": "c03f1114",
+          "playerTeamSeasonId": "pts:c03f1114:ipl-2016:team-gujarat-lions",
+          "position": 4,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "AJ Finch",
+          "officialListMatchCount": 13,
+          "playerId": "b8d490fd",
+          "playerTeamSeasonId": "pts:b8d490fd:ipl-2016:team-gujarat-lions",
+          "position": 5,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "DJ Bravo",
+          "officialListMatchCount": 15,
+          "playerId": "87e562a9",
+          "playerTeamSeasonId": "pts:87e562a9:ipl-2016:team-gujarat-lions",
+          "position": 6,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "RA Jadeja",
+          "officialListMatchCount": 15,
+          "playerId": "fe93fd9d",
+          "playerTeamSeasonId": "pts:fe93fd9d:ipl-2016:team-gujarat-lions",
+          "position": 7,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "DS Kulkarni",
+          "officialListMatchCount": 14,
+          "playerId": "d2a989fc",
+          "playerTeamSeasonId": "pts:d2a989fc:ipl-2016:team-gujarat-lions",
+          "position": 8,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "P Kumar",
+          "officialListMatchCount": 16,
+          "playerId": "e938e1bc",
+          "playerTeamSeasonId": "pts:e938e1bc:ipl-2016:team-gujarat-lions",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "PV Tambe",
+          "officialListMatchCount": 7,
+          "playerId": "6aed7e79",
+          "playerTeamSeasonId": "pts:6aed7e79:ipl-2016:team-gujarat-lions",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "S Kaushik",
+          "officialListMatchCount": 7,
+          "playerId": "1da489ff",
+          "playerTeamSeasonId": "pts:1da489ff:ipl-2016:team-gujarat-lions",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-kolkata-knight-riders:ipl-2014",
+      "contentStatus": "APPROVED_FROZEN_PROFILE",
+      "diagnostics": {
+        "bowlingCoverage": {
+          "bowlingCapacity": 4.954057,
+          "familyCapacity": {
+            "PACE": 2.0625,
+            "SPIN": 2.875932,
+            "UNKNOWN": 0.015625
+          },
+          "normalizedBowlingUnitsAvailable": 5.209723,
+          "phaseCapacity": {
+            "death": 0.882793,
+            "middle": 2.506869,
+            "powerplay": 1.564394
+          },
+          "uncoveredBowlingUnits": 0.0,
+          "workloadCounts": {
+            "FRONTLINE": 5,
+            "NONE": 3,
+            "OCCASIONAL": 3,
+            "SUPPORT": 0
+          }
+        },
+        "dataCompleteness": {
+          "confirmedKeeperCandidateCount": 1,
+          "eligiblePlayerCount": 15,
+          "issues": [],
+          "joinedPlayerCount": 15,
+          "status": "COMPLETE",
+          "unresolvedRosterStatusCount": 0
+        },
+        "legality": {
+          "confirmedKeeperCount": 1,
+          "overseasCount": 4,
+          "playerCount": 11,
+          "uniqueCanonicalPlayerCount": 11
+        },
+        "officialParticipation": {
+          "xiMatchCountMaximum": 16,
+          "xiMatchCountMinimum": 10,
+          "xiMatchCountTotal": 153
+        },
+        "positionFitCounts": {
+          "ACCEPTABLE": 0,
+          "NATURAL": 11,
+          "OUT_OF_ROLE": 0,
+          "UNKNOWN": 0
+        },
+        "replacementContext": {
+          "diagnosticOnly": true,
+          "representativeXiEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          },
+          "teamSeasonEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          }
+        },
+        "reviewFlags": []
+      },
+      "eraId": "era-transition",
+      "evaluation": {
+        "appliedPositionFitEffect": 0.0,
+        "batting": 59.373571,
+        "battingCore": 61.842857,
+        "battingDepth": 37.15,
+        "bowling": 70.08,
+        "bowlingCapacity": 4.954057,
+        "overall": 64.726786,
+        "structuralBattingOrderEffect": -2.469286,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-kolkata-knight-riders",
+      "franchiseName": "Kolkata Knight Riders",
+      "historical": {
+        "netRunRate": 0.475735,
+        "pointsPercentage": 0.71875
+      },
+      "profileTerminology": "representative historical season XI",
+      "review": {
+        "heuristicIsAdvisory": true,
+        "membershipChanges": {
+          "includedPlayerTeamSeasonIds": [],
+          "omittedPlayerTeamSeasonIds": []
+        },
+        "overrideRationale": null,
+        "overrideType": "NONE",
+        "rationale": "The 2014 XI captures KKR’s defining title-season continuity through Gambhir, Uthappa, Narine, Russell-era support and a balanced spin-pace attack.",
+        "reviewedOn": "2026-09-08",
+        "selectionAuthority": "HUMAN_APPROVED_MANUAL_REVIEW",
+        "status": "APPROVED",
+        "xiProvenance": "BASELINE_ACCEPTED"
+      },
+      "schemaVersion": "ipl-era-opponent-profile/v2",
+      "seasonId": "ipl-2014",
+      "selectionHeuristic": {
+        "advisoryOnly": true,
+        "candidateScore": 1.005012,
+        "historicalPerformanceZ": 1.177442,
+        "qualityZ": 0.931113,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-kolkata-knight-riders",
+      "teamName": "Kolkata Knight Riders",
+      "xi": [
+        {
+          "displayName": "RV Uthappa",
+          "officialListMatchCount": 16,
+          "playerId": "1c17e270",
+          "playerTeamSeasonId": "pts:1c17e270:ipl-2014:team-kolkata-knight-riders",
+          "position": 1,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "G Gambhir",
+          "officialListMatchCount": 16,
+          "playerId": "bb345e0b",
+          "playerTeamSeasonId": "pts:bb345e0b:ipl-2014:team-kolkata-knight-riders",
+          "position": 2,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "MK Pandey",
+          "officialListMatchCount": 16,
+          "playerId": "93b4fc78",
+          "playerTeamSeasonId": "pts:93b4fc78:ipl-2014:team-kolkata-knight-riders",
+          "position": 3,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "YK Pathan",
+          "officialListMatchCount": 15,
+          "playerId": "3c6ffae8",
+          "playerTeamSeasonId": "pts:3c6ffae8:ipl-2014:team-kolkata-knight-riders",
+          "position": 4,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "Shakib Al Hasan",
+          "officialListMatchCount": 13,
+          "playerId": "7dc35884",
+          "playerTeamSeasonId": "pts:7dc35884:ipl-2014:team-kolkata-knight-riders",
+          "position": 5,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "SA Yadav",
+          "officialListMatchCount": 16,
+          "playerId": "271f83cd",
+          "playerTeamSeasonId": "pts:271f83cd:ipl-2014:team-kolkata-knight-riders",
+          "position": 6,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "RN ten Doeschate",
+          "officialListMatchCount": 10,
+          "playerId": "4ec07775",
+          "playerTeamSeasonId": "pts:4ec07775:ipl-2014:team-kolkata-knight-riders",
+          "position": 7,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "PP Chawla",
+          "officialListMatchCount": 11,
+          "playerId": "98ae73b1",
+          "playerTeamSeasonId": "pts:98ae73b1:ipl-2014:team-kolkata-knight-riders",
+          "position": 8,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "M Morkel",
+          "officialListMatchCount": 12,
+          "playerId": "5bb5a915",
+          "playerTeamSeasonId": "pts:5bb5a915:ipl-2014:team-kolkata-knight-riders",
+          "position": 9,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "SP Narine",
+          "officialListMatchCount": 16,
+          "playerId": "9d430b40",
+          "playerTeamSeasonId": "pts:9d430b40:ipl-2014:team-kolkata-knight-riders",
+          "position": 10,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "UT Yadav",
+          "officialListMatchCount": 12,
+          "playerId": "cc1e8c68",
+          "playerTeamSeasonId": "pts:cc1e8c68:ipl-2014:team-kolkata-knight-riders",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-mumbai-indians:ipl-2017",
+      "contentStatus": "APPROVED_FROZEN_PROFILE",
+      "diagnostics": {
+        "bowlingCoverage": {
+          "bowlingCapacity": 4.93576,
+          "familyCapacity": {
+            "PACE": 3.234711,
+            "SPIN": 1.701049,
+            "UNKNOWN": 0.0
+          },
+          "normalizedBowlingUnitsAvailable": 5.545752,
+          "phaseCapacity": {
+            "death": 0.961837,
+            "middle": 2.544629,
+            "powerplay": 1.429293
+          },
+          "uncoveredBowlingUnits": 0.0,
+          "workloadCounts": {
+            "FRONTLINE": 5,
+            "NONE": 4,
+            "OCCASIONAL": 1,
+            "SUPPORT": 1
+          }
+        },
+        "dataCompleteness": {
+          "confirmedKeeperCandidateCount": 3,
+          "eligiblePlayerCount": 16,
+          "issues": [],
+          "joinedPlayerCount": 16,
+          "status": "COMPLETE",
+          "unresolvedRosterStatusCount": 0
+        },
+        "legality": {
+          "confirmedKeeperCount": 2,
+          "overseasCount": 4,
+          "playerCount": 11,
+          "uniqueCanonicalPlayerCount": 11
+        },
+        "officialParticipation": {
+          "xiMatchCountMaximum": 17,
+          "xiMatchCountMinimum": 10,
+          "xiMatchCountTotal": 156
+        },
+        "positionFitCounts": {
+          "ACCEPTABLE": 0,
+          "NATURAL": 11,
+          "OUT_OF_ROLE": 0,
+          "UNKNOWN": 0
+        },
+        "replacementContext": {
+          "diagnosticOnly": true,
+          "representativeXiEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          },
+          "teamSeasonEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          }
+        },
+        "reviewFlags": []
+      },
+      "eraId": "era-transition",
+      "evaluation": {
+        "appliedPositionFitEffect": 0.0,
+        "batting": 59.393929,
+        "battingCore": 61.857143,
+        "battingDepth": 37.225,
+        "bowling": 63.7,
+        "bowlingCapacity": 4.93576,
+        "overall": 61.546964,
+        "structuralBattingOrderEffect": -2.463214,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-mumbai-indians",
+      "franchiseName": "Mumbai Indians",
+      "historical": {
+        "netRunRate": 0.733911,
+        "pointsPercentage": 0.676471
+      },
+      "profileTerminology": "representative historical season XI",
+      "review": {
+        "heuristicIsAdvisory": true,
+        "membershipChanges": {
+          "includedPlayerTeamSeasonIds": [],
+          "omittedPlayerTeamSeasonIds": []
+        },
+        "overrideRationale": null,
+        "overrideType": "NONE",
+        "rationale": "The 2017 XI is the mature Rohit–Pollard–Hardik–Krunal–Bumrah Mumbai core, combining strong participation, the best league record and a historically defining title.",
+        "reviewedOn": "2026-09-08",
+        "selectionAuthority": "HUMAN_APPROVED_MANUAL_REVIEW",
+        "status": "APPROVED",
+        "xiProvenance": "BASELINE_ACCEPTED"
+      },
+      "schemaVersion": "ipl-era-opponent-profile/v2",
+      "seasonId": "ipl-2017",
+      "selectionHeuristic": {
+        "advisoryOnly": true,
+        "candidateScore": 0.536931,
+        "historicalPerformanceZ": 1.284113,
+        "qualityZ": 0.216709,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-mumbai-indians",
+      "teamName": "Mumbai Indians",
+      "xi": [
+        {
+          "displayName": "JC Buttler",
+          "officialListMatchCount": 10,
+          "playerId": "99b75528",
+          "playerTeamSeasonId": "pts:99b75528:ipl-2017:team-mumbai-indians",
+          "position": 1,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "PA Patel",
+          "officialListMatchCount": 16,
+          "playerId": "b5da6c24",
+          "playerTeamSeasonId": "pts:b5da6c24:ipl-2017:team-mumbai-indians",
+          "position": 2,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "N Rana",
+          "officialListMatchCount": 13,
+          "playerId": "fb2d1dda",
+          "playerTeamSeasonId": "pts:fb2d1dda:ipl-2017:team-mumbai-indians",
+          "position": 3,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "RG Sharma",
+          "officialListMatchCount": 17,
+          "playerId": "740742ef",
+          "playerTeamSeasonId": "pts:740742ef:ipl-2017:team-mumbai-indians",
+          "position": 4,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "KA Pollard",
+          "officialListMatchCount": 17,
+          "playerId": "a757b0d8",
+          "playerTeamSeasonId": "pts:a757b0d8:ipl-2017:team-mumbai-indians",
+          "position": 5,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "KH Pandya",
+          "officialListMatchCount": 13,
+          "playerId": "5b8c830e",
+          "playerTeamSeasonId": "pts:5b8c830e:ipl-2017:team-mumbai-indians",
+          "position": 6,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "HH Pandya",
+          "officialListMatchCount": 17,
+          "playerId": "dbe50b21",
+          "playerTeamSeasonId": "pts:dbe50b21:ipl-2017:team-mumbai-indians",
+          "position": 7,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "Harbhajan Singh",
+          "officialListMatchCount": 11,
+          "playerId": "8b5b6769",
+          "playerTeamSeasonId": "pts:8b5b6769:ipl-2017:team-mumbai-indians",
+          "position": 8,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "JJ Bumrah",
+          "officialListMatchCount": 16,
+          "playerId": "462411b3",
+          "playerTeamSeasonId": "pts:462411b3:ipl-2017:team-mumbai-indians",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "MJ McClenaghan",
+          "officialListMatchCount": 14,
+          "playerId": "51a3c5ef",
+          "playerTeamSeasonId": "pts:51a3c5ef:ipl-2017:team-mumbai-indians",
+          "position": 10,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "SL Malinga",
+          "officialListMatchCount": 12,
+          "playerId": "a12e1d51",
+          "playerTeamSeasonId": "pts:a12e1d51:ipl-2017:team-mumbai-indians",
+          "position": 11,
+          "rosterStatus": "OVERSEAS"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-kings-xi-punjab:ipl-2014",
+      "contentStatus": "APPROVED_FROZEN_PROFILE",
+      "diagnostics": {
+        "bowlingCoverage": {
+          "bowlingCapacity": 4.865399,
+          "familyCapacity": {
+            "PACE": 3.722936,
+            "SPIN": 1.142463,
+            "UNKNOWN": 0.0
+          },
+          "normalizedBowlingUnitsAvailable": 5.229167,
+          "phaseCapacity": {
+            "death": 0.918019,
+            "middle": 2.240501,
+            "powerplay": 1.706879
+          },
+          "uncoveredBowlingUnits": 0.0,
+          "workloadCounts": {
+            "FRONTLINE": 5,
+            "NONE": 5,
+            "OCCASIONAL": 1,
+            "SUPPORT": 0
+          }
+        },
+        "dataCompleteness": {
+          "confirmedKeeperCandidateCount": 1,
+          "eligiblePlayerCount": 19,
+          "issues": [],
+          "joinedPlayerCount": 19,
+          "status": "COMPLETE",
+          "unresolvedRosterStatusCount": 0
+        },
+        "legality": {
+          "confirmedKeeperCount": 1,
+          "overseasCount": 4,
+          "playerCount": 11,
+          "uniqueCanonicalPlayerCount": 11
+        },
+        "officialParticipation": {
+          "xiMatchCountMaximum": 17,
+          "xiMatchCountMinimum": 8,
+          "xiMatchCountTotal": 155
+        },
+        "positionFitCounts": {
+          "ACCEPTABLE": 1,
+          "NATURAL": 10,
+          "OUT_OF_ROLE": 0,
+          "UNKNOWN": 0
+        },
+        "replacementContext": {
+          "diagnosticOnly": true,
+          "representativeXiEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          },
+          "teamSeasonEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          }
+        },
+        "reviewFlags": []
+      },
+      "eraId": "era-transition",
+      "evaluation": {
+        "appliedPositionFitEffect": -0.025,
+        "batting": 66.029643,
+        "battingCore": 69.385714,
+        "battingDepth": 36.075,
+        "bowling": 71.14,
+        "bowlingCapacity": 4.865399,
+        "overall": 68.584821,
+        "structuralBattingOrderEffect": -3.331071,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-punjab",
+      "franchiseName": "Punjab",
+      "historical": {
+        "netRunRate": 0.769112,
+        "pointsPercentage": 0.705882
+      },
+      "profileTerminology": "representative historical season XI",
+      "review": {
+        "heuristicIsAdvisory": true,
+        "membershipChanges": {
+          "includedPlayerTeamSeasonIds": [],
+          "omittedPlayerTeamSeasonIds": []
+        },
+        "overrideRationale": null,
+        "overrideType": "NONE",
+        "rationale": "The 2014 finalist preserves Punjab’s defining Sehwag–Maxwell–Miller batting identity and a complete Johnson–Sandeep–Axar bowling construction.",
+        "reviewedOn": "2026-09-08",
+        "selectionAuthority": "HUMAN_APPROVED_MANUAL_REVIEW",
+        "status": "APPROVED",
+        "xiProvenance": "BASELINE_ACCEPTED"
+      },
+      "schemaVersion": "ipl-era-opponent-profile/v2",
+      "seasonId": "ipl-2014",
+      "selectionHeuristic": {
+        "advisoryOnly": true,
+        "candidateScore": 1.645498,
+        "historicalPerformanceZ": 1.289917,
+        "qualityZ": 1.79789,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-kings-xi-punjab",
+      "teamName": "Kings XI Punjab",
+      "xi": [
+        {
+          "displayName": "V Sehwag",
+          "officialListMatchCount": 17,
+          "playerId": "8ba8195d",
+          "playerTeamSeasonId": "pts:8ba8195d:ipl-2014:team-kings-xi-punjab",
+          "position": 1,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "M Vohra",
+          "officialListMatchCount": 8,
+          "playerId": "c03e2850",
+          "playerTeamSeasonId": "pts:c03e2850:ipl-2014:team-kings-xi-punjab",
+          "position": 2,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "WP Saha",
+          "officialListMatchCount": 17,
+          "playerId": "fe11caa6",
+          "playerTeamSeasonId": "pts:fe11caa6:ipl-2014:team-kings-xi-punjab",
+          "position": 3,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "GJ Maxwell",
+          "officialListMatchCount": 16,
+          "playerId": "b681e71e",
+          "playerTeamSeasonId": "pts:b681e71e:ipl-2014:team-kings-xi-punjab",
+          "position": 4,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "DA Miller",
+          "officialListMatchCount": 16,
+          "playerId": "d67d5f00",
+          "playerTeamSeasonId": "pts:d67d5f00:ipl-2014:team-kings-xi-punjab",
+          "position": 5,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "R Dhawan",
+          "officialListMatchCount": 13,
+          "playerId": "26a85969",
+          "playerTeamSeasonId": "pts:26a85969:ipl-2014:team-kings-xi-punjab",
+          "position": 6,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "GJ Bailey",
+          "officialListMatchCount": 17,
+          "playerId": "5056011d",
+          "playerTeamSeasonId": "pts:5056011d:ipl-2014:team-kings-xi-punjab",
+          "position": 7,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "AR Patel",
+          "officialListMatchCount": 17,
+          "playerId": "2e171977",
+          "playerTeamSeasonId": "pts:2e171977:ipl-2014:team-kings-xi-punjab",
+          "position": 8,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "L Balaji",
+          "officialListMatchCount": 9,
+          "playerId": "b2b50355",
+          "playerTeamSeasonId": "pts:b2b50355:ipl-2014:team-kings-xi-punjab",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "Sandeep Sharma",
+          "officialListMatchCount": 11,
+          "playerId": "ce820073",
+          "playerTeamSeasonId": "pts:ce820073:ipl-2014:team-kings-xi-punjab",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "MG Johnson",
+          "officialListMatchCount": 14,
+          "playerId": "f5180fe6",
+          "playerTeamSeasonId": "pts:f5180fe6:ipl-2014:team-kings-xi-punjab",
+          "position": 11,
+          "rosterStatus": "OVERSEAS"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-rajasthan-royals:ipl-2015",
+      "contentStatus": "APPROVED_FROZEN_PROFILE",
+      "diagnostics": {
+        "bowlingCoverage": {
+          "bowlingCapacity": 4.826603,
+          "familyCapacity": {
+            "PACE": 3.70577,
+            "SPIN": 1.120833,
+            "UNKNOWN": 0.0
+          },
+          "normalizedBowlingUnitsAvailable": 5.814957,
+          "phaseCapacity": {
+            "death": 0.941462,
+            "middle": 2.463537,
+            "powerplay": 1.421603
+          },
+          "uncoveredBowlingUnits": 0.0,
+          "workloadCounts": {
+            "FRONTLINE": 4,
+            "NONE": 4,
+            "OCCASIONAL": 0,
+            "SUPPORT": 3
+          }
+        },
+        "dataCompleteness": {
+          "confirmedKeeperCandidateCount": 1,
+          "eligiblePlayerCount": 14,
+          "issues": [],
+          "joinedPlayerCount": 14,
+          "status": "COMPLETE",
+          "unresolvedRosterStatusCount": 0
+        },
+        "legality": {
+          "confirmedKeeperCount": 1,
+          "overseasCount": 4,
+          "playerCount": 11,
+          "uniqueCanonicalPlayerCount": 11
+        },
+        "officialParticipation": {
+          "xiMatchCountMaximum": 14,
+          "xiMatchCountMinimum": 10,
+          "xiMatchCountTotal": 138
+        },
+        "positionFitCounts": {
+          "ACCEPTABLE": 1,
+          "NATURAL": 10,
+          "OUT_OF_ROLE": 0,
+          "UNKNOWN": 0
+        },
+        "replacementContext": {
+          "diagnosticOnly": true,
+          "representativeXiEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          },
+          "teamSeasonEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          }
+        },
+        "reviewFlags": []
+      },
+      "eraId": "era-transition",
+      "evaluation": {
+        "appliedPositionFitEffect": -0.025,
+        "batting": 59.2225,
+        "battingCore": 61.5,
+        "battingDepth": 38.975,
+        "bowling": 56.31036,
+        "bowlingCapacity": 4.826603,
+        "overall": 57.76643,
+        "structuralBattingOrderEffect": -2.366786,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-rajasthan-royals",
+      "franchiseName": "Rajasthan Royals",
+      "historical": {
+        "netRunRate": -0.218863,
+        "pointsPercentage": 0.571429
+      },
+      "profileTerminology": "representative historical season XI",
+      "review": {
+        "heuristicIsAdvisory": true,
+        "membershipChanges": {
+          "includedPlayerTeamSeasonIds": [],
+          "omittedPlayerTeamSeasonIds": []
+        },
+        "overrideRationale": null,
+        "overrideType": "NONE",
+        "rationale": "The 2015 playoff XI provides the final pre-suspension expression of Rajasthan’s Rahane–Watson–Smith core with unusually strong participation continuity.",
+        "reviewedOn": "2026-09-08",
+        "selectionAuthority": "HUMAN_APPROVED_MANUAL_REVIEW",
+        "status": "APPROVED",
+        "xiProvenance": "BASELINE_ACCEPTED"
+      },
+      "schemaVersion": "ipl-era-opponent-profile/v2",
+      "seasonId": "ipl-2015",
+      "selectionHeuristic": {
+        "advisoryOnly": true,
+        "candidateScore": -0.354113,
+        "historicalPerformanceZ": 0.29582,
+        "qualityZ": -0.632655,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-rajasthan-royals",
+      "teamName": "Rajasthan Royals",
+      "xi": [
+        {
+          "displayName": "AM Rahane",
+          "officialListMatchCount": 14,
+          "playerId": "29e95537",
+          "playerTeamSeasonId": "pts:29e95537:ipl-2015:team-rajasthan-royals",
+          "position": 1,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "SR Watson",
+          "officialListMatchCount": 10,
+          "playerId": "4329fbb5",
+          "playerTeamSeasonId": "pts:4329fbb5:ipl-2015:team-rajasthan-royals",
+          "position": 2,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "SPD Smith",
+          "officialListMatchCount": 14,
+          "playerId": "30a45b23",
+          "playerTeamSeasonId": "pts:30a45b23:ipl-2015:team-rajasthan-royals",
+          "position": 3,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "DJ Hooda",
+          "officialListMatchCount": 14,
+          "playerId": "73ad96ed",
+          "playerTeamSeasonId": "pts:73ad96ed:ipl-2015:team-rajasthan-royals",
+          "position": 4,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "KK Nair",
+          "officialListMatchCount": 14,
+          "playerId": "944533a5",
+          "playerTeamSeasonId": "pts:944533a5:ipl-2015:team-rajasthan-royals",
+          "position": 5,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "SV Samson",
+          "officialListMatchCount": 14,
+          "playerId": "a4cc73aa",
+          "playerTeamSeasonId": "pts:a4cc73aa:ipl-2015:team-rajasthan-royals",
+          "position": 6,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "CH Morris",
+          "officialListMatchCount": 11,
+          "playerId": "fb66ce1f",
+          "playerTeamSeasonId": "pts:fb66ce1f:ipl-2015:team-rajasthan-royals",
+          "position": 7,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "JP Faulkner",
+          "officialListMatchCount": 13,
+          "playerId": "808f425a",
+          "playerTeamSeasonId": "pts:808f425a:ipl-2015:team-rajasthan-royals",
+          "position": 8,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "PV Tambe",
+          "officialListMatchCount": 10,
+          "playerId": "6aed7e79",
+          "playerTeamSeasonId": "pts:6aed7e79:ipl-2015:team-rajasthan-royals",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "STR Binny",
+          "officialListMatchCount": 13,
+          "playerId": "bd17b45f",
+          "playerTeamSeasonId": "pts:bd17b45f:ipl-2015:team-rajasthan-royals",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "DS Kulkarni",
+          "officialListMatchCount": 11,
+          "playerId": "d2a989fc",
+          "playerTeamSeasonId": "pts:d2a989fc:ipl-2015:team-rajasthan-royals",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-rising-pune-supergiant:ipl-2017",
+      "contentStatus": "APPROVED_FROZEN_PROFILE",
+      "diagnostics": {
+        "bowlingCoverage": {
+          "bowlingCapacity": 5.11474,
+          "familyCapacity": {
+            "PACE": 3.435898,
+            "SPIN": 1.660985,
+            "UNKNOWN": 0.017857
+          },
+          "normalizedBowlingUnitsAvailable": 5.9329,
+          "phaseCapacity": {
+            "death": 0.963141,
+            "middle": 2.521354,
+            "powerplay": 1.630245
+          },
+          "uncoveredBowlingUnits": 0.0,
+          "workloadCounts": {
+            "FRONTLINE": 5,
+            "NONE": 4,
+            "OCCASIONAL": 1,
+            "SUPPORT": 1
+          }
+        },
+        "dataCompleteness": {
+          "confirmedKeeperCandidateCount": 1,
+          "eligiblePlayerCount": 19,
+          "issues": [],
+          "joinedPlayerCount": 19,
+          "status": "COMPLETE",
+          "unresolvedRosterStatusCount": 0
+        },
+        "legality": {
+          "confirmedKeeperCount": 1,
+          "overseasCount": 4,
+          "playerCount": 11,
+          "uniqueCanonicalPlayerCount": 11
+        },
+        "officialParticipation": {
+          "xiMatchCountMaximum": 16,
+          "xiMatchCountMinimum": 11,
+          "xiMatchCountTotal": 148
+        },
+        "positionFitCounts": {
+          "ACCEPTABLE": 2,
+          "NATURAL": 9,
+          "OUT_OF_ROLE": 0,
+          "UNKNOWN": 0
+        },
+        "replacementContext": {
+          "diagnosticOnly": true,
+          "representativeXiEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          },
+          "teamSeasonEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          }
+        },
+        "reviewFlags": []
+      },
+      "eraId": "era-transition",
+      "evaluation": {
+        "appliedPositionFitEffect": -0.153571,
+        "batting": 58.580714,
+        "battingCore": 61.271429,
+        "battingDepth": 35.9,
+        "bowling": 72.150909,
+        "bowlingCapacity": 5.11474,
+        "overall": 65.365812,
+        "structuralBattingOrderEffect": -2.537143,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-rising-pune",
+      "franchiseName": "Rising Pune",
+      "historical": {
+        "netRunRate": 0.212878,
+        "pointsPercentage": 0.625
+      },
+      "profileTerminology": "representative historical season XI",
+      "review": {
+        "heuristicIsAdvisory": true,
+        "membershipChanges": {
+          "includedPlayerTeamSeasonIds": [],
+          "omittedPlayerTeamSeasonIds": []
+        },
+        "overrideRationale": null,
+        "overrideType": "NONE",
+        "rationale": "The 2017 finalist is the clearest Rising Pune representation, retaining Smith, Stokes, Dhoni, Tripathi and the attack that defined the short-lived lineage.",
+        "reviewedOn": "2026-09-08",
+        "selectionAuthority": "HUMAN_APPROVED_MANUAL_REVIEW",
+        "status": "APPROVED",
+        "xiProvenance": "BASELINE_ACCEPTED"
+      },
+      "schemaVersion": "ipl-era-opponent-profile/v2",
+      "seasonId": "ipl-2017",
+      "selectionHeuristic": {
+        "advisoryOnly": true,
+        "candidateScore": 0.987336,
+        "historicalPerformanceZ": 0.783528,
+        "qualityZ": 1.074682,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-rising-pune-supergiant",
+      "teamName": "Rising Pune Supergiant",
+      "xi": [
+        {
+          "displayName": "AM Rahane",
+          "officialListMatchCount": 16,
+          "playerId": "29e95537",
+          "playerTeamSeasonId": "pts:29e95537:ipl-2017:team-rising-pune-supergiant",
+          "position": 1,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "RA Tripathi",
+          "officialListMatchCount": 14,
+          "playerId": "77255a9e",
+          "playerTeamSeasonId": "pts:77255a9e:ipl-2017:team-rising-pune-supergiant",
+          "position": 2,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "SPD Smith",
+          "officialListMatchCount": 15,
+          "playerId": "30a45b23",
+          "playerTeamSeasonId": "pts:30a45b23:ipl-2017:team-rising-pune-supergiant",
+          "position": 3,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "MK Tiwary",
+          "officialListMatchCount": 15,
+          "playerId": "26e5cabf",
+          "playerTeamSeasonId": "pts:26e5cabf:ipl-2017:team-rising-pune-supergiant",
+          "position": 4,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "MS Dhoni",
+          "officialListMatchCount": 16,
+          "playerId": "4a8a2e3b",
+          "playerTeamSeasonId": "pts:4a8a2e3b:ipl-2017:team-rising-pune-supergiant",
+          "position": 5,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "DT Christian",
+          "officialListMatchCount": 13,
+          "playerId": "2a2e6343",
+          "playerTeamSeasonId": "pts:2a2e6343:ipl-2017:team-rising-pune-supergiant",
+          "position": 6,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "BA Stokes",
+          "officialListMatchCount": 12,
+          "playerId": "e087956b",
+          "playerTeamSeasonId": "pts:e087956b:ipl-2017:team-rising-pune-supergiant",
+          "position": 7,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "SN Thakur",
+          "officialListMatchCount": 12,
+          "playerId": "1abb78f8",
+          "playerTeamSeasonId": "pts:1abb78f8:ipl-2017:team-rising-pune-supergiant",
+          "position": 8,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "JD Unadkat",
+          "officialListMatchCount": 12,
+          "playerId": "1e66c162",
+          "playerTeamSeasonId": "pts:1e66c162:ipl-2017:team-rising-pune-supergiant",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "Imran Tahir",
+          "officialListMatchCount": 12,
+          "playerId": "acee4cc4",
+          "playerTeamSeasonId": "pts:acee4cc4:ipl-2017:team-rising-pune-supergiant",
+          "position": 10,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "Washington Sundar",
+          "officialListMatchCount": 11,
+          "playerId": "f19ccfad",
+          "playerTeamSeasonId": "pts:f19ccfad:ipl-2017:team-rising-pune-supergiant",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-royal-challengers-bangalore:ipl-2016",
+      "contentStatus": "APPROVED_FROZEN_PROFILE",
+      "diagnostics": {
+        "bowlingCoverage": {
+          "bowlingCapacity": 4.804613,
+          "familyCapacity": {
+            "PACE": 2.789971,
+            "SPIN": 1.976763,
+            "UNKNOWN": 0.037879
+          },
+          "normalizedBowlingUnitsAvailable": 5.809433,
+          "phaseCapacity": {
+            "death": 0.848134,
+            "middle": 2.436959,
+            "powerplay": 1.51952
+          },
+          "uncoveredBowlingUnits": 0.0,
+          "workloadCounts": {
+            "FRONTLINE": 5,
+            "NONE": 2,
+            "OCCASIONAL": 2,
+            "SUPPORT": 2
+          }
+        },
+        "dataCompleteness": {
+          "confirmedKeeperCandidateCount": 4,
+          "eligiblePlayerCount": 19,
+          "issues": [],
+          "joinedPlayerCount": 19,
+          "status": "COMPLETE",
+          "unresolvedRosterStatusCount": 0
+        },
+        "legality": {
+          "confirmedKeeperCount": 2,
+          "overseasCount": 4,
+          "playerCount": 11,
+          "uniqueCanonicalPlayerCount": 11
+        },
+        "officialParticipation": {
+          "xiMatchCountMaximum": 16,
+          "xiMatchCountMinimum": 8,
+          "xiMatchCountTotal": 136
+        },
+        "positionFitCounts": {
+          "ACCEPTABLE": 0,
+          "NATURAL": 11,
+          "OUT_OF_ROLE": 0,
+          "UNKNOWN": 0
+        },
+        "replacementContext": {
+          "diagnosticOnly": true,
+          "representativeXiEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          },
+          "teamSeasonEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          }
+        },
+        "reviewFlags": []
+      },
+      "eraId": "era-transition",
+      "evaluation": {
+        "appliedPositionFitEffect": 0.0,
+        "batting": 62.996786,
+        "battingCore": 66.571429,
+        "battingDepth": 30.825,
+        "bowling": 69.337374,
+        "bowlingCapacity": 4.804613,
+        "overall": 66.16708,
+        "structuralBattingOrderEffect": -4.174643,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-royal-challengers",
+      "franchiseName": "Royal Challengers",
+      "historical": {
+        "netRunRate": 0.838798,
+        "pointsPercentage": 0.5625
+      },
+      "profileTerminology": "representative historical season XI",
+      "review": {
+        "heuristicIsAdvisory": true,
+        "membershipChanges": {
+          "includedPlayerTeamSeasonIds": [],
+          "omittedPlayerTeamSeasonIds": []
+        },
+        "overrideRationale": null,
+        "overrideType": "NONE",
+        "rationale": "The 2016 finalist captures the peak Kohli–Gayle–de Villiers–Watson RCB identity with Rahul keeping and enough spin-seam coverage for a representative XI.",
+        "reviewedOn": "2026-09-08",
+        "selectionAuthority": "HUMAN_APPROVED_MANUAL_REVIEW",
+        "status": "APPROVED",
+        "xiProvenance": "BASELINE_ACCEPTED"
+      },
+      "schemaVersion": "ipl-era-opponent-profile/v2",
+      "seasonId": "ipl-2016",
+      "selectionHeuristic": {
+        "advisoryOnly": true,
+        "candidateScore": 1.193092,
+        "historicalPerformanceZ": 1.049336,
+        "qualityZ": 1.254701,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-royal-challengers-bangalore",
+      "teamName": "Royal Challengers Bangalore",
+      "xi": [
+        {
+          "displayName": "V Kohli",
+          "officialListMatchCount": 16,
+          "playerId": "ba607b88",
+          "playerTeamSeasonId": "pts:ba607b88:ipl-2016:team-royal-challengers-bangalore",
+          "position": 1,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "CH Gayle",
+          "officialListMatchCount": 10,
+          "playerId": "db584dad",
+          "playerTeamSeasonId": "pts:db584dad:ipl-2016:team-royal-challengers-bangalore",
+          "position": 2,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "AB de Villiers",
+          "officialListMatchCount": 16,
+          "playerId": "c4487b84",
+          "playerTeamSeasonId": "pts:c4487b84:ipl-2016:team-royal-challengers-bangalore",
+          "position": 3,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "SR Watson",
+          "officialListMatchCount": 16,
+          "playerId": "4329fbb5",
+          "playerTeamSeasonId": "pts:4329fbb5:ipl-2016:team-royal-challengers-bangalore",
+          "position": 4,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "KL Rahul",
+          "officialListMatchCount": 14,
+          "playerId": "b17e2f24",
+          "playerTeamSeasonId": "pts:b17e2f24:ipl-2016:team-royal-challengers-bangalore",
+          "position": 5,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "STR Binny",
+          "officialListMatchCount": 14,
+          "playerId": "bd17b45f",
+          "playerTeamSeasonId": "pts:bd17b45f:ipl-2016:team-royal-challengers-bangalore",
+          "position": 6,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "Sachin Baby",
+          "officialListMatchCount": 11,
+          "playerId": "dc9dd038",
+          "playerTeamSeasonId": "pts:dc9dd038:ipl-2016:team-royal-challengers-bangalore",
+          "position": 7,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "CJ Jordan",
+          "officialListMatchCount": 9,
+          "playerId": "ffe699c0",
+          "playerTeamSeasonId": "pts:ffe699c0:ipl-2016:team-royal-challengers-bangalore",
+          "position": 8,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "YS Chahal",
+          "officialListMatchCount": 13,
+          "playerId": "57ee1fde",
+          "playerTeamSeasonId": "pts:57ee1fde:ipl-2016:team-royal-challengers-bangalore",
+          "position": 9,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "Iqbal Abdulla",
+          "officialListMatchCount": 8,
+          "playerId": "85aae393",
+          "playerTeamSeasonId": "pts:85aae393:ipl-2016:team-royal-challengers-bangalore",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "S Aravind",
+          "officialListMatchCount": 9,
+          "playerId": "957532de",
+          "playerTeamSeasonId": "pts:957532de:ipl-2016:team-royal-challengers-bangalore",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    },
+    {
+      "candidateId": "opponent:team-sunrisers-hyderabad:ipl-2016",
+      "contentStatus": "APPROVED_FROZEN_PROFILE",
+      "diagnostics": {
+        "bowlingCoverage": {
+          "bowlingCapacity": 5.230191,
+          "familyCapacity": {
+            "PACE": 4.384848,
+            "SPIN": 0.845343,
+            "UNKNOWN": 0.0
+          },
+          "normalizedBowlingUnitsAvailable": 6.127124,
+          "phaseCapacity": {
+            "death": 0.879955,
+            "middle": 2.524081,
+            "powerplay": 1.826156
+          },
+          "uncoveredBowlingUnits": 0.0,
+          "workloadCounts": {
+            "FRONTLINE": 5,
+            "NONE": 3,
+            "OCCASIONAL": 2,
+            "SUPPORT": 1
+          }
+        },
+        "dataCompleteness": {
+          "confirmedKeeperCandidateCount": 2,
+          "eligiblePlayerCount": 17,
+          "issues": [],
+          "joinedPlayerCount": 17,
+          "status": "COMPLETE",
+          "unresolvedRosterStatusCount": 0
+        },
+        "legality": {
+          "confirmedKeeperCount": 1,
+          "overseasCount": 3,
+          "playerCount": 11,
+          "uniqueCanonicalPlayerCount": 11
+        },
+        "officialParticipation": {
+          "xiMatchCountMaximum": 17,
+          "xiMatchCountMinimum": 7,
+          "xiMatchCountTotal": 157
+        },
+        "positionFitCounts": {
+          "ACCEPTABLE": 0,
+          "NATURAL": 11,
+          "OUT_OF_ROLE": 0,
+          "UNKNOWN": 0
+        },
+        "replacementContext": {
+          "diagnosticOnly": true,
+          "representativeXiEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 0,
+            "roleOut": 0
+          },
+          "teamSeasonEvents": {
+            "concussionIn": 0,
+            "concussionOut": 0,
+            "impactIn": 0,
+            "impactOut": 0,
+            "roleIn": 2,
+            "roleOut": 0
+          }
+        },
+        "reviewFlags": [
+          "REPLACEMENT_PARTICIPATION_PRESENT"
+        ]
+      },
+      "eraId": "era-transition",
+      "evaluation": {
+        "appliedPositionFitEffect": 0.0,
+        "batting": 51.347143,
+        "battingCore": 53.285714,
+        "battingDepth": 33.9,
+        "bowling": 71.18,
+        "bowlingCapacity": 5.230191,
+        "overall": 61.263571,
+        "structuralBattingOrderEffect": -3.681429,
+        "uncoveredBowlingUnits": 0.0
+      },
+      "franchiseId": "franchise-sunrisers-hyderabad",
+      "franchiseName": "Sunrisers Hyderabad",
+      "historical": {
+        "netRunRate": 0.267389,
+        "pointsPercentage": 0.647059
+      },
+      "profileTerminology": "representative historical season XI",
+      "review": {
+        "heuristicIsAdvisory": true,
+        "membershipChanges": {
+          "includedPlayerTeamSeasonIds": [],
+          "omittedPlayerTeamSeasonIds": []
+        },
+        "overrideRationale": "retain the defining 2016 membership while restoring a credible batting/all-round order ahead of Bhuvneshwar and the specialist seamers",
+        "overrideType": "ORDER_ONLY",
+        "rationale": "The 2016 champion preserves Warner and Dhawan’s batting identity and the title-defining Bhuvneshwar–Mustafizur–Nehra attack in a corrected batting order.",
+        "reviewedOn": "2026-09-08",
+        "selectionAuthority": "HUMAN_APPROVED_MANUAL_REVIEW",
+        "status": "APPROVED",
+        "xiProvenance": "REVIEWED_OVERRIDE"
+      },
+      "schemaVersion": "ipl-era-opponent-profile/v2",
+      "seasonId": "ipl-2016",
+      "selectionHeuristic": {
+        "advisoryOnly": true,
+        "candidateScore": 0.490863,
+        "historicalPerformanceZ": 1.181387,
+        "qualityZ": 0.194925,
+        "weights": {
+          "historicalPerformance": 0.3,
+          "v2Quality": 0.7
+        }
+      },
+      "teamId": "team-sunrisers-hyderabad",
+      "teamName": "Sunrisers Hyderabad",
+      "xi": [
+        {
+          "displayName": "S Dhawan",
+          "officialListMatchCount": 17,
+          "playerId": "0a476045",
+          "playerTeamSeasonId": "pts:0a476045:ipl-2016:team-sunrisers-hyderabad",
+          "position": 1,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "DA Warner",
+          "officialListMatchCount": 17,
+          "playerId": "dcce6f09",
+          "playerTeamSeasonId": "pts:dcce6f09:ipl-2016:team-sunrisers-hyderabad",
+          "position": 2,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "MC Henriques",
+          "officialListMatchCount": 17,
+          "playerId": "32198ae0",
+          "playerTeamSeasonId": "pts:32198ae0:ipl-2016:team-sunrisers-hyderabad",
+          "position": 3,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "Yuvraj Singh",
+          "officialListMatchCount": 10,
+          "playerId": "1c914163",
+          "playerTeamSeasonId": "pts:1c914163:ipl-2016:team-sunrisers-hyderabad",
+          "position": 4,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "DJ Hooda",
+          "officialListMatchCount": 17,
+          "playerId": "73ad96ed",
+          "playerTeamSeasonId": "pts:73ad96ed:ipl-2016:team-sunrisers-hyderabad",
+          "position": 5,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "NV Ojha",
+          "officialListMatchCount": 17,
+          "playerId": "890946a0",
+          "playerTeamSeasonId": "pts:890946a0:ipl-2016:team-sunrisers-hyderabad",
+          "position": 6,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "Bipul Sharma",
+          "officialListMatchCount": 7,
+          "playerId": "c18496e1",
+          "playerTeamSeasonId": "pts:c18496e1:ipl-2016:team-sunrisers-hyderabad",
+          "position": 7,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "B Kumar",
+          "officialListMatchCount": 17,
+          "playerId": "2e81a32d",
+          "playerTeamSeasonId": "pts:2e81a32d:ipl-2016:team-sunrisers-hyderabad",
+          "position": 8,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "Mustafizur Rahman",
+          "officialListMatchCount": 16,
+          "playerId": "0a8fce53",
+          "playerTeamSeasonId": "pts:0a8fce53:ipl-2016:team-sunrisers-hyderabad",
+          "position": 9,
+          "rosterStatus": "OVERSEAS"
+        },
+        {
+          "displayName": "A Nehra",
+          "officialListMatchCount": 8,
+          "playerId": "96fd40ae",
+          "playerTeamSeasonId": "pts:96fd40ae:ipl-2016:team-sunrisers-hyderabad",
+          "position": 10,
+          "rosterStatus": "INDIAN"
+        },
+        {
+          "displayName": "BB Sran",
+          "officialListMatchCount": 14,
+          "playerId": "d8b2f218",
+          "playerTeamSeasonId": "pts:d8b2f218:ipl-2016:team-sunrisers-hyderabad",
+          "position": 11,
+          "rosterStatus": "INDIAN"
+        }
+      ]
+    }
+  ],
+  "profileTerminology": "representative historical season XI",
+  "runtimeIntegrationStatus": "NOT_INTEGRATED",
+  "schemaVersion": "ipl-era-opponent-content-phase2/v1"
+}

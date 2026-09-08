@@ -1,0 +1,286 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "contentVersion": {
+      "const": "ipl-era-opponent-content-phase2/v1"
+    },
+    "evaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "profilesRecomputed": {
+          "const": 41
+        },
+        "storedEvaluationAgreements": {
+          "const": 41
+        }
+      },
+      "required": [
+        "profilesRecomputed",
+        "storedEvaluationAgreements"
+      ],
+      "type": "object"
+    },
+    "foundationParity": {
+      "additionalProperties": false,
+      "properties": {
+        "artifactExact": {
+          "const": true
+        },
+        "goldenFixtureExact": {
+          "const": true
+        },
+        "opponentArtifactSha256": {
+          "const": "c904df120bf8920f6967c13f04bd1725826e5e20cfa31291a49934187c373a0c"
+        },
+        "simulationCompatibilityFingerprint": {
+          "const": "03054faff39520da6a835e0aaecb1a9887ca82291d9ba0a5923540c862793808"
+        }
+      },
+      "required": [
+        "opponentArtifactSha256",
+        "simulationCompatibilityFingerprint",
+        "artifactExact",
+        "goldenFixtureExact"
+      ],
+      "type": "object"
+    },
+    "impactMembershipOverrides": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "candidateId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "includedPlayerTeamSeasonIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "omittedPlayerTeamSeasonIds": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "rationale": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "candidateId",
+          "includedPlayerTeamSeasonIds",
+          "omittedPlayerTeamSeasonIds",
+          "rationale"
+        ],
+        "type": "object"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "type": "array"
+    },
+    "legality": {
+      "additionalProperties": false,
+      "properties": {
+        "crossTeamOrSeasonLeaks": {
+          "const": 0
+        },
+        "duplicateEraLineages": {
+          "const": 0
+        },
+        "identityJoinFailures": {
+          "const": 0
+        },
+        "legalProfiles": {
+          "const": 41
+        },
+        "profilesChecked": {
+          "const": 41
+        },
+        "unresolvedRosterStatuses": {
+          "const": 0
+        }
+      },
+      "required": [
+        "profilesChecked",
+        "legalProfiles",
+        "identityJoinFailures",
+        "crossTeamOrSeasonLeaks",
+        "unresolvedRosterStatuses",
+        "duplicateEraLineages"
+      ],
+      "type": "object"
+    },
+    "lineageCompleteness": {
+      "additionalProperties": false,
+      "properties": {
+        "expected": {
+          "const": 41
+        },
+        "missing": {
+          "const": 0
+        },
+        "present": {
+          "const": 41
+        }
+      },
+      "required": [
+        "expected",
+        "present",
+        "missing"
+      ],
+      "type": "object"
+    },
+    "materialEvaluationMovements": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "approvedOverall": {
+            "type": "number"
+          },
+          "baselineOverall": {
+            "type": "number"
+          },
+          "candidateId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "curationBasis": {
+            "const": "HISTORICAL_AND_STRUCTURAL_NOT_RATING_OPTIMIZATION"
+          },
+          "difference": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "candidateId",
+          "baselineOverall",
+          "approvedOverall",
+          "difference",
+          "curationBasis"
+        ],
+        "type": "object"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "phase1EvidencePreserved": {
+      "const": true
+    },
+    "phase2ManifestHash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "profileCountsByEra": {
+      "additionalProperties": false,
+      "properties": {
+        "era-expansion": {
+          "const": 11
+        },
+        "era-impact": {
+          "const": 10
+        },
+        "era-modern-pre-impact": {
+          "const": 10
+        },
+        "era-transition": {
+          "const": 10
+        }
+      },
+      "required": [
+        "era-expansion",
+        "era-transition",
+        "era-modern-pre-impact",
+        "era-impact"
+      ],
+      "type": "object"
+    },
+    "provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "artifactHashesVerified": {
+          "const": true
+        },
+        "inputHashesVerified": {
+          "const": true
+        },
+        "manifestSelfHashVerified": {
+          "const": true
+        },
+        "schemaHashesVerified": {
+          "const": true
+        }
+      },
+      "required": [
+        "inputHashesVerified",
+        "artifactHashesVerified",
+        "schemaHashesVerified",
+        "manifestSelfHashVerified"
+      ],
+      "type": "object"
+    },
+    "runtimeIntegrationStatus": {
+      "const": "NOT_INTEGRATED"
+    },
+    "schemaVersion": {
+      "const": "ipl-era-opponent-content-phase2-validation/v1"
+    },
+    "status": {
+      "const": "PASSED"
+    },
+    "totalLaterEraProfiles": {
+      "const": 41
+    },
+    "totalProfilesIncludingFoundation": {
+      "const": 49
+    },
+    "unresolvedReviewCount": {
+      "const": 0
+    },
+    "xiProvenanceCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "BASELINE_ACCEPTED": {
+          "const": 31
+        },
+        "REVIEWED_OVERRIDE": {
+          "const": 10
+        }
+      },
+      "required": [
+        "BASELINE_ACCEPTED",
+        "REVIEWED_OVERRIDE"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "contentVersion",
+    "status",
+    "phase2ManifestHash",
+    "profileCountsByEra",
+    "totalLaterEraProfiles",
+    "totalProfilesIncludingFoundation",
+    "xiProvenanceCounts",
+    "legality",
+    "evaluation",
+    "lineageCompleteness",
+    "impactMembershipOverrides",
+    "materialEvaluationMovements",
+    "foundationParity",
+    "provenance",
+    "phase1EvidencePreserved",
+    "unresolvedReviewCount",
+    "runtimeIntegrationStatus"
+  ],
+  "type": "object"
+}

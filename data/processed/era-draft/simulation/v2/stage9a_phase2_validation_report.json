@@ -1,0 +1,98 @@
+{
+  "contentVersion": "ipl-era-opponent-content-phase2/v1",
+  "evaluation": {
+    "profilesRecomputed": 41,
+    "storedEvaluationAgreements": 41
+  },
+  "foundationParity": {
+    "artifactExact": true,
+    "goldenFixtureExact": true,
+    "opponentArtifactSha256": "c904df120bf8920f6967c13f04bd1725826e5e20cfa31291a49934187c373a0c",
+    "simulationCompatibilityFingerprint": "03054faff39520da6a835e0aaecb1a9887ca82291d9ba0a5923540c862793808"
+  },
+  "impactMembershipOverrides": [
+    {
+      "candidateId": "opponent:team-chennai-super-kings:ipl-2023",
+      "includedPlayerTeamSeasonIds": [
+        "pts:23eeb873:ipl-2023:team-chennai-super-kings"
+      ],
+      "omittedPlayerTeamSeasonIds": [
+        "pts:bb351c23:ipl-2023:team-chennai-super-kings"
+      ],
+      "rationale": "under the exactly-11 representative-season contract, Deepak Chahar is necessary to preserve the regular new-ball attack while Rayudu represents the Impact-linked batting role; Moeen Ali remains a substantive explicit omission, and the material evaluator movement is a structural consequence rather than an optimization target"
+    },
+    {
+      "candidateId": "opponent:team-kolkata-knight-riders:ipl-2024",
+      "includedPlayerTeamSeasonIds": [
+        "pts:d7017798:ipl-2024:team-kolkata-knight-riders"
+      ],
+      "omittedPlayerTeamSeasonIds": [
+        "pts:7c3b3b78:ipl-2024:team-kolkata-knight-riders"
+      ],
+      "rationale": "Angkrish Raghuvanshi replaces Vaibhav Arora because he better represents the regular top-order structure while Starc, Harshit, Varun, Narine and Russell retain a credible five-contributor attack"
+    },
+    {
+      "candidateId": "opponent:team-punjab-kings:ipl-2025",
+      "includedPlayerTeamSeasonIds": [
+        "pts:c05edf8e:ipl-2025:team-punjab-kings"
+      ],
+      "omittedPlayerTeamSeasonIds": [
+        "pts:989889ff:ipl-2025:team-punjab-kings"
+      ],
+      "rationale": "Harpreet Brar replaces JP Inglis because Prabhsimran already satisfies keeper capability and Brar repairs the Phase 1 Impact-compressed 3.31-unit attack with representative specialist spin; the material evaluator movement is a structural consequence, not an optimization target"
+    }
+  ],
+  "legality": {
+    "crossTeamOrSeasonLeaks": 0,
+    "duplicateEraLineages": 0,
+    "identityJoinFailures": 0,
+    "legalProfiles": 41,
+    "profilesChecked": 41,
+    "unresolvedRosterStatuses": 0
+  },
+  "lineageCompleteness": {
+    "expected": 41,
+    "missing": 0,
+    "present": 41
+  },
+  "materialEvaluationMovements": [
+    {
+      "approvedOverall": 66.894286,
+      "baselineOverall": 64.870145,
+      "candidateId": "opponent:team-chennai-super-kings:ipl-2023",
+      "curationBasis": "HISTORICAL_AND_STRUCTURAL_NOT_RATING_OPTIMIZATION",
+      "difference": 2.024141
+    },
+    {
+      "approvedOverall": 62.401131,
+      "baselineOverall": 59.870491,
+      "candidateId": "opponent:team-punjab-kings:ipl-2025",
+      "curationBasis": "HISTORICAL_AND_STRUCTURAL_NOT_RATING_OPTIMIZATION",
+      "difference": 2.53064
+    }
+  ],
+  "phase1EvidencePreserved": true,
+  "phase2ManifestHash": "b5b6b72e01f7bc6f9658eeaa600a334bd56e282726fff4fc097a2fc44a46edd8",
+  "profileCountsByEra": {
+    "era-expansion": 11,
+    "era-impact": 10,
+    "era-modern-pre-impact": 10,
+    "era-transition": 10
+  },
+  "provenance": {
+    "artifactHashesVerified": true,
+    "inputHashesVerified": true,
+    "manifestSelfHashVerified": true,
+    "schemaHashesVerified": true
+  },
+  "runtimeIntegrationStatus": "NOT_INTEGRATED",
+  "schemaVersion": "ipl-era-opponent-content-phase2-validation/v1",
+  "status": "PASSED",
+  "totalLaterEraProfiles": 41,
+  "totalProfilesIncludingFoundation": 49,
+  "unresolvedReviewCount": 0,
+  "xiProvenanceCounts": {
+    "BASELINE_ACCEPTED": 31,
+    "REVIEWED_OVERRIDE": 10
+  }
+}
