@@ -1,0 +1,322 @@
+{
+  "schemaVersion": "ipl-era-opponent-content-phase2-review/v1",
+  "eraId": "era-impact",
+  "profileTerminology": "representative historical season XI",
+  "reviewStatus": "APPROVED",
+  "reviewedOn": "2026-09-08",
+  "reviewNotes": "Human-approved Impact-era representative historical season XIs compress meaningful 12–13 player participation into exactly 11 without adding a bench, substitution model or Impact Player mechanic.",
+  "opponents": [
+    {
+      "eraId": "era-impact",
+      "franchiseId": "franchise-chennai-super-kings",
+      "teamId": "team-chennai-super-kings",
+      "seasonId": "ipl-2023",
+      "candidateId": "opponent:team-chennai-super-kings:ipl-2023",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:45a43fe2:ipl-2023:team-chennai-super-kings",
+        "pts:df5a6881:ipl-2023:team-chennai-super-kings",
+        "pts:29e95537:ipl-2023:team-chennai-super-kings",
+        "pts:a4e37e47:ipl-2023:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2023:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2023:team-chennai-super-kings",
+        "pts:fe93fd9d:ipl-2023:team-chennai-super-kings",
+        "pts:23eeb873:ipl-2023:team-chennai-super-kings",
+        "pts:46a9bea1:ipl-2023:team-chennai-super-kings",
+        "pts:f24c6701:ipl-2023:team-chennai-super-kings",
+        "pts:64839cb3:ipl-2023:team-chennai-super-kings"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2023 representative historical season XI preserves CSK’s title batting core and its regular new-ball, death and specialist-spin attack; Chahar is included while Moeen is the explicit exactly-11 omission.",
+      "xiProvenance": "REVIEWED_OVERRIDE",
+      "overrideType": "MEMBERSHIP_AND_ORDER",
+      "overrideRationale": "under the exactly-11 representative-season contract, Deepak Chahar is necessary to preserve the regular new-ball attack while Rayudu represents the Impact-linked batting role; Moeen Ali remains a substantive explicit omission, and the material evaluator movement is a structural consequence rather than an optimization target",
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [
+          "pts:23eeb873:ipl-2023:team-chennai-super-kings"
+        ],
+        "omittedPlayerTeamSeasonIds": [
+          "pts:bb351c23:ipl-2023:team-chennai-super-kings"
+        ]
+      }
+    },
+    {
+      "eraId": "era-impact",
+      "franchiseId": "franchise-delhi",
+      "teamId": "team-delhi-capitals",
+      "seasonId": "ipl-2024",
+      "candidateId": "opponent:team-delhi-capitals:ipl-2024",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:8b3e9c7c:ipl-2024:team-delhi-capitals",
+        "pts:9b6e1b3f:ipl-2024:team-delhi-capitals",
+        "pts:ad3b6e95:ipl-2024:team-delhi-capitals",
+        "pts:1fc6ef83:ipl-2024:team-delhi-capitals",
+        "pts:85b3fab2:ipl-2024:team-delhi-capitals",
+        "pts:919a3be2:ipl-2024:team-delhi-capitals",
+        "pts:2e171977:ipl-2024:team-delhi-capitals",
+        "pts:2cffab74:ipl-2024:team-delhi-capitals",
+        "pts:5bb1a1c4:ipl-2024:team-delhi-capitals",
+        "pts:8d2c70ad:ipl-2024:team-delhi-capitals",
+        "pts:a2f46292:ipl-2024:team-delhi-capitals"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2024 representative historical season XI captures Delhi’s Pant-led return alongside Fraser-McGurk, Stubbs and Porel, with Axar, Kuldeep and the main seam group retained.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-impact",
+      "franchiseId": "franchise-gujarat-titans",
+      "teamId": "team-gujarat-titans",
+      "seasonId": "ipl-2023",
+      "candidateId": "opponent:team-gujarat-titans:ipl-2023",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:b4b99816:ipl-2023:team-gujarat-titans",
+        "pts:fe11caa6:ipl-2023:team-gujarat-titans",
+        "pts:dbe50b21:ipl-2023:team-gujarat-titans",
+        "pts:0994d0ae:ipl-2023:team-gujarat-titans",
+        "pts:d67d5f00:ipl-2023:team-gujarat-titans",
+        "pts:39a2dfa8:ipl-2023:team-gujarat-titans",
+        "pts:5f547c8b:ipl-2023:team-gujarat-titans",
+        "pts:9061a703:ipl-2023:team-gujarat-titans",
+        "pts:759ac88f:ipl-2023:team-gujarat-titans",
+        "pts:8cf9814c:ipl-2023:team-gujarat-titans",
+        "pts:efc04be7:ipl-2023:team-gujarat-titans"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2023 representative historical season XI preserves Gujarat’s finalist core through Gill, Hardik, Miller and Rashid with the defining Shami–Mohit–Noor bowling group.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-impact",
+      "franchiseId": "franchise-kolkata-knight-riders",
+      "teamId": "team-kolkata-knight-riders",
+      "seasonId": "ipl-2024",
+      "candidateId": "opponent:team-kolkata-knight-riders:ipl-2024",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:3d284ca3:ipl-2024:team-kolkata-knight-riders",
+        "pts:9d430b40:ipl-2024:team-kolkata-knight-riders",
+        "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+        "pts:a24be938:ipl-2024:team-kolkata-knight-riders",
+        "pts:85ec8e33:ipl-2024:team-kolkata-knight-riders",
+        "pts:0a509d6b:ipl-2024:team-kolkata-knight-riders",
+        "pts:bbd41817:ipl-2024:team-kolkata-knight-riders",
+        "pts:be24ead0:ipl-2024:team-kolkata-knight-riders",
+        "pts:3fb19989:ipl-2024:team-kolkata-knight-riders",
+        "pts:77b1aa15:ipl-2024:team-kolkata-knight-riders",
+        "pts:5b7ab5a9:ipl-2024:team-kolkata-knight-riders"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2024 representative historical season XI captures KKR’s Narine–Salt opening identity and title core; Raghuvanshi represents the regular top order while the main five bowling contributors remain.",
+      "xiProvenance": "REVIEWED_OVERRIDE",
+      "overrideType": "MEMBERSHIP_AND_ORDER",
+      "overrideRationale": "Angkrish Raghuvanshi replaces Vaibhav Arora because he better represents the regular top-order structure while Starc, Harshit, Varun, Narine and Russell retain a credible five-contributor attack",
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [
+          "pts:d7017798:ipl-2024:team-kolkata-knight-riders"
+        ],
+        "omittedPlayerTeamSeasonIds": [
+          "pts:7c3b3b78:ipl-2024:team-kolkata-knight-riders"
+        ]
+      }
+    },
+    {
+      "eraId": "era-impact",
+      "franchiseId": "franchise-lucknow-super-giants",
+      "teamId": "team-lucknow-super-giants",
+      "seasonId": "ipl-2023",
+      "candidateId": "opponent:team-lucknow-super-giants:ipl-2023",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:73c18486:ipl-2023:team-lucknow-super-giants",
+        "pts:b17e2f24:ipl-2023:team-lucknow-super-giants",
+        "pts:73ad96ed:ipl-2023:team-lucknow-super-giants",
+        "pts:d9273ee7:ipl-2023:team-lucknow-super-giants",
+        "pts:5b8c830e:ipl-2023:team-lucknow-super-giants",
+        "pts:3241e3fd:ipl-2023:team-lucknow-super-giants",
+        "pts:872b03f7:ipl-2023:team-lucknow-super-giants",
+        "pts:4b31f3a3:ipl-2023:team-lucknow-super-giants",
+        "pts:c0c411cb:ipl-2023:team-lucknow-super-giants",
+        "pts:df064e1a:ipl-2023:team-lucknow-super-giants",
+        "pts:eef2536f:ipl-2023:team-lucknow-super-giants"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2023 representative historical season XI captures Lucknow’s Mayers–Stoinis–Pooran batting core and its principal Bishnoi–Naveen–Avesh pace-spin construction.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-impact",
+      "franchiseId": "franchise-mumbai-indians",
+      "teamId": "team-mumbai-indians",
+      "seasonId": "ipl-2025",
+      "candidateId": "opponent:team-mumbai-indians:ipl-2025",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:740742ef:ipl-2025:team-mumbai-indians",
+        "pts:e66732f8:ipl-2025:team-mumbai-indians",
+        "pts:9caf69a1:ipl-2025:team-mumbai-indians",
+        "pts:271f83cd:ipl-2025:team-mumbai-indians",
+        "pts:b0482a1d:ipl-2025:team-mumbai-indians",
+        "pts:dbe50b21:ipl-2025:team-mumbai-indians",
+        "pts:fffa744b:ipl-2025:team-mumbai-indians",
+        "pts:e4a0deae:ipl-2025:team-mumbai-indians",
+        "pts:23eeb873:ipl-2025:team-mumbai-indians",
+        "pts:462411b3:ipl-2025:team-mumbai-indians",
+        "pts:a818c1be:ipl-2025:team-mumbai-indians"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2025 representative historical season XI preserves Mumbai’s Rohit–Suryakumar–Tilak–Hardik core and the defining Bumrah–Boult attack with Rickelton and Jacks representing the season’s top order.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-impact",
+      "franchiseId": "franchise-punjab",
+      "teamId": "team-punjab-kings",
+      "seasonId": "ipl-2025",
+      "candidateId": "opponent:team-punjab-kings:ipl-2025",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:9418198b:ipl-2025:team-punjab-kings",
+        "pts:b5797845:ipl-2025:team-punjab-kings",
+        "pts:85ec8e33:ipl-2025:team-punjab-kings",
+        "pts:d1a60072:ipl-2025:team-punjab-kings",
+        "pts:26989d80:ipl-2025:team-punjab-kings",
+        "pts:d9273ee7:ipl-2025:team-punjab-kings",
+        "pts:81c36ee9:ipl-2025:team-punjab-kings",
+        "pts:8f6dd463:ipl-2025:team-punjab-kings",
+        "pts:c05edf8e:ipl-2025:team-punjab-kings",
+        "pts:244048f6:ipl-2025:team-punjab-kings",
+        "pts:57ee1fde:ipl-2025:team-punjab-kings"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2025 representative historical season XI preserves Punjab’s main batting core while Brar replaces the second keeper to restore specialist spin and credible five-unit bowling construction.",
+      "xiProvenance": "REVIEWED_OVERRIDE",
+      "overrideType": "MEMBERSHIP_AND_ORDER",
+      "overrideRationale": "Harpreet Brar replaces JP Inglis because Prabhsimran already satisfies keeper capability and Brar repairs the Phase 1 Impact-compressed 3.31-unit attack with representative specialist spin; the material evaluator movement is a structural consequence, not an optimization target",
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [
+          "pts:c05edf8e:ipl-2025:team-punjab-kings"
+        ],
+        "omittedPlayerTeamSeasonIds": [
+          "pts:989889ff:ipl-2025:team-punjab-kings"
+        ]
+      }
+    },
+    {
+      "eraId": "era-impact",
+      "franchiseId": "franchise-rajasthan-royals",
+      "teamId": "team-rajasthan-royals",
+      "seasonId": "ipl-2024",
+      "candidateId": "opponent:team-rajasthan-royals:ipl-2024",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:6c19c6e5:ipl-2024:team-rajasthan-royals",
+        "pts:99b75528:ipl-2024:team-rajasthan-royals",
+        "pts:a4cc73aa:ipl-2024:team-rajasthan-royals",
+        "pts:04a418e8:ipl-2024:team-rajasthan-royals",
+        "pts:bcf325d2:ipl-2024:team-rajasthan-royals",
+        "pts:48a1d7b7:ipl-2024:team-rajasthan-royals",
+        "pts:eef2536f:ipl-2024:team-rajasthan-royals",
+        "pts:495d42a5:ipl-2024:team-rajasthan-royals",
+        "pts:57ee1fde:ipl-2024:team-rajasthan-royals",
+        "pts:a818c1be:ipl-2024:team-rajasthan-royals",
+        "pts:ce820073:ipl-2024:team-rajasthan-royals"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2024 representative historical season XI retains Rajasthan’s Jaiswal–Buttler–Samson batting identity and the complete Boult–Chahal–Ashwin–Sandeep attack.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-impact",
+      "franchiseId": "franchise-royal-challengers",
+      "teamId": "team-royal-challengers-bengaluru",
+      "seasonId": "ipl-2025",
+      "candidateId": "opponent:team-royal-challengers-bengaluru:ipl-2025",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:3d284ca3:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:ba607b88:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:2c25d4f5:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:c740ea83:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:800d2d97:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:f1f99156:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:5b8c830e:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:9440ef41:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:03806cf8:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:2e81a32d:ipl-2025:team-royal-challengers-bengaluru",
+        "pts:7210d461:ipl-2025:team-royal-challengers-bengaluru"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2025 representative historical season XI preserves RCB’s title-season membership and moves Suyash below every credible batting option in a historically plausible order.",
+      "xiProvenance": "REVIEWED_OVERRIDE",
+      "overrideType": "ORDER_ONLY",
+      "overrideRationale": "retain the title-season membership while moving Suyash Sharma below all credible batting options",
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-impact",
+      "franchiseId": "franchise-sunrisers-hyderabad",
+      "teamId": "team-sunrisers-hyderabad",
+      "seasonId": "ipl-2024",
+      "candidateId": "opponent:team-sunrisers-hyderabad:ipl-2024",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:12b610c2:ipl-2024:team-sunrisers-hyderabad",
+        "pts:f29185a1:ipl-2024:team-sunrisers-hyderabad",
+        "pts:235c2bb6:ipl-2024:team-sunrisers-hyderabad",
+        "pts:6a26221c:ipl-2024:team-sunrisers-hyderabad",
+        "pts:aad0c365:ipl-2024:team-sunrisers-hyderabad",
+        "pts:8e514b4c:ipl-2024:team-sunrisers-hyderabad",
+        "pts:f9e6e7ef:ipl-2024:team-sunrisers-hyderabad",
+        "pts:1e66c162:ipl-2024:team-sunrisers-hyderabad",
+        "pts:2e81a32d:ipl-2024:team-sunrisers-hyderabad",
+        "pts:ce794613:ipl-2024:team-sunrisers-hyderabad",
+        "pts:ded9240e:ipl-2024:team-sunrisers-hyderabad"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2024 representative historical season XI captures Sunrisers’ Head–Abhishek–Klaasen batting transformation while retaining Cummins, Bhuvneshwar and Natarajan as the principal attack.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    }
+  ]
+}

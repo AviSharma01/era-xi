@@ -1,0 +1,310 @@
+{
+  "schemaVersion": "ipl-era-opponent-content-phase2-review/v1",
+  "eraId": "era-modern-pre-impact",
+  "profileTerminology": "representative historical season XI",
+  "reviewStatus": "APPROVED",
+  "reviewedOn": "2026-09-08",
+  "reviewNotes": "Human-approved Modern Pre-Impact selections freeze the representative established and expansion franchise seasons, preserving rename continuity and exact reviewed orders.",
+  "opponents": [
+    {
+      "eraId": "era-modern-pre-impact",
+      "franchiseId": "franchise-chennai-super-kings",
+      "teamId": "team-chennai-super-kings",
+      "seasonId": "ipl-2021",
+      "candidateId": "opponent:team-chennai-super-kings:ipl-2021",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:3355b542:ipl-2021:team-chennai-super-kings",
+        "pts:45a43fe2:ipl-2021:team-chennai-super-kings",
+        "pts:bb351c23:ipl-2021:team-chennai-super-kings",
+        "pts:1dc12ab9:ipl-2021:team-chennai-super-kings",
+        "pts:70d205c9:ipl-2021:team-chennai-super-kings",
+        "pts:87e562a9:ipl-2021:team-chennai-super-kings",
+        "pts:fe93fd9d:ipl-2021:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2021:team-chennai-super-kings",
+        "pts:03806cf8:ipl-2021:team-chennai-super-kings",
+        "pts:1abb78f8:ipl-2021:team-chennai-super-kings",
+        "pts:23eeb873:ipl-2021:team-chennai-super-kings"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2021 champion captures CSK’s late-era renewal through Gaikwad, du Plessis, Moeen, Jadeja, Dhoni and a complete Chahar–Hazlewood–Thakur attack.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-modern-pre-impact",
+      "franchiseId": "franchise-delhi",
+      "teamId": "team-delhi-capitals",
+      "seasonId": "ipl-2021",
+      "candidateId": "opponent:team-delhi-capitals:ipl-2021",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:0a476045:ipl-2021:team-delhi-capitals",
+        "pts:8b3e9c7c:ipl-2021:team-delhi-capitals",
+        "pts:85ec8e33:ipl-2021:team-delhi-capitals",
+        "pts:48a1d7b7:ipl-2021:team-delhi-capitals",
+        "pts:919a3be2:ipl-2021:team-delhi-capitals",
+        "pts:495d42a5:ipl-2021:team-delhi-capitals",
+        "pts:d9273ee7:ipl-2021:team-delhi-capitals",
+        "pts:2e171977:ipl-2021:team-delhi-capitals",
+        "pts:acdc62f5:ipl-2021:team-delhi-capitals",
+        "pts:e62dd25d:ipl-2021:team-delhi-capitals",
+        "pts:eef2536f:ipl-2021:team-delhi-capitals"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2021 XI is the most complete Dhawan–Shaw–Iyer–Pant Capitals side, combining qualifier-level competitiveness with a deep Rabada–Nortje–Avesh–Axar attack.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-modern-pre-impact",
+      "franchiseId": "franchise-gujarat-titans",
+      "teamId": "team-gujarat-titans",
+      "seasonId": "ipl-2022",
+      "candidateId": "opponent:team-gujarat-titans:ipl-2022",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:b4b99816:ipl-2022:team-gujarat-titans",
+        "pts:fe11caa6:ipl-2022:team-gujarat-titans",
+        "pts:afa7e784:ipl-2022:team-gujarat-titans",
+        "pts:dbe50b21:ipl-2022:team-gujarat-titans",
+        "pts:d67d5f00:ipl-2022:team-gujarat-titans",
+        "pts:39a2dfa8:ipl-2022:team-gujarat-titans",
+        "pts:0890552f:ipl-2022:team-gujarat-titans",
+        "pts:5f547c8b:ipl-2022:team-gujarat-titans",
+        "pts:2f9d0389:ipl-2022:team-gujarat-titans",
+        "pts:8cf9814c:ipl-2022:team-gujarat-titans",
+        "pts:7210d461:ipl-2022:team-gujarat-titans"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The inaugural-title XI preserves Gujarat’s defining Gill–Hardik–Miller–Tewatia core and Rashid-led attack, with a reviewed order placing Manohar above Rashid.",
+      "xiProvenance": "REVIEWED_OVERRIDE",
+      "overrideType": "ORDER_ONLY",
+      "overrideRationale": "retain the inaugural-title membership while placing Abhinav Manohar ahead of Rashid Khan",
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-modern-pre-impact",
+      "franchiseId": "franchise-kolkata-knight-riders",
+      "teamId": "team-kolkata-knight-riders",
+      "seasonId": "ipl-2021",
+      "candidateId": "opponent:team-kolkata-knight-riders:ipl-2021",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:a24be938:ipl-2021:team-kolkata-knight-riders",
+        "pts:b4b99816:ipl-2021:team-kolkata-knight-riders",
+        "pts:77255a9e:ipl-2021:team-kolkata-knight-riders",
+        "pts:fb2d1dda:ipl-2021:team-kolkata-knight-riders",
+        "pts:d2a6c0e6:ipl-2021:team-kolkata-knight-riders",
+        "pts:c03f1114:ipl-2021:team-kolkata-knight-riders",
+        "pts:bbd41817:ipl-2021:team-kolkata-knight-riders",
+        "pts:9d430b40:ipl-2021:team-kolkata-knight-riders",
+        "pts:5b7ab5a9:ipl-2021:team-kolkata-knight-riders",
+        "pts:85e0cf10:ipl-2021:team-kolkata-knight-riders",
+        "pts:c38d3503:ipl-2021:team-kolkata-knight-riders"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2021 finalist represents KKR’s Venkatesh-Iyer-led tactical transformation; the reviewed order restores Morgan and Karthik to the batting group and moves Narine lower.",
+      "xiProvenance": "REVIEWED_OVERRIDE",
+      "overrideType": "ORDER_ONLY",
+      "overrideRationale": "preserve the finalist and Venkatesh-Iyer-era membership while restoring Morgan and Karthik to the specialist batting group and moving Narine lower",
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-modern-pre-impact",
+      "franchiseId": "franchise-lucknow-super-giants",
+      "teamId": "team-lucknow-super-giants",
+      "seasonId": "ipl-2022",
+      "candidateId": "opponent:team-lucknow-super-giants:ipl-2022",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:372455c4:ipl-2022:team-lucknow-super-giants",
+        "pts:b17e2f24:ipl-2022:team-lucknow-super-giants",
+        "pts:73ad96ed:ipl-2022:team-lucknow-super-giants",
+        "pts:d9273ee7:ipl-2022:team-lucknow-super-giants",
+        "pts:5b8c830e:ipl-2022:team-lucknow-super-giants",
+        "pts:872b03f7:ipl-2022:team-lucknow-super-giants",
+        "pts:0f721006:ipl-2022:team-lucknow-super-giants",
+        "pts:327b58d3:ipl-2022:team-lucknow-super-giants",
+        "pts:c33d8116:ipl-2022:team-lucknow-super-giants",
+        "pts:df064e1a:ipl-2022:team-lucknow-super-giants",
+        "pts:eef2536f:ipl-2022:team-lucknow-super-giants"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The inaugural Lucknow XI preserves the Rahul–de Kock–Hooda–Stoinis core and a varied attack, with Chameera moved beneath the batting and all-round group.",
+      "xiProvenance": "REVIEWED_OVERRIDE",
+      "overrideType": "ORDER_ONLY",
+      "overrideRationale": "retain inaugural membership while moving Chameera beneath the batting and all-round group",
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-modern-pre-impact",
+      "franchiseId": "franchise-mumbai-indians",
+      "teamId": "team-mumbai-indians",
+      "seasonId": "ipl-2020",
+      "candidateId": "opponent:team-mumbai-indians:ipl-2020",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:372455c4:ipl-2020:team-mumbai-indians",
+        "pts:740742ef:ipl-2020:team-mumbai-indians",
+        "pts:271f83cd:ipl-2020:team-mumbai-indians",
+        "pts:5b8c830e:ipl-2020:team-mumbai-indians",
+        "pts:752f7486:ipl-2020:team-mumbai-indians",
+        "pts:dbe50b21:ipl-2020:team-mumbai-indians",
+        "pts:a757b0d8:ipl-2020:team-mumbai-indians",
+        "pts:f752db61:ipl-2020:team-mumbai-indians",
+        "pts:2ed569a0:ipl-2020:team-mumbai-indians",
+        "pts:462411b3:ipl-2020:team-mumbai-indians",
+        "pts:a818c1be:ipl-2020:team-mumbai-indians"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2020 champion is the definitive modern Mumbai XI, retaining the Rohit–de Kock–Suryakumar–Pollard–Hardik core and the Bumrah–Boult attack.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-modern-pre-impact",
+      "franchiseId": "franchise-punjab",
+      "teamId": "team-kings-xi-punjab",
+      "seasonId": "ipl-2020",
+      "candidateId": "opponent:team-kings-xi-punjab:ipl-2020",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:00ea847a:ipl-2020:team-kings-xi-punjab",
+        "pts:b17e2f24:ipl-2020:team-kings-xi-punjab",
+        "pts:db584dad:ipl-2020:team-kings-xi-punjab",
+        "pts:3241e3fd:ipl-2020:team-kings-xi-punjab",
+        "pts:b681e71e:ipl-2020:team-kings-xi-punjab",
+        "pts:73ad96ed:ipl-2020:team-kings-xi-punjab",
+        "pts:e2db2409:ipl-2020:team-kings-xi-punjab",
+        "pts:ffe699c0:ipl-2020:team-kings-xi-punjab",
+        "pts:244048f6:ipl-2020:team-kings-xi-punjab",
+        "pts:8cf9814c:ipl-2020:team-kings-xi-punjab",
+        "pts:df064e1a:ipl-2020:team-kings-xi-punjab"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2020 XI captures Punjab’s Rahul–Mayank–Gayle–Pooran batting identity and preserves a representative Shami–Bishnoi–Arshdeep bowling group.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-modern-pre-impact",
+      "franchiseId": "franchise-rajasthan-royals",
+      "teamId": "team-rajasthan-royals",
+      "seasonId": "ipl-2022",
+      "candidateId": "opponent:team-rajasthan-royals:ipl-2022",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:6c19c6e5:ipl-2022:team-rajasthan-royals",
+        "pts:99b75528:ipl-2022:team-rajasthan-royals",
+        "pts:a4cc73aa:ipl-2022:team-rajasthan-royals",
+        "pts:2c25d4f5:ipl-2022:team-rajasthan-royals",
+        "pts:48a1d7b7:ipl-2022:team-rajasthan-royals",
+        "pts:04a418e8:ipl-2022:team-rajasthan-royals",
+        "pts:495d42a5:ipl-2022:team-rajasthan-royals",
+        "pts:a818c1be:ipl-2022:team-rajasthan-royals",
+        "pts:529eb9e0:ipl-2022:team-rajasthan-royals",
+        "pts:57ee1fde:ipl-2022:team-rajasthan-royals",
+        "pts:85e0cf10:ipl-2022:team-rajasthan-royals"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2022 finalist is the clearest modern Rajasthan representation, led by Buttler, Samson and Jaiswal with the defining Chahal–Boult–Ashwin attack.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-modern-pre-impact",
+      "franchiseId": "franchise-royal-challengers",
+      "teamId": "team-royal-challengers-bangalore",
+      "seasonId": "ipl-2021",
+      "candidateId": "opponent:team-royal-challengers-bangalore:ipl-2021",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:2c25d4f5:ipl-2021:team-royal-challengers-bangalore",
+        "pts:ba607b88:ipl-2021:team-royal-challengers-bangalore",
+        "pts:44a89551:ipl-2021:team-royal-challengers-bangalore",
+        "pts:b681e71e:ipl-2021:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2021:team-royal-challengers-bangalore",
+        "pts:68c56d09:ipl-2021:team-royal-challengers-bangalore",
+        "pts:f9e6e7ef:ipl-2021:team-royal-challengers-bangalore",
+        "pts:2a2e6343:ipl-2021:team-royal-challengers-bangalore",
+        "pts:2f49c897:ipl-2021:team-royal-challengers-bangalore",
+        "pts:57ee1fde:ipl-2021:team-royal-challengers-bangalore",
+        "pts:f986ca1a:ipl-2021:team-royal-challengers-bangalore"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2021 playoff XI preserves the final de Villiers-centered RCB identity alongside Kohli and Maxwell, with stronger continuity than the transitional 2022 alternative.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-modern-pre-impact",
+      "franchiseId": "franchise-sunrisers-hyderabad",
+      "teamId": "team-sunrisers-hyderabad",
+      "seasonId": "ipl-2018",
+      "candidateId": "opponent:team-sunrisers-hyderabad:ipl-2018",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:0a476045:ipl-2018:team-sunrisers-hyderabad",
+        "pts:fe11caa6:ipl-2018:team-sunrisers-hyderabad",
+        "pts:d027ba9f:ipl-2018:team-sunrisers-hyderabad",
+        "pts:7dc35884:ipl-2018:team-sunrisers-hyderabad",
+        "pts:93b4fc78:ipl-2018:team-sunrisers-hyderabad",
+        "pts:3c6ffae8:ipl-2018:team-sunrisers-hyderabad",
+        "pts:5f547c8b:ipl-2018:team-sunrisers-hyderabad",
+        "pts:73ad96ed:ipl-2018:team-sunrisers-hyderabad",
+        "pts:2e81a32d:ipl-2018:team-sunrisers-hyderabad",
+        "pts:ce820073:ipl-2018:team-sunrisers-hyderabad",
+        "pts:dcf81436:ipl-2018:team-sunrisers-hyderabad"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2018 finalist represents Sunrisers’ Williamson-led peak and retains the franchise’s defining Rashid–Bhuvneshwar bowling identity with a stable batting core.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    }
+  ]
+}

@@ -16,7 +16,7 @@ import { TEAM_EVALUATION_V2_VERSION } from "./teamEvaluationV2.js";
 
 const documents = loadEraDraftCatalogDocuments();
 
-test("catalog reconciles the frozen Stage 8 universe and availability", () => {
+test("catalog reconciles the frozen all-era universe and availability", () => {
   const catalog = buildEraDraftCatalog(documents);
   assert.deepEqual(catalog.diagnostics, {
     eligibleProfiles: 2_992,
@@ -24,6 +24,13 @@ test("catalog reconciles the frozen Stage 8 universe and availability", () => {
     eras: 5,
     environments: 5,
     foundationOpponents: 8,
+    opponentsByEra: {
+      "era-foundation": 8,
+      "era-expansion": 11,
+      "era-transition": 10,
+      "era-modern-pre-impact": 10,
+      "era-impact": 10,
+    },
     unknownG2RosterStatuses: 0,
     teamSeasonsByEra: {
       "era-foundation": 24,
@@ -34,17 +41,18 @@ test("catalog reconciles the frozen Stage 8 universe and availability", () => {
     },
     simulationContentByEra: {
       "era-foundation": { status: "AVAILABLE", opponentCount: 8 },
-      "era-expansion": { status: "UNAVAILABLE", opponentCount: 0 },
-      "era-transition": { status: "UNAVAILABLE", opponentCount: 0 },
-      "era-modern-pre-impact": { status: "UNAVAILABLE", opponentCount: 0 },
-      "era-impact": { status: "UNAVAILABLE", opponentCount: 0 },
+      "era-expansion": { status: "AVAILABLE", opponentCount: 11 },
+      "era-transition": { status: "AVAILABLE", opponentCount: 10 },
+      "era-modern-pre-impact": { status: "AVAILABLE", opponentCount: 10 },
+      "era-impact": { status: "AVAILABLE", opponentCount: 10 },
     },
     sourceFiles: catalog.diagnostics.sourceFiles,
-    fingerprint: "03054faff39520da6a835e0aaecb1a9887ca82291d9ba0a5923540c862793808",
+    fingerprint: "a4dfc3d6fac0e0ccce5b8803db4ffcfde9a1b8fc2c437deb8c8b66668f028339",
   });
   assert.ok(catalog.diagnostics.sourceFiles.every((path) => !path.includes("data/analytical/")));
   assert.equal(catalog.getEraIds().length, 5);
   assert.equal(catalog.getFoundationOpponents().length, 8);
+  assert.deepEqual(catalog.getEraIds().map((eraId) => catalog.getOpponentProfiles(eraId).length), [8, 11, 10, 10, 10]);
 });
 
 test("catalog fingerprint and sorted indexes are stable across repeated loads", () => {

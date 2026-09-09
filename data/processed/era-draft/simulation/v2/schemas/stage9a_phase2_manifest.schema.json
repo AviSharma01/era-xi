@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifacts": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rows": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "schemaVersion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes",
+          "rows",
+          "schemaVersion"
+        ],
+        "type": "object"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "type": "array"
+    },
+    "contentVersion": {
+      "const": "ipl-era-opponent-content-phase2/v1"
+    },
+    "foundationOpponentArtifactSha256": {
+      "const": "c904df120bf8920f6967c13f04bd1725826e5e20cfa31291a49934187c373a0c"
+    },
+    "foundationSimulationCompatibilityFingerprint": {
+      "const": "03054faff39520da6a835e0aaecb1a9887ca82291d9ba0a5923540c862793808"
+    },
+    "inputs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "opponentContentDataAggregateHash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "phase1ManifestHash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "phase2ManifestHash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "profileCountsByEra": {
+      "additionalProperties": false,
+      "properties": {
+        "era-expansion": {
+          "const": 11
+        },
+        "era-impact": {
+          "const": 10
+        },
+        "era-modern-pre-impact": {
+          "const": 10
+        },
+        "era-transition": {
+          "const": 10
+        }
+      },
+      "required": [
+        "era-expansion",
+        "era-transition",
+        "era-modern-pre-impact",
+        "era-impact"
+      ],
+      "type": "object"
+    },
+    "profileTerminology": {
+      "const": "representative historical season XI"
+    },
+    "runtimeIntegrationStatus": {
+      "const": "NOT_INTEGRATED"
+    },
+    "schemaFiles": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rows": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "schemaVersion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "sizeBytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "sizeBytes",
+          "rows",
+          "schemaVersion"
+        ],
+        "type": "object"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "type": "array"
+    },
+    "schemaVersion": {
+      "const": "ipl-era-opponent-content-phase2-manifest/v1"
+    },
+    "totalLaterEraProfiles": {
+      "const": 41
+    },
+    "totalProfilesIncludingFoundation": {
+      "const": 49
+    },
+    "trackingIssue": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "unresolvedReviewCount": {
+      "const": 0
+    },
+    "xiProvenanceCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "BASELINE_ACCEPTED": {
+          "const": 31
+        },
+        "REVIEWED_OVERRIDE": {
+          "const": 10
+        }
+      },
+      "required": [
+        "BASELINE_ACCEPTED",
+        "REVIEWED_OVERRIDE"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "contentVersion",
+    "trackingIssue",
+    "profileTerminology",
+    "runtimeIntegrationStatus",
+    "foundationSimulationCompatibilityFingerprint",
+    "foundationOpponentArtifactSha256",
+    "phase1ManifestHash",
+    "inputs",
+    "artifacts",
+    "schemaFiles",
+    "profileCountsByEra",
+    "totalLaterEraProfiles",
+    "totalProfilesIncludingFoundation",
+    "xiProvenanceCounts",
+    "unresolvedReviewCount",
+    "opponentContentDataAggregateHash",
+    "phase2ManifestHash"
+  ],
+  "type": "object"
+}

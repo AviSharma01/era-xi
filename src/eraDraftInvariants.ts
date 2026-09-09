@@ -199,7 +199,7 @@ function validateHistory(catalog: EraDraftCatalog, state: EraDraftState): void {
         replayPhase = "REVEALED";
         break;
       case "SIMULATE_SEASON":
-        if (replayPhase !== "REVEALED" || selectedEra !== "era-foundation") {
+        if (replayPhase !== "REVEALED" || selectedEra === undefined) {
           fail("INVALID_HISTORY_SEQUENCE", "Invalid SIMULATE_SEASON history entry.");
         }
         replayPhase = "GAME_COMPLETE";

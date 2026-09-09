@@ -7,37 +7,31 @@ import { ERA_IDS } from "./teamEvaluationV2.js";
 
 const catalog = loadEraDraftCatalog();
 
-test("deterministic headless validation completes all eras and Foundation full cycles", () => {
+test("deterministic headless validation completes full seasons in all five eras", () => {
   const result = runEraDraftValidation({
     catalog,
-    validationSeed: "phase-5-focused",
-    drafts: 25,
-    foundationCycles: 5,
+    validationSeed: "stage9a-phase4-focused",
+    games: 25,
   });
   assert.equal(result.deterministic.acceptance.passed, true);
-  assert.equal(result.deterministic.completedRuns.totalDrafts, 30);
-  assert.equal(result.deterministic.foundation.cycles, 5);
-  assert.equal(result.deterministic.hiddenLeakCount, 0);
-  assert.equal(result.deterministic.invariantFailureCount, 0);
+  assert.equal(result.deterministic.completedRuns.completeGames, 25);
+  assert.ok(Object.values(result.deterministic.correctnessCounters).every((count) => count === 0));
   assert.equal(result.deterministic.replay.eventMismatches, 0);
   assert.equal(result.deterministic.replay.finalHashMismatches, 0);
   assert.equal(result.deterministic.serialization.failures, 0);
   assert.equal(result.deterministic.serialization.postRestoreDivergences, 0);
   for (const eraId of ERA_IDS) {
     assert.ok(result.deterministic.perEra[eraId].drafts > 0);
+    assert.equal(result.deterministic.perEra[eraId].completeGames, 5);
     assert.equal(result.deterministic.perEra[eraId].completionRate, 1);
     assert.equal(result.deterministic.perEra[eraId].deadEnds, 0);
+    assert.ok(Object.values(result.deterministic.perEra[eraId].strategyRuns).every((count) => count > 0));
   }
-  for (const eraId of ERA_IDS.slice(1)) {
-    assert.equal(
-      result.deterministic.laterEraExpectedSimulationRejections[eraId],
-      result.deterministic.perEra[eraId].completed,
-    );
-  }
+  assert.equal(result.deterministic.acceptance.allEraSimulationContentAvailable, true);
 });
 
-test("same validation seed produces byte-identical non-timing reports", () => {
-  const input = { catalog, validationSeed: "phase-5-repeat", drafts: 10, foundationCycles: 2 } as const;
+test("same validation seed produces byte-identical all-era non-timing reports", () => {
+  const input = { catalog, validationSeed: "stage9a-phase4-repeat", games: 25 } as const;
   const first = runEraDraftValidation(input);
   const second = runEraDraftValidation(input);
   assert.deepEqual(second.deterministic, first.deterministic);
@@ -47,9 +41,8 @@ test("same validation seed produces byte-identical non-timing reports", () => {
 test("validation explicitly covers recovery fixtures, pressure paths, and RNG isolation", () => {
   const result = runEraDraftValidation({
     catalog,
-    validationSeed: "phase-5-adversarial",
-    drafts: 100,
-    foundationCycles: 10,
+    validationSeed: "stage9a-phase4-adversarial",
+    games: 100,
   });
   assert.equal(result.deterministic.recovery.synthetic.deterministicSameSeed, true);
   assert.ok(result.deterministic.recovery.synthetic.differentSeedOrderingHeads > 1);
@@ -61,5 +54,9 @@ test("validation explicitly covers recovery fixtures, pressure paths, and RNG is
   assert.equal(result.deterministic.rngIsolation.compositionAndMatchDomainsDistinct, true);
   assert.equal(result.deterministic.rngIsolation.rejectedCommandsPreserveSimulation, true);
   assert.equal(result.deterministic.rngIsolation.simulationDoesNotPerturbDraftSpins, true);
-  assert.equal(result.deterministic.nondeterministicResultCount, 0);
+  assert.equal(result.deterministic.rngIsolation.normalRespinRecoveryDomainsDistinct, true);
+  assert.equal(result.deterministic.rngIsolation.draftAndShortlistDomainsDistinct, true);
+  assert.equal(result.deterministic.correctnessCounters.nondeterministicResults, 0);
+  assert.ok(result.deterministic.serialization.byTarget.GAME_COMPLETE > 0);
+  assert.equal(result.deterministic.replay.runs, 100);
 });

@@ -5,6 +5,7 @@ import { evaluateEraDraftXi } from "./eraDraftReveal.js";
 import { assertEraDraftSeasonResult } from "./eraDraftSimulation.js";
 import {
   ERA_DRAFT_ENGINE_VERSION,
+  ERA_DRAFT_OPPONENT_COMPOSITION_SCHEMA_VERSION,
   ERA_DRAFT_SAVE_VERSION,
   ERA_DRAFT_SIMULATION_SEED_VERSION,
   ERA_DRAFT_STATE_SCHEMA_VERSION,
@@ -112,7 +113,6 @@ export function restoreEraDraftState(catalog: EraDraftCatalog, serialized: strin
       if (phase === "REVEALED") {
         state = { ...common, phase, eraId, evaluation };
       } else {
-        if (eraId !== "era-foundation") invalid("GAME_COMPLETE can only use era-foundation.");
         const season = parseSeasonSnapshot(row.seasonSnapshot);
         const revealedIdentity = { ...common, phase: "REVEALED" as const, eraId, evaluation };
         assertEraDraftSeasonResult(catalog, revealedIdentity, season);
@@ -207,7 +207,7 @@ function parseSeasonSnapshot(value: unknown): EraDraftSeasonResult {
 
 function parseSeasonResult(value: unknown): EraDraftSeasonResult {
   const row = object(value, "season result");
-  exactKeys(row, ["stage7Versions", "seedBundle", "userTeam", "league", "userOutcome"], "season result");
+  exactKeys(row, ["stage7Versions", "seedBundle", "opponentComposition", "userTeam", "league", "userOutcome"], "season result");
   const versions = object(row.stage7Versions, "stage7Versions");
   exactKeys(versions, ["simulationVersion", "environmentSchemaVersion"], "stage7Versions");
   requireVersion(versions.simulationVersion, SIMULATION_V2_VERSION, "SIMULATION_VERSION_MISMATCH", "Simulation V2 version");
@@ -216,6 +216,14 @@ function parseSeasonResult(value: unknown): EraDraftSeasonResult {
   requireVersion(seed.version, ERA_DRAFT_SIMULATION_SEED_VERSION, "SIMULATION_SEED_VERSION_MISMATCH", "simulation seed version");
   const outcome = object(row.userOutcome, "userOutcome");
   exactKeys(outcome, ["leaguePosition", "qualified", "champion"], "userOutcome");
+  const composition = object(row.opponentComposition, "opponentComposition");
+  exactKeys(composition, ["schemaVersion", "eraId", "fullPoolProfileIds", "shortlistedProfileIds"], "opponentComposition");
+  requireVersion(
+    composition.schemaVersion,
+    ERA_DRAFT_OPPONENT_COMPOSITION_SCHEMA_VERSION,
+    "OPPONENT_COMPOSITION_VERSION_MISMATCH",
+    "opponent composition version",
+  );
   return {
     stage7Versions: {
       simulationVersion: SIMULATION_V2_VERSION,
@@ -226,6 +234,14 @@ function parseSeasonResult(value: unknown): EraDraftSeasonResult {
       gameIdentityHash: hash(seed.gameIdentityHash, "seedBundle.gameIdentityHash"),
       opponentCompositionSeed: hash(seed.opponentCompositionSeed, "seedBundle.opponentCompositionSeed"),
       matchSimulationSeed: hash(seed.matchSimulationSeed, "seedBundle.matchSimulationSeed"),
+    },
+    opponentComposition: {
+      schemaVersion: ERA_DRAFT_OPPONENT_COMPOSITION_SCHEMA_VERSION,
+      eraId: oneOf(composition.eraId, [
+        "era-foundation", "era-expansion", "era-transition", "era-modern-pre-impact", "era-impact",
+      ] as const, "opponentComposition.eraId"),
+      fullPoolProfileIds: stringArray(composition.fullPoolProfileIds, "opponentComposition.fullPoolProfileIds"),
+      shortlistedProfileIds: stringArray(composition.shortlistedProfileIds, "opponentComposition.shortlistedProfileIds"),
     },
     userTeam: parseSimulationTeam(row.userTeam, "userTeam"),
     league: parseLeague(row.league),

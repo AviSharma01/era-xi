@@ -1,0 +1,186 @@
+{
+  "artifacts": [
+    {
+      "path": "all_era_opponent_candidates.json",
+      "rows": 166,
+      "schemaVersion": "ipl-era-opponent-content-phase1/v1",
+      "sha256": "db1ca95df71b66064edbe4c1349025a8972c7a660ba260f73950398f80fd828c",
+      "sizeBytes": 1027932
+    },
+    {
+      "path": "later_era_opponent_review_packets.json",
+      "rows": 41,
+      "schemaVersion": "ipl-era-opponent-review-packets/v1",
+      "sha256": "f90f59f6003fad1d64dd5e836da0dcf56417f39405bfbaaf7c634de79aac7e1a",
+      "sizeBytes": 967039
+    }
+  ],
+  "candidateCountsByEra": {
+    "era-expansion": 28,
+    "era-foundation": 24,
+    "era-impact": 40,
+    "era-modern-pre-impact": 42,
+    "era-transition": 32
+  },
+  "contentVersion": "ipl-era-opponent-content-phase1/v1",
+  "foundationSimulationCompatibilityFingerprint": "03054faff39520da6a835e0aaecb1a9887ca82291d9ba0a5923540c862793808",
+  "inputs": [
+    {
+      "path": "data/registries/ipl/v1/registry_manifest.json",
+      "sha256": "802a7f731b0108e186b95486646975dc9847cabb6ea2b5ae68b034001f6fa0fb",
+      "sizeBytes": 3344
+    },
+    {
+      "path": "data/registries/ipl/v1/eras.json",
+      "sha256": "bad0d8e31a1b880d315f473d39007795032cd4a70e0ab5ad5a8d0d0cc556e819",
+      "sizeBytes": 1778
+    },
+    {
+      "path": "data/registries/ipl/v1/teams.json",
+      "sha256": "9040100af9315cbd54ab0a9fa653221b79eb376412b555668a9e531af28ce764",
+      "sizeBytes": 15434
+    },
+    {
+      "path": "data/registries/ipl/v1/franchises.json",
+      "sha256": "267fb11b83d4c6f6462d4665655683582b46e184922b3c507b254111f9ed2de5",
+      "sizeBytes": 7753
+    },
+    {
+      "path": "data/analytical/cricsheet-ipl/v1/analytical_manifest.json",
+      "sha256": "737fb9d857c03d087ae18b342a8913acdb5bae60ed3afa80f068ae6bace9baf9",
+      "sizeBytes": 3391
+    },
+    {
+      "path": "data/analytical/cricsheet-ipl/v1/match_summaries.jsonl",
+      "sha256": "389827acfea133281206a0a86d8d7f32816d33338ee98f57d062f55d914938eb",
+      "sizeBytes": 5234796
+    },
+    {
+      "path": "data/analytical/cricsheet-ipl/v1/team_seasons.jsonl",
+      "sha256": "1f66e5256d3d60aefb0c59288a699492b69841faf38923e63bb26e0ab442dae6",
+      "sizeBytes": 827999
+    },
+    {
+      "path": "data/analytical/cricsheet-ipl/v1/player_team_seasons.jsonl",
+      "sha256": "acb768156e8c26802a18a130a39c66f6c1277cab06b90ec429f73b32acb90c4b",
+      "sizeBytes": 40767784
+    },
+    {
+      "path": "data/processed/era-draft/roles/v1/role_manifest.json",
+      "sha256": "e4e3d2ef8ebae601bc7928676273d8d0c8e07619a8551963b9af3c15b3d2e0c7",
+      "sizeBytes": 4714
+    },
+    {
+      "path": "data/processed/era-draft/roles/v1/player_role_consumer.jsonl",
+      "sha256": "cdbdb64c7a48fe534a17e504e336f42a2e28a8c81e6c8b30b8f031dd3b78c51c",
+      "sizeBytes": 5693918
+    },
+    {
+      "path": "data/processed/era-draft/quality/v1/quality_manifest.json",
+      "sha256": "3894861b0820246d8bbc1f70cb05ed0c39b6af50ae4da0ab4be2de31f13531a5",
+      "sizeBytes": 4353
+    },
+    {
+      "path": "data/processed/era-draft/quality/v1/player_quality_consumer.jsonl",
+      "sha256": "c4bc7ac8f16c29b322aaabe5fecace06bc3972baacd4345b511befea024ed6df",
+      "sizeBytes": 2175997
+    },
+    {
+      "path": "data/metadata/ipl/country_overseas/v1/metadata_manifest.json",
+      "sha256": "103ef65cf4546aa973fe6b8429f4320e11b1f029f0af08d695666cc06c2f4fe5",
+      "sizeBytes": 5514
+    },
+    {
+      "path": "data/metadata/ipl/country_overseas/v1/player_team_season_metadata.jsonl",
+      "sha256": "3438ff6041fd0c503ac8ec44bce5d74ba653531e90d9bcf257f6205ac834d3bd",
+      "sizeBytes": 4644851
+    },
+    {
+      "path": "data/metadata/ipl/v1/metadata_manifest.json",
+      "sha256": "f420a3d60bcc154a6a02a33a3d1c887f8dba3ff693fe11c698a3ddc03a2d28f0",
+      "sizeBytes": 4205
+    },
+    {
+      "path": "data/metadata/ipl/v1/player_capabilities.jsonl",
+      "sha256": "5daceec21b877f500d2634736081f289eeaf0831172cfdcd8531599c58ef8006",
+      "sizeBytes": 199503
+    },
+    {
+      "path": "data/metadata/ipl/v1/player_team_season_usage.jsonl",
+      "sha256": "0a96aef811f68de7e10a5c1f21f1a5a252a754c35486686080a327bd2f1eb7e6",
+      "sizeBytes": 1135157
+    },
+    {
+      "path": "data/manual/era-simulation/v2/foundation_opponents.json",
+      "sha256": "e397bcbe52ee9ded756e5e457a92e403a6b8ebb4db662e237187e114c81e8d07",
+      "sizeBytes": 7978
+    },
+    {
+      "path": "data/processed/era-draft/simulation/v2/foundation_opponent_candidates.json",
+      "sha256": "e197f40cbd4b1aed585326b97dd4a9fb6eb20961c861f999878b9033d8f041a6",
+      "sizeBytes": 96522
+    },
+    {
+      "path": "data/processed/era-draft/simulation/v2/foundation_opponents.json",
+      "sha256": "c904df120bf8920f6967c13f04bd1725826e5e20cfa31291a49934187c373a0c",
+      "sizeBytes": 34775
+    },
+    {
+      "path": "data/processed/era-draft/simulation/v2/era_environments.json",
+      "sha256": "51311a4de50be15b5a56e9a8d9d5ccc7d2b8ec3e85635ff9ab2cb3db1100563a",
+      "sizeBytes": 12807
+    },
+    {
+      "path": "tests/fixtures/stage9a/foundation_stage8_parity.json",
+      "sha256": "111811b04959b89fa6e71b1f001f58fe9868d06b5de1c2a786559e557da079ec",
+      "sizeBytes": 101488
+    }
+  ],
+  "lineageCountsByEra": {
+    "era-expansion": 11,
+    "era-foundation": 8,
+    "era-impact": 10,
+    "era-modern-pre-impact": 10,
+    "era-transition": 10
+  },
+  "opponentContentDataAggregateHash": "865502746cb6202f8ddd06c8f05f983badb4800771386d6e9f256f837f38367f",
+  "phase1ManifestHash": "e6bbf39357ac0e2d92a33bc7f578ce5e1dca4469021f116663aa7da9df8129f1",
+  "profileTerminology": "representative historical season XI",
+  "reviewStatusCounts": {
+    "foundationApproved": 8,
+    "laterEraApproved": 0,
+    "laterEraPending": 41
+  },
+  "schemaFiles": [
+    {
+      "path": "schemas/all_era_opponent_candidates.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "ab9bebb0f962a26625413b0d3fd1b241f2a2441a340330ed327ec89f4ec23b64",
+      "sizeBytes": 17752
+    },
+    {
+      "path": "schemas/later_era_opponent_review_packets.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "d799186d04a93ddc101babbbbe410d1df043fab71706c5fbcf3e3812095aacae",
+      "sizeBytes": 21557
+    },
+    {
+      "path": "schemas/stage9a_phase1_manifest.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "cf36180873f3566ea03eb2a7604d93ff6e78afab471b69abffd070976f9526fa",
+      "sizeBytes": 5383
+    },
+    {
+      "path": "schemas/stage9a_phase1_validation_report.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "126fea4e94a8f545e34ade00ae9c6fd9c51b6b33a3dd924f56f466f9cc076734",
+      "sizeBytes": 4445
+    }
+  ],
+  "schemaVersion": "ipl-era-opponent-content-phase1-manifest/v1",
+  "trackingIssue": "https://github.com/AviSharma01/draft-simulator/issues/8"
+}

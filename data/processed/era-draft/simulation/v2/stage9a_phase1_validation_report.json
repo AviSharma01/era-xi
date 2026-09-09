@@ -1,0 +1,42 @@
+{
+  "candidateCountsByEra": {
+    "era-expansion": 28,
+    "era-foundation": 24,
+    "era-impact": 40,
+    "era-modern-pre-impact": 42,
+    "era-transition": 32
+  },
+  "contentVersion": "ipl-era-opponent-content-phase1/v1",
+  "deterministicContracts": {
+    "advisoryCandidateOrdering": "score-desc-candidateId",
+    "candidateOrdering": "teamId-seasonId",
+    "reviewPacketOrdering": "eraId-franchiseId",
+    "xiSelectionTieBreak": "playerTeamSeasonId"
+  },
+  "foundationParity": {
+    "approvedProfilesExact": true,
+    "candidateRepresentationExact": true,
+    "eraEnvironmentsExact": true,
+    "fixturePath": "tests/fixtures/stage9a/foundation_stage8_parity.json",
+    "fixtureSha256": "111811b04959b89fa6e71b1f001f58fe9868d06b5de1c2a786559e557da079ec",
+    "opponentArtifactSha256": "c904df120bf8920f6967c13f04bd1725826e5e20cfa31291a49934187c373a0c",
+    "simulationCompatibilityFingerprint": "03054faff39520da6a835e0aaecb1a9887ca82291d9ba0a5923540c862793808"
+  },
+  "lineageCountsByEra": {
+    "era-expansion": 11,
+    "era-foundation": 8,
+    "era-impact": 10,
+    "era-modern-pre-impact": 10,
+    "era-transition": 10
+  },
+  "phase1ManifestHash": "e6bbf39357ac0e2d92a33bc7f578ce5e1dca4469021f116663aa7da9df8129f1",
+  "reviewStatusCounts": {
+    "foundationApproved": 8,
+    "laterEraApproved": 0,
+    "laterEraPending": 41
+  },
+  "schemaVersion": "ipl-era-opponent-content-phase1-validation/v1",
+  "status": "PASSED",
+  "totalCandidates": 166,
+  "totalLineages": 49
+}

@@ -1,0 +1,310 @@
+{
+  "schemaVersion": "ipl-era-opponent-content-phase2-review/v1",
+  "eraId": "era-transition",
+  "profileTerminology": "representative historical season XI",
+  "reviewStatus": "APPROVED",
+  "reviewedOn": "2026-09-08",
+  "reviewNotes": "Human-approved Transition selections preserve canonical lineages, short-window historical identity and exact legal reviewed orders where the Phase 1 order was misleading.",
+  "opponents": [
+    {
+      "eraId": "era-transition",
+      "franchiseId": "franchise-chennai-super-kings",
+      "teamId": "team-chennai-super-kings",
+      "seasonId": "ipl-2015",
+      "candidateId": "opponent:team-chennai-super-kings:ipl-2015",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:35205dfc:ipl-2015:team-chennai-super-kings",
+        "pts:b8a55852:ipl-2015:team-chennai-super-kings",
+        "pts:1dc12ab9:ipl-2015:team-chennai-super-kings",
+        "pts:3355b542:ipl-2015:team-chennai-super-kings",
+        "pts:4a8a2e3b:ipl-2015:team-chennai-super-kings",
+        "pts:87e562a9:ipl-2015:team-chennai-super-kings",
+        "pts:fe93fd9d:ipl-2015:team-chennai-super-kings",
+        "pts:495d42a5:ipl-2015:team-chennai-super-kings",
+        "pts:759ac88f:ipl-2015:team-chennai-super-kings",
+        "pts:96fd40ae:ipl-2015:team-chennai-super-kings",
+        "pts:e0407c01:ipl-2015:team-chennai-super-kings"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2015 finalist preserves CSK’s complete pre-suspension Dhoni–Raina core, with a reviewed order that places Bravo and Jadeja ahead of Ashwin.",
+      "xiProvenance": "REVIEWED_OVERRIDE",
+      "overrideType": "ORDER_ONLY",
+      "overrideRationale": "retain the complete representative CSK membership while placing Bravo and Jadeja ahead of Ashwin in a credible batting order",
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-transition",
+      "franchiseId": "franchise-delhi",
+      "teamId": "team-delhi-daredevils",
+      "seasonId": "ipl-2016",
+      "candidateId": "opponent:team-delhi-daredevils:ipl-2016",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:372455c4:ipl-2016:team-delhi-daredevils",
+        "pts:919a3be2:ipl-2016:team-delhi-daredevils",
+        "pts:944533a5:ipl-2016:team-delhi-daredevils",
+        "pts:2e8994e7:ipl-2016:team-delhi-daredevils",
+        "pts:a4cc73aa:ipl-2016:team-delhi-daredevils",
+        "pts:e342e5fb:ipl-2016:team-delhi-daredevils",
+        "pts:fb66ce1f:ipl-2016:team-delhi-daredevils",
+        "pts:f62772e5:ipl-2016:team-delhi-daredevils",
+        "pts:6b19d823:ipl-2016:team-delhi-daredevils",
+        "pts:8cf9814c:ipl-2016:team-delhi-daredevils",
+        "pts:91a4a398:ipl-2016:team-delhi-daredevils"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2016 XI captures Delhi’s youth transition through de Kock, Pant, Nair and Samson while retaining Duminy, Morris, Mishra and Zaheer for balance.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-transition",
+      "franchiseId": "franchise-gujarat-lions",
+      "teamId": "team-gujarat-lions",
+      "seasonId": "ipl-2016",
+      "candidateId": "opponent:team-gujarat-lions:ipl-2016",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:35205dfc:ipl-2016:team-gujarat-lions",
+        "pts:b8a55852:ipl-2016:team-gujarat-lions",
+        "pts:1dc12ab9:ipl-2016:team-gujarat-lions",
+        "pts:c03f1114:ipl-2016:team-gujarat-lions",
+        "pts:b8d490fd:ipl-2016:team-gujarat-lions",
+        "pts:87e562a9:ipl-2016:team-gujarat-lions",
+        "pts:fe93fd9d:ipl-2016:team-gujarat-lions",
+        "pts:d2a989fc:ipl-2016:team-gujarat-lions",
+        "pts:e938e1bc:ipl-2016:team-gujarat-lions",
+        "pts:6aed7e79:ipl-2016:team-gujarat-lions",
+        "pts:1da489ff:ipl-2016:team-gujarat-lions"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "Gujarat Lions’ inaugural playoff side is represented by its McCullum–Smith–Raina top order and varied Jadeja–Bravo-led attack, with a corrected lower-order sequence.",
+      "xiProvenance": "REVIEWED_OVERRIDE",
+      "overrideType": "ORDER_ONLY",
+      "overrideRationale": "retain membership while placing Bravo and Jadeja ahead of Kulkarni",
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-transition",
+      "franchiseId": "franchise-kolkata-knight-riders",
+      "teamId": "team-kolkata-knight-riders",
+      "seasonId": "ipl-2014",
+      "candidateId": "opponent:team-kolkata-knight-riders:ipl-2014",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:1c17e270:ipl-2014:team-kolkata-knight-riders",
+        "pts:bb345e0b:ipl-2014:team-kolkata-knight-riders",
+        "pts:93b4fc78:ipl-2014:team-kolkata-knight-riders",
+        "pts:3c6ffae8:ipl-2014:team-kolkata-knight-riders",
+        "pts:7dc35884:ipl-2014:team-kolkata-knight-riders",
+        "pts:271f83cd:ipl-2014:team-kolkata-knight-riders",
+        "pts:4ec07775:ipl-2014:team-kolkata-knight-riders",
+        "pts:98ae73b1:ipl-2014:team-kolkata-knight-riders",
+        "pts:5bb5a915:ipl-2014:team-kolkata-knight-riders",
+        "pts:9d430b40:ipl-2014:team-kolkata-knight-riders",
+        "pts:cc1e8c68:ipl-2014:team-kolkata-knight-riders"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2014 XI captures KKR’s defining title-season continuity through Gambhir, Uthappa, Narine, Russell-era support and a balanced spin-pace attack.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-transition",
+      "franchiseId": "franchise-mumbai-indians",
+      "teamId": "team-mumbai-indians",
+      "seasonId": "ipl-2017",
+      "candidateId": "opponent:team-mumbai-indians:ipl-2017",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:99b75528:ipl-2017:team-mumbai-indians",
+        "pts:b5da6c24:ipl-2017:team-mumbai-indians",
+        "pts:fb2d1dda:ipl-2017:team-mumbai-indians",
+        "pts:740742ef:ipl-2017:team-mumbai-indians",
+        "pts:a757b0d8:ipl-2017:team-mumbai-indians",
+        "pts:5b8c830e:ipl-2017:team-mumbai-indians",
+        "pts:dbe50b21:ipl-2017:team-mumbai-indians",
+        "pts:8b5b6769:ipl-2017:team-mumbai-indians",
+        "pts:462411b3:ipl-2017:team-mumbai-indians",
+        "pts:51a3c5ef:ipl-2017:team-mumbai-indians",
+        "pts:a12e1d51:ipl-2017:team-mumbai-indians"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2017 XI is the mature Rohit–Pollard–Hardik–Krunal–Bumrah Mumbai core, combining strong participation, the best league record and a historically defining title.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-transition",
+      "franchiseId": "franchise-punjab",
+      "teamId": "team-kings-xi-punjab",
+      "seasonId": "ipl-2014",
+      "candidateId": "opponent:team-kings-xi-punjab:ipl-2014",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:8ba8195d:ipl-2014:team-kings-xi-punjab",
+        "pts:c03e2850:ipl-2014:team-kings-xi-punjab",
+        "pts:fe11caa6:ipl-2014:team-kings-xi-punjab",
+        "pts:b681e71e:ipl-2014:team-kings-xi-punjab",
+        "pts:d67d5f00:ipl-2014:team-kings-xi-punjab",
+        "pts:26a85969:ipl-2014:team-kings-xi-punjab",
+        "pts:5056011d:ipl-2014:team-kings-xi-punjab",
+        "pts:2e171977:ipl-2014:team-kings-xi-punjab",
+        "pts:b2b50355:ipl-2014:team-kings-xi-punjab",
+        "pts:ce820073:ipl-2014:team-kings-xi-punjab",
+        "pts:f5180fe6:ipl-2014:team-kings-xi-punjab"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2014 finalist preserves Punjab’s defining Sehwag–Maxwell–Miller batting identity and a complete Johnson–Sandeep–Axar bowling construction.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-transition",
+      "franchiseId": "franchise-rajasthan-royals",
+      "teamId": "team-rajasthan-royals",
+      "seasonId": "ipl-2015",
+      "candidateId": "opponent:team-rajasthan-royals:ipl-2015",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:29e95537:ipl-2015:team-rajasthan-royals",
+        "pts:4329fbb5:ipl-2015:team-rajasthan-royals",
+        "pts:30a45b23:ipl-2015:team-rajasthan-royals",
+        "pts:73ad96ed:ipl-2015:team-rajasthan-royals",
+        "pts:944533a5:ipl-2015:team-rajasthan-royals",
+        "pts:a4cc73aa:ipl-2015:team-rajasthan-royals",
+        "pts:fb66ce1f:ipl-2015:team-rajasthan-royals",
+        "pts:808f425a:ipl-2015:team-rajasthan-royals",
+        "pts:6aed7e79:ipl-2015:team-rajasthan-royals",
+        "pts:bd17b45f:ipl-2015:team-rajasthan-royals",
+        "pts:d2a989fc:ipl-2015:team-rajasthan-royals"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2015 playoff XI provides the final pre-suspension expression of Rajasthan’s Rahane–Watson–Smith core with unusually strong participation continuity.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-transition",
+      "franchiseId": "franchise-rising-pune",
+      "teamId": "team-rising-pune-supergiant",
+      "seasonId": "ipl-2017",
+      "candidateId": "opponent:team-rising-pune-supergiant:ipl-2017",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:29e95537:ipl-2017:team-rising-pune-supergiant",
+        "pts:77255a9e:ipl-2017:team-rising-pune-supergiant",
+        "pts:30a45b23:ipl-2017:team-rising-pune-supergiant",
+        "pts:26e5cabf:ipl-2017:team-rising-pune-supergiant",
+        "pts:4a8a2e3b:ipl-2017:team-rising-pune-supergiant",
+        "pts:2a2e6343:ipl-2017:team-rising-pune-supergiant",
+        "pts:e087956b:ipl-2017:team-rising-pune-supergiant",
+        "pts:1abb78f8:ipl-2017:team-rising-pune-supergiant",
+        "pts:1e66c162:ipl-2017:team-rising-pune-supergiant",
+        "pts:acee4cc4:ipl-2017:team-rising-pune-supergiant",
+        "pts:f19ccfad:ipl-2017:team-rising-pune-supergiant"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2017 finalist is the clearest Rising Pune representation, retaining Smith, Stokes, Dhoni, Tripathi and the attack that defined the short-lived lineage.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-transition",
+      "franchiseId": "franchise-royal-challengers",
+      "teamId": "team-royal-challengers-bangalore",
+      "seasonId": "ipl-2016",
+      "candidateId": "opponent:team-royal-challengers-bangalore:ipl-2016",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:ba607b88:ipl-2016:team-royal-challengers-bangalore",
+        "pts:db584dad:ipl-2016:team-royal-challengers-bangalore",
+        "pts:c4487b84:ipl-2016:team-royal-challengers-bangalore",
+        "pts:4329fbb5:ipl-2016:team-royal-challengers-bangalore",
+        "pts:b17e2f24:ipl-2016:team-royal-challengers-bangalore",
+        "pts:bd17b45f:ipl-2016:team-royal-challengers-bangalore",
+        "pts:dc9dd038:ipl-2016:team-royal-challengers-bangalore",
+        "pts:ffe699c0:ipl-2016:team-royal-challengers-bangalore",
+        "pts:57ee1fde:ipl-2016:team-royal-challengers-bangalore",
+        "pts:85aae393:ipl-2016:team-royal-challengers-bangalore",
+        "pts:957532de:ipl-2016:team-royal-challengers-bangalore"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2016 finalist captures the peak Kohli–Gayle–de Villiers–Watson RCB identity with Rahul keeping and enough spin-seam coverage for a representative XI.",
+      "xiProvenance": "BASELINE_ACCEPTED",
+      "overrideType": "NONE",
+      "overrideRationale": null,
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    },
+    {
+      "eraId": "era-transition",
+      "franchiseId": "franchise-sunrisers-hyderabad",
+      "teamId": "team-sunrisers-hyderabad",
+      "seasonId": "ipl-2016",
+      "candidateId": "opponent:team-sunrisers-hyderabad:ipl-2016",
+      "orderedPlayerTeamSeasonIds": [
+        "pts:0a476045:ipl-2016:team-sunrisers-hyderabad",
+        "pts:dcce6f09:ipl-2016:team-sunrisers-hyderabad",
+        "pts:32198ae0:ipl-2016:team-sunrisers-hyderabad",
+        "pts:1c914163:ipl-2016:team-sunrisers-hyderabad",
+        "pts:73ad96ed:ipl-2016:team-sunrisers-hyderabad",
+        "pts:890946a0:ipl-2016:team-sunrisers-hyderabad",
+        "pts:c18496e1:ipl-2016:team-sunrisers-hyderabad",
+        "pts:2e81a32d:ipl-2016:team-sunrisers-hyderabad",
+        "pts:0a8fce53:ipl-2016:team-sunrisers-hyderabad",
+        "pts:96fd40ae:ipl-2016:team-sunrisers-hyderabad",
+        "pts:d8b2f218:ipl-2016:team-sunrisers-hyderabad"
+      ],
+      "approvalStatus": "APPROVED",
+      "reviewedOn": "2026-09-08",
+      "rationale": "The 2016 champion preserves Warner and Dhawan’s batting identity and the title-defining Bhuvneshwar–Mustafizur–Nehra attack in a corrected batting order.",
+      "xiProvenance": "REVIEWED_OVERRIDE",
+      "overrideType": "ORDER_ONLY",
+      "overrideRationale": "retain the defining 2016 membership while restoring a credible batting/all-round order ahead of Bhuvneshwar and the specialist seamers",
+      "membershipChanges": {
+        "includedPlayerTeamSeasonIds": [],
+        "omittedPlayerTeamSeasonIds": []
+      }
+    }
+  ]
+}

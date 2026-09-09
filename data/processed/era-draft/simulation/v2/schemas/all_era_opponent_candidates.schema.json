@@ -1,0 +1,594 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "candidateCountsByEra": {
+      "additionalProperties": false,
+      "properties": {
+        "era-expansion": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-foundation": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-impact": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-modern-pre-impact": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-transition": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "era-foundation",
+        "era-expansion",
+        "era-transition",
+        "era-modern-pre-impact",
+        "era-impact"
+      ],
+      "type": "object"
+    },
+    "candidates": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "candidateId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "contentStatus": {
+            "const": "GENERATED_CANDIDATE"
+          },
+          "diagnostics": {
+            "additionalProperties": false,
+            "properties": {
+              "bowlingCoverage": {
+                "additionalProperties": false,
+                "properties": {
+                  "bowlingCapacity": {
+                    "type": "number"
+                  },
+                  "familyCapacity": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "PACE": {
+                        "type": "number"
+                      },
+                      "SPIN": {
+                        "type": "number"
+                      },
+                      "UNKNOWN": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "PACE",
+                      "SPIN",
+                      "UNKNOWN"
+                    ],
+                    "type": "object"
+                  },
+                  "normalizedBowlingUnitsAvailable": {
+                    "type": "number"
+                  },
+                  "phaseCapacity": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "death": {
+                        "type": "number"
+                      },
+                      "middle": {
+                        "type": "number"
+                      },
+                      "powerplay": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "powerplay",
+                      "middle",
+                      "death"
+                    ],
+                    "type": "object"
+                  },
+                  "uncoveredBowlingUnits": {
+                    "type": "number"
+                  },
+                  "workloadCounts": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "FRONTLINE": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "NONE": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "OCCASIONAL": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "SUPPORT": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "NONE",
+                      "OCCASIONAL",
+                      "SUPPORT",
+                      "FRONTLINE"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "bowlingCapacity",
+                  "normalizedBowlingUnitsAvailable",
+                  "uncoveredBowlingUnits",
+                  "workloadCounts",
+                  "familyCapacity",
+                  "phaseCapacity"
+                ],
+                "type": "object"
+              },
+              "dataCompleteness": {
+                "additionalProperties": false,
+                "properties": {
+                  "confirmedKeeperCandidateCount": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "eligiblePlayerCount": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "issues": {
+                    "items": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "joinedPlayerCount": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "status": {
+                    "const": "COMPLETE"
+                  },
+                  "unresolvedRosterStatusCount": {
+                    "const": 0
+                  }
+                },
+                "required": [
+                  "status",
+                  "eligiblePlayerCount",
+                  "joinedPlayerCount",
+                  "unresolvedRosterStatusCount",
+                  "confirmedKeeperCandidateCount",
+                  "issues"
+                ],
+                "type": "object"
+              },
+              "legality": {
+                "additionalProperties": false,
+                "properties": {
+                  "confirmedKeeperCount": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "overseasCount": {
+                    "maximum": 4,
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "playerCount": {
+                    "const": 11
+                  },
+                  "uniqueCanonicalPlayerCount": {
+                    "const": 11
+                  }
+                },
+                "required": [
+                  "playerCount",
+                  "uniqueCanonicalPlayerCount",
+                  "overseasCount",
+                  "confirmedKeeperCount"
+                ],
+                "type": "object"
+              },
+              "officialParticipation": {
+                "additionalProperties": false,
+                "properties": {
+                  "xiMatchCountMaximum": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "xiMatchCountMinimum": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "xiMatchCountTotal": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "xiMatchCountTotal",
+                  "xiMatchCountMinimum",
+                  "xiMatchCountMaximum"
+                ],
+                "type": "object"
+              },
+              "positionFitCounts": {
+                "additionalProperties": false,
+                "properties": {
+                  "ACCEPTABLE": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "NATURAL": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "OUT_OF_ROLE": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "UNKNOWN": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "NATURAL",
+                  "ACCEPTABLE",
+                  "OUT_OF_ROLE",
+                  "UNKNOWN"
+                ],
+                "type": "object"
+              },
+              "replacementContext": {
+                "additionalProperties": false,
+                "properties": {
+                  "diagnosticOnly": {
+                    "const": true
+                  },
+                  "representativeXiEvents": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "concussionIn": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "concussionOut": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "impactIn": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "impactOut": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "roleIn": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "roleOut": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "impactIn",
+                      "impactOut",
+                      "concussionIn",
+                      "concussionOut",
+                      "roleIn",
+                      "roleOut"
+                    ],
+                    "type": "object"
+                  },
+                  "teamSeasonEvents": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "concussionIn": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "concussionOut": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "impactIn": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "impactOut": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "roleIn": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "roleOut": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "impactIn",
+                      "impactOut",
+                      "concussionIn",
+                      "concussionOut",
+                      "roleIn",
+                      "roleOut"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "diagnosticOnly",
+                  "teamSeasonEvents",
+                  "representativeXiEvents"
+                ],
+                "type": "object"
+              },
+              "reviewFlags": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "dataCompleteness",
+              "legality",
+              "officialParticipation",
+              "positionFitCounts",
+              "bowlingCoverage",
+              "replacementContext",
+              "reviewFlags"
+            ],
+            "type": "object"
+          },
+          "eraId": {
+            "enum": [
+              "era-foundation",
+              "era-expansion",
+              "era-transition",
+              "era-modern-pre-impact",
+              "era-impact"
+            ]
+          },
+          "evaluation": {
+            "additionalProperties": false,
+            "properties": {
+              "appliedPositionFitEffect": {
+                "type": "number"
+              },
+              "batting": {
+                "type": "number"
+              },
+              "battingCore": {
+                "type": "number"
+              },
+              "battingDepth": {
+                "type": "number"
+              },
+              "bowling": {
+                "type": "number"
+              },
+              "bowlingCapacity": {
+                "type": "number"
+              },
+              "overall": {
+                "type": "number"
+              },
+              "structuralBattingOrderEffect": {
+                "type": "number"
+              },
+              "uncoveredBowlingUnits": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "battingCore",
+              "battingDepth",
+              "batting",
+              "bowling",
+              "overall",
+              "structuralBattingOrderEffect",
+              "appliedPositionFitEffect",
+              "bowlingCapacity",
+              "uncoveredBowlingUnits"
+            ],
+            "type": "object"
+          },
+          "franchiseId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "franchiseName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "historical": {
+            "additionalProperties": false,
+            "properties": {
+              "netRunRate": {
+                "type": "number"
+              },
+              "pointsPercentage": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "pointsPercentage",
+              "netRunRate"
+            ],
+            "type": "object"
+          },
+          "profileTerminology": {
+            "const": "representative historical season XI"
+          },
+          "schemaVersion": {
+            "const": "ipl-era-opponent-candidate/v2"
+          },
+          "seasonId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "selectionHeuristic": {
+            "additionalProperties": false,
+            "properties": {
+              "advisoryOnly": {
+                "const": true
+              },
+              "candidateScore": {
+                "type": "number"
+              },
+              "historicalPerformanceZ": {
+                "type": "number"
+              },
+              "qualityZ": {
+                "type": "number"
+              },
+              "weights": {
+                "additionalProperties": false,
+                "properties": {
+                  "historicalPerformance": {
+                    "const": 0.3
+                  },
+                  "v2Quality": {
+                    "const": 0.7
+                  }
+                },
+                "required": [
+                  "v2Quality",
+                  "historicalPerformance"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "qualityZ",
+              "historicalPerformanceZ",
+              "candidateScore",
+              "weights",
+              "advisoryOnly"
+            ],
+            "type": "object"
+          },
+          "teamId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "xi": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "displayName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "officialListMatchCount": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "playerId": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "playerTeamSeasonId": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "position": {
+                  "maximum": 11,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "rosterStatus": {
+                  "enum": [
+                    "INDIAN",
+                    "OVERSEAS"
+                  ]
+                }
+              },
+              "required": [
+                "position",
+                "playerTeamSeasonId",
+                "playerId",
+                "displayName",
+                "rosterStatus",
+                "officialListMatchCount"
+              ],
+              "type": "object"
+            },
+            "maxItems": 11,
+            "minItems": 11,
+            "type": "array"
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "contentStatus",
+          "profileTerminology",
+          "candidateId",
+          "eraId",
+          "franchiseId",
+          "franchiseName",
+          "teamId",
+          "teamName",
+          "seasonId",
+          "historical",
+          "xi",
+          "evaluation",
+          "diagnostics",
+          "selectionHeuristic"
+        ],
+        "type": "object"
+      },
+      "maxItems": 166,
+      "minItems": 166,
+      "type": "array"
+    },
+    "profileTerminology": {
+      "const": "representative historical season XI"
+    },
+    "schemaVersion": {
+      "const": "ipl-era-opponent-content-phase1/v1"
+    },
+    "selectionPolicy": {
+      "const": "advisory-70-30-human-freeze-required"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "selectionPolicy",
+    "profileTerminology",
+    "candidateCountsByEra",
+    "candidates"
+  ],
+  "type": "object"
+}

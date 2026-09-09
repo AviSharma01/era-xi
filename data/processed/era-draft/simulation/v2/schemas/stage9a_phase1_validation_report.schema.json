@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "candidateCountsByEra": {
+      "additionalProperties": false,
+      "properties": {
+        "era-expansion": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-foundation": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-impact": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-modern-pre-impact": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-transition": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "era-foundation",
+        "era-expansion",
+        "era-transition",
+        "era-modern-pre-impact",
+        "era-impact"
+      ],
+      "type": "object"
+    },
+    "contentVersion": {
+      "const": "ipl-era-opponent-content-phase1/v1"
+    },
+    "deterministicContracts": {
+      "additionalProperties": false,
+      "properties": {
+        "advisoryCandidateOrdering": {
+          "const": "score-desc-candidateId"
+        },
+        "candidateOrdering": {
+          "const": "teamId-seasonId"
+        },
+        "reviewPacketOrdering": {
+          "const": "eraId-franchiseId"
+        },
+        "xiSelectionTieBreak": {
+          "const": "playerTeamSeasonId"
+        }
+      },
+      "required": [
+        "candidateOrdering",
+        "xiSelectionTieBreak",
+        "reviewPacketOrdering",
+        "advisoryCandidateOrdering"
+      ],
+      "type": "object"
+    },
+    "foundationParity": {
+      "additionalProperties": false,
+      "properties": {
+        "approvedProfilesExact": {
+          "const": true
+        },
+        "candidateRepresentationExact": {
+          "const": true
+        },
+        "eraEnvironmentsExact": {
+          "const": true
+        },
+        "fixturePath": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "fixtureSha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "opponentArtifactSha256": {
+          "const": "c904df120bf8920f6967c13f04bd1725826e5e20cfa31291a49934187c373a0c"
+        },
+        "simulationCompatibilityFingerprint": {
+          "const": "03054faff39520da6a835e0aaecb1a9887ca82291d9ba0a5923540c862793808"
+        }
+      },
+      "required": [
+        "fixturePath",
+        "fixtureSha256",
+        "opponentArtifactSha256",
+        "simulationCompatibilityFingerprint",
+        "candidateRepresentationExact",
+        "approvedProfilesExact",
+        "eraEnvironmentsExact"
+      ],
+      "type": "object"
+    },
+    "lineageCountsByEra": {
+      "additionalProperties": false,
+      "properties": {
+        "era-expansion": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-foundation": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-impact": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-modern-pre-impact": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "era-transition": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "era-foundation",
+        "era-expansion",
+        "era-transition",
+        "era-modern-pre-impact",
+        "era-impact"
+      ],
+      "type": "object"
+    },
+    "phase1ManifestHash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "reviewStatusCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "foundationApproved": {
+          "const": 8
+        },
+        "laterEraApproved": {
+          "const": 0
+        },
+        "laterEraPending": {
+          "const": 41
+        }
+      },
+      "required": [
+        "foundationApproved",
+        "laterEraPending",
+        "laterEraApproved"
+      ],
+      "type": "object"
+    },
+    "schemaVersion": {
+      "const": "ipl-era-opponent-content-phase1-validation/v1"
+    },
+    "status": {
+      "const": "PASSED"
+    },
+    "totalCandidates": {
+      "const": 166
+    },
+    "totalLineages": {
+      "const": 49
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "contentVersion",
+    "status",
+    "phase1ManifestHash",
+    "candidateCountsByEra",
+    "lineageCountsByEra",
+    "totalCandidates",
+    "totalLineages",
+    "reviewStatusCounts",
+    "foundationParity",
+    "deterministicContracts"
+  ],
+  "type": "object"
+}

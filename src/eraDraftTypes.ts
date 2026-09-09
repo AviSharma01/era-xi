@@ -10,9 +10,10 @@ import type { LeagueResultV2, SimulationTeamV2 } from "./simulationV2.js";
 import type { EraId, IplRosterStatus, TeamEvaluationV2 } from "./teamEvaluationV2.js";
 
 export const ERA_DRAFT_ENGINE_VERSION = "ipl-era-draft-engine/v1" as const;
-export const ERA_DRAFT_STATE_SCHEMA_VERSION = "ipl-era-draft-state/v1" as const;
-export const ERA_DRAFT_SAVE_VERSION = "ipl-era-draft-save/v1" as const;
+export const ERA_DRAFT_STATE_SCHEMA_VERSION = "ipl-era-draft-state/v2" as const;
+export const ERA_DRAFT_SAVE_VERSION = "ipl-era-draft-save/v2" as const;
 export const ERA_DRAFT_SIMULATION_SEED_VERSION = "ipl-era-draft-simulation-seeds/v1" as const;
+export const ERA_DRAFT_OPPONENT_COMPOSITION_SCHEMA_VERSION = "ipl-era-opponent-composition/v1" as const;
 
 export type TeamSeasonId = `ts:${string}:${string}`;
 
@@ -200,12 +201,25 @@ export type EraDraftUserOutcome = {
   readonly champion: boolean;
 };
 
+export type EraDraftOpponentComposition = {
+  readonly schemaVersion: typeof ERA_DRAFT_OPPONENT_COMPOSITION_SCHEMA_VERSION;
+  readonly eraId: EraId;
+  readonly fullPoolProfileIds: readonly string[];
+  readonly shortlistedProfileIds: readonly string[];
+};
+
+export type EraDraftOpponentCompositionView = EraDraftOpponentComposition & {
+  readonly actualOpponentProfileIds: readonly string[];
+  readonly omittedShortlistedProfileId: string;
+};
+
 export type EraDraftSeasonResult = {
   readonly stage7Versions: {
     readonly simulationVersion: LeagueResultV2["version"];
     readonly environmentSchemaVersion: string;
   };
   readonly seedBundle: EraDraftSimulationSeedBundle;
+  readonly opponentComposition: EraDraftOpponentComposition;
   readonly userTeam: SimulationTeamV2;
   readonly league: LeagueResultV2;
   readonly userOutcome: EraDraftUserOutcome;
@@ -213,7 +227,7 @@ export type EraDraftSeasonResult = {
 
 export type GameCompleteState = EraDraftStateCommon & {
   readonly phase: "GAME_COMPLETE";
-  readonly eraId: "era-foundation";
+  readonly eraId: EraId;
   readonly evaluation: TeamEvaluationV2;
   readonly season: EraDraftSeasonResult;
 };
@@ -244,8 +258,7 @@ export type EraDraftCommandRejectionCode =
   | "UNKNOWN_ERA"
   | EraDraftSelectionRejectionCode
   | "RESPIN_UNAVAILABLE"
-  | "RESPIN_REPLACEMENT_UNAVAILABLE"
-  | "SIMULATION_CONTENT_UNAVAILABLE";
+  | "RESPIN_REPLACEMENT_UNAVAILABLE";
 
 export type EraDraftSelectionRejection = {
   readonly code: EraDraftSelectionRejectionCode;

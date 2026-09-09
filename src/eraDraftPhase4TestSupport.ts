@@ -51,7 +51,7 @@ export function wrapEraDraftCatalog(
   base: EraDraftCatalog,
   overrides: Partial<Pick<
     EraDraftCatalog,
-    "getCandidatesForTeamSeason" | "getSimulationContent" | "getEnvironment" | "getFoundationOpponents"
+    "getCandidatesForTeamSeason" | "getSimulationContent" | "getEnvironment" | "getOpponentProfiles" | "getFoundationOpponents"
   >>,
 ): EraDraftCatalog {
   return {
@@ -70,6 +70,7 @@ export function wrapEraDraftCatalog(
     getKeeperCapablePlayerIds: (id) => base.getKeeperCapablePlayerIds(id),
     getSimulationContent: overrides.getSimulationContent ?? ((id) => base.getSimulationContent(id)),
     getEnvironment: overrides.getEnvironment ?? ((id) => base.getEnvironment(id)),
+    getOpponentProfiles: overrides.getOpponentProfiles ?? ((id) => base.getOpponentProfiles(id)),
     getFoundationOpponents: overrides.getFoundationOpponents ?? (() => base.getFoundationOpponents()),
   };
 }

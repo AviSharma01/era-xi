@@ -189,6 +189,7 @@ function withDeadTeamSeasons(base: EraDraftCatalog, dead: ReadonlySet<string>): 
     getKeeperCapablePlayerIds: (id) => base.getKeeperCapablePlayerIds(id),
     getSimulationContent: (id) => base.getSimulationContent(id),
     getEnvironment: (id) => base.getEnvironment(id),
+    getOpponentProfiles: (id) => base.getOpponentProfiles(id),
     getFoundationOpponents: () => base.getFoundationOpponents(),
   };
 }

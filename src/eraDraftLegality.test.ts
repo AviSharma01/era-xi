@@ -212,6 +212,7 @@ function withUnknownRosterStatus(base: EraDraftCatalog, targetPlayerTeamSeasonId
     getKeeperCapablePlayerIds: (id) => base.getKeeperCapablePlayerIds(id),
     getSimulationContent: (id) => base.getSimulationContent(id),
     getEnvironment: (id) => base.getEnvironment(id),
+    getOpponentProfiles: (id) => base.getOpponentProfiles(id),
     getFoundationOpponents: () => base.getFoundationOpponents(),
   };
 }

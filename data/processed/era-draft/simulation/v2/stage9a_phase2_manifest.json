@@ -1,0 +1,237 @@
+{
+  "artifacts": [
+    {
+      "path": "expansion_opponents.json",
+      "rows": 11,
+      "schemaVersion": "ipl-era-opponent-content-phase2/v1",
+      "sha256": "c03b41d49600e8483f0f765cdda68dec4c89811d32467a77305560fc02f99344",
+      "sizeBytes": 74794
+    },
+    {
+      "path": "transition_opponents.json",
+      "rows": 10,
+      "schemaVersion": "ipl-era-opponent-content-phase2/v1",
+      "sha256": "9907bbf195a7efb831218d9eb12136b535ecd447e69e09b40a9cfdd14cc01510",
+      "sizeBytes": 68302
+    },
+    {
+      "path": "modern_pre_impact_opponents.json",
+      "rows": 10,
+      "schemaVersion": "ipl-era-opponent-content-phase2/v1",
+      "sha256": "1189c128b5598f53b33e840ab6f0e6d02eb507e00570e015ca6978fb1beddf3c",
+      "sizeBytes": 68596
+    },
+    {
+      "path": "impact_opponents.json",
+      "rows": 10,
+      "schemaVersion": "ipl-era-opponent-content-phase2/v1",
+      "sha256": "7bd499f891c6d562582c235d29238a1d3defc72d4d9e8223f919fd7957f61c31",
+      "sizeBytes": 70269
+    }
+  ],
+  "contentVersion": "ipl-era-opponent-content-phase2/v1",
+  "foundationOpponentArtifactSha256": "c904df120bf8920f6967c13f04bd1725826e5e20cfa31291a49934187c373a0c",
+  "foundationSimulationCompatibilityFingerprint": "03054faff39520da6a835e0aaecb1a9887ca82291d9ba0a5923540c862793808",
+  "inputs": [
+    {
+      "path": "scripts/stage9a_phase2_content.py",
+      "sha256": "9b59821e754ba36458c0093c089de22e821cc6519c6713f0f77f6448dc3ef740",
+      "sizeBytes": 41693
+    },
+    {
+      "path": "scripts/build_stage9a_phase2_content.py",
+      "sha256": "4dbd3e43f133178ba6d6a71dd4dbf9ae42ce5fb80efc14698b631053c669c43b",
+      "sizeBytes": 244
+    },
+    {
+      "path": "data/processed/era-draft/simulation/v2/all_era_opponent_candidates.json",
+      "sha256": "db1ca95df71b66064edbe4c1349025a8972c7a660ba260f73950398f80fd828c",
+      "sizeBytes": 1027932
+    },
+    {
+      "path": "data/processed/era-draft/simulation/v2/later_era_opponent_review_packets.json",
+      "sha256": "f90f59f6003fad1d64dd5e836da0dcf56417f39405bfbaaf7c634de79aac7e1a",
+      "sizeBytes": 967039
+    },
+    {
+      "path": "data/processed/era-draft/simulation/v2/stage9a_phase1_manifest.json",
+      "sha256": "4264f6df111dd2f01cb78e0194462e3b859f5ab00f00b4cdcb84efde08bd56dc",
+      "sizeBytes": 6878
+    },
+    {
+      "path": "data/registries/ipl/v1/registry_manifest.json",
+      "sha256": "802a7f731b0108e186b95486646975dc9847cabb6ea2b5ae68b034001f6fa0fb",
+      "sizeBytes": 3344
+    },
+    {
+      "path": "data/registries/ipl/v1/eras.json",
+      "sha256": "bad0d8e31a1b880d315f473d39007795032cd4a70e0ab5ad5a8d0d0cc556e819",
+      "sizeBytes": 1778
+    },
+    {
+      "path": "data/registries/ipl/v1/teams.json",
+      "sha256": "9040100af9315cbd54ab0a9fa653221b79eb376412b555668a9e531af28ce764",
+      "sizeBytes": 15434
+    },
+    {
+      "path": "data/registries/ipl/v1/franchises.json",
+      "sha256": "267fb11b83d4c6f6462d4665655683582b46e184922b3c507b254111f9ed2de5",
+      "sizeBytes": 7753
+    },
+    {
+      "path": "data/analytical/cricsheet-ipl/v1/analytical_manifest.json",
+      "sha256": "737fb9d857c03d087ae18b342a8913acdb5bae60ed3afa80f068ae6bace9baf9",
+      "sizeBytes": 3391
+    },
+    {
+      "path": "data/analytical/cricsheet-ipl/v1/match_summaries.jsonl",
+      "sha256": "389827acfea133281206a0a86d8d7f32816d33338ee98f57d062f55d914938eb",
+      "sizeBytes": 5234796
+    },
+    {
+      "path": "data/analytical/cricsheet-ipl/v1/team_seasons.jsonl",
+      "sha256": "1f66e5256d3d60aefb0c59288a699492b69841faf38923e63bb26e0ab442dae6",
+      "sizeBytes": 827999
+    },
+    {
+      "path": "data/analytical/cricsheet-ipl/v1/player_team_seasons.jsonl",
+      "sha256": "acb768156e8c26802a18a130a39c66f6c1277cab06b90ec429f73b32acb90c4b",
+      "sizeBytes": 40767784
+    },
+    {
+      "path": "data/processed/era-draft/v1/eligibility_manifest.json",
+      "sha256": "6b8cde98ed6c99d99120b558650ce6fbe9523c6f839d84e61d1fabddeeddd50b",
+      "sizeBytes": 2146
+    },
+    {
+      "path": "data/processed/era-draft/v1/eligibility.jsonl",
+      "sha256": "c6a05b88ba36e1e6255b1ed1edd0f888d3d82d014ec3e6dda62c913cd7924438",
+      "sizeBytes": 1685393
+    },
+    {
+      "path": "data/processed/era-draft/roles/v1/role_manifest.json",
+      "sha256": "e4e3d2ef8ebae601bc7928676273d8d0c8e07619a8551963b9af3c15b3d2e0c7",
+      "sizeBytes": 4714
+    },
+    {
+      "path": "data/processed/era-draft/roles/v1/player_role_consumer.jsonl",
+      "sha256": "cdbdb64c7a48fe534a17e504e336f42a2e28a8c81e6c8b30b8f031dd3b78c51c",
+      "sizeBytes": 5693918
+    },
+    {
+      "path": "data/processed/era-draft/quality/v1/quality_manifest.json",
+      "sha256": "3894861b0820246d8bbc1f70cb05ed0c39b6af50ae4da0ab4be2de31f13531a5",
+      "sizeBytes": 4353
+    },
+    {
+      "path": "data/processed/era-draft/quality/v1/player_quality_consumer.jsonl",
+      "sha256": "c4bc7ac8f16c29b322aaabe5fecace06bc3972baacd4345b511befea024ed6df",
+      "sizeBytes": 2175997
+    },
+    {
+      "path": "data/metadata/ipl/country_overseas/v1/metadata_manifest.json",
+      "sha256": "103ef65cf4546aa973fe6b8429f4320e11b1f029f0af08d695666cc06c2f4fe5",
+      "sizeBytes": 5514
+    },
+    {
+      "path": "data/metadata/ipl/country_overseas/v1/player_team_season_metadata.jsonl",
+      "sha256": "3438ff6041fd0c503ac8ec44bce5d74ba653531e90d9bcf257f6205ac834d3bd",
+      "sizeBytes": 4644851
+    },
+    {
+      "path": "data/metadata/ipl/v1/metadata_manifest.json",
+      "sha256": "f420a3d60bcc154a6a02a33a3d1c887f8dba3ff693fe11c698a3ddc03a2d28f0",
+      "sizeBytes": 4205
+    },
+    {
+      "path": "data/metadata/ipl/v1/player_capabilities.jsonl",
+      "sha256": "5daceec21b877f500d2634736081f289eeaf0831172cfdcd8531599c58ef8006",
+      "sizeBytes": 199503
+    },
+    {
+      "path": "data/metadata/ipl/v1/player_team_season_usage.jsonl",
+      "sha256": "0a96aef811f68de7e10a5c1f21f1a5a252a754c35486686080a327bd2f1eb7e6",
+      "sizeBytes": 1135157
+    },
+    {
+      "path": "data/manual/era-simulation/v2/expansion_opponents.json",
+      "sha256": "ed382928028abb77793756c550b654d4cef125aa3c86f092e582180f6e4b1933",
+      "sizeBytes": 15691
+    },
+    {
+      "path": "data/manual/era-simulation/v2/transition_opponents.json",
+      "sha256": "4e5a062db2160db9d55a7a587eadf7f064247c82ba0b365e258fac33724f4524",
+      "sizeBytes": 14635
+    },
+    {
+      "path": "data/manual/era-simulation/v2/modern_pre_impact_opponents.json",
+      "sha256": "d5636cf78c3839e9fb94faddefe04accb416e284355ad9413d188a28d61f8e75",
+      "sizeBytes": 14716
+    },
+    {
+      "path": "data/manual/era-simulation/v2/impact_opponents.json",
+      "sha256": "e14f228378f836d7cec0f725471efa23bf5093d6d94b95d82b526d93b74c6940",
+      "sizeBytes": 15846
+    },
+    {
+      "path": "data/processed/era-draft/simulation/v2/foundation_opponents.json",
+      "sha256": "c904df120bf8920f6967c13f04bd1725826e5e20cfa31291a49934187c373a0c",
+      "sizeBytes": 34775
+    },
+    {
+      "path": "tests/fixtures/stage9a/foundation_stage8_parity.json",
+      "sha256": "111811b04959b89fa6e71b1f001f58fe9868d06b5de1c2a786559e557da079ec",
+      "sizeBytes": 101488
+    }
+  ],
+  "opponentContentDataAggregateHash": "895c6e0c976a66953758f6e77f636e823443386248991a95374be56580b358f0",
+  "phase1ManifestHash": "e6bbf39357ac0e2d92a33bc7f578ce5e1dca4469021f116663aa7da9df8129f1",
+  "phase2ManifestHash": "b5b6b72e01f7bc6f9658eeaa600a334bd56e282726fff4fc097a2fc44a46edd8",
+  "profileCountsByEra": {
+    "era-expansion": 11,
+    "era-impact": 10,
+    "era-modern-pre-impact": 10,
+    "era-transition": 10
+  },
+  "profileTerminology": "representative historical season XI",
+  "runtimeIntegrationStatus": "NOT_INTEGRATED",
+  "schemaFiles": [
+    {
+      "path": "schemas/later_era_opponents.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "451579476e93f923611aced27e8cca7a7f61b29ebddd84b5fa57dd0e78a80944",
+      "sizeBytes": 19502
+    },
+    {
+      "path": "schemas/stage9a_phase2_manifest.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "e2f8fed5302826efdf9aba8d68001d302c4f75a301ab503f807eda89287a850a",
+      "sizeBytes": 5000
+    },
+    {
+      "path": "schemas/stage9a_phase2_manual_review.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "8f09947176693773e17843ffebdd470954efa5f575d3d830c94c800094b31446",
+      "sizeBytes": 3734
+    },
+    {
+      "path": "schemas/stage9a_phase2_validation_report.schema.json",
+      "rows": null,
+      "schemaVersion": "json-schema/2020-12",
+      "sha256": "3957abb3567ed6fc99413a4184c3d092977e6a98a4935ef368ab1ed42ee45279",
+      "sizeBytes": 6621
+    }
+  ],
+  "schemaVersion": "ipl-era-opponent-content-phase2-manifest/v1",
+  "totalLaterEraProfiles": 41,
+  "totalProfilesIncludingFoundation": 49,
+  "trackingIssue": "https://github.com/AviSharma01/draft-simulator/issues/8",
+  "unresolvedReviewCount": 0,
+  "xiProvenanceCounts": {
+    "BASELINE_ACCEPTED": 31,
+    "REVIEWED_OVERRIDE": 10
+  }
+}
