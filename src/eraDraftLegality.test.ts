@@ -140,7 +140,7 @@ test("projection availability and per-slot reasons equal authoritative legality"
     });
     assert.equal(position.available, direct.available);
     assert.deepEqual(position.reasons, direct.reasons);
-    assert.ok(["NATURAL", "ACCEPTABLE", "OUT_OF_ROLE", "UNKNOWN"].includes(position.fit));
+    assert.ok(["NATURAL", "ACCEPTABLE", "STRETCH", "MAJOR_STRETCH", "UNKNOWN"].includes(position.presentationFit));
   }
   assertNoHiddenQuality(projected);
 });

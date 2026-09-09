@@ -329,17 +329,33 @@ export type DraftPlayerFactsView = {
   readonly bowlingFamily: BowlingFamily;
 };
 
+export type DraftPresentationFit =
+  | "NATURAL"
+  | "ACCEPTABLE"
+  | "STRETCH"
+  | "MAJOR_STRETCH"
+  | "UNKNOWN";
+
+export type DraftStatusView = {
+  readonly pickCount: number;
+  readonly pickLimit: 11;
+  readonly overseasCount: number;
+  readonly overseasLimit: 4;
+  readonly hasWicketkeeper: boolean;
+  readonly respinStatus: "AVAILABLE" | "USED";
+};
+
 export type DraftPickView = DraftPlayerFactsView & {
   readonly pickNumber: number;
   readonly battingPosition: EraDraftPick["battingPosition"];
-  readonly fit: FitClassification;
+  readonly presentationFit: DraftPresentationFit;
 };
 
 export type DraftCandidateIdentityView = DraftPlayerFactsView & {
   readonly available: boolean;
   readonly positions: readonly {
     readonly battingPosition: EraDraftPick["battingPosition"];
-    readonly fit: FitClassification;
+    readonly presentationFit: DraftPresentationFit;
     readonly available: boolean;
     readonly reasons: readonly EraDraftSelectionRejection[];
   }[];
@@ -355,6 +371,7 @@ export type AwaitingSpinPublicView = {
   readonly revision: number;
   readonly eraId: EraId;
   readonly eraLabel: string;
+  readonly status: DraftStatusView;
   readonly picks: readonly DraftPickView[];
 };
 
@@ -363,6 +380,7 @@ export type AwaitingPickPublicView = {
   readonly revision: number;
   readonly eraId: EraId;
   readonly eraLabel: string;
+  readonly status: DraftStatusView;
   readonly picks: readonly DraftPickView[];
   readonly currentSpin: {
     readonly spinOrdinal: number;
@@ -382,6 +400,7 @@ export type XiCompletePublicView = {
   readonly revision: number;
   readonly eraId: EraId;
   readonly eraLabel: string;
+  readonly status: DraftStatusView;
   readonly picks: readonly DraftPickView[];
 };
 

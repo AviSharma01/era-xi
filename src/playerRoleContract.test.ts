@@ -38,6 +38,11 @@ test("generated Stage 5 consumer rows satisfy the stable contract", () => {
     ]),
   );
   assert.deepEqual(leanCounts, { BATTING: 153, BOWLING: 373, BALANCED: 261, NONE: 2_205 });
+
+  const outOfRole = rows.flatMap((row) => row.battingFit.slots).filter((slot) => slot.classification === "OUT_OF_ROLE");
+  assert.equal(outOfRole.length, 13_742);
+  assert.ok(outOfRole.every((slot) => Number.isInteger(slot.bandDistance)
+    && slot.bandDistance !== null && slot.bandDistance >= 2 && slot.bandDistance <= 4));
 });
 
 test("UNKNOWN batting fit remains neutral descriptive metadata", () => {
@@ -65,6 +70,11 @@ test("contract rejects invalid enums, shapes, and keeper-derived roles", () => {
   inferredKeeper.keeperMetadata.capabilityStatus = "CONFIRMED";
   inferredKeeper.keeperMetadata.seasonUsageStatus = "UNKNOWN";
   assert.throws(() => parsePlayerRoleConsumer(inferredKeeper), /confirmed season usage/);
+
+  const fractionalDistance = structuredClone(source);
+  const resolvedSlot = fractionalDistance.battingFit.slots.find((slot: { bandDistance: number | null }) => slot.bandDistance !== null);
+  resolvedSlot.bandDistance = 1.5;
+  assert.throws(() => parsePlayerRoleConsumer(fractionalDistance), /bandDistance must be an integer/);
 });
 
 test("consumer contract exposes no evaluation or selection-policy fields", () => {

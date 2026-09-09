@@ -9,7 +9,7 @@ import {
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
 import { assertEraDraftState } from "./eraDraftInvariants.js";
 import { getOpenBattingPositions } from "./eraDraftLegality.js";
-import { projectEraDraftPublicState, projectEraDraftRevealState } from "./eraDraftProjection.js";
+import { projectEraDraftPublicState, projectEraDraftRevealState, toDraftPresentationFit } from "./eraDraftProjection.js";
 import { buildEraDraftEvaluationInput } from "./eraDraftReveal.js";
 import {
   EraDraftDataError,
@@ -33,7 +33,8 @@ type ForbiddenDraftField =
   | "internalScore"
   | "baseStrength"
   | "adjustedStrength"
-  | "evaluation";
+  | "evaluation"
+  | "bandDistance";
 const publicFactsHaveNoQualityFields: Assert<
   Extract<keyof DraftPlayerFactsView, ForbiddenDraftField> extends never ? true : false
 > = true;
@@ -66,8 +67,8 @@ test("draft projections are structurally quality-free from SETUP through XI_COMP
   assert.equal(typeof candidate.bowlingWorkloadClass, "string");
   assert.equal(typeof candidate.bowlingFamily, "string");
   assert.ok(candidate.positions.every((position) =>
-    ["NATURAL", "ACCEPTABLE", "OUT_OF_ROLE", "UNKNOWN"].includes(position.fit)));
-  assert.deepEqual(Object.keys(candidate.positions[0]!).sort(), ["available", "battingPosition", "fit", "reasons"]);
+    ["NATURAL", "ACCEPTABLE", "STRETCH", "MAJOR_STRETCH", "UNKNOWN"].includes(position.presentationFit)));
+  assert.deepEqual(Object.keys(candidate.positions[0]!).sort(), ["available", "battingPosition", "presentationFit", "reasons"]);
 
   const firstChoice = activeView.candidates
     .flatMap((player) => player.positions.map((position) => ({ player, position })))
@@ -98,7 +99,7 @@ test("draft projections are structurally quality-free from SETUP through XI_COMP
   assert.equal(partialView.phase, "AWAITING_SPIN");
   if (partialView.phase === "AWAITING_SPIN") {
     assert.equal(partialView.picks.length, 1);
-    assert.equal(typeof partialView.picks[0]!.fit, "string");
+    assert.equal(typeof partialView.picks[0]!.presentationFit, "string");
   }
   const partialPickView = views[4]!;
   assert.equal(partialPickView.phase, "AWAITING_PICK");
@@ -106,6 +107,19 @@ test("draft projections are structurally quality-free from SETUP through XI_COMP
   const completeView = views[5]!;
   assert.equal(completeView.phase, "XI_COMPLETE");
   if (completeView.phase === "XI_COMPLETE") assert.equal(completeView.picks.length, 11);
+});
+
+test("draft presentation fit is coarse and malformed OUT_OF_ROLE data fails closed", () => {
+  assert.equal(toDraftPresentationFit("NATURAL", 0), "NATURAL");
+  assert.equal(toDraftPresentationFit("ACCEPTABLE", 1), "ACCEPTABLE");
+  assert.equal(toDraftPresentationFit("UNKNOWN", null), "UNKNOWN");
+  assert.equal(toDraftPresentationFit("OUT_OF_ROLE", 2), "STRETCH");
+  assert.equal(toDraftPresentationFit("OUT_OF_ROLE", 3), "MAJOR_STRETCH");
+  assert.equal(toDraftPresentationFit("OUT_OF_ROLE", 4), "MAJOR_STRETCH");
+  for (const distance of [null, 0, 1, 1.5, -1, 5]) {
+    assert.throws(() => toDraftPresentationFit("OUT_OF_ROLE", distance),
+      (error) => error instanceof EraDraftDataError && error.code === "INVALID_PRESENTATION_FIT_DISTANCE");
+  }
 });
 
 test("legal pick eleven atomically reaches a hidden and terminal XI_COMPLETE draft state", () => {
@@ -368,7 +382,8 @@ function assertNoDraftLeaks(value: unknown): void {
     "quality", "battingRating", "bowlingRating", "overallRating", "qualityTier", "tierCounts",
     "internalScore", "primaryInternalScore", "secondaryBonus", "baseStrength", "adjustedStrength",
     "evaluation", "nominalFitDeduction", "effectiveRatingBeforeTeamCap", "bandDistance", "bowlingCapacity",
-    "phaseBowlingUsage", "fitConfidence", "fitBasis", "effects",
+    "phaseBowlingUsage", "fitConfidence", "fitBasis", "effects", "simulationSeed", "compositionSeed",
+    "rootSeed", "catalogFingerprint",
   ]);
   const visit = (item: unknown): void => {
     if (Array.isArray(item)) {
