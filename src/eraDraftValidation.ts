@@ -23,8 +23,17 @@ import {
 import { projectEraDraftPublicState } from "./eraDraftProjection.js";
 import { replayEraDraftState } from "./eraDraftReplay.js";
 import {
+  ERA_DRAFT_OPPONENT_SHORTLIST_DOMAIN,
+  projectEraDraftOpponentComposition,
+  shortlistEraOpponentProfiles,
+} from "./eraDraftOpponentComposition.js";
+import {
+  ERA_DRAFT_NORMAL_SPIN_DOMAIN,
+  ERA_DRAFT_RECOVERY_DOMAIN,
+  ERA_DRAFT_RESPIN_DOMAIN,
   rankRecoveryTeamSeasons,
   selectNormalSpinTeamSeason,
+  selectRespinTeamSeason,
 } from "./eraDraftRng.js";
 import { deriveEraDraftSimulationSeeds } from "./eraDraftSimulation.js";
 import {
@@ -41,13 +50,13 @@ import {
   type RevealedState,
 } from "./eraDraftTypes.js";
 import { random01, SIMULATION_V2_VERSION } from "./simulationV2.js";
+import { EXPECTED_OPPONENT_PROFILE_COUNTS } from "./stage7Data.js";
 import { ERA_IDS, TEAM_EVALUATION_V2_VERSION, type EraId } from "./teamEvaluationV2.js";
 
-export const ERA_DRAFT_VALIDATION_VERSION = "ipl-era-draft-validation/v1" as const;
+export const ERA_DRAFT_VALIDATION_VERSION = "ipl-era-draft-validation/v2" as const;
 
 export type EraDraftValidationOptions = {
-  readonly drafts: number;
-  readonly foundationCycles: number;
+  readonly games: number;
   readonly validationSeed: string;
   readonly catalog?: EraDraftCatalog;
   readonly catalogLoadMilliseconds?: number;
@@ -55,7 +64,7 @@ export type EraDraftValidationOptions = {
 
 type Strategy = "RANDOM_LEGAL" | "KEEPER_DEFERRAL" | "OVERSEAS_PRESSURE" | "DUPLICATE_PRESSURE" | "POOR_BATTING_ORDER";
 type RespinPolicy = "NEVER" | "EARLY" | "LATE" | "STRATEGIC";
-type RestoreTarget = "AWAITING_SPIN" | "AWAITING_PICK" | "PARTIAL_DRAFT" | "RECOVERY" | "RESPIN" | "XI_COMPLETE" | "REVEALED";
+type RestoreTarget = "AWAITING_SPIN" | "AWAITING_PICK" | "PARTIAL_DRAFT" | "RECOVERY" | "RESPIN" | "XI_COMPLETE" | "REVEALED" | "GAME_COMPLETE";
 
 type AvailabilityAccumulator = {
   observations: number;
@@ -72,7 +81,8 @@ type StrengthAccumulator = {
 
 type EraAccumulator = {
   drafts: number;
-  completed: number;
+  revealed: number;
+  completedGames: number;
   deadEnds: number;
   recoveries: number;
   respins: number;
@@ -82,6 +92,19 @@ type EraAccumulator = {
   finalOverseas: number[];
   strength: StrengthAccumulator;
   fit: Record<string, number>;
+  strategyRuns: Record<Strategy, number>;
+  respinPolicyRuns: Record<RespinPolicy, number>;
+  qualified: number;
+  finalist: number;
+  champion: number;
+  positions: number[];
+  nrr: StrengthAccumulator;
+  fullPoolStrength: StrengthAccumulator;
+  actualOpponentStrength: StrengthAccumulator;
+  shortlistFrequency: Record<string, number>;
+  actualOpponentFrequency: Record<string, number>;
+  omittedShortlistFrequency: Record<string, number>;
+  championFrequency: Record<string, number>;
 };
 
 type ValidationCounters = {
@@ -96,26 +119,24 @@ type ValidationCounters = {
   replayEventMismatches: number;
   replayFinalHashMismatches: number;
   hiddenLeaks: number;
+  hiddenAuditGames: number;
   invariantFailures: number;
   illegalCompletedXis: number;
   nondeterministicResults: number;
   unexpectedDeadEnds: number;
+  wrongEraOpponentLeakage: number;
+  malformedShortlists: number;
+  duplicateShortlistProfiles: number;
+  invalidLeagueStructures: number;
+  invalidPlayoffStructures: number;
+  invalidChampions: number;
+  unexpectedSimulationRejections: number;
+  catalogProvenanceInconsistencies: number;
   duplicatePressureAttempts: number;
   overseasPressureAttempts: number;
   keeperFeasibilityPressureAttempts: number;
   occupiedSlotPressureAttempts: number;
   rngIsolationChecks: number;
-};
-
-type FoundationAccumulator = {
-  cycles: number;
-  qualified: number;
-  finalist: number;
-  champion: number;
-  positions: number[];
-  nrr: StrengthAccumulator;
-  strength: StrengthAccumulator;
-  omitted: Record<string, number>;
 };
 
 type TimingAccumulator = {
@@ -142,8 +163,7 @@ type ChoiceAnalysis = {
 export type EraDraftValidationResult = ReturnType<typeof runEraDraftValidation>;
 
 export function runEraDraftValidation(options: EraDraftValidationOptions) {
-  positiveInteger(options.drafts, "drafts");
-  positiveInteger(options.foundationCycles, "foundationCycles");
+  positiveInteger(options.games, "games");
   if (!options.validationSeed) throw new Error("validationSeed must be non-empty.");
 
   const validationStarted = performance.now();
@@ -151,7 +171,7 @@ export function runEraDraftValidation(options: EraDraftValidationOptions) {
   const strategyCounts = Object.fromEntries(STRATEGIES.map((strategy) => [strategy, 0])) as Record<Strategy, number>;
   const respinPolicyCounts = Object.fromEntries(RESPIN_POLICIES.map((policy) => [policy, 0])) as Record<RespinPolicy, number>;
   const restoreByTarget = Object.fromEntries(RESTORE_TARGETS.map((target) => [target, 0])) as Record<RestoreTarget, number>;
-  const eras = Object.fromEntries(ERA_IDS.map((eraId) => [eraId, newEraAccumulator()])) as Record<EraId, EraAccumulator>;
+  const eras = Object.fromEntries(ERA_IDS.map((eraId) => [eraId, newEraAccumulator(catalog, eraId)])) as Record<EraId, EraAccumulator>;
   const counters: ValidationCounters = {
     acceptedCommands: 0,
     expectedRejections: {},
@@ -164,34 +184,39 @@ export function runEraDraftValidation(options: EraDraftValidationOptions) {
     replayEventMismatches: 0,
     replayFinalHashMismatches: 0,
     hiddenLeaks: 0,
+    hiddenAuditGames: 0,
     invariantFailures: 0,
     illegalCompletedXis: 0,
     nondeterministicResults: 0,
     unexpectedDeadEnds: 0,
+    wrongEraOpponentLeakage: 0,
+    malformedShortlists: 0,
+    duplicateShortlistProfiles: 0,
+    invalidLeagueStructures: 0,
+    invalidPlayoffStructures: 0,
+    invalidChampions: 0,
+    unexpectedSimulationRejections: 0,
+    catalogProvenanceInconsistencies: 0,
     duplicatePressureAttempts: 0,
     overseasPressureAttempts: 0,
     keeperFeasibilityPressureAttempts: 0,
     occupiedSlotPressureAttempts: 0,
     rngIsolationChecks: 0,
   };
-  const foundation = newFoundationAccumulator(catalog);
   const timings: TimingAccumulator = { draftMilliseconds: 0, draftCount: 0, simulationMilliseconds: 0, simulationCount: 0 };
   const recoveryPaths: Record<string, number> = {};
+  const catalogCoverage = validateCatalogProvenance(catalog, counters);
   const fixtureChecks = runSyntheticRecoveryValidation(catalog, options.validationSeed, counters, recoveryPaths, restoreByTarget);
   const primitiveTimings = measurePrimitiveTimings(catalog, options.validationSeed);
 
   let firstFoundationReveal: RevealedState | undefined;
-  for (let index = 0; index < options.drafts; index += 1) {
+  for (let index = 0; index < options.games; index += 1) {
     const eraId = ERA_IDS[index % ERA_IDS.length]!;
-    runOne(index, false, eraId);
-  }
-  for (let index = 0; index < options.foundationCycles; index += 1) {
-    runOne(options.drafts + index, true, "era-foundation");
+    runOne(index, eraId);
   }
 
   if (!firstFoundationReveal) throw new Error("Foundation validation produced no revealed state.");
   const rngIsolation = runRngIsolationValidation(catalog, firstFoundationReveal, counters);
-  const totalCycles = options.drafts + options.foundationCycles;
   const totalMilliseconds = performance.now() - validationStarted;
 
   const deterministic = {
@@ -206,8 +231,15 @@ export function runEraDraftValidation(options: EraDraftValidationOptions) {
       teamEvaluationVersion: TEAM_EVALUATION_V2_VERSION,
       simulationVersion: SIMULATION_V2_VERSION,
     },
-    requestedRuns: { draftOnly: options.drafts, foundationFullCycles: options.foundationCycles },
-    completedRuns: { draftOnly: options.drafts, foundationFullCycles: foundation.cycles, totalDrafts: totalCycles },
+    catalogCoverage,
+    requestedRuns: {
+      completeGames: options.games,
+      distribution: "round-robin-era; five-strategy cycle; four-respin-policy cycle",
+    },
+    completedRuns: {
+      completeGames: totalCompletedGames(eras),
+      byEra: Object.fromEntries(ERA_IDS.map((eraId) => [eraId, eras[eraId].completedGames])),
+    },
     strategyCounts,
     respinPolicyCounts,
     perEra: Object.fromEntries(ERA_IDS.map((eraId) => [eraId, summarizeEra(eras[eraId])])),
@@ -236,26 +268,38 @@ export function runEraDraftValidation(options: EraDraftValidationOptions) {
       eventMismatches: counters.replayEventMismatches,
       finalHashMismatches: counters.replayFinalHashMismatches,
     },
+    hiddenInformationAudit: {
+      sampledGames: counters.hiddenAuditGames,
+      leakCount: counters.hiddenLeaks,
+    },
     rngIsolation,
-    hiddenLeakCount: counters.hiddenLeaks,
-    invariantFailureCount: counters.invariantFailures,
-    illegalCompletedXiCount: counters.illegalCompletedXis,
-    nondeterministicResultCount: counters.nondeterministicResults,
-    unexpectedDeadEndCount: counters.unexpectedDeadEnds,
-    foundation: summarizeFoundation(foundation),
+    correctnessCounters: {
+      invariantFailures: counters.invariantFailures,
+      illegalCompletedXis: counters.illegalCompletedXis,
+      hiddenLeaks: counters.hiddenLeaks,
+      wrongEraOpponentLeakage: counters.wrongEraOpponentLeakage,
+      malformedShortlists: counters.malformedShortlists,
+      duplicateShortlistProfiles: counters.duplicateShortlistProfiles,
+      invalidLeagueStructures: counters.invalidLeagueStructures,
+      invalidPlayoffStructures: counters.invalidPlayoffStructures,
+      invalidChampions: counters.invalidChampions,
+      serializationFailures: counters.serializationFailures,
+      restoreDivergences: counters.restoreDivergences,
+      replayEventMismatches: counters.replayEventMismatches,
+      replayFinalHashMismatches: counters.replayFinalHashMismatches,
+      nondeterministicResults: counters.nondeterministicResults,
+      unexpectedDeadEnds: counters.unexpectedDeadEnds,
+      unexpectedSimulationRejections: counters.unexpectedSimulationRejections,
+      catalogProvenanceInconsistencies: counters.catalogProvenanceInconsistencies,
+    },
     acceptance: {
       passed: acceptancePassed(counters, eras, options),
-      invariantFailures: counters.invariantFailures === 0,
-      illegalCompletedXis: counters.illegalCompletedXis === 0,
-      hiddenLeaks: counters.hiddenLeaks === 0,
-      replayEventMismatches: counters.replayEventMismatches === 0,
-      replayFinalHashMismatches: counters.replayFinalHashMismatches === 0,
-      restoreDivergences: counters.restoreDivergences === 0,
-      nondeterministicOutputs: counters.nondeterministicResults === 0,
-      unexpectedDeadEnds: counters.unexpectedDeadEnds === 0,
-      legalDraftCompletionRate: round(totalCompleted(eras) / totalCycles),
+      allCorrectnessCountersZero: correctnessCountersZero(counters),
+      legalDraftCompletionRate: round(totalRevealed(eras) / options.games),
+      completeGameRate: round(totalCompletedGames(eras) / options.games),
       allEraSimulationContentAvailable: ERA_IDS.every((eraId) => catalog.getSimulationContent(eraId).status === "AVAILABLE"),
-      foundationStructuresValid: foundation.cycles === options.foundationCycles,
+      everyStrategyRepresentedInEveryEra: ERA_IDS.every((eraId) =>
+        STRATEGIES.every((strategy) => eras[eraId].strategyRuns[strategy] > 0)),
     },
   };
   const performanceReport = {
@@ -263,14 +307,15 @@ export function runEraDraftValidation(options: EraDraftValidationOptions) {
     oneCandidateProjectionMilliseconds: primitiveTimings.candidateProjection,
     oneFeasibilityEvaluationMilliseconds: primitiveTimings.feasibility,
     averageFullDraftMilliseconds: round(timings.draftMilliseconds / timings.draftCount),
-    averageFoundationSimulationMilliseconds: round(timings.simulationMilliseconds / Math.max(1, timings.simulationCount)),
+    averageAllEraSimulationMilliseconds: round(timings.simulationMilliseconds / Math.max(1, timings.simulationCount)),
+    averageCompleteGameMilliseconds: round((timings.draftMilliseconds + timings.simulationMilliseconds) / Math.max(1, timings.simulationCount)),
     validationMilliseconds: round(totalMilliseconds),
-    draftsPerSecond: round(totalCycles / (totalMilliseconds / 1000)),
+    completeGamesPerSecond: round(options.games / (totalMilliseconds / 1000)),
   };
   if (!deterministic.acceptance.passed) throw new Error(`Era Draft validation acceptance failed: ${canonicalJson(deterministic.acceptance)}`);
   return { deterministic, performance: performanceReport };
 
-  function runOne(runOrdinal: number, simulateFoundation: boolean, eraId: EraId): void {
+  function runOne(runOrdinal: number, eraId: EraId): void {
     const strategyCycle = Math.floor(runOrdinal / ERA_IDS.length);
     const strategy = STRATEGIES[strategyCycle % STRATEGIES.length]!;
     const respinPolicy = RESPIN_POLICIES[
@@ -285,6 +330,8 @@ export function runEraDraftValidation(options: EraDraftValidationOptions) {
     strategyCounts[strategy] += 1;
     respinPolicyCounts[respinPolicy] += 1;
     eras[eraId].drafts += 1;
+    eras[eraId].strategyRuns[strategy] += 1;
+    eras[eraId].respinPolicyRuns[respinPolicy] += 1;
     const draftStarted = performance.now();
     try {
       const outcome = runDraft({ catalog, eraId, gameSeed, runOrdinal, strategy, respinPolicy, restoreTarget, progress }, counters, eras[eraId], recoveryPaths, restoreByTarget);
@@ -292,17 +339,13 @@ export function runEraDraftValidation(options: EraDraftValidationOptions) {
       timings.draftCount += 1;
       const reveal = outcome.revealed;
       if (eraId === "era-foundation" && !firstFoundationReveal) firstFoundationReveal = reveal;
-      if (simulateFoundation) {
-        const simulationStarted = performance.now();
-        const complete = outcome.applyAccepted({ type: "SIMULATE_SEASON" });
-        timings.simulationMilliseconds += performance.now() - simulationStarted;
-        timings.simulationCount += 1;
-        if (complete.phase !== "GAME_COMPLETE") throw new Error("Foundation simulation did not reach GAME_COMPLETE.");
-        validateFoundationComplete(catalog, complete, foundation);
-        replayCompleted(catalog, complete, counters);
-      } else {
-        replayCompleted(catalog, reveal, counters);
-      }
+      const simulationStarted = performance.now();
+      const complete = outcome.applyAccepted({ type: "SIMULATE_SEASON" });
+      timings.simulationMilliseconds += performance.now() - simulationStarted;
+      timings.simulationCount += 1;
+      if (complete.phase !== "GAME_COMPLETE") throw new Error(`${eraId} simulation did not reach GAME_COMPLETE.`);
+      validateEraComplete(catalog, complete, eras[eraId], counters);
+      replayCompleted(catalog, complete, counters);
     } catch (error) {
       eras[eraId].deadEnds += 1;
       counters.unexpectedDeadEnds += 1;
@@ -326,7 +369,7 @@ const STRATEGIES: readonly Strategy[] = [
 ];
 const RESPIN_POLICIES: readonly RespinPolicy[] = ["NEVER", "EARLY", "LATE", "STRATEGIC"];
 const RESTORE_TARGETS: readonly RestoreTarget[] = [
-  "AWAITING_SPIN", "AWAITING_PICK", "PARTIAL_DRAFT", "RECOVERY", "RESPIN", "XI_COMPLETE", "REVEALED",
+  "AWAITING_SPIN", "AWAITING_PICK", "PARTIAL_DRAFT", "RECOVERY", "RESPIN", "XI_COMPLETE", "REVEALED", "GAME_COMPLETE",
 ];
 
 function runDraft(
@@ -352,7 +395,11 @@ function runDraft(
   let state: EraDraftState = createEraDraftGame({ catalog: input.catalog, rootSeed: input.gameSeed });
   let mirror: EraDraftState | undefined;
   let restored = false;
-  scanHidden(input.catalog, state, counters);
+  const hiddenAuditSample = input.runOrdinal < 25 || input.runOrdinal % 100 === 0;
+  if (hiddenAuditSample) {
+    counters.hiddenAuditGames += 1;
+    scanHidden(input.catalog, state, counters);
+  }
 
   const maybeRestore = (): void => {
     if (restored || !matchesRestoreTarget(state, input.restoreTarget)) return;
@@ -374,7 +421,10 @@ function runDraft(
 
   const applyAccepted = (command: EraDraftCommand): EraDraftState => {
     const result = reduceEraDraft(input.catalog, state, command);
-    if (!result.ok) throw new Error(`Expected ${command.type} acceptance, received ${result.error.code}.`);
+    if (!result.ok) {
+      if (command.type === "SIMULATE_SEASON") counters.unexpectedSimulationRejections += 1;
+      throw new Error(`Expected ${command.type} acceptance, received ${result.error.code}.`);
+    }
     counters.acceptedCommands += 1;
     assertState(input.catalog, result.state, counters);
     if (mirror) {
@@ -390,7 +440,7 @@ function runDraft(
     input.progress.acceptedCommands.push(command);
     input.progress.phase = state.phase;
     recordRecovery(result.event, counters, era, recoveryPaths);
-    if (state.phase !== "REVEALED" && state.phase !== "GAME_COMPLETE") {
+    if (hiddenAuditSample && state.phase !== "REVEALED" && state.phase !== "GAME_COMPLETE") {
       const project = state.phase !== "AWAITING_PICK"
         || input.runOrdinal % 25 === 0
         || (input.runOrdinal < 250 && (state.currentSpin.origin === "RESPIN" || state.currentSpin.recovery !== null));
@@ -475,7 +525,7 @@ function runDraft(
   state = applyAccepted({ type: "REVEAL_XI" });
   if (state.phase !== "REVEALED") throw new Error("Reveal did not reach REVEALED.");
   maybeRestore();
-  era.completed += 1;
+  era.revealed += 1;
   const keeperPick = state.picks.find((pick) =>
     input.catalog.getPlayer(pick.playerTeamSeasonId)?.role.keeperMetadata.capabilityStatus === "CONFIRMED")!.pickNumber;
   era.keeperPick[keeperPick - 1] += 1;
@@ -802,6 +852,29 @@ function runRngIsolationValidation(catalog: EraDraftCatalog, revealed: RevealedS
     selectNormalSpinTeamSeason(catalog, revealed.rootSeed, revealed.eraId, ordinal).teamSeasonId);
   if (canonicalJson(priorSpins) !== canonicalJson(laterSpins)) throw new Error("Simulation changed prior draft spin derivation.");
   counters.rngIsolationChecks += 1;
+
+  const draftDomains = [ERA_DRAFT_NORMAL_SPIN_DOMAIN, ERA_DRAFT_RESPIN_DOMAIN, ERA_DRAFT_RECOVERY_DOMAIN];
+  if (new Set([...draftDomains, ERA_DRAFT_OPPONENT_SHORTLIST_DOMAIN]).size !== 4) {
+    throw new Error("Draft and opponent-composition RNG domains collided.");
+  }
+  const isolationSeed = `${revealed.rootSeed}:cross-domain-isolation`;
+  const initial = selectNormalSpinTeamSeason(catalog, isolationSeed, "era-expansion", 0);
+  const respinBefore = selectRespinTeamSeason(catalog, isolationSeed, "era-expansion", 0, initial.teamSeasonId);
+  const recoveryBefore = rankRecoveryTeamSeasons(catalog, isolationSeed, "era-expansion", 0, initial.teamSeasonId)
+    .map((teamSeason) => teamSeason.teamSeasonId);
+  const expansionProfiles = catalog.getOpponentProfiles("era-expansion");
+  const shortlistBefore = shortlistEraOpponentProfiles(expansionProfiles, isolationSeed).map((profile) => profile.candidateId);
+  Array.from({ length: 25 }, (_, ordinal) => selectNormalSpinTeamSeason(catalog, isolationSeed, "era-expansion", ordinal));
+  const respinAfter = selectRespinTeamSeason(catalog, isolationSeed, "era-expansion", 0, initial.teamSeasonId);
+  const recoveryAfter = rankRecoveryTeamSeasons(catalog, isolationSeed, "era-expansion", 0, initial.teamSeasonId)
+    .map((teamSeason) => teamSeason.teamSeasonId);
+  const shortlistAfter = shortlistEraOpponentProfiles(expansionProfiles, isolationSeed).map((profile) => profile.candidateId);
+  if (respinBefore?.teamSeasonId !== respinAfter?.teamSeasonId
+    || canonicalJson(recoveryBefore) !== canonicalJson(recoveryAfter)
+    || canonicalJson(shortlistBefore) !== canonicalJson(shortlistAfter)) {
+    throw new Error("Cross-domain RNG calls perturbed respin, recovery, or shortlist derivation.");
+  }
+  counters.rngIsolationChecks += 4;
   return {
     checks: counters.rngIsolationChecks,
     rejectedCommandsPreserveFutureSpins: true,
@@ -809,38 +882,155 @@ function runRngIsolationValidation(catalog: EraDraftCatalog, revealed: RevealedS
     respinCounterExcludedFromSimulationIdentity: true,
     recoveryCounterExcludedFromSimulationIdentity: true,
     simulationDoesNotPerturbDraftSpins: true,
+    normalRespinRecoveryDomainsDistinct: true,
+    draftAndShortlistDomainsDistinct: true,
+    crossDomainCallsPreserveRespinRecoveryAndShortlist: true,
     compositionAndMatchDomainsDistinct: true,
     saveRestorePreservesRng: counters.restoreDivergences === 0,
     replayReproducesRngOutcomes: counters.replayEventMismatches === 0,
   };
 }
 
-function validateFoundationComplete(
+function validateCatalogProvenance(catalog: EraDraftCatalog, counters: ValidationCounters) {
+  const profiles = ERA_IDS.flatMap((eraId) => catalog.getOpponentProfiles(eraId));
+  const laterProfiles = profiles.filter((profile) => profile.eraId !== "era-foundation");
+  const foundation = catalog.getOpponentProfiles("era-foundation");
+  const foundationAlias = catalog.getFoundationOpponents();
+  const baselineCount = laterProfiles.filter((profile) => profile.review.xiProvenance === "BASELINE_ACCEPTED").length;
+  const overrideCount = laterProfiles.filter((profile) => profile.review.xiProvenance === "REVIEWED_OVERRIDE").length;
+  const impactMembership: Readonly<Record<string, { included: string; omitted: string }>> = {
+    "opponent:team-chennai-super-kings:ipl-2023": {
+      included: "pts:23eeb873:ipl-2023:team-chennai-super-kings",
+      omitted: "pts:bb351c23:ipl-2023:team-chennai-super-kings",
+    },
+    "opponent:team-kolkata-knight-riders:ipl-2024": {
+      included: "pts:d7017798:ipl-2024:team-kolkata-knight-riders",
+      omitted: "pts:7c3b3b78:ipl-2024:team-kolkata-knight-riders",
+    },
+    "opponent:team-punjab-kings:ipl-2025": {
+      included: "pts:c05edf8e:ipl-2025:team-punjab-kings",
+      omitted: "pts:989889ff:ipl-2025:team-punjab-kings",
+    },
+  };
+  const membershipValid = Object.entries(impactMembership).every(([candidateId, expected]) => {
+    const profile = laterProfiles.find((item) => item.candidateId === candidateId);
+    const ids = new Set(profile?.xi.map((player) => player.playerTeamSeasonId));
+    return profile?.eraId === "era-impact" && ids.has(expected.included) && !ids.has(expected.omitted);
+  });
+  const valid = profiles.length === 49 && laterProfiles.length === 41
+    && ERA_IDS.every((eraId) => catalog.getOpponentProfiles(eraId).length === EXPECTED_OPPONENT_PROFILE_COUNTS[eraId])
+    && new Set(profiles.map((profile) => `${profile.eraId}:${profile.franchiseId}`)).size === 49
+    && baselineCount === 31 && overrideCount === 10
+    && canonicalJson(foundationAlias) === canonicalJson(foundation)
+    && membershipValid;
+  if (!valid) {
+    counters.catalogProvenanceInconsistencies += 1;
+    throw new Error("Frozen all-era opponent catalog provenance validation failed.");
+  }
+  return {
+    totalProfiles: profiles.length,
+    profilesByEra: Object.fromEntries(ERA_IDS.map((eraId) => [eraId, catalog.getOpponentProfiles(eraId).length])),
+    laterEraProfiles: laterProfiles.length,
+    baselineAcceptedProfiles: baselineCount,
+    reviewedOverrideProfiles: overrideCount,
+    foundationCompatibilityExact: true,
+    impactMembershipOverridesExact: true,
+  };
+}
+
+function validateEraComplete(
   catalog: EraDraftCatalog,
   state: Extract<EraDraftState, { phase: "GAME_COMPLETE" }>,
-  accumulator: FoundationAccumulator,
+  accumulator: EraAccumulator,
+  counters: ValidationCounters,
 ): void {
   assertEraDraftState(catalog, state);
   const league = state.season.league;
-  if (state.picks.length !== 11 || league.teams.length !== 8 || league.teams.filter((team) => team.teamId !== "user").length !== 7
-    || league.schedule.length !== 56 || league.leagueMatches.length !== 56 || league.standings.length !== 8
-    || league.standings.some((row) => row.played !== 14) || league.playoffs.length !== 4
-    || !league.teams.some((team) => team.teamId === league.championTeamId)
+  const profiles = catalog.getOpponentProfiles(state.eraId);
+  const profileById = new Map(profiles.map((profile) => [profile.candidateId, profile]));
+  const projection = projectEraDraftOpponentComposition(state.season);
+  const fullPoolIds = profiles.map((profile) => profile.candidateId);
+  const shortlistIds = projection.shortlistedProfileIds;
+  const actualIds = projection.actualOpponentProfileIds;
+
+  if (projection.eraId !== state.eraId || canonicalJson(projection.fullPoolProfileIds) !== canonicalJson(fullPoolIds)) {
+    counters.catalogProvenanceInconsistencies += 1;
+    throw new Error(`${state.eraId} opponent provenance differs from the frozen catalog.`);
+  }
+  if (shortlistIds.length !== 8) {
+    counters.malformedShortlists += 1;
+    throw new Error(`${state.eraId} shortlist does not contain exactly eight profiles.`);
+  }
+  if (new Set(shortlistIds).size !== shortlistIds.length) {
+    counters.duplicateShortlistProfiles += 1;
+    throw new Error(`${state.eraId} shortlist contains duplicate profiles.`);
+  }
+  if (shortlistIds.some((candidateId) => !profileById.has(candidateId))) {
+    counters.wrongEraOpponentLeakage += 1;
+    throw new Error(`${state.eraId} shortlist contains a profile outside its era pool.`);
+  }
+  const expectedShortlist = shortlistEraOpponentProfiles(profiles, state.season.seedBundle.opponentCompositionSeed)
+    .map((profile) => profile.candidateId);
+  if (canonicalJson(shortlistIds) !== canonicalJson(expectedShortlist)) {
+    counters.catalogProvenanceInconsistencies += 1;
+    throw new Error(`${state.eraId} shortlist differs from deterministic frozen-order selection.`);
+  }
+  const shortlistSet = new Set(shortlistIds);
+  if (actualIds.length !== 7 || new Set(actualIds).size !== 7
+    || actualIds.some((candidateId) => !shortlistSet.has(candidateId))
+    || !shortlistSet.has(projection.omittedShortlistedProfileId)
+    || actualIds.includes(projection.omittedShortlistedProfileId)) {
+    counters.malformedShortlists += 1;
+    throw new Error(`${state.eraId} actual/omitted opponent composition is invalid.`);
+  }
+  if (state.picks.length !== 11 || league.teams.length !== 8
+    || new Set(league.teams.map((team) => team.teamId)).size !== 8
+    || league.teams.filter((team) => team.teamId !== "user").length !== 7
+    || league.schedule.length !== 56 || league.leagueMatches.length !== 56
+    || league.standings.length !== 8 || league.standings.some((row) => row.played !== 14)
     || canonicalJson(state.season.userTeam.strength) !== canonicalJson({
       batting: state.evaluation.adjustedStrength.batting,
       bowling: state.evaluation.adjustedStrength.bowling,
       overall: state.evaluation.adjustedStrength.overall,
-    })) throw new Error("Invalid Foundation full-cycle structure.");
+    })) {
+    counters.invalidLeagueStructures += 1;
+    throw new Error(`${state.eraId} full-cycle league structure is invalid.`);
+  }
+  if (league.playoffs.length !== 4
+    || league.playoffs.map((match) => match.stage).join("|") !== "qualifier_1|eliminator|qualifier_2|final") {
+    counters.invalidPlayoffStructures += 1;
+    throw new Error(`${state.eraId} playoff structure is invalid.`);
+  }
+  if (!league.teams.some((team) => team.teamId === league.championTeamId)
+    || league.playoffs.at(-1)?.winnerTeamId !== league.championTeamId) {
+    counters.invalidChampions += 1;
+    throw new Error(`${state.eraId} champion is not the final winner.`);
+  }
+
   const user = league.standings.find((row) => row.teamId === "user")!;
-  accumulator.cycles += 1;
+  accumulator.completedGames += 1;
   accumulator.qualified += user.qualified ? 1 : 0;
   const final = league.playoffs.at(-1)!;
   accumulator.finalist += final.firstBattingTeamId === "user" || final.chasingTeamId === "user" ? 1 : 0;
   accumulator.champion += league.championTeamId === "user" ? 1 : 0;
   accumulator.positions[user.position - 1] += 1;
   addStrength(accumulator.nrr, user.netRunRate);
-  addStrength(accumulator.strength, state.evaluation.adjustedStrength.overall);
-  increment(accumulator.omitted, league.omittedOpponentTeamId);
+  for (const candidateId of shortlistIds) increment(accumulator.shortlistFrequency, candidateId);
+  let actualStrengthTotal = 0;
+  for (const candidateId of actualIds) {
+    increment(accumulator.actualOpponentFrequency, candidateId);
+    actualStrengthTotal += profileById.get(candidateId)!.evaluation.overall;
+  }
+  addStrength(accumulator.actualOpponentStrength, actualStrengthTotal / actualIds.length);
+  increment(accumulator.omittedShortlistFrequency, projection.omittedShortlistedProfileId);
+  const championKey = league.championTeamId === "user"
+    ? "user"
+    : profileById.get(league.championTeamId)?.franchiseId;
+  if (!championKey) {
+    counters.wrongEraOpponentLeakage += 1;
+    throw new Error(`${state.eraId} champion is outside the era profile pool.`);
+  }
+  increment(accumulator.championFrequency, championKey);
 }
 
 function matchesRestoreTarget(state: EraDraftState, target: RestoreTarget): boolean {
@@ -852,6 +1042,7 @@ function matchesRestoreTarget(state: EraDraftState, target: RestoreTarget): bool
     case "RESPIN": return state.phase === "AWAITING_PICK" && state.currentSpin.origin === "RESPIN";
     case "XI_COMPLETE": return state.phase === "XI_COMPLETE";
     case "REVEALED": return state.phase === "REVEALED";
+    case "GAME_COMPLETE": return state.phase === "GAME_COMPLETE";
   }
 }
 
@@ -892,10 +1083,15 @@ function measurePrimitiveTimings(catalog: EraDraftCatalog, seed: string) {
   return { candidateProjection: round(candidateProjection), feasibility: round(feasibility) };
 }
 
-function newEraAccumulator(): EraAccumulator {
+function newEraAccumulator(catalog: EraDraftCatalog, eraId: EraId): EraAccumulator {
+  const profiles = catalog.getOpponentProfiles(eraId);
+  const profileIds = profiles.map((profile) => profile.candidateId);
+  const fullPoolStrength = newStrengthAccumulator();
+  for (const profile of profiles) addStrength(fullPoolStrength, profile.evaluation.overall);
   return {
     drafts: 0,
-    completed: 0,
+    revealed: 0,
+    completedGames: 0,
     deadEnds: 0,
     recoveries: 0,
     respins: 0,
@@ -905,28 +1101,32 @@ function newEraAccumulator(): EraAccumulator {
     finalOverseas: Array(5).fill(0),
     strength: newStrengthAccumulator(),
     fit: { NATURAL: 0, ACCEPTABLE: 0, OUT_OF_ROLE: 0, UNKNOWN: 0 },
-  };
-}
-
-function newFoundationAccumulator(catalog: EraDraftCatalog): FoundationAccumulator {
-  return {
-    cycles: 0,
+    strategyRuns: Object.fromEntries(STRATEGIES.map((strategy) => [strategy, 0])) as Record<Strategy, number>,
+    respinPolicyRuns: Object.fromEntries(RESPIN_POLICIES.map((policy) => [policy, 0])) as Record<RespinPolicy, number>,
     qualified: 0,
     finalist: 0,
     champion: 0,
     positions: Array(8).fill(0),
     nrr: newStrengthAccumulator(),
-    strength: newStrengthAccumulator(),
-    omitted: Object.fromEntries(catalog.getFoundationOpponents().map((opponent) => [opponent.candidateId, 0])),
+    fullPoolStrength,
+    actualOpponentStrength: newStrengthAccumulator(),
+    shortlistFrequency: Object.fromEntries(profileIds.map((candidateId) => [candidateId, 0])),
+    actualOpponentFrequency: Object.fromEntries(profileIds.map((candidateId) => [candidateId, 0])),
+    omittedShortlistFrequency: Object.fromEntries(profileIds.map((candidateId) => [candidateId, 0])),
+    championFrequency: { user: 0 },
   };
 }
 
 function summarizeEra(era: EraAccumulator) {
+  const profileIds = Object.keys(era.shortlistFrequency);
   return {
     drafts: era.drafts,
-    completed: era.completed,
-    completionRate: round(era.completed / Math.max(1, era.drafts)),
+    revealed: era.revealed,
+    completeGames: era.completedGames,
+    completionRate: round(era.completedGames / Math.max(1, era.drafts)),
     deadEnds: era.deadEnds,
+    strategyRuns: sortedRecord(era.strategyRuns),
+    respinPolicyRuns: sortedRecord(era.respinPolicyRuns),
     candidateAvailabilityByPick: era.availability.map((item, index) => ({
       pickNumber: index + 1,
       observations: item.observations,
@@ -943,22 +1143,31 @@ function summarizeEra(era: EraAccumulator) {
     finalOverseasCount: era.finalOverseas.map((count, overseas) => ({ overseas, count })),
     adjustedStrength: summarizeStrength(era.strength),
     categoricalBattingFit: sortedRecord(era.fit),
-  };
-}
-
-function summarizeFoundation(value: FoundationAccumulator) {
-  return {
-    cycles: value.cycles,
-    adjustedStrength: summarizeStrength(value.strength),
-    qualificationCount: value.qualified,
-    qualificationRate: round(value.qualified / Math.max(1, value.cycles)),
-    finalistCount: value.finalist,
-    finalistRate: round(value.finalist / Math.max(1, value.cycles)),
-    championshipCount: value.champion,
-    championshipRate: round(value.champion / Math.max(1, value.cycles)),
-    finishingPosition: value.positions.map((count, index) => ({ position: index + 1, count })),
-    netRunRate: summarizeStrength(value.nrr),
-    omittedOpponentFrequency: sortedRecord(value.omitted),
+    outcome: {
+      qualificationCount: era.qualified,
+      qualificationRate: round(era.qualified / Math.max(1, era.completedGames)),
+      finalistCount: era.finalist,
+      finalistRate: round(era.finalist / Math.max(1, era.completedGames)),
+      championshipCount: era.champion,
+      championshipRate: round(era.champion / Math.max(1, era.completedGames)),
+      finishingPosition: era.positions.map((count, index) => ({ position: index + 1, count })),
+      netRunRate: summarizeStrength(era.nrr),
+      championFrequencyByFranchise: sortedRecord(era.championFrequency),
+    },
+    opponentComposition: {
+      fullPoolSize: profileIds.length,
+      fullPoolStrength: summarizeStrength(era.fullPoolStrength),
+      averageActualOpponentStrength: summarizeStrength(era.actualOpponentStrength),
+      shortlistFrequency: sortedRecord(era.shortlistFrequency),
+      shortlistRate: rateRecord(era.shortlistFrequency, era.completedGames),
+      actualOpponentFrequency: sortedRecord(era.actualOpponentFrequency),
+      actualOpponentRate: rateRecord(era.actualOpponentFrequency, era.completedGames),
+      omittedShortlistFrequency: sortedRecord(era.omittedShortlistFrequency),
+      omittedShortlistRate: rateRecord(era.omittedShortlistFrequency, era.completedGames),
+      allProfilesShortlisted: profileIds.every((candidateId) => era.shortlistFrequency[candidateId]! > 0),
+      allProfilesUsedAsActualOpponents: profileIds.every((candidateId) => era.actualOpponentFrequency[candidateId]! > 0),
+      allProfilesObservedAsOmitted: profileIds.every((candidateId) => era.omittedShortlistFrequency[candidateId]! > 0),
+    },
   };
 }
 
@@ -989,17 +1198,31 @@ function recordAvailability(target: AvailabilityAccumulator, choices: readonly C
   target.minimum = Math.min(target.minimum, candidates);
 }
 
-function totalCompleted(eras: Record<EraId, EraAccumulator>): number {
-  return ERA_IDS.reduce((total, eraId) => total + eras[eraId].completed, 0);
+function totalRevealed(eras: Record<EraId, EraAccumulator>): number {
+  return ERA_IDS.reduce((total, eraId) => total + eras[eraId].revealed, 0);
+}
+
+function totalCompletedGames(eras: Record<EraId, EraAccumulator>): number {
+  return ERA_IDS.reduce((total, eraId) => total + eras[eraId].completedGames, 0);
 }
 
 function acceptancePassed(counters: ValidationCounters, eras: Record<EraId, EraAccumulator>, options: EraDraftValidationOptions): boolean {
-  const total = options.drafts + options.foundationCycles;
+  return correctnessCountersZero(counters)
+    && totalRevealed(eras) === options.games
+    && totalCompletedGames(eras) === options.games
+    && (options.games < ERA_IDS.length * STRATEGIES.length
+      || ERA_IDS.every((eraId) => STRATEGIES.every((strategy) => eras[eraId].strategyRuns[strategy] > 0)));
+}
+
+function correctnessCountersZero(counters: ValidationCounters): boolean {
   return counters.invariantFailures === 0 && counters.illegalCompletedXis === 0 && counters.hiddenLeaks === 0
-    && counters.replayEventMismatches === 0 && counters.replayFinalHashMismatches === 0
+    && counters.wrongEraOpponentLeakage === 0 && counters.malformedShortlists === 0
+    && counters.duplicateShortlistProfiles === 0 && counters.invalidLeagueStructures === 0
+    && counters.invalidPlayoffStructures === 0 && counters.invalidChampions === 0
     && counters.serializationFailures === 0 && counters.restoreDivergences === 0
+    && counters.replayEventMismatches === 0 && counters.replayFinalHashMismatches === 0
     && counters.nondeterministicResults === 0 && counters.unexpectedDeadEnds === 0
-    && totalCompleted(eras) === total;
+    && counters.unexpectedSimulationRejections === 0 && counters.catalogProvenanceInconsistencies === 0;
 }
 
 function increment(record: Record<string, number>, key: string, amount = 1): void {
@@ -1008,6 +1231,12 @@ function increment(record: Record<string, number>, key: string, amount = 1): voi
 
 function sortedRecord(record: Record<string, number>): Record<string, number> {
   return Object.fromEntries(Object.entries(record).sort(([left], [right]) => left.localeCompare(right)));
+}
+
+function rateRecord(record: Record<string, number>, denominator: number): Record<string, number> {
+  return Object.fromEntries(Object.entries(record)
+    .sort(([left], [right]) => left.localeCompare(right))
+    .map(([key, value]) => [key, round(value / Math.max(1, denominator))]));
 }
 
 function round(value: number): number {
@@ -1031,20 +1260,39 @@ class EraDraftValidationError extends Error {
 }
 
 function parseArgs(args: readonly string[]) {
-  const values = new Map<string, string>();
+  let mode: "smoke" | "standard" | "full" = "standard";
+  let count: number | undefined;
+  let validationSeed = "stage9a-phase4";
+  let deterministicOnly = false;
+  let output: string | undefined;
   for (let index = 0; index < args.length; index += 1) {
     const argument = args[index]!;
-    if (!argument.startsWith("--")) throw new Error(`Unexpected argument ${argument}.`);
-    values.set(argument.slice(2), args[index + 1] ?? "true");
-    index += 1;
+    if (argument === "--smoke") mode = "smoke";
+    else if (argument === "--full") mode = "full";
+    else if (argument === "--deterministic-only") deterministicOnly = true;
+    else if (["--count", "--games"].includes(argument)) count = Number.parseInt(requiredArg(args, ++index, argument), 10);
+    else if (argument === "--seed") validationSeed = requiredArg(args, ++index, argument);
+    else if (argument === "--output") output = requiredArg(args, ++index, argument);
+    else if (argument === "--mode") {
+      const value = requiredArg(args, ++index, argument);
+      if (!(["smoke", "standard", "full"] as const).includes(value as typeof mode)) throw new Error(`Unknown validation mode ${value}.`);
+      mode = value as typeof mode;
+    } else throw new Error(`Unexpected argument ${argument}.`);
   }
+  const defaults = { smoke: 25, standard: 500, full: 5000 } as const;
   return {
-    drafts: Number.parseInt(values.get("drafts") ?? "5000", 10),
-    foundationCycles: Number.parseInt(values.get("foundation-cycles") ?? "250", 10),
-    validationSeed: values.get("seed") ?? "stage8-phase5",
-    deterministicOnly: values.get("deterministic-only") === "true",
-    output: values.get("output"),
+    games: count ?? defaults[mode],
+    validationSeed,
+    deterministicOnly,
+    output,
+    mode,
   };
+}
+
+function requiredArg(args: readonly string[], index: number, flag: string): string {
+  const value = args[index];
+  if (!value || value.startsWith("--")) throw new Error(`${flag} requires a value.`);
+  return value;
 }
 
 async function main(): Promise<void> {
