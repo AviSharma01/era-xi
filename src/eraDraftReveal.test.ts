@@ -206,13 +206,23 @@ test("REVEAL_XI delegates the exact drafted XI to Team Evaluation V2 without RNG
 
   const revealView = projectEraDraftRevealState(catalog, revealed);
   assert.equal(revealView.players.length, 11);
-  assert.equal(revealView.evaluation.version, direct.version);
-  assert.deepEqual(revealView.evaluation.baseStrength, direct.baseStrength);
-  assert.deepEqual(revealView.evaluation.adjustedStrength, direct.adjustedStrength);
+  assert.deepEqual(revealView.evaluation.strength, {
+    overall: direct.adjustedStrength.overall,
+    batting: direct.adjustedStrength.batting,
+    bowling: direct.adjustedStrength.bowling,
+  });
+  assert.deepEqual(revealView.evaluation.tierCounts, direct.diagnostics.tierCounts);
+  assert.equal(revealView.evaluation.construction.deployedBowlingUnits, direct.diagnostics.deployedBowlingUnits);
+  assert.equal(revealView.status.pickCount, 11);
   assert.equal("role" in revealView.players[0]!, false);
   assert.equal("quality" in revealView.players[0]!, false);
   assert.equal(typeof revealView.players[0]!.overallRating, "number");
   assert.equal(typeof revealView.players[0]!.qualityTier, "string");
+  for (const player of revealView.players) {
+    const draftPick = revealView.picks.find((pick) => pick.battingPosition === player.battingPosition)!;
+    assert.equal(player.presentationFit, draftPick.presentationFit);
+  }
+  assertNoRevealInternals(revealView);
   assertEraDraftState(catalog, revealed);
 
   const corruptedEvaluation = {
@@ -393,6 +403,26 @@ function assertNoDraftLeaks(value: unknown): void {
     if (typeof item !== "object" || item === null) return;
     for (const [key, nested] of Object.entries(item)) {
       assert.equal(forbiddenKeys.has(key), false, `draft projection leaked forbidden key ${key}`);
+      visit(nested);
+    }
+  };
+  visit(value);
+}
+
+function assertNoRevealInternals(value: unknown): void {
+  const forbiddenKeys = new Set([
+    "quality", "role", "bandDistance", "nominalFitDeduction", "effectiveRatingBeforeTeamCap",
+    "rawRating", "battingContributions", "bowlingDeployment", "baseStrength", "adjustedStrength",
+    "diagnostics", "effects", "rootSeed", "catalogFingerprint", "simulationSeed", "compositionSeed",
+  ]);
+  const visit = (item: unknown): void => {
+    if (Array.isArray(item)) {
+      item.forEach(visit);
+      return;
+    }
+    if (typeof item !== "object" || item === null) return;
+    for (const [key, nested] of Object.entries(item)) {
+      assert.equal(forbiddenKeys.has(key), false, `reveal projection leaked forbidden key ${key}`);
       visit(nested);
     }
   };

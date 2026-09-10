@@ -3,8 +3,8 @@ import { webcrypto } from "node:crypto";
 import test from "node:test";
 
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
-import { projectEraDraftPublicState } from "./eraDraftProjection.js";
-import type { EraDraftHiddenState } from "./eraDraftTypes.js";
+import { projectEraDraftPublicState, projectEraDraftRevealState } from "./eraDraftProjection.js";
+import type { EraDraftHiddenState, RevealedState } from "./eraDraftTypes.js";
 import { loadEraDraftCatalogDocuments } from "./eraDraftData.js";
 import { createEraDraftWebAssets } from "./eraDraftWebArtifacts.js";
 import { fetchScopedEraDraftCatalog, type EraDraftWebFetch } from "./eraDraftWebData.js";
@@ -13,7 +13,7 @@ const documents = loadEraDraftCatalogDocuments();
 const assets = createEraDraftWebAssets(documents);
 const manifestUrl = new URL("https://example.test/data/era-draft/v1/manifest.json");
 
-test("every fetched era reaches XI_COMPLETE through browser-facing projections", async () => {
+test("every fetched era reaches REVEALED through browser-facing projections", async () => {
   for (const entry of assets.manifest.eras) {
     const file = assets.artifacts.get(entry.path)!;
     const fetcher: EraDraftWebFetch = async () => new Response(file.json);
@@ -43,6 +43,17 @@ test("every fetched era reaches XI_COMPLETE through browser-facing projections",
       assert.equal(complete.status.hasWicketkeeper, true);
       assert.ok(complete.status.overseasCount <= 4);
     }
+    const revealed = revealedState(reduceEraDraft(catalog, state, { type: "REVEAL_XI" }));
+    const revealView = projectEraDraftRevealState(catalog, revealed);
+    assert.equal(revealView.phase, "REVEALED");
+    assert.equal(revealView.players.length, 11);
+    assert.deepEqual(
+      revealView.players.map((player) => player.playerTeamSeasonId),
+      complete.picks.map((pick) => pick.playerTeamSeasonId),
+    );
+    assert.ok(revealView.players.every((player) => ["S", "A", "B", "C", "D"].includes(player.qualityTier)));
+    assert.ok(revealView.players.every((player) =>
+      ["NATURAL", "ACCEPTABLE", "STRETCH", "MAJOR_STRETCH", "UNKNOWN"].includes(player.presentationFit)));
   }
 });
 
@@ -52,3 +63,8 @@ function accepted(result: ReturnType<typeof reduceEraDraft>): EraDraftHiddenStat
   return result.state;
 }
 
+function revealedState(result: ReturnType<typeof reduceEraDraft>): RevealedState {
+  if (!result.ok) assert.fail(result.error.message);
+  if (result.state.phase !== "REVEALED") assert.fail("Phase 2 browser flow must reach REVEALED.");
+  return result.state;
+}

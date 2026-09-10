@@ -89,31 +89,50 @@ export function projectEraDraftRevealState(
   const picks = projectPicks(catalog, state.picks);
   const players = state.evaluation.players.map((evaluated) => {
     const player = catalog.getPlayer(evaluated.quality.playerTeamSeasonId)!;
+    const slot = evaluated.role.battingFit.slots[evaluated.position - 1]!;
     return {
       ...projectPlayerFacts(player),
       battingPosition: evaluated.position,
-      fit: evaluated.role.battingFit.slots[evaluated.position - 1]!.classification,
+      presentationFit: toDraftPresentationFit(slot.classification, slot.bandDistance),
       battingRating: evaluated.quality.batting.battingRating,
       bowlingRating: evaluated.quality.bowling.bowlingRating,
       overallRating: evaluated.quality.overall.overallRating,
       qualityTier: evaluated.quality.overall.qualityTier,
     };
   });
+  const fitCounts: Record<DraftPresentationFit, number> = {
+    NATURAL: 0,
+    ACCEPTABLE: 0,
+    STRETCH: 0,
+    MAJOR_STRETCH: 0,
+    UNKNOWN: 0,
+  };
+  for (const player of players) fitCounts[player.presentationFit] += 1;
   return freezeDeep({
     phase: "REVEALED",
     revision: state.revision,
     eraId: state.eraId,
     eraLabel: era.label,
+    status: projectDraftStatus(catalog, state),
     picks,
     players,
     evaluation: {
-      version: state.evaluation.version,
-      battingContributions: state.evaluation.battingContributions,
-      bowlingDeployment: state.evaluation.bowlingDeployment,
-      baseStrength: state.evaluation.baseStrength,
-      adjustedStrength: state.evaluation.adjustedStrength,
-      diagnostics: state.evaluation.diagnostics,
-      effects: state.evaluation.effects,
+      strength: {
+        overall: state.evaluation.adjustedStrength.overall,
+        batting: state.evaluation.adjustedStrength.batting,
+        bowling: state.evaluation.adjustedStrength.bowling,
+      },
+      tierCounts: { ...state.evaluation.diagnostics.tierCounts },
+      fitCounts,
+      construction: {
+        overseasCount: state.evaluation.diagnostics.overseasCount,
+        overseasLimit: 4,
+        hasWicketkeeper: state.evaluation.diagnostics.hasWicketkeeper,
+        deployedBowlingUnits: state.evaluation.diagnostics.deployedBowlingUnits,
+        requiredBowlingUnits: 5,
+        frontlineBowlers: state.evaluation.diagnostics.bowlingWorkloadCounts.FRONTLINE,
+        supportBowlers: state.evaluation.diagnostics.bowlingWorkloadCounts.SUPPORT,
+      },
     },
   } satisfies EraDraftRevealView);
 }
@@ -149,7 +168,10 @@ export function toDraftPresentationFit(
   return bandDistance === 2 ? "STRETCH" : "MAJOR_STRETCH";
 }
 
-function projectDraftStatus(catalog: EraDraftCatalog, state: Exclude<EraDraftHiddenState, { phase: "SETUP" }>): DraftStatusView {
+function projectDraftStatus(
+  catalog: EraDraftCatalog,
+  state: Pick<Exclude<EraDraftHiddenState, { phase: "SETUP" }> | RevealedState, "picks" | "respin">,
+): DraftStatusView {
   const players = state.picks.map((pick) => catalog.getPlayer(pick.playerTeamSeasonId)!);
   return Object.freeze({
     pickCount: state.picks.length,

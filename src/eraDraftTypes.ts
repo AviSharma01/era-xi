@@ -2,7 +2,6 @@ import type {
   BowlingFamily,
   BowlingWorkloadClass,
   DerivedRole,
-  FitClassification,
   KeeperStatus,
 } from "./playerRoleContract.js";
 import type { QualityTier } from "./playerQualityContract.js";
@@ -408,11 +407,30 @@ export type EraDraftPublicView = SetupPublicView | AwaitingSpinPublicView | Awai
 
 export type RevealPlayerView = DraftPlayerFactsView & {
   readonly battingPosition: EraDraftPick["battingPosition"];
-  readonly fit: FitClassification;
+  readonly presentationFit: DraftPresentationFit;
   readonly battingRating: number | null;
   readonly bowlingRating: number | null;
   readonly overallRating: number;
   readonly qualityTier: QualityTier;
+};
+
+export type TeamEvaluationSummaryView = {
+  readonly strength: {
+    readonly overall: number;
+    readonly batting: number;
+    readonly bowling: number;
+  };
+  readonly tierCounts: Readonly<Record<QualityTier, number>>;
+  readonly fitCounts: Readonly<Record<DraftPresentationFit, number>>;
+  readonly construction: {
+    readonly overseasCount: number;
+    readonly overseasLimit: 4;
+    readonly hasWicketkeeper: boolean;
+    readonly deployedBowlingUnits: number;
+    readonly requiredBowlingUnits: 5;
+    readonly frontlineBowlers: number;
+    readonly supportBowlers: number;
+  };
 };
 
 export type EraDraftRevealView = {
@@ -420,15 +438,8 @@ export type EraDraftRevealView = {
   readonly revision: number;
   readonly eraId: EraId;
   readonly eraLabel: string;
+  readonly status: DraftStatusView;
   readonly picks: readonly DraftPickView[];
   readonly players: readonly RevealPlayerView[];
-  readonly evaluation: {
-    readonly version: TeamEvaluationV2["version"];
-    readonly battingContributions: TeamEvaluationV2["battingContributions"];
-    readonly bowlingDeployment: TeamEvaluationV2["bowlingDeployment"];
-    readonly baseStrength: TeamEvaluationV2["baseStrength"];
-    readonly adjustedStrength: TeamEvaluationV2["adjustedStrength"];
-    readonly diagnostics: TeamEvaluationV2["diagnostics"];
-    readonly effects: TeamEvaluationV2["effects"];
-  };
+  readonly evaluation: TeamEvaluationSummaryView;
 };
