@@ -46,6 +46,8 @@ export function EraDraftApp(): ReactElement {
   const [route, setRoute] = useState<AppRoute | null>(() => matchAppRoute(window.location.pathname));
   const [manifest, setManifest] = useState<EraDraftWebManifest | null>(null);
   const [manifestError, setManifestError] = useState<string | null>(null);
+  const [manifestLoading, setManifestLoading] = useState(true);
+  const [manifestRequest, setManifestRequest] = useState(0);
   const [loadingEra, setLoadingEra] = useState<EraId | null>(null);
   const [selectedEra, setSelectedEra] = useState<EraId | null>(null);
   const [session, setSession] = useState<DraftSession | null>(null);
@@ -72,11 +74,19 @@ export function EraDraftApp(): ReactElement {
   }, [route, session]);
 
   useEffect(() => {
+    let active = true;
     const url = eraDraftManifestUrl(import.meta.env.BASE_URL);
-    void fetchEraDraftManifest(url).then(setManifest).catch((error: unknown) => {
-      setManifestError(error instanceof Error ? error.message : "Era data could not be loaded.");
+    setManifestLoading(true);
+    setManifestError(null);
+    void fetchEraDraftManifest(url).then((value) => {
+      if (active) setManifest(value);
+    }).catch((error: unknown) => {
+      if (active) setManifestError(error instanceof Error ? error.message : "Era data could not be loaded.");
+    }).finally(() => {
+      if (active) setManifestLoading(false);
     });
-  }, []);
+    return () => { active = false; };
+  }, [manifestRequest]);
 
   const navigate = (next: AppRoute): void => navigateToAppRoute(next);
 
@@ -199,9 +209,10 @@ export function EraDraftApp(): ReactElement {
           persistenceWarning={persistenceWarning} onAccepted={(result) => acceptTransition(session.catalog, result)} onExit={() => navigate("HOME")} />;
   }
   if (route === null) return <NotFound onExit={() => navigate("HOME")} />;
-  return <Landing manifest={manifest} error={manifestError} loadingEra={loadingEra} selectedEra={selectedEra}
+  return <Landing manifest={manifest} manifestLoading={manifestLoading} error={manifestError} loadingEra={loadingEra} selectedEra={selectedEra}
     savedGame={savedGame} loadingContinue={loadingContinue} overwriteEra={overwriteEra} notice={landingNotice}
     onContinue={() => void continueGame()} onDiscardSave={discardSave} onCancelOverwrite={() => setOverwriteEra(null)}
+    onRetryManifest={() => setManifestRequest((request) => request + 1)}
     onConfirmOverwrite={(eraId) => void startDraft(eraId)}
     onSelect={(eraId) => {
       setSelectedEra(eraId);
@@ -212,6 +223,7 @@ export function EraDraftApp(): ReactElement {
 
 export function Landing(props: {
   manifest: EraDraftWebManifest | null;
+  manifestLoading: boolean;
   error: string | null;
   loadingEra: EraId | null;
   selectedEra: EraId | null;
@@ -222,6 +234,7 @@ export function Landing(props: {
   basePath?: string;
   onContinue: () => void;
   onDiscardSave: () => boolean;
+  onRetryManifest: () => void;
   onCancelOverwrite: () => void;
   onConfirmOverwrite: (eraId: EraId) => void;
   onSelect: (eraId: EraId) => void;
@@ -246,21 +259,23 @@ export function Landing(props: {
       </section>
 
       {props.savedGame.kind === "CANDIDATE" && (
-        <section className="continue-panel" aria-labelledby="continue-title">
+        <section className="continue-panel" aria-labelledby="continue-title" aria-busy={props.loadingContinue}>
           <div><p className="eyebrow">Saved locally</p><h2 id="continue-title">Continue {ERA_COPY[props.savedGame.save.summary.eraId].title}</h2>
             <p>{saveSummaryLabel(props.savedGame.save.summary.phase, props.savedGame.save.summary.pickCount,
               props.savedGame.save.envelope.presentationCursor)}</p></div>
           <button className="primary-action" disabled={!props.manifest || props.loadingContinue} onClick={props.onContinue}>
-            {props.loadingContinue ? "Restoring…" : "Continue game"}<span aria-hidden="true">→</span>
+            {props.loadingContinue ? "Restoring verified game…" : "Continue game"}<span aria-hidden="true">→</span>
           </button>
+          {props.loadingContinue && <p className="async-detail" role="status">Loading the saved era and validating its authoritative state.</p>}
         </section>
       )}
       {props.savedGame.kind === "INVALID" && (
         <section className="save-recovery" role="alert" aria-labelledby="save-recovery-title">
-          <div><p className="eyebrow">Save recovery</p><h2 id="save-recovery-title">Saved game unavailable</h2><p>{props.savedGame.message}</p></div>
+          <div><p className="eyebrow">Save recovery</p><h2 id="save-recovery-title">Saved game unavailable</h2>
+            <p>We could not safely restore this save. Nothing was silently changed or repaired. {props.savedGame.message}</p></div>
           <button className="secondary-action" onClick={() => {
             if (props.onDiscardSave()) requestAnimationFrame(() => eraPickerTitleRef.current?.focus());
-          }}>Discard local save</button>
+          }}>Discard unusable save</button>
         </section>
       )}
       {props.savedGame.kind === "UNAVAILABLE" && <p className="storage-notice" role="status">{props.savedGame.message} You can still play without autosave.</p>}
@@ -287,7 +302,7 @@ export function Landing(props: {
               );
             })}
           </div>
-          <aside className={`era-detail${selected ? " era-detail-selected" : ""}`} aria-live="polite">
+          <aside className={`era-detail${selected ? " era-detail-selected" : ""}`} aria-live="polite" aria-busy={props.loadingEra !== null}>
             {selected && props.selectedEra ? (
               <>
                 <div className="era-detail-kicker"><span>Selected era</span><strong>{selected.ordinal}</strong></div>
@@ -306,9 +321,10 @@ export function Landing(props: {
                 ) : (
                   <button ref={startButtonRef} className="primary-action start-draft-action" disabled={props.loadingEra !== null}
                     onClick={() => props.onStart(props.selectedEra!)}>
-                    {props.loadingEra === props.selectedEra ? "Loading verified era…" : "Start draft"}<span aria-hidden="true">→</span>
+                    {props.loadingEra === props.selectedEra ? "Loading and verifying…" : "Start draft"}<span aria-hidden="true">→</span>
                   </button>
                 )}
+                {props.loadingEra === props.selectedEra && <p className="async-detail" role="status">Downloading {selected.title} data and checking its integrity.</p>}
               </>
             ) : (
               <div className="era-detail-empty"><span className="era-detail-mark" aria-hidden="true">ED</span>
@@ -316,8 +332,12 @@ export function Landing(props: {
             )}
           </aside>
         </div>
-        {!props.manifest && !props.error && <p className="load-status" role="status">Loading era index…</p>}
-        {props.error && <p className="load-error" role="alert">{props.error}</p>}
+        {!props.manifest && props.manifestLoading && <div className="load-state" role="status" aria-live="polite" aria-busy="true">
+          <span className="load-indicator" aria-hidden="true" /><div><strong>Loading era index</strong><p>Preparing the verified era catalog.</p></div>
+        </div>}
+        {props.error && <div className="load-state load-state-error" role="alert"><div><strong>Era data unavailable</strong><p>{props.error}</p></div>
+          {!props.manifest && <button className="secondary-action" disabled={props.manifestLoading} onClick={props.onRetryManifest}>Retry</button>}
+        </div>}
       </section>
     </main>
   );
@@ -379,7 +399,7 @@ export function DraftExperience(props: {
       <div className="draft-layout">
         <section className="draft-stage" aria-labelledby="draft-stage-title">
           {view.phase !== "SETUP" && <DraftControlRegion view={view} era={era} primaryActionRef={nextActionRef} onTransition={transition} />}
-          {props.persistenceWarning && <p className="draft-warning" role="status">{props.persistenceWarning}</p>}
+          {props.persistenceWarning && <PersistenceWarning message={props.persistenceWarning} />}
 
           {view.phase === "AWAITING_SPIN" && (
             <div className="roster-empty-state">
@@ -439,7 +459,7 @@ function CandidateGallery(props: {
                 title={!candidate.available ? candidate.positions.flatMap((position) => position.reasons)[0]?.message : undefined}
                 onClick={() => props.onSelect(candidate)}>
                 <span className="portrait-placeholder" aria-hidden="true"><span>{monogram(candidate.playerName)}</span></span>
-                <span className="candidate-body"><strong>{candidate.playerName}</strong><span>{friendly(candidate.derivedRole)}</span>
+                <span className="candidate-body"><strong>{candidate.playerName}</strong><span>{friendly(candidate.displayRole)}</span>
                   <span className="candidate-meta">{candidate.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}
                     {candidate.keeperCapability === "CONFIRMED" ? " · WK" : ""}</span></span>
                 <span className="candidate-quick-stats">
@@ -458,15 +478,15 @@ function CandidateGallery(props: {
 
 function SelectedPlayerDetail({ candidate }: { candidate: DraftCandidateIdentityView }): ReactElement {
   const availablePositions = candidate.positions.filter((position) => position.available);
-  const showBatting = candidate.derivedRole !== "BOWLER" && candidate.derivedRole !== "UNKNOWN";
-  const showBowling = candidate.derivedRole === "BOWLER" || candidate.derivedRole === "ALL_ROUNDER";
+  const showBatting = candidate.displayRole !== "BOWLER" && candidate.displayRole !== "UNKNOWN";
+  const showBowling = candidate.displayRole === "BOWLER" || candidate.displayRole === "ALL_ROUNDER";
   return <section className="selected-player-detail" aria-labelledby="selected-player-title">
     <span className="selected-player-portrait" aria-hidden="true">{monogram(candidate.playerName)}</span>
     <div className="selected-player-copy">
       <p className="eyebrow">Selected player</p><h3 id="selected-player-title">{candidate.playerName}</h3>
       <p>{candidate.teamName} · {candidate.seasonYear}</p>
       <div className="selected-player-meta">
-        <span>{friendly(candidate.derivedRole)}</span>
+        <span>{friendly(candidate.displayRole)}</span>
         <span>{candidate.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}</span>
         {candidate.keeperCapability === "CONFIRMED" && <span>Wicketkeeper</span>}
         <span>{friendly(candidate.bowlingWorkloadClass)} bowling</span>
@@ -498,7 +518,7 @@ function CurrentSeasonStats(props: {
   </div>;
 }
 
-function RevealedExperience(props: {
+export function RevealedExperience(props: {
   session: { readonly catalog: EraDraftCatalog; readonly state: Extract<Phase2EraDraftState, { phase: "REVEALED" }> };
   persistenceWarning: string | null;
   onBeginSeason: () => void;
@@ -523,7 +543,7 @@ function RevealedExperience(props: {
     </header>
     <div className="draft-layout reveal-layout">
       <section className="draft-stage reveal-stage" aria-labelledby="reveal-title">
-        {props.persistenceWarning && <p className="draft-warning" role="status">{props.persistenceWarning}</p>}
+        {props.persistenceWarning && <PersistenceWarning message={props.persistenceWarning} />}
         <div className="reveal-intro"><p className="eyebrow">{era.title} · {era.years}</p>
           <h1 ref={headingRef} tabIndex={-1} id="reveal-title">Your team, revealed.</h1>
           <p>Ratings reflect each historical player-season and the batting position where you locked it.</p></div>
@@ -582,7 +602,7 @@ export function SeasonExperience(props: {
       <div className="draft-era-id"><span>{era.title}</span><strong>{era.years}</strong></div>
       <button className="quiet-button" onClick={props.onExit}>Exit season</button>
     </header>
-    {props.persistenceWarning && <p className="draft-warning" role="status">{props.persistenceWarning}</p>}
+    {props.persistenceWarning && <PersistenceWarning message={props.persistenceWarning} />}
     {cursor.phase === "LEAGUE" && <LeagueCheckpoint view={view} revealed={cursor.revealedUserMatches}
       headingRef={headingRef} onNext={() => props.onCursor(cursor.revealedUserMatches < 14
         ? { phase: "LEAGUE", revealedUserMatches: cursor.revealedUserMatches + 1 }
@@ -694,7 +714,7 @@ function PlayoffExperience(props: {
         <button className="secondary-action" onClick={props.onSimToEnd}>Sim to end</button></div>
       <p className="sr-status" aria-live="polite">{stageLabel(match.stage)} revealed. {match.resultLabel}.</p>
     </section>
-    <PlayoffRoute matches={props.view.playoffs.allMatches.slice(0, allIndex + 1)} activeMatchId={match.matchId} />
+    <PlayoffBracket matches={props.view.playoffs.allMatches} revealedThrough={allIndex + 1} activeMatchId={match.matchId} />
   </div>;
 }
 
@@ -713,7 +733,7 @@ function TerminalExperience(props: {
       <div><span>Record</span><strong>{props.view.league.userRecord.won}–{props.view.league.userRecord.lost}</strong></div>
       <div><span>Season result</span><strong>{props.view.playoffs.userResult}</strong></div>
     </div>
-    {props.view.league.qualified && <PlayoffRoute matches={props.view.playoffs.allMatches} />}
+    <PlayoffBracket matches={props.view.playoffs.allMatches} revealedThrough={props.view.playoffs.allMatches.length} />
     <div className="terminal-actions"><button className="primary-action" onClick={props.onNewEra}>New Era Draft</button>
       <button className="secondary-action" onClick={props.onSameEra}>Draft same era again</button></div>
     <p className="sr-status" aria-live="polite">Season complete. {props.view.champion.teamName} are champions.</p>
@@ -741,12 +761,42 @@ function StandingsTable({ rows, provisional }: { rows: EraDraftGameCompleteView[
   </section>;
 }
 
-function PlayoffRoute({ matches, activeMatchId }: { matches: EraDraftGameCompleteView["playoffs"]["allMatches"]; activeMatchId?: string }): ReactElement {
-  return <section className="playoff-route" aria-labelledby="playoff-route-title"><div className="candidate-heading"><h2 id="playoff-route-title">Playoff route</h2><span>Frozen result</span></div>
-    <ol>{matches.map((match) => <li key={match.matchId} className={match.matchId === activeMatchId ? "active-playoff" : undefined}>
-      <span>{stageLabel(match.stage)}</span><strong>{match.resultLabel}</strong>
-    </li>)}</ol>
+function PlayoffBracket({ matches, revealedThrough, activeMatchId }: {
+  matches: EraDraftGameCompleteView["playoffs"]["allMatches"];
+  revealedThrough: number;
+  activeMatchId?: string;
+}): ReactElement {
+  return <section className="playoff-bracket" aria-labelledby="playoff-bracket-title">
+    <div className="candidate-heading"><h2 id="playoff-bracket-title">Playoff path</h2><span>Four stages</span></div>
+    <ol>{matches.map((match, index) => {
+      const revealed = index < revealedThrough;
+      const userMatch = revealed && (match.firstInnings.teamId === "user" || match.secondInnings.teamId === "user");
+      const active = match.matchId === activeMatchId;
+      return <li key={match.matchId}
+        className={`playoff-stage${revealed ? " playoff-stage-revealed" : " playoff-stage-locked"}${userMatch ? " playoff-user-match" : ""}${active ? " active-playoff" : ""}`}
+        aria-current={active ? "step" : undefined}>
+        <div className="playoff-stage-heading"><span>{stageLabel(match.stage)}</span><small>{revealed ? userMatch ? "Your match" : "Complete" : "Upcoming"}</small></div>
+        {revealed ? <>
+          <div className="playoff-teams">
+            <PlayoffTeam innings={match.firstInnings} winner={match.winnerTeamId === match.firstInnings.teamId} />
+            <PlayoffTeam innings={match.secondInnings} winner={match.winnerTeamId === match.secondInnings.teamId} />
+          </div>
+          <strong className="playoff-result">{match.resultLabel}</strong>
+        </> : <div className="playoff-locked-copy"><strong>Matchup locked</strong><span>Reveals as the playoffs advance</span></div>}
+      </li>;
+    })}</ol>
   </section>;
+}
+
+function PlayoffTeam({ innings, winner }: {
+  innings: EraDraftGameCompleteView["playoffs"]["allMatches"][number]["firstInnings"];
+  winner: boolean;
+}): ReactElement {
+  return <div className={`playoff-team${winner ? " playoff-team-winner" : ""}`}>
+    <span>{innings.teamId === "user" ? "Your XI" : innings.teamName}</span>
+    <strong>{formatInnings(innings.runs, innings.wickets)}</strong>
+    {winner && <small>{"Winner"}</small>}
+  </div>;
 }
 
 function RevealMetric({ label, value, featured = false }: { label: string; value: number; featured?: boolean }): ReactElement {
@@ -801,11 +851,12 @@ function XiPanel(props: {
 
 function XiPlayerCard({ position, pick, revealed }: { position: number; pick: DraftPickView; revealed?: RevealPlayerView }): ReactElement {
   const style = { "--reveal-order": position - 1 } as CSSProperties;
-  return <article style={style} className={`xi-slot xi-slot-locked xi-fit-${fitClass(pick.presentationFit)}${revealed ? " xi-slot-revealed" : ""}`}>
+  const tierClass = revealed ? ` xi-tier-${revealed.qualityTier.toLowerCase()}` : "";
+  return <article style={style} className={`xi-slot xi-slot-locked xi-fit-${fitClass(pick.presentationFit)}${revealed ? ` xi-slot-revealed${tierClass}` : ""}`}>
     <span className="position-number">{String(position).padStart(2, "0")}</span>
     <span className="xi-portrait" aria-hidden="true"><span>{monogram(pick.playerName)}</span></span>
     <span className="locked-player"><strong>{pick.playerName}</strong><small>{pick.teamName} · {pick.seasonYear}</small>
-      <span>{friendly(pick.derivedRole)} · {pick.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}{pick.keeperCapability === "CONFIRMED" ? " · WK" : ""}</span></span>
+      <span>{friendly(pick.displayRole)} · {pick.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}{pick.keeperCapability === "CONFIRMED" ? " · WK" : ""}</span></span>
     <span className="xi-card-rail">
       {revealed && <><span className={`quality-tier tier-${revealed.qualityTier.toLowerCase()}`}>{revealed.qualityTier}</span>
         <strong className="overall-rating" aria-label={`Overall rating ${formatRating(revealed.overallRating)}`}>{formatRating(revealed.overallRating)}</strong>
@@ -851,8 +902,13 @@ function Status({ label, value, active = false }: { label: string; value: string
   return <span className={active ? "status-ready" : undefined}><small>{label}</small><strong>{value}</strong></span>;
 }
 
-function LoadingSession(): ReactElement {
-  return <main className="era-shell centered-state" aria-live="polite"><p className="eyebrow">Era Draft</p><h1>Returning to era selection…</h1></main>;
+export function LoadingSession(): ReactElement {
+  return <main className="era-shell centered-state" aria-live="polite" aria-busy="true"><p className="eyebrow">No active game loaded</p>
+    <h1>Returning to era selection…</h1><p>Choose an era or continue a verified local save from the home screen.</p></main>;
+}
+
+function PersistenceWarning({ message }: { message: string }): ReactElement {
+  return <aside className="draft-warning" role="status"><strong>Autosave unavailable</strong><span>{message}</span></aside>;
 }
 
 function NotFound({ onExit }: { onExit: () => void }): ReactElement {
@@ -895,8 +951,8 @@ function candidateQuickStats(candidate: DraftCandidateIdentityView): string[] {
   const { batting, bowling } = candidate.historicalStats.currentSeason;
   const battingLine = `${batting.runs} runs${batting.strikeRate === null ? "" : ` · ${formatOneDecimal(batting.strikeRate)} SR`}`;
   const bowlingLine = `${bowling.wickets} ${bowling.wickets === 1 ? "wkt" : "wkts"}${bowling.economy === null ? "" : ` · ${formatTwoDecimals(bowling.economy)} econ`}`;
-  if (candidate.derivedRole === "ALL_ROUNDER") return [battingLine, bowlingLine];
-  if (candidate.derivedRole === "BOWLER" || candidate.derivedRole === "UNKNOWN") return [bowlingLine];
+  if (candidate.displayRole === "ALL_ROUNDER") return [battingLine, bowlingLine];
+  if (candidate.displayRole === "BOWLER" || candidate.displayRole === "UNKNOWN") return [bowlingLine];
   return [battingLine];
 }
 

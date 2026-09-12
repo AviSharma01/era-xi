@@ -325,9 +325,17 @@ export type DraftPlayerFactsView = {
   readonly rosterStatus: Exclude<IplRosterStatus, "UNKNOWN">;
   readonly keeperCapability: KeeperStatus;
   readonly derivedRole: DerivedRole;
+  readonly displayRole: DraftDisplayRole;
   readonly bowlingWorkloadClass: BowlingWorkloadClass;
   readonly bowlingFamily: BowlingFamily;
 };
+
+export type DraftDisplayRole =
+  | "BATTER"
+  | "WICKETKEEPER_BATTER"
+  | "ALL_ROUNDER"
+  | "BOWLER"
+  | "UNKNOWN";
 
 export type DraftPresentationFit =
   | "NATURAL"

@@ -140,7 +140,10 @@ test("storage failures preserve the accepted in-memory state and remain recovera
   const snapshot = canonicalJson(state);
   const result = { ok: true, state, event: state.history.at(-1)! } satisfies EraDraftTransitionResult;
   const failing = new MemoryStorage({ writeFailure: true });
-  assert.throws(() => persistAcceptedEraDraftTransition(result, failing), hasUiCode("STORAGE_WRITE_FAILED"));
+  assert.throws(() => persistAcceptedEraDraftTransition(result, failing), (error) =>
+    hasUiCode("STORAGE_WRITE_FAILED")(error)
+      && error instanceof Error
+      && /progress may be lost if you refresh or close it/.test(error.message));
   assert.equal(canonicalJson(state), snapshot);
   assert.equal(failing.getItem(ERA_DRAFT_UI_STORAGE_KEY), null);
 

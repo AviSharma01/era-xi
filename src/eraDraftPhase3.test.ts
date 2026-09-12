@@ -256,7 +256,9 @@ test("non-qualifier UI skips playoff progression and surfaces the stored champio
   assert.match(finalTable, /Not qualified/);
   assert.match(finalTable, new RegExp(projectEraDraftGameCompleteState(catalog, complete).champion.teamName));
   assert.match(finalTable, /View season result/);
-  assert.doesNotMatch(renderSeason(complete, { phase: "COMPLETE" }), /Playoff route/);
+  const terminal = renderSeason(complete, { phase: "COMPLETE" });
+  assert.match(terminal, /Playoff path/);
+  assert.equal(terminal.match(/playoff-stage-revealed/g)?.length, 4);
 });
 
 test("all five browser-scoped eras complete and expose exactly fourteen user league matches", async () => {
@@ -399,6 +401,7 @@ function candidateVariant(
     playerName,
     presentationGroup,
     derivedRole,
+    displayRole: derivedRole,
     allRounderLean,
     historicalStats: {
       ...base.historicalStats,

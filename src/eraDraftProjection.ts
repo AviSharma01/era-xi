@@ -7,6 +7,7 @@ import type {
   DraftHistoricalBattingView,
   DraftHistoricalBowlingView,
   DraftHistoricalPeakView,
+  DraftDisplayRole,
   DraftPickView,
   DraftPlayerFactsView,
   EraDraftHiddenState,
@@ -75,6 +76,7 @@ function projectCandidate(
   context: Parameters<typeof evaluateSelectionLegality>[1],
   openPositions: ReturnType<typeof getOpenBattingPositions>,
 ): DraftCandidateIdentityView {
+  const displayRole = projectDraftDisplayRole(player);
   const positions = openPositions.map((battingPosition) => {
     const legality = evaluateSelectionLegality(catalog, context, { playerTeamSeasonId: player.playerTeamSeasonId, battingPosition });
     return Object.freeze({
@@ -88,8 +90,8 @@ function projectCandidate(
     });
   });
   return freezeDeep({
-    ...projectPlayerFacts(player),
-    presentationGroup: getDraftCandidatePresentationGroup(player.role.derivedRole),
+    ...projectPlayerFacts(player, displayRole),
+    presentationGroup: getDraftCandidatePresentationGroup(displayRole),
     allRounderLean: player.role.allRounderLean,
     historicalStats: projectEraDraftHistoricalStats(catalog, player),
     available: positions.some((position) => position.available),
@@ -108,11 +110,34 @@ export function compareDraftCandidatesForPresentation(
 }
 
 export function getDraftCandidatePresentationGroup(
-  role: EraDraftPlayerRecord["role"]["derivedRole"],
+  role: DraftDisplayRole,
 ): DraftCandidateIdentityView["presentationGroup"] {
   if (role === "BATTER" || role === "WICKETKEEPER_BATTER") return "BATTERS";
   if (role === "ALL_ROUNDER") return "ALL_ROUNDERS";
   return "BOWLERS";
+}
+
+export const DISPLAY_ALL_ROUNDER_MIN_RUNS = 90;
+export const DISPLAY_ALL_ROUNDER_MIN_WICKETS = 9;
+
+export function projectDraftDisplayRole(player: Pick<EraDraftPlayerRecord, "role" | "historicalStats">): DraftDisplayRole {
+  const { derivedRole, allRounderLean, bowlingWorkloadClass } = player.role;
+  if (derivedRole !== "ALL_ROUNDER") return derivedRole;
+
+  const battingThreshold = player.historicalStats.batting.runs >= DISPLAY_ALL_ROUNDER_MIN_RUNS;
+  const bowlingThreshold = player.historicalStats.bowling.wickets >= DISPLAY_ALL_ROUNDER_MIN_WICKETS;
+  if (battingThreshold && bowlingThreshold) return "ALL_ROUNDER";
+  if (battingThreshold) return "BATTER";
+  if (bowlingThreshold) return "BOWLER";
+  if (allRounderLean === "BATTING") return "BATTER";
+  if (allRounderLean === "BOWLING") return "BOWLER";
+  if (allRounderLean === "BALANCED" && bowlingWorkloadClass === "FRONTLINE") return "BATTER";
+  if (allRounderLean === "BALANCED" && bowlingWorkloadClass === "SUPPORT") return "BOWLER";
+  throw new EraDraftDataError(
+    "INVALID_DISPLAY_ROLE_FALLBACK",
+    `Balanced all-rounder has unsupported presentation fallback ${bowlingWorkloadClass}.`,
+    { bowlingWorkloadClass },
+  );
 }
 
 export function projectEraDraftHistoricalStats(
@@ -492,7 +517,7 @@ function invalidFit(classification: FitClassification, bandDistance: number | nu
   );
 }
 
-function projectPlayerFacts(player: EraDraftPlayerRecord): DraftPlayerFactsView {
+function projectPlayerFacts(player: EraDraftPlayerRecord, displayRole = projectDraftDisplayRole(player)): DraftPlayerFactsView {
   return Object.freeze({
     playerTeamSeasonId: player.playerTeamSeasonId,
     playerId: player.playerId,
@@ -506,6 +531,7 @@ function projectPlayerFacts(player: EraDraftPlayerRecord): DraftPlayerFactsView 
     rosterStatus: player.rosterStatus,
     keeperCapability: player.role.keeperMetadata.capabilityStatus,
     derivedRole: player.role.derivedRole,
+    displayRole,
     bowlingWorkloadClass: player.role.bowlingWorkloadClass,
     bowlingFamily: player.role.bowlingFamily,
   });

@@ -144,7 +144,11 @@ export function writeEraDraftUiSave(
   try {
     (storage ?? window.localStorage).setItem(ERA_DRAFT_UI_STORAGE_KEY, save.raw);
   } catch (error) {
-    throw new EraDraftUiSaveError("STORAGE_WRITE_FAILED", "The game is playable, but this update could not be saved locally.", { cause: error });
+    throw new EraDraftUiSaveError(
+      "STORAGE_WRITE_FAILED",
+      "The game remains playable in this tab, but progress may be lost if you refresh or close it.",
+      { cause: error },
+    );
   }
   return save;
 }
