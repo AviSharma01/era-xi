@@ -143,7 +143,7 @@ test("current spin and safe projection contain only the selected team-season can
     return internal?.teamSeasonId === state.currentSpin.teamSeasonId && internal.eraId === state.eraId;
   }));
   const candidateKeys = [
-    "available", "bowlingFamily", "bowlingWorkloadClass", "derivedRole", "franchiseId", "franchiseName",
+    "allRounderLean", "available", "bowlingFamily", "bowlingWorkloadClass", "derivedRole", "franchiseId", "franchiseName",
     "historicalStats", "keeperCapability", "playerId", "playerName", "playerTeamSeasonId", "positions", "presentationGroup", "rosterStatus",
     "seasonId", "seasonYear", "teamId", "teamName",
   ];

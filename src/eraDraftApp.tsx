@@ -323,7 +323,7 @@ export function Landing(props: {
   );
 }
 
-function DraftExperience(props: {
+export function DraftExperience(props: {
   session: { readonly catalog: EraDraftCatalog; readonly state: Exclude<Phase2EraDraftState, { phase: "REVEALED" }> };
   persistenceWarning: string | null;
   onAccepted: (result: EraDraftTransitionResult) => string | null;
@@ -336,6 +336,17 @@ function DraftExperience(props: {
   const [message, setMessage] = useState("Spin to reveal a franchise-season.");
   const nextActionRef = useRef<HTMLButtonElement>(null);
   const era = ERA_COPY[view.phase === "SETUP" ? "era-foundation" : view.eraId];
+
+  useEffect(() => {
+    if (selectedId === null) return;
+    const onKeyDown = (event: KeyboardEvent): void => {
+      if (event.key !== "Escape") return;
+      setSelectedId(null);
+      setMessage("Player selection cleared.");
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [selectedId]);
 
   const transition = (command: Parameters<typeof reduceEraDraft>[2]): void => {
     const result = reduceEraDraft(catalog, state, command);
@@ -380,6 +391,11 @@ function DraftExperience(props: {
 
           {view.phase === "AWAITING_PICK" && (
             <CandidateGallery view={view} selectedId={selectedId} selected={selected} onSelect={(candidate) => {
+              if (candidate.playerTeamSeasonId === selectedId) {
+                setSelectedId(null);
+                setMessage("Player selection cleared.");
+                return;
+              }
               setSelectedId(candidate.playerTeamSeasonId);
               setMessage(`${candidate.playerName} selected. Choose an open batting position.`);
             }} />
@@ -426,7 +442,9 @@ function CandidateGallery(props: {
                 <span className="candidate-body"><strong>{candidate.playerName}</strong><span>{friendly(candidate.derivedRole)}</span>
                   <span className="candidate-meta">{candidate.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}
                     {candidate.keeperCapability === "CONFIRMED" ? " · WK" : ""}</span></span>
-                <span className="candidate-quick-stat">{candidateQuickStat(candidate)}</span>
+                <span className="candidate-quick-stats">
+                  {candidateQuickStats(candidate).map((line) => <span key={line}>{line}</span>)}
+                </span>
                 <span className="select-mark" aria-hidden="true">{selected ? "✓" : "+"}</span>
               </button>
             </div>
@@ -454,38 +472,28 @@ function SelectedPlayerDetail({ candidate }: { candidate: DraftCandidateIdentity
         <span>{friendly(candidate.bowlingWorkloadClass)} bowling</span>
         <span>{friendly(candidate.bowlingFamily)}</span>
       </div>
-      <div className="historical-stat-grid" aria-label="Historical player-season statistics">
-        <HistoricalStatBlock label={`${candidate.seasonYear} · Current / spun season`} candidate={candidate}
-          batting={showBatting} bowling={showBowling} current />
-        <HistoricalStatBlock label="Best season in this era" candidate={candidate}
-          batting={showBatting} bowling={showBowling} />
-      </div>
+      <CurrentSeasonStats candidate={candidate} batting={showBatting} bowling={showBowling} />
     </div>
     <div className="selected-player-instruction"><strong>Choose a batting position</strong>
       <span>{availablePositions.length} of 11 slots currently available</span></div>
   </section>;
 }
 
-function HistoricalStatBlock(props: {
-  label: string;
+function CurrentSeasonStats(props: {
   candidate: DraftCandidateIdentityView;
   batting: boolean;
   bowling: boolean;
-  current?: boolean;
 }): ReactElement {
-  const stats = props.candidate.historicalStats;
-  const batting = props.current ? stats.currentSeason.batting : stats.eraBest.batting;
-  const bowling = props.current ? stats.currentSeason.bowling : stats.eraBest.bowling;
+  const { batting, bowling } = props.candidate.historicalStats.currentSeason;
   const lines: string[] = [];
-  if (props.batting && batting) {
-    const prefix = props.current ? "BAT" : `${stats.eraBest.batting!.seasonYear} · BAT`;
-    lines.push(`${prefix} · ${batting.runs} runs${batting.strikeRate === null ? "" : ` · ${formatOneDecimal(batting.strikeRate)} SR`}${batting.average === null ? "" : ` · ${formatOneDecimal(batting.average)} avg`}`);
+  if (props.batting) {
+    lines.push(`${props.bowling ? "BAT · " : ""}${batting.runs} runs${batting.strikeRate === null ? "" : ` · ${formatOneDecimal(batting.strikeRate)} SR`}${batting.average === null ? "" : ` · ${formatOneDecimal(batting.average)} avg`}`);
   }
-  if (props.bowling && bowling) {
-    const prefix = props.current ? "BOWL" : `${stats.eraBest.bowling!.seasonYear} · BOWL`;
-    lines.push(`${prefix} · ${bowling.wickets} wickets${bowling.economy === null ? "" : ` · ${formatTwoDecimals(bowling.economy)} econ`}`);
+  if (props.bowling) {
+    lines.push(`${props.batting ? "BOWL · " : ""}${bowling.wickets} wickets${bowling.economy === null ? "" : ` · ${formatTwoDecimals(bowling.economy)} econ`}`);
   }
-  return <div className="historical-stat-block"><span>{props.label}</span>
+  return <div className="current-season-stats" aria-label={`${props.candidate.seasonYear} current season statistics`}>
+    <span>{props.candidate.seasonYear} season</span>
     {lines.length > 0 ? lines.map((line) => <strong key={line}>{line}</strong>) : <strong>No recorded statistics</strong>}
   </div>;
 }
@@ -602,11 +610,12 @@ function LeagueCheckpoint(props: {
   onSimRemaining: () => void;
 }): ReactElement {
   const checkpoint = props.view.league.userMatches[props.revealed - 1]!;
-  return <div className="season-layout">
+  return <div className="season-layout season-layout-progress">
     <section className="season-primary" aria-labelledby="season-match-title">
       <div className="season-kicker"><p className="eyebrow">League stage</p><span>Match {String(checkpoint.matchNumber).padStart(2, "0")} / 14</span></div>
       <h1 ref={props.headingRef} tabIndex={-1} id="season-match-title">{checkpoint.match.opponent?.teamName}</h1>
       <MatchResult match={checkpoint.match} />
+      <LeagueProgressStrip matches={props.view.league.userMatches} revealed={props.revealed} />
       <div className="season-progress-summary">
         <div><span>Season record</span><strong>{checkpoint.record.won}–{checkpoint.record.lost}</strong></div>
         <div><span>League position</span><strong>{ordinal(checkpoint.position)}</strong>
@@ -618,8 +627,31 @@ function LeagueCheckpoint(props: {
       </div>
       <p className="sr-status" aria-live="polite">Match {checkpoint.matchNumber} revealed. {checkpoint.match.resultLabel}. Record {checkpoint.record.won} wins and {checkpoint.record.lost} losses. Position {checkpoint.position}.</p>
     </section>
-    <StandingsTable rows={checkpoint.standings} provisional={checkpoint.matchNumber < 14} />
+    {checkpoint.matchNumber < 14
+      ? <details className="league-standings-disclosure"><summary><span>Provisional standings</span>
+          <strong>Your XI · {ordinal(checkpoint.position)}</strong></summary>
+          <StandingsTable rows={checkpoint.standings} provisional />
+        </details>
+      : <StandingsTable rows={checkpoint.standings} provisional={false} />}
   </div>;
+}
+
+function LeagueProgressStrip(props: {
+  matches: EraDraftGameCompleteView["league"]["userMatches"];
+  revealed: number;
+}): ReactElement {
+  return <ol className="league-progress-strip" aria-label={`League progress: ${props.revealed} of 14 matches revealed`}>
+    {props.matches.map((checkpoint, index) => {
+      const visible = index < props.revealed;
+      const result = checkpoint.match.result === "WIN" ? "W" : "L";
+      const current = index === props.revealed - 1;
+      return <li key={checkpoint.match.matchId} className={visible ? `progress-${result.toLowerCase()}${current ? " progress-current" : ""}` : "progress-upcoming"}
+        aria-label={visible ? `Match ${index + 1}: ${result === "W" ? "win" : "loss"}` : `Match ${index + 1}: upcoming`}
+        aria-current={current ? "step" : undefined}>
+        <span>{String(index + 1).padStart(2, "0")}</span><strong>{visible ? result : "·"}</strong>
+      </li>;
+    })}
+  </ol>;
 }
 
 function LeagueComplete(props: {
@@ -859,11 +891,13 @@ function countSummary<T extends string>(counts: Readonly<Record<T, number>>, ord
   return order.filter((key) => counts[key] > 0).map((key) => `${friendly(key)} ${counts[key]}`).join(" · ") || "None";
 }
 
-function candidateQuickStat(candidate: DraftCandidateIdentityView): string {
+function candidateQuickStats(candidate: DraftCandidateIdentityView): string[] {
   const { batting, bowling } = candidate.historicalStats.currentSeason;
-  if (candidate.derivedRole === "ALL_ROUNDER") return `${batting.runs} R · ${bowling.wickets} W`;
-  if (candidate.derivedRole === "BOWLER") return `${bowling.wickets} ${bowling.wickets === 1 ? "wicket" : "wickets"}`;
-  return `${batting.runs} runs`;
+  const battingLine = `${batting.runs} runs${batting.strikeRate === null ? "" : ` · ${formatOneDecimal(batting.strikeRate)} SR`}`;
+  const bowlingLine = `${bowling.wickets} ${bowling.wickets === 1 ? "wkt" : "wkts"}${bowling.economy === null ? "" : ` · ${formatTwoDecimals(bowling.economy)} econ`}`;
+  if (candidate.derivedRole === "ALL_ROUNDER") return [battingLine, bowlingLine];
+  if (candidate.derivedRole === "BOWLER" || candidate.derivedRole === "UNKNOWN") return [bowlingLine];
+  return [battingLine];
 }
 
 function formatOneDecimal(value: number): string { return value.toFixed(1); }

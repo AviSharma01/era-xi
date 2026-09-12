@@ -165,7 +165,7 @@ button:disabled { cursor: not-allowed; }
 .candidate-body strong { overflow: hidden; font-family: "Space Grotesk", sans-serif; font-size: 0.88rem; font-weight: 580; text-overflow: ellipsis; white-space: nowrap; }
 .candidate-body > span { color: var(--muted); font-size: 0.72rem; }
 .candidate-meta { font-family: "Geist Mono", monospace; font-size: 0.6rem !important; text-transform: uppercase; }
-.candidate-quick-stat { color: #aaa297; font-family: "Geist Mono", monospace; font-size: 0.56rem; white-space: nowrap; }
+.candidate-quick-stats { display: grid; gap: 4px; color: #aaa297; font-family: "Geist Mono", monospace; font-size: 0.54rem; line-height: 1.2; text-align: right; white-space: nowrap; }
 .select-mark { color: var(--gold); font-family: "Geist Mono", monospace; text-align: center; }
 .selected-player-detail { flex: 0 0 auto; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 10px 13px; align-items: center; margin-top: 10px; padding: 12px; border: 1px solid #715a34; border-radius: var(--radius-panel); background: linear-gradient(125deg, rgba(217, 173, 91, 0.12), rgba(18, 17, 16, 0.98) 58%); box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18), inset 0 0 0 1px rgba(240, 207, 136, 0.05); }
 .selected-player-portrait { width: 56px; height: 66px; display: grid; place-items: center; border: 1px solid #806a42; border-radius: 9px; background: radial-gradient(circle at 50% 34%, #4d4539 0 17%, transparent 18%), linear-gradient(145deg, #302b24, #141414); color: var(--gold-light); font-family: "Geist Mono", monospace; font-size: 0.66rem; }
@@ -175,10 +175,9 @@ button:disabled { cursor: not-allowed; }
 .selected-player-copy > p:not(.eyebrow) { margin: 3px 0 8px; color: #aca59a; font-size: 0.7rem; }
 .selected-player-meta { display: flex; flex-wrap: wrap; gap: 5px; }
 .selected-player-meta span { padding: 3px 5px; border: 1px solid #4b4438; border-radius: 5px; color: #bdb3a3; font-family: "Geist Mono", monospace; font-size: 0.5rem; letter-spacing: 0.03em; text-transform: uppercase; }
-.historical-stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; margin-top: 9px; }
-.historical-stat-block { min-width: 0; display: grid; align-content: start; gap: 4px; padding: 8px; border: 1px solid #494235; border-radius: 8px; background: rgba(8, 8, 8, 0.18); }
-.historical-stat-block > span { color: #91897d; font-family: "Geist Mono", monospace; font-size: 0.48rem; letter-spacing: 0.05em; text-transform: uppercase; }
-.historical-stat-block strong { color: #d7cdbd; font-size: 0.59rem; font-weight: 570; line-height: 1.45; }
+.current-season-stats { display: flex; flex-wrap: wrap; gap: 5px 10px; align-items: baseline; margin-top: 9px; padding: 8px; border: 1px solid #594b35; border-radius: 8px; background: rgba(8, 8, 8, 0.18); }
+.current-season-stats > span { flex: 0 0 100%; color: var(--gold); font-family: "Geist Mono", monospace; font-size: 0.5rem; letter-spacing: 0.07em; text-transform: uppercase; }
+.current-season-stats strong { color: #e3dacb; font-size: 0.62rem; font-weight: 590; line-height: 1.45; }
 .selected-player-instruction { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 12px; padding-top: 9px; border-top: 1px solid #554a38; text-align: left; }
 .selected-player-instruction strong { color: var(--gold-light); font-size: 0.7rem; text-transform: uppercase; }
 .selected-player-instruction span { color: var(--muted); font-size: 0.62rem; }
@@ -295,7 +294,19 @@ button.xi-slot { cursor: default; }
 .season-progress-summary span, .terminal-summary span { color: var(--muted); font-family: "Geist Mono", monospace; font-size: 0.54rem; letter-spacing: 0.07em; text-transform: uppercase; }
 .season-progress-summary strong { font-family: "Space Grotesk", sans-serif; font-size: 1.2rem; }
 .season-progress-summary small { color: #a69e92; font-size: 0.58rem; }
+.league-progress-strip { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 4px; margin: 14px 0 0; padding: 0; list-style: none; }
+.league-progress-strip li { min-width: 0; display: grid; place-items: center; gap: 2px; padding: 5px 2px; border: 1px solid var(--line); border-radius: 6px; color: #706c65; background: rgba(255, 255, 255, 0.01); font-family: "Geist Mono", monospace; }
+.league-progress-strip li span { font-size: 0.43rem; }
+.league-progress-strip li strong { font-size: 0.62rem; }
+.league-progress-strip .progress-w { border-color: #465344; color: #b8cbb0; background: rgba(101, 132, 92, 0.09); }
+.league-progress-strip .progress-l { border-color: #59463f; color: #d0a291; background: rgba(145, 82, 64, 0.09); }
+.league-progress-strip .progress-current { box-shadow: inset 0 -2px 0 var(--gold); }
 .season-actions, .terminal-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.season-layout-progress { width: min(820px, 100%); grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.league-standings-disclosure { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-panel); background: rgba(17, 17, 19, 0.52); }
+.league-standings-disclosure > summary { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 13px 16px; color: #aaa39a; cursor: pointer; font-family: "Geist Mono", monospace; font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.league-standings-disclosure > summary strong { color: var(--gold-light); font-weight: 580; }
+.league-standings-disclosure > .standings-panel { border: 0; border-top: 1px solid var(--line); border-radius: 0; }
 .standings-panel, .playoff-route { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-panel); background: rgba(17, 17, 19, 0.78); }
 .standings-panel .candidate-heading, .playoff-route .candidate-heading { margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line); }
 .standings-panel .candidate-heading h2, .playoff-route .candidate-heading h2 { margin: 0; font-family: "Space Grotesk", sans-serif; font-size: 0.86rem; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -377,8 +388,7 @@ button.xi-slot { cursor: default; }
   .roster-empty-state { grid-template-columns: 1fr; justify-items: start; }
   .candidate-grid { grid-template-columns: 1fr; }
   .candidate-card { grid-template-columns: 48px minmax(0, 1fr) 24px; }
-  .candidate-quick-stat { grid-column: 2; }
-  .historical-stat-grid { grid-template-columns: 1fr; }
+  .candidate-quick-stats { grid-column: 2; justify-items: start; text-align: left; }
   .selected-player-instruction { align-items: flex-start; flex-direction: column; }
   .secondary-action { min-height: 44px; }
   .draft-status strong { font-size: 0.63rem; }

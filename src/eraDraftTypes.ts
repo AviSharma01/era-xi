@@ -1,4 +1,5 @@
 import type {
+  AllRounderLean,
   BowlingFamily,
   BowlingWorkloadClass,
   DerivedRole,
@@ -352,6 +353,7 @@ export type DraftPickView = DraftPlayerFactsView & {
 
 export type DraftCandidateIdentityView = DraftPlayerFactsView & {
   readonly presentationGroup: "BATTERS" | "ALL_ROUNDERS" | "BOWLERS";
+  readonly allRounderLean: AllRounderLean | null;
   readonly historicalStats: DraftHistoricalStatsView;
   readonly available: boolean;
   readonly positions: readonly {

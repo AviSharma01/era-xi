@@ -90,6 +90,7 @@ function projectCandidate(
   return freezeDeep({
     ...projectPlayerFacts(player),
     presentationGroup: getDraftCandidatePresentationGroup(player.role.derivedRole),
+    allRounderLean: player.role.allRounderLean,
     historicalStats: projectEraDraftHistoricalStats(catalog, player),
     available: positions.some((position) => position.available),
     positions,
@@ -101,7 +102,7 @@ export function compareDraftCandidatesForPresentation(
   right: DraftCandidateIdentityView,
 ): number {
   return groupRank(left.presentationGroup) - groupRank(right.presentationGroup)
-    || roleRank(left) - roleRank(right)
+    || compareCurrentSeasonPerformance(left, right)
     || compareText(left.playerName, right.playerName)
     || compareText(left.playerTeamSeasonId, right.playerTeamSeasonId);
 }
@@ -183,12 +184,51 @@ function groupRank(group: DraftCandidateIdentityView["presentationGroup"]): numb
   return group === "BATTERS" ? 0 : group === "ALL_ROUNDERS" ? 1 : 2;
 }
 
-function roleRank(candidate: DraftCandidateIdentityView): number {
-  if (candidate.derivedRole === "BATTER") return 0;
-  if (candidate.derivedRole === "WICKETKEEPER_BATTER") return 1;
-  if (candidate.derivedRole === "ALL_ROUNDER") return 0;
-  if (candidate.derivedRole === "BOWLER") return 0;
-  return 1;
+function compareCurrentSeasonPerformance(
+  left: DraftCandidateIdentityView,
+  right: DraftCandidateIdentityView,
+): number {
+  const leftStats = left.historicalStats.currentSeason;
+  const rightStats = right.historicalStats.currentSeason;
+  if (left.presentationGroup === "BATTERS" && right.presentationGroup === "BATTERS") {
+    return rightStats.batting.runs - leftStats.batting.runs
+      || compareNullableDescending(leftStats.batting.strikeRate, rightStats.batting.strikeRate);
+  }
+  if (left.presentationGroup === "ALL_ROUNDERS" && right.presentationGroup === "ALL_ROUNDERS") {
+    const leanOrder = allRounderLeanRank(left.allRounderLean) - allRounderLeanRank(right.allRounderLean);
+    if (leanOrder !== 0) return leanOrder;
+    return left.allRounderLean === "BOWLING"
+      ? rightStats.bowling.wickets - leftStats.bowling.wickets
+        || rightStats.batting.runs - leftStats.batting.runs
+      : rightStats.batting.runs - leftStats.batting.runs
+        || rightStats.bowling.wickets - leftStats.bowling.wickets;
+  }
+  if (left.presentationGroup === "BOWLERS" && right.presentationGroup === "BOWLERS") {
+    return rightStats.bowling.wickets - leftStats.bowling.wickets
+      || compareNullableAscending(leftStats.bowling.economy, rightStats.bowling.economy);
+  }
+  return 0;
+}
+
+// Era Draft has a public lean rather than separate all-rounder roles. Keep the
+// stable batting/balanced/bowling sub-order, then apply the matching stat rule.
+function allRounderLeanRank(lean: DraftCandidateIdentityView["allRounderLean"]): number {
+  if (lean === "BATTING") return 0;
+  if (lean === "BALANCED") return 1;
+  if (lean === "BOWLING") return 2;
+  return 3;
+}
+
+function compareNullableDescending(left: number | null, right: number | null): number {
+  if (left === null) return right === null ? 0 : 1;
+  if (right === null) return -1;
+  return right - left;
+}
+
+function compareNullableAscending(left: number | null, right: number | null): number {
+  if (left === null) return right === null ? 0 : 1;
+  if (right === null) return -1;
+  return left - right;
 }
 
 function compareText(left: string, right: string): number { return left < right ? -1 : left > right ? 1 : 0; }

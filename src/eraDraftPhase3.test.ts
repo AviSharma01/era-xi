@@ -16,6 +16,7 @@ import {
 } from "./eraDraftProjection.js";
 import type {
   AwaitingPickState,
+  DraftCandidateIdentityView,
   EraDraftState,
   GameCompleteState,
   RevealedState,
@@ -102,6 +103,7 @@ test("all five eras use deterministic batter, all-rounder, bowler presentation o
     assert.deepEqual(ranks, [...ranks].sort((left, right) => left - right), eraId);
     const wicketkeepers = view.candidates.filter((candidate) => candidate.derivedRole === "WICKETKEEPER_BATTER");
     assert.ok(wicketkeepers.every((candidate) => candidate.presentationGroup === "BATTERS"));
+    assertCurrentSeasonOrder(view.candidates);
     assert.deepEqual(view.candidates.map((candidate) => candidate.playerTeamSeasonId),
       projectEraDraftPublicState(catalog, state as AwaitingPickState).phase === "AWAITING_PICK"
         ? (projectEraDraftPublicState(catalog, state as AwaitingPickState) as typeof view).candidates.map((candidate) => candidate.playerTeamSeasonId)
@@ -110,8 +112,55 @@ test("all five eras use deterministic batter, all-rounder, bowler presentation o
     withPostRevealQuality.sort(compareDraftCandidatesForPresentation);
     assert.deepEqual(withPostRevealQuality.map((candidate) => candidate.playerTeamSeasonId),
       view.candidates.map((candidate) => candidate.playerTeamSeasonId));
+    const withAlteredEraBest = view.candidates.map((candidate, index) => ({
+      ...candidate,
+      historicalStats: {
+        ...candidate.historicalStats,
+        eraBest: {
+          batting: candidate.historicalStats.eraBest.batting && {
+            ...candidate.historicalStats.eraBest.batting,
+            runs: index * 10_000,
+          },
+          bowling: candidate.historicalStats.eraBest.bowling && {
+            ...candidate.historicalStats.eraBest.bowling,
+            wickets: index * 1_000,
+          },
+        },
+      },
+    }));
+    withAlteredEraBest.sort(compareDraftCandidatesForPresentation);
+    assert.deepEqual(withAlteredEraBest.map((candidate) => candidate.playerTeamSeasonId),
+      view.candidates.map((candidate) => candidate.playerTeamSeasonId));
     assert.doesNotMatch(canonicalJson(view.candidates), /battingRating|bowlingRating|overallRating|qualityTier|internalScore|evaluation|bandDistance/i);
   }
+});
+
+test("current-season performance comparator follows exact public role rules and deterministic ties", () => {
+  let state = accepted(reduceEraDraft(catalog, createEraDraftGame({ catalog, rootSeed: "phase3-performance-sort" }),
+    { type: "CHOOSE_ERA", eraId: "era-foundation" }));
+  state = accepted(reduceEraDraft(catalog, state, { type: "SPIN" }));
+  const view = projectEraDraftPublicState(catalog, state as AwaitingPickState);
+  if (view.phase !== "AWAITING_PICK") assert.fail("expected candidates");
+  const base = view.candidates[0]!;
+  const candidates = [
+    candidateVariant(base, "b-low", "Low Batter", "BATTERS", "BATTER", null, 100, 110, 0, null),
+    candidateVariant(base, "b-wk", "Keeper Batter", "BATTERS", "WICKETKEEPER_BATTER", null, 120, 90, 0, null),
+    candidateVariant(base, "b-sr", "Fast Batter", "BATTERS", "BATTER", null, 100, 150, 0, null),
+    candidateVariant(base, "ar-b1", "Batting AR A", "ALL_ROUNDERS", "ALL_ROUNDER", "BATTING", 200, 130, 4, 8),
+    candidateVariant(base, "ar-b2", "Batting AR B", "ALL_ROUNDERS", "ALL_ROUNDER", "BATTING", 200, 130, 6, 8),
+    candidateVariant(base, "ar-balanced", "Balanced AR", "ALL_ROUNDERS", "ALL_ROUNDER", "BALANCED", 500, 180, 20, 5),
+    candidateVariant(base, "ar-bowl1", "Bowling AR A", "ALL_ROUNDERS", "ALL_ROUNDER", "BOWLING", 80, 100, 10, 7),
+    candidateVariant(base, "ar-bowl2", "Bowling AR B", "ALL_ROUNDERS", "ALL_ROUNDER", "BOWLING", 90, 100, 10, 7),
+    candidateVariant(base, "bw-econ8", "Bowler Economy Eight", "BOWLERS", "BOWLER", null, 0, null, 10, 8),
+    candidateVariant(base, "bw-nine", "Bowler Nine", "BOWLERS", "BOWLER", null, 0, null, 9, 4),
+    candidateVariant(base, "bw-econ7", "Bowler Economy Seven", "BOWLERS", "BOWLER", null, 0, null, 10, 7),
+  ].sort(compareDraftCandidatesForPresentation);
+  assert.deepEqual(candidates.map((candidate) => candidate.playerTeamSeasonId), [
+    "b-wk", "b-sr", "b-low",
+    "ar-b2", "ar-b1", "ar-balanced", "ar-bowl2", "ar-bowl1",
+    "bw-econ7", "bw-econ8", "bw-nine",
+  ]);
+  assert.deepEqual([...candidates].sort(compareDraftCandidatesForPresentation), candidates);
 });
 
 test("one reducer call freezes a complete season and cursor movement never mutates or resimulates it", () => {
@@ -167,13 +216,26 @@ test("frozen playoff projection covers qualifier, eliminator, qualifier 2, final
 test("season UI presents league, final table, playoffs, terminal result, and restart controls", () => {
   const complete = completeSeason(catalog, "era-foundation", "p3-seed-0");
   const league = renderSeason(complete, { phase: "LEAGUE", revealedUserMatches: 1 });
+  const firstResult = projectEraDraftGameCompleteState(catalog, complete).league.userMatches[0]!.match.result;
   assert.match(league, /Match 01 \/ 14/);
+  assert.match(league, /League progress: 1 of 14 matches revealed/);
+  assert.match(league, new RegExp(`Match 1: ${firstResult === "WIN" ? "win" : "loss"}`));
+  assert.match(league, /Match 2: upcoming/);
   assert.match(league, /Next match/);
   assert.match(league, /Sim remaining/);
   assert.match(league, /Provisional table/);
+  assert.match(league, /<details class="league-standings-disclosure">/);
+  const midLeague = renderSeason(complete, { phase: "LEAGUE", revealedUserMatches: 7 });
+  assert.match(midLeague, /League progress: 7 of 14 matches revealed/);
+  assert.match(midLeague, /aria-current="step"/);
+  assert.match(midLeague, /Season record/);
+  assert.match(midLeague, /League position/);
   const matchFourteen = renderSeason(complete, { phase: "LEAGUE", revealedUserMatches: 14 });
   assert.match(matchFourteen, /View final table/);
   assert.match(matchFourteen, /Final standings/);
+  assert.doesNotMatch(matchFourteen, /league-standings-disclosure/);
+  assert.deepEqual(projectEraDraftGameCompleteState(catalog, complete).league.userMatches[13]!.standings,
+    projectEraDraftGameCompleteState(catalog, complete).league.finalStandings);
   assert.doesNotMatch(matchFourteen, /Sim remaining/);
   const leagueComplete = renderSeason(complete, { phase: "LEAGUE_COMPLETE" });
   assert.match(leagueComplete, /Playoffs secured/);
@@ -311,4 +373,39 @@ function accepted(result: ReturnType<typeof reduceEraDraft>): Exclude<EraDraftSt
 function allPlayers(catalogValue: EraDraftCatalog) {
   return catalogValue.getEraIds().flatMap((eraId) => catalogValue.getTeamSeasonsForEra(eraId)
     .flatMap((teamSeason) => catalogValue.getCandidatesForTeamSeason(teamSeason.teamSeasonId)));
+}
+
+function assertCurrentSeasonOrder(candidates: readonly DraftCandidateIdentityView[]): void {
+  for (let index = 1; index < candidates.length; index += 1) {
+    assert.ok(compareDraftCandidatesForPresentation(candidates[index - 1]!, candidates[index]!) <= 0);
+  }
+}
+
+function candidateVariant(
+  base: DraftCandidateIdentityView,
+  id: string,
+  playerName: string,
+  presentationGroup: DraftCandidateIdentityView["presentationGroup"],
+  derivedRole: DraftCandidateIdentityView["derivedRole"],
+  allRounderLean: DraftCandidateIdentityView["allRounderLean"],
+  runs: number,
+  strikeRate: number | null,
+  wickets: number,
+  economy: number | null,
+): DraftCandidateIdentityView {
+  return {
+    ...base,
+    playerTeamSeasonId: id,
+    playerName,
+    presentationGroup,
+    derivedRole,
+    allRounderLean,
+    historicalStats: {
+      ...base.historicalStats,
+      currentSeason: {
+        batting: { ...base.historicalStats.currentSeason.batting, runs, strikeRate },
+        bowling: { ...base.historicalStats.currentSeason.bowling, wickets, economy },
+      },
+    },
+  };
 }
