@@ -144,7 +144,7 @@ test("current spin and safe projection contain only the selected team-season can
   }));
   const candidateKeys = [
     "available", "bowlingFamily", "bowlingWorkloadClass", "derivedRole", "franchiseId", "franchiseName",
-    "keeperCapability", "playerId", "playerName", "playerTeamSeasonId", "positions", "rosterStatus",
+    "historicalStats", "keeperCapability", "playerId", "playerName", "playerTeamSeasonId", "positions", "presentationGroup", "rosterStatus",
     "seasonId", "seasonYear", "teamId", "teamName",
   ];
   assert.deepEqual(Object.keys(view.candidates[0]!).sort(), candidateKeys);

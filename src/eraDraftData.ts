@@ -3,6 +3,10 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import { canonicalJson } from "./eraDraftCanonical.js";
+import {
+  deriveEraDraftHistoricalStats,
+  type EraDraftHistoricalStats,
+} from "./eraDraftHistoricalStats.js";
 
 import {
   parsePlayerQualityConsumer,
@@ -58,6 +62,7 @@ const PATHS = {
   roles: "data/processed/era-draft/roles/v1/player_role_consumer.jsonl",
   qualityManifest: "data/processed/era-draft/quality/v1/quality_manifest.json",
   qualities: "data/processed/era-draft/quality/v1/player_quality_consumer.jsonl",
+  qualityPresentationSource: "data/processed/era-draft/quality/v1/player_team_season_quality.jsonl",
   rosterManifest: "data/metadata/ipl/country_overseas/v1/metadata_manifest.json",
   roster: "data/metadata/ipl/country_overseas/v1/player_team_season_metadata.jsonl",
   simulationManifest: "data/processed/era-draft/simulation/v2/manifest.json",
@@ -120,6 +125,7 @@ export type EraDraftPlayerRecord = {
   readonly eligibility: EraDraftEligibilityRow;
   readonly role: PlayerRoleConsumer;
   readonly quality: PlayerQualityConsumer;
+  readonly historicalStats: EraDraftHistoricalStats;
   readonly rosterStatus: Exclude<IplRosterStatus, "UNKNOWN">;
 };
 
@@ -211,6 +217,7 @@ export type EraDraftCatalogDocuments = {
   readonly eligibility: readonly EraDraftEligibilityRow[];
   readonly roles: readonly PlayerRoleConsumer[];
   readonly qualities: readonly PlayerQualityConsumer[];
+  readonly historicalStats: readonly EraDraftHistoricalStats[];
   readonly roster: readonly EraDraftRosterRow[];
   readonly environments: readonly EraEnvironmentV2[];
   readonly opponentProfiles: readonly EraOpponentProfileV2[];
@@ -325,6 +332,16 @@ export function loadEraDraftCatalogDocuments(root = process.cwd()): EraDraftCata
     sources: fingerprintSources,
   });
   const fingerprint = computeEraDraftCatalogFingerprint(fingerprintInput);
+  // This presentation-only source is already content-bound by the quality
+  // manifest above. Read it after fingerprint construction so adding a public
+  // view of existing Stage 4 totals does not alter the frozen game catalog ID.
+  const qualityPresentationSource = readSourceFile(root, PATHS.qualityPresentationSource);
+  verifyListedFile(
+    qualityPresentationSource,
+    qualityManifest.artifacts,
+    "player_team_season_quality.jsonl",
+    "quality manifest",
+  );
 
   return freezeDeep({
     fingerprint,
@@ -349,6 +366,7 @@ export function loadEraDraftCatalogDocuments(root = process.cwd()): EraDraftCata
     eligibility: jsonLines(source(PATHS.eligibility), parseEligibility),
     roles: jsonLines(source(PATHS.roles), (value, label) => parsePlayerRoleConsumer(value, label)),
     qualities: jsonLines(source(PATHS.qualities), (value, label) => parsePlayerQualityConsumer(value, label)),
+    historicalStats: jsonLines(qualityPresentationSource, deriveEraDraftHistoricalStats),
     roster: jsonLines(source(PATHS.roster), parseRoster),
     environments,
     opponentProfiles,
@@ -384,9 +402,11 @@ export function buildEraDraftCatalog(documents: EraDraftCatalogDocuments): EraDr
   const eligibleIds = eligible.map((row) => row.playerTeamSeasonId).sort();
   const roleById = uniqueMap(documents.roles, (item) => item.playerTeamSeasonId, "role PTS ID");
   const qualityById = uniqueMap(documents.qualities, (item) => item.playerTeamSeasonId, "quality PTS ID");
+  const historicalStatsById = uniqueMap(documents.historicalStats, (item) => item.playerTeamSeasonId, "historical stats PTS ID");
   const rosterById = uniqueMap(documents.roster, (item) => item.playerTeamSeasonId, "roster PTS ID");
   assertExactSet([...roleById.keys()], eligibleIds, "Stage 5/G2 PTS IDs");
   assertExactSet([...qualityById.keys()], eligibleIds, "Stage 6/G2 PTS IDs");
+  assertExactSet([...historicalStatsById.keys()], eligibleIds, "historical stats/G2 PTS IDs");
   if (eligibilityById.size !== documents.eligibility.length) {
     throw new EraDraftDataError("DUPLICATE_ID", "Eligibility IDs are not unique.");
   }
@@ -406,8 +426,10 @@ export function buildEraDraftCatalog(documents: EraDraftCatalogDocuments): EraDr
   for (const eligibility of eligible) {
     const role = required(roleById, eligibility.playerTeamSeasonId, "Stage 5 role");
     const quality = required(qualityById, eligibility.playerTeamSeasonId, "Stage 6 quality");
+    const historicalStats = required(historicalStatsById, eligibility.playerTeamSeasonId, "historical stats");
     const roster = required(rosterById, eligibility.playerTeamSeasonId, "roster metadata");
     assertPlayerIdentity(eligibility, role, quality, roster);
+    assertHistoricalStatsIdentity(eligibility, historicalStats);
     if (roster.reviewState !== "APPROVED" && roster.reviewState !== "ROSTER_APPROVED_NATION_UNRESOLVED") {
       throw new EraDraftDataError("UNAPPROVED_G2_ROSTER_METADATA", `${eligibility.playerTeamSeasonId} does not have approved IPL roster metadata.`);
     }
@@ -441,6 +463,7 @@ export function buildEraDraftCatalog(documents: EraDraftCatalogDocuments): EraDr
       eligibility,
       role,
       quality,
+      historicalStats,
       rosterStatus: roster.iplRosterStatus,
     } satisfies EraDraftPlayerRecord);
     playerById.set(player.playerTeamSeasonId, player);
@@ -815,6 +838,21 @@ function assertPlayerIdentity(
   }
 }
 
+function assertHistoricalStatsIdentity(
+  eligibility: EraDraftEligibilityRow,
+  stats: EraDraftHistoricalStats,
+): void {
+  for (const field of ["playerTeamSeasonId", "playerId", "seasonId", "teamId"] as const) {
+    if (stats[field] !== eligibility[field]) {
+      throw new EraDraftDataError(
+        "PLAYER_IDENTITY_MISMATCH",
+        `${eligibility.playerTeamSeasonId} historical stats disagree on ${field}.`,
+        { field },
+      );
+    }
+  }
+}
+
 function makeTeamSeasonId(teamId: string, seasonId: string): TeamSeasonId {
   return `ts:${teamId}:${seasonId}`;
 }
@@ -858,6 +896,16 @@ function jsonLines<T>(file: SourceFile, parser: (value: unknown, label: string) 
       throw new EraDraftDataError("INVALID_SOURCE_ROW", `Invalid source row at ${file.relativePath}:${index + 1}.`, {}, { cause: error });
     }
   });
+}
+
+function readSourceFile(root: string, relativePath: string): SourceFile {
+  let content: string;
+  try {
+    content = readFileSync(resolve(root, relativePath), "utf8");
+  } catch (error) {
+    throw new EraDraftDataError("MISSING_SOURCE_FILE", `Missing Era Draft source file ${relativePath}.`, { relativePath }, { cause: error });
+  }
+  return { relativePath, content, sha256: sha256(content) };
 }
 
 function jsonDocument(file: SourceFile, label: string): Record<string, unknown> {

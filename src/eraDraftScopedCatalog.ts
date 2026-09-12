@@ -1,5 +1,9 @@
 import { canonicalJson } from "./eraDraftCanonical.js";
 import {
+  parseEraDraftHistoricalStats,
+  type EraDraftHistoricalStats,
+} from "./eraDraftHistoricalStats.js";
+import {
   parsePlayerQualityConsumer,
   PLAYER_QUALITY_CONSUMER_SCHEMA_VERSION,
   PLAYER_QUALITY_MODEL_VERSION,
@@ -34,7 +38,7 @@ import type {
 } from "./eraDraftData.js";
 import { EraDraftDataError, type TeamSeasonId } from "./eraDraftTypes.js";
 
-export const ERA_DRAFT_WEB_ARTIFACT_SCHEMA_VERSION = "ipl-era-draft-web-artifact/v1" as const;
+export const ERA_DRAFT_WEB_ARTIFACT_SCHEMA_VERSION = "ipl-era-draft-web-artifact/v2" as const;
 
 export type EraDraftWebSeason = {
   readonly seasonId: string;
@@ -66,6 +70,7 @@ export type EraDraftWebArtifact = {
   readonly eligibility: readonly EraDraftEligibilityRow[];
   readonly roles: readonly PlayerRoleConsumer[];
   readonly qualities: readonly PlayerQualityConsumer[];
+  readonly historicalStats: readonly EraDraftHistoricalStats[];
   readonly roster: readonly EraDraftRosterRow[];
   readonly environment: EraEnvironmentV2;
   readonly opponents: readonly EraOpponentProfileV2[];
@@ -112,9 +117,11 @@ export function buildScopedEraDraftCatalog(
   const eligibleIds = [...eligibilityById.keys()].sort();
   const roleById = uniqueMap(artifact.roles, (item) => item.playerTeamSeasonId, "role PTS ID");
   const qualityById = uniqueMap(artifact.qualities, (item) => item.playerTeamSeasonId, "quality PTS ID");
+  const historicalStatsById = uniqueMap(artifact.historicalStats, (item) => item.playerTeamSeasonId, "historical stats PTS ID");
   const rosterById = uniqueMap(artifact.roster, (item) => item.playerTeamSeasonId, "roster PTS ID");
   assertExactSet([...roleById.keys()], eligibleIds, "scoped Stage 5 PTS IDs");
   assertExactSet([...qualityById.keys()], eligibleIds, "scoped Stage 6 PTS IDs");
+  assertExactSet([...historicalStatsById.keys()], eligibleIds, "scoped historical stats PTS IDs");
   assertExactSet([...rosterById.keys()], eligibleIds, "scoped roster PTS IDs");
 
   const playerById = new Map<string, EraDraftPlayerRecord>();
@@ -124,8 +131,10 @@ export function buildScopedEraDraftCatalog(
   for (const eligibility of artifact.eligibility) {
     const role = required(roleById, eligibility.playerTeamSeasonId, "Stage 5 role");
     const quality = required(qualityById, eligibility.playerTeamSeasonId, "Stage 6 quality");
+    const historicalStats = required(historicalStatsById, eligibility.playerTeamSeasonId, "historical stats");
     const roster = required(rosterById, eligibility.playerTeamSeasonId, "roster metadata");
     assertPlayerIdentity(eligibility, role, quality, roster);
+    assertHistoricalStatsIdentity(eligibility, historicalStats);
     if (roster.reviewState !== "APPROVED" && roster.reviewState !== "ROSTER_APPROVED_NATION_UNRESOLVED") {
       fail("UNAPPROVED_G2_ROSTER_METADATA", `${eligibility.playerTeamSeasonId} does not have approved roster metadata.`);
     }
@@ -157,6 +166,7 @@ export function buildScopedEraDraftCatalog(
       eligibility,
       role,
       quality,
+      historicalStats,
       rosterStatus: roster.iplRosterStatus,
     } satisfies EraDraftPlayerRecord);
     playerById.set(player.playerTeamSeasonId, player);
@@ -302,7 +312,7 @@ class ScopedCatalog implements EraDraftCatalog {
 function parseWebArtifact(value: unknown, expected: { eraId: EraId; catalogFingerprint: string }): EraDraftWebArtifact {
   const row = record(value, "Era Draft web artifact");
   exactKeys(row, ["schemaVersion", "catalogFingerprint", "eraId", "runtimeVersions", "era", "seasons", "teams", "franchises",
-    "eligibility", "roles", "qualities", "roster", "environment", "opponents"], "Era Draft web artifact");
+    "eligibility", "roles", "qualities", "historicalStats", "roster", "environment", "opponents"], "Era Draft web artifact");
   if (row.schemaVersion !== ERA_DRAFT_WEB_ARTIFACT_SCHEMA_VERSION) fail("UNSUPPORTED_WEB_ARTIFACT", "Unsupported Era Draft web artifact schema.");
   if (row.eraId !== expected.eraId || row.catalogFingerprint !== expected.catalogFingerprint
     || typeof row.catalogFingerprint !== "string" || !/^[0-9a-f]{64}$/.test(row.catalogFingerprint)) {
@@ -339,11 +349,13 @@ function parseWebArtifact(value: unknown, expected: { eraId: EraId; catalogFinge
   const eligibility = array(row.eligibility, "artifact eligibility").map(parseEligibility);
   const roles = array(row.roles, "artifact roles").map((item, index) => parsePlayerRoleConsumer(item, `artifact roles[${index}]`));
   const qualities = array(row.qualities, "artifact qualities").map((item, index) => parsePlayerQualityConsumer(item, `artifact qualities[${index}]`));
+  const historicalStats = array(row.historicalStats, "artifact historicalStats")
+    .map((item, index) => parseEraDraftHistoricalStats(item, `artifact historicalStats[${index}]`));
   const roster = array(row.roster, "artifact roster").map(parseRoster);
   const environment = row.environment as EraEnvironmentV2;
   const opponents = array(row.opponents, "artifact opponents") as EraOpponentProfileV2[];
   return freezeDeep({ schemaVersion: ERA_DRAFT_WEB_ARTIFACT_SCHEMA_VERSION, catalogFingerprint: row.catalogFingerprint as string,
-    eraId: row.eraId as EraId, runtimeVersions, era, seasons, teams, franchises, eligibility, roles, qualities, roster,
+    eraId: row.eraId as EraId, runtimeVersions, era, seasons, teams, franchises, eligibility, roles, qualities, historicalStats, roster,
     environment, opponents });
 }
 
@@ -457,6 +469,14 @@ function assertPlayerIdentity(eligibility: EraDraftEligibilityRow, role: PlayerR
   }
 }
 
+function assertHistoricalStatsIdentity(eligibility: EraDraftEligibilityRow, stats: EraDraftHistoricalStats): void {
+  for (const field of ["playerTeamSeasonId", "playerId", "seasonId", "teamId"] as const) {
+    if (stats[field] !== eligibility[field]) {
+      fail("PLAYER_IDENTITY_MISMATCH", `${eligibility.playerTeamSeasonId} historical stats disagree on ${field}.`);
+    }
+  }
+}
+
 function array(value: unknown, label: string): unknown[] {
   if (!Array.isArray(value)) fail("INVALID_WEB_ARTIFACT", `${label} must be an array.`);
   return value as unknown[];
@@ -520,4 +540,3 @@ function freezeDeep<T>(value: T): T {
   else Object.values(value as Record<string, unknown>).forEach(freezeDeep);
   return Object.freeze(value);
 }
-

@@ -57,6 +57,7 @@ export function createEraDraftWebArtifact(documents: EraDraftCatalogDocuments, e
     eligibility,
     roles: documents.roles.filter((item) => playerIds.has(item.playerTeamSeasonId)),
     qualities: documents.qualities.filter((item) => playerIds.has(item.playerTeamSeasonId)),
+    historicalStats: documents.historicalStats.filter((item) => playerIds.has(item.playerTeamSeasonId)),
     roster: documents.roster.filter((item) => playerIds.has(item.playerTeamSeasonId)),
     environment,
     opponents,
@@ -96,4 +97,3 @@ if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.m
   process.stdout.write(`${JSON.stringify({ manifestBytes: Buffer.byteLength(assets.manifestJson),
     artifacts: assets.manifest.eras.map((entry) => ({ eraId: entry.eraId, path: entry.path, sizeBytes: entry.sizeBytes })) }, null, 2)}\n`);
 }
-

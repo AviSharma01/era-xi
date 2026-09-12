@@ -2,12 +2,13 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactEle
 
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
-import { projectEraDraftPublicState, projectEraDraftRevealState } from "./eraDraftProjection.js";
+import { projectEraDraftGameCompleteState, projectEraDraftPublicState, projectEraDraftRevealState } from "./eraDraftProjection.js";
 import type {
   DraftCandidateIdentityView,
   DraftPickView,
   DraftPresentationFit,
   EraDraftRevealView,
+  EraDraftGameCompleteView,
   EraDraftPublicView,
   EraDraftTransitionResult,
   RevealPlayerView,
@@ -17,7 +18,10 @@ import {
   loadAndRestoreEraDraftUiSave,
   persistAcceptedEraDraftTransition,
   readEraDraftUiSave,
+  writeEraDraftUiSave,
+  type EraDraftPresentationCursor,
   type EraDraftUiSaveReadResult,
+  type PersistableEraDraftState,
   type Phase2EraDraftState,
 } from "./eraDraftUiPersistence.js";
 import { fetchEraDraftManifest, fetchScopedEraDraftCatalog, eraDraftManifestUrl, type EraDraftWebManifest } from "./eraDraftWebData.js";
@@ -32,7 +36,11 @@ const ERA_COPY: Readonly<Record<EraId, { ordinal: string; title: string; years: 
   "era-impact": { ordinal: "05", title: "Impact", years: "2023–2026", flavor: "The newest tactical era at full intensity." },
 };
 
-type DraftSession = { readonly catalog: EraDraftCatalog; readonly state: Phase2EraDraftState };
+type DraftSession = {
+  readonly catalog: EraDraftCatalog;
+  readonly state: PersistableEraDraftState;
+  readonly presentationCursor: EraDraftPresentationCursor | null;
+};
 
 export function EraDraftApp(): ReactElement {
   const [route, setRoute] = useState<AppRoute | null>(() => matchAppRoute(window.location.pathname));
@@ -72,14 +80,16 @@ export function EraDraftApp(): ReactElement {
 
   const navigate = (next: AppRoute): void => navigateToAppRoute(next);
 
-  const acceptTransition = (catalog: EraDraftCatalog, result: EraDraftTransitionResult): string | null => {
+  const acceptTransition = (
+    catalog: EraDraftCatalog,
+    result: EraDraftTransitionResult,
+    presentationCursor: EraDraftPresentationCursor | null = null,
+  ): string | null => {
     if (!result.ok) return null;
-    if (result.state.phase === "SETUP" || result.state.phase === "GAME_COMPLETE") {
-      throw new Error(`Phase 2 cannot present ${result.state.phase}.`);
-    }
-    setSession({ catalog, state: result.state });
+    if (result.state.phase === "SETUP") throw new Error("The web UI cannot present SETUP.");
+    setSession({ catalog, state: result.state, presentationCursor });
     try {
-      const persisted = persistAcceptedEraDraftTransition(result);
+      const persisted = persistAcceptedEraDraftTransition(result, undefined, presentationCursor);
       if (persisted.kind === "SAVED") setSavedGame({ kind: "CANDIDATE", save: persisted.save });
       setPersistenceWarning(null);
       return null;
@@ -152,10 +162,39 @@ export function EraDraftApp(): ReactElement {
     }
   };
 
+  const setSeasonCursor = (cursor: EraDraftPresentationCursor): void => {
+    if (!session || session.state.phase !== "GAME_COMPLETE") return;
+    setSession({ ...session, presentationCursor: cursor });
+    try {
+      const save = writeEraDraftUiSave(session.state, undefined, cursor);
+      setSavedGame({ kind: "CANDIDATE", save });
+      setPersistenceWarning(null);
+    } catch (error) {
+      setPersistenceWarning(error instanceof Error ? error.message : "This checkpoint could not be saved locally.");
+    }
+  };
+
   if (route === "ERA_DRAFT") {
     if (!session) return <LoadingSession />;
+    if (session.state.phase === "GAME_COMPLETE") {
+      if (!session.presentationCursor) throw new Error("Completed season is missing its presentation cursor.");
+      return <SeasonExperience session={{ catalog: session.catalog, state: session.state, cursor: session.presentationCursor }}
+        persistenceWarning={persistenceWarning} onCursor={setSeasonCursor} onExit={() => navigate("HOME")}
+        onSameEra={() => void startDraft(session.state.eraId)} onNewEra={() => {
+          if (discardSave()) {
+            setLandingNotice(null);
+            setSelectedEra(null);
+            navigate("HOME");
+          }
+        }} />;
+    }
     return session.state.phase === "REVEALED"
-      ? <RevealedExperience session={{ catalog: session.catalog, state: session.state }} persistenceWarning={persistenceWarning} onExit={() => navigate("HOME")} />
+      ? <RevealedExperience session={{ catalog: session.catalog, state: session.state }} persistenceWarning={persistenceWarning}
+          onBeginSeason={() => {
+            const result = reduceEraDraft(session.catalog, session.state, { type: "SIMULATE_SEASON" });
+            if (!result.ok || result.state.phase !== "GAME_COMPLETE") throw new Error("The season could not be simulated.");
+            acceptTransition(session.catalog, result, { phase: "LEAGUE", revealedUserMatches: 1 });
+          }} onExit={() => navigate("HOME")} />
       : <DraftExperience session={{ catalog: session.catalog, state: session.state }}
           persistenceWarning={persistenceWarning} onAccepted={(result) => acceptTransition(session.catalog, result)} onExit={() => navigate("HOME")} />;
   }
@@ -209,7 +248,8 @@ export function Landing(props: {
       {props.savedGame.kind === "CANDIDATE" && (
         <section className="continue-panel" aria-labelledby="continue-title">
           <div><p className="eyebrow">Saved locally</p><h2 id="continue-title">Continue {ERA_COPY[props.savedGame.save.summary.eraId].title}</h2>
-            <p>{saveSummaryLabel(props.savedGame.save.summary.phase, props.savedGame.save.summary.pickCount)}</p></div>
+            <p>{saveSummaryLabel(props.savedGame.save.summary.phase, props.savedGame.save.summary.pickCount,
+              props.savedGame.save.envelope.presentationCursor)}</p></div>
           <button className="primary-action" disabled={!props.manifest || props.loadingContinue} onClick={props.onContinue}>
             {props.loadingContinue ? "Restoring…" : "Continue game"}<span aria-hidden="true">→</span>
           </button>
@@ -366,23 +406,30 @@ function CandidateGallery(props: {
   selected?: DraftCandidateIdentityView;
   onSelect: (candidate: DraftCandidateIdentityView) => void;
 }): ReactElement {
+  let previousGroup: DraftCandidateIdentityView["presentationGroup"] | null = null;
   return (
     <div className="candidate-section">
       <div className="candidate-heading"><h3>Eligible squad</h3><span>{props.view.candidates.length} players</span></div>
       <div className="candidate-grid">
         {props.view.candidates.map((candidate) => {
           const selected = candidate.playerTeamSeasonId === props.selectedId;
+          const showGroup = candidate.presentationGroup !== previousGroup;
+          previousGroup = candidate.presentationGroup;
           return (
-            <button key={candidate.playerTeamSeasonId} className={`candidate-card${selected ? " candidate-card-selected" : ""}`}
-              disabled={!candidate.available} aria-pressed={selected}
-              title={!candidate.available ? candidate.positions.flatMap((position) => position.reasons)[0]?.message : undefined}
-              onClick={() => props.onSelect(candidate)}>
-              <span className="portrait-placeholder" aria-hidden="true"><span>{monogram(candidate.playerName)}</span></span>
-              <span className="candidate-body"><strong>{candidate.playerName}</strong><span>{friendly(candidate.derivedRole)}</span>
-                <span className="candidate-meta">{candidate.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}
-                  {candidate.keeperCapability === "CONFIRMED" ? " · WK" : ""}</span></span>
-              <span className="select-mark" aria-hidden="true">{selected ? "✓" : "+"}</span>
-            </button>
+            <div className="candidate-entry" key={candidate.playerTeamSeasonId}>
+              {showGroup && <div className="candidate-group-label"><span>{friendly(candidate.presentationGroup)}</span></div>}
+              <button className={`candidate-card${selected ? " candidate-card-selected" : ""}`}
+                disabled={!candidate.available} aria-pressed={selected}
+                title={!candidate.available ? candidate.positions.flatMap((position) => position.reasons)[0]?.message : undefined}
+                onClick={() => props.onSelect(candidate)}>
+                <span className="portrait-placeholder" aria-hidden="true"><span>{monogram(candidate.playerName)}</span></span>
+                <span className="candidate-body"><strong>{candidate.playerName}</strong><span>{friendly(candidate.derivedRole)}</span>
+                  <span className="candidate-meta">{candidate.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}
+                    {candidate.keeperCapability === "CONFIRMED" ? " · WK" : ""}</span></span>
+                <span className="candidate-quick-stat">{candidateQuickStat(candidate)}</span>
+                <span className="select-mark" aria-hidden="true">{selected ? "✓" : "+"}</span>
+              </button>
+            </div>
           );
         })}
       </div>
@@ -393,6 +440,8 @@ function CandidateGallery(props: {
 
 function SelectedPlayerDetail({ candidate }: { candidate: DraftCandidateIdentityView }): ReactElement {
   const availablePositions = candidate.positions.filter((position) => position.available);
+  const showBatting = candidate.derivedRole !== "BOWLER" && candidate.derivedRole !== "UNKNOWN";
+  const showBowling = candidate.derivedRole === "BOWLER" || candidate.derivedRole === "ALL_ROUNDER";
   return <section className="selected-player-detail" aria-labelledby="selected-player-title">
     <span className="selected-player-portrait" aria-hidden="true">{monogram(candidate.playerName)}</span>
     <div className="selected-player-copy">
@@ -405,15 +454,46 @@ function SelectedPlayerDetail({ candidate }: { candidate: DraftCandidateIdentity
         <span>{friendly(candidate.bowlingWorkloadClass)} bowling</span>
         <span>{friendly(candidate.bowlingFamily)}</span>
       </div>
+      <div className="historical-stat-grid" aria-label="Historical player-season statistics">
+        <HistoricalStatBlock label={`${candidate.seasonYear} · Current / spun season`} candidate={candidate}
+          batting={showBatting} bowling={showBowling} current />
+        <HistoricalStatBlock label="Best season in this era" candidate={candidate}
+          batting={showBatting} bowling={showBowling} />
+      </div>
     </div>
     <div className="selected-player-instruction"><strong>Choose a batting position</strong>
       <span>{availablePositions.length} of 11 slots currently available</span></div>
   </section>;
 }
 
+function HistoricalStatBlock(props: {
+  label: string;
+  candidate: DraftCandidateIdentityView;
+  batting: boolean;
+  bowling: boolean;
+  current?: boolean;
+}): ReactElement {
+  const stats = props.candidate.historicalStats;
+  const batting = props.current ? stats.currentSeason.batting : stats.eraBest.batting;
+  const bowling = props.current ? stats.currentSeason.bowling : stats.eraBest.bowling;
+  const lines: string[] = [];
+  if (props.batting && batting) {
+    const prefix = props.current ? "BAT" : `${stats.eraBest.batting!.seasonYear} · BAT`;
+    lines.push(`${prefix} · ${batting.runs} runs${batting.strikeRate === null ? "" : ` · ${formatOneDecimal(batting.strikeRate)} SR`}${batting.average === null ? "" : ` · ${formatOneDecimal(batting.average)} avg`}`);
+  }
+  if (props.bowling && bowling) {
+    const prefix = props.current ? "BOWL" : `${stats.eraBest.bowling!.seasonYear} · BOWL`;
+    lines.push(`${prefix} · ${bowling.wickets} wickets${bowling.economy === null ? "" : ` · ${formatTwoDecimals(bowling.economy)} econ`}`);
+  }
+  return <div className="historical-stat-block"><span>{props.label}</span>
+    {lines.length > 0 ? lines.map((line) => <strong key={line}>{line}</strong>) : <strong>No recorded statistics</strong>}
+  </div>;
+}
+
 function RevealedExperience(props: {
   session: { readonly catalog: EraDraftCatalog; readonly state: Extract<Phase2EraDraftState, { phase: "REVEALED" }> };
   persistenceWarning: string | null;
+  onBeginSeason: () => void;
   onExit: () => void;
 }): ReactElement {
   const view = useMemo(
@@ -421,6 +501,8 @@ function RevealedExperience(props: {
     [props.session.catalog, props.session.state],
   );
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const beginStartedRef = useRef(false);
+  const [beginStarted, setBeginStarted] = useState(false);
   const era = ERA_COPY[view.eraId];
   useEffect(() => headingRef.current?.focus(), []);
   return <main className="era-shell draft-shell revealed-shell">
@@ -451,13 +533,188 @@ function RevealedExperience(props: {
           <EvaluationRow label="Bowling deployment" value={`${formatRating(view.evaluation.construction.deployedBowlingUnits)}/${view.evaluation.construction.requiredBowlingUnits} units`} />
           <EvaluationRow label="Bowling options" value={`${view.evaluation.construction.frontlineBowlers} frontline · ${view.evaluation.construction.supportBowlers} support`} />
         </section>
-        <div className="phase-boundary"><p className="eyebrow">Next phase</p><h2>Take this XI into a season.</h2>
-          <p>League simulation and playoffs begin in Phase 3.</p><button className="primary-action" disabled>Begin season</button></div>
+        <div className="phase-boundary"><p className="eyebrow">Season ready</p><h2>Take this XI into a season.</h2>
+          <p>One complete league and playoff result will be frozen when you begin.</p>
+          <button className="primary-action" disabled={beginStarted} onClick={() => {
+            if (beginStartedRef.current) return;
+            beginStartedRef.current = true;
+            setBeginStarted(true);
+            props.onBeginSeason();
+          }}>{beginStarted ? "Simulating season…" : "Begin season"} <span aria-hidden="true">→</span></button></div>
         <p className="sr-status" aria-live="polite">Team revealed. Player and team ratings are now visible.</p>
       </section>
       <XiPanel view={view} />
     </div>
   </main>;
+}
+
+export function SeasonExperience(props: {
+  session: {
+    readonly catalog: EraDraftCatalog;
+    readonly state: Extract<PersistableEraDraftState, { phase: "GAME_COMPLETE" }>;
+    readonly cursor: EraDraftPresentationCursor;
+  };
+  persistenceWarning: string | null;
+  onCursor: (cursor: EraDraftPresentationCursor) => void;
+  onExit: () => void;
+  onSameEra: () => void;
+  onNewEra: () => void;
+}): ReactElement {
+  const view = useMemo(() => projectEraDraftGameCompleteState(props.session.catalog, props.session.state),
+    [props.session.catalog, props.session.state]);
+  const { cursor } = props.session;
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => headingRef.current?.focus(), [cursor]);
+  const era = ERA_COPY[view.eraId];
+  return <main className="era-shell season-shell">
+    <header className="game-header draft-header">
+      <button className="wordmark wordmark-button" onClick={props.onExit} aria-label="Return to era selection">
+        <span className="wordmark-mark">ED</span><span>ERA DRAFT</span>
+      </button>
+      <div className="draft-era-id"><span>{era.title}</span><strong>{era.years}</strong></div>
+      <button className="quiet-button" onClick={props.onExit}>Exit season</button>
+    </header>
+    {props.persistenceWarning && <p className="draft-warning" role="status">{props.persistenceWarning}</p>}
+    {cursor.phase === "LEAGUE" && <LeagueCheckpoint view={view} revealed={cursor.revealedUserMatches}
+      headingRef={headingRef} onNext={() => props.onCursor(cursor.revealedUserMatches < 14
+        ? { phase: "LEAGUE", revealedUserMatches: cursor.revealedUserMatches + 1 }
+        : { phase: "LEAGUE_COMPLETE" })}
+      onSimRemaining={() => props.onCursor({ phase: "LEAGUE_COMPLETE" })} />}
+    {cursor.phase === "LEAGUE_COMPLETE" && <LeagueComplete view={view} headingRef={headingRef}
+      onContinue={() => props.onCursor(view.league.qualified
+        ? { phase: "PLAYOFFS", revealedPlayoffMatches: 1 }
+        : { phase: "COMPLETE" })} />}
+    {cursor.phase === "PLAYOFFS" && <PlayoffExperience view={view} revealed={cursor.revealedPlayoffMatches}
+      headingRef={headingRef} onNext={() => props.onCursor(cursor.revealedPlayoffMatches < view.playoffs.userMatches.length
+        ? { phase: "PLAYOFFS", revealedPlayoffMatches: cursor.revealedPlayoffMatches + 1 }
+        : { phase: "COMPLETE" })}
+      onSimToEnd={() => props.onCursor({ phase: "COMPLETE" })} />}
+    {cursor.phase === "COMPLETE" && <TerminalExperience view={view} headingRef={headingRef}
+      onSameEra={props.onSameEra} onNewEra={props.onNewEra} />}
+  </main>;
+}
+
+function LeagueCheckpoint(props: {
+  view: EraDraftGameCompleteView;
+  revealed: number;
+  headingRef: RefObject<HTMLHeadingElement | null>;
+  onNext: () => void;
+  onSimRemaining: () => void;
+}): ReactElement {
+  const checkpoint = props.view.league.userMatches[props.revealed - 1]!;
+  return <div className="season-layout">
+    <section className="season-primary" aria-labelledby="season-match-title">
+      <div className="season-kicker"><p className="eyebrow">League stage</p><span>Match {String(checkpoint.matchNumber).padStart(2, "0")} / 14</span></div>
+      <h1 ref={props.headingRef} tabIndex={-1} id="season-match-title">{checkpoint.match.opponent?.teamName}</h1>
+      <MatchResult match={checkpoint.match} />
+      <div className="season-progress-summary">
+        <div><span>Season record</span><strong>{checkpoint.record.won}–{checkpoint.record.lost}</strong></div>
+        <div><span>League position</span><strong>{ordinal(checkpoint.position)}</strong>
+          <small>{movementLabel(checkpoint.movement, checkpoint.previousPosition)}</small></div>
+      </div>
+      <div className="season-actions">
+        <button className="primary-action" onClick={props.onNext}>{props.revealed === 14 ? "View final table" : "Next match"}<span aria-hidden="true">→</span></button>
+        {props.revealed < 14 && <button className="secondary-action" onClick={props.onSimRemaining}>Sim remaining</button>}
+      </div>
+      <p className="sr-status" aria-live="polite">Match {checkpoint.matchNumber} revealed. {checkpoint.match.resultLabel}. Record {checkpoint.record.won} wins and {checkpoint.record.lost} losses. Position {checkpoint.position}.</p>
+    </section>
+    <StandingsTable rows={checkpoint.standings} provisional={checkpoint.matchNumber < 14} />
+  </div>;
+}
+
+function LeagueComplete(props: {
+  view: EraDraftGameCompleteView;
+  headingRef: RefObject<HTMLHeadingElement | null>;
+  onContinue: () => void;
+}): ReactElement {
+  return <div className="season-layout">
+    <section className="season-primary league-complete-panel" aria-labelledby="league-complete-title">
+      <p className="eyebrow">League complete</p>
+      <h1 ref={props.headingRef} tabIndex={-1} id="league-complete-title">{props.view.league.qualified ? "Playoffs secured." : "Season ends here."}</h1>
+      <p className="season-outcome-copy">Your XI finished {ordinal(props.view.league.userFinalPosition)} with a {props.view.league.userRecord.won}–{props.view.league.userRecord.lost} record.</p>
+      <div className={`qualification-state ${props.view.league.qualified ? "qualified" : "eliminated"}`}>
+        <span>{props.view.league.qualified ? "Qualified" : "Not qualified"}</span>
+        <strong>{props.view.league.qualified ? "The playoff route is ready." : `Eventual champion: ${props.view.champion.teamName}`}</strong>
+      </div>
+      <button className="primary-action" onClick={props.onContinue}>{props.view.league.qualified ? "Begin playoffs" : "View season result"}<span aria-hidden="true">→</span></button>
+      <p className="sr-status" aria-live="polite">Final league standings revealed. Your XI finished position {props.view.league.userFinalPosition} and {props.view.league.qualified ? "qualified" : "did not qualify"}.</p>
+    </section>
+    <StandingsTable rows={props.view.league.finalStandings} provisional={false} />
+  </div>;
+}
+
+function PlayoffExperience(props: {
+  view: EraDraftGameCompleteView;
+  revealed: number;
+  headingRef: RefObject<HTMLHeadingElement | null>;
+  onNext: () => void;
+  onSimToEnd: () => void;
+}): ReactElement {
+  const match = props.view.playoffs.userMatches[props.revealed - 1]!;
+  const allIndex = props.view.playoffs.allMatches.findIndex((item) => item.matchId === match.matchId);
+  return <div className="season-layout playoff-layout">
+    <section className="season-primary" aria-labelledby="playoff-match-title">
+      <div className="season-kicker"><p className="eyebrow">Playoffs</p><span>{stageLabel(match.stage)}</span></div>
+      <h1 ref={props.headingRef} tabIndex={-1} id="playoff-match-title">{match.opponent?.teamName}</h1>
+      <MatchResult match={match} />
+      <div className="season-actions"><button className="primary-action" onClick={props.onNext}>
+        {props.revealed < props.view.playoffs.userMatches.length ? "Next match" : "View season result"}<span aria-hidden="true">→</span></button>
+        <button className="secondary-action" onClick={props.onSimToEnd}>Sim to end</button></div>
+      <p className="sr-status" aria-live="polite">{stageLabel(match.stage)} revealed. {match.resultLabel}.</p>
+    </section>
+    <PlayoffRoute matches={props.view.playoffs.allMatches.slice(0, allIndex + 1)} activeMatchId={match.matchId} />
+  </div>;
+}
+
+function TerminalExperience(props: {
+  view: EraDraftGameCompleteView;
+  headingRef: RefObject<HTMLHeadingElement | null>;
+  onSameEra: () => void;
+  onNewEra: () => void;
+}): ReactElement {
+  return <section className={`terminal-screen${props.view.champion.isUser ? " terminal-champion" : ""}`} aria-labelledby="terminal-title">
+    <p className="eyebrow">Season complete</p>
+    <h1 ref={props.headingRef} tabIndex={-1} id="terminal-title">{props.view.champion.isUser ? "Your XI are champions." : `${props.view.champion.teamName} are champions.`}</h1>
+    <p className="champion-line">{props.view.champion.teamName}<span>IPL Era Draft champion</span></p>
+    <div className="terminal-summary">
+      <div><span>League finish</span><strong>{ordinal(props.view.league.userFinalPosition)}</strong></div>
+      <div><span>Record</span><strong>{props.view.league.userRecord.won}–{props.view.league.userRecord.lost}</strong></div>
+      <div><span>Season result</span><strong>{props.view.playoffs.userResult}</strong></div>
+    </div>
+    {props.view.league.qualified && <PlayoffRoute matches={props.view.playoffs.allMatches} />}
+    <div className="terminal-actions"><button className="primary-action" onClick={props.onNewEra}>New Era Draft</button>
+      <button className="secondary-action" onClick={props.onSameEra}>Draft same era again</button></div>
+    <p className="sr-status" aria-live="polite">Season complete. {props.view.champion.teamName} are champions.</p>
+  </section>;
+}
+
+function MatchResult({ match }: { match: EraDraftGameCompleteView["league"]["userMatches"][number]["match"] }): ReactElement {
+  return <article className={`match-result match-result-${match.result.toLowerCase()}`} aria-label={match.resultLabel}>
+    <div className="innings-row"><span><small>{match.firstInnings.teamId === "user" ? "Your XI" : match.firstInnings.teamName}</small><strong>{match.firstInnings.teamName}</strong></span>
+      <b>{formatInnings(match.firstInnings.runs, match.firstInnings.wickets)}</b></div>
+    <div className="innings-row"><span><small>{match.secondInnings.teamId === "user" ? "Your XI" : match.secondInnings.teamName}</small><strong>{match.secondInnings.teamName}</strong></span>
+      <b>{formatInnings(match.secondInnings.runs, match.secondInnings.wickets)}</b></div>
+    <div className="match-verdict"><span>{match.result === "AI_RESULT" ? "Result" : match.result}</span><strong>{match.resultLabel}</strong></div>
+  </article>;
+}
+
+function StandingsTable({ rows, provisional }: { rows: EraDraftGameCompleteView["league"]["finalStandings"]; provisional: boolean }): ReactElement {
+  return <section className="standings-panel" aria-labelledby="standings-title">
+    <div className="candidate-heading"><h2 id="standings-title">{provisional ? "Provisional table" : "Final standings"}</h2><span>{provisional ? "In progress" : "14 matches"}</span></div>
+    <div className="standings-scroll"><table><thead><tr><th scope="col">Pos</th><th scope="col">Team</th><th scope="col">P</th><th scope="col">W</th><th scope="col">L</th><th scope="col">Pts</th><th scope="col">NRR</th></tr></thead>
+      <tbody>{rows.map((row) => <tr key={row.teamId} className={row.isUser ? "user-standing" : undefined}>
+        <td>{row.position}</td><th scope="row">{row.teamName}{row.isUser && <small>Your XI</small>}{row.qualified === true && <small>Qualified</small>}</th>
+        <td>{row.played}</td><td>{row.won}</td><td>{row.lost}</td><td>{row.points}</td><td>{formatSigned(row.netRunRate)}</td>
+      </tr>)}</tbody></table></div>
+  </section>;
+}
+
+function PlayoffRoute({ matches, activeMatchId }: { matches: EraDraftGameCompleteView["playoffs"]["allMatches"]; activeMatchId?: string }): ReactElement {
+  return <section className="playoff-route" aria-labelledby="playoff-route-title"><div className="candidate-heading"><h2 id="playoff-route-title">Playoff route</h2><span>Frozen result</span></div>
+    <ol>{matches.map((match) => <li key={match.matchId} className={match.matchId === activeMatchId ? "active-playoff" : undefined}>
+      <span>{stageLabel(match.stage)}</span><strong>{match.resultLabel}</strong>
+    </li>)}</ol>
+  </section>;
 }
 
 function RevealMetric({ label, value, featured = false }: { label: string; value: number; featured?: boolean }): ReactElement {
@@ -602,7 +859,46 @@ function countSummary<T extends string>(counts: Readonly<Record<T, number>>, ord
   return order.filter((key) => counts[key] > 0).map((key) => `${friendly(key)} ${counts[key]}`).join(" · ") || "None";
 }
 
-function saveSummaryLabel(phase: Phase2EraDraftState["phase"], pickCount: number): string {
+function candidateQuickStat(candidate: DraftCandidateIdentityView): string {
+  const { batting, bowling } = candidate.historicalStats.currentSeason;
+  if (candidate.derivedRole === "ALL_ROUNDER") return `${batting.runs} R · ${bowling.wickets} W`;
+  if (candidate.derivedRole === "BOWLER") return `${bowling.wickets} ${bowling.wickets === 1 ? "wicket" : "wickets"}`;
+  return `${batting.runs} runs`;
+}
+
+function formatOneDecimal(value: number): string { return value.toFixed(1); }
+function formatTwoDecimals(value: number): string { return value.toFixed(2); }
+function formatInnings(runs: number, wickets: number): string { return wickets === 10 ? `${runs}` : `${runs}/${wickets}`; }
+function formatSigned(value: number): string { return `${value >= 0 ? "+" : ""}${value.toFixed(3)}`; }
+function ordinal(value: number): string {
+  const suffix = value % 100 >= 11 && value % 100 <= 13 ? "th"
+    : value % 10 === 1 ? "st" : value % 10 === 2 ? "nd" : value % 10 === 3 ? "rd" : "th";
+  return `${value}${suffix}`;
+}
+function movementLabel(movement: "UP" | "DOWN" | "SAME" | "FIRST", previous: number | null): string {
+  if (movement === "FIRST") return "Opening position";
+  if (movement === "SAME") return "No movement";
+  return `${movement === "UP" ? "Up" : "Down"} from ${ordinal(previous!)}`;
+}
+function stageLabel(stage: "LEAGUE" | "QUALIFIER_1" | "ELIMINATOR" | "QUALIFIER_2" | "FINAL"): string {
+  if (stage === "QUALIFIER_1") return "Qualifier 1";
+  if (stage === "QUALIFIER_2") return "Qualifier 2";
+  if (stage === "ELIMINATOR") return "Eliminator";
+  if (stage === "FINAL") return "Final";
+  return "League";
+}
+
+function saveSummaryLabel(
+  phase: PersistableEraDraftState["phase"],
+  pickCount: number,
+  cursor: EraDraftPresentationCursor | null = null,
+): string {
+  if (phase === "GAME_COMPLETE") {
+    if (cursor?.phase === "LEAGUE") return `League match ${cursor.revealedUserMatches} / 14`;
+    if (cursor?.phase === "LEAGUE_COMPLETE") return "Final standings ready";
+    if (cursor?.phase === "PLAYOFFS") return "Playoffs in progress";
+    return "Season complete";
+  }
   if (phase === "REVEALED") return "Team revealed · 11/11 locked";
   if (phase === "XI_COMPLETE") return "Ready to reveal · 11/11 locked";
   if (phase === "AWAITING_PICK") return `Player selection open · ${pickCount}/11 locked`;
