@@ -452,3 +452,106 @@ button.xi-slot { cursor: default; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
 }
+
+/* Homepage tokens and overrides stay local to preserve every game screen. */
+.landing-shell {
+  --home-bg: #0e1112;
+  --home-surface: #17181a;
+  --home-detail: #1c1d20;
+  --home-border: #39383b;
+  --home-border-strong: #65583f;
+  --home-text: #f3eee5;
+  --home-secondary: #bdb6ab;
+  --home-meta: #aaa59b;
+  --home-gold: #c8a669;
+  --home-gold-hover: #d7b779;
+  --home-action-text: #201b12;
+  --home-selected: #302a20;
+  --home-hover: #232427;
+  --home-focus: #e9d29f;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 32px 176px;
+  color: var(--home-text);
+  background: var(--home-bg);
+}
+.landing-shell .landing-atmosphere { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.landing-shell .landing-atmosphere::before {
+  content: ""; position: absolute; inset: 0; opacity: 0.62;
+  background:
+    radial-gradient(ellipse 180px 80px at 0% 5%, #f5e3ae9c, transparent 80%),
+    radial-gradient(ellipse 180px 80px at 100% 5%, #dbe5da9c, transparent 80%),
+    conic-gradient(from 138deg at 0% 4%, transparent 0deg, #ddce9740 10deg, #d4c69020 19deg, transparent 32deg),
+    conic-gradient(from 190deg at 100% 4%, transparent 0deg, #b2c9c540 11deg, #afc5be26 23deg, transparent 37deg),
+    radial-gradient(ellipse 75% 37% at 50% 110%, #3e605a88, transparent 90%);
+}
+.landing-shell .landing-atmosphere::after {
+  content: ""; position: absolute; width: 118%; height: 460px; left: -9%; bottom: -345px;
+  border: 1px solid rgb(171 188 175 / 18%); border-radius: 50%;
+  box-shadow: 0 0 0 30px #b4c5b508, 0 0 0 75px #b4c5b505;
+}
+.landing-shell .game-header { width: 100%; max-width: 1200px; min-height: 72px; margin-inline: auto; border-color: var(--home-border); flex-wrap: wrap; gap: 8px 24px; padding-block: 12px; }
+.landing-shell .wordmark { color: var(--home-text); font-size: 18px; line-height: 24px; font-weight: 600; letter-spacing: 0.09em; white-space: nowrap; }
+.landing-shell .landing-header-actions { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 8px 24px; margin-left: auto; }
+.landing-shell .classic-link { display: inline-flex; align-items: center; gap: 4px; min-height: 40px; color: var(--home-meta); font-size: 12px; }
+.landing-shell .classic-link:hover { color: var(--home-text); }
+.landing-shell .landing-content { width: 100%; max-width: 1000px; margin: 48px auto 0; }
+.landing-shell .era-picker { width: 100%; padding: 0; }
+.landing-shell .section-heading { display: block; margin-bottom: 24px; }
+.landing-shell .eyebrow { margin: 0 0 8px; color: var(--home-gold); font-size: 11px; line-height: 16px; font-weight: 400; letter-spacing: 0.08em; }
+.landing-shell .section-heading h1 { margin: 0; font: 500 30px/36px "Space Grotesk", sans-serif; letter-spacing: -0.035em; }
+.landing-shell .era-selection-layout { grid-template-columns: minmax(0, 44fr) minmax(0, 56fr); gap: 32px; align-items: start; }
+.landing-shell .era-grid { overflow: visible; border: 0; border-top: 1px solid var(--home-border); border-radius: 4px; background: var(--home-surface); }
+.landing-shell .era-card { display: block; min-height: 64px; padding: 16px; border-bottom: 1px solid var(--home-border); color: var(--home-secondary); background: var(--home-surface); transition: background-color 160ms ease-out, color 160ms ease-out; }
+.landing-shell .era-card:first-child { border-radius: 4px 4px 0 0; }
+.landing-shell .era-card:last-child { border-bottom: 1px solid var(--home-border); border-radius: 0 0 4px 4px; }
+.landing-shell .era-card-main { grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; }
+.landing-shell .era-card-main strong { overflow: visible; font-size: 16px; line-height: 22px; font-weight: 500; letter-spacing: 0; text-transform: none; white-space: normal; }
+.landing-shell .era-years { color: var(--home-meta); font-size: 12px; line-height: 18px; letter-spacing: 0; white-space: nowrap; }
+.landing-shell .era-card:hover:not(:disabled) { background: var(--home-hover); color: var(--home-text); }
+.landing-shell .era-card-selected, .landing-shell .era-card-selected:hover:not(:disabled) { background: var(--home-selected); box-shadow: inset 3px 0 0 var(--home-gold); color: var(--home-text); }
+.landing-shell .era-card-selected .era-years { color: var(--home-text); }
+.landing-shell .era-detail { min-width: 0; min-height: 321px; display: flex; flex-direction: column; gap: 0; padding: 28px; border: 1px solid var(--home-border); border-radius: 6px; background: var(--home-detail); box-shadow: none; }
+.landing-shell .era-detail-selected { border-color: var(--home-border-strong); }
+.landing-shell .era-detail-kicker { display: block; margin: 0; color: var(--home-gold); font: 400 11px/16px "Geist Mono", monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+.landing-shell .era-detail-years { margin: 16px 0; color: var(--home-gold); font: 400 40px/48px "Geist Mono", monospace; letter-spacing: -0.05em; }
+.landing-shell .era-detail-copy { max-width: 430px; min-height: 44px; margin: 0 0 16px; color: var(--home-secondary); font-size: 14px; line-height: 22px; }
+.landing-shell .landing-rules { margin: 0 0 24px; color: var(--home-meta); font: 400 12px/18px "Geist Mono", monospace; text-transform: uppercase; }
+.landing-shell .primary-action, .landing-shell .secondary-action { min-height: 44px; padding: 11px 20px; border: 1px solid var(--home-gold); border-radius: 4px; background: var(--home-gold); color: var(--home-action-text); font: 500 14px/20px "Geist Sans", sans-serif; letter-spacing: 0; text-transform: none; transition: background-color 160ms ease-out, color 160ms ease-out; }
+.landing-shell .primary-action:hover:not(:disabled), .landing-shell .secondary-action:hover:not(:disabled) { transform: none; background: var(--home-gold-hover); }
+.landing-shell .start-draft-action { align-self: flex-start; justify-content: center; width: auto; max-width: 100%; margin-top: auto; gap: 4px; }
+.landing-shell .landing-continue { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-height: 40px; padding: 9px 16px; border-color: var(--home-border-strong); background: var(--home-surface); color: var(--home-text); }
+.landing-shell .landing-continue:hover:not(:disabled) { background: var(--home-hover); }
+.landing-shell button:disabled { background: var(--home-surface); color: var(--home-meta); border-color: var(--home-border); opacity: 0.56; }
+.landing-shell :is(button, a, [tabindex]):focus-visible { outline: 2px solid var(--home-focus); outline-offset: 2px; }
+.landing-shell .era-detail-empty { flex: 1; gap: 12px; }
+.landing-shell .era-detail-empty h2 { margin: 0; font: 500 20px/28px "Space Grotesk", sans-serif; color: var(--home-text); }
+.landing-shell .era-detail-empty p { margin: 0; color: var(--home-secondary); font-size: 14px; line-height: 22px; }
+.landing-shell .landing-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.landing-shell .save-recovery, .landing-shell .storage-notice, .landing-shell .load-state, .landing-shell .overwrite-confirm { width: 100%; border-radius: 6px; background: var(--home-detail); box-shadow: none; }
+.landing-shell .save-recovery, .landing-shell .storage-notice { margin-bottom: 24px; }
+.landing-shell .overwrite-confirm { margin-top: auto; padding: 16px; border-color: var(--home-border-strong); }
+.landing-shell .overwrite-confirm p { color: var(--home-secondary); }
+.landing-shell .quiet-button { color: var(--home-secondary); }
+.landing-shell .era-detail > .async-detail { flex: none; margin: 12px 0 0 !important; font-size: 12px !important; line-height: 18px; color: var(--home-meta) !important; }
+.landing-shell .load-state { margin-top: 24px; }
+
+@media (max-width: 759px) {
+  .landing-shell { padding-inline: 20px; }
+  .landing-shell .era-selection-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .landing-shell .section-heading h1 { font-size: 26px; line-height: 32px; }
+  .landing-shell .era-detail { padding: 20px; min-height: 320px; }
+  .landing-shell .era-detail-years { font-size: 32px; line-height: 40px; }
+  .landing-shell .start-draft-action { width: 100%; }
+  .landing-shell .landing-continue, .landing-shell .classic-link { min-height: 44px; }
+  .landing-shell .landing-header-actions { gap: 8px 16px; }
+  .landing-shell .save-recovery { flex-direction: column; align-items: stretch; gap: 16px; }
+  .landing-shell .load-state { flex-wrap: wrap; }
+}
+@media (max-width: 479px) {
+  .landing-shell { padding-inline: 16px; }
+  .landing-shell .wordmark { font-size: 16px; }
+  .landing-shell .era-card-main { gap: 12px; }
+}

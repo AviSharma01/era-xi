@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { act } from "react";
+import { act, useState } from "react";
 
 import { JSDOM } from "jsdom";
 import { createRoot } from "react-dom/client";
@@ -31,7 +31,10 @@ test("landing presents an explicit safe Continue summary without reveal data", (
   const html = renderLanding({ kind: "CANDIDATE", save: candidate });
   assert.match(html, /Continue Transition/);
   assert.match(html, /Player selection open · 4\/11 locked/);
-  assert.match(html, /Continue game/);
+  assert.match(html, /Continue Game/);
+  const document = new JSDOM(html).window.document;
+  assert.ok(document.querySelector("header .landing-continue"));
+  assert.equal(document.querySelector("header .landing-header-actions")?.lastElementChild?.textContent, "Continue Game→");
   assert.doesNotMatch(html, /rating|quality tier|serializedEngineState/i);
 });
 
@@ -40,7 +43,7 @@ test("landing presents invalid-save recovery without crashing era selection", ()
   assert.match(html, /Saved game unavailable/);
   assert.match(html, /Nothing was silently changed or repaired/);
   assert.match(html, /Discard unusable save/);
-  assert.match(html, /Choose an era/);
+  assert.match(html, /Choose your chapter/);
 });
 
 test("starting over a valid save requires the lightweight overwrite decision", () => {
@@ -221,6 +224,102 @@ test("draft player selection toggles, switches, escapes, stays ephemeral, and cl
       IS_REACT_ACT_ENVIRONMENT: false,
     });
     dom.window.close();
+  }
+});
+
+test("homepage keeps all five era selections separate from starting and preserves nested Classic links", async () => {
+  const dom = new JSDOM("<!doctype html><div id=\"root\"></div>", { url: "https://example.test/game/" });
+  const restoreGlobals = installDomGlobals(dom);
+  const element = dom.window.document.querySelector<HTMLElement>("#root")!;
+  const root = createRoot(element);
+  const starts: EraId[] = [];
+  let continues = 0;
+  function Home() {
+    const [selectedEra, setSelectedEra] = useState<EraId | null>(null);
+    return <Landing manifest={manifest} manifestLoading={false} error={null} loadingEra={null} selectedEra={selectedEra}
+      savedGame={{ kind: "CANDIDATE", save: candidate }} loadingContinue={false} overwriteEra={null} notice={null} basePath="/game/"
+      onContinue={() => { continues += 1; }} onDiscardSave={() => true} onRetryManifest={() => undefined}
+      onCancelOverwrite={() => undefined} onConfirmOverwrite={() => undefined} onSelect={setSelectedEra} onStart={(era) => starts.push(era)} />;
+  }
+  try {
+    await act(async () => root.render(<Home />));
+    assert.equal(element.querySelectorAll('.era-card[aria-pressed="true"]').length, 0);
+    assert.equal(element.querySelector(".start-draft-action"), null);
+    assert.equal(element.querySelector(".classic-link")?.getAttribute("href"), "/game/classic");
+    assert.equal(element.querySelector(".wordmark")?.getAttribute("href"), "/game/");
+    const ids: EraId[] = ["era-foundation", "era-expansion", "era-transition", "era-modern-pre-impact", "era-impact"];
+    const rows = [...element.querySelectorAll<HTMLButtonElement>(".era-card")];
+    assert.equal(rows.length, 5);
+    for (const [index, row] of rows.entries()) {
+      await act(async () => row.click());
+      assert.equal(row.getAttribute("aria-pressed"), "true");
+      assert.equal(element.querySelectorAll('.era-card[aria-pressed="true"]').length, 1);
+      assert.equal(element.querySelector(".era-detail-kicker")?.textContent, row.querySelector("strong")?.textContent);
+      assert.equal(element.querySelector(".era-detail-years")?.textContent, row.querySelector(".era-years")?.textContent);
+      assert.equal(starts.length, index);
+      await act(async () => element.querySelector<HTMLButtonElement>(".start-draft-action")!.click());
+      assert.equal(starts[index], ids[index]);
+    }
+    await act(async () => element.querySelector<HTMLButtonElement>(".landing-continue")!.click());
+    assert.equal(continues, 1);
+    assert.match(element.querySelector("#continue-summary")?.textContent ?? "", /Continue Transition/);
+  } finally {
+    await act(async () => root.unmount()); restoreGlobals(); dom.window.close();
+  }
+});
+
+test("homepage hides Continue for absent or unusable saves and keeps loading actions disabled", () => {
+  for (const saved of [{ kind: "EMPTY" }, { kind: "INVALID", message: "Invalid save" },
+    { kind: "UNAVAILABLE", message: "Storage unavailable" }] as EraDraftUiSaveReadResult[]) {
+    assert.doesNotMatch(renderLanding(saved), /class="[^"]*landing-continue/);
+  }
+  const loading = new JSDOM(renderLanding({ kind: "CANDIDATE", save: candidate }, null,
+    { manifest: null, manifestLoading: true })).window.document;
+  assert.ok(loading.querySelector<HTMLButtonElement>(".landing-continue")?.disabled);
+  assert.ok([...loading.querySelectorAll<HTMLButtonElement>(".era-card")].every((row) => row.disabled));
+  const restoring = new JSDOM(renderLanding({ kind: "CANDIDATE", save: candidate }, null,
+    { loadingContinue: true })).window.document;
+  assert.ok(restoring.querySelector<HTMLButtonElement>(".landing-continue")?.disabled);
+});
+
+test("homepage replacement cancellation and successful discard return focus to the existing recovery targets", async () => {
+  const dom = new JSDOM("<!doctype html><div id=\"root\"></div>", { url: "https://example.test/" });
+  const restoreGlobals = installDomGlobals(dom);
+  // Focus restoration runs after React commits the replacement UI in the browser.
+  const frames: FrameRequestCallback[] = [];
+  globalThis.requestAnimationFrame = (callback) => { frames.push(callback); return frames.length; };
+  const element = dom.window.document.querySelector<HTMLElement>("#root")!;
+  const root = createRoot(element);
+  let confirmed = 0;
+  function Home({ invalid = false }: { invalid?: boolean }) {
+    const [overwrite, setOverwrite] = useState(false);
+    const [saved, setSaved] = useState<EraDraftUiSaveReadResult>(invalid
+      ? { kind: "INVALID", message: "Invalid save" } : { kind: "CANDIDATE", save: candidate });
+    return <Landing manifest={manifest} manifestLoading={false} error={null} loadingEra={null} selectedEra="era-foundation"
+      savedGame={saved} loadingContinue={false} overwriteEra={overwrite ? "era-foundation" : null} notice={null} basePath="/"
+      onContinue={() => undefined} onDiscardSave={() => { setSaved({ kind: "EMPTY" }); return true; }} onRetryManifest={() => undefined}
+      onCancelOverwrite={() => setOverwrite(false)} onConfirmOverwrite={() => { confirmed += 1; }}
+      onSelect={() => undefined} onStart={() => setOverwrite(true)} />;
+  }
+  const button = (name: string) => [...element.querySelectorAll<HTMLButtonElement>("button")].find((node) => node.textContent === name)!;
+  try {
+    await act(async () => root.render(<Home />));
+    await act(async () => element.querySelector<HTMLButtonElement>(".start-draft-action")!.click());
+    assert.ok(element.querySelector(".overwrite-confirm"));
+    assert.equal(confirmed, 0);
+    await act(async () => button("Cancel").click());
+    frames.splice(0).forEach((callback) => callback(0));
+    assert.equal(dom.window.document.activeElement, element.querySelector(".start-draft-action"));
+    await act(async () => element.querySelector<HTMLButtonElement>(".start-draft-action")!.click());
+    await act(async () => button("Start new draft").click());
+    assert.equal(confirmed, 1);
+    await act(async () => root.render(<Home key="invalid" invalid />));
+    await act(async () => button("Discard unusable save").click());
+    frames.splice(0).forEach((callback) => callback(0));
+    assert.equal(element.querySelector(".save-recovery"), null);
+    assert.equal(dom.window.document.activeElement, element.querySelector("#era-picker-title"));
+  } finally {
+    await act(async () => root.unmount()); restoreGlobals(); dom.window.close();
   }
 });
 

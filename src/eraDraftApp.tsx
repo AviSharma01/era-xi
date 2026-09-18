@@ -245,30 +245,26 @@ export function Landing(props: {
   const eraPickerTitleRef = useRef<HTMLHeadingElement>(null);
   return (
     <main className="era-shell landing-shell">
+      <div className="landing-atmosphere" aria-hidden="true" />
       <header className="game-header">
         <a className="wordmark" href={appRoutePath("HOME", props.basePath)} aria-label="Era Draft home">
-          <span className="wordmark-mark">ED</span><span>ERA DRAFT</span>
+          <span>ERA DRAFT</span>
         </a>
+        <div className="landing-header-actions">
         <a className="classic-link" href={appRoutePath("CLASSIC", props.basePath)}>Classic 2016 <span aria-hidden="true">↗</span></a>
+        {props.savedGame.kind === "CANDIDATE" && <>
+          <span id="continue-summary" className="landing-sr-only">Continue {ERA_COPY[props.savedGame.save.summary.eraId].title}. {saveSummaryLabel(
+            props.savedGame.save.summary.phase, props.savedGame.save.summary.pickCount, props.savedGame.save.envelope.presentationCursor)}</span>
+          <button className="secondary-action landing-continue" aria-describedby="continue-summary" aria-busy={props.loadingContinue}
+            disabled={!props.manifest || props.loadingContinue} onClick={props.onContinue}>
+            {props.loadingContinue ? "Restoring verified game…" : "Continue Game"}<span aria-hidden="true">→</span>
+          </button>
+        </>}
+        </div>
       </header>
 
-      <section className="landing-intro" aria-labelledby="landing-title">
-        <p className="eyebrow">Historical IPL team builder</p>
-        <h1 id="landing-title">Build an XI across IPL history.</h1>
-        <p className="hero-copy">Choose a period, spin through its franchise-seasons, and make eleven permanent calls.</p>
-      </section>
-
-      {props.savedGame.kind === "CANDIDATE" && (
-        <section className="continue-panel" aria-labelledby="continue-title" aria-busy={props.loadingContinue}>
-          <div><p className="eyebrow">Saved locally</p><h2 id="continue-title">Continue {ERA_COPY[props.savedGame.save.summary.eraId].title}</h2>
-            <p>{saveSummaryLabel(props.savedGame.save.summary.phase, props.savedGame.save.summary.pickCount,
-              props.savedGame.save.envelope.presentationCursor)}</p></div>
-          <button className="primary-action" disabled={!props.manifest || props.loadingContinue} onClick={props.onContinue}>
-            {props.loadingContinue ? "Restoring verified game…" : "Continue game"}<span aria-hidden="true">→</span>
-          </button>
-          {props.loadingContinue && <p className="async-detail" role="status">Loading the saved era and validating its authoritative state.</p>}
-        </section>
-      )}
+      <div className="landing-content">
+      {props.loadingContinue && <p className="storage-notice" role="status">Loading the saved era and validating its authoritative state.</p>}
       {props.savedGame.kind === "INVALID" && (
         <section className="save-recovery" role="alert" aria-labelledby="save-recovery-title">
           <div><p className="eyebrow">Save recovery</p><h2 id="save-recovery-title">Saved game unavailable</h2>
@@ -283,8 +279,7 @@ export function Landing(props: {
 
       <section className="era-picker" aria-labelledby="era-picker-title">
         <div className="section-heading">
-          <div><p className="eyebrow">Primary mode</p><h2 ref={eraPickerTitleRef} tabIndex={-1} id="era-picker-title">Choose an era</h2></div>
-          <p className="section-note">Five periods. Eleven permanent decisions.</p>
+          <div><p className="eyebrow">The era index</p><h1 ref={eraPickerTitleRef} tabIndex={-1} id="era-picker-title">Choose your chapter.</h1></div>
         </div>
         <div className="era-selection-layout">
           <div className="era-grid" aria-label="IPL eras">
@@ -295,9 +290,7 @@ export function Landing(props: {
                 <button className={`era-card${isSelected ? " era-card-selected" : ""}`} key={eraId}
                   disabled={!props.manifest || props.loadingEra !== null} aria-pressed={isSelected}
                   onClick={() => props.onSelect(eraId)} aria-label={`Select ${era.title}, ${era.years}`}>
-                  <span className="era-ordinal">{era.ordinal}</span>
                   <span className="era-card-main"><strong>{era.title}</strong><span className="era-years">{era.years}</span></span>
-                  <span className="era-arrow" aria-hidden="true">→</span>
                 </button>
               );
             })}
@@ -305,10 +298,10 @@ export function Landing(props: {
           <aside className={`era-detail${selected ? " era-detail-selected" : ""}`} aria-live="polite" aria-busy={props.loadingEra !== null}>
             {selected && props.selectedEra ? (
               <>
-                <div className="era-detail-kicker"><span>Selected era</span><strong>{selected.ordinal}</strong></div>
-                <div><p className="era-detail-years">{selected.years}</p><h3>{selected.title}</h3></div>
+                <h2 className="era-detail-kicker">{selected.title}</h2>
+                <p className="era-detail-years">{selected.years}</p>
                 <p className="era-detail-copy">{selected.flavor}</p>
-                <div className="era-mode"><span>Game mode</span><strong>Era Draft</strong></div>
+                <p className="landing-rules">11 players · Max 4 overseas<br />One respin · Every position locks</p>
                 {props.overwriteEra === props.selectedEra ? (
                   <div className="overwrite-confirm" role="alert">
                     <p>Starting a new draft will replace your current saved draft.</p>
@@ -321,14 +314,13 @@ export function Landing(props: {
                 ) : (
                   <button ref={startButtonRef} className="primary-action start-draft-action" disabled={props.loadingEra !== null}
                     onClick={() => props.onStart(props.selectedEra!)}>
-                    {props.loadingEra === props.selectedEra ? "Loading and verifying…" : "Start draft"}<span aria-hidden="true">→</span>
+                    {props.loadingEra === props.selectedEra ? "Loading and verifying…" : "Start Draft"}<span aria-hidden="true">→</span>
                   </button>
                 )}
                 {props.loadingEra === props.selectedEra && <p className="async-detail" role="status">Downloading {selected.title} data and checking its integrity.</p>}
               </>
             ) : (
-              <div className="era-detail-empty"><span className="era-detail-mark" aria-hidden="true">ED</span>
-                <div><h3>Select an era</h3><p>Review its years and character before starting the draft.</p></div></div>
+              <div className="era-detail-empty"><h2>Select an era</h2><p>Review its years and character before starting the draft.</p></div>
             )}
           </aside>
         </div>
@@ -339,6 +331,7 @@ export function Landing(props: {
           {!props.manifest && <button className="secondary-action" disabled={props.manifestLoading} onClick={props.onRetryManifest}>Retry</button>}
         </div>}
       </section>
+      </div>
     </main>
   );
 }
