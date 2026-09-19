@@ -14,7 +14,7 @@ import {
   type EraDraftSimulationSeedBundle,
   type RevealedState,
 } from "./eraDraftTypes.js";
-import { opponentAsSimulationTeamV2 } from "./stage7Data.js";
+import { opponentAsSimulationTeamV2 } from "./eraDraftOpponentRuntime.js";
 import {
   SIMULATION_V2_VERSION,
   generateDoubleRoundRobinScheduleV2,

@@ -30,6 +30,9 @@ data/processed/**
 !data/processed/era-draft/simulation/
 !data/processed/era-draft/simulation/v2/
 !data/processed/era-draft/simulation/v2/**
+!data/processed/era-draft/web/
+!data/processed/era-draft/web/v1/
+!data/processed/era-draft/web/v1/**
 
 # Large, reproducible Cricsheet audit details
 data/audit/cricsheet-ipl/v1/source_manifest.jsonl

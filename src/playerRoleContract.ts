@@ -150,6 +150,9 @@ export function parsePlayerRoleConsumer(value: unknown, label = "playerRoleConsu
     const bandDistance = slot.bandDistance === null
       ? null
       : finiteNumber(slot.bandDistance, `${label}.battingFit.slots[${index}].bandDistance`, 0, 4);
+    if (bandDistance !== null && !Number.isInteger(bandDistance)) {
+      throw new TypeError(`${label}.battingFit.slots[${index}].bandDistance must be an integer`);
+    }
     if ((classification === "UNKNOWN") !== (bandDistance === null)) {
       throw new TypeError(`${label}.battingFit UNKNOWN and bandDistance must remain aligned`);
     }

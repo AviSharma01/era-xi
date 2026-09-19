@@ -136,6 +136,7 @@ function makeCatalog(definitions: readonly PlayerDefinition[], metadataMarker = 
       eligibility: eligible[index]!,
       role: { metadataMarker } as unknown as EraDraftPlayerRecord["role"],
       quality: { metadataMarker } as unknown as EraDraftPlayerRecord["quality"],
+      historicalStats: { metadataMarker } as unknown as EraDraftPlayerRecord["historicalStats"],
       rosterStatus: definition.status ?? "INDIAN",
     };
   });

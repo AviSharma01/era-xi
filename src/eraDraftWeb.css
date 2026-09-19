@@ -1,0 +1,978 @@
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("./assets/fonts/SpaceGrotesk-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Sans";
+  src: url("./assets/fonts/Geist-Variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("./assets/fonts/GeistMono-Variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  color: #f4f1e9;
+  background: #09090a;
+  font-family: "Geist Sans", "Helvetica Neue", Arial, sans-serif;
+  font-synthesis: none;
+  color-scheme: dark;
+  --bg: #09090a;
+  --surface: #111113;
+  --surface-raised: #171719;
+  --line: #2b2a28;
+  --line-strong: #454038;
+  --muted: #97928a;
+  --gold: #d9ad5b;
+  --gold-light: #f0cf88;
+  --gold-dark: #7f6333;
+  --danger: #df8b72;
+  --radius-card: 11px;
+  --radius-panel: 15px;
+}
+
+* { box-sizing: border-box; }
+html { min-height: 100%; background: var(--bg); }
+body { min-width: 320px; min-height: 100vh; margin: 0; background:
+  radial-gradient(circle at 77% 0%, rgba(217, 173, 91, 0.08), transparent 31rem), var(--bg); }
+button, a { font: inherit; }
+button { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+button:disabled { cursor: not-allowed; }
+
+.era-shell { width: min(1500px, 100%); min-height: 100vh; margin: 0 auto; padding: 0 32px 48px; }
+.game-header { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); }
+.wordmark { display: inline-flex; align-items: center; gap: 12px; color: #f7f3e9; font-family: "Space Grotesk", sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.17em; text-decoration: none; }
+.wordmark-mark { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--gold-dark); color: var(--gold-light); font-family: "Geist Mono", monospace; font-size: 0.7rem; letter-spacing: 0; transform: rotate(-2deg); }
+.wordmark-button { padding: 0; border: 0; background: transparent; cursor: pointer; }
+.classic-link, .quiet-button { color: var(--muted); font-size: 0.82rem; text-decoration: none; transition: color 180ms ease; }
+.classic-link:hover, .quiet-button:hover { color: #fff; }
+.quiet-button { min-height: 44px; padding: 0 4px; border: 0; background: transparent; cursor: pointer; }
+.eyebrow { margin: 0 0 12px; color: var(--gold); font-family: "Geist Mono", monospace; font-size: 0.7rem; font-weight: 650; letter-spacing: 0.16em; text-transform: uppercase; }
+
+.landing-shell { display: flex; flex-direction: column; }
+.landing-intro, .era-picker, .continue-panel, .save-recovery, .storage-notice { width: min(1080px, 100%); margin-inline: auto; }
+.landing-intro { padding: clamp(46px, 7vh, 76px) 0 34px; }
+.landing-intro h1 { max-width: 680px; margin: 0; color: #f5f2eb; font-family: "Space Grotesk", sans-serif; font-size: clamp(2.35rem, 4.4vw, 4.2rem); font-weight: 560; letter-spacing: -0.052em; line-height: 0.98; text-transform: uppercase; }
+.hero-copy { max-width: 520px; margin: 20px 0 0; color: #aaa59c; font-size: 0.95rem; line-height: 1.6; }
+.era-picker { padding: 26px 0 64px; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 22px; }
+.section-heading h2 { margin: 0; font-family: "Space Grotesk", sans-serif; font-size: clamp(1.55rem, 2.5vw, 2.2rem); font-weight: 550; letter-spacing: -0.035em; text-transform: uppercase; }
+.section-note { margin: 0 0 5px; color: var(--muted); font-size: 0.82rem; }
+.era-selection-layout { display: grid; grid-template-columns: minmax(360px, 1.08fr) minmax(320px, 0.92fr); gap: 18px; align-items: stretch; }
+.era-grid { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-panel); background: rgba(17, 17, 19, 0.62); }
+.era-card { width: 100%; min-height: 70px; display: grid; grid-template-columns: 46px minmax(0, 1fr) 30px; gap: 13px; align-items: center; padding: 11px 16px; border: 0; border-bottom: 1px solid var(--line); background: transparent; text-align: left; cursor: pointer; transition: background 160ms ease, box-shadow 160ms ease; }
+.era-card:last-child { border-bottom: 0; }
+.era-card:hover:not(:disabled) { background: rgba(255, 255, 255, 0.026); }
+.era-card-selected { background: rgba(217, 173, 91, 0.075); box-shadow: inset 3px 0 0 var(--gold); }
+.era-card:disabled { opacity: 0.56; }
+.era-ordinal, .era-years, .era-arrow { font-family: "Geist Mono", monospace; }
+.era-ordinal { color: #716d66; font-size: 0.76rem; }
+.era-card-selected .era-ordinal { color: var(--gold-light); }
+.era-card-main { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 14px; }
+.era-card-main strong { overflow: hidden; font-family: "Space Grotesk", sans-serif; font-size: 1rem; font-weight: 560; letter-spacing: -0.02em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.era-years { color: var(--gold); font-size: 0.72rem; letter-spacing: 0.08em; }
+.era-arrow { color: var(--gold); font-size: 1.25rem; transition: transform 180ms ease; }
+.era-card:hover .era-arrow { transform: translateX(5px); }
+.era-detail { min-height: 354px; display: grid; grid-template-rows: auto auto 1fr auto auto; gap: 22px; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius-panel); background: linear-gradient(145deg, rgba(24, 23, 21, 0.92), rgba(14, 14, 15, 0.96)); box-shadow: 0 16px 45px rgba(0, 0, 0, 0.16); }
+.era-detail-selected { border-color: #464038; }
+.era-detail-kicker { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-family: "Geist Mono", monospace; font-size: 0.62rem; letter-spacing: 0.11em; text-transform: uppercase; }
+.era-detail-kicker strong { color: var(--gold); font-size: 0.74rem; font-weight: 500; }
+.era-detail-years { margin: 0 0 7px; color: var(--gold); font-family: "Geist Mono", monospace; font-size: 0.72rem; letter-spacing: 0.08em; }
+.era-detail h3 { margin: 0; font-family: "Space Grotesk", sans-serif; font-size: clamp(1.7rem, 3.2vw, 2.8rem); font-weight: 560; letter-spacing: -0.045em; line-height: 0.95; text-transform: uppercase; }
+.era-detail-copy { max-width: 390px; margin: 0; color: #aaa59c; font-size: 0.9rem; line-height: 1.6; }
+.era-mode { display: flex; align-items: center; justify-content: space-between; padding-top: 15px; border-top: 1px solid var(--line); text-transform: uppercase; }
+.era-mode span { color: var(--muted); font-family: "Geist Mono", monospace; font-size: 0.58rem; letter-spacing: 0.08em; }
+.era-mode strong { font-size: 0.76rem; letter-spacing: 0.06em; }
+.start-draft-action { width: 100%; justify-content: space-between; display: flex; align-items: center; }
+.era-detail-empty { grid-row: 1 / -1; display: grid; place-items: center; align-content: center; gap: 18px; color: var(--muted); text-align: center; }
+.era-detail-empty h3 { margin-bottom: 8px; color: #e7e2d9; font-size: 1.45rem; }
+.era-detail-empty p { max-width: 280px; margin: 0; font-size: 0.84rem; line-height: 1.55; }
+.era-detail-mark { width: 58px; height: 58px; display: grid; place-items: center; border: 1px solid var(--gold-dark); border-radius: 13px; color: var(--gold); font-family: "Geist Mono", monospace; font-size: 0.72rem; transform: rotate(-2deg); }
+.load-state { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 18px 0 0; padding: 13px 15px; border: 1px solid var(--line); border-radius: var(--radius-card); color: var(--muted); background: rgba(255, 255, 255, 0.016); }
+.load-state > div { display: grid; gap: 4px; }
+.load-state strong { color: #d1cbc2; font-size: 0.75rem; font-weight: 590; text-transform: uppercase; }
+.load-state p { margin: 0; font-size: 0.7rem; line-height: 1.45; }
+.load-indicator { width: 10px; height: 10px; flex: 0 0 auto; border: 2px solid #5f5749; border-top-color: var(--gold); border-radius: 50%; animation: load-turn 850ms linear infinite; }
+.load-state-error { border-color: #67473e; color: #c99f91; background: rgba(78, 42, 34, 0.12); }
+.load-state-error > div { flex: 1; }
+.load-state-error strong { color: #e2b5a5; }
+.continue-panel, .save-recovery { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 18px; padding: 18px 20px; border: 1px solid #4b4231; border-radius: var(--radius-panel); background: linear-gradient(110deg, rgba(217, 173, 91, 0.09), rgba(17, 17, 19, 0.82)); }
+.continue-panel { flex-wrap: wrap; }
+.continue-panel h2, .save-recovery h2 { margin: 0 0 5px; font-family: "Space Grotesk", sans-serif; font-size: 1.15rem; font-weight: 580; letter-spacing: -0.02em; text-transform: uppercase; }
+.continue-panel p:not(.eyebrow), .save-recovery p:not(.eyebrow) { margin: 0; color: var(--muted); font-size: 0.78rem; }
+.continue-panel .eyebrow, .save-recovery .eyebrow { margin-bottom: 7px; }
+.async-detail { flex: 1 0 100%; margin: -12px 0 0 !important; color: #aaa298 !important; font-family: "Geist Mono", monospace; font-size: 0.61rem !important; }
+.era-detail > .async-detail { align-self: end; margin: -13px 0 0 !important; }
+.save-recovery { border-color: #67473e; background: rgba(78, 42, 34, 0.14); }
+.storage-notice { margin-top: 0; margin-bottom: 18px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 9px; color: #bcb5aa; background: rgba(255, 255, 255, 0.018); font-size: 0.76rem; line-height: 1.5; }
+.overwrite-confirm { display: grid; gap: 12px; padding: 13px; border: 1px solid #695332; border-radius: 9px; background: rgba(217, 173, 91, 0.07); }
+.overwrite-confirm p { margin: 0; color: #c9c0b2; font-size: 0.76rem; line-height: 1.45; }
+.overwrite-confirm > div { display: flex; justify-content: flex-end; gap: 12px; }
+
+.draft-header { display: grid; grid-template-columns: 1fr auto 1fr; }
+.draft-shell { padding-bottom: 0; }
+.draft-header .quiet-button { justify-self: end; }
+.draft-era-id { display: flex; align-items: baseline; gap: 12px; font-family: "Geist Mono", monospace; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.draft-era-id strong { color: var(--gold); font-weight: 500; }
+.draft-layout { height: calc(100vh - 77px); min-height: 620px; display: grid; grid-template-columns: minmax(340px, 2fr) minmax(560px, 3fr); }
+.draft-stage { min-width: 0; min-height: 0; display: flex; flex-direction: column; overflow: hidden; padding: 28px clamp(22px, 2.5vw, 38px) 30px 3vw; border-right: 1px solid var(--line); }
+.draft-control-region { flex: 0 0 auto; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+.draft-control-labels { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 9px; }
+.draft-control-labels .eyebrow { margin: 0; }
+.draft-control-labels > span { color: #aaa49a; font-family: "Geist Mono", monospace; font-size: 0.64rem; letter-spacing: 0.07em; text-transform: uppercase; }
+.draft-control-main { min-height: 49px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.draft-control-main h1 { margin: 0; font-family: "Space Grotesk", sans-serif; font-size: clamp(1.45rem, 2.1vw, 2rem); font-weight: 560; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase; }
+.draft-control-actions { flex: 0 0 auto; display: flex; align-items: center; gap: 8px; }
+.primary-action, .secondary-action { min-height: 46px; padding: 0 18px; border: 1px solid var(--gold-dark); border-radius: 9px; background: var(--gold); color: #17130d; font-weight: 720; cursor: pointer; text-transform: uppercase; letter-spacing: 0.055em; transition: transform 160ms ease, background 160ms ease; }
+.primary-action:hover:not(:disabled) { transform: translateY(-2px); background: var(--gold-light); }
+.primary-action:disabled { opacity: 0.45; }
+.secondary-action { min-height: 40px; padding: 0 14px; background: transparent; color: var(--gold-light); font-size: 0.68rem; }
+.secondary-action:hover { background: rgba(217, 173, 91, 0.08); }
+.draft-context-strip { min-height: 46px; display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-top: 13px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; background: rgba(255, 255, 255, 0.016); }
+.franchise-context { min-width: 0; display: flex; align-items: baseline; gap: 9px; }
+.franchise-context strong { overflow: hidden; font-family: "Space Grotesk", sans-serif; font-size: 0.82rem; font-weight: 570; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.franchise-context span, .respin-status { color: var(--muted); font-family: "Geist Mono", monospace; font-size: 0.58rem; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
+.franchise-context span { color: var(--gold); }
+.respin-available { color: #c0b18e; }
+.respin-used { color: #77736d; }
+.draft-warning { flex: 0 0 auto; display: grid; gap: 3px; margin: 11px 0 0; padding: 9px 11px; border: 1px solid #60483f; border-radius: 8px; color: #d8b2a5; background: rgba(95, 52, 41, 0.12); font-size: 0.7rem; line-height: 1.45; }
+.draft-warning strong { color: #e3c0b3; font-family: "Geist Mono", monospace; font-size: 0.55rem; letter-spacing: 0.07em; text-transform: uppercase; }
+.roster-empty-state { min-height: 0; flex: 1; display: grid; place-items: center; align-content: center; grid-template-columns: auto minmax(0, 290px); gap: 20px; padding: 40px 0; color: var(--muted); }
+.roster-empty-index { width: 66px; height: 78px; display: grid; place-items: center; border: 1px solid var(--line-strong); border-radius: var(--radius-card); color: var(--gold); font-family: "Geist Mono", monospace; font-size: 0.9rem; background: rgba(255, 255, 255, 0.012); }
+.roster-empty-state h2 { margin: 0 0 7px; color: #ded9d0; font-family: "Space Grotesk", sans-serif; font-size: 1rem; font-weight: 560; text-transform: uppercase; }
+.roster-empty-state p { margin: 0; font-size: 0.78rem; line-height: 1.55; }
+.candidate-section { min-height: 0; flex: 1; display: flex; flex-direction: column; padding-top: 17px; }
+.candidate-heading { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.candidate-heading h3 { margin: 0; font-family: "Space Grotesk", sans-serif; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.candidate-heading span { color: var(--muted); font-family: "Geist Mono", monospace; font-size: 0.68rem; }
+.candidate-grid { min-height: 0; flex: 1; display: grid; grid-template-columns: 1fr; align-content: start; gap: 7px; overflow-y: auto; padding: 1px 7px 12px 1px; scrollbar-color: #4a453d transparent; scrollbar-width: thin; }
+.candidate-entry { display: contents; }
+.candidate-group-label { grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; margin: 7px 0 1px; color: #8f887e; font-family: "Geist Mono", monospace; font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.candidate-group-label::after { content: ""; height: 1px; flex: 1; background: var(--line); }
+.candidate-card { min-height: 74px; display: grid; grid-template-columns: 48px minmax(0, 1fr) auto 24px; gap: 11px; align-items: center; position: relative; overflow: hidden; padding: 7px 10px 7px 7px; border: 1px solid var(--line); border-radius: var(--radius-card); background: linear-gradient(115deg, #151517, #101011); text-align: left; cursor: pointer; transition: border-color 160ms ease, background 160ms ease, transform 160ms ease, box-shadow 160ms ease; }
+.candidate-card::after { content: ""; position: absolute; inset: 1px; border: 1px solid transparent; border-radius: calc(var(--radius-card) - 2px); pointer-events: none; }
+.candidate-card:hover:not(:disabled) { border-color: var(--line-strong); background: var(--surface-raised); transform: translateY(-2px); }
+.candidate-card-selected { border-color: var(--gold) !important; background: linear-gradient(115deg, rgba(217, 173, 91, 0.15), rgba(23, 20, 16, 0.96)) !important; box-shadow: 0 0 24px rgba(217, 173, 91, 0.08), inset 3px 0 0 var(--gold); }
+.candidate-card-selected::after { border-color: rgba(240, 207, 136, 0.17); }
+.candidate-card:disabled { opacity: 0.4; }
+.portrait-placeholder { width: 48px; height: 58px; display: grid; place-items: end center; position: relative; overflow: hidden; border: 1px solid #393632; border-radius: 8px; background: linear-gradient(145deg, #2a2825, #151515 66%); }
+.portrait-placeholder::before { content: ""; width: 25px; height: 25px; position: absolute; top: 8px; border-radius: 50%; background: #44403a; box-shadow: 0 23px 0 10px #35322e; }
+.portrait-placeholder span { position: relative; z-index: 1; width: 100%; padding: 4px; background: rgba(8, 8, 8, 0.7); color: #c7bdad; font-family: "Geist Mono", monospace; font-size: 0.6rem; text-align: center; }
+.candidate-body { min-width: 0; display: grid; gap: 3px; }
+.candidate-body strong { overflow: hidden; font-family: "Space Grotesk", sans-serif; font-size: 0.88rem; font-weight: 580; text-overflow: ellipsis; white-space: nowrap; }
+.candidate-body > span { color: var(--muted); font-size: 0.72rem; }
+.candidate-meta { font-family: "Geist Mono", monospace; font-size: 0.6rem !important; text-transform: uppercase; }
+.candidate-quick-stats { display: grid; gap: 4px; color: #aaa297; font-family: "Geist Mono", monospace; font-size: 0.54rem; line-height: 1.2; text-align: right; white-space: nowrap; }
+.select-mark { color: var(--gold); font-family: "Geist Mono", monospace; text-align: center; }
+.selected-player-detail { flex: 0 0 auto; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 10px 13px; align-items: center; margin-top: 10px; padding: 12px; border: 1px solid #715a34; border-radius: var(--radius-panel); background: linear-gradient(125deg, rgba(217, 173, 91, 0.12), rgba(18, 17, 16, 0.98) 58%); box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18), inset 0 0 0 1px rgba(240, 207, 136, 0.05); }
+.selected-player-portrait { width: 56px; height: 66px; display: grid; place-items: center; border: 1px solid #806a42; border-radius: 9px; background: radial-gradient(circle at 50% 34%, #4d4539 0 17%, transparent 18%), linear-gradient(145deg, #302b24, #141414); color: var(--gold-light); font-family: "Geist Mono", monospace; font-size: 0.66rem; }
+.selected-player-copy { min-width: 0; }
+.selected-player-copy .eyebrow { margin-bottom: 4px; }
+.selected-player-copy h3 { overflow: hidden; margin: 0; font-family: "Space Grotesk", sans-serif; font-size: 1.08rem; font-weight: 610; text-overflow: ellipsis; white-space: nowrap; }
+.selected-player-copy > p:not(.eyebrow) { margin: 3px 0 8px; color: #aca59a; font-size: 0.7rem; }
+.selected-player-meta { display: flex; flex-wrap: wrap; gap: 5px; }
+.selected-player-meta span { padding: 3px 5px; border: 1px solid #4b4438; border-radius: 5px; color: #bdb3a3; font-family: "Geist Mono", monospace; font-size: 0.5rem; letter-spacing: 0.03em; text-transform: uppercase; }
+.current-season-stats { display: flex; flex-wrap: wrap; gap: 5px 10px; align-items: baseline; margin-top: 9px; padding: 8px; border: 1px solid #594b35; border-radius: 8px; background: rgba(8, 8, 8, 0.18); }
+.current-season-stats > span { flex: 0 0 100%; color: var(--gold); font-family: "Geist Mono", monospace; font-size: 0.5rem; letter-spacing: 0.07em; text-transform: uppercase; }
+.current-season-stats strong { color: #e3dacb; font-size: 0.62rem; font-weight: 590; line-height: 1.45; }
+.selected-player-instruction { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 12px; padding-top: 9px; border-top: 1px solid #554a38; text-align: left; }
+.selected-player-instruction strong { color: var(--gold-light); font-size: 0.7rem; text-transform: uppercase; }
+.selected-player-instruction span { color: var(--muted); font-size: 0.62rem; }
+
+.xi-panel { min-width: 0; min-height: 0; display: flex; flex-direction: column; overflow: hidden; padding: 28px clamp(24px, 3vw, 44px) 30px; background: rgba(14, 14, 15, 0.88); }
+.xi-heading { flex: 0 0 auto; display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 15px; }
+.xi-heading h2 { margin: 0; font-family: "Space Grotesk", sans-serif; font-size: 1.5rem; font-weight: 560; letter-spacing: -0.03em; text-transform: uppercase; }
+.pick-counter { color: var(--gold-light); font-family: "Geist Mono", monospace; font-size: 1.35rem; }
+.pick-counter small { color: #716c63; font-size: 0.7rem; }
+.draft-status { flex: 0 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); margin-bottom: 12px; overflow: hidden; border: 1px solid var(--line); border-radius: 9px; }
+.draft-status > span { min-width: 0; display: grid; gap: 5px; padding: 10px; border-right: 1px solid var(--line); }
+.draft-status > span:last-child { border-right: 0; }
+.draft-status small { color: var(--muted); font-family: "Geist Mono", monospace; font-size: 0.55rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.draft-status strong { overflow: hidden; font-size: 0.72rem; font-weight: 620; text-overflow: ellipsis; text-transform: uppercase; }
+.draft-status .status-ready strong { color: #9dc798; }
+.xi-slots { min-height: 0; flex: 1; display: grid; align-content: start; gap: 8px; overflow-y: auto; padding: 1px 8px 12px 1px; scrollbar-color: #4a453d transparent; scrollbar-width: thin; }
+.xi-slot { width: 100%; min-height: 92px; display: grid; grid-template-columns: 42px 62px minmax(0, 1fr) minmax(90px, auto); gap: 12px; align-items: center; position: relative; overflow: hidden; padding: 8px 12px 8px 8px; border: 1px solid var(--line); border-radius: var(--radius-card); background: rgba(255, 255, 255, 0.012); color: var(--muted); text-align: left; }
+.xi-slot::after { content: ""; width: 80px; position: absolute; inset: 0 0 0 auto; z-index: 0; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.018)); pointer-events: none; }
+.xi-slot > * { position: relative; z-index: 1; }
+button.xi-slot { cursor: default; }
+.xi-slot-active:not(:disabled) { border-color: var(--gold-dark); background: rgba(217, 173, 91, 0.055); color: #efe8da; cursor: pointer; animation: slot-pulse 1.8s ease-in-out infinite; }
+.xi-slot-active:disabled { opacity: 0.52; }
+.xi-slot-locked { border-color: #3b3731; background: linear-gradient(110deg, #1a1919, #141414); color: #f2eee7; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.012); animation: settle 280ms ease-out; }
+.xi-fit-natural { border-color: #67532f; box-shadow: 0 7px 22px rgba(217, 173, 91, 0.06), inset 3px 0 0 #b98d42; }
+.xi-fit-acceptable { border-color: #465046; box-shadow: inset 3px 0 0 #778b72; }
+.xi-fit-stretch { border-color: #66543a; box-shadow: inset 3px 0 0 #a27b43; }
+.xi-fit-major-stretch { border-color: #68463c; box-shadow: inset 3px 0 0 #9a5d48; }
+.xi-fit-unknown { box-shadow: inset 3px 0 0 #5b5751; }
+.xi-target-natural:not(:disabled) { box-shadow: inset 3px 0 0 #b98d42; }
+.xi-target-acceptable:not(:disabled) { box-shadow: inset 3px 0 0 #778b72; }
+.xi-target-stretch:not(:disabled) { box-shadow: inset 3px 0 0 #a27b43; }
+.xi-target-major-stretch:not(:disabled) { box-shadow: inset 3px 0 0 #9a5d48; }
+.position-number { color: var(--gold); font-family: "Geist Mono", monospace; font-size: 0.78rem; text-align: center; }
+.xi-portrait { width: 62px; height: 74px; display: grid; place-items: end center; position: relative; overflow: hidden; border: 1px solid #3d3934; border-radius: 9px; background: linear-gradient(145deg, #2b2926, #161616 68%); }
+.xi-portrait::before { content: ""; width: 29px; height: 29px; position: absolute; top: 10px; border-radius: 50%; background: #49443e; box-shadow: 0 27px 0 12px #37332f; }
+.xi-portrait > span { width: 100%; position: relative; z-index: 1; padding: 5px 3px; background: rgba(8, 8, 8, 0.72); color: #c9c0b2; font-family: "Geist Mono", monospace; font-size: 0.58rem; text-align: center; }
+.xi-portrait-empty { place-items: center; border-style: dashed; background: rgba(255, 255, 255, 0.01); }
+.xi-portrait-empty::before { display: none; }
+.xi-portrait-empty > span { width: auto; padding: 0; background: transparent; color: #625d56; font-size: 1rem; }
+.empty-slot-copy, .locked-player { min-width: 0; display: grid; gap: 4px; }
+.empty-slot-copy strong { overflow: hidden; color: #aaa59c; font-family: "Space Grotesk", sans-serif; font-size: 0.82rem; font-weight: 540; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.empty-slot-copy small { color: #69655f; font-family: "Geist Mono", monospace; font-size: 0.55rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.locked-player strong { overflow: hidden; font-family: "Space Grotesk", sans-serif; font-size: 1rem; font-weight: 580; text-overflow: ellipsis; white-space: nowrap; }
+.locked-player small { overflow: hidden; color: #9a948b; font-size: 0.66rem; text-overflow: ellipsis; white-space: nowrap; }
+.locked-player > span { overflow: hidden; color: #6f6b65; font-family: "Geist Mono", monospace; font-size: 0.53rem; letter-spacing: 0.035em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.xi-card-rail { min-width: 90px; display: grid; justify-items: end; gap: 4px; }
+.fit-badge { padding: 5px 7px; border: 1px solid #46423d; border-radius: 6px; color: #aaa49a; font-family: "Geist Mono", monospace; font-size: 0.52rem; letter-spacing: 0.035em; text-transform: uppercase; white-space: nowrap; }
+.fit-natural { border-color: #745e37; color: var(--gold-light); }
+.fit-acceptable { border-color: #4d554c; color: #b4c4af; }
+.fit-stretch { border-color: #705d42; color: #d6b986; }
+.fit-major-stretch { border-color: #754f43; color: #dda18c; }
+.fit-unknown { color: #85817b; }
+.xi-complete-mark { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding: 14px; border: 1px solid var(--gold-dark); color: var(--gold-light); text-transform: uppercase; }
+.xi-complete-mark span { font-family: "Geist Mono", monospace; font-size: 0.65rem; }
+.xi-complete-mark strong { font-family: "Space Grotesk", sans-serif; font-size: 0.78rem; letter-spacing: 0.08em; }
+.quality-tier { width: 25px; height: 25px; display: grid; place-items: center; border: 1px solid var(--tier-accent, #745e37); border-radius: 6px; color: var(--tier-text, var(--gold-light)); background: var(--tier-wash, rgba(217, 173, 91, 0.08)); font-family: "Geist Mono", monospace; font-size: 0.64rem; font-weight: 750; }
+.overall-rating { color: #f2d38e; font-family: "Space Grotesk", sans-serif; font-size: 1.23rem; line-height: 1; }
+.component-ratings { display: flex; gap: 6px; color: #a9a197; font-family: "Geist Mono", monospace; }
+.component-ratings small { font-size: 0.48rem; }
+.xi-slot-revealed { min-height: 106px; border-color: var(--tier-edge, #665331); background: linear-gradient(112deg, var(--tier-wash, rgba(57, 44, 24, 0.7)), #171615 44%, #111112); box-shadow: 0 9px 26px rgba(0, 0, 0, 0.19), inset 0 0 0 1px var(--tier-inner, rgba(240, 207, 136, 0.08)), inset 3px 0 0 var(--tier-accent, #b98d42); animation: reveal-card 400ms cubic-bezier(0.2, 0.72, 0.2, 1) both; animation-delay: calc(var(--reveal-order) * 34ms); }
+.xi-tier-s { --tier-accent: #d9ad5b; --tier-edge: #806535; --tier-text: #f3d795; --tier-wash: rgba(217, 173, 91, 0.16); --tier-inner: rgba(243, 215, 149, 0.1); }
+.xi-tier-a { --tier-accent: #aab9c6; --tier-edge: #59636b; --tier-text: #d7e0e7; --tier-wash: rgba(151, 171, 188, 0.13); --tier-inner: rgba(213, 224, 232, 0.08); }
+.xi-tier-b { --tier-accent: #89a694; --tier-edge: #4d6154; --tier-text: #c4d5c9; --tier-wash: rgba(113, 148, 124, 0.12); --tier-inner: rgba(196, 213, 201, 0.07); }
+.xi-tier-c { --tier-accent: #ae9367; --tier-edge: #67563d; --tier-text: #d7c39d; --tier-wash: rgba(157, 125, 76, 0.12); --tier-inner: rgba(215, 195, 157, 0.07); }
+.xi-tier-d { --tier-accent: #9a7469; --tier-edge: #5e4842; --tier-text: #ceb0a8; --tier-wash: rgba(137, 91, 78, 0.11); --tier-inner: rgba(206, 176, 168, 0.06); }
+.reveal-stage { overflow-y: auto; scrollbar-color: #4a453d transparent; scrollbar-width: thin; }
+.reveal-stage > * { flex: 0 0 auto; }
+.reveal-intro { padding: 6px 0 22px; border-bottom: 1px solid var(--line); }
+.reveal-intro h1 { margin: 0; font-family: "Space Grotesk", sans-serif; font-size: clamp(2rem, 3.4vw, 3.4rem); font-weight: 560; letter-spacing: -0.052em; line-height: 0.95; text-transform: uppercase; }
+.reveal-intro h1:focus { outline: 0; }
+.reveal-intro > p:not(.eyebrow) { max-width: 510px; margin: 14px 0 0; color: var(--muted); font-size: 0.82rem; line-height: 1.55; }
+.strength-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 8px; margin: 17px 0; }
+.reveal-metric { min-height: 86px; display: grid; align-content: space-between; padding: 12px; border: 1px solid var(--line); border-radius: var(--radius-card); background: rgba(255, 255, 255, 0.018); }
+.reveal-metric span { color: var(--muted); font-family: "Geist Mono", monospace; font-size: 0.56rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.reveal-metric strong { font-family: "Space Grotesk", sans-serif; font-size: 1.65rem; font-weight: 570; }
+.reveal-metric-featured { border-color: #665331; background: linear-gradient(140deg, rgba(217, 173, 91, 0.13), rgba(20, 19, 17, 0.8)); }
+.reveal-metric-featured strong { color: var(--gold-light); }
+.evaluation-summary { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-panel); background: rgba(17, 17, 19, 0.72); }
+.evaluation-summary .candidate-heading { margin: 0; padding: 13px; border-bottom: 1px solid var(--line); }
+.evaluation-summary .candidate-heading h2 { margin: 0; font-family: "Space Grotesk", sans-serif; font-size: 0.88rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.evaluation-row { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 12px; padding: 10px 13px; border-bottom: 1px solid #242321; }
+.evaluation-row:last-child { border-bottom: 0; }
+.evaluation-row span { color: var(--muted); font-size: 0.66rem; }
+.evaluation-row strong { color: #d5cec2; font-size: 0.67rem; font-weight: 580; text-align: right; }
+.phase-boundary { margin-top: 17px; padding: 18px; border: 1px dashed #4b463e; border-radius: var(--radius-panel); }
+.phase-boundary h2 { margin: 0 0 7px; font-family: "Space Grotesk", sans-serif; font-size: 1.15rem; font-weight: 560; text-transform: uppercase; }
+.phase-boundary > p:not(.eyebrow) { margin: 0 0 14px; color: var(--muted); font-size: 0.72rem; }
+.phase-boundary .primary-action { width: 100%; }
+.complete-state, .centered-state { display: grid; justify-items: start; align-content: center; min-height: 520px; }
+.complete-state h2, .centered-state h1 { margin: 0 0 12px; font-family: "Space Grotesk", sans-serif; font-size: clamp(2.2rem, 5vw, 5rem); font-weight: 550; letter-spacing: -0.055em; text-transform: uppercase; }
+.complete-state > p:not(.eyebrow), .centered-state > p:not(.eyebrow) { max-width: 540px; margin: 0 0 26px; color: var(--muted); line-height: 1.6; }
+.centered-state { width: min(900px, 100%); padding-top: 80px; }
+.sr-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+
+.season-shell { padding-bottom: 42px; }
+.season-shell > .draft-warning { width: min(1180px, 100%); margin: 14px auto 0; }
+.season-layout { width: min(1180px, 100%); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(440px, 0.95fr); gap: clamp(24px, 4vw, 54px); align-items: start; margin: 0 auto; padding: clamp(34px, 6vh, 68px) 0 24px; }
+.season-primary { min-width: 0; }
+.season-kicker { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 12px; }
+.season-kicker .eyebrow { margin: 0; }
+.season-kicker > span { color: var(--gold); font-family: "Geist Mono", monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.season-primary > h1, .terminal-screen > h1 { margin: 0 0 24px; font-family: "Space Grotesk", sans-serif; font-size: clamp(2rem, 4vw, 4.1rem); font-weight: 560; letter-spacing: -0.052em; line-height: 0.95; text-transform: uppercase; }
+.season-primary > h1:focus, .terminal-screen > h1:focus { outline: 0; }
+.match-result { overflow: hidden; border: 1px solid #4b463d; border-radius: var(--radius-panel); background: linear-gradient(140deg, rgba(29, 27, 24, 0.94), rgba(15, 15, 16, 0.98)); box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2); }
+.innings-row { min-height: 92px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 19px; border-bottom: 1px solid var(--line); }
+.innings-row > span { min-width: 0; display: grid; gap: 4px; }
+.innings-row small { overflow: hidden; color: var(--muted); font-family: "Geist Mono", monospace; font-size: 0.55rem; letter-spacing: 0.07em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.innings-row strong { overflow: hidden; font-family: "Space Grotesk", sans-serif; font-size: 1rem; font-weight: 580; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.innings-row b { color: #f3ede2; font-family: "Space Grotesk", sans-serif; font-size: 2rem; font-weight: 580; letter-spacing: -0.04em; }
+.match-verdict { display: grid; gap: 5px; padding: 14px 19px; background: rgba(217, 173, 91, 0.06); }
+.match-verdict span { color: var(--gold); font-family: "Geist Mono", monospace; font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.match-verdict strong { font-size: 0.76rem; font-weight: 570; }
+.match-result-win .match-verdict { box-shadow: inset 3px 0 0 #9cb58d; }
+.match-result-loss .match-verdict { box-shadow: inset 3px 0 0 #a56f5d; }
+.season-progress-summary { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 14px; border: 1px solid var(--line); border-radius: var(--radius-card); }
+.season-progress-summary > div { display: grid; gap: 4px; padding: 13px; border-right: 1px solid var(--line); }
+.season-progress-summary > div:last-child { border-right: 0; }
+.season-progress-summary span, .terminal-summary span { color: var(--muted); font-family: "Geist Mono", monospace; font-size: 0.54rem; letter-spacing: 0.07em; text-transform: uppercase; }
+.season-progress-summary strong { font-family: "Space Grotesk", sans-serif; font-size: 1.2rem; }
+.season-progress-summary small { color: #a69e92; font-size: 0.58rem; }
+.league-progress-strip { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 4px; margin: 14px 0 0; padding: 0; list-style: none; }
+.league-progress-strip li { min-width: 0; display: grid; place-items: center; gap: 2px; padding: 5px 2px; border: 1px solid var(--line); border-radius: 6px; color: #706c65; background: rgba(255, 255, 255, 0.01); font-family: "Geist Mono", monospace; }
+.league-progress-strip li span { font-size: 0.43rem; }
+.league-progress-strip li strong { font-size: 0.62rem; }
+.league-progress-strip .progress-w { border-color: #465344; color: #b8cbb0; background: rgba(101, 132, 92, 0.09); }
+.league-progress-strip .progress-l { border-color: #59463f; color: #d0a291; background: rgba(145, 82, 64, 0.09); }
+.league-progress-strip .progress-current { box-shadow: inset 0 -2px 0 var(--gold); }
+.season-actions, .terminal-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.season-layout-progress { width: min(820px, 100%); grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.league-standings-disclosure { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-panel); background: rgba(17, 17, 19, 0.52); }
+.league-standings-disclosure > summary { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 13px 16px; color: #aaa39a; cursor: pointer; font-family: "Geist Mono", monospace; font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.league-standings-disclosure > summary strong { color: var(--gold-light); font-weight: 580; }
+.league-standings-disclosure > .standings-panel { border: 0; border-top: 1px solid var(--line); border-radius: 0; }
+.standings-panel, .playoff-bracket { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-panel); background: rgba(17, 17, 19, 0.78); }
+.standings-panel .candidate-heading, .playoff-bracket .candidate-heading { margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.standings-panel .candidate-heading h2, .playoff-bracket .candidate-heading h2 { margin: 0; font-family: "Space Grotesk", sans-serif; font-size: 0.86rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.standings-scroll { overflow-x: auto; }
+.standings-panel table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.standings-panel th, .standings-panel td { padding: 10px 8px; border-bottom: 1px solid #242321; font-size: 0.66rem; text-align: right; white-space: nowrap; }
+.standings-panel thead th { color: #77726b; font-family: "Geist Mono", monospace; font-size: 0.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.standings-panel th:nth-child(2), .standings-panel td:nth-child(2) { width: 100%; text-align: left; }
+.standings-panel tbody th { max-width: 210px; overflow: hidden; font-weight: 540; text-overflow: ellipsis; }
+.standings-panel tbody th small { display: block; margin-top: 2px; color: var(--gold); font-family: "Geist Mono", monospace; font-size: 0.45rem; text-transform: uppercase; }
+.standings-panel tbody tr:last-child th, .standings-panel tbody tr:last-child td { border-bottom: 0; }
+.user-standing { background: rgba(217, 173, 91, 0.085); box-shadow: inset 3px 0 0 var(--gold); }
+.league-complete-panel { display: grid; justify-items: start; align-content: start; }
+.season-outcome-copy { max-width: 500px; margin: 0 0 20px; color: var(--muted); line-height: 1.6; }
+.qualification-state { width: 100%; display: grid; gap: 5px; margin-bottom: 20px; padding: 14px; border: 1px solid #4c463d; border-radius: var(--radius-card); }
+.qualification-state span { color: var(--gold); font-family: "Geist Mono", monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.qualification-state strong { font-size: 0.76rem; font-weight: 560; }
+.qualification-state.eliminated { border-color: #5f443c; }
+.playoff-bracket ol { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.playoff-stage { min-width: 0; display: grid; gap: 10px; position: relative; padding: 13px 16px 14px; border-bottom: 1px solid #242321; }
+.playoff-stage:last-child { border-bottom: 0; }
+.playoff-stage-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.playoff-stage-heading > span { color: var(--gold); font-family: "Geist Mono", monospace; font-size: 0.55rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.playoff-stage-heading small { color: #77726b; font-family: "Geist Mono", monospace; font-size: 0.47rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.playoff-teams { display: grid; gap: 3px; }
+.playoff-team { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto 44px; gap: 8px; align-items: center; min-height: 28px; color: #98928a; }
+.playoff-team > span { overflow: hidden; font-size: 0.68rem; text-overflow: ellipsis; white-space: nowrap; }
+.playoff-team > strong { color: #d0c9be; font-family: "Geist Mono", monospace; font-size: 0.67rem; font-weight: 600; }
+.playoff-team > small { color: transparent; font-family: "Geist Mono", monospace; font-size: 0.44rem; letter-spacing: 0.04em; text-align: right; text-transform: uppercase; }
+.playoff-team-winner { color: #eee8de; }
+.playoff-team-winner > strong { color: var(--gold-light); }
+.playoff-team-winner > small { color: #a9956d; }
+.playoff-result { overflow: hidden; color: #a9a198; font-size: 0.62rem; font-weight: 520; text-overflow: ellipsis; white-space: nowrap; }
+.playoff-locked-copy { min-height: 59px; display: grid; align-content: center; gap: 4px; padding: 8px 10px; border: 1px dashed #34322f; border-radius: 8px; background: rgba(255, 255, 255, 0.01); }
+.playoff-locked-copy strong { color: #79746d; font-size: 0.66rem; font-weight: 540; text-transform: uppercase; }
+.playoff-locked-copy span { color: #625e59; font-size: 0.58rem; }
+.playoff-stage-locked { background: rgba(0, 0, 0, 0.08); }
+.playoff-user-match { background: rgba(217, 173, 91, 0.055); box-shadow: inset 2px 0 0 #7f6333; }
+.playoff-bracket .active-playoff { background: rgba(217, 173, 91, 0.1); box-shadow: inset 3px 0 0 var(--gold); }
+.terminal-screen { width: min(980px, 100%); margin: 0 auto; padding: clamp(46px, 8vh, 90px) 0 30px; }
+.terminal-screen > .eyebrow { margin-bottom: 16px; }
+.terminal-champion > h1 { color: var(--gold-light); }
+.champion-line { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin: 0 0 18px; padding: 18px 0; border-block: 1px solid #4b4437; font-family: "Space Grotesk", sans-serif; font-size: 1.1rem; font-weight: 580; text-transform: uppercase; }
+.champion-line span { color: var(--gold); font-family: "Geist Mono", monospace; font-size: 0.56rem; letter-spacing: 0.08em; }
+.terminal-summary { display: grid; grid-template-columns: 0.75fr 0.75fr 1.5fr; margin-bottom: 18px; border: 1px solid var(--line); border-radius: var(--radius-card); }
+.terminal-summary > div { display: grid; gap: 6px; padding: 14px; border-right: 1px solid var(--line); }
+.terminal-summary > div:last-child { border-right: 0; }
+.terminal-summary strong { font-size: 0.78rem; font-weight: 570; }
+.terminal-screen .playoff-bracket { margin-top: 18px; }
+.terminal-screen .playoff-bracket ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.terminal-screen .playoff-stage:nth-child(odd) { border-right: 1px solid #242321; }
+.terminal-screen .playoff-stage:nth-last-child(-n + 2) { border-bottom: 0; }
+
+@keyframes settle { from { opacity: 0.3; transform: translateX(10px) scale(0.985); } to { opacity: 1; transform: translateX(0) scale(1); } }
+@keyframes reveal-card { from { opacity: 0; transform: translateY(9px); filter: brightness(0.65); } to { opacity: 1; transform: translateY(0); filter: brightness(1); } }
+@keyframes slot-pulse { 50% { border-color: var(--gold); } }
+@keyframes load-turn { to { transform: rotate(360deg); } }
+
+@media (max-width: 1120px) {
+  .draft-layout { grid-template-columns: minmax(330px, 2fr) minmax(510px, 3fr); }
+  .xi-panel { padding-inline: 24px; }
+  .xi-slot { grid-template-columns: 38px 56px minmax(0, 1fr) minmax(84px, auto); gap: 10px; }
+  .xi-portrait { width: 56px; height: 70px; }
+}
+
+@media (max-width: 920px) {
+  .era-shell { padding-inline: 18px; }
+  .era-selection-layout { grid-template-columns: 1fr; }
+  .era-detail { min-height: 310px; }
+  .draft-header { grid-template-columns: 1fr auto; }
+  .draft-era-id { display: none; }
+  .draft-layout { height: auto; min-height: calc(100vh - 77px); display: flex; flex-direction: column; }
+  .draft-stage { min-height: 600px; overflow: visible; padding: 28px 0 38px; border-right: 0; }
+  .candidate-grid { max-height: 510px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .xi-panel { min-height: 640px; overflow: visible; padding: 28px 0 40px; border-top: 1px solid var(--line-strong); background: transparent; }
+  .xi-slots { max-height: 690px; }
+  .reveal-stage { min-height: auto; }
+  .reveal-layout .xi-panel { min-height: 760px; }
+  .season-layout { grid-template-columns: 1fr; padding-top: 38px; }
+}
+
+@media (max-width: 520px) {
+  .game-header { min-height: 66px; }
+  .landing-intro { padding-top: 38px; }
+  .landing-intro h1 { font-size: clamp(2.1rem, 11vw, 3.2rem); }
+  .section-heading { display: block; }
+  .section-note { margin-top: 10px; }
+  .era-card { grid-template-columns: 34px minmax(0, 1fr) 22px; padding-inline: 12px; }
+  .era-card-main { display: grid; grid-template-columns: 1fr; gap: 3px; }
+  .era-detail { min-height: 330px; padding: 22px; }
+  .continue-panel, .save-recovery { align-items: stretch; flex-direction: column; }
+  .continue-panel .primary-action, .save-recovery .secondary-action { width: 100%; }
+  .overwrite-confirm > div { align-items: stretch; flex-direction: column-reverse; }
+  .draft-control-main { align-items: stretch; flex-direction: column; }
+  .draft-control-actions, .draft-control-actions > button { width: 100%; }
+  .draft-context-strip { align-items: start; flex-direction: column; }
+  .franchise-context { width: 100%; justify-content: space-between; }
+  .roster-empty-state { grid-template-columns: 1fr; justify-items: start; }
+  .candidate-grid { grid-template-columns: 1fr; }
+  .candidate-card { grid-template-columns: 48px minmax(0, 1fr) 24px; }
+  .candidate-quick-stats { grid-column: 2; justify-items: start; text-align: left; }
+  .selected-player-instruction { align-items: flex-start; flex-direction: column; }
+  .secondary-action { min-height: 44px; }
+  .draft-status strong { font-size: 0.63rem; }
+  .xi-panel { min-height: 600px; }
+  .xi-slot { min-height: 86px; grid-template-columns: 32px 52px minmax(0, 1fr); gap: 9px; padding: 7px; }
+  .xi-portrait { width: 52px; height: 66px; }
+  .xi-card-rail { grid-column: 3; justify-items: start; min-width: 0; }
+  .xi-slot-revealed .xi-card-rail { grid-template-columns: auto auto; justify-content: start; align-items: center; }
+  .xi-slot-revealed .component-ratings, .xi-slot-revealed .fit-badge { grid-column: 1 / -1; }
+  .fit-badge { font-size: 0.46rem; }
+  .strength-grid { grid-template-columns: 1fr 1fr; }
+  .reveal-metric-featured { grid-column: 1 / -1; }
+  .evaluation-row { grid-template-columns: 1fr; gap: 4px; }
+  .evaluation-row strong { text-align: left; }
+  .season-primary > h1, .terminal-screen > h1 { font-size: clamp(2rem, 11vw, 3.2rem); }
+  .season-actions, .terminal-actions { align-items: stretch; flex-direction: column; }
+  .season-actions button, .terminal-actions button { width: 100%; }
+  .standings-panel th, .standings-panel td { padding-inline: 7px; }
+  .standings-panel tbody th { max-width: 150px; }
+  .terminal-summary { grid-template-columns: 1fr; }
+  .terminal-summary > div { border-right: 0; border-bottom: 1px solid var(--line); }
+  .terminal-summary > div:last-child { border-bottom: 0; }
+  .champion-line { align-items: flex-start; flex-direction: column; }
+  .terminal-screen .playoff-bracket ol { grid-template-columns: 1fr; }
+  .terminal-screen .playoff-stage:nth-child(odd) { border-right: 0; }
+  .terminal-screen .playoff-stage:nth-last-child(2) { border-bottom: 1px solid #242321; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+/* Homepage tokens and overrides stay local to preserve every game screen. */
+/* Final gameplay system is intentionally isolated from the approved homepage and Classic. */
+.gameplay-shell {
+  --gold: #c8a669; --gold-light: #d7b779; --gold-dark: #65583f;
+  --line: #39383b; --line-strong: #65583f; --muted: #bdb6ab;
+  --radius-panel: 6px; --radius-card: 4px;
+  position: relative; isolation: isolate; width: 100%; max-width: none; min-height: 100dvh;
+  padding: 0 32px 48px; color: #f3eee5; background: #0e1112;
+  font: 400 14px/22px "Geist Sans", sans-serif; font-variant-numeric: tabular-nums;
+}
+.gameplay-shell .gameplay-atmosphere { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.gameplay-shell .gameplay-atmosphere::before { content: ""; position: absolute; inset: 0; opacity: .30;
+  background: radial-gradient(ellipse 180px 80px at 0% 5%, #f5e3ae9c, transparent 80%),
+    radial-gradient(ellipse 180px 80px at 100% 5%, #dbe5da9c, transparent 80%),
+    conic-gradient(from 138deg at 0% 4%, transparent 0deg, #ddce9740 10deg, #d4c69020 19deg, transparent 32deg),
+    conic-gradient(from 190deg at 100% 4%, transparent 0deg, #b2c9c540 11deg, #afc5be26 23deg, transparent 37deg),
+    radial-gradient(ellipse 75% 37% at 50% 110%, #3e605a88, transparent 90%); }
+.gameplay-shell .gameplay-atmosphere::after { content: ""; position: absolute; width: 118%; height: 460px; left: -9%; bottom: -345px; border: 1px solid rgb(171 188 175 / 10%); border-radius: 50%; box-shadow: 0 0 0 30px #b4c5b508, 0 0 0 75px #b4c5b505; }
+.gameplay-shell *, .gameplay-shell *::before, .gameplay-shell *::after { box-sizing: border-box; }
+.gameplay-shell h1, .gameplay-shell h2, .gameplay-shell h3 { font-family: "Space Grotesk", sans-serif; font-weight: 500; letter-spacing: -.02em; text-transform: none; }
+.gameplay-shell h1 { font-size: 30px; line-height: 36px; }
+.gameplay-shell h2 { font-size: 20px; line-height: 26px; }
+.gameplay-shell .eyebrow { color: var(--gold); font: 400 11px/16px "Geist Mono", monospace; letter-spacing: .06em; }
+.gameplay-shell .game-header { max-width: 1280px; min-height: 72px; margin: 0 auto; padding: 12px 0; border-color: var(--line); }
+.gameplay-shell .wordmark { font-size: 18px; letter-spacing: .05em; }
+.gameplay-shell .wordmark-mark { display: none; }
+.gameplay-shell .draft-era-id { font-size: 12px; line-height: 18px; letter-spacing: 0; text-transform: none; }
+.gameplay-shell .draft-era-id strong { color: #aaa59b; }
+.gameplay-shell :is(button, a) { min-height: 44px; }
+.gameplay-shell :is(button, a, summary, [tabindex]):focus-visible { outline: 2px solid #e9d29f; outline-offset: 3px; }
+.gameplay-shell :is(.primary-action, .secondary-action) { border-radius: 4px; min-height: 44px; padding: 10px 20px; font: 600 14px/20px "Geist Sans", sans-serif; letter-spacing: 0; text-transform: none; box-shadow: none; transition: background-color 140ms, border-color 140ms; }
+.gameplay-shell .primary-action { color: #201b12; border-color: var(--gold); background: var(--gold); }
+.gameplay-shell .primary-action:hover:not(:disabled) { transform: none; background: #d7b779; }
+.gameplay-shell .secondary-action { color: #f3eee5; border-color: var(--line); background: transparent; }
+.gameplay-shell .secondary-action:hover:not(:disabled) { background: #232427; }
+.gameplay-shell button:disabled { opacity: 1; cursor: not-allowed; }
+.gameplay-shell .primary-action:disabled, .gameplay-shell .secondary-action:disabled { background: #17181a; color: #aaa59b; border-color: var(--line); }
+.gameplay-shell .quiet-button { color: #f3eee5; font-size: 14px; text-transform: none; }
+.gameplay-shell .draft-layout { display: grid; width: 100%; max-width: 1280px; height: auto; min-height: 0; margin: 24px auto 0; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 24px; align-items: start; }
+.gameplay-shell .draft-stage, .gameplay-shell .xi-panel { min-height: 0; min-width: 0; padding: 0; border: 0; background: transparent; overflow: visible; }
+.gameplay-shell .draft-control-region { border: 0; padding: 0; }
+.gameplay-shell .draft-control-labels { margin-bottom: 16px; }
+.gameplay-shell .draft-control-labels > span { font-size: 12px; line-height: 18px; }
+.gameplay-shell .draft-control-main { min-height: 44px; justify-content: flex-start; }
+.gameplay-shell .draft-control-main h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.gameplay-shell .draft-context-strip { display: block; border: 0; background: none; padding: 0; margin: 24px 0 12px; }
+.gameplay-shell .franchise-context { justify-content: space-between; gap: 16px; }
+.gameplay-shell .franchise-context strong { white-space: normal; overflow: visible; font: 500 24px/30px "Space Grotesk", sans-serif; text-transform: none; }
+.gameplay-shell .franchise-context span { font: 400 24px/30px "Geist Mono", monospace; }
+.gameplay-shell .respin-status { display: block; margin-top: 8px; font-size: 11px; line-height: 16px; }
+.gameplay-shell .roster-empty-state { min-height: 240px; padding: 24px 0; }
+.gameplay-shell .candidate-section { flex: none; padding-top: 12px; }
+.gameplay-shell .candidate-heading { min-height: 40px; margin: 0; gap: 12px; }
+.gameplay-shell .candidate-heading h3 { font-size: 16px; line-height: 22px; text-transform: none; letter-spacing: 0; }
+.gameplay-shell .candidate-heading span { font-size: 12px; }
+.gameplay-shell .candidate-grid { display: block; max-height: 360px; flex: none; padding: 0; background: #17181a; border-block: 1px solid var(--line); overflow-y: auto; }
+.gameplay-shell .candidate-entry { display: block; }
+.gameplay-shell .candidate-group-label { min-height: 28px; margin: 0; padding: 4px 12px; font: 400 11px/16px "Geist Mono", monospace; color: #bdb6ab; letter-spacing: 0; text-transform: none; }
+.gameplay-shell .candidate-group-label::after { display: none; }
+.gameplay-shell .candidate-card { width: 100%; min-height: 72px; display: grid; grid-template-columns: 28px minmax(0, 1fr) auto 16px; gap: 10px; padding: 12px; border: 1px solid transparent; border-radius: 0; box-shadow: none; background: #17181a; transform: none; color: #f3eee5; transition: background-color 140ms, border-color 140ms; }
+.gameplay-shell .candidate-card:hover:not(:disabled) { background: #232427; border-color: #39383b; transform: none; box-shadow: none; }
+.gameplay-shell .candidate-card-selected, .gameplay-shell .candidate-card-selected:hover:not(:disabled) { background: #232427 !important; border-color: #77746e !important; box-shadow: none; }
+.gameplay-shell .candidate-card::after { display: none; }
+.gameplay-shell .candidate-meta { font-size: 11px !important; text-transform: none; }
+.gameplay-shell .candidate-unavailable { color: #bdb6ab; }
+.gameplay-shell .selected-player-detail { align-items: start; }
+.gameplay-shell .selected-player-copy > p:not(.eyebrow) { color: #f3eee5; font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .playoff-locked-copy { padding: 0; border: 0; background: none; min-height: 0; }
+.gameplay-shell .playoff-locked-copy strong, .gameplay-shell .playoff-locked-copy span { color: #bdb6ab; text-transform: none; }
+.gameplay-shell .candidate-card::before, .gameplay-shell .portrait-placeholder::before, .gameplay-shell .portrait-placeholder::after, .gameplay-shell .xi-portrait::before, .gameplay-shell .xi-portrait::after, .gameplay-shell .selected-player-portrait::before, .gameplay-shell .selected-player-portrait::after { display: none; }
+.gameplay-shell .portrait-placeholder { width: 28px; height: 28px; border-radius: 4px; display: grid; place-items: center; background: #232427; border-color: #555357; }
+.gameplay-shell .portrait-placeholder span { position: static; color: #f3eee5; font-size: 11px; }
+.gameplay-shell .candidate-body strong { font: 500 14px/20px "Geist Sans", sans-serif; white-space: normal; overflow: visible; }
+.gameplay-shell .candidate-body > span, .gameplay-shell .candidate-meta { font-size: 11px; line-height: 16px; color: #bdb6ab; }
+.gameplay-shell .candidate-quick-stats { color: #bdb6ab; font: 400 11px/18px "Geist Mono", monospace; }
+.gameplay-shell .select-mark { border: 0; color: #f3eee5; background: transparent; }
+.gameplay-shell .tier-violet { --tier-base: #382046; --tier-mid: #78529d; --tier-light: #b894e1; }
+.gameplay-shell .tier-gold { --tier-base: #34230b; --tier-mid: #80561c; --tier-light: #d5af5b; }
+.gameplay-shell .tier-cobalt { --tier-base: #0c1e36; --tier-mid: #234d82; --tier-light: #649ae0; }
+.gameplay-shell .tier-emerald { --tier-base: #0a281e; --tier-mid: #1b6046; --tier-light: #52ae88; }
+.gameplay-shell .tier-slate { --tier-base: #181e28; --tier-mid: #354253; --tier-light: #8594a9; }
+.gameplay-shell .selected-player-detail, .gameplay-shell .collectible-card { background: linear-gradient(130deg, var(--tier-mid), var(--tier-base)); border: 1px solid color-mix(in srgb, var(--tier-light) 65%, transparent); }
+.gameplay-shell .selected-player-detail { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; padding: 16px; margin: 16px 0 0; min-height: 144px; border-radius: 6px; box-shadow: none; }
+.gameplay-shell .selected-player-portrait { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 4px; background: #ffffff14; color: #f3eee5; font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .selected-player-copy h3 { white-space: normal; font: 500 16px/20px "Space Grotesk", sans-serif; }
+.gameplay-shell .selected-player-copy { display: contents; }
+.gameplay-shell .selected-player-portrait { grid-row: 1/3; }
+.gameplay-shell .selected-player-copy h3, .gameplay-shell .selected-player-copy > p { grid-column: 2; }
+.gameplay-shell .selected-player-detail .selected-player-meta, .gameplay-shell .selected-player-detail .current-season-stats { grid-column: 1/-1; }
+.gameplay-shell .selected-player-detail { row-gap: 4px; }
+.gameplay-shell .selected-player-copy p, .gameplay-shell .selected-player-meta, .gameplay-shell .current-season-stats { color: #f3eee5; font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .selected-player-meta { display: flex; flex-wrap: wrap; gap: 4px 8px; }
+.gameplay-shell .selected-player-meta span { padding: 0; border: 0; color: #f3eee5; font: 400 12px/18px "Geist Mono", monospace; text-transform: none; letter-spacing: 0; }
+.gameplay-shell .current-season-stats { display: grid; gap: 0; margin-top: 12px; border: 0; padding: 0; background: none; }
+.gameplay-shell .current-season-stats > span { display: none; }
+.gameplay-shell .current-season-stats strong { font-size: 12px; line-height: 18px; }
+.gameplay-shell .selected-player-empty { min-height: 96px; padding: 24px 16px; margin-top: 16px; background: #17181a; border: 1px solid var(--line); border-radius: 6px; color: #aaa59b; }
+.gameplay-shell .desktop-confirm { margin-top: 12px; }
+.gameplay-shell .confirm-pick { width: 100%; justify-content: center; }
+.gameplay-shell .pending-pick-label { font-size: 12px; }
+.gameplay-shell .xi-heading { min-height: 40px; margin: 0 0 8px; }
+.gameplay-shell .xi-heading .eyebrow { display: none; }
+.gameplay-shell .xi-heading h2 { font-size: 20px; line-height: 26px; }
+.gameplay-shell .pick-counter { font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .pick-counter small { font-size: 12px; }
+.gameplay-shell .draft-status { display: flex; gap: 16px; margin-bottom: 12px; border: 0; background: transparent; }
+.gameplay-shell .draft-status > span { display: flex; gap: 6px; padding: 0; border: 0; background: transparent; }
+.gameplay-shell .draft-status > span:last-child { display: none; }
+.gameplay-shell .draft-status :is(small, strong) { font: 400 12px/18px "Geist Mono", monospace; color: #bdb6ab; text-transform: none; }
+.gameplay-shell .fit-legend { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 0 0 16px; }
+.gameplay-shell .fit-legend .fit-badge > span { display: inline-block; border-bottom: 1px solid currentColor; }
+.gameplay-shell .fit-legend :is(.fit-stretch, .fit-major-stretch) > span { border-bottom-style: dashed; }
+.gameplay-shell .fit-legend .fit-unknown > span { border-bottom-style: dotted; }
+.gameplay-shell .fit-badge { border: 0; background: none; border-radius: 0; padding: 0; font: 400 11px/16px "Geist Mono", monospace; text-transform: none; letter-spacing: 0; white-space: normal; }
+.gameplay-shell .fit-natural, .gameplay-shell .xi-target-natural { --fit: #c8a669; color: #c8a669; }
+.gameplay-shell .fit-acceptable, .gameplay-shell .xi-target-acceptable { --fit: #b7a88c; color: #b7a88c; }
+.gameplay-shell .fit-stretch, .gameplay-shell .xi-target-stretch { --fit: #d4a15b; color: #d4a15b; }
+.gameplay-shell .fit-major-stretch, .gameplay-shell .xi-target-major-stretch { --fit: #ce8867; color: #ce8867; }
+.gameplay-shell .fit-unknown, .gameplay-shell .xi-target-unknown { --fit: #99a5b5; color: #99a5b5; }
+.gameplay-shell .xi-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 0; max-height: none; overflow: visible; }
+.gameplay-shell .xi-slot { min-height: 176px; display: block; position: relative; padding: 6px; border: 1px solid var(--line); border-radius: 4px; background: #17181a; overflow: visible; box-shadow: none; transform: none; transition: border-color 180ms; }
+.gameplay-shell .xi-slot-active { border-color: var(--fit); }
+.gameplay-shell :is(.xi-target-stretch, .xi-target-major-stretch) { border-style: dashed; }
+.gameplay-shell .xi-target-unknown { border-style: dotted; }
+.gameplay-shell .xi-slot:hover:not(:disabled) { background: #1c1d20; transform: none; box-shadow: none; }
+.gameplay-shell .xi-slot-occupied { border-color: #65583f; cursor: pointer; }
+.gameplay-shell .xi-fit-natural { border-color: #c8a669; }
+.gameplay-shell .xi-fit-acceptable { border-color: #b7a88c; }
+.gameplay-shell .xi-fit-stretch { border-color: #d4a15b; border-style: dashed; }
+.gameplay-shell .xi-fit-major-stretch { border-color: #ce8867; border-style: dashed; }
+.gameplay-shell .xi-fit-unknown { border-color: #99a5b5; border-style: dotted; }
+.gameplay-shell .xi-slot-locked { animation: game-terminal-in 180ms ease-out; }
+.gameplay-shell .xi-slot-active { animation: none; }
+.gameplay-shell.revealed-shell .reveal-layout { animation: game-terminal-in 600ms ease-out; }
+.gameplay-shell .match-result { animation: game-terminal-in 200ms ease-out; }
+.gameplay-shell .position-number { position: absolute; top: 10px; left: 10px; width: auto; height: auto; padding: 0; border: 0; background: none; font: 400 12px/18px "Geist Mono", monospace; color: #bdb6ab; }
+.gameplay-shell .xi-portrait-empty { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: auto; height: auto; border: 0; background: none; color: #aaa59b; }
+.gameplay-shell .xi-portrait-empty span { font-size: 22px; }
+.gameplay-shell .empty-fit-symbol { position: absolute; right: 12px; bottom: 12px; font-size: 18px; }
+.gameplay-shell .collectible-card { position: relative; min-height: 162px; display: grid; grid-template-columns: 32px minmax(0, 1fr); grid-template-rows: 20px minmax(32px, auto) auto 1fr auto; gap: 4px 10px; padding: 8px 9px 0; color: #f3eee5; clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 10px), calc(100% - 6px) calc(100% - 4px), 60% calc(100% - 4px), 50% 100%, 40% calc(100% - 4px), 6px calc(100% - 4px), 0 calc(100% - 10px), 0 8px); }
+.gameplay-shell .collectible-card .position-number { color: #f3eee5; top: 6px; left: 9px; }
+.gameplay-shell .placement-marker { grid-column: 2; justify-self: end; font: 400 11px/16px "Geist Mono", monospace; }
+.gameplay-shell .collectible-card .xi-portrait { width: 32px; height: 32px; grid-row: 2; display: grid; place-items: center; border-radius: 4px; background: #ffffff14; border-color: #ffffff30; }
+.gameplay-shell .collectible-card .xi-portrait span { color: #f3eee5; font: 400 11px/16px "Geist Mono", monospace; }
+.gameplay-shell .locked-player { display: contents; }
+.gameplay-shell .locked-player strong { grid-column: 2; grid-row: 2; align-self: center; }
+.gameplay-shell .locked-player small { grid-column: 1/-1; grid-row: 3; }
+.gameplay-shell .locked-player > span { grid-column: 1/-1; grid-row: 4; }
+.gameplay-shell .locked-player strong { font: 500 16px/20px "Space Grotesk", sans-serif; white-space: normal; overflow: visible; color: #f3eee5; }
+.gameplay-shell .locked-player small, .gameplay-shell .locked-player > span { display: block; white-space: normal; overflow: visible; color: #f3eee5; font: 400 11px/16px "Geist Mono", monospace; text-transform: none; letter-spacing: 0; }
+.gameplay-shell .xi-card-rail { grid-column: 1/-1; min-height: 28px; margin: 0 -9px; padding: 5px 4px; display: flex; justify-content: center; background: #101315; border: 0; }
+.gameplay-shell .xi-slot { border-width: 2px; }
+.gameplay-shell .xi-slot-active { border-color: color-mix(in srgb, var(--fit) 85%, white); }
+.gameplay-shell .xi-fit-natural { border-color: #e1bf7d; }
+.gameplay-shell .xi-fit-acceptable { border-color: #d3c4aa; }
+.gameplay-shell .xi-fit-stretch { border-color: #efb567; }
+.gameplay-shell .xi-fit-major-stretch { border-color: #e49b78; }
+.gameplay-shell .empty-fit-label { position: absolute; bottom: 12px; left: 8px; right: 8px; text-align: center; font: 400 11px/16px "Geist Mono", monospace; color: var(--fit); }
+.gameplay-shell .xi-fit-caption { grid-column: 1 / -1; grid-row: 5; display: block; margin-top: 8px; text-align: center; font: 400 11px/16px "Geist Mono", monospace; color: #f3eee5; }
+.gameplay-shell .xi-fit-caption .fit-badge { color: inherit; }
+.gameplay-shell .slot-confirm-hint { grid-column: 1 / -1; grid-row: 6; display: block; margin-top: 4px; color: #f3eee5; text-align: center; font: 500 11px/18px "Geist Mono", monospace; }
+.gameplay-shell .collectible-card { padding-bottom: 12px; grid-template-rows: 20px minmax(32px, auto) auto 1fr auto; clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px); overflow: hidden; }
+.gameplay-shell :is(.collectible-card, .selected-player-detail, .inspector-modal)::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(110deg, transparent 35%, #ffffff20 50%, transparent 65%); transform: translateX(-100%); opacity: 0; animation: card-light-sweep 14s ease-in-out infinite; animation-delay: calc(var(--reveal-order, 0) * -1.25s); }
+.gameplay-shell .selected-player-detail { position: relative; overflow: hidden; --reveal-order: 3; }
+.gameplay-shell .inspector-modal { --reveal-order: 0; overflow-x: hidden; }
+/* Only transform/opacity animate; the gradient is static, with no timers, blur or layout work. */
+@keyframes card-light-sweep { 0% { transform: translateX(-100%); opacity: 0; } 2% { opacity: 1; } 10%, 100% { transform: translateX(100%); opacity: 0; } }
+.gameplay-shell .selected-player-meta > span + span::before { content: "· "; }
+.gameplay-shell .xi-complete-mark { display: none; }
+.gameplay-shell .complete-state { min-height: 0; align-content: start; justify-items: stretch; margin: 0; padding: 24px; background: #17181a; border: 1px solid var(--line); border-radius: 6px; display: grid; gap: 24px; }
+.gameplay-shell .complete-state > * { margin: 0; }
+.gameplay-shell .complete-state h2 { font-size: 30px; line-height: 36px; }
+.gameplay-shell .complete-state p { margin: 0; font-size: 14px; line-height: 22px; color: #bdb6ab; }
+.gameplay-shell .complete-state .eyebrow { font: 400 11px/16px "Geist Mono", monospace; color: var(--gold); margin-bottom: 16px; }
+.gameplay-shell .complete-state h1 { margin: 0; }
+.gameplay-shell .complete-status p { font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .complete-status p:first-child { color: var(--gold); margin-bottom: 16px; }
+.gameplay-shell .complete-state .primary-action { width: 100%; }
+.gameplay-shell .player-inspector { min-height: 200px; margin-top: 16px; padding: 16px; border: 1px solid #65583f; border-radius: 6px; background: #1c1d20; color: #f3eee5; }
+.gameplay-shell .player-inspector header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.gameplay-shell .inspector-identity { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+.gameplay-shell .inspector-identity h3, .gameplay-shell .inspector-identity p { margin: 0; }
+.gameplay-shell .inspector-monogram { width: 40px; height: 40px; display: grid; place-items: center; background: #232427; border: 1px solid var(--line); border-radius: 4px; }
+.gameplay-shell .inspector-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.gameplay-shell .inspector-metrics > div { padding-block: 12px; border-top: 1px solid var(--line); }
+.gameplay-shell .inspector-metrics span { display: block; color: #bdb6ab; }
+.gameplay-shell .inspector-metrics strong { font: 500 24px/28px "Space Grotesk", sans-serif; }
+.gameplay-shell dialog.inspector-modal { position: fixed; inset: 0; margin: auto; width: min(560px, calc(100vw - 32px)); max-width: none; max-height: calc(100dvh - 48px); overflow-y: auto; padding: 28px; border: 2px solid var(--tier-light); background: linear-gradient(130deg, var(--tier-mid), var(--tier-base)); box-shadow: 0 24px 80px #0008; }
+.gameplay-shell .inspector-modal::backdrop { background: #000b; }
+.gameplay-shell .inspector-modal .inspector-monogram { width: 64px; height: 72px; flex-shrink: 0; background: #ffffff14; border-color: #ffffff40; font-size: 24px; }
+.gameplay-shell .inspector-modal .inspector-identity h3 { font-size: 28px; line-height: 1.2; }
+.gameplay-shell .inspector-modal .inspector-metrics { margin-top: 24px; padding: 16px; background: #10131599; border-radius: 4px; }
+.gameplay-shell .inspector-modal .inspector-metrics strong { font-size: 32px; line-height: 40px; }
+@media (max-width: 759px) { .gameplay-shell dialog.inspector-modal { padding: 20px; } .gameplay-shell .inspector-modal .inspector-identity h3 { font-size: 24px; } }
+@media (prefers-reduced-motion: reduce) { .gameplay-shell :is(.collectible-card, .selected-player-detail, .inspector-modal)::after { animation: none; opacity: 0; } }
+.gameplay-shell .draft-bottom-bar, .gameplay-shell .draft-jump { display: none; }
+.gameplay-shell .reveal-layout { gap: 32px; }
+.gameplay-shell .reveal-intro { padding: 0; border: 0; }
+.gameplay-shell .reveal-intro h1 { font-size: 32px; line-height: 38px; margin: 12px 0; }
+.gameplay-shell .reveal-intro p:not(.eyebrow) { font-size: 14px; line-height: 22px; color: #bdb6ab; }
+.gameplay-shell .strength-label { margin: 24px 0 16px; }
+.gameplay-shell .strength-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0 0 24px; border: 1px solid var(--line); border-radius: 6px; padding: 0; background: #17181a; }
+.gameplay-shell .strength-grid > * { min-height: 98px; gap: 8px; background: none; border: 0; border-right: 1px solid var(--line); border-radius: 0; padding: 16px; }
+.gameplay-shell .strength-grid > :first-child { padding-left: 16px; }
+.gameplay-shell .strength-grid .reveal-metric-featured { grid-column: auto; }
+.gameplay-shell .strength-grid > :last-child { border: 0; }
+.gameplay-shell .strength-grid strong { font: 500 28px/36px "Space Grotesk", sans-serif; }
+.gameplay-shell .strength-grid > :first-child strong { font-size: 36px; line-height: 40px; color: var(--gold); }
+.gameplay-shell .strength-grid span { font: 400 11px/16px "Geist Mono", monospace; }
+.gameplay-shell .evaluation-summary { padding: 20px; border-radius: 6px; background: #17181a; }
+.gameplay-shell .evaluation-summary p { color: #bdb6ab; font-size: 12px; line-height: 18px; }
+.gameplay-shell .evaluation-summary .candidate-heading { padding: 0 0 16px; }
+.gameplay-shell .evaluation-summary .candidate-heading h2 { font-size: 20px; line-height: 26px; letter-spacing: 0; text-transform: none; }
+.gameplay-shell .evaluation-row { padding: 8px 0 0; border: 0; display: flex; justify-content: space-between; gap: 12px; }
+.gameplay-shell .evaluation-row span { display: block; font-size: 12px; }
+.gameplay-shell .evaluation-row strong { display: block; margin: 0; font: 400 12px/20px "Geist Mono", monospace; text-align: right; }
+.gameplay-shell .assessment-section { margin-top: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.gameplay-shell .assessment-section:last-child { padding-bottom: 0; border: 0; }
+.gameplay-shell .assessment-section h3 { font-size: 16px; line-height: 22px; margin: 0 0 8px; }
+.gameplay-shell .assessment-section p { margin: 8px 0 0; }
+.gameplay-shell .quality-mix { display: flex; flex-wrap: wrap; gap: 12px; font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .mix-s { color: #b894e1; }.gameplay-shell .mix-a { color: #d5af5b; }.gameplay-shell .mix-b { color: #649ae0; }.gameplay-shell .mix-c { color: #52ae88; }.gameplay-shell .mix-d { color: #8594a9; }
+.gameplay-shell .phase-boundary { margin-top: 24px; padding: 0; border: 0; background: none; }
+.gameplay-shell .phase-boundary button { width: 100%; }
+.gameplay-shell .revealed-xi { min-width: 0; }
+.gameplay-shell .revealed-xi h2 { margin: 0 0 16px; }
+.gameplay-shell .revealed-list { background: #17181a; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.gameplay-shell .revealed-list-head, .gameplay-shell .revealed-player { display: grid; grid-template-columns: 32px minmax(0, 1fr) 64px 56px 56px 108px; gap: 8px; align-items: center; padding: 12px; }
+.gameplay-shell .revealed-list-head { min-height: 36px; padding-block: 8px; font: 400 11px/16px "Geist Mono", monospace; color: #aaa59b; }
+.gameplay-shell .revealed-player { min-height: 80px; border-top: 1px solid var(--line); border-left: 3px solid var(--tier-light); background: linear-gradient(90deg, color-mix(in srgb, var(--tier-light) 8%, transparent), transparent 70%); }
+.gameplay-shell .revealed-tier-s { --tier-light: #b894e1; }.gameplay-shell .revealed-tier-a { --tier-light: #d5af5b; }.gameplay-shell .revealed-tier-b { --tier-light: #649ae0; }.gameplay-shell .revealed-tier-c { --tier-light: #52ae88; }.gameplay-shell .revealed-tier-d { --tier-light: #8594a9; }
+.gameplay-shell .revealed-position { font: 400 12px/18px "Geist Mono", monospace; color: #aaa59b; }
+.gameplay-shell .revealed-identity strong { display: block; font: 500 15px/20px "Space Grotesk", sans-serif; }
+.gameplay-shell .revealed-identity small { display: block; font: 400 12px/18px "Geist Mono", monospace; color: #bdb6ab; }
+.gameplay-shell .revealed-overall { font: 500 24px/28px "Space Grotesk", sans-serif; }
+.gameplay-shell .revealed-bat, .gameplay-shell .revealed-bowl { font-size: 16px; }
+.gameplay-shell .revealed-bat small, .gameplay-shell .revealed-bowl small { display: none; }
+.gameplay-shell .revealed-fit .fit-badge { font-size: 12px; }
+.gameplay-shell .season-layout { display: block; width: 100%; max-width: 960px; margin: 24px auto 0; padding: 0; }
+.gameplay-shell .season-primary { padding: 0; border: 0; background: none; }
+.gameplay-shell .broadcast-match, .gameplay-shell .league-complete-panel { padding: 32px; border: 1px solid var(--line); border-radius: 6px; background: #17181a; }
+.gameplay-shell .season-primary h1 { margin: 12px 0 24px; }
+.gameplay-shell .season-kicker { font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .season-kicker > span { font: 400 12px/18px "Geist Mono", monospace; color: #bdb6ab; letter-spacing: 0; text-transform: none; }
+.gameplay-shell .qualification-state span { font-size: 11px; line-height: 16px; }
+.gameplay-shell .match-result { box-shadow: none; background: none; border-radius: 0; border: 0; border-top: 1px solid var(--line); }
+.gameplay-shell .innings-row { min-height: 72px; padding: 12px 0; gap: 16px; }
+.gameplay-shell .innings-row small { display: block; font: 400 12px/18px "Geist Mono", monospace; letter-spacing: 0; text-transform: none; }
+.gameplay-shell .innings-row strong { white-space: normal; font: 500 16px/22px "Space Grotesk", sans-serif; text-transform: none; }
+.gameplay-shell .innings-row b { font: 400 36px/44px "Geist Mono", monospace; }
+.gameplay-shell .match-verdict { min-height: 48px; padding: 12px 0; color: #f3eee5; font-size: 14px; display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; background: none; box-shadow: none; }
+.gameplay-shell .match-verdict :is(span, strong) { font: 500 14px/22px "Geist Sans", sans-serif; color: inherit; letter-spacing: 0; }
+.gameplay-shell .match-result-win .match-verdict { color: #a7c5b0; }.gameplay-shell .match-result-loss .match-verdict { color: #d1a0a0; }
+.gameplay-shell .match-verdict { justify-content: space-between; align-items: flex-end; gap: 12px 24px; }
+.gameplay-shell .match-verdict > strong { flex: 1 1 220px; color: #bdb6ab; }
+.gameplay-shell .match-verdict .match-outcome { margin-left: auto; font: 500 24px/30px "Space Grotesk", sans-serif; text-align: right; }
+.gameplay-shell .league-progress-strip { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 6px; margin: 24px 0; }
+.gameplay-shell .league-progress-strip li { min-height: 44px; border-radius: 4px; font: 400 11px/16px "Geist Mono", monospace; }
+.gameplay-shell .league-progress-strip li :is(span, strong) { font-size: 11px; }
+.gameplay-shell .league-progress-strip .progress-current { outline: 1px solid var(--gold); outline-offset: 2px; box-shadow: none; }
+.gameplay-shell .league-progress-strip .progress-w { color: #a7c5b0; }.gameplay-shell .league-progress-strip .progress-l { color: #d1a0a0; }
+.gameplay-shell .season-progress-summary { display: flex; gap: 48px; margin: 24px 0; background: transparent; border: 0; padding: 0; }
+.gameplay-shell .season-progress-summary > div { border: 0; padding: 0; }
+.gameplay-shell .season-progress-summary span { text-transform: none; letter-spacing: 0; }
+.gameplay-shell .season-progress-summary strong { font-size: 24px; line-height: 28px; }
+.gameplay-shell .season-progress-summary span, .gameplay-shell .season-progress-summary small { font-size: 12px; line-height: 18px; }
+.gameplay-shell .season-actions { margin: 24px 0 0; gap: 12px; }
+.gameplay-shell .league-standings-disclosure, .gameplay-shell .standings-panel { margin-top: 24px; background: #17181a; border-radius: 6px; }
+.gameplay-shell .league-standings-disclosure .standings-panel { margin-top: 0; }
+.gameplay-shell .league-standings-disclosure summary { min-height: 48px; font: 400 14px/20px "Geist Sans", sans-serif; padding: 12px 16px; text-transform: none; letter-spacing: 0; }
+.gameplay-shell .league-standings-disclosure summary > span::before { content: "▸ "; }
+.gameplay-shell .league-standings-disclosure[open] summary > span::before { content: "▾ "; }
+.gameplay-shell .league-standings-disclosure summary strong { font: 400 12px/18px "Geist Mono", monospace; color: #bdb6ab; }
+.gameplay-shell .standings-panel { padding: 20px; }
+.gameplay-shell .standings-panel :is(td, th) { min-height: 44px; height: 44px; font-size: 12px; padding: 8px; }
+.gameplay-shell .standings-panel tbody th { max-width: none; white-space: normal; }
+.gameplay-shell .standings-panel .user-standing { background: #302a20; }
+.gameplay-shell .standings-panel small { font-size: 11px; }
+.gameplay-shell .playoff-layout { max-width: 1200px; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 24px; align-items: start; }
+.gameplay-shell .playoff-bracket { background: #17181a; border-radius: 6px; }
+.gameplay-shell .playoff-bracket > .candidate-heading { padding: 16px; }
+.gameplay-shell .playoff-bracket .candidate-heading h2 { font-size: 20px; line-height: 26px; letter-spacing: 0; text-transform: none; }
+.gameplay-shell .playoff-bracket ol { display: block; padding: 0; margin: 0; }
+.gameplay-shell .playoff-stage { display: block; min-height: 128px; padding: 16px; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: transparent; }
+.gameplay-shell .playoff-stage-locked { min-height: 88px; }
+.gameplay-shell .playoff-stage:last-child { margin-top: 24px; }
+.gameplay-shell .active-playoff { box-shadow: inset 0 0 0 1px #65583f; }
+.gameplay-shell .playoff-stage-heading { margin-bottom: 12px; }
+.gameplay-shell .playoff-stage-heading :is(span, small), .gameplay-shell .playoff-team, .gameplay-shell .playoff-result { font-size: 12px; line-height: 18px; }
+.gameplay-shell .playoff-team > span { font-size: 12px; white-space: normal; }
+.gameplay-shell .playoff-team { grid-template-columns: minmax(0, 1fr) auto; min-height: 24px; color: #f3eee5; }
+.gameplay-shell .playoff-team > strong { font-size: 12px; color: #f3eee5; }
+.gameplay-shell .playoff-stage-heading small { color: #bdb6ab; text-transform: none; letter-spacing: 0; }
+.gameplay-shell .terminal-screen .playoff-teams { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.gameplay-shell .terminal-screen .playoff-team { display: flex; gap: 16px; }
+.gameplay-shell .terminal-screen .playoff-team:last-child { justify-content: end; }
+.gameplay-shell .terminal-screen .playoff-stage:nth-child(odd) { border-right: 0; }
+.gameplay-shell .playoff-result { display: block; white-space: normal; overflow: visible; margin-top: 12px; }
+.gameplay-shell .playoff-locked-copy strong, .gameplay-shell .playoff-locked-copy span { font-size: 12px; line-height: 18px; }
+.gameplay-shell .terminal-screen { max-width: 960px; margin: 48px auto 0; padding: 0; background: none; border: 0; animation: game-terminal-in 400ms ease-out; }
+.gameplay-shell .terminal-screen h1 { font-size: 36px; line-height: 42px; }
+.gameplay-shell .terminal-champion h1 { color: var(--gold); }
+.gameplay-shell .terminal-champion .champion-line { border-top: 1px solid var(--gold); padding-top: 24px; }
+.gameplay-shell .champion-line { border-bottom: 0; text-transform: none; }
+.gameplay-shell .champion-line span { font-size: 12px; line-height: 18px; color: #bdb6ab; letter-spacing: 0; }
+.gameplay-shell .terminal-summary { grid-template-columns: repeat(3, minmax(0, 1fr)); border: 0; border-radius: 0; margin: 24px 0; background: none; }
+.gameplay-shell .terminal-summary > div { padding: 0 16px 0 0; background: none; border: 0; border-radius: 0; }
+.gameplay-shell .terminal-summary span { text-transform: none; letter-spacing: 0; }
+.gameplay-shell .terminal-summary > div:last-child { border: 0; }
+.gameplay-shell .terminal-summary span { font-size: 12px; }
+.gameplay-shell .terminal-summary strong { font-size: 20px; line-height: 26px; }
+.gameplay-shell .terminal-actions { margin-top: 24px; }
+@keyframes game-terminal-in { from { opacity: 0; } to { opacity: 1; } }
+@media (min-width: 960px) and (max-width: 1199px) {
+  .gameplay-shell { padding-inline: 24px; }
+  .gameplay-shell .xi-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gameplay-shell .candidate-card { grid-template-columns: 28px minmax(0, 1fr) 16px; }
+  .gameplay-shell .candidate-quick-stats { grid-column: 2; grid-row: 2; }
+  .gameplay-shell .candidate-card .select-mark { grid-column: 3; grid-row: 1; }
+  .gameplay-shell .revealed-list-head, .gameplay-shell .revealed-player { grid-template-columns: 24px minmax(0, 1fr) 48px 42px 42px 90px; gap: 6px; padding-inline: 8px; }
+}
+@media (max-width: 959px) {
+  .gameplay-shell { padding-inline: 24px; }
+  .gameplay-shell .draft-layout, .gameplay-shell .playoff-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .gameplay-shell .xi-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .gameplay-shell .candidate-grid { max-height: 280px; }
+  .gameplay-shell.draft-shell:not(.revealed-shell) { padding-bottom: calc(156px + env(safe-area-inset-bottom)); }
+  .gameplay-shell .draft-bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 10; min-height: 72px; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid #65583f; background: #1c1d20; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; }
+  .gameplay-shell .draft-bottom-bar strong, .gameplay-shell .draft-bottom-bar span { display: block; font-size: 12px; line-height: 18px; }
+  .gameplay-shell .draft-bottom-bar span { color: #bdb6ab; }
+  .gameplay-shell .draft-bottom-bar a { display: flex; align-items: center; font-size: 12px; color: #f3eee5; }
+  .gameplay-shell .draft-bottom-bar button { grid-column: 1/-1; }
+  .gameplay-shell .desktop-confirm { display: none; }
+  .gameplay-shell .draft-jump { display: flex; align-items: center; justify-content: end; color: #f3eee5; margin-top: 8px; }
+  .gameplay-shell #draft-xi, .gameplay-shell #draft-players { scroll-margin-top: 16px; }
+  .gameplay-shell .inspector-sheet { position: fixed; inset: auto 0 0; width: 100%; max-width: none; max-height: 70dvh; margin: 0; overflow-y: auto; padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); box-shadow: 0 0 16px #0003; }
+  .gameplay-shell .inspector-sheet::backdrop { background: #0009; }
+  .gameplay-shell .reveal-stage { display: contents; }
+  .gameplay-shell .reveal-intro { grid-row: 1; }
+  .gameplay-shell .strength-grid { margin: 0; }
+  .gameplay-shell .strength-label { margin: 0 0 -8px; }
+  .gameplay-shell .revealed-xi { grid-row: auto; }
+  .gameplay-shell .phase-boundary { order: 2; margin-top: 0; }
+  .gameplay-shell .broadcast-match, .gameplay-shell .league-complete-panel { padding: 24px; }
+}
+@media (max-width: 759px) {
+  .gameplay-shell { padding-inline: 16px; }
+  .gameplay-shell .game-header { grid-template-columns: 1fr auto; gap: 4px 12px; }
+  .gameplay-shell .draft-era-id { grid-row: 2; grid-column: 1/-1; }
+  .gameplay-shell .wordmark { font-size: 16px; }
+  .gameplay-shell .game-header > .quiet-button { grid-column: 2; grid-row: 1; }
+  .gameplay-shell .game-header .draft-era-id { display: none; }
+  .gameplay-shell h1 { font-size: 26px; line-height: 32px; }
+  .gameplay-shell .candidate-card { grid-template-columns: 28px minmax(0, 1fr) 16px; }
+  .gameplay-shell .candidate-quick-stats { grid-column: 2; grid-row: 2; display: block; }
+  .gameplay-shell .candidate-quick-stats span { display: block; }
+  .gameplay-shell .candidate-card .select-mark { grid-column: 3; grid-row: 1; }
+  .gameplay-shell .collectible-card { grid-template-columns: 24px minmax(0, 1fr); column-gap: 6px; padding-inline: 6px; }
+  .gameplay-shell .collectible-card .xi-portrait { width: 24px; height: 28px; }
+  .gameplay-shell .locked-player strong { font-size: 14px; line-height: 20px; }
+  .gameplay-shell .locked-player small, .gameplay-shell .locked-player > span { font-size: 11px; line-height: 16px; }
+  .gameplay-shell .xi-card-rail { margin-inline: -6px; }
+  .gameplay-shell .draft-status { gap: 12px; flex-wrap: wrap; }
+  .gameplay-shell .draft-status :is(small, strong) { font-size: 11px; }
+  .gameplay-shell .reveal-intro h1 { font-size: 28px; line-height: 34px; }
+  .gameplay-shell .revealed-list-head { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .gameplay-shell .revealed-player { min-height: 96px; grid-template-columns: 24px minmax(0, 1fr) minmax(0, 1fr) 56px; gap: 4px 8px; }
+  .gameplay-shell .revealed-position { grid-row: 1; grid-column: 1; align-self: start; }
+  .gameplay-shell .revealed-identity { grid-column: 2/4; grid-row: 1; }
+  .gameplay-shell .revealed-overall { grid-column: 4; grid-row: 1; align-self: start; text-align: right; }
+  .gameplay-shell .revealed-bat { grid-column: 2; grid-row: 2; }
+  .gameplay-shell .revealed-bowl { grid-column: 3/5; grid-row: 2; text-align: right; }
+  .gameplay-shell .revealed-bat, .gameplay-shell .revealed-bowl { font-size: 12px; }
+  .gameplay-shell .revealed-bat small, .gameplay-shell .revealed-bowl small { display: inline; font-size: 11px; color: #aaa59b; }
+  .gameplay-shell .revealed-fit { grid-column: 2/-1; grid-row: 3; }
+  .gameplay-shell .broadcast-match, .gameplay-shell .league-complete-panel { padding: 20px; }
+  .gameplay-shell .innings-row { padding: 12px 0; }
+  .gameplay-shell .innings-row b { font-size: 28px; line-height: 36px; }
+  .gameplay-shell .innings-row strong { font-size: 14px; line-height: 20px; }
+  .gameplay-shell .match-verdict { padding: 12px 0; }
+  .gameplay-shell .league-progress-strip { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .gameplay-shell .season-actions, .gameplay-shell .terminal-actions { display: flex; flex-direction: column; }
+  .gameplay-shell .season-actions button, .gameplay-shell .terminal-actions button { width: 100%; }
+  .gameplay-shell .standings-panel { padding: 12px; }
+  .gameplay-shell .standings-scroll { overflow: visible; }
+  .gameplay-shell .standings-panel table { min-width: 0; width: 100%; }
+  .gameplay-shell .standings-panel thead { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
+  .gameplay-shell .standings-panel tbody, .gameplay-shell .standings-panel tr { display: block; }
+  .gameplay-shell .standings-panel tbody tr { display: grid; grid-template-columns: 28px repeat(3, minmax(0, 1fr)) 64px; padding: 8px 0; border-top: 1px solid var(--line); }
+  .gameplay-shell .standings-panel :is(td, th) { height: auto; min-height: 0; border: 0; padding: 4px; }
+  .gameplay-shell .standings-panel tbody th { grid-column: 2/5; grid-row: 1; }
+  .gameplay-shell .standings-panel td:nth-child(6) { grid-column: 5; grid-row: 1; }
+  .gameplay-shell .standings-panel td:nth-child(3) { grid-column: 2; }.gameplay-shell .standings-panel td:nth-child(4) { grid-column: 3; }.gameplay-shell .standings-panel td:nth-child(5) { grid-column: 4; }.gameplay-shell .standings-panel td:nth-child(7) { grid-column: 5; }
+  .gameplay-shell .standings-panel td:nth-child(3)::before { content: "P "; }.gameplay-shell .standings-panel td:nth-child(4)::before { content: "W "; }.gameplay-shell .standings-panel td:nth-child(5)::before { content: "L "; }.gameplay-shell .standings-panel td:nth-child(6)::before { content: "Pts "; }.gameplay-shell .standings-panel td:nth-child(7)::before { content: "NRR "; }
+  .gameplay-shell .standings-panel td:nth-child(7) { font-size: 11px; }
+  .gameplay-shell .terminal-summary { grid-template-columns: 1fr; }
+  .gameplay-shell .terminal-screen .playoff-teams { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .gameplay-shell .terminal-screen .playoff-team { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+  .gameplay-shell .terminal-screen .playoff-team:last-child { justify-content: normal; }
+  .gameplay-shell .terminal-summary > div { border: 0; border-bottom: 1px solid var(--line); }
+  .gameplay-shell .terminal-screen h1 { font-size: 30px; line-height: 36px; }
+}
+/* Centred card hierarchy, independent of desktop/mobile column count. */
+.gameplay-shell .collectible-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: 56px auto auto auto auto; align-content: start; justify-items: center; gap: 8px; padding: 32px 12px 16px; min-height: 244px; text-align: center; }
+.gameplay-shell .collectible-card .placement-marker { position: absolute; top: 8px; right: 10px; }
+.gameplay-shell .collectible-card .xi-portrait { grid-column: 1; grid-row: 1; position: static; width: 56px; height: 56px; margin: 0; transform: none; border-radius: 50%; }
+.gameplay-shell .collectible-card .xi-portrait span { width: auto; padding: 0; background: transparent; font-size: 18px; line-height: 24px; }
+.gameplay-shell .locked-player strong { grid-column: 1; grid-row: 2; font: 600 17px/22px "Space Grotesk", sans-serif; }
+.gameplay-shell .locked-player small { grid-column: 1; grid-row: 3; }
+.gameplay-shell .locked-player > span { grid-column: 1; grid-row: 4; }
+.gameplay-shell .locked-player small, .gameplay-shell .locked-player > span { font: 400 12px/18px "Geist Sans", sans-serif; color: #e5dfd5; }
+.gameplay-shell .xi-fit-caption { margin-top: 4px; }
+.gameplay-shell .slot-confirm-hint { margin-top: 0; }
+.gameplay-shell .candidate-card:disabled { opacity: 0.3; cursor: not-allowed; }
+.gameplay-shell .inspector-modal .inspector-identity { flex-direction: column; text-align: center; gap: 12px; }
+.gameplay-shell .inspector-modal .inspector-identity p { margin-top: 8px; }
+.gameplay-shell .inspector-modal .inspector-monogram { width: 72px; height: 72px; border-radius: 50%; }
+.gameplay-shell .inspector-modal > p { text-align: center; }
+@media (max-width: 759px) { .gameplay-shell .collectible-card { padding-inline: 8px; } .gameplay-shell .locked-player strong { font-size: 15px; line-height: 20px; } }
+@media (max-width: 359px) { .gameplay-shell .xi-slots { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .gameplay-shell *, .gameplay-shell *::before, .gameplay-shell *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+.landing-shell {
+  --home-bg: #0e1112;
+  --home-surface: #17181a;
+  --home-detail: #1c1d20;
+  --home-border: #39383b;
+  --home-border-strong: #65583f;
+  --home-text: #f3eee5;
+  --home-secondary: #bdb6ab;
+  --home-meta: #aaa59b;
+  --home-gold: #c8a669;
+  --home-gold-hover: #d7b779;
+  --home-action-text: #201b12;
+  --home-selected: #302a20;
+  --home-hover: #232427;
+  --home-focus: #e9d29f;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 32px 176px;
+  color: var(--home-text);
+  background: var(--home-bg);
+}
+.landing-shell .landing-atmosphere { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.landing-shell .landing-atmosphere::before {
+  content: ""; position: absolute; inset: 0; opacity: 0.62;
+  background:
+    radial-gradient(ellipse 180px 80px at 0% 5%, #f5e3ae9c, transparent 80%),
+    radial-gradient(ellipse 180px 80px at 100% 5%, #dbe5da9c, transparent 80%),
+    conic-gradient(from 138deg at 0% 4%, transparent 0deg, #ddce9740 10deg, #d4c69020 19deg, transparent 32deg),
+    conic-gradient(from 190deg at 100% 4%, transparent 0deg, #b2c9c540 11deg, #afc5be26 23deg, transparent 37deg),
+    radial-gradient(ellipse 75% 37% at 50% 110%, #3e605a88, transparent 90%);
+}
+.landing-shell .landing-atmosphere::after {
+  content: ""; position: absolute; width: 118%; height: 460px; left: -9%; bottom: -345px;
+  border: 1px solid rgb(171 188 175 / 18%); border-radius: 50%;
+  box-shadow: 0 0 0 30px #b4c5b508, 0 0 0 75px #b4c5b505;
+}
+.landing-shell .game-header { width: 100%; max-width: 1200px; min-height: 72px; margin-inline: auto; border-color: var(--home-border); flex-wrap: wrap; gap: 8px 24px; padding-block: 12px; }
+.landing-shell .wordmark { color: var(--home-text); font-size: 18px; line-height: 24px; font-weight: 600; letter-spacing: 0.09em; white-space: nowrap; }
+.landing-shell .landing-header-actions { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 8px 24px; margin-left: auto; }
+.landing-shell .classic-link { display: inline-flex; align-items: center; gap: 4px; min-height: 40px; color: var(--home-meta); font-size: 12px; }
+.landing-shell .classic-link:hover { color: var(--home-text); }
+.landing-shell .landing-content { width: 100%; max-width: 1000px; margin: 48px auto 0; }
+.landing-shell .era-picker { width: 100%; padding: 0; }
+.landing-shell .section-heading { display: block; margin-bottom: 24px; }
+.landing-shell .eyebrow { margin: 0 0 8px; color: var(--home-gold); font-size: 11px; line-height: 16px; font-weight: 400; letter-spacing: 0.08em; }
+.landing-shell .section-heading h1 { margin: 0; font: 500 30px/36px "Space Grotesk", sans-serif; letter-spacing: -0.035em; }
+.landing-shell .era-selection-layout { grid-template-columns: minmax(0, 44fr) minmax(0, 56fr); gap: 32px; align-items: start; }
+.landing-shell .era-grid { overflow: visible; border: 0; border-top: 1px solid var(--home-border); border-radius: 4px; background: var(--home-surface); }
+.landing-shell .era-card { display: block; min-height: 64px; padding: 16px; border-bottom: 1px solid var(--home-border); color: var(--home-secondary); background: var(--home-surface); transition: background-color 160ms ease-out, color 160ms ease-out; }
+.landing-shell .era-card:first-child { border-radius: 4px 4px 0 0; }
+.landing-shell .era-card:last-child { border-bottom: 1px solid var(--home-border); border-radius: 0 0 4px 4px; }
+.landing-shell .era-card-main { grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; }
+.landing-shell .era-card-main strong { overflow: visible; font-size: 16px; line-height: 22px; font-weight: 500; letter-spacing: 0; text-transform: none; white-space: normal; }
+.landing-shell .era-years { color: var(--home-meta); font-size: 12px; line-height: 18px; letter-spacing: 0; white-space: nowrap; }
+.landing-shell .era-card:hover:not(:disabled) { background: var(--home-hover); color: var(--home-text); }
+.landing-shell .era-card-selected, .landing-shell .era-card-selected:hover:not(:disabled) { background: var(--home-selected); box-shadow: inset 3px 0 0 var(--home-gold); color: var(--home-text); }
+.landing-shell .era-card-selected .era-years { color: var(--home-text); }
+.landing-shell .era-detail { min-width: 0; min-height: 321px; display: flex; flex-direction: column; gap: 0; padding: 28px; border: 1px solid var(--home-border); border-radius: 6px; background: var(--home-detail); box-shadow: none; }
+.landing-shell .era-detail-selected { border-color: var(--home-border-strong); }
+.landing-shell .era-detail-kicker { display: block; margin: 0; color: var(--home-gold); font: 400 11px/16px "Geist Mono", monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+.landing-shell .era-detail-years { margin: 16px 0; color: var(--home-gold); font: 400 40px/48px "Geist Mono", monospace; letter-spacing: -0.05em; }
+.landing-shell .era-detail-copy { max-width: 430px; min-height: 44px; margin: 0 0 16px; color: var(--home-secondary); font-size: 14px; line-height: 22px; }
+.landing-shell .landing-rules { margin: 0 0 24px; color: var(--home-meta); font: 400 12px/18px "Geist Mono", monospace; text-transform: uppercase; }
+.landing-shell .primary-action, .landing-shell .secondary-action { min-height: 44px; padding: 11px 20px; border: 1px solid var(--home-gold); border-radius: 4px; background: var(--home-gold); color: var(--home-action-text); font: 500 14px/20px "Geist Sans", sans-serif; letter-spacing: 0; text-transform: none; transition: background-color 160ms ease-out, color 160ms ease-out; }
+.landing-shell .primary-action:hover:not(:disabled), .landing-shell .secondary-action:hover:not(:disabled) { transform: none; background: var(--home-gold-hover); }
+.landing-shell .start-draft-action { align-self: flex-start; justify-content: center; width: auto; max-width: 100%; margin-top: auto; gap: 4px; }
+.landing-shell .landing-continue { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-height: 40px; padding: 9px 16px; border-color: var(--home-border-strong); background: var(--home-surface); color: var(--home-text); }
+.landing-shell .landing-continue:hover:not(:disabled) { background: var(--home-hover); }
+.landing-shell button:disabled { background: var(--home-surface); color: var(--home-meta); border-color: var(--home-border); opacity: 0.56; }
+.landing-shell :is(button, a, [tabindex]):focus-visible { outline: 2px solid var(--home-focus); outline-offset: 2px; }
+.landing-shell .era-detail-empty { flex: 1; gap: 12px; }
+.landing-shell .era-detail-empty h2 { margin: 0; font: 500 20px/28px "Space Grotesk", sans-serif; color: var(--home-text); }
+.landing-shell .era-detail-empty p { margin: 0; color: var(--home-secondary); font-size: 14px; line-height: 22px; }
+.landing-shell .landing-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.landing-shell .save-recovery, .landing-shell .storage-notice, .landing-shell .load-state, .landing-shell .overwrite-confirm { width: 100%; border-radius: 6px; background: var(--home-detail); box-shadow: none; }
+.landing-shell .save-recovery, .landing-shell .storage-notice { margin-bottom: 24px; }
+.landing-shell .overwrite-confirm { margin-top: auto; padding: 16px; border-color: var(--home-border-strong); }
+.landing-shell .overwrite-confirm p { color: var(--home-secondary); }
+.landing-shell .quiet-button { color: var(--home-secondary); }
+.landing-shell .era-detail > .async-detail { flex: none; margin: 12px 0 0 !important; font-size: 12px !important; line-height: 18px; color: var(--home-meta) !important; }
+.landing-shell .load-state { margin-top: 24px; }
+
+@media (max-width: 759px) {
+  .landing-shell { padding-inline: 20px; }
+  .landing-shell .era-selection-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .landing-shell .section-heading h1 { font-size: 26px; line-height: 32px; }
+  .landing-shell .era-detail { padding: 20px; min-height: 320px; }
+  .landing-shell .era-detail-years { font-size: 32px; line-height: 40px; }
+  .landing-shell .start-draft-action { width: 100%; }
+  .landing-shell .landing-continue, .landing-shell .classic-link { min-height: 44px; }
+  .landing-shell .landing-header-actions { gap: 8px 16px; }
+  .landing-shell .save-recovery { flex-direction: column; align-items: stretch; gap: 16px; }
+  .landing-shell .load-state { flex-wrap: wrap; }
+}
+@media (max-width: 479px) {
+  .landing-shell { padding-inline: 16px; }
+  .landing-shell .wordmark { font-size: 16px; }
+  .landing-shell .era-card-main { gap: 12px; }
+}

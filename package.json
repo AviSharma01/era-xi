@@ -12,19 +12,27 @@
     "validate:simulation-v1": "npm run build && node dist/simulationV1Validation.js",
     "build:stage7-data": "python3 scripts/build_era_simulation_v2_data.py",
     "build:stage9a-phase2": "python3 scripts/build_stage9a_phase2_content.py",
+    "build:stage9b-web-data": "npm run build && node dist/eraDraftWebArtifacts.js",
     "simulate:v2": "npm run build && node dist/simulationV2Harness.js",
     "validate:stage7": "npm run build && node dist/simulationV2Harness.js --mode validate --iterations 5000 --output data/processed/era-draft/simulation/v2/validation_report.json",
     "validate:era-draft": "npm run build && node dist/eraDraftValidation.js --mode standard",
     "validate:era-draft:smoke": "npm run build && node dist/eraDraftValidation.js --smoke",
     "validate:era-draft:full": "npm run build && node dist/eraDraftValidation.js --full",
-    "test": "npm run build && node --test dist/draftClassic.test.js dist/playerRoleContract.test.js dist/playerQualityContract.test.js dist/stage7Data.test.js dist/stage9aPhase1Data.test.js dist/stage9aPhase2Data.test.js dist/foundationStage8Parity.test.js dist/teamEvaluation.test.js dist/teamEvaluationV2.test.js dist/teamBoostV1.test.js dist/simulationV1.test.js dist/simulationV2.test.js dist/webApp.test.js dist/eraDraftData.test.js dist/eraDraftEngine.test.js dist/eraDraftLegality.test.js dist/eraDraftFeasibility.test.js dist/eraDraftRespin.test.js dist/eraDraftReveal.test.js dist/eraDraftOpponentComposition.test.js dist/eraDraftSimulation.test.js dist/eraDraftPersistence.test.js dist/eraDraftReplay.test.js dist/eraDraftFullCycle.test.js",
+    "test": "npm run build && node --test dist/draftClassic.test.js dist/playerRoleContract.test.js dist/playerQualityContract.test.js dist/stage7Data.test.js dist/stage9aPhase1Data.test.js dist/stage9aPhase2Data.test.js dist/foundationStage8Parity.test.js dist/teamEvaluation.test.js dist/teamEvaluationV2.test.js dist/teamBoostV1.test.js dist/simulationV1.test.js dist/simulationV2.test.js dist/webApp.test.js dist/webRoutes.test.js dist/eraDraftApp.test.js dist/eraDraftCanonical.test.js dist/eraDraftData.test.js dist/eraDraftScopedCatalog.test.js dist/eraDraftWebData.test.js dist/eraDraftBrowserFlow.test.js dist/eraDraftEngine.test.js dist/eraDraftLegality.test.js dist/eraDraftFeasibility.test.js dist/eraDraftRespin.test.js dist/eraDraftReveal.test.js dist/eraDraftOpponentComposition.test.js dist/eraDraftSimulation.test.js dist/eraDraftPersistence.test.js dist/eraDraftUiPersistence.test.js dist/eraDraftPhase3.test.js dist/eraDraftPhase4.test.js dist/eraDraftReplay.test.js dist/eraDraftFullCycle.test.js",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/jsdom": "^21.1.7",
     "@types/node": "^20.14.10",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
     "jsdom": "^24.1.3",
     "typescript": "^5.5.3",
     "vite": "^6.4.3"
+  },
+  "dependencies": {
+    "@noble/hashes": "1.8.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   }
 }

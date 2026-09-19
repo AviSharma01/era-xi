@@ -143,9 +143,9 @@ test("current spin and safe projection contain only the selected team-season can
     return internal?.teamSeasonId === state.currentSpin.teamSeasonId && internal.eraId === state.eraId;
   }));
   const candidateKeys = [
-    "available", "bowlingFamily", "bowlingWorkloadClass", "derivedRole", "franchiseId", "franchiseName",
-    "keeperCapability", "playerId", "playerName", "playerTeamSeasonId", "positions", "rosterStatus",
-    "seasonId", "seasonYear", "teamId", "teamName",
+    "allRounderLean", "available", "bowlingFamily", "bowlingWorkloadClass", "derivedRole", "displayRole", "franchiseId", "franchiseName",
+    "historicalStats", "keeperCapability", "playerId", "playerName", "playerTeamSeasonId", "positions", "presentationGroup", "rosterStatus",
+    "seasonId", "seasonYear", "teamId", "teamName", "tierAppearance",
   ];
   assert.deepEqual(Object.keys(view.candidates[0]!).sort(), candidateKeys);
   assertNoHiddenQuality(view);

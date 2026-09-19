@@ -1,8 +1,8 @@
 import type {
+  AllRounderLean,
   BowlingFamily,
   BowlingWorkloadClass,
   DerivedRole,
-  FitClassification,
   KeeperStatus,
 } from "./playerRoleContract.js";
 import type { QualityTier } from "./playerQualityContract.js";
@@ -325,24 +325,89 @@ export type DraftPlayerFactsView = {
   readonly rosterStatus: Exclude<IplRosterStatus, "UNKNOWN">;
   readonly keeperCapability: KeeperStatus;
   readonly derivedRole: DerivedRole;
+  readonly displayRole: DraftDisplayRole;
   readonly bowlingWorkloadClass: BowlingWorkloadClass;
   readonly bowlingFamily: BowlingFamily;
 };
 
+export type DraftDisplayRole =
+  | "BATTER"
+  | "WICKETKEEPER_BATTER"
+  | "ALL_ROUNDER"
+  | "BOWLER"
+  | "UNKNOWN";
+
+export type DraftPresentationFit =
+  | "NATURAL"
+  | "ACCEPTABLE"
+  | "STRETCH"
+  | "MAJOR_STRETCH"
+  | "UNKNOWN";
+
+export type DraftStatusView = {
+  readonly pickCount: number;
+  readonly pickLimit: 11;
+  readonly overseasCount: number;
+  readonly overseasLimit: 4;
+  readonly hasWicketkeeper: boolean;
+  readonly respinStatus: "AVAILABLE" | "USED";
+};
+
 export type DraftPickView = DraftPlayerFactsView & {
+  readonly tierAppearance: DraftTierAppearance;
+  readonly historicalStats: DraftHistoricalStatsView;
   readonly pickNumber: number;
   readonly battingPosition: EraDraftPick["battingPosition"];
-  readonly fit: FitClassification;
+  readonly presentationFit: DraftPresentationFit;
 };
 
 export type DraftCandidateIdentityView = DraftPlayerFactsView & {
+  readonly tierAppearance: DraftTierAppearance;
+  readonly presentationGroup: "BATTERS" | "ALL_ROUNDERS" | "BOWLERS";
+  readonly allRounderLean: AllRounderLean | null;
+  readonly historicalStats: DraftHistoricalStatsView;
   readonly available: boolean;
   readonly positions: readonly {
     readonly battingPosition: EraDraftPick["battingPosition"];
-    readonly fit: FitClassification;
+    readonly presentationFit: DraftPresentationFit;
     readonly available: boolean;
     readonly reasons: readonly EraDraftSelectionRejection[];
   }[];
+};
+
+export type DraftTierAppearance = "violet" | "gold" | "cobalt" | "emerald" | "slate";
+
+export type DraftHistoricalBattingView = {
+  readonly innings: number;
+  readonly runs: number;
+  readonly average: number | null;
+  readonly strikeRate: number | null;
+};
+
+export type DraftHistoricalBowlingView = {
+  readonly innings: number;
+  readonly wickets: number;
+  readonly legalBalls: number;
+  readonly economy: number | null;
+};
+
+export type DraftHistoricalPeakView<T> = T & {
+  readonly seasonId: string;
+  readonly seasonYear: number;
+  readonly teamId: string;
+  readonly teamName: string;
+  readonly playerTeamSeasonId: string;
+};
+
+export type DraftHistoricalStatsView = {
+  readonly currentSeason: {
+    readonly batting: DraftHistoricalBattingView;
+    readonly bowling: DraftHistoricalBowlingView;
+  };
+  readonly eraBest: {
+    readonly batting: DraftHistoricalPeakView<DraftHistoricalBattingView> | null;
+    readonly bowling: DraftHistoricalPeakView<DraftHistoricalBowlingView> | null;
+  };
 };
 
 export type SetupPublicView = {
@@ -355,6 +420,7 @@ export type AwaitingSpinPublicView = {
   readonly revision: number;
   readonly eraId: EraId;
   readonly eraLabel: string;
+  readonly status: DraftStatusView;
   readonly picks: readonly DraftPickView[];
 };
 
@@ -363,6 +429,7 @@ export type AwaitingPickPublicView = {
   readonly revision: number;
   readonly eraId: EraId;
   readonly eraLabel: string;
+  readonly status: DraftStatusView;
   readonly picks: readonly DraftPickView[];
   readonly currentSpin: {
     readonly spinOrdinal: number;
@@ -382,6 +449,7 @@ export type XiCompletePublicView = {
   readonly revision: number;
   readonly eraId: EraId;
   readonly eraLabel: string;
+  readonly status: DraftStatusView;
   readonly picks: readonly DraftPickView[];
 };
 
@@ -389,11 +457,30 @@ export type EraDraftPublicView = SetupPublicView | AwaitingSpinPublicView | Awai
 
 export type RevealPlayerView = DraftPlayerFactsView & {
   readonly battingPosition: EraDraftPick["battingPosition"];
-  readonly fit: FitClassification;
+  readonly presentationFit: DraftPresentationFit;
   readonly battingRating: number | null;
   readonly bowlingRating: number | null;
   readonly overallRating: number;
   readonly qualityTier: QualityTier;
+};
+
+export type TeamEvaluationSummaryView = {
+  readonly strength: {
+    readonly overall: number;
+    readonly batting: number;
+    readonly bowling: number;
+  };
+  readonly tierCounts: Readonly<Record<QualityTier, number>>;
+  readonly fitCounts: Readonly<Record<DraftPresentationFit, number>>;
+  readonly construction: {
+    readonly overseasCount: number;
+    readonly overseasLimit: 4;
+    readonly hasWicketkeeper: boolean;
+    readonly deployedBowlingUnits: number;
+    readonly requiredBowlingUnits: 5;
+    readonly frontlineBowlers: number;
+    readonly supportBowlers: number;
+  };
 };
 
 export type EraDraftRevealView = {
@@ -401,15 +488,76 @@ export type EraDraftRevealView = {
   readonly revision: number;
   readonly eraId: EraId;
   readonly eraLabel: string;
+  readonly status: DraftStatusView;
   readonly picks: readonly DraftPickView[];
   readonly players: readonly RevealPlayerView[];
-  readonly evaluation: {
-    readonly version: TeamEvaluationV2["version"];
-    readonly battingContributions: TeamEvaluationV2["battingContributions"];
-    readonly bowlingDeployment: TeamEvaluationV2["bowlingDeployment"];
-    readonly baseStrength: TeamEvaluationV2["baseStrength"];
-    readonly adjustedStrength: TeamEvaluationV2["adjustedStrength"];
-    readonly diagnostics: TeamEvaluationV2["diagnostics"];
-    readonly effects: TeamEvaluationV2["effects"];
+  readonly evaluation: TeamEvaluationSummaryView;
+};
+
+export type SeasonStandingView = {
+  readonly position: number;
+  readonly teamId: string;
+  readonly teamName: string;
+  readonly played: number;
+  readonly won: number;
+  readonly lost: number;
+  readonly points: number;
+  readonly netRunRate: number;
+  readonly isUser: boolean;
+  readonly qualified: boolean | null;
+};
+
+export type SeasonMatchView = {
+  readonly matchId: string;
+  readonly sequence: number;
+  readonly stage: "LEAGUE" | "QUALIFIER_1" | "ELIMINATOR" | "QUALIFIER_2" | "FINAL";
+  readonly firstInnings: {
+    readonly teamId: string;
+    readonly teamName: string;
+    readonly runs: number;
+    readonly wickets: number;
+    readonly balls: number;
   };
+  readonly secondInnings: {
+    readonly teamId: string;
+    readonly teamName: string;
+    readonly runs: number;
+    readonly wickets: number;
+    readonly balls: number;
+  };
+  readonly winnerTeamId: string;
+  readonly result: "WIN" | "LOSS" | "AI_RESULT";
+  readonly resultLabel: string;
+  readonly opponent: { readonly teamId: string; readonly teamName: string } | null;
+};
+
+export type UserLeagueCheckpointView = {
+  readonly matchNumber: number;
+  readonly round: number;
+  readonly match: SeasonMatchView;
+  readonly record: { readonly won: number; readonly lost: number };
+  readonly position: number;
+  readonly previousPosition: number | null;
+  readonly movement: "UP" | "DOWN" | "SAME" | "FIRST";
+  readonly standings: readonly SeasonStandingView[];
+};
+
+export type EraDraftGameCompleteView = {
+  readonly phase: "GAME_COMPLETE";
+  readonly revision: number;
+  readonly eraId: EraId;
+  readonly eraLabel: string;
+  readonly league: {
+    readonly userMatches: readonly UserLeagueCheckpointView[];
+    readonly finalStandings: readonly SeasonStandingView[];
+    readonly userFinalPosition: number;
+    readonly userRecord: { readonly won: number; readonly lost: number };
+    readonly qualified: boolean;
+  };
+  readonly playoffs: {
+    readonly allMatches: readonly SeasonMatchView[];
+    readonly userMatches: readonly SeasonMatchView[];
+    readonly userResult: string;
+  };
+  readonly champion: { readonly teamId: string; readonly teamName: string; readonly isUser: boolean };
 };

@@ -1,7 +1,4 @@
-import "./web.css";
-import ratedPlayerSeasonsJson from "../data/processed/2016/rated_player_seasons.json?raw";
-import { loadDraftPool } from "./draftClassic.js";
-import { createClassicDraftApp } from "./webApp.js";
+import { matchAppRoute } from "./webRoutes.js";
 
 const root = document.querySelector<HTMLElement>("#app");
 
@@ -9,5 +6,15 @@ if (!root) {
   throw new Error("Missing #app root element.");
 }
 
-const pool = loadDraftPool(JSON.parse(ratedPlayerSeasonsJson) as unknown);
-createClassicDraftApp({ root, pool });
+async function mount(): Promise<void> {
+  const route = matchAppRoute(window.location.pathname);
+  if (route === "CLASSIC") {
+    const { mountClassicDraft } = await import("./classicEntry.js");
+    mountClassicDraft(root!);
+    return;
+  }
+  const { mountEraDraftWebApp } = await import("./eraDraftWebApp.js");
+  mountEraDraftWebApp(root!);
+}
+
+void mount();

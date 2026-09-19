@@ -12,6 +12,9 @@ import {
   type EraXiPlayerInput,
 } from "./teamEvaluationV2.js";
 import type { EraEnvironmentV2, SimulationTeamV2 } from "./simulationV2.js";
+import { opponentAsSimulationTeamV2 } from "./eraDraftOpponentRuntime.js";
+
+export { opponentAsSimulationTeamV2 } from "./eraDraftOpponentRuntime.js";
 
 export const EXPECTED_OPPONENT_PROFILE_COUNTS: Readonly<Record<EraId, number>> = Object.freeze({
   "era-foundation": 8,
@@ -119,18 +122,6 @@ export function loadEraOpponentProfilesV2(eraId: EraId, root = process.cwd()): E
 
 export function loadFoundationOpponentProfilesV2(root = process.cwd()): FoundationOpponentProfileV2[] {
   return loadEraOpponentProfilesV2("era-foundation", root) as FoundationOpponentProfileV2[];
-}
-
-export function opponentAsSimulationTeamV2(profile: EraOpponentProfileV2): SimulationTeamV2 {
-  return {
-    teamId: profile.candidateId,
-    displayName: `${profile.teamName} ${profile.seasonId.slice(4)}`,
-    strength: {
-      batting: profile.evaluation.batting,
-      bowling: profile.evaluation.bowling,
-      overall: profile.evaluation.overall,
-    },
-  };
 }
 
 export function loadOpponentXiInputV2(
