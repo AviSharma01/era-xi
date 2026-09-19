@@ -84,21 +84,32 @@ test("all five eras group and sort candidates by display role without quality in
   }
 });
 
-test("tier identity appears only after reveal and survives strict restore and season simulation", async () => {
+test("authoritative tier colours appear before reveal without letters or ratings and survive restore", async () => {
   const xiComplete = strongestXiComplete(catalog, "era-foundation", "phase4-tier");
   const hiddenMarkup = renderToStaticMarkup(<DraftExperience session={{ catalog, state: xiComplete }}
     persistenceWarning={null} onAccepted={() => null} onExit={() => undefined} />);
   assert.doesNotMatch(hiddenMarkup, /xi-tier-[sabcd]|quality-tier|data-[^=]*tier/i);
+  assert.equal(countMatches(hiddenMarkup, /collectible-card tier-(violet|gold|cobalt|emerald|slate)/g), 11);
+  assert.doesNotMatch(hiddenMarkup, /overall-rating|component-ratings|battingRating|bowlingRating/);
 
   const revealed = accepted(reduceEraDraft(catalog, xiComplete, { type: "REVEAL_XI" }));
   if (revealed.phase !== "REVEALED") assert.fail("Expected reveal.");
   const revealMarkup = renderReveal(revealed);
-  assert.match(revealMarkup, /xi-slot-revealed xi-tier-[sabcd]/);
-  assert.match(revealMarkup, /quality-tier tier-[sabcd]/);
-  assert.match(revealMarkup, /xi-fit-[a-z-]+ xi-slot-revealed xi-tier-[sabcd]/);
+  assert.match(revealMarkup, /revealed-player revealed-tier-[sabcd]/);
+  assert.doesNotMatch(revealMarkup, /quality-tier tier-[sabcd]/);
+  assert.match(revealMarkup, /revealed-overall/);
 
   const assets = createEraDraftWebAssets(loadEraDraftCatalogDocuments());
   const entry = assets.manifest.eras.find((item) => item.eraId === revealed.eraId)!;
+  const hiddenRestored = await loadAndRestoreEraDraftUiSave({
+    save: createEraDraftUiSave(xiComplete), manifest: assets.manifest,
+    manifestUrl: new URL("https://example.test/data/era-draft/v1/manifest.json"),
+    fetcher: async () => new Response(assets.artifacts.get(entry.path)!.json),
+    subtle: webcrypto.subtle as unknown as SubtleCrypto,
+  });
+  if (hiddenRestored.state.phase !== "XI_COMPLETE") assert.fail("Expected hidden restored XI.");
+  assert.deepEqual(projectEraDraftPublicState(hiddenRestored.catalog, hiddenRestored.state), projectEraDraftPublicState(catalog, xiComplete));
+  assert.doesNotMatch(JSON.stringify(createEraDraftUiSave(xiComplete)), /tierAppearance|previewPosition|inspectedId/);
   const restored = await loadAndRestoreEraDraftUiSave({
     save: createEraDraftUiSave(revealed),
     manifest: assets.manifest,
@@ -107,7 +118,7 @@ test("tier identity appears only after reveal and survives strict restore and se
     subtle: webcrypto.subtle as unknown as SubtleCrypto,
   });
   if (restored.state.phase !== "REVEALED") assert.fail("Expected restored reveal.");
-  assert.equal(countMatches(renderReveal(restored.state), /xi-tier-[sabcd]/g), 11);
+  assert.equal(countMatches(renderReveal(restored.state), /revealed-player revealed-tier-[sabcd]/g), 11);
 
   const before = revealed.evaluation.players.map((player) => player.quality.overall.qualityTier);
   const simulated = accepted(reduceEraDraft(catalog, revealed, { type: "SIMULATE_SEASON" }));

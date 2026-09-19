@@ -346,41 +346,70 @@ export function DraftExperience(props: {
   const state = props.session.state;
   const view = useMemo(() => projectEraDraftPublicState(catalog, state), [catalog, state]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [previewPosition, setPreviewPosition] = useState<number | null>(null);
+  const [inspectedId, setInspectedId] = useState<string | null>(null);
+  const confirmingRef = useRef(false);
   const [message, setMessage] = useState("Spin to reveal a franchise-season.");
   const nextActionRef = useRef<HTMLButtonElement>(null);
+  const completeHeadingRef = useRef<HTMLHeadingElement>(null);
   const era = ERA_COPY[view.phase === "SETUP" ? "era-foundation" : view.eraId];
+  useEffect(() => { if (view.phase === "XI_COMPLETE") completeHeadingRef.current?.focus(); }, [view.phase]);
 
   useEffect(() => {
-    if (selectedId === null) return;
+    if (selectedId === null && inspectedId === null) return;
     const onKeyDown = (event: KeyboardEvent): void => {
       if (event.key !== "Escape") return;
+      if (inspectedId !== null) { setInspectedId(null); return; }
       setSelectedId(null);
+      setPreviewPosition(null);
       setMessage("Player selection cleared.");
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [selectedId]);
+  }, [selectedId, inspectedId]);
+
+  useEffect(() => {
+    confirmingRef.current = false;
+    setSelectedId(null);
+    setPreviewPosition(null);
+    setInspectedId(null);
+  }, [state.revision]);
 
   const transition = (command: Parameters<typeof reduceEraDraft>[2]): void => {
     const result = reduceEraDraft(catalog, state, command);
     if (!result.ok) {
+      confirmingRef.current = false;
       setMessage(result.error.message);
       return;
     }
     const saveWarning = props.onAccepted(result);
     setSelectedId(null);
+    setPreviewPosition(null);
+    setInspectedId(null);
     const acceptedMessage = command.type === "LOCK_PLAYER"
       ? result.state.phase === "XI_COMPLETE" ? "Pick 11 locked. Your XI is complete." : `Pick ${result.state.picks.length} locked. Spin again.`
       : command.type === "RESPIN" ? "Respin used. A new franchise-season is ready."
         : command.type === "REVEAL_XI" ? "Team revealed. Ratings are now available."
           : "Franchise-season revealed. Choose one player.";
     setMessage(saveWarning ? `${acceptedMessage} ${saveWarning}` : acceptedMessage);
-    if (command.type === "LOCK_PLAYER") requestAnimationFrame(() => nextActionRef.current?.focus());
+    if (command.type === "LOCK_PLAYER" && result.state.phase !== "XI_COMPLETE") requestAnimationFrame(() => nextActionRef.current?.focus());
   };
 
   const selected = view.phase === "AWAITING_PICK" ? view.candidates.find((candidate) => candidate.playerTeamSeasonId === selectedId) : undefined;
+  const inspected = view.phase === "SETUP" ? undefined : view.picks.find((pick) => pick.playerTeamSeasonId === inspectedId)
+    ?? (selected?.playerTeamSeasonId === inspectedId ? selected : undefined);
+  const preview = selected?.positions.find((position) => position.battingPosition === previewPosition && position.available);
+  const confirmPick = (): void => {
+    // Inspection is deliberately not an input to commitment.
+    if (!selected || !preview || confirmingRef.current) return;
+    confirmingRef.current = true;
+    transition({ type: "LOCK_PLAYER", playerTeamSeasonId: selected.playerTeamSeasonId, battingPosition: preview.battingPosition });
+  };
+  const confirmation = <button className="primary-action confirm-pick" disabled={!selected || !preview}
+    onClick={confirmPick}>{preview ? `Confirm Pick · Slot ${String(preview.battingPosition).padStart(2, "0")}` : "Confirm Pick"}</button>;
   return (
-    <main className="era-shell draft-shell">
+    <main className="era-shell draft-shell gameplay-shell">
+      <div className="gameplay-atmosphere" aria-hidden="true" />
       <header className="game-header draft-header">
         <button className="wordmark wordmark-button" onClick={props.onExit} aria-label="Return to era selection">
           <span className="wordmark-mark">ED</span><span>ERA DRAFT</span>
@@ -390,8 +419,8 @@ export function DraftExperience(props: {
       </header>
 
       <div className="draft-layout">
-        <section className="draft-stage" aria-labelledby="draft-stage-title">
-          {view.phase !== "SETUP" && <DraftControlRegion view={view} era={era} primaryActionRef={nextActionRef} onTransition={transition} />}
+        <section id="draft-players" className="draft-stage" aria-labelledby="draft-stage-title">
+          {view.phase !== "SETUP" && view.phase !== "XI_COMPLETE" && <DraftControlRegion view={view} era={era} primaryActionRef={nextActionRef} onTransition={transition} />}
           {props.persistenceWarning && <PersistenceWarning message={props.persistenceWarning} />}
 
           {view.phase === "AWAITING_SPIN" && (
@@ -403,7 +432,9 @@ export function DraftExperience(props: {
           )}
 
           {view.phase === "AWAITING_PICK" && (
-            <CandidateGallery view={view} selectedId={selectedId} selected={selected} onSelect={(candidate) => {
+            <CandidateGallery view={view} selectedId={selectedId} onSelect={(candidate) => {
+              setPreviewPosition(null);
+              setInspectedId(null);
               if (candidate.playerTeamSeasonId === selectedId) {
                 setSelectedId(null);
                 setMessage("Player selection cleared.");
@@ -414,17 +445,37 @@ export function DraftExperience(props: {
             }} />
           )}
 
+          {view.phase === "AWAITING_PICK" && <>
+            {inspected ? <PlayerInspector player={inspected} onClose={() => setInspectedId(null)} />
+              : selected ? <SelectedPlayerDetail candidate={selected} />
+                : <div className="selected-player-empty">No player selected.</div>}
+            <div className="desktop-confirm">
+              {inspected && selected && <p className="pending-pick-label">Pending pick: {selected.playerName}</p>}
+              {confirmation}
+            </div>
+            <a className="draft-jump" href="#draft-xi">View XI ↓</a>
+          </>}
+
           {view.phase === "XI_COMPLETE" && (
-            <div className="complete-state"><p className="eyebrow">Draft complete</p><h2>Your XI is locked.</h2>
-              <p>Every position is permanent. Reveal ratings and review how the team was constructed.</p>
+            <div className="complete-state"><div><p className="eyebrow">{era.title} · {era.years}</p><h1 ref={completeHeadingRef} id="draft-stage-title" tabIndex={-1}>XI complete</h1></div>
+              <div className="complete-status"><p>11 / 11 confirmed</p><p>Overseas {view.status.overseasCount} / 4 · Wicketkeeper {view.status.hasWicketkeeper ? "covered" : "needed"}</p></div>
+              <p>Reveal your team’s ratings and construction.</p>
               <button ref={nextActionRef} className="primary-action reveal-team-action" onClick={() => transition({ type: "REVEAL_XI" })}>Reveal team <span aria-hidden="true">→</span></button></div>
           )}
+          {view.phase !== "AWAITING_PICK" && inspected && <PlayerInspector player={inspected} onClose={() => setInspectedId(null)} />}
           <p className="sr-status" aria-live="polite">{message}</p>
         </section>
 
-        {view.phase !== "SETUP" && <XiPanel view={view} selected={selected} onLock={(playerTeamSeasonId, battingPosition) =>
-          transition({ type: "LOCK_PLAYER", playerTeamSeasonId, battingPosition })} />}
+        {view.phase !== "SETUP" && <XiPanel view={view} selected={selected} previewPosition={previewPosition}
+          onInspect={setInspectedId} onConfirm={confirmPick} onPreview={(position) => {
+            setPreviewPosition(position);
+            setMessage(`Preview in position ${position}: ${fitLabel(selected!.positions.find((option) => option.battingPosition === position)!.presentationFit)}. Confirm Pick to lock.`);
+          }} />}
       </div>
+      {view.phase === "AWAITING_PICK" && <div className="draft-bottom-bar">
+        <div><strong>{selected?.playerName ?? "No player selected"}</strong><span>{preview ? `Preview · Slot ${String(preview.battingPosition).padStart(2, "0")}` : "No preview position"}</span></div>
+        <a href="#draft-players">Back to Players ↑</a>{confirmation}
+      </div>}
     </main>
   );
 }
@@ -442,6 +493,9 @@ function CandidateGallery(props: {
       <div className="candidate-grid">
         {props.view.candidates.map((candidate) => {
           const selected = candidate.playerTeamSeasonId === props.selectedId;
+          const unavailableReason = !candidate.available
+            ? candidate.positions.flatMap((position) => position.reasons)[0]?.message ?? "Unavailable"
+            : undefined;
           const showGroup = candidate.presentationGroup !== previousGroup;
           previousGroup = candidate.presentationGroup;
           return (
@@ -449,66 +503,98 @@ function CandidateGallery(props: {
               {showGroup && <div className="candidate-group-label"><span>{friendly(candidate.presentationGroup)}</span></div>}
               <button className={`candidate-card${selected ? " candidate-card-selected" : ""}`}
                 disabled={!candidate.available} aria-pressed={selected}
-                title={!candidate.available ? candidate.positions.flatMap((position) => position.reasons)[0]?.message : undefined}
+                title={unavailableReason} aria-description={unavailableReason}
                 onClick={() => props.onSelect(candidate)}>
                 <span className="portrait-placeholder" aria-hidden="true"><span>{monogram(candidate.playerName)}</span></span>
                 <span className="candidate-body"><strong>{candidate.playerName}</strong><span>{friendly(candidate.displayRole)}</span>
                   <span className="candidate-meta">{candidate.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}
-                    {candidate.keeperCapability === "CONFIRMED" ? " · WK" : ""}</span></span>
+                    {candidate.keeperCapability === "CONFIRMED" && candidate.displayRole !== "WICKETKEEPER_BATTER" ? " · WK" : ""}</span>
+                </span>
                 <span className="candidate-quick-stats">
                   {candidateQuickStats(candidate).map((line) => <span key={line}>{line}</span>)}
                 </span>
-                <span className="select-mark" aria-hidden="true">{selected ? "✓" : "+"}</span>
+                <span className="select-mark" aria-hidden="true">{!candidate.available ? "" : selected ? "✓" : "+"}</span>
               </button>
             </div>
           );
         })}
       </div>
-      {props.selected && <SelectedPlayerDetail candidate={props.selected} />}
     </div>
   );
 }
 
 function SelectedPlayerDetail({ candidate }: { candidate: DraftCandidateIdentityView }): ReactElement {
-  const availablePositions = candidate.positions.filter((position) => position.available);
   const showBatting = candidate.displayRole !== "BOWLER" && candidate.displayRole !== "UNKNOWN";
   const showBowling = candidate.displayRole === "BOWLER" || candidate.displayRole === "ALL_ROUNDER";
-  return <section className="selected-player-detail" aria-labelledby="selected-player-title">
+  return <section className={`selected-player-detail tier-${candidate.tierAppearance}`} aria-labelledby="selected-player-title">
     <span className="selected-player-portrait" aria-hidden="true">{monogram(candidate.playerName)}</span>
     <div className="selected-player-copy">
-      <p className="eyebrow">Selected player</p><h3 id="selected-player-title">{candidate.playerName}</h3>
+      <h3 id="selected-player-title">{candidate.playerName}</h3>
       <p>{candidate.teamName} · {candidate.seasonYear}</p>
       <div className="selected-player-meta">
         <span>{friendly(candidate.displayRole)}</span>
         <span>{candidate.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}</span>
-        {candidate.keeperCapability === "CONFIRMED" && <span>Wicketkeeper</span>}
-        <span>{friendly(candidate.bowlingWorkloadClass)} bowling</span>
-        <span>{friendly(candidate.bowlingFamily)}</span>
+        {candidate.keeperCapability === "CONFIRMED" && candidate.displayRole !== "WICKETKEEPER_BATTER" && <span>Wicketkeeper</span>}
       </div>
       <CurrentSeasonStats candidate={candidate} batting={showBatting} bowling={showBowling} />
     </div>
-    <div className="selected-player-instruction"><strong>Choose a batting position</strong>
-      <span>{availablePositions.length} of 11 slots currently available</span></div>
   </section>;
 }
 
 function CurrentSeasonStats(props: {
-  candidate: DraftCandidateIdentityView;
+  candidate: Pick<DraftCandidateIdentityView, "historicalStats" | "seasonYear">;
   batting: boolean;
   bowling: boolean;
 }): ReactElement {
   const { batting, bowling } = props.candidate.historicalStats.currentSeason;
   const lines: string[] = [];
   if (props.batting) {
-    lines.push(`${props.bowling ? "BAT · " : ""}${batting.runs} runs${batting.strikeRate === null ? "" : ` · ${formatOneDecimal(batting.strikeRate)} SR`}${batting.average === null ? "" : ` · ${formatOneDecimal(batting.average)} avg`}`);
+    lines.push(`${batting.runs} runs · ${batting.strikeRate === null ? "—" : formatOneDecimal(batting.strikeRate)} SR`);
   }
   if (props.bowling) {
-    lines.push(`${props.batting ? "BOWL · " : ""}${bowling.wickets} wickets${bowling.economy === null ? "" : ` · ${formatTwoDecimals(bowling.economy)} econ`}`);
+    lines.push(`${bowling.wickets} wickets · ${bowling.economy === null ? "—" : formatTwoDecimals(bowling.economy)} econ`);
   }
   return <div className="current-season-stats" aria-label={`${props.candidate.seasonYear} current season statistics`}>
     <span>{props.candidate.seasonYear} season</span>
     {lines.length > 0 ? lines.map((line) => <strong key={line}>{line}</strong>) : <strong>No recorded statistics</strong>}
   </div>;
+}
+
+function PlayerInspector({ player, onClose }: { player: DraftPickView | DraftCandidateIdentityView; onClose: () => void }): ReactElement {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    // Keep the original opener across StrictMode's effect setup/cleanup replay.
+    openerRef.current ??= document.activeElement as HTMLElement | null;
+    const opener = openerRef.current;
+    dialogRef.current?.showModal(); closeRef.current?.focus();
+    return () => {
+      // Restore after native dialog removal/cancel has finished its own focus handling.
+      requestAnimationFrame(() => { if (!dialogRef.current?.open && opener?.isConnected) opener.focus(); });
+    };
+  }, []);
+  const { batting, bowling } = player.historicalStats.currentSeason;
+  const showBat = player.displayRole !== "BOWLER" && player.displayRole !== "UNKNOWN";
+  const showBowl = player.displayRole === "BOWLER" || player.displayRole === "ALL_ROUNDER";
+  const content = <>
+    <header><p className="eyebrow">Player details{'battingPosition' in player ? ` · Slot ${String(player.battingPosition).padStart(2, "0")}` : " · Preview"}</p>
+      <button ref={closeRef} className="quiet-button" onClick={onClose} aria-label="Close player details">Close ×</button></header>
+    <div className="inspector-identity"><span className="inspector-monogram" aria-hidden="true">{monogram(player.playerName)}</span>
+      <div><h3 id="inspector-title">{player.playerName}</h3><p>{player.teamName} · {player.seasonYear}</p></div></div>
+    <p>{friendly(player.displayRole)} · {player.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}{player.keeperCapability === "CONFIRMED" && player.displayRole !== "WICKETKEEPER_BATTER" ? " · WK" : ""}</p>
+    <div className="inspector-metrics" aria-label="Exact season statistics">
+      {showBat && <><div><span>Runs</span><strong>{batting.runs}</strong></div><div><span>Strike rate</span><strong>{batting.strikeRate === null ? "—" : formatOneDecimal(batting.strikeRate)}</strong></div></>}
+      {showBat && !showBowl && <div><span>Batting average</span><strong>{batting.average === null ? "—" : formatOneDecimal(batting.average)}</strong></div>}
+      {showBowl && <><div><span>Wickets</span><strong>{bowling.wickets}</strong></div><div><span>Economy</span><strong>{bowling.economy === null ? "—" : formatTwoDecimals(bowling.economy)}</strong></div></>}
+    </div>
+  </>;
+  return <dialog ref={dialogRef} className={`player-inspector inspector-modal tier-${player.tierAppearance}`} aria-labelledby="inspector-title"
+    onCancel={(event) => { event.preventDefault(); onClose(); }} onKeyDown={(event) => {
+      if (event.key === "Escape") event.stopPropagation();
+      // Close is the sheet's only interactive control; keep Tab within the dialog.
+      if (event.key === "Tab") { event.preventDefault(); closeRef.current?.focus(); }
+    }}>{content}</dialog>;
 }
 
 export function RevealedExperience(props: {
@@ -526,7 +612,8 @@ export function RevealedExperience(props: {
   const [beginStarted, setBeginStarted] = useState(false);
   const era = ERA_COPY[view.eraId];
   useEffect(() => headingRef.current?.focus(), []);
-  return <main className="era-shell draft-shell revealed-shell">
+  return <main className="era-shell draft-shell revealed-shell gameplay-shell">
+    <div className="gameplay-atmosphere" aria-hidden="true" />
     <header className="game-header draft-header">
       <button className="wordmark wordmark-button" onClick={props.onExit} aria-label="Return to era selection">
         <span className="wordmark-mark">ED</span><span>ERA DRAFT</span>
@@ -539,32 +626,34 @@ export function RevealedExperience(props: {
         {props.persistenceWarning && <PersistenceWarning message={props.persistenceWarning} />}
         <div className="reveal-intro"><p className="eyebrow">{era.title} · {era.years}</p>
           <h1 ref={headingRef} tabIndex={-1} id="reveal-title">Your team, revealed.</h1>
-          <p>Ratings reflect each historical player-season and the batting position where you locked it.</p></div>
-        <div className="strength-grid" aria-label="Team strength ratings">
+          <p>Historical player-season ratings, with team strength reflecting your batting order and bowling balance.</p></div>
+        <p className="eyebrow strength-label">Team strength</p><div className="strength-grid" aria-label="Team strength ratings">
           <RevealMetric label="Overall" value={view.evaluation.strength.overall} featured />
           <RevealMetric label="Batting" value={view.evaluation.strength.batting} />
           <RevealMetric label="Bowling" value={view.evaluation.strength.bowling} />
         </div>
         <section className="evaluation-summary" aria-labelledby="evaluation-title">
-          <div className="candidate-heading"><h2 id="evaluation-title">Team construction</h2><span>Evaluation V2</span></div>
-          <EvaluationRow label="Quality tiers" value={countSummary(view.evaluation.tierCounts, ["S", "A", "B", "C", "D"])} />
-          <EvaluationRow label="Position fit" value={countSummary(view.evaluation.fitCounts, ["NATURAL", "ACCEPTABLE", "STRETCH", "MAJOR_STRETCH", "UNKNOWN"])} />
-          <EvaluationRow label="Overseas" value={`${view.evaluation.construction.overseasCount}/${view.evaluation.construction.overseasLimit}`} />
-          <EvaluationRow label="Wicketkeeper" value={view.evaluation.construction.hasWicketkeeper ? "Covered" : "Not covered"} />
-          <EvaluationRow label="Bowling deployment" value={`${formatRating(view.evaluation.construction.deployedBowlingUnits)}/${view.evaluation.construction.requiredBowlingUnits} units`} />
-          <EvaluationRow label="Bowling options" value={`${view.evaluation.construction.frontlineBowlers} frontline · ${view.evaluation.construction.supportBowlers} support`} />
+          <div className="candidate-heading"><h2 id="evaluation-title">Team Assessment</h2></div>
+          <div className="assessment-section"><h3>Quality mix</h3><div className="quality-mix">{(["S", "A", "B", "C", "D"] as const).filter((tier) => view.evaluation.tierCounts[tier] > 0).map((tier) =>
+            <span key={tier} className={`mix-${tier.toLowerCase()}`}>{tier} × {view.evaluation.tierCounts[tier]}</span>)}</div></div>
+          <div className="assessment-section"><h3>Batting-order fit</h3>
+            <p>{countSummary({ ...view.evaluation.fitCounts, ACCEPTABLE: view.evaluation.fitCounts.ACCEPTABLE + view.evaluation.fitCounts.UNKNOWN }, ["NATURAL", "ACCEPTABLE"])}</p>
+            {(["STRETCH", "MAJOR_STRETCH"] as const).filter((fit) => view.evaluation.fitCounts[fit] > 0).map((fit) => <div key={fit}><FitBadge fit={fit} /> <span className={`fit-${fitClass(fit)}`}>{view.evaluation.fitCounts[fit]}</span></div>)}
+            <p>Position-fit adjustments are reflected in team strength.</p></div>
+          <div className="assessment-section"><h3>Bowling balance</h3>
+            <EvaluationRow label="Deployment" value={`${formatRating(view.evaluation.construction.deployedBowlingUnits)} / ${view.evaluation.construction.requiredBowlingUnits} units`} />
+            <EvaluationRow label="Options" value={`${view.evaluation.construction.frontlineBowlers} frontline · ${view.evaluation.construction.supportBowlers} support`} /></div>
         </section>
-        <div className="phase-boundary"><p className="eyebrow">Season ready</p><h2>Take this XI into a season.</h2>
-          <p>One complete league and playoff result will be frozen when you begin.</p>
+        <div className="phase-boundary">
           <button className="primary-action" disabled={beginStarted} onClick={() => {
             if (beginStartedRef.current) return;
             beginStartedRef.current = true;
             setBeginStarted(true);
             props.onBeginSeason();
-          }}>{beginStarted ? "Simulating season…" : "Begin season"} <span aria-hidden="true">→</span></button></div>
+          }}>{beginStarted ? "Starting league…" : "Start League"} <span aria-hidden="true">→</span></button></div>
         <p className="sr-status" aria-live="polite">Team revealed. Player and team ratings are now visible.</p>
       </section>
-      <XiPanel view={view} />
+      <RevealedXi view={view} />
     </div>
   </main>;
 }
@@ -587,7 +676,8 @@ export function SeasonExperience(props: {
   const headingRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => headingRef.current?.focus(), [cursor]);
   const era = ERA_COPY[view.eraId];
-  return <main className="era-shell season-shell">
+  return <main className={`era-shell season-shell gameplay-shell season-phase-${cursor.phase.toLowerCase()}`}>
+    <div className="gameplay-atmosphere" aria-hidden="true" />
     <header className="game-header draft-header">
       <button className="wordmark wordmark-button" onClick={props.onExit} aria-label="Return to era selection">
         <span className="wordmark-mark">ED</span><span>ERA DRAFT</span>
@@ -625,9 +715,11 @@ function LeagueCheckpoint(props: {
   const checkpoint = props.view.league.userMatches[props.revealed - 1]!;
   return <div className="season-layout season-layout-progress">
     <section className="season-primary" aria-labelledby="season-match-title">
+      <div className="broadcast-match">
       <div className="season-kicker"><p className="eyebrow">League stage</p><span>Match {String(checkpoint.matchNumber).padStart(2, "0")} / 14</span></div>
       <h1 ref={props.headingRef} tabIndex={-1} id="season-match-title">{checkpoint.match.opponent?.teamName}</h1>
       <MatchResult match={checkpoint.match} />
+      </div>
       <LeagueProgressStrip matches={props.view.league.userMatches} revealed={props.revealed} />
       <div className="season-progress-summary">
         <div><span>Season record</span><strong>{checkpoint.record.won}–{checkpoint.record.lost}</strong></div>
@@ -699,9 +791,11 @@ function PlayoffExperience(props: {
   const allIndex = props.view.playoffs.allMatches.findIndex((item) => item.matchId === match.matchId);
   return <div className="season-layout playoff-layout">
     <section className="season-primary" aria-labelledby="playoff-match-title">
+      <div className="broadcast-match">
       <div className="season-kicker"><p className="eyebrow">Playoffs</p><span>{stageLabel(match.stage)}</span></div>
       <h1 ref={props.headingRef} tabIndex={-1} id="playoff-match-title">{match.opponent?.teamName}</h1>
       <MatchResult match={match} />
+      </div>
       <div className="season-actions"><button className="primary-action" onClick={props.onNext}>
         {props.revealed < props.view.playoffs.userMatches.length ? "Next match" : "View season result"}<span aria-hidden="true">→</span></button>
         <button className="secondary-action" onClick={props.onSimToEnd}>Sim to end</button></div>
@@ -718,13 +812,13 @@ function TerminalExperience(props: {
   onNewEra: () => void;
 }): ReactElement {
   return <section className={`terminal-screen${props.view.champion.isUser ? " terminal-champion" : ""}`} aria-labelledby="terminal-title">
-    <p className="eyebrow">Season complete</p>
-    <h1 ref={props.headingRef} tabIndex={-1} id="terminal-title">{props.view.champion.isUser ? "Your XI are champions." : `${props.view.champion.teamName} are champions.`}</h1>
-    <p className="champion-line">{props.view.champion.teamName}<span>IPL Era Draft champion</span></p>
+    <p className="eyebrow">Season complete · {ERA_COPY[props.view.eraId].title}</p>
+    <h1 ref={props.headingRef} tabIndex={-1} id="terminal-title">{props.view.champion.isUser ? "Your XI are champions." : props.view.league.qualified ? props.view.playoffs.userResult : "League campaign complete."}</h1>
+    <p className="champion-line">{props.view.champion.isUser ? "Your XI" : props.view.champion.teamName}<span>IPL Era Draft champion</span></p>
     <div className="terminal-summary">
       <div><span>League finish</span><strong>{ordinal(props.view.league.userFinalPosition)}</strong></div>
       <div><span>Record</span><strong>{props.view.league.userRecord.won}–{props.view.league.userRecord.lost}</strong></div>
-      <div><span>Season result</span><strong>{props.view.playoffs.userResult}</strong></div>
+      <div><span>Playoff outcome</span><strong>{props.view.playoffs.userResult}</strong></div>
     </div>
     <PlayoffBracket matches={props.view.playoffs.allMatches} revealedThrough={props.view.playoffs.allMatches.length} />
     <div className="terminal-actions"><button className="primary-action" onClick={props.onNewEra}>New Era Draft</button>
@@ -734,12 +828,12 @@ function TerminalExperience(props: {
 }
 
 function MatchResult({ match }: { match: EraDraftGameCompleteView["league"]["userMatches"][number]["match"] }): ReactElement {
-  return <article className={`match-result match-result-${match.result.toLowerCase()}`} aria-label={match.resultLabel}>
-    <div className="innings-row"><span><small>{match.firstInnings.teamId === "user" ? "Your XI" : match.firstInnings.teamName}</small><strong>{match.firstInnings.teamName}</strong></span>
+  return <article key={match.matchId} className={`match-result match-result-${match.result.toLowerCase()}`} aria-label={match.resultLabel}>
+    <div className="innings-row"><span><small>First innings</small><strong>{match.firstInnings.teamId === "user" ? "Your XI" : match.firstInnings.teamName}</strong></span>
       <b>{formatInnings(match.firstInnings.runs, match.firstInnings.wickets)}</b></div>
-    <div className="innings-row"><span><small>{match.secondInnings.teamId === "user" ? "Your XI" : match.secondInnings.teamName}</small><strong>{match.secondInnings.teamName}</strong></span>
+    <div className="innings-row"><span><small>Second innings</small><strong>{match.secondInnings.teamId === "user" ? "Your XI" : match.secondInnings.teamName}</strong></span>
       <b>{formatInnings(match.secondInnings.runs, match.secondInnings.wickets)}</b></div>
-    <div className="match-verdict"><span>{match.result === "AI_RESULT" ? "Result" : match.result}</span><strong>{match.resultLabel}</strong></div>
+    <div className="match-verdict"><strong>{match.resultLabel}</strong>{match.result !== "AI_RESULT" && <span className="match-outcome">{match.result}</span>}</div>
   </article>;
 }
 
@@ -760,7 +854,7 @@ function PlayoffBracket({ matches, revealedThrough, activeMatchId }: {
   activeMatchId?: string;
 }): ReactElement {
   return <section className="playoff-bracket" aria-labelledby="playoff-bracket-title">
-    <div className="candidate-heading"><h2 id="playoff-bracket-title">Playoff path</h2><span>Four stages</span></div>
+    <div className="candidate-heading"><h2 id="playoff-bracket-title">Playoff path</h2></div>
     <ol>{matches.map((match, index) => {
       const revealed = index < revealedThrough;
       const userMatch = revealed && (match.firstInnings.teamId === "user" || match.secondInnings.teamId === "user");
@@ -775,7 +869,7 @@ function PlayoffBracket({ matches, revealedThrough, activeMatchId }: {
             <PlayoffTeam innings={match.secondInnings} winner={match.winnerTeamId === match.secondInnings.teamId} />
           </div>
           <strong className="playoff-result">{match.resultLabel}</strong>
-        </> : <div className="playoff-locked-copy"><strong>Matchup locked</strong><span>Reveals as the playoffs advance</span></div>}
+        </> : <div className="playoff-locked-copy"><strong>Matchup locked</strong></div>}
       </li>;
     })}</ol>
   </section>;
@@ -788,7 +882,6 @@ function PlayoffTeam({ innings, winner }: {
   return <div className={`playoff-team${winner ? " playoff-team-winner" : ""}`}>
     <span>{innings.teamId === "user" ? "Your XI" : innings.teamName}</span>
     <strong>{formatInnings(innings.runs, innings.wickets)}</strong>
-    {winner && <small>{"Winner"}</small>}
   </div>;
 }
 
@@ -803,19 +896,23 @@ function EvaluationRow({ label, value }: { label: string; value: string }): Reac
 function XiPanel(props: {
   view: Exclude<EraDraftPublicView, { phase: "SETUP" }> | EraDraftRevealView;
   selected?: DraftCandidateIdentityView;
-  onLock?: (playerTeamSeasonId: string, battingPosition: number) => void;
+  previewPosition?: number | null;
+  onPreview?: (position: number) => void;
+  onInspect?: (id: string) => void;
+  onConfirm?: () => void;
 }): ReactElement {
   const positions = Array.from({ length: 11 }, (_, index) => index + 1);
   const revealed = props.view.phase === "REVEALED";
   return (
-    <aside className="xi-panel" aria-labelledby="xi-title">
-      <div className="xi-heading"><div><p className="eyebrow">{revealed ? "Final team" : "Construction"}</p><h2 id="xi-title">{revealed ? "Your revealed XI" : "Your playing XI"}</h2></div>
-        <span className="pick-counter">{String(props.view.status.pickCount).padStart(2, "0")}<small>/11</small></span></div>
+    <aside id="draft-xi" className="xi-panel" aria-labelledby="xi-title">
+      <div className="xi-heading"><div><h2 id="xi-title">Your XI</h2></div>
+        <span className="pick-counter">{props.view.status.pickCount}<small> / 11 confirmed</small></span></div>
       <div className="draft-status" aria-label="Draft status">
         <Status label="Overseas" value={`${props.view.status.overseasCount}/4`} />
         <Status label="Keeper" value={props.view.status.hasWicketkeeper ? "Ready" : "Needed"} active={props.view.status.hasWicketkeeper} />
         <Status label={revealed ? "State" : "Respin"} value={revealed ? "Revealed" : friendly(props.view.status.respinStatus)} active={revealed} />
       </div>
+      {props.selected && <div className="fit-legend" aria-label="Position fit legend">{(["NATURAL", "ACCEPTABLE", "STRETCH", "MAJOR_STRETCH"] as const).map((fit) => <FitBadge key={fit} fit={fit} />)}</div>}
       <div className="xi-slots">
         {positions.map((position) => {
           const pick = props.view.picks.find((item) => item.battingPosition === position);
@@ -823,17 +920,19 @@ function XiPanel(props: {
             ? props.view.players.find((item) => item.battingPosition === position)
             : undefined;
           const option = props.selected?.positions.find((item) => item.battingPosition === position);
-          return pick
-            ? <XiPlayerCard key={position} position={position} pick={pick} revealed={revealPlayer} />
+          const previewPick: DraftPickView | undefined = !pick && props.previewPosition === position && props.selected && option?.available
+            ? { ...props.selected, pickNumber: props.view.status.pickCount + 1, battingPosition: option.battingPosition, presentationFit: option.presentationFit } : undefined;
+          return pick || previewPick
+            ? <XiPlayerCard key={position} position={position} pick={(pick ?? previewPick)!} preview={!!previewPick}
+                onInspect={() => props.onInspect?.((pick ?? previewPick)!.playerTeamSeasonId)} onConfirm={props.onConfirm} />
             : <button key={position} className={`xi-slot${props.selected ? " xi-slot-active" : ""}${option ? ` xi-target-${fitClass(option.presentationFit)}` : ""}`}
                 disabled={!props.selected || !option?.available}
                 title={!option?.available && option?.reasons[0] ? option.reasons[0].message : undefined}
-                onClick={() => props.selected && props.onLock?.(props.selected.playerTeamSeasonId, position)}>
+                aria-label={`Position ${position}${option ? ` · ${fitLabel(option.presentationFit)} · ${option.available ? "Available for preview" : option.reasons.map((reason) => reason.message).join(". ")}` : " · Open position"}`}
+                onClick={() => props.onPreview?.(position)}>
                 <span className="position-number">{String(position).padStart(2, "0")}</span>
                 <span className="xi-portrait xi-portrait-empty" aria-hidden="true"><span>+</span></span>
-                <span className="empty-slot-copy"><strong>{props.selected ? option?.available ? "Lock player here" : "Position unavailable" : "Open position"}</strong>
-                  <small>Batting position {String(position).padStart(2, "0")}</small></span>
-                <span className="xi-card-rail">{props.selected && option && <FitBadge fit={option.presentationFit} />}</span>
+                <span className="empty-fit-label">{props.selected && option ? fitLabel(option.presentationFit) : ""}</span>
               </button>;
         })}
       </div>
@@ -842,21 +941,38 @@ function XiPanel(props: {
   );
 }
 
-function XiPlayerCard({ position, pick, revealed }: { position: number; pick: DraftPickView; revealed?: RevealPlayerView }): ReactElement {
+function XiPlayerCard({ position, pick, preview, onInspect, onConfirm }: { position: number; pick: DraftPickView; preview?: boolean; onInspect: () => void; onConfirm?: () => void }): ReactElement {
   const style = { "--reveal-order": position - 1 } as CSSProperties;
-  const tierClass = revealed ? ` xi-tier-${revealed.qualityTier.toLowerCase()}` : "";
-  return <article style={style} className={`xi-slot xi-slot-locked xi-fit-${fitClass(pick.presentationFit)}${revealed ? ` xi-slot-revealed${tierClass}` : ""}`}>
+  return <button type="button" style={style} onClick={(event) => {
+    if (preview) onConfirm?.();
+    else { event.currentTarget.focus(); onInspect(); }
+  }} aria-label={`${preview ? "Confirm pick" : "Inspect"} ${pick.playerName}, position ${position}, ${preview ? "preview" : "confirmed"}, ${fitLabel(pick.presentationFit)}`}
+    className={`xi-slot xi-slot-occupied xi-fit-${fitClass(pick.presentationFit)}${preview ? " xi-slot-preview" : " xi-slot-locked"}`}>
+    <span className={`collectible-card tier-${pick.tierAppearance}`}>
     <span className="position-number">{String(position).padStart(2, "0")}</span>
+    <span className="placement-marker">{preview ? "Preview" : <svg aria-label="Locked" width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor"><rect x="2" y="6" width="8" height="7" rx="1"/><path d="M4 6V4a2 2 0 0 1 4 0v2"/></svg>}</span>
     <span className="xi-portrait" aria-hidden="true"><span>{monogram(pick.playerName)}</span></span>
     <span className="locked-player"><strong>{pick.playerName}</strong><small>{pick.teamName} · {pick.seasonYear}</small>
-      <span>{friendly(pick.displayRole)} · {pick.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}{pick.keeperCapability === "CONFIRMED" ? " · WK" : ""}</span></span>
-    <span className="xi-card-rail">
-      {revealed && <><span className={`quality-tier tier-${revealed.qualityTier.toLowerCase()}`}>{revealed.qualityTier}</span>
-        <strong className="overall-rating" aria-label={`Overall rating ${formatRating(revealed.overallRating)}`}>{formatRating(revealed.overallRating)}</strong>
-        <span className="component-ratings"><small>BAT {nullableRating(revealed.battingRating)}</small><small>BWL {nullableRating(revealed.bowlingRating)}</small></span></>}
-      <FitBadge fit={pick.presentationFit} />
+      <span>{friendly(pick.displayRole)}</span></span>
+    <span className="xi-fit-caption">Position fit · <FitBadge fit={pick.presentationFit} /></span>
+    {preview && <span className="slot-confirm-hint"><span aria-hidden="true">↑ </span>Click slot to confirm</span>}
     </span>
-  </article>;
+  </button>;
+}
+
+function RevealedXi({ view }: { view: EraDraftRevealView }): ReactElement {
+  return <section className="revealed-xi" aria-labelledby="revealed-xi-title"><h2 id="revealed-xi-title">Your Revealed XI</h2>
+    <div className="revealed-list" role="table" aria-label="Revealed player ratings">
+      <div className="revealed-list-head" role="row">{["Pos", "Player", "Overall", "Batting", "Bowling", "Position fit"].map((label) => <span role="columnheader" key={label}>{label}</span>)}</div>
+      {[...view.players].sort((a, b) => a.battingPosition - b.battingPosition).map((player) => <div role="row" key={player.playerTeamSeasonId} className={`revealed-player revealed-tier-${player.qualityTier.toLowerCase()}`}>
+        <span role="cell" className="revealed-position">{String(player.battingPosition).padStart(2, "0")}</span>
+        <span role="cell" className="revealed-identity"><strong>{player.playerName}</strong><small>{player.teamName} · {player.seasonYear}</small></span>
+        <strong role="cell" className="revealed-overall" aria-label={`Overall ${formatRating(player.overallRating)}`}>{formatRating(player.overallRating)}</strong>
+        <span role="cell" className="revealed-bat"><small>BAT </small>{nullableRating(player.displayRole === "BOWLER" ? null : player.battingRating)}</span>
+        <span role="cell" className="revealed-bowl"><small>BOWL </small>{nullableRating(player.displayRole === "BATTER" || player.displayRole === "WICKETKEEPER_BATTER" ? null : player.bowlingRating)}</span>
+        <span role="cell" className="revealed-fit"><FitBadge fit={player.presentationFit} /></span>
+      </div>)}
+    </div></section>;
 }
 
 function DraftControlRegion(props: {
@@ -866,14 +982,17 @@ function DraftControlRegion(props: {
   onTransition: (command: Parameters<typeof reduceEraDraft>[2]) => void;
 }): ReactElement {
   const spinVisible = props.view.phase === "AWAITING_SPIN";
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => headingRef.current?.focus(), [props.view.phase]);
   const respinVisible = props.view.phase === "AWAITING_PICK" && props.view.status.respinStatus === "AVAILABLE";
   return <div className="draft-control-region">
     <div className="draft-control-labels"><p className="eyebrow">{props.era.title} · {props.era.years}</p>
       <span>Pick {String(Math.min(props.view.status.pickCount + 1, 11)).padStart(2, "0")} / 11</span></div>
-    <div className="draft-control-main"><h1 id="draft-stage-title">{stageTitle(props.view)}</h1>
+    <div className="draft-control-main"><h1 ref={headingRef} tabIndex={-1} id="draft-stage-title">{stageTitle(props.view)}</h1>
       <div className="draft-control-actions">
         {spinVisible && <button ref={props.primaryActionRef} className="primary-action" onClick={() => props.onTransition({ type: "SPIN" })}>Spin franchise <span aria-hidden="true">→</span></button>}
-        {respinVisible && <button className="secondary-action" onClick={() => props.onTransition({ type: "RESPIN" })}>Respin</button>}
+        {respinVisible && <button className="secondary-action" onClick={() => props.onTransition({ type: "RESPIN" })}>Respin · 1 left</button>}
+        {!respinVisible && <span className="respin-status">{props.view.status.respinStatus === "USED" ? "Respin used" : "Respin · 1 left"}</span>}
       </div>
     </div>
     <div className="draft-context-strip">
@@ -882,13 +1001,17 @@ function DraftControlRegion(props: {
           : props.view.phase === "XI_COMPLETE" ? <><strong>Playing XI complete</strong><span>11 locked</span></>
           : <><strong>Franchise-season</strong><span>Awaiting spin</span></>}
       </div>
-      <span className={`respin-status respin-${props.view.status.respinStatus.toLowerCase()}`}>Respin · {friendly(props.view.status.respinStatus)}</span>
     </div>
   </div>;
 }
 
 function FitBadge({ fit }: { fit: DraftPresentationFit }): ReactElement {
-  return <span className={`fit-badge fit-${fitClass(fit)}`}>{friendly(fit)}</span>;
+  return <span className={`fit-badge fit-${fitClass(fit)}`}>{fitLabel(fit)}</span>;
+}
+
+function fitLabel(fit: DraftPresentationFit): string {
+  // Approved UI fallback only: authoritative UNKNOWN remains neutral and unchanged.
+  return friendly(fit === "UNKNOWN" ? "ACCEPTABLE" : fit);
 }
 
 function Status({ label, value, active = false }: { label: string; value: string; active?: boolean }): ReactElement {
@@ -925,7 +1048,7 @@ function friendly(value: string): string {
 }
 
 function fitClass(fit: DraftPresentationFit): string {
-  return fit.toLowerCase().replaceAll("_", "-");
+  return (fit === "UNKNOWN" ? "ACCEPTABLE" : fit).toLowerCase().replaceAll("_", "-");
 }
 
 function formatRating(value: number): string {
@@ -942,8 +1065,8 @@ function countSummary<T extends string>(counts: Readonly<Record<T, number>>, ord
 
 function candidateQuickStats(candidate: DraftCandidateIdentityView): string[] {
   const { batting, bowling } = candidate.historicalStats.currentSeason;
-  const battingLine = `${batting.runs} runs${batting.strikeRate === null ? "" : ` · ${formatOneDecimal(batting.strikeRate)} SR`}`;
-  const bowlingLine = `${bowling.wickets} ${bowling.wickets === 1 ? "wkt" : "wkts"}${bowling.economy === null ? "" : ` · ${formatTwoDecimals(bowling.economy)} econ`}`;
+  const battingLine = `${batting.runs} runs · ${batting.strikeRate === null ? "—" : formatOneDecimal(batting.strikeRate)} SR`;
+  const bowlingLine = `${bowling.wickets} ${bowling.wickets === 1 ? "wkt" : "wkts"} · ${bowling.economy === null ? "—" : formatTwoDecimals(bowling.economy)} econ`;
   if (candidate.displayRole === "ALL_ROUNDER") return [battingLine, bowlingLine];
   if (candidate.displayRole === "BOWLER" || candidate.displayRole === "UNKNOWN") return [bowlingLine];
   return [battingLine];

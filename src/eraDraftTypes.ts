@@ -354,12 +354,15 @@ export type DraftStatusView = {
 };
 
 export type DraftPickView = DraftPlayerFactsView & {
+  readonly tierAppearance: DraftTierAppearance;
+  readonly historicalStats: DraftHistoricalStatsView;
   readonly pickNumber: number;
   readonly battingPosition: EraDraftPick["battingPosition"];
   readonly presentationFit: DraftPresentationFit;
 };
 
 export type DraftCandidateIdentityView = DraftPlayerFactsView & {
+  readonly tierAppearance: DraftTierAppearance;
   readonly presentationGroup: "BATTERS" | "ALL_ROUNDERS" | "BOWLERS";
   readonly allRounderLean: AllRounderLean | null;
   readonly historicalStats: DraftHistoricalStatsView;
@@ -371,6 +374,8 @@ export type DraftCandidateIdentityView = DraftPlayerFactsView & {
     readonly reasons: readonly EraDraftSelectionRejection[];
   }[];
 };
+
+export type DraftTierAppearance = "violet" | "gold" | "cobalt" | "emerald" | "slate";
 
 export type DraftHistoricalBattingView = {
   readonly innings: number;

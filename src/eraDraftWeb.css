@@ -454,6 +454,427 @@ button.xi-slot { cursor: default; }
 }
 
 /* Homepage tokens and overrides stay local to preserve every game screen. */
+/* Final gameplay system is intentionally isolated from the approved homepage and Classic. */
+.gameplay-shell {
+  --gold: #c8a669; --gold-light: #d7b779; --gold-dark: #65583f;
+  --line: #39383b; --line-strong: #65583f; --muted: #bdb6ab;
+  --radius-panel: 6px; --radius-card: 4px;
+  position: relative; isolation: isolate; width: 100%; max-width: none; min-height: 100dvh;
+  padding: 0 32px 48px; color: #f3eee5; background: #0e1112;
+  font: 400 14px/22px "Geist Sans", sans-serif; font-variant-numeric: tabular-nums;
+}
+.gameplay-shell .gameplay-atmosphere { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.gameplay-shell .gameplay-atmosphere::before { content: ""; position: absolute; inset: 0; opacity: .30;
+  background: radial-gradient(ellipse 180px 80px at 0% 5%, #f5e3ae9c, transparent 80%),
+    radial-gradient(ellipse 180px 80px at 100% 5%, #dbe5da9c, transparent 80%),
+    conic-gradient(from 138deg at 0% 4%, transparent 0deg, #ddce9740 10deg, #d4c69020 19deg, transparent 32deg),
+    conic-gradient(from 190deg at 100% 4%, transparent 0deg, #b2c9c540 11deg, #afc5be26 23deg, transparent 37deg),
+    radial-gradient(ellipse 75% 37% at 50% 110%, #3e605a88, transparent 90%); }
+.gameplay-shell .gameplay-atmosphere::after { content: ""; position: absolute; width: 118%; height: 460px; left: -9%; bottom: -345px; border: 1px solid rgb(171 188 175 / 10%); border-radius: 50%; box-shadow: 0 0 0 30px #b4c5b508, 0 0 0 75px #b4c5b505; }
+.gameplay-shell *, .gameplay-shell *::before, .gameplay-shell *::after { box-sizing: border-box; }
+.gameplay-shell h1, .gameplay-shell h2, .gameplay-shell h3 { font-family: "Space Grotesk", sans-serif; font-weight: 500; letter-spacing: -.02em; text-transform: none; }
+.gameplay-shell h1 { font-size: 30px; line-height: 36px; }
+.gameplay-shell h2 { font-size: 20px; line-height: 26px; }
+.gameplay-shell .eyebrow { color: var(--gold); font: 400 11px/16px "Geist Mono", monospace; letter-spacing: .06em; }
+.gameplay-shell .game-header { max-width: 1280px; min-height: 72px; margin: 0 auto; padding: 12px 0; border-color: var(--line); }
+.gameplay-shell .wordmark { font-size: 18px; letter-spacing: .05em; }
+.gameplay-shell .wordmark-mark { display: none; }
+.gameplay-shell .draft-era-id { font-size: 12px; line-height: 18px; letter-spacing: 0; text-transform: none; }
+.gameplay-shell .draft-era-id strong { color: #aaa59b; }
+.gameplay-shell :is(button, a) { min-height: 44px; }
+.gameplay-shell :is(button, a, summary, [tabindex]):focus-visible { outline: 2px solid #e9d29f; outline-offset: 3px; }
+.gameplay-shell :is(.primary-action, .secondary-action) { border-radius: 4px; min-height: 44px; padding: 10px 20px; font: 600 14px/20px "Geist Sans", sans-serif; letter-spacing: 0; text-transform: none; box-shadow: none; transition: background-color 140ms, border-color 140ms; }
+.gameplay-shell .primary-action { color: #201b12; border-color: var(--gold); background: var(--gold); }
+.gameplay-shell .primary-action:hover:not(:disabled) { transform: none; background: #d7b779; }
+.gameplay-shell .secondary-action { color: #f3eee5; border-color: var(--line); background: transparent; }
+.gameplay-shell .secondary-action:hover:not(:disabled) { background: #232427; }
+.gameplay-shell button:disabled { opacity: 1; cursor: not-allowed; }
+.gameplay-shell .primary-action:disabled, .gameplay-shell .secondary-action:disabled { background: #17181a; color: #aaa59b; border-color: var(--line); }
+.gameplay-shell .quiet-button { color: #f3eee5; font-size: 14px; text-transform: none; }
+.gameplay-shell .draft-layout { display: grid; width: 100%; max-width: 1280px; height: auto; min-height: 0; margin: 24px auto 0; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 24px; align-items: start; }
+.gameplay-shell .draft-stage, .gameplay-shell .xi-panel { min-height: 0; min-width: 0; padding: 0; border: 0; background: transparent; overflow: visible; }
+.gameplay-shell .draft-control-region { border: 0; padding: 0; }
+.gameplay-shell .draft-control-labels { margin-bottom: 16px; }
+.gameplay-shell .draft-control-labels > span { font-size: 12px; line-height: 18px; }
+.gameplay-shell .draft-control-main { min-height: 44px; justify-content: flex-start; }
+.gameplay-shell .draft-control-main h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.gameplay-shell .draft-context-strip { display: block; border: 0; background: none; padding: 0; margin: 24px 0 12px; }
+.gameplay-shell .franchise-context { justify-content: space-between; gap: 16px; }
+.gameplay-shell .franchise-context strong { white-space: normal; overflow: visible; font: 500 24px/30px "Space Grotesk", sans-serif; text-transform: none; }
+.gameplay-shell .franchise-context span { font: 400 24px/30px "Geist Mono", monospace; }
+.gameplay-shell .respin-status { display: block; margin-top: 8px; font-size: 11px; line-height: 16px; }
+.gameplay-shell .roster-empty-state { min-height: 240px; padding: 24px 0; }
+.gameplay-shell .candidate-section { flex: none; padding-top: 12px; }
+.gameplay-shell .candidate-heading { min-height: 40px; margin: 0; gap: 12px; }
+.gameplay-shell .candidate-heading h3 { font-size: 16px; line-height: 22px; text-transform: none; letter-spacing: 0; }
+.gameplay-shell .candidate-heading span { font-size: 12px; }
+.gameplay-shell .candidate-grid { display: block; max-height: 360px; flex: none; padding: 0; background: #17181a; border-block: 1px solid var(--line); overflow-y: auto; }
+.gameplay-shell .candidate-entry { display: block; }
+.gameplay-shell .candidate-group-label { min-height: 28px; margin: 0; padding: 4px 12px; font: 400 11px/16px "Geist Mono", monospace; color: #bdb6ab; letter-spacing: 0; text-transform: none; }
+.gameplay-shell .candidate-group-label::after { display: none; }
+.gameplay-shell .candidate-card { width: 100%; min-height: 72px; display: grid; grid-template-columns: 28px minmax(0, 1fr) auto 16px; gap: 10px; padding: 12px; border: 1px solid transparent; border-radius: 0; box-shadow: none; background: #17181a; transform: none; color: #f3eee5; transition: background-color 140ms, border-color 140ms; }
+.gameplay-shell .candidate-card:hover:not(:disabled) { background: #232427; border-color: #39383b; transform: none; box-shadow: none; }
+.gameplay-shell .candidate-card-selected, .gameplay-shell .candidate-card-selected:hover:not(:disabled) { background: #232427 !important; border-color: #77746e !important; box-shadow: none; }
+.gameplay-shell .candidate-card::after { display: none; }
+.gameplay-shell .candidate-meta { font-size: 11px !important; text-transform: none; }
+.gameplay-shell .candidate-unavailable { color: #bdb6ab; }
+.gameplay-shell .selected-player-detail { align-items: start; }
+.gameplay-shell .selected-player-copy > p:not(.eyebrow) { color: #f3eee5; font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .playoff-locked-copy { padding: 0; border: 0; background: none; min-height: 0; }
+.gameplay-shell .playoff-locked-copy strong, .gameplay-shell .playoff-locked-copy span { color: #bdb6ab; text-transform: none; }
+.gameplay-shell .candidate-card::before, .gameplay-shell .portrait-placeholder::before, .gameplay-shell .portrait-placeholder::after, .gameplay-shell .xi-portrait::before, .gameplay-shell .xi-portrait::after, .gameplay-shell .selected-player-portrait::before, .gameplay-shell .selected-player-portrait::after { display: none; }
+.gameplay-shell .portrait-placeholder { width: 28px; height: 28px; border-radius: 4px; display: grid; place-items: center; background: #232427; border-color: #555357; }
+.gameplay-shell .portrait-placeholder span { position: static; color: #f3eee5; font-size: 11px; }
+.gameplay-shell .candidate-body strong { font: 500 14px/20px "Geist Sans", sans-serif; white-space: normal; overflow: visible; }
+.gameplay-shell .candidate-body > span, .gameplay-shell .candidate-meta { font-size: 11px; line-height: 16px; color: #bdb6ab; }
+.gameplay-shell .candidate-quick-stats { color: #bdb6ab; font: 400 11px/18px "Geist Mono", monospace; }
+.gameplay-shell .select-mark { border: 0; color: #f3eee5; background: transparent; }
+.gameplay-shell .tier-violet { --tier-base: #382046; --tier-mid: #78529d; --tier-light: #b894e1; }
+.gameplay-shell .tier-gold { --tier-base: #34230b; --tier-mid: #80561c; --tier-light: #d5af5b; }
+.gameplay-shell .tier-cobalt { --tier-base: #0c1e36; --tier-mid: #234d82; --tier-light: #649ae0; }
+.gameplay-shell .tier-emerald { --tier-base: #0a281e; --tier-mid: #1b6046; --tier-light: #52ae88; }
+.gameplay-shell .tier-slate { --tier-base: #181e28; --tier-mid: #354253; --tier-light: #8594a9; }
+.gameplay-shell .selected-player-detail, .gameplay-shell .collectible-card { background: linear-gradient(130deg, var(--tier-mid), var(--tier-base)); border: 1px solid color-mix(in srgb, var(--tier-light) 65%, transparent); }
+.gameplay-shell .selected-player-detail { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; padding: 16px; margin: 16px 0 0; min-height: 144px; border-radius: 6px; box-shadow: none; }
+.gameplay-shell .selected-player-portrait { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 4px; background: #ffffff14; color: #f3eee5; font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .selected-player-copy h3 { white-space: normal; font: 500 16px/20px "Space Grotesk", sans-serif; }
+.gameplay-shell .selected-player-copy { display: contents; }
+.gameplay-shell .selected-player-portrait { grid-row: 1/3; }
+.gameplay-shell .selected-player-copy h3, .gameplay-shell .selected-player-copy > p { grid-column: 2; }
+.gameplay-shell .selected-player-detail .selected-player-meta, .gameplay-shell .selected-player-detail .current-season-stats { grid-column: 1/-1; }
+.gameplay-shell .selected-player-detail { row-gap: 4px; }
+.gameplay-shell .selected-player-copy p, .gameplay-shell .selected-player-meta, .gameplay-shell .current-season-stats { color: #f3eee5; font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .selected-player-meta { display: flex; flex-wrap: wrap; gap: 4px 8px; }
+.gameplay-shell .selected-player-meta span { padding: 0; border: 0; color: #f3eee5; font: 400 12px/18px "Geist Mono", monospace; text-transform: none; letter-spacing: 0; }
+.gameplay-shell .current-season-stats { display: grid; gap: 0; margin-top: 12px; border: 0; padding: 0; background: none; }
+.gameplay-shell .current-season-stats > span { display: none; }
+.gameplay-shell .current-season-stats strong { font-size: 12px; line-height: 18px; }
+.gameplay-shell .selected-player-empty { min-height: 96px; padding: 24px 16px; margin-top: 16px; background: #17181a; border: 1px solid var(--line); border-radius: 6px; color: #aaa59b; }
+.gameplay-shell .desktop-confirm { margin-top: 12px; }
+.gameplay-shell .confirm-pick { width: 100%; justify-content: center; }
+.gameplay-shell .pending-pick-label { font-size: 12px; }
+.gameplay-shell .xi-heading { min-height: 40px; margin: 0 0 8px; }
+.gameplay-shell .xi-heading .eyebrow { display: none; }
+.gameplay-shell .xi-heading h2 { font-size: 20px; line-height: 26px; }
+.gameplay-shell .pick-counter { font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .pick-counter small { font-size: 12px; }
+.gameplay-shell .draft-status { display: flex; gap: 16px; margin-bottom: 12px; border: 0; background: transparent; }
+.gameplay-shell .draft-status > span { display: flex; gap: 6px; padding: 0; border: 0; background: transparent; }
+.gameplay-shell .draft-status > span:last-child { display: none; }
+.gameplay-shell .draft-status :is(small, strong) { font: 400 12px/18px "Geist Mono", monospace; color: #bdb6ab; text-transform: none; }
+.gameplay-shell .fit-legend { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 0 0 16px; }
+.gameplay-shell .fit-legend .fit-badge > span { display: inline-block; border-bottom: 1px solid currentColor; }
+.gameplay-shell .fit-legend :is(.fit-stretch, .fit-major-stretch) > span { border-bottom-style: dashed; }
+.gameplay-shell .fit-legend .fit-unknown > span { border-bottom-style: dotted; }
+.gameplay-shell .fit-badge { border: 0; background: none; border-radius: 0; padding: 0; font: 400 11px/16px "Geist Mono", monospace; text-transform: none; letter-spacing: 0; white-space: normal; }
+.gameplay-shell .fit-natural, .gameplay-shell .xi-target-natural { --fit: #c8a669; color: #c8a669; }
+.gameplay-shell .fit-acceptable, .gameplay-shell .xi-target-acceptable { --fit: #b7a88c; color: #b7a88c; }
+.gameplay-shell .fit-stretch, .gameplay-shell .xi-target-stretch { --fit: #d4a15b; color: #d4a15b; }
+.gameplay-shell .fit-major-stretch, .gameplay-shell .xi-target-major-stretch { --fit: #ce8867; color: #ce8867; }
+.gameplay-shell .fit-unknown, .gameplay-shell .xi-target-unknown { --fit: #99a5b5; color: #99a5b5; }
+.gameplay-shell .xi-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 0; max-height: none; overflow: visible; }
+.gameplay-shell .xi-slot { min-height: 176px; display: block; position: relative; padding: 6px; border: 1px solid var(--line); border-radius: 4px; background: #17181a; overflow: visible; box-shadow: none; transform: none; transition: border-color 180ms; }
+.gameplay-shell .xi-slot-active { border-color: var(--fit); }
+.gameplay-shell :is(.xi-target-stretch, .xi-target-major-stretch) { border-style: dashed; }
+.gameplay-shell .xi-target-unknown { border-style: dotted; }
+.gameplay-shell .xi-slot:hover:not(:disabled) { background: #1c1d20; transform: none; box-shadow: none; }
+.gameplay-shell .xi-slot-occupied { border-color: #65583f; cursor: pointer; }
+.gameplay-shell .xi-fit-natural { border-color: #c8a669; }
+.gameplay-shell .xi-fit-acceptable { border-color: #b7a88c; }
+.gameplay-shell .xi-fit-stretch { border-color: #d4a15b; border-style: dashed; }
+.gameplay-shell .xi-fit-major-stretch { border-color: #ce8867; border-style: dashed; }
+.gameplay-shell .xi-fit-unknown { border-color: #99a5b5; border-style: dotted; }
+.gameplay-shell .xi-slot-locked { animation: game-terminal-in 180ms ease-out; }
+.gameplay-shell .xi-slot-active { animation: none; }
+.gameplay-shell.revealed-shell .reveal-layout { animation: game-terminal-in 600ms ease-out; }
+.gameplay-shell .match-result { animation: game-terminal-in 200ms ease-out; }
+.gameplay-shell .position-number { position: absolute; top: 10px; left: 10px; width: auto; height: auto; padding: 0; border: 0; background: none; font: 400 12px/18px "Geist Mono", monospace; color: #bdb6ab; }
+.gameplay-shell .xi-portrait-empty { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: auto; height: auto; border: 0; background: none; color: #aaa59b; }
+.gameplay-shell .xi-portrait-empty span { font-size: 22px; }
+.gameplay-shell .empty-fit-symbol { position: absolute; right: 12px; bottom: 12px; font-size: 18px; }
+.gameplay-shell .collectible-card { position: relative; min-height: 162px; display: grid; grid-template-columns: 32px minmax(0, 1fr); grid-template-rows: 20px minmax(32px, auto) auto 1fr auto; gap: 4px 10px; padding: 8px 9px 0; color: #f3eee5; clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 10px), calc(100% - 6px) calc(100% - 4px), 60% calc(100% - 4px), 50% 100%, 40% calc(100% - 4px), 6px calc(100% - 4px), 0 calc(100% - 10px), 0 8px); }
+.gameplay-shell .collectible-card .position-number { color: #f3eee5; top: 6px; left: 9px; }
+.gameplay-shell .placement-marker { grid-column: 2; justify-self: end; font: 400 11px/16px "Geist Mono", monospace; }
+.gameplay-shell .collectible-card .xi-portrait { width: 32px; height: 32px; grid-row: 2; display: grid; place-items: center; border-radius: 4px; background: #ffffff14; border-color: #ffffff30; }
+.gameplay-shell .collectible-card .xi-portrait span { color: #f3eee5; font: 400 11px/16px "Geist Mono", monospace; }
+.gameplay-shell .locked-player { display: contents; }
+.gameplay-shell .locked-player strong { grid-column: 2; grid-row: 2; align-self: center; }
+.gameplay-shell .locked-player small { grid-column: 1/-1; grid-row: 3; }
+.gameplay-shell .locked-player > span { grid-column: 1/-1; grid-row: 4; }
+.gameplay-shell .locked-player strong { font: 500 16px/20px "Space Grotesk", sans-serif; white-space: normal; overflow: visible; color: #f3eee5; }
+.gameplay-shell .locked-player small, .gameplay-shell .locked-player > span { display: block; white-space: normal; overflow: visible; color: #f3eee5; font: 400 11px/16px "Geist Mono", monospace; text-transform: none; letter-spacing: 0; }
+.gameplay-shell .xi-card-rail { grid-column: 1/-1; min-height: 28px; margin: 0 -9px; padding: 5px 4px; display: flex; justify-content: center; background: #101315; border: 0; }
+.gameplay-shell .xi-slot { border-width: 2px; }
+.gameplay-shell .xi-slot-active { border-color: color-mix(in srgb, var(--fit) 85%, white); }
+.gameplay-shell .xi-fit-natural { border-color: #e1bf7d; }
+.gameplay-shell .xi-fit-acceptable { border-color: #d3c4aa; }
+.gameplay-shell .xi-fit-stretch { border-color: #efb567; }
+.gameplay-shell .xi-fit-major-stretch { border-color: #e49b78; }
+.gameplay-shell .empty-fit-label { position: absolute; bottom: 12px; left: 8px; right: 8px; text-align: center; font: 400 11px/16px "Geist Mono", monospace; color: var(--fit); }
+.gameplay-shell .xi-fit-caption { grid-column: 1 / -1; grid-row: 5; display: block; margin-top: 8px; text-align: center; font: 400 11px/16px "Geist Mono", monospace; color: #f3eee5; }
+.gameplay-shell .xi-fit-caption .fit-badge { color: inherit; }
+.gameplay-shell .slot-confirm-hint { grid-column: 1 / -1; grid-row: 6; display: block; margin-top: 4px; color: #f3eee5; text-align: center; font: 500 11px/18px "Geist Mono", monospace; }
+.gameplay-shell .collectible-card { padding-bottom: 12px; grid-template-rows: 20px minmax(32px, auto) auto 1fr auto; clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px); overflow: hidden; }
+.gameplay-shell :is(.collectible-card, .selected-player-detail, .inspector-modal)::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(110deg, transparent 35%, #ffffff20 50%, transparent 65%); transform: translateX(-100%); opacity: 0; animation: card-light-sweep 14s ease-in-out infinite; animation-delay: calc(var(--reveal-order, 0) * -1.25s); }
+.gameplay-shell .selected-player-detail { position: relative; overflow: hidden; --reveal-order: 3; }
+.gameplay-shell .inspector-modal { --reveal-order: 0; overflow-x: hidden; }
+/* Only transform/opacity animate; the gradient is static, with no timers, blur or layout work. */
+@keyframes card-light-sweep { 0% { transform: translateX(-100%); opacity: 0; } 2% { opacity: 1; } 10%, 100% { transform: translateX(100%); opacity: 0; } }
+.gameplay-shell .selected-player-meta > span + span::before { content: "· "; }
+.gameplay-shell .xi-complete-mark { display: none; }
+.gameplay-shell .complete-state { min-height: 0; align-content: start; justify-items: stretch; margin: 0; padding: 24px; background: #17181a; border: 1px solid var(--line); border-radius: 6px; display: grid; gap: 24px; }
+.gameplay-shell .complete-state > * { margin: 0; }
+.gameplay-shell .complete-state h2 { font-size: 30px; line-height: 36px; }
+.gameplay-shell .complete-state p { margin: 0; font-size: 14px; line-height: 22px; color: #bdb6ab; }
+.gameplay-shell .complete-state .eyebrow { font: 400 11px/16px "Geist Mono", monospace; color: var(--gold); margin-bottom: 16px; }
+.gameplay-shell .complete-state h1 { margin: 0; }
+.gameplay-shell .complete-status p { font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .complete-status p:first-child { color: var(--gold); margin-bottom: 16px; }
+.gameplay-shell .complete-state .primary-action { width: 100%; }
+.gameplay-shell .player-inspector { min-height: 200px; margin-top: 16px; padding: 16px; border: 1px solid #65583f; border-radius: 6px; background: #1c1d20; color: #f3eee5; }
+.gameplay-shell .player-inspector header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.gameplay-shell .inspector-identity { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+.gameplay-shell .inspector-identity h3, .gameplay-shell .inspector-identity p { margin: 0; }
+.gameplay-shell .inspector-monogram { width: 40px; height: 40px; display: grid; place-items: center; background: #232427; border: 1px solid var(--line); border-radius: 4px; }
+.gameplay-shell .inspector-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.gameplay-shell .inspector-metrics > div { padding-block: 12px; border-top: 1px solid var(--line); }
+.gameplay-shell .inspector-metrics span { display: block; color: #bdb6ab; }
+.gameplay-shell .inspector-metrics strong { font: 500 24px/28px "Space Grotesk", sans-serif; }
+.gameplay-shell dialog.inspector-modal { position: fixed; inset: 0; margin: auto; width: min(560px, calc(100vw - 32px)); max-width: none; max-height: calc(100dvh - 48px); overflow-y: auto; padding: 28px; border: 2px solid var(--tier-light); background: linear-gradient(130deg, var(--tier-mid), var(--tier-base)); box-shadow: 0 24px 80px #0008; }
+.gameplay-shell .inspector-modal::backdrop { background: #000b; }
+.gameplay-shell .inspector-modal .inspector-monogram { width: 64px; height: 72px; flex-shrink: 0; background: #ffffff14; border-color: #ffffff40; font-size: 24px; }
+.gameplay-shell .inspector-modal .inspector-identity h3 { font-size: 28px; line-height: 1.2; }
+.gameplay-shell .inspector-modal .inspector-metrics { margin-top: 24px; padding: 16px; background: #10131599; border-radius: 4px; }
+.gameplay-shell .inspector-modal .inspector-metrics strong { font-size: 32px; line-height: 40px; }
+@media (max-width: 759px) { .gameplay-shell dialog.inspector-modal { padding: 20px; } .gameplay-shell .inspector-modal .inspector-identity h3 { font-size: 24px; } }
+@media (prefers-reduced-motion: reduce) { .gameplay-shell :is(.collectible-card, .selected-player-detail, .inspector-modal)::after { animation: none; opacity: 0; } }
+.gameplay-shell .draft-bottom-bar, .gameplay-shell .draft-jump { display: none; }
+.gameplay-shell .reveal-layout { gap: 32px; }
+.gameplay-shell .reveal-intro { padding: 0; border: 0; }
+.gameplay-shell .reveal-intro h1 { font-size: 32px; line-height: 38px; margin: 12px 0; }
+.gameplay-shell .reveal-intro p:not(.eyebrow) { font-size: 14px; line-height: 22px; color: #bdb6ab; }
+.gameplay-shell .strength-label { margin: 24px 0 16px; }
+.gameplay-shell .strength-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0 0 24px; border: 1px solid var(--line); border-radius: 6px; padding: 0; background: #17181a; }
+.gameplay-shell .strength-grid > * { min-height: 98px; gap: 8px; background: none; border: 0; border-right: 1px solid var(--line); border-radius: 0; padding: 16px; }
+.gameplay-shell .strength-grid > :first-child { padding-left: 16px; }
+.gameplay-shell .strength-grid .reveal-metric-featured { grid-column: auto; }
+.gameplay-shell .strength-grid > :last-child { border: 0; }
+.gameplay-shell .strength-grid strong { font: 500 28px/36px "Space Grotesk", sans-serif; }
+.gameplay-shell .strength-grid > :first-child strong { font-size: 36px; line-height: 40px; color: var(--gold); }
+.gameplay-shell .strength-grid span { font: 400 11px/16px "Geist Mono", monospace; }
+.gameplay-shell .evaluation-summary { padding: 20px; border-radius: 6px; background: #17181a; }
+.gameplay-shell .evaluation-summary p { color: #bdb6ab; font-size: 12px; line-height: 18px; }
+.gameplay-shell .evaluation-summary .candidate-heading { padding: 0 0 16px; }
+.gameplay-shell .evaluation-summary .candidate-heading h2 { font-size: 20px; line-height: 26px; letter-spacing: 0; text-transform: none; }
+.gameplay-shell .evaluation-row { padding: 8px 0 0; border: 0; display: flex; justify-content: space-between; gap: 12px; }
+.gameplay-shell .evaluation-row span { display: block; font-size: 12px; }
+.gameplay-shell .evaluation-row strong { display: block; margin: 0; font: 400 12px/20px "Geist Mono", monospace; text-align: right; }
+.gameplay-shell .assessment-section { margin-top: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.gameplay-shell .assessment-section:last-child { padding-bottom: 0; border: 0; }
+.gameplay-shell .assessment-section h3 { font-size: 16px; line-height: 22px; margin: 0 0 8px; }
+.gameplay-shell .assessment-section p { margin: 8px 0 0; }
+.gameplay-shell .quality-mix { display: flex; flex-wrap: wrap; gap: 12px; font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .mix-s { color: #b894e1; }.gameplay-shell .mix-a { color: #d5af5b; }.gameplay-shell .mix-b { color: #649ae0; }.gameplay-shell .mix-c { color: #52ae88; }.gameplay-shell .mix-d { color: #8594a9; }
+.gameplay-shell .phase-boundary { margin-top: 24px; padding: 0; border: 0; background: none; }
+.gameplay-shell .phase-boundary button { width: 100%; }
+.gameplay-shell .revealed-xi { min-width: 0; }
+.gameplay-shell .revealed-xi h2 { margin: 0 0 16px; }
+.gameplay-shell .revealed-list { background: #17181a; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.gameplay-shell .revealed-list-head, .gameplay-shell .revealed-player { display: grid; grid-template-columns: 32px minmax(0, 1fr) 64px 56px 56px 108px; gap: 8px; align-items: center; padding: 12px; }
+.gameplay-shell .revealed-list-head { min-height: 36px; padding-block: 8px; font: 400 11px/16px "Geist Mono", monospace; color: #aaa59b; }
+.gameplay-shell .revealed-player { min-height: 80px; border-top: 1px solid var(--line); border-left: 3px solid var(--tier-light); background: linear-gradient(90deg, color-mix(in srgb, var(--tier-light) 8%, transparent), transparent 70%); }
+.gameplay-shell .revealed-tier-s { --tier-light: #b894e1; }.gameplay-shell .revealed-tier-a { --tier-light: #d5af5b; }.gameplay-shell .revealed-tier-b { --tier-light: #649ae0; }.gameplay-shell .revealed-tier-c { --tier-light: #52ae88; }.gameplay-shell .revealed-tier-d { --tier-light: #8594a9; }
+.gameplay-shell .revealed-position { font: 400 12px/18px "Geist Mono", monospace; color: #aaa59b; }
+.gameplay-shell .revealed-identity strong { display: block; font: 500 15px/20px "Space Grotesk", sans-serif; }
+.gameplay-shell .revealed-identity small { display: block; font: 400 12px/18px "Geist Mono", monospace; color: #bdb6ab; }
+.gameplay-shell .revealed-overall { font: 500 24px/28px "Space Grotesk", sans-serif; }
+.gameplay-shell .revealed-bat, .gameplay-shell .revealed-bowl { font-size: 16px; }
+.gameplay-shell .revealed-bat small, .gameplay-shell .revealed-bowl small { display: none; }
+.gameplay-shell .revealed-fit .fit-badge { font-size: 12px; }
+.gameplay-shell .season-layout { display: block; width: 100%; max-width: 960px; margin: 24px auto 0; padding: 0; }
+.gameplay-shell .season-primary { padding: 0; border: 0; background: none; }
+.gameplay-shell .broadcast-match, .gameplay-shell .league-complete-panel { padding: 32px; border: 1px solid var(--line); border-radius: 6px; background: #17181a; }
+.gameplay-shell .season-primary h1 { margin: 12px 0 24px; }
+.gameplay-shell .season-kicker { font: 400 12px/18px "Geist Mono", monospace; }
+.gameplay-shell .season-kicker > span { font: 400 12px/18px "Geist Mono", monospace; color: #bdb6ab; letter-spacing: 0; text-transform: none; }
+.gameplay-shell .qualification-state span { font-size: 11px; line-height: 16px; }
+.gameplay-shell .match-result { box-shadow: none; background: none; border-radius: 0; border: 0; border-top: 1px solid var(--line); }
+.gameplay-shell .innings-row { min-height: 72px; padding: 12px 0; gap: 16px; }
+.gameplay-shell .innings-row small { display: block; font: 400 12px/18px "Geist Mono", monospace; letter-spacing: 0; text-transform: none; }
+.gameplay-shell .innings-row strong { white-space: normal; font: 500 16px/22px "Space Grotesk", sans-serif; text-transform: none; }
+.gameplay-shell .innings-row b { font: 400 36px/44px "Geist Mono", monospace; }
+.gameplay-shell .match-verdict { min-height: 48px; padding: 12px 0; color: #f3eee5; font-size: 14px; display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; background: none; box-shadow: none; }
+.gameplay-shell .match-verdict :is(span, strong) { font: 500 14px/22px "Geist Sans", sans-serif; color: inherit; letter-spacing: 0; }
+.gameplay-shell .match-result-win .match-verdict { color: #a7c5b0; }.gameplay-shell .match-result-loss .match-verdict { color: #d1a0a0; }
+.gameplay-shell .match-verdict { justify-content: space-between; align-items: flex-end; gap: 12px 24px; }
+.gameplay-shell .match-verdict > strong { flex: 1 1 220px; color: #bdb6ab; }
+.gameplay-shell .match-verdict .match-outcome { margin-left: auto; font: 500 24px/30px "Space Grotesk", sans-serif; text-align: right; }
+.gameplay-shell .league-progress-strip { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 6px; margin: 24px 0; }
+.gameplay-shell .league-progress-strip li { min-height: 44px; border-radius: 4px; font: 400 11px/16px "Geist Mono", monospace; }
+.gameplay-shell .league-progress-strip li :is(span, strong) { font-size: 11px; }
+.gameplay-shell .league-progress-strip .progress-current { outline: 1px solid var(--gold); outline-offset: 2px; box-shadow: none; }
+.gameplay-shell .league-progress-strip .progress-w { color: #a7c5b0; }.gameplay-shell .league-progress-strip .progress-l { color: #d1a0a0; }
+.gameplay-shell .season-progress-summary { display: flex; gap: 48px; margin: 24px 0; background: transparent; border: 0; padding: 0; }
+.gameplay-shell .season-progress-summary > div { border: 0; padding: 0; }
+.gameplay-shell .season-progress-summary span { text-transform: none; letter-spacing: 0; }
+.gameplay-shell .season-progress-summary strong { font-size: 24px; line-height: 28px; }
+.gameplay-shell .season-progress-summary span, .gameplay-shell .season-progress-summary small { font-size: 12px; line-height: 18px; }
+.gameplay-shell .season-actions { margin: 24px 0 0; gap: 12px; }
+.gameplay-shell .league-standings-disclosure, .gameplay-shell .standings-panel { margin-top: 24px; background: #17181a; border-radius: 6px; }
+.gameplay-shell .league-standings-disclosure .standings-panel { margin-top: 0; }
+.gameplay-shell .league-standings-disclosure summary { min-height: 48px; font: 400 14px/20px "Geist Sans", sans-serif; padding: 12px 16px; text-transform: none; letter-spacing: 0; }
+.gameplay-shell .league-standings-disclosure summary > span::before { content: "▸ "; }
+.gameplay-shell .league-standings-disclosure[open] summary > span::before { content: "▾ "; }
+.gameplay-shell .league-standings-disclosure summary strong { font: 400 12px/18px "Geist Mono", monospace; color: #bdb6ab; }
+.gameplay-shell .standings-panel { padding: 20px; }
+.gameplay-shell .standings-panel :is(td, th) { min-height: 44px; height: 44px; font-size: 12px; padding: 8px; }
+.gameplay-shell .standings-panel tbody th { max-width: none; white-space: normal; }
+.gameplay-shell .standings-panel .user-standing { background: #302a20; }
+.gameplay-shell .standings-panel small { font-size: 11px; }
+.gameplay-shell .playoff-layout { max-width: 1200px; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 24px; align-items: start; }
+.gameplay-shell .playoff-bracket { background: #17181a; border-radius: 6px; }
+.gameplay-shell .playoff-bracket > .candidate-heading { padding: 16px; }
+.gameplay-shell .playoff-bracket .candidate-heading h2 { font-size: 20px; line-height: 26px; letter-spacing: 0; text-transform: none; }
+.gameplay-shell .playoff-bracket ol { display: block; padding: 0; margin: 0; }
+.gameplay-shell .playoff-stage { display: block; min-height: 128px; padding: 16px; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: transparent; }
+.gameplay-shell .playoff-stage-locked { min-height: 88px; }
+.gameplay-shell .playoff-stage:last-child { margin-top: 24px; }
+.gameplay-shell .active-playoff { box-shadow: inset 0 0 0 1px #65583f; }
+.gameplay-shell .playoff-stage-heading { margin-bottom: 12px; }
+.gameplay-shell .playoff-stage-heading :is(span, small), .gameplay-shell .playoff-team, .gameplay-shell .playoff-result { font-size: 12px; line-height: 18px; }
+.gameplay-shell .playoff-team > span { font-size: 12px; white-space: normal; }
+.gameplay-shell .playoff-team { grid-template-columns: minmax(0, 1fr) auto; min-height: 24px; color: #f3eee5; }
+.gameplay-shell .playoff-team > strong { font-size: 12px; color: #f3eee5; }
+.gameplay-shell .playoff-stage-heading small { color: #bdb6ab; text-transform: none; letter-spacing: 0; }
+.gameplay-shell .terminal-screen .playoff-teams { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.gameplay-shell .terminal-screen .playoff-team { display: flex; gap: 16px; }
+.gameplay-shell .terminal-screen .playoff-team:last-child { justify-content: end; }
+.gameplay-shell .terminal-screen .playoff-stage:nth-child(odd) { border-right: 0; }
+.gameplay-shell .playoff-result { display: block; white-space: normal; overflow: visible; margin-top: 12px; }
+.gameplay-shell .playoff-locked-copy strong, .gameplay-shell .playoff-locked-copy span { font-size: 12px; line-height: 18px; }
+.gameplay-shell .terminal-screen { max-width: 960px; margin: 48px auto 0; padding: 0; background: none; border: 0; animation: game-terminal-in 400ms ease-out; }
+.gameplay-shell .terminal-screen h1 { font-size: 36px; line-height: 42px; }
+.gameplay-shell .terminal-champion h1 { color: var(--gold); }
+.gameplay-shell .terminal-champion .champion-line { border-top: 1px solid var(--gold); padding-top: 24px; }
+.gameplay-shell .champion-line { border-bottom: 0; text-transform: none; }
+.gameplay-shell .champion-line span { font-size: 12px; line-height: 18px; color: #bdb6ab; letter-spacing: 0; }
+.gameplay-shell .terminal-summary { grid-template-columns: repeat(3, minmax(0, 1fr)); border: 0; border-radius: 0; margin: 24px 0; background: none; }
+.gameplay-shell .terminal-summary > div { padding: 0 16px 0 0; background: none; border: 0; border-radius: 0; }
+.gameplay-shell .terminal-summary span { text-transform: none; letter-spacing: 0; }
+.gameplay-shell .terminal-summary > div:last-child { border: 0; }
+.gameplay-shell .terminal-summary span { font-size: 12px; }
+.gameplay-shell .terminal-summary strong { font-size: 20px; line-height: 26px; }
+.gameplay-shell .terminal-actions { margin-top: 24px; }
+@keyframes game-terminal-in { from { opacity: 0; } to { opacity: 1; } }
+@media (min-width: 960px) and (max-width: 1199px) {
+  .gameplay-shell { padding-inline: 24px; }
+  .gameplay-shell .xi-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gameplay-shell .candidate-card { grid-template-columns: 28px minmax(0, 1fr) 16px; }
+  .gameplay-shell .candidate-quick-stats { grid-column: 2; grid-row: 2; }
+  .gameplay-shell .candidate-card .select-mark { grid-column: 3; grid-row: 1; }
+  .gameplay-shell .revealed-list-head, .gameplay-shell .revealed-player { grid-template-columns: 24px minmax(0, 1fr) 48px 42px 42px 90px; gap: 6px; padding-inline: 8px; }
+}
+@media (max-width: 959px) {
+  .gameplay-shell { padding-inline: 24px; }
+  .gameplay-shell .draft-layout, .gameplay-shell .playoff-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .gameplay-shell .xi-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .gameplay-shell .candidate-grid { max-height: 280px; }
+  .gameplay-shell.draft-shell:not(.revealed-shell) { padding-bottom: calc(156px + env(safe-area-inset-bottom)); }
+  .gameplay-shell .draft-bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 10; min-height: 72px; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid #65583f; background: #1c1d20; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; }
+  .gameplay-shell .draft-bottom-bar strong, .gameplay-shell .draft-bottom-bar span { display: block; font-size: 12px; line-height: 18px; }
+  .gameplay-shell .draft-bottom-bar span { color: #bdb6ab; }
+  .gameplay-shell .draft-bottom-bar a { display: flex; align-items: center; font-size: 12px; color: #f3eee5; }
+  .gameplay-shell .draft-bottom-bar button { grid-column: 1/-1; }
+  .gameplay-shell .desktop-confirm { display: none; }
+  .gameplay-shell .draft-jump { display: flex; align-items: center; justify-content: end; color: #f3eee5; margin-top: 8px; }
+  .gameplay-shell #draft-xi, .gameplay-shell #draft-players { scroll-margin-top: 16px; }
+  .gameplay-shell .inspector-sheet { position: fixed; inset: auto 0 0; width: 100%; max-width: none; max-height: 70dvh; margin: 0; overflow-y: auto; padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); box-shadow: 0 0 16px #0003; }
+  .gameplay-shell .inspector-sheet::backdrop { background: #0009; }
+  .gameplay-shell .reveal-stage { display: contents; }
+  .gameplay-shell .reveal-intro { grid-row: 1; }
+  .gameplay-shell .strength-grid { margin: 0; }
+  .gameplay-shell .strength-label { margin: 0 0 -8px; }
+  .gameplay-shell .revealed-xi { grid-row: auto; }
+  .gameplay-shell .phase-boundary { order: 2; margin-top: 0; }
+  .gameplay-shell .broadcast-match, .gameplay-shell .league-complete-panel { padding: 24px; }
+}
+@media (max-width: 759px) {
+  .gameplay-shell { padding-inline: 16px; }
+  .gameplay-shell .game-header { grid-template-columns: 1fr auto; gap: 4px 12px; }
+  .gameplay-shell .draft-era-id { grid-row: 2; grid-column: 1/-1; }
+  .gameplay-shell .wordmark { font-size: 16px; }
+  .gameplay-shell .game-header > .quiet-button { grid-column: 2; grid-row: 1; }
+  .gameplay-shell .game-header .draft-era-id { display: none; }
+  .gameplay-shell h1 { font-size: 26px; line-height: 32px; }
+  .gameplay-shell .candidate-card { grid-template-columns: 28px minmax(0, 1fr) 16px; }
+  .gameplay-shell .candidate-quick-stats { grid-column: 2; grid-row: 2; display: block; }
+  .gameplay-shell .candidate-quick-stats span { display: block; }
+  .gameplay-shell .candidate-card .select-mark { grid-column: 3; grid-row: 1; }
+  .gameplay-shell .collectible-card { grid-template-columns: 24px minmax(0, 1fr); column-gap: 6px; padding-inline: 6px; }
+  .gameplay-shell .collectible-card .xi-portrait { width: 24px; height: 28px; }
+  .gameplay-shell .locked-player strong { font-size: 14px; line-height: 20px; }
+  .gameplay-shell .locked-player small, .gameplay-shell .locked-player > span { font-size: 11px; line-height: 16px; }
+  .gameplay-shell .xi-card-rail { margin-inline: -6px; }
+  .gameplay-shell .draft-status { gap: 12px; flex-wrap: wrap; }
+  .gameplay-shell .draft-status :is(small, strong) { font-size: 11px; }
+  .gameplay-shell .reveal-intro h1 { font-size: 28px; line-height: 34px; }
+  .gameplay-shell .revealed-list-head { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .gameplay-shell .revealed-player { min-height: 96px; grid-template-columns: 24px minmax(0, 1fr) minmax(0, 1fr) 56px; gap: 4px 8px; }
+  .gameplay-shell .revealed-position { grid-row: 1; grid-column: 1; align-self: start; }
+  .gameplay-shell .revealed-identity { grid-column: 2/4; grid-row: 1; }
+  .gameplay-shell .revealed-overall { grid-column: 4; grid-row: 1; align-self: start; text-align: right; }
+  .gameplay-shell .revealed-bat { grid-column: 2; grid-row: 2; }
+  .gameplay-shell .revealed-bowl { grid-column: 3/5; grid-row: 2; text-align: right; }
+  .gameplay-shell .revealed-bat, .gameplay-shell .revealed-bowl { font-size: 12px; }
+  .gameplay-shell .revealed-bat small, .gameplay-shell .revealed-bowl small { display: inline; font-size: 11px; color: #aaa59b; }
+  .gameplay-shell .revealed-fit { grid-column: 2/-1; grid-row: 3; }
+  .gameplay-shell .broadcast-match, .gameplay-shell .league-complete-panel { padding: 20px; }
+  .gameplay-shell .innings-row { padding: 12px 0; }
+  .gameplay-shell .innings-row b { font-size: 28px; line-height: 36px; }
+  .gameplay-shell .innings-row strong { font-size: 14px; line-height: 20px; }
+  .gameplay-shell .match-verdict { padding: 12px 0; }
+  .gameplay-shell .league-progress-strip { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .gameplay-shell .season-actions, .gameplay-shell .terminal-actions { display: flex; flex-direction: column; }
+  .gameplay-shell .season-actions button, .gameplay-shell .terminal-actions button { width: 100%; }
+  .gameplay-shell .standings-panel { padding: 12px; }
+  .gameplay-shell .standings-scroll { overflow: visible; }
+  .gameplay-shell .standings-panel table { min-width: 0; width: 100%; }
+  .gameplay-shell .standings-panel thead { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
+  .gameplay-shell .standings-panel tbody, .gameplay-shell .standings-panel tr { display: block; }
+  .gameplay-shell .standings-panel tbody tr { display: grid; grid-template-columns: 28px repeat(3, minmax(0, 1fr)) 64px; padding: 8px 0; border-top: 1px solid var(--line); }
+  .gameplay-shell .standings-panel :is(td, th) { height: auto; min-height: 0; border: 0; padding: 4px; }
+  .gameplay-shell .standings-panel tbody th { grid-column: 2/5; grid-row: 1; }
+  .gameplay-shell .standings-panel td:nth-child(6) { grid-column: 5; grid-row: 1; }
+  .gameplay-shell .standings-panel td:nth-child(3) { grid-column: 2; }.gameplay-shell .standings-panel td:nth-child(4) { grid-column: 3; }.gameplay-shell .standings-panel td:nth-child(5) { grid-column: 4; }.gameplay-shell .standings-panel td:nth-child(7) { grid-column: 5; }
+  .gameplay-shell .standings-panel td:nth-child(3)::before { content: "P "; }.gameplay-shell .standings-panel td:nth-child(4)::before { content: "W "; }.gameplay-shell .standings-panel td:nth-child(5)::before { content: "L "; }.gameplay-shell .standings-panel td:nth-child(6)::before { content: "Pts "; }.gameplay-shell .standings-panel td:nth-child(7)::before { content: "NRR "; }
+  .gameplay-shell .standings-panel td:nth-child(7) { font-size: 11px; }
+  .gameplay-shell .terminal-summary { grid-template-columns: 1fr; }
+  .gameplay-shell .terminal-screen .playoff-teams { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .gameplay-shell .terminal-screen .playoff-team { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+  .gameplay-shell .terminal-screen .playoff-team:last-child { justify-content: normal; }
+  .gameplay-shell .terminal-summary > div { border: 0; border-bottom: 1px solid var(--line); }
+  .gameplay-shell .terminal-screen h1 { font-size: 30px; line-height: 36px; }
+}
+/* Centred card hierarchy, independent of desktop/mobile column count. */
+.gameplay-shell .collectible-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: 56px auto auto auto auto; align-content: start; justify-items: center; gap: 8px; padding: 32px 12px 16px; min-height: 244px; text-align: center; }
+.gameplay-shell .collectible-card .placement-marker { position: absolute; top: 8px; right: 10px; }
+.gameplay-shell .collectible-card .xi-portrait { grid-column: 1; grid-row: 1; position: static; width: 56px; height: 56px; margin: 0; transform: none; border-radius: 50%; }
+.gameplay-shell .collectible-card .xi-portrait span { width: auto; padding: 0; background: transparent; font-size: 18px; line-height: 24px; }
+.gameplay-shell .locked-player strong { grid-column: 1; grid-row: 2; font: 600 17px/22px "Space Grotesk", sans-serif; }
+.gameplay-shell .locked-player small { grid-column: 1; grid-row: 3; }
+.gameplay-shell .locked-player > span { grid-column: 1; grid-row: 4; }
+.gameplay-shell .locked-player small, .gameplay-shell .locked-player > span { font: 400 12px/18px "Geist Sans", sans-serif; color: #e5dfd5; }
+.gameplay-shell .xi-fit-caption { margin-top: 4px; }
+.gameplay-shell .slot-confirm-hint { margin-top: 0; }
+.gameplay-shell .candidate-card:disabled { opacity: 0.3; cursor: not-allowed; }
+.gameplay-shell .inspector-modal .inspector-identity { flex-direction: column; text-align: center; gap: 12px; }
+.gameplay-shell .inspector-modal .inspector-identity p { margin-top: 8px; }
+.gameplay-shell .inspector-modal .inspector-monogram { width: 72px; height: 72px; border-radius: 50%; }
+.gameplay-shell .inspector-modal > p { text-align: center; }
+@media (max-width: 759px) { .gameplay-shell .collectible-card { padding-inline: 8px; } .gameplay-shell .locked-player strong { font-size: 15px; line-height: 20px; } }
+@media (max-width: 359px) { .gameplay-shell .xi-slots { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .gameplay-shell *, .gameplay-shell *::before, .gameplay-shell *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
 .landing-shell {
   --home-bg: #0e1112;
   --home-surface: #17181a;

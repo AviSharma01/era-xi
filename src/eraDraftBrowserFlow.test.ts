@@ -29,6 +29,15 @@ test("every fetched era reaches REVEALED through browser-facing projections", as
       const view = projectEraDraftPublicState(catalog, state);
       assert.equal(view.phase, "AWAITING_PICK");
       if (view.phase !== "AWAITING_PICK") throw new Error("Expected browser-facing candidate view.");
+      const appearances = { S: "violet", A: "gold", B: "cobalt", C: "emerald", D: "slate" } as const;
+      for (const candidate of view.candidates) {
+        assert.equal(candidate.tierAppearance, appearances[catalog.getPlayer(candidate.playerTeamSeasonId)!.quality.overall.qualityTier]);
+      }
+      assert.doesNotMatch(JSON.stringify(view), /"(?:quality|qualityTier|battingRating|bowlingRating|overallRating|internalScore|bandDistance|evaluation)"/);
+      for (const pick of view.picks) {
+        assert.equal(pick.tierAppearance, appearances[catalog.getPlayer(pick.playerTeamSeasonId)!.quality.overall.qualityTier]);
+        assert.ok(pick.historicalStats.currentSeason);
+      }
       const choice = view.candidates.flatMap((candidate) => candidate.positions.map((position) => ({ candidate, position })))
         .find(({ position }) => position.available);
       assert.ok(choice, `${entry.eraId} must expose a legal public choice at pick ${pick + 1}`);

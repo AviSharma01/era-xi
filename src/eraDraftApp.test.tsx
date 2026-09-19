@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { act, useState } from "react";
+import { act, StrictMode, useState } from "react";
 
 import { JSDOM } from "jsdom";
 import { createRoot } from "react-dom/client";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { DraftExperience, Landing, LoadingSession } from "./eraDraftApp.js";
+import { DraftExperience, Landing, LoadingSession, RevealedExperience } from "./eraDraftApp.js";
 import { loadEraDraftCatalog } from "./eraDraftData.js";
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
 import { projectEraDraftPublicState } from "./eraDraftProjection.js";
@@ -200,15 +200,27 @@ test("draft player selection toggles, switches, escapes, stays ephemeral, and cl
     await act(async () => candidateButtons()[allRounderIndex]!.click());
     assert.equal(rootElement.querySelector(".selected-player-detail h3")?.textContent, allRounder.playerName);
     assert.match(rootElement.querySelector(".selected-player-detail")?.textContent ?? "",
-      new RegExp(`BAT · ${allRounder.historicalStats.currentSeason.batting.runs} runs`, "i"));
+      new RegExp(`${allRounder.historicalStats.currentSeason.batting.runs} runs`, "i"));
     assert.match(rootElement.querySelector(".selected-player-detail")?.textContent ?? "",
-      new RegExp(`BOWL · ${allRounder.historicalStats.currentSeason.bowling.wickets} wickets`, "i"));
+      new RegExp(`${allRounder.historicalStats.currentSeason.bowling.wickets} wickets`, "i"));
     assert.equal(candidateButtons()[firstIndex]!.getAttribute("aria-pressed"), "false");
     assert.equal(candidateButtons()[allRounderIndex]!.getAttribute("aria-pressed"), "true");
     assert.deepEqual(rosterOrder(), initialOrder);
 
     const lockTarget = rootElement.querySelector<HTMLButtonElement>(".xi-slot-active:not(:disabled)")!;
     await act(async () => lockTarget.click());
+    assert.equal(acceptedTransitions.length, 0, "preview must not dispatch an engine transition");
+    assert.ok(rootElement.querySelector(".xi-slot-preview"));
+    const movedTarget = rootElement.querySelector<HTMLButtonElement>(".xi-slot-active:not(:disabled)")!;
+    await act(async () => movedTarget.click());
+    assert.equal(acceptedTransitions.length, 0);
+    assert.equal(rootElement.querySelectorAll(".xi-slot-preview").length, 1);
+    const previewCard = rootElement.querySelector<HTMLButtonElement>(".xi-slot-preview")!;
+    assert.match(previewCard.textContent ?? "", /↑ Click slot to confirm/);
+    assert.equal(previewCard.querySelector(".xi-card-rail"), null);
+    assert.match(previewCard.querySelector(".collectible-card > .xi-fit-caption")?.textContent ?? "", /Position fit/);
+    assert.ok(previewCard.querySelector(".collectible-card > .slot-confirm-hint"));
+    await act(async () => { previewCard.click(); previewCard.click(); });
     assert.equal(rootElement.querySelector(".selected-player-detail"), null);
     assert.equal(rootElement.querySelectorAll(".xi-slot-active").length, 0);
     assert.equal(acceptedTransitions.length, 1);
@@ -225,6 +237,176 @@ test("draft player selection toggles, switches, escapes, stays ephemeral, and cl
     });
     dom.window.close();
   }
+});
+
+test("confirm commits pending candidate and preview, never the inspected confirmed player", async () => {
+  const dom = new JSDOM('<!doctype html><div id="root"></div>', { url: "https://example.test/era-draft" });
+  const restoreGlobals = installDomGlobals(dom);
+  const previousAnimationFrame = globalThis.requestAnimationFrame;
+  globalThis.requestAnimationFrame = (callback) => { callback(0); return 1; };
+  const catalog = loadEraDraftCatalog();
+  let state = accepted(reduceEraDraft(catalog, createEraDraftGame({ catalog, rootSeed: "pending-versus-inspected" }), { type: "CHOOSE_ERA", eraId: "era-foundation" }));
+  state = accepted(reduceEraDraft(catalog, state, { type: "SPIN" }));
+  if (state.phase !== "AWAITING_PICK") assert.fail("Expected pick");
+  const firstView = projectEraDraftPublicState(catalog, state);
+  if (firstView.phase !== "AWAITING_PICK") assert.fail("Expected roster");
+  const first = firstView.candidates.find((candidate) => candidate.available)!;
+  state = accepted(reduceEraDraft(catalog, state, { type: "LOCK_PLAYER", playerTeamSeasonId: first.playerTeamSeasonId, battingPosition: first.positions.find((position) => position.available)!.battingPosition }));
+  state = accepted(reduceEraDraft(catalog, state, { type: "SPIN" }));
+  if (state.phase !== "AWAITING_PICK") assert.fail("Expected second pick");
+  const initial = state;
+  const snapshot = JSON.stringify(initial);
+  const view = projectEraDraftPublicState(catalog, initial);
+  if (view.phase !== "AWAITING_PICK") assert.fail("Expected roster");
+  const pending = view.candidates.find((candidate) => candidate.available)!;
+  const position = pending.positions.find((position) => position.available)!;
+  let transitions = 0;
+  let resultState: EraDraftState = initial;
+  function Harness() {
+    const [live, setLive] = useState(initial as Exclude<EraDraftState, { phase: "SETUP" | "REVEALED" | "GAME_COMPLETE" }>);
+    return <DraftExperience session={{ catalog, state: live }} persistenceWarning={null} onExit={() => undefined}
+      onAccepted={(result) => { resultState = accepted(result); transitions += 1; setLive(resultState as typeof live); return null; }} />;
+  }
+  const element = dom.window.document.getElementById("root")!;
+  const root = createRoot(element);
+  try {
+    await act(async () => root.render(<StrictMode><Harness /></StrictMode>));
+    const candidateButton = [...element.querySelectorAll<HTMLButtonElement>(".candidate-card")].find((button) => button.querySelector("strong")?.textContent === pending.playerName)!;
+    await act(async () => candidateButton.click());
+    const slot = element.querySelector<HTMLButtonElement>(`[aria-label^="Position ${position.battingPosition} ·"]`)!;
+    await act(async () => slot.click());
+    assert.equal(transitions, 0);
+    assert.equal(JSON.stringify(initial), snapshot);
+    await act(async () => { const locked = element.querySelector<HTMLButtonElement>(".xi-slot-locked")!; locked.focus(); locked.click(); });
+    assert.equal(element.querySelector(".player-inspector h3")?.textContent, first.playerName);
+    assert.ok(element.querySelector("dialog.inspector-modal[open]"));
+    const close = element.querySelector<HTMLButtonElement>("[aria-label='Close player details']")!;
+    assert.equal(dom.window.document.activeElement, close);
+    await act(async () => close.dispatchEvent(new dom.window.KeyboardEvent("keydown", { key: "Tab", bubbles: true, cancelable: true })));
+    assert.equal(dom.window.document.activeElement, close);
+    assert.match(element.querySelector(".pending-pick-label")?.textContent ?? "", new RegExp(pending.playerName));
+    assert.ok(element.querySelector(".xi-slot-preview"));
+    await act(async () => dom.window.dispatchEvent(new dom.window.KeyboardEvent("keydown", { key: "Escape" })));
+    assert.equal(element.querySelector(".player-inspector"), null);
+    assert.ok(element.querySelector(".xi-slot-preview"), "Escape closes inspection without clearing preview");
+    await act(async () => element.querySelector<HTMLButtonElement>(".xi-slot-locked")!.click());
+    await act(async () => element.querySelector("dialog")!.dispatchEvent(new dom.window.Event("cancel", { cancelable: true })));
+    assert.equal(element.querySelector("dialog"), null);
+    assert.equal(dom.window.document.activeElement, element.querySelector(".xi-slot-locked"));
+    await act(async () => {
+      const confirm = element.querySelector<HTMLButtonElement>(".desktop-confirm .confirm-pick")!;
+      confirm.click(); confirm.click();
+    });
+    assert.equal(transitions, 1);
+    assert.equal(resultState.picks.length, 2);
+    assert.equal(resultState.picks[1]!.playerTeamSeasonId, pending.playerTeamSeasonId);
+    assert.equal(resultState.picks[1]!.battingPosition, position.battingPosition);
+    assert.deepEqual(resultState.picks[0], initial.picks[0]);
+    assert.equal(element.querySelector(".xi-slot-preview"), null);
+    assert.equal(element.querySelector(".player-inspector"), null);
+  } finally {
+    await act(async () => root.unmount());
+    globalThis.requestAnimationFrame = previousAnimationFrame;
+    restoreGlobals(); dom.window.close();
+  }
+});
+
+test("Unknown fit uses Acceptable only in UI, with four labels and unchanged authoritative fit", async () => {
+  const dom = new JSDOM('<!doctype html><div id="root"></div>', { url: "https://example.test/era-draft" });
+  const restoreGlobals = installDomGlobals(dom);
+  const catalog = loadEraDraftCatalog();
+  let state = accepted(reduceEraDraft(catalog, createEraDraftGame({ catalog, rootSeed: "fit-fallback-3" }), { type: "CHOOSE_ERA", eraId: "era-foundation" }));
+  state = accepted(reduceEraDraft(catalog, state, { type: "SPIN" }));
+  if (state.phase !== "AWAITING_PICK") assert.fail("Expected roster");
+  const view = projectEraDraftPublicState(catalog, state);
+  if (view.phase !== "AWAITING_PICK") assert.fail("Expected roster view");
+  const unknown = view.candidates.find((player) => player.available && player.positions.every((position) => position.presentationFit === "UNKNOWN"))!;
+  assert.ok(unknown);
+  const snapshot = JSON.stringify(state);
+  const element = dom.window.document.getElementById("root")!;
+  const root = createRoot(element);
+  try {
+    await act(async () => root.render(<DraftExperience session={{ catalog, state: state as AwaitingPickState }} persistenceWarning={null} onExit={() => undefined} onAccepted={() => null} />));
+    const buttons = [...element.querySelectorAll<HTMLButtonElement>(".candidate-card")];
+    const keeper = view.candidates.find((player) => player.available && player.displayRole === "WICKETKEEPER_BATTER")!;
+    assert.ok(keeper);
+    await act(async () => buttons.find((button) => button.querySelector("strong")?.textContent === keeper.playerName)!.click());
+    assert.equal((element.querySelector(".selected-player-meta")!.textContent!.match(/Wicketkeeper/g) ?? []).length, 1);
+    await act(async () => buttons.find((button) => button.querySelector("strong")?.textContent === unknown.playerName)!.click());
+    assert.equal(element.querySelectorAll(".fit-legend .fit-badge").length, 4);
+    assert.equal(element.querySelectorAll(".xi-target-acceptable").length, 11);
+    assert.doesNotMatch(element.querySelector(".xi-panel")!.textContent!, /Unknown|[△⚠○✓?]/);
+    await act(async () => element.querySelector<HTMLButtonElement>(".xi-slot-active")!.click());
+    assert.match(element.querySelector(".xi-fit-caption")!.textContent!, /Position fit · Acceptable/);
+    assert.equal(JSON.stringify(state), snapshot);
+    assert.ok(unknown.positions.every((position) => position.presentationFit === "UNKNOWN"));
+  } finally {
+    await act(async () => root.unmount());
+    restoreGlobals(); dom.window.close();
+  }
+});
+
+test("unavailable roster rows retain accessible reasons without visible warning copy", () => {
+  const catalog = loadEraDraftCatalog();
+  let state = accepted(reduceEraDraft(catalog, createEraDraftGame({ catalog, rootSeed: "unavailable-row-ui" }), { type: "CHOOSE_ERA", eraId: "era-foundation" }));
+  for (let pick = 0; pick < 4; pick += 1) {
+    state = accepted(reduceEraDraft(catalog, state, { type: "SPIN" }));
+    if (state.phase !== "AWAITING_PICK") assert.fail("Expected pick state");
+    const view = projectEraDraftPublicState(catalog, state);
+    if (view.phase !== "AWAITING_PICK") assert.fail("Expected roster");
+    const player = view.candidates.find((candidate) => candidate.available && candidate.rosterStatus === "OVERSEAS")!;
+    assert.ok(player);
+    state = accepted(reduceEraDraft(catalog, state, { type: "LOCK_PLAYER", playerTeamSeasonId: player.playerTeamSeasonId, battingPosition: player.positions.find((position) => position.available)!.battingPosition }));
+  }
+  state = accepted(reduceEraDraft(catalog, state, { type: "SPIN" }));
+  if (state.phase !== "AWAITING_PICK") assert.fail("Expected roster");
+  const html = renderToStaticMarkup(<DraftExperience session={{ catalog, state }} persistenceWarning={null} onExit={() => undefined} onAccepted={() => null} />);
+  const document = new JSDOM(html).window.document;
+  const disabled = [...document.querySelectorAll<HTMLButtonElement>(".candidate-card:disabled")];
+  assert.ok(disabled.length > 0);
+  assert.ok(disabled.some((row) => row.getAttribute("aria-description")?.includes("four overseas")));
+  for (const row of disabled) {
+    assert.ok(row.getAttribute("aria-description"));
+    assert.equal(row.title, row.getAttribute("aria-description"));
+    assert.equal(row.querySelector(".candidate-unavailable"), null);
+    assert.equal(row.querySelector(".select-mark")?.textContent, "");
+    assert.doesNotMatch(row.textContent ?? "", /already drafted|at most four|Unavailable/);
+  }
+});
+
+test("Start League retains the synchronous one-call guard with the redesigned reveal list", async () => {
+  const catalog = loadEraDraftCatalog();
+  let state = accepted(reduceEraDraft(catalog, createEraDraftGame({ catalog, rootSeed: "final-start-guard" }), { type: "CHOOSE_ERA", eraId: "era-foundation" }));
+  while (state.phase === "AWAITING_SPIN") {
+    state = accepted(reduceEraDraft(catalog, state, { type: "SPIN" }));
+    if (state.phase !== "AWAITING_PICK") assert.fail("Expected roster");
+    const view = projectEraDraftPublicState(catalog, state);
+    if (view.phase !== "AWAITING_PICK") assert.fail("Expected roster");
+    const candidate = view.candidates.find((item) => item.available)!;
+    state = accepted(reduceEraDraft(catalog, state, { type: "LOCK_PLAYER", playerTeamSeasonId: candidate.playerTeamSeasonId,
+      battingPosition: candidate.positions.find((position) => position.available)!.battingPosition }));
+  }
+  state = accepted(reduceEraDraft(catalog, state, { type: "REVEAL_XI" }));
+  if (state.phase !== "REVEALED") assert.fail("Expected reveal");
+  const dom = new JSDOM('<!doctype html><div id="root"></div>', { url: "https://example.test/era-draft" });
+  const restoreGlobals = installDomGlobals(dom);
+  const element = dom.window.document.getElementById("root")!;
+  const root = createRoot(element);
+  let starts = 0;
+  try {
+    const revealed = state;
+    await act(async () => root.render(<RevealedExperience session={{ catalog, state: revealed }} persistenceWarning={null}
+      onBeginSeason={() => { starts += 1; }} onExit={() => undefined} />));
+    assert.equal(element.querySelectorAll(".revealed-player").length, 11);
+    assert.equal(element.querySelector(".quality-tier"), null);
+    await act(async () => {
+      const button = element.querySelector<HTMLButtonElement>(".phase-boundary button")!;
+      button.click(); button.click();
+    });
+    assert.equal(starts, 1);
+    assert.equal(element.querySelector<HTMLButtonElement>(".phase-boundary button")!.disabled, true);
+    assert.match(element.textContent ?? "", /Starting league…/);
+  } finally { await act(async () => root.unmount()); restoreGlobals(); dom.window.close(); }
 });
 
 test("homepage keeps all five era selections separate from starting and preserves nested Classic links", async () => {
@@ -357,6 +539,8 @@ function renderLanding(
 }
 
 function installDomGlobals(dom: JSDOM): () => void {
+  // JSDOM does not implement native modal dialogs; browser QA covers the top layer.
+  dom.window.HTMLDialogElement.prototype.showModal = function () { this.setAttribute("open", ""); };
   const previous = {
     window: globalThis.window,
     document: globalThis.document,

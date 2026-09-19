@@ -91,6 +91,7 @@ function projectCandidate(
   });
   return freezeDeep({
     ...projectPlayerFacts(player, displayRole),
+    tierAppearance: projectTierAppearance(player),
     presentationGroup: getDraftCandidatePresentationGroup(displayRole),
     allRounderLean: player.role.allRounderLean,
     historicalStats: projectEraDraftHistoricalStats(catalog, player),
@@ -468,6 +469,8 @@ function projectPicks(catalog: EraDraftCatalog, picks: EraDraftHiddenState["pick
     const player = catalog.getPlayer(pick.playerTeamSeasonId)!;
     return freezeDeep({
       ...projectPlayerFacts(player),
+      tierAppearance: projectTierAppearance(player),
+      historicalStats: projectEraDraftHistoricalStats(catalog, player),
       pickNumber: pick.pickNumber,
       battingPosition: pick.battingPosition,
       presentationFit: toDraftPresentationFit(
@@ -515,6 +518,11 @@ function invalidFit(classification: FitClassification, bandDistance: number | nu
     `Draft presentation cannot project ${classification} with band distance ${String(bandDistance)}.`,
     { classification, bandDistance },
   );
+}
+
+function projectTierAppearance(player: EraDraftPlayerRecord): DraftPickView["tierAppearance"] {
+  const appearances = { S: "violet", A: "gold", B: "cobalt", C: "emerald", D: "slate" } as const;
+  return appearances[player.quality.overall.qualityTier];
 }
 
 function projectPlayerFacts(player: EraDraftPlayerRecord, displayRole = projectDraftDisplayRole(player)): DraftPlayerFactsView {
