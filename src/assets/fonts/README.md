@@ -1,6 +1,6 @@
 # Stage 9B fonts
 
-These font files are packaged locally so the game UI does not depend on a third-party font request.
+These font files are packaged locally so the game UI does not depend on a third-party font request. Their copyright notices and complete SIL Open Font License 1.1 text are distributed in `src/assets/THIRD_PARTY_NOTICES.txt` and linked from the running application.
 
 - Space Grotesk variable font: Google Fonts repository, licensed under the SIL Open Font License 1.1.
 - Geist Sans and Geist Mono variable webfonts: Vercel Geist repository, licensed under the SIL Open Font License 1.1.

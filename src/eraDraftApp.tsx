@@ -19,7 +19,9 @@ import {
   persistAcceptedEraDraftTransition,
   readEraDraftUiSave,
   writeEraDraftUiSave,
+  EraDraftUiSaveError,
   type EraDraftPresentationCursor,
+  type EraDraftUiSaveSummary,
   type EraDraftUiSaveReadResult,
   type PersistableEraDraftState,
   type Phase2EraDraftState,
@@ -42,20 +44,26 @@ type DraftSession = {
   readonly presentationCursor: EraDraftPresentationCursor | null;
 };
 
+type PendingOperation =
+  | { readonly kind: "START"; readonly eraId: EraId; readonly source: "LANDING" | "TERMINAL" }
+  | { readonly kind: "CONTINUE" };
+
 export function EraDraftApp(): ReactElement {
   const [route, setRoute] = useState<AppRoute | null>(() => matchAppRoute(window.location.pathname));
   const [manifest, setManifest] = useState<EraDraftWebManifest | null>(null);
   const [manifestError, setManifestError] = useState<string | null>(null);
   const [manifestLoading, setManifestLoading] = useState(true);
   const [manifestRequest, setManifestRequest] = useState(0);
-  const [loadingEra, setLoadingEra] = useState<EraId | null>(null);
+  const [pendingOperation, setPendingOperation] = useState<PendingOperation | null>(null);
   const [selectedEra, setSelectedEra] = useState<EraId | null>(null);
   const [session, setSession] = useState<DraftSession | null>(null);
   const [savedGame, setSavedGame] = useState<EraDraftUiSaveReadResult>(() => readEraDraftUiSave());
-  const [loadingContinue, setLoadingContinue] = useState(false);
   const [overwriteEra, setOverwriteEra] = useState<EraId | null>(null);
   const [landingNotice, setLandingNotice] = useState<string | null>(null);
   const [persistenceWarning, setPersistenceWarning] = useState<string | null>(null);
+  const [terminalError, setTerminalError] = useState<string | null>(null);
+  const operationIdRef = useRef(0);
+  const operationPendingRef = useRef(false);
 
   useEffect(() => {
     const onPopState = (): void => setRoute(matchAppRoute(window.location.pathname));
@@ -110,32 +118,43 @@ export function EraDraftApp(): ReactElement {
     }
   };
 
-  const startDraft = async (eraId: EraId): Promise<void> => {
-    if (!manifest || loadingEra) return;
-    setLoadingEra(eraId);
-    setManifestError(null);
+  const startDraft = async (eraId: EraId, source: "LANDING" | "TERMINAL" = "LANDING"): Promise<void> => {
+    if (!manifest || operationPendingRef.current) return;
+    operationPendingRef.current = true;
+    const operationId = operationIdRef.current + 1;
+    operationIdRef.current = operationId;
+    setPendingOperation({ kind: "START", eraId, source });
+    if (source === "TERMINAL") setTerminalError(null);
+    else setManifestError(null);
     try {
       const manifestUrl = eraDraftManifestUrl(import.meta.env.BASE_URL);
       const catalog = await fetchScopedEraDraftCatalog({ manifest, manifestUrl, eraId });
       const setup = createEraDraftGame({ catalog, rootSeed: createRootSeed() });
       const chosen = reduceEraDraft(catalog, setup, { type: "CHOOSE_ERA", eraId });
       if (!chosen.ok || chosen.state.phase !== "AWAITING_SPIN") throw new Error("The selected era could not start.");
+      if (operationId !== operationIdRef.current) return;
       acceptTransition(catalog, chosen);
       setOverwriteEra(null);
       navigate("ERA_DRAFT");
     } catch (error) {
-      setManifestError(error instanceof Error ? error.message : "The selected era could not be loaded.");
+      if (operationId !== operationIdRef.current) return;
+      const message = error instanceof Error ? error.message : "The selected era could not be loaded.";
+      if (source === "TERMINAL") setTerminalError(message);
+      else setManifestError(message);
     } finally {
-      setLoadingEra(null);
+      if (operationId === operationIdRef.current) {
+        operationPendingRef.current = false;
+        setPendingOperation(null);
+      }
     }
   };
 
   const requestStart = (eraId: EraId): void => {
-    if (savedGame.kind === "INVALID") {
+    if (!session && savedGame.kind === "INVALID") {
       setLandingNotice("Discard the invalid local save before starting a new draft.");
       return;
     }
-    if (savedGame.kind === "CANDIDATE") {
+    if (session || savedGame.kind === "CANDIDATE") {
       setOverwriteEra(eraId);
       return;
     }
@@ -143,19 +162,35 @@ export function EraDraftApp(): ReactElement {
   };
 
   const continueGame = async (): Promise<void> => {
-    if (!manifest || savedGame.kind !== "CANDIDATE" || loadingContinue) return;
-    setLoadingContinue(true);
+    if (operationPendingRef.current) return;
+    if (session) {
+      setLandingNotice(null);
+      navigate("ERA_DRAFT");
+      return;
+    }
+    if (!manifest || savedGame.kind !== "CANDIDATE") return;
+    operationPendingRef.current = true;
+    const operationId = operationIdRef.current + 1;
+    operationIdRef.current = operationId;
+    setPendingOperation({ kind: "CONTINUE" });
     setLandingNotice(null);
     try {
       const manifestUrl = eraDraftManifestUrl(import.meta.env.BASE_URL);
       const restored = await loadAndRestoreEraDraftUiSave({ save: savedGame.save, manifest, manifestUrl });
+      if (operationId !== operationIdRef.current) return;
       setSession(restored);
       setPersistenceWarning(null);
       navigate("ERA_DRAFT");
     } catch (error) {
-      setSavedGame({ kind: "INVALID", message: error instanceof Error ? error.message : "The local save could not be restored." });
+      if (operationId !== operationIdRef.current) return;
+      const message = error instanceof Error ? error.message : "The local save could not be restored.";
+      if (classifySaveRestoreFailure(error) === "INVALID") setSavedGame({ kind: "INVALID", message });
+      else setLandingNotice(`${message} Your saved game was kept. Try again when the era data is available.`);
     } finally {
-      setLoadingContinue(false);
+      if (operationId === operationIdRef.current) {
+        operationPendingRef.current = false;
+        setPendingOperation(null);
+      }
     }
   };
 
@@ -172,6 +207,16 @@ export function EraDraftApp(): ReactElement {
     }
   };
 
+  const chooseNewEra = (): void => {
+    const cleared = discardSave();
+    setSession(null);
+    setSelectedEra(null);
+    setTerminalError(null);
+    if (cleared) setLandingNotice(null);
+    else setLandingNotice("The saved game could not be removed. You can still choose an era; starting will ask before replacing it.");
+    navigate("HOME");
+  };
+
   const setSeasonCursor = (cursor: EraDraftPresentationCursor): void => {
     if (!session || session.state.phase !== "GAME_COMPLETE") return;
     setSession({ ...session, presentationCursor: cursor });
@@ -184,19 +229,21 @@ export function EraDraftApp(): ReactElement {
     }
   };
 
+  const resumeSummary: EraDraftUiSaveSummary | null = session
+    ? { eraId: session.state.eraId, phase: session.state.phase, pickCount: session.state.picks.length, revision: session.state.revision }
+    : savedGame.kind === "CANDIDATE" ? savedGame.save.summary : null;
+  const loadingEra = pendingOperation?.kind === "START" ? pendingOperation.eraId : null;
+  const loadingContinue = pendingOperation?.kind === "CONTINUE";
+
   if (route === "ERA_DRAFT") {
     if (!session) return <LoadingSession />;
     if (session.state.phase === "GAME_COMPLETE") {
       if (!session.presentationCursor) throw new Error("Completed season is missing its presentation cursor.");
       return <SeasonExperience session={{ catalog: session.catalog, state: session.state, cursor: session.presentationCursor }}
         persistenceWarning={persistenceWarning} onCursor={setSeasonCursor} onExit={() => navigate("HOME")}
-        onSameEra={() => void startDraft(session.state.eraId)} onNewEra={() => {
-          if (discardSave()) {
-            setLandingNotice(null);
-            setSelectedEra(null);
-            navigate("HOME");
-          }
-        }} />;
+        restartPending={pendingOperation?.kind === "START" && pendingOperation.source === "TERMINAL"}
+        restartError={terminalError} onSameEra={() => void startDraft(session.state.eraId, "TERMINAL")}
+        onNewEra={chooseNewEra} />;
     }
     return session.state.phase === "REVEALED"
       ? <RevealedExperience session={{ catalog: session.catalog, state: session.state }} persistenceWarning={persistenceWarning}
@@ -211,6 +258,7 @@ export function EraDraftApp(): ReactElement {
   if (route === null) return <NotFound onExit={() => navigate("HOME")} />;
   return <Landing manifest={manifest} manifestLoading={manifestLoading} error={manifestError} loadingEra={loadingEra} selectedEra={selectedEra}
     savedGame={savedGame} loadingContinue={loadingContinue} overwriteEra={overwriteEra} notice={landingNotice}
+    resumeSummary={resumeSummary} resumeCursor={session?.presentationCursor ?? null} pendingOperation={pendingOperation}
     onContinue={() => void continueGame()} onDiscardSave={discardSave} onCancelOverwrite={() => setOverwriteEra(null)}
     onRetryManifest={() => setManifestRequest((request) => request + 1)}
     onConfirmOverwrite={(eraId) => void startDraft(eraId)}
@@ -221,6 +269,10 @@ export function EraDraftApp(): ReactElement {
     }} onStart={requestStart} />;
 }
 
+export function classifySaveRestoreFailure(error: unknown): "INVALID" | "RETRYABLE" {
+  return error instanceof EraDraftUiSaveError ? "INVALID" : "RETRYABLE";
+}
+
 export function Landing(props: {
   manifest: EraDraftWebManifest | null;
   manifestLoading: boolean;
@@ -228,6 +280,9 @@ export function Landing(props: {
   loadingEra: EraId | null;
   selectedEra: EraId | null;
   savedGame: EraDraftUiSaveReadResult;
+  resumeSummary?: EraDraftUiSaveSummary | null;
+  resumeCursor?: EraDraftPresentationCursor | null;
+  pendingOperation?: PendingOperation | null;
   loadingContinue: boolean;
   overwriteEra: EraId | null;
   notice: string | null;
@@ -241,6 +296,9 @@ export function Landing(props: {
   onStart: (eraId: EraId) => void;
 }): ReactElement {
   const selected = props.selectedEra ? ERA_COPY[props.selectedEra] : null;
+  const resumeSummary = props.resumeSummary
+    ?? (props.savedGame.kind === "CANDIDATE" ? props.savedGame.save.summary : null);
+  const operationPending = props.pendingOperation != null || props.loadingEra !== null || props.loadingContinue;
   const startButtonRef = useRef<HTMLButtonElement>(null);
   const eraPickerTitleRef = useRef<HTMLHeadingElement>(null);
   return (
@@ -252,11 +310,12 @@ export function Landing(props: {
         </a>
         <div className="landing-header-actions">
         <a className="classic-link" href={appRoutePath("CLASSIC", props.basePath)}>Classic 2016 <span aria-hidden="true">↗</span></a>
-        {props.savedGame.kind === "CANDIDATE" && <>
-          <span id="continue-summary" className="landing-sr-only">Continue {ERA_COPY[props.savedGame.save.summary.eraId].title}. {saveSummaryLabel(
-            props.savedGame.save.summary.phase, props.savedGame.save.summary.pickCount, props.savedGame.save.envelope.presentationCursor)}</span>
+        {resumeSummary && <>
+          <span id="continue-summary" className="landing-sr-only">Continue {ERA_COPY[resumeSummary.eraId].title}. {saveSummaryLabel(
+            resumeSummary.phase, resumeSummary.pickCount,
+            props.resumeCursor ?? (props.savedGame.kind === "CANDIDATE" ? props.savedGame.save.envelope.presentationCursor : null))}</span>
           <button className="secondary-action landing-continue" aria-describedby="continue-summary" aria-busy={props.loadingContinue}
-            disabled={!props.manifest || props.loadingContinue} onClick={props.onContinue}>
+            disabled={(!props.manifest && props.savedGame.kind === "CANDIDATE") || operationPending} onClick={props.onContinue}>
             {props.loadingContinue ? "Restoring verified game…" : "Continue Game"}<span aria-hidden="true">→</span>
           </button>
         </>}
@@ -288,7 +347,7 @@ export function Landing(props: {
               const isSelected = props.selectedEra === eraId;
               return (
                 <button className={`era-card${isSelected ? " era-card-selected" : ""}`} key={eraId}
-                  disabled={!props.manifest || props.loadingEra !== null} aria-pressed={isSelected}
+                  disabled={!props.manifest || operationPending} aria-pressed={isSelected}
                   onClick={() => props.onSelect(eraId)} aria-label={`Select ${era.title}, ${era.years}`}>
                   <span className="era-card-main"><strong>{era.title}</strong><span className="era-years">{era.years}</span></span>
                 </button>
@@ -312,7 +371,7 @@ export function Landing(props: {
                       <button className="secondary-action" onClick={() => props.onConfirmOverwrite(props.selectedEra!)}>Start new draft</button></div>
                   </div>
                 ) : (
-                  <button ref={startButtonRef} className="primary-action start-draft-action" disabled={props.loadingEra !== null}
+                  <button ref={startButtonRef} className="primary-action start-draft-action" disabled={operationPending}
                     onClick={() => props.onStart(props.selectedEra!)}>
                     {props.loadingEra === props.selectedEra ? "Loading and verifying…" : "Start Draft"}<span aria-hidden="true">→</span>
                   </button>
@@ -442,7 +501,7 @@ export function DraftExperience(props: {
               }
               setSelectedId(candidate.playerTeamSeasonId);
               setMessage(`${candidate.playerName} selected. Choose an open batting position.`);
-            }} />
+            }} onUnavailable={(reason) => setMessage(reason)} />
           )}
 
           {view.phase === "AWAITING_PICK" && <>
@@ -485,6 +544,7 @@ function CandidateGallery(props: {
   selectedId: string | null;
   selected?: DraftCandidateIdentityView;
   onSelect: (candidate: DraftCandidateIdentityView) => void;
+  onUnavailable: (reason: string) => void;
 }): ReactElement {
   let previousGroup: DraftCandidateIdentityView["presentationGroup"] | null = null;
   return (
@@ -496,19 +556,21 @@ function CandidateGallery(props: {
           const unavailableReason = !candidate.available
             ? candidate.positions.flatMap((position) => position.reasons)[0]?.message ?? "Unavailable"
             : undefined;
+          const unavailableReasonId = `candidate-unavailable-${candidate.playerTeamSeasonId.replace(/[^a-zA-Z0-9_-]/g, "-")}`;
           const showGroup = candidate.presentationGroup !== previousGroup;
           previousGroup = candidate.presentationGroup;
           return (
             <div className="candidate-entry" key={candidate.playerTeamSeasonId}>
               {showGroup && <div className="candidate-group-label"><span>{friendly(candidate.presentationGroup)}</span></div>}
               <button className={`candidate-card${selected ? " candidate-card-selected" : ""}`}
-                disabled={!candidate.available} aria-pressed={selected}
-                title={unavailableReason} aria-description={unavailableReason}
-                onClick={() => props.onSelect(candidate)}>
+                aria-disabled={!candidate.available} aria-pressed={selected}
+                aria-describedby={unavailableReason ? unavailableReasonId : undefined}
+                onClick={() => candidate.available ? props.onSelect(candidate) : props.onUnavailable(unavailableReason!)}>
                 <span className="portrait-placeholder" aria-hidden="true"><span>{monogram(candidate.playerName)}</span></span>
                 <span className="candidate-body"><strong>{candidate.playerName}</strong><span>{friendly(candidate.displayRole)}</span>
                   <span className="candidate-meta">{candidate.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}
                     {candidate.keeperCapability === "CONFIRMED" && candidate.displayRole !== "WICKETKEEPER_BATTER" ? " · WK" : ""}</span>
+                  {unavailableReason && <span id={unavailableReasonId} className="candidate-unavailable">{unavailableReason}</span>}
                 </span>
                 <span className="candidate-quick-stats">
                   {candidateQuickStats(candidate).map((line) => <span key={line}>{line}</span>)}
@@ -665,6 +727,8 @@ export function SeasonExperience(props: {
     readonly cursor: EraDraftPresentationCursor;
   };
   persistenceWarning: string | null;
+  restartPending?: boolean;
+  restartError?: string | null;
   onCursor: (cursor: EraDraftPresentationCursor) => void;
   onExit: () => void;
   onSameEra: () => void;
@@ -701,6 +765,7 @@ export function SeasonExperience(props: {
         : { phase: "COMPLETE" })}
       onSimToEnd={() => props.onCursor({ phase: "COMPLETE" })} />}
     {cursor.phase === "COMPLETE" && <TerminalExperience view={view} headingRef={headingRef}
+      restartPending={props.restartPending ?? false} restartError={props.restartError ?? null}
       onSameEra={props.onSameEra} onNewEra={props.onNewEra} />}
   </main>;
 }
@@ -810,6 +875,8 @@ function TerminalExperience(props: {
   headingRef: RefObject<HTMLHeadingElement | null>;
   onSameEra: () => void;
   onNewEra: () => void;
+  restartPending: boolean;
+  restartError: string | null;
 }): ReactElement {
   return <section className={`terminal-screen${props.view.champion.isUser ? " terminal-champion" : ""}`} aria-labelledby="terminal-title">
     <p className="eyebrow">Season complete · {ERA_COPY[props.view.eraId].title}</p>
@@ -821,8 +888,10 @@ function TerminalExperience(props: {
       <div><span>Playoff outcome</span><strong>{props.view.playoffs.userResult}</strong></div>
     </div>
     <PlayoffBracket matches={props.view.playoffs.allMatches} revealedThrough={props.view.playoffs.allMatches.length} />
-    <div className="terminal-actions"><button className="primary-action" onClick={props.onNewEra}>New Era Draft</button>
-      <button className="secondary-action" onClick={props.onSameEra}>Draft same era again</button></div>
+    {props.restartError && <p className="draft-warning" role="alert">The new draft could not start. {props.restartError}</p>}
+    <div className="terminal-actions"><button className="primary-action" disabled={props.restartPending} onClick={props.onNewEra}>New Era Draft</button>
+      <button className="secondary-action" disabled={props.restartPending} aria-busy={props.restartPending} onClick={props.onSameEra}>
+        {props.restartPending ? "Starting new draft…" : "Draft same era again"}</button></div>
     <p className="sr-status" aria-live="polite">Season complete. {props.view.champion.teamName} are champions.</p>
   </section>;
 }

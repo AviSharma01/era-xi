@@ -124,7 +124,7 @@ test("Continue fetches only the saved era and verifies its artifact before stric
     manifestUrl: new URL("https://example.test/data/era-draft/v1/manifest.json"),
     fetcher: async () => new Response(webAssets.artifacts.get(entry.path)!.json),
     subtle: webcrypto.subtle as unknown as SubtleCrypto,
-  }), (error) => error instanceof EraDraftDataError && error.code === "CATALOG_FINGERPRINT_MISMATCH");
+  }), hasUiCode("INVALID_UI_SAVE_STATE"));
 
   await assert.rejects(() => loadAndRestoreEraDraftUiSave({
     save: fingerprintMismatch,

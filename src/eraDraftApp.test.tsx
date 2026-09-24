@@ -6,12 +6,12 @@ import { JSDOM } from "jsdom";
 import { createRoot } from "react-dom/client";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { DraftExperience, Landing, LoadingSession, RevealedExperience } from "./eraDraftApp.js";
+import { classifySaveRestoreFailure, DraftExperience, Landing, LoadingSession, RevealedExperience } from "./eraDraftApp.js";
 import { loadEraDraftCatalog } from "./eraDraftData.js";
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
 import { projectEraDraftPublicState } from "./eraDraftProjection.js";
 import type { AwaitingPickState, EraDraftState, EraDraftTransitionResult } from "./eraDraftTypes.js";
-import type { EraDraftUiSaveCandidate, EraDraftUiSaveReadResult } from "./eraDraftUiPersistence.js";
+import { EraDraftUiSaveError, type EraDraftUiSaveCandidate, type EraDraftUiSaveReadResult } from "./eraDraftUiPersistence.js";
 import type { EraDraftWebManifest } from "./eraDraftWebData.js";
 import type { EraId } from "./teamEvaluationV2.js";
 import { matchAppRoute } from "./webRoutes.js";
@@ -36,6 +36,25 @@ test("landing presents an explicit safe Continue summary without reveal data", (
   assert.ok(document.querySelector("header .landing-continue"));
   assert.equal(document.querySelector("header .landing-header-actions")?.lastElementChild?.textContent, "Continue Game→");
   assert.doesNotMatch(html, /rating|quality tier|serializedEngineState/i);
+});
+
+test("in-memory progress remains the preferred Continue target when storage is unavailable", () => {
+  const html = renderToStaticMarkup(<Landing manifest={null} manifestLoading={false} error={null} loadingEra={null}
+    selectedEra={null} savedGame={{ kind: "UNAVAILABLE", message: "Storage unavailable" }} loadingContinue={false}
+    resumeSummary={{ eraId: "era-impact", phase: "AWAITING_SPIN", pickCount: 7, revision: 14 }}
+    pendingOperation={null} overwriteEra={null} notice={null} basePath="/" onContinue={() => undefined}
+    onDiscardSave={() => true} onRetryManifest={() => undefined} onCancelOverwrite={() => undefined}
+    onConfirmOverwrite={() => undefined} onSelect={() => undefined} onStart={() => undefined} />);
+  const document = new JSDOM(html).window.document;
+  const button = document.querySelector<HTMLButtonElement>(".landing-continue");
+  assert.ok(button);
+  assert.equal(button.disabled, false);
+  assert.match(document.querySelector("#continue-summary")?.textContent ?? "", /Continue Impact.*7\/11 locked/);
+});
+
+test("restore errors distinguish invalid saves from retryable catalog failures", () => {
+  assert.equal(classifySaveRestoreFailure(new EraDraftUiSaveError("INVALID_UI_SAVE_STATE", "bad save")), "INVALID");
+  assert.equal(classifySaveRestoreFailure(new TypeError("offline")), "RETRYABLE");
 });
 
 test("landing presents invalid-save recovery without crashing era selection", () => {
@@ -346,7 +365,7 @@ test("Unknown fit uses Acceptable only in UI, with four labels and unchanged aut
   }
 });
 
-test("unavailable roster rows retain accessible reasons without visible warning copy", () => {
+test("unavailable roster rows remain keyboard reachable and expose visible reasons", () => {
   const catalog = loadEraDraftCatalog();
   let state = accepted(reduceEraDraft(catalog, createEraDraftGame({ catalog, rootSeed: "unavailable-row-ui" }), { type: "CHOOSE_ERA", eraId: "era-foundation" }));
   for (let pick = 0; pick < 4; pick += 1) {
@@ -362,15 +381,16 @@ test("unavailable roster rows retain accessible reasons without visible warning 
   if (state.phase !== "AWAITING_PICK") assert.fail("Expected roster");
   const html = renderToStaticMarkup(<DraftExperience session={{ catalog, state }} persistenceWarning={null} onExit={() => undefined} onAccepted={() => null} />);
   const document = new JSDOM(html).window.document;
-  const disabled = [...document.querySelectorAll<HTMLButtonElement>(".candidate-card:disabled")];
-  assert.ok(disabled.length > 0);
-  assert.ok(disabled.some((row) => row.getAttribute("aria-description")?.includes("four overseas")));
-  for (const row of disabled) {
-    assert.ok(row.getAttribute("aria-description"));
-    assert.equal(row.title, row.getAttribute("aria-description"));
-    assert.equal(row.querySelector(".candidate-unavailable"), null);
+  const unavailable = [...document.querySelectorAll<HTMLButtonElement>('.candidate-card[aria-disabled="true"]')];
+  assert.ok(unavailable.length > 0);
+  assert.ok(unavailable.some((row) => row.textContent?.includes("four overseas")));
+  for (const row of unavailable) {
+    assert.equal(row.disabled, false);
+    const description = row.getAttribute("aria-describedby");
+    assert.ok(description);
+    assert.ok(document.getElementById(description!)?.textContent);
+    assert.ok(row.querySelector(".candidate-unavailable"));
     assert.equal(row.querySelector(".select-mark")?.textContent, "");
-    assert.doesNotMatch(row.textContent ?? "", /already drafted|at most four|Unavailable/);
   }
 });
 

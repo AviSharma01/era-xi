@@ -50,6 +50,8 @@ button, a { font: inherit; }
 button { color: inherit; }
 button:focus-visible, a:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
 button:disabled { cursor: not-allowed; }
+.third-party-notices-link { display: block; padding: 12px; color: #aaa59b; background: #09090a; font-size: 11px; line-height: 16px; text-align: center; }
+.third-party-notices-link:hover { color: #f4f1e9; }
 
 .era-shell { width: min(1500px, 100%); min-height: 100vh; margin: 0 auto; padding: 0 32px 48px; }
 .game-header { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); }
@@ -163,10 +165,12 @@ button:disabled { cursor: not-allowed; }
 .candidate-group-label::after { content: ""; height: 1px; flex: 1; background: var(--line); }
 .candidate-card { min-height: 74px; display: grid; grid-template-columns: 48px minmax(0, 1fr) auto 24px; gap: 11px; align-items: center; position: relative; overflow: hidden; padding: 7px 10px 7px 7px; border: 1px solid var(--line); border-radius: var(--radius-card); background: linear-gradient(115deg, #151517, #101011); text-align: left; cursor: pointer; transition: border-color 160ms ease, background 160ms ease, transform 160ms ease, box-shadow 160ms ease; }
 .candidate-card::after { content: ""; position: absolute; inset: 1px; border: 1px solid transparent; border-radius: calc(var(--radius-card) - 2px); pointer-events: none; }
-.candidate-card:hover:not(:disabled) { border-color: var(--line-strong); background: var(--surface-raised); transform: translateY(-2px); }
+.candidate-card:hover:not([aria-disabled="true"]) { border-color: var(--line-strong); background: var(--surface-raised); transform: translateY(-2px); }
 .candidate-card-selected { border-color: var(--gold) !important; background: linear-gradient(115deg, rgba(217, 173, 91, 0.15), rgba(23, 20, 16, 0.96)) !important; box-shadow: 0 0 24px rgba(217, 173, 91, 0.08), inset 3px 0 0 var(--gold); }
 .candidate-card-selected::after { border-color: rgba(240, 207, 136, 0.17); }
-.candidate-card:disabled { opacity: 0.4; }
+.candidate-card[aria-disabled="true"] { opacity: 0.58; cursor: help; }
+.candidate-card[aria-disabled="true"] .candidate-unavailable { color: #d8b2a5; }
+.candidate-card:focus-visible, .xi-slot:focus-visible { outline-offset: -3px; }
 .portrait-placeholder { width: 48px; height: 58px; display: grid; place-items: end center; position: relative; overflow: hidden; border: 1px solid #393632; border-radius: 8px; background: linear-gradient(145deg, #2a2825, #151515 66%); }
 .portrait-placeholder::before { content: ""; width: 25px; height: 25px; position: absolute; top: 8px; border-radius: 50%; background: #44403a; box-shadow: 0 23px 0 10px #35322e; }
 .portrait-placeholder span { position: relative; z-index: 1; width: 100%; padding: 4px; background: rgba(8, 8, 8, 0.7); color: #c7bdad; font-family: "Geist Mono", monospace; font-size: 0.6rem; text-align: center; }
@@ -866,7 +870,7 @@ button.xi-slot { cursor: default; }
 .gameplay-shell .locked-player small, .gameplay-shell .locked-player > span { font: 400 12px/18px "Geist Sans", sans-serif; color: #e5dfd5; }
 .gameplay-shell .xi-fit-caption { margin-top: 4px; }
 .gameplay-shell .slot-confirm-hint { margin-top: 0; }
-.gameplay-shell .candidate-card:disabled { opacity: 0.3; cursor: not-allowed; }
+.gameplay-shell .candidate-card[aria-disabled="true"] { opacity: 0.58; cursor: help; }
 .gameplay-shell .inspector-modal .inspector-identity { flex-direction: column; text-align: center; gap: 12px; }
 .gameplay-shell .inspector-modal .inspector-identity p { margin-top: 8px; }
 .gameplay-shell .inspector-modal .inspector-monogram { width: 72px; height: 72px; border-radius: 50%; }

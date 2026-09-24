@@ -185,12 +185,21 @@ export async function loadAndRestoreEraDraftUiSave(input: {
     ...(input.fetcher ? { fetcher: input.fetcher } : {}),
     ...(input.subtle ? { subtle: input.subtle } : {}),
   });
-  const restored = persistableState(restoreEraDraftState(catalog, input.save.envelope.serializedEngineState));
-  if (restored.eraId !== input.save.summary.eraId || restored.phase !== input.save.summary.phase) {
-    throw new EraDraftUiSaveError("INVALID_UI_SAVE_STATE", "The local save summary does not match its authoritative state.");
+  try {
+    const restored = persistableState(restoreEraDraftState(catalog, input.save.envelope.serializedEngineState));
+    if (restored.eraId !== input.save.summary.eraId || restored.phase !== input.save.summary.phase) {
+      throw new EraDraftUiSaveError("INVALID_UI_SAVE_STATE", "The local save summary does not match its authoritative state.");
+    }
+    validateEraDraftPresentationCursor(restored, input.save.envelope.presentationCursor);
+    return { catalog, state: restored, presentationCursor: input.save.envelope.presentationCursor };
+  } catch (error) {
+    if (error instanceof EraDraftUiSaveError) throw error;
+    throw new EraDraftUiSaveError(
+      "INVALID_UI_SAVE_STATE",
+      error instanceof Error ? error.message : "The local save could not be validated.",
+      { cause: error },
+    );
   }
-  validateEraDraftPresentationCursor(restored, input.save.envelope.presentationCursor);
-  return { catalog, state: restored, presentationCursor: input.save.envelope.presentationCursor };
 }
 
 function inspectSerializedEngineState(serialized: string): EraDraftUiSaveSummary {
