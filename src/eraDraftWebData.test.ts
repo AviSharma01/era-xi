@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import { webcrypto } from "node:crypto";
+import { readFileSync, readdirSync } from "node:fs";
+import { resolve } from "node:path";
 import test from "node:test";
 
 import { loadEraDraftCatalogDocuments } from "./eraDraftData.js";
@@ -19,6 +21,18 @@ test("web artifact generation is deterministic and manifest entries describe exa
     assert.equal(file.json, second.artifacts.get(entry.path)!.json);
   }
   assert.equal(parseEraDraftWebManifest(JSON.parse(first.manifestJson)).catalogFingerprint, documents.fingerprint);
+});
+
+test("committed browser artifacts exactly match the deterministic release asset set", () => {
+  const assets = createEraDraftWebAssets(documents);
+  const root = resolve("data/processed/era-draft/web/v1/public/data/era-draft/v1");
+  assert.equal(readFileSync(resolve(root, "manifest.json"), "utf8"), assets.manifestJson);
+  const committed = readdirSync(resolve(root, "eras")).sort();
+  const expected = [...assets.artifacts.keys()].map((path) => path.replace(/^eras\//, "")).sort();
+  assert.deepEqual(committed, expected);
+  for (const [relativePath, artifact] of assets.artifacts) {
+    assert.equal(readFileSync(resolve(root, relativePath), "utf8"), artifact.json, relativePath);
+  }
 });
 
 test("browser loader verifies bytes before constructing the selected scoped catalog", async () => {
@@ -55,4 +69,3 @@ test("browser loader rejects size and hash mismatches without constructing a cat
     fetcher: hashFetcher, subtle: webcrypto.subtle as unknown as SubtleCrypto }),
   (error) => typeof error === "object" && error !== null && "code" in error && error.code === "WEB_ARTIFACT_HASH_MISMATCH");
 });
-
