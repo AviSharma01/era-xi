@@ -19,6 +19,14 @@ body {
   min-height: 100vh;
 }
 
+.third-party-notices-link {
+  display: block;
+  padding: 12px;
+  color: #52606d;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
 #app {
   min-height: 100vh;
 }

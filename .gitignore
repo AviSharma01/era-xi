@@ -3,6 +3,11 @@ AGENTS.md
 
 docs/*.md
 !docs/PLAYER_ROLES_POSITION_FIT.md
+!docs/PRODUCT_SPEC.md
+!docs/DATA_NOTES.md
+!docs/CRICSHEET_MAPPING.md
+!docs/COUNTRY_OVERSEAS_METADATA.md
+!docs/RELEASE.md
 
 # Full downloaded source data
 data/raw/cricsheet/
