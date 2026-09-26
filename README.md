@@ -1,17 +1,32 @@
-# IPL Draft Simulator
+# Era XI
 
-A historical IPL drafting game inspired by EraBall. Spin a franchise-season, choose one player, lock them into a batting position, and build a complete XI under roster constraints.
+A historical IPL drafting and simulation game inspired by EraBall. Build your XI from real player-seasons, balance your team under roster constraints, and see how it performs against historical opposition.
 
-## Current Status
+## Game Modes
 
-- 2016 Classic Mode prototype
-- Historical player-season data from Cricsheet
-- Position locking, overseas limit, wicketkeeper validation, respin, and franchise cooldown
-- Production-buildable web interface and Classic CLI
-- Era Draft supports all five eras through draft, reveal, deterministic persistence/replay, and complete league/playoff/champion simulation
-- Every era has a curated `REPRESENTATIVE HISTORICAL SEASON XI` opponent pool; pools larger than eight are deterministically shortlisted to eight before Simulation V2 selects seven opponents
-- Foundation Stage 8 opponent and simulation behavior remains compatibility-frozen
-- Browser catalogs are content-addressed and verified before play; accepted games autosave locally without changing deterministic replay
+### Era Draft — V1
+
+Draft across five IPL eras, from 2008 through 2026.
+
+- Spin historical franchise-seasons and select players for your XI.
+- Build an 11-player team with position, overseas, and wicketkeeper constraints.
+- Reveal player ratings and team evaluation.
+- Simulate a league campaign, progress through the playoffs, and compete for the title.
+- Resume saved games locally, with deterministic simulation and replay.
+
+### Classic 2016
+
+The original season-specific drafting experience, preserved alongside Era Draft.
+
+### Draft-Off — Planned V2
+
+A timed challenge mode for friends.
+
+Create a room, share an invite link, and independently draft an XI within a shared 10–15-minute countdown. Each completed team then plays the same number of simulated matches against common historical opposition.
+
+Compare results on a shared leaderboard using points and net run rate. Participants compete through their season performances rather than playing direct head-to-head matches.
+
+*Draft-Off is planned and is not yet available.*
 
 ## Run Locally
 
@@ -20,34 +35,36 @@ npm ci
 npm run dev:web
 ```
 
-The web app serves Era Draft at `/` and `/era-draft`, with Classic 2016 at
-`/classic`. Create the deployable static bundle with `npm run build:web`; the
-output is `dist-web/`.
+Era Draft is available at `/` and `/era-draft`, with Classic 2016 at `/classic`.
 
-## Era Draft Validation
+To build the production web application:
 
 ```bash
-npm run validate:era-draft:smoke  # 25 complete games
-npm run validate:era-draft        # 500 complete games
-npm run validate:era-draft:full   # 5,000 complete games
+npm run build:web
 ```
 
-Run the complete release gate with:
+The static output is generated in `dist-web/`.
+
+## Validation
+
+Run the complete V1 release gate:
 
 ```bash
 npm run verify:release
 ```
 
-This checks TypeScript tests, committed web artifacts, the production bundle,
-its HTTP routes and data hashes, and a 25-game all-era smoke validation. See
-[docs/RELEASE.md](docs/RELEASE.md) for the full host-neutral release checklist.
+For additional simulation validation:
 
-The CLI also accepts `--seed`, `--count`, `--mode smoke|standard|full`,
-`--deterministic-only`, and `--output <path>`. The deterministic report excludes
-wall-clock timing; performance metrics are emitted only in the regular report.
+```bash
+npm run validate:era-draft:smoke
+npm run validate:era-draft
+npm run validate:era-draft:full
+```
 
-## Data Attribution
+See [Release Documentation](docs/RELEASE.md) for validation details and deployment requirements.
 
-Historical match data and player identifiers are sourced from Cricsheet. See
-[DATA_ATTRIBUTION.md](DATA_ATTRIBUTION.md) for provenance, licensing, and
-redistribution notes.
+## Data & Attribution
+
+Historical match data and player identifiers are sourced from [Cricsheet](https://cricsheet.org/).
+
+See [DATA_ATTRIBUTION.md](DATA_ATTRIBUTION.md) for provenance, licensing, and redistribution information.
