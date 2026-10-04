@@ -11,8 +11,10 @@ import {
   deriveDraftOffFixtureSimulationSeed,
   deriveDraftOffGameplayXiIdentity,
   deriveDraftOffSeeds,
+  deriveDraftOffSubmissionHash,
   generateDraftOffSchedule,
   simulateDraftOffChallenge,
+  simulateDraftOffEntries,
 } from "./draftOffSimulation.js";
 import {
   DRAFT_OFF_ENTRY_TEAM_ID,
@@ -93,13 +95,16 @@ test("Transition challenge gives distinct XIs an identical schedule and authorit
     ],
   } as const;
   const first = simulateDraftOffChallenge(input);
+  const extractedCore = simulateDraftOffEntries(input);
   const repeated = simulateDraftOffChallenge(input);
   const firstBytes = new TextEncoder().encode(canonicalJson(first));
   const repeatedBytes = new TextEncoder().encode(canonicalJson(repeated));
 
   assert.deepEqual(repeated, first);
+  assert.equal(canonicalJson(extractedCore), canonicalJson(first));
   assert.deepEqual(repeatedBytes, firstBytes);
   assert.equal(canonicalSha256(repeated), canonicalSha256(first));
+  assert.equal(first.resultHash, "185061964f5960f8f2304436b68c184d8e0f0b9a1169b60c09491dd2a115c501");
   assert.equal(first.campaigns.length, 2);
   const fixtureViews = first.campaigns.map((campaign) => campaign.matches.map((match) => match.fixture));
   assert.deepEqual(fixtureViews[1], fixtureViews[0]);
@@ -130,6 +135,12 @@ test("Transition challenge gives distinct XIs an identical schedule and authorit
     assert.equal(campaign.aggregate.won + campaign.aggregate.lost, DRAFT_OFF_MATCH_COUNT);
     assert.equal(campaign.aggregate.points, campaign.aggregate.won * 2);
     assert.deepEqual(campaign.aggregate, authoritativeAggregate(campaign, catalog, transitionSeedInput.eraId));
+    const xi = input.participants.find((participant) => participant.participantId === campaign.participantId)!.xi;
+    assert.equal(campaign.submissionHash, deriveDraftOffSubmissionHash({
+      catalogFingerprint: catalog.fingerprint,
+      eraId: transitionSeedInput.eraId,
+      xi,
+    }));
   }
 
   console.log(`DRAFT_OFF_M1_EVIDENCE ${JSON.stringify({
@@ -154,6 +165,29 @@ test("Transition challenge gives distinct XIs an identical schedule and authorit
     resultHash: first.resultHash,
     rerunHash: repeated.resultHash,
   })}`);
+});
+
+test("single resolved entry uses the frozen M1/M1.1 campaign path without weakening the challenge contract", () => {
+  const seeds = deriveDraftOffSeeds(transitionSeedInput);
+  const xi = draftXi(catalog, seeds.draftRootSeed, transitionSeedInput.eraId, "ASCENDING");
+  const single = simulateDraftOffEntries({
+    catalog,
+    challengeSeed: transitionSeedInput.challengeSeed,
+    eraId: transitionSeedInput.eraId,
+    roundOrdinal: 1,
+    participants: [{ participantId: "uncontested", displayName: "Uncontested", xi }],
+  });
+  assert.equal(single.campaigns.length, 1);
+  assert.equal(single.leaderboard.length, 1);
+  assert.equal(single.leaderboard[0]!.rank, 1);
+  assert.equal(single.campaigns[0]!.matches.length, DRAFT_OFF_MATCH_COUNT);
+  assert.throws(() => simulateDraftOffChallenge({
+    catalog,
+    challengeSeed: transitionSeedInput.challengeSeed,
+    eraId: transitionSeedInput.eraId,
+    roundOrdinal: 1,
+    participants: [{ participantId: "uncontested", displayName: "Uncontested", xi }],
+  }), /between two and eight/);
 });
 
 test("fixture randomness and normalized match outputs are independent of participant identity", () => {

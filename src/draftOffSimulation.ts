@@ -169,6 +169,33 @@ export function deriveDraftOffFixtureSimulationSeed(input: {
   });
 }
 
+export function deriveDraftOffSubmissionHash(input: {
+  readonly catalogFingerprint: string;
+  readonly eraId: EraId;
+  readonly xi: XiCompleteState;
+}): string {
+  if (!input.catalogFingerprint) throw new RangeError("Draft-Off submission requires a catalog fingerprint.");
+  if (input.xi.phase !== "XI_COMPLETE" || input.xi.eraId !== input.eraId || input.xi.picks.length !== 11) {
+    throw new Error(`Draft-Off submission requires a completed XI from ${input.eraId}.`);
+  }
+  return canonicalSha256({
+    version: DRAFT_OFF_VERSION,
+    domain: "submission",
+    catalogFingerprint: input.catalogFingerprint,
+    eraId: input.eraId,
+    xi: [...input.xi.picks]
+      .sort((left, right) => left.battingPosition - right.battingPosition)
+      .map((pick) => ({
+        playerTeamSeasonId: pick.playerTeamSeasonId,
+        playerId: pick.playerId,
+        seasonId: pick.seasonId,
+        teamId: pick.teamId,
+        franchiseId: pick.franchiseId,
+        battingPosition: pick.battingPosition,
+      })),
+  });
+}
+
 export function simulateDraftOffChallenge(input: {
   readonly catalog: EraDraftCatalog;
   readonly challengeSeed: string;
@@ -176,7 +203,22 @@ export function simulateDraftOffChallenge(input: {
   readonly roundOrdinal: number;
   readonly participants: readonly DraftOffParticipantInput[];
 }): DraftOffChallengeResult {
-  validateParticipants(input.participants);
+  validateParticipants(input.participants, 2);
+  return simulateDraftOffEntries(input);
+}
+
+/**
+ * Shared M1/M1.1 simulation path for resolved entries. The public challenge
+ * contract remains 2-8; M2 uses this only for an uncontested single entry.
+ */
+export function simulateDraftOffEntries(input: {
+  readonly catalog: EraDraftCatalog;
+  readonly challengeSeed: string;
+  readonly eraId: EraId;
+  readonly roundOrdinal: number;
+  readonly participants: readonly DraftOffParticipantInput[];
+}): DraftOffChallengeResult {
+  validateParticipants(input.participants, 1);
   const seeds = deriveDraftOffSeeds({
     challengeSeed: input.challengeSeed,
     catalogFingerprint: input.catalog.fingerprint,
@@ -267,21 +309,10 @@ function simulateParticipant(input: {
     eraId: input.eraId,
     xi: participant.xi,
   });
-  const submissionHash = canonicalSha256({
-    version: DRAFT_OFF_VERSION,
-    domain: "submission",
+  const submissionHash = deriveDraftOffSubmissionHash({
     catalogFingerprint: input.catalog.fingerprint,
     eraId: input.eraId,
-    xi: [...participant.xi.picks]
-      .sort((left, right) => left.battingPosition - right.battingPosition)
-      .map((pick) => ({
-        playerTeamSeasonId: pick.playerTeamSeasonId,
-        playerId: pick.playerId,
-        seasonId: pick.seasonId,
-        teamId: pick.teamId,
-        franchiseId: pick.franchiseId,
-        battingPosition: pick.battingPosition,
-      })),
+    xi: participant.xi,
   });
   const matches = input.schedule.fixtures.map((fixture) => {
     const profile = input.profileById.get(fixture.opponentProfileId);
@@ -368,9 +399,11 @@ function evaluationAsDraftOffTeam(evaluation: TeamEvaluationV2): SimulationTeamV
   };
 }
 
-function validateParticipants(participants: readonly DraftOffParticipantInput[]): void {
-  if (participants.length < 2 || participants.length > 8) {
-    throw new RangeError("Draft-Off requires between two and eight participants.");
+function validateParticipants(participants: readonly DraftOffParticipantInput[], minimum: 1 | 2): void {
+  if (participants.length < minimum || participants.length > 8) {
+    throw new RangeError(minimum === 2
+      ? "Draft-Off requires between two and eight participants."
+      : "Draft-Off resolved entries require between one and eight participants.");
   }
   if (new Set(participants.map((participant) => participant.participantId)).size !== participants.length) {
     throw new Error("Draft-Off participant IDs must be unique.");
