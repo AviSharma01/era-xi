@@ -9,6 +9,7 @@ import {
   DRAFT_OFF_SCHEDULE_VERSION,
   DRAFT_OFF_SEED_VERSION,
   DRAFT_OFF_VERSION,
+  DRAFT_OFF_XI_VARIANCE_VERSION,
   type DraftOffCampaignAggregate,
   type DraftOffCampaignResult,
   type DraftOffChallengeResult,
@@ -21,11 +22,17 @@ import {
 import type { EraOpponentProfileV2 } from "./stage7Data.js";
 import {
   buildStandingsV2,
+  SIMULATION_V2_VERSION,
   simulateMatchV2,
   type EraEnvironmentV2,
   type SimulationTeamV2,
 } from "./simulationV2.js";
-import type { EraId, TeamEvaluationV2 } from "./teamEvaluationV2.js";
+import {
+  TEAM_EVALUATION_V2_VERSION,
+  type EraId,
+  type TeamEvaluationV2,
+} from "./teamEvaluationV2.js";
+import type { XiCompleteState } from "./eraDraftTypes.js";
 
 export function deriveDraftOffSeeds(input: {
   readonly challengeSeed: string;
@@ -115,6 +122,51 @@ export function generateDraftOffSchedule(input: {
     fixtures,
   } as const;
   return freezeDeep({ ...body, scheduleHash: canonicalSha256(body) });
+}
+
+export function deriveDraftOffGameplayXiIdentity(input: {
+  readonly catalogFingerprint: string;
+  readonly eraId: EraId;
+  readonly xi: XiCompleteState;
+}): string {
+  if (!input.catalogFingerprint) throw new RangeError("Draft-Off XI identity requires a catalog fingerprint.");
+  if (input.xi.phase !== "XI_COMPLETE" || input.xi.eraId !== input.eraId || input.xi.picks.length !== 11) {
+    throw new Error(`Draft-Off XI identity requires a completed XI from ${input.eraId}.`);
+  }
+  const orderedXi = [...input.xi.picks]
+    .sort((left, right) => left.battingPosition - right.battingPosition)
+    .map((pick) => ({
+      playerTeamSeasonId: pick.playerTeamSeasonId,
+      battingPosition: pick.battingPosition,
+    }));
+  if (orderedXi.some((pick, index) => pick.battingPosition !== index + 1)
+    || new Set(orderedXi.map((pick) => pick.playerTeamSeasonId)).size !== 11) {
+    throw new Error("Draft-Off XI identity requires unique selections in batting positions 1-11.");
+  }
+  return canonicalSha256({
+    version: DRAFT_OFF_XI_VARIANCE_VERSION,
+    domain: "gameplay-xi-identity",
+    catalogFingerprint: input.catalogFingerprint,
+    simulationVersion: SIMULATION_V2_VERSION,
+    teamEvaluationVersion: TEAM_EVALUATION_V2_VERSION,
+    eraId: input.eraId,
+    orderedXi,
+  });
+}
+
+export function deriveDraftOffFixtureSimulationSeed(input: {
+  readonly fixtureScenarioSeed: string;
+  readonly gameplayXiIdentity: string;
+}): string {
+  if (!input.fixtureScenarioSeed || !input.gameplayXiIdentity) {
+    throw new RangeError("Draft-Off fixture simulation seed requires scenario and gameplay XI identities.");
+  }
+  return canonicalSha256({
+    version: DRAFT_OFF_XI_VARIANCE_VERSION,
+    domain: "xi-fixture-residual",
+    fixtureScenarioSeed: input.fixtureScenarioSeed,
+    gameplayXiIdentity: input.gameplayXiIdentity,
+  });
 }
 
 export function simulateDraftOffChallenge(input: {
@@ -210,6 +262,11 @@ function simulateParticipant(input: {
   }
   const evaluation = evaluateEraDraftXi(input.catalog, participant.xi);
   const entrant = evaluationAsDraftOffTeam(evaluation);
+  const gameplayXiIdentity = deriveDraftOffGameplayXiIdentity({
+    catalogFingerprint: input.catalog.fingerprint,
+    eraId: input.eraId,
+    xi: participant.xi,
+  });
   const submissionHash = canonicalSha256({
     version: DRAFT_OFF_VERSION,
     domain: "submission",
@@ -229,10 +286,15 @@ function simulateParticipant(input: {
   const matches = input.schedule.fixtures.map((fixture) => {
     const profile = input.profileById.get(fixture.opponentProfileId);
     if (!profile) throw new Error(`Draft-Off fixture references unknown opponent ${fixture.opponentProfileId}.`);
+    const simulationSeed = deriveDraftOffFixtureSimulationSeed({
+      fixtureScenarioSeed: fixture.scenarioSeed,
+      gameplayXiIdentity,
+    });
     return {
       fixture,
+      simulationSeed,
       result: simulateMatchV2({
-        seed: fixture.scenarioSeed,
+        seed: simulationSeed,
         matchId: fixture.matchId,
         teamA: entrant,
         teamB: opponentAsSimulationTeamV2(profile),
@@ -269,6 +331,7 @@ function simulateParticipant(input: {
     participantId: participant.participantId,
     displayName: participant.displayName,
     submissionHash,
+    gameplayXiIdentity,
     resultIdentityHash,
     evaluation,
     scheduleHash: input.schedule.scheduleHash,

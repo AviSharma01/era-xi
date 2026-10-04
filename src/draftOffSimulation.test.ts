@@ -8,6 +8,8 @@ import { evaluateSelectionLegality, getOpenBattingPositions } from "./eraDraftLe
 import { opponentAsSimulationTeamV2 } from "./eraDraftOpponentRuntime.js";
 import {
   buildDraftOffLeaderboard,
+  deriveDraftOffFixtureSimulationSeed,
+  deriveDraftOffGameplayXiIdentity,
   deriveDraftOffSeeds,
   generateDraftOffSchedule,
   simulateDraftOffChallenge,
@@ -103,6 +105,21 @@ test("Transition challenge gives distinct XIs an identical schedule and authorit
   assert.deepEqual(fixtureViews[1], fixtureViews[0]);
   assert.deepEqual(fixtureViews[0], first.schedule.fixtures);
   assert.equal(new Set(first.schedule.fixtures.map((fixture) => fixture.scenarioSeed)).size, DRAFT_OFF_MATCH_COUNT);
+  assert.notEqual(first.campaigns[0]!.gameplayXiIdentity, first.campaigns[1]!.gameplayXiIdentity);
+  for (let index = 0; index < DRAFT_OFF_MATCH_COUNT; index += 1) {
+    const left = first.campaigns[0]!.matches[index]!;
+    const right = first.campaigns[1]!.matches[index]!;
+    assert.deepEqual(left.fixture, right.fixture);
+    assert.notEqual(left.simulationSeed, right.simulationSeed);
+    assert.equal(left.simulationSeed, deriveDraftOffFixtureSimulationSeed({
+      fixtureScenarioSeed: left.fixture.scenarioSeed,
+      gameplayXiIdentity: first.campaigns[0]!.gameplayXiIdentity,
+    }));
+    assert.equal(right.simulationSeed, deriveDraftOffFixtureSimulationSeed({
+      fixtureScenarioSeed: right.fixture.scenarioSeed,
+      gameplayXiIdentity: first.campaigns[1]!.gameplayXiIdentity,
+    }));
+  }
 
   const counts = countOpponents(first.schedule.fixtures.map((fixture) => fixture.opponentProfileId));
   assert.equal(counts.size, 10);
@@ -119,6 +136,11 @@ test("Transition challenge gives distinct XIs an identical schedule and authorit
     scheduleHash: first.schedule.scheduleHash,
     fixtureOpponentIds: first.schedule.fixtures.map((fixture) => fixture.opponentProfileId),
     scenarioSeeds: first.schedule.fixtures.map((fixture) => fixture.scenarioSeed),
+    campaigns: first.campaigns.map((campaign) => ({
+      participantId: campaign.participantId,
+      gameplayXiIdentity: campaign.gameplayXiIdentity,
+      simulationSeeds: campaign.matches.map((match) => match.simulationSeed),
+    })),
     leaderboard: first.leaderboard.map((row) => ({
       rank: row.rank,
       participantId: row.participantId,
@@ -136,15 +158,16 @@ test("Transition challenge gives distinct XIs an identical schedule and authorit
 
 test("fixture randomness and normalized match outputs are independent of participant identity", () => {
   const seeds = deriveDraftOffSeeds(transitionSeedInput);
-  const xi = draftXi(catalog, seeds.draftRootSeed, transitionSeedInput.eraId, "ASCENDING");
+  const firstXi = draftXi(catalog, seeds.draftRootSeed, transitionSeedInput.eraId, "ASCENDING");
+  const secondXi = draftXi(catalog, seeds.draftRootSeed, transitionSeedInput.eraId, "DESCENDING");
   const first = simulateDraftOffChallenge({
     catalog,
     challengeSeed: transitionSeedInput.challengeSeed,
     eraId: transitionSeedInput.eraId,
     roundOrdinal: 1,
     participants: [
-      { participantId: "identity-a", displayName: "First Name", xi },
-      { participantId: "identity-b", displayName: "Second Name", xi },
+      { participantId: "identity-a", displayName: "First Name", xi: firstXi },
+      { participantId: "identity-b", displayName: "Second Name", xi: secondXi },
     ],
   });
   const renamedAndReordered = simulateDraftOffChallenge({
@@ -153,22 +176,74 @@ test("fixture randomness and normalized match outputs are independent of partici
     eraId: transitionSeedInput.eraId,
     roundOrdinal: 1,
     participants: [
-      { participantId: "identity-z", displayName: "Renamed Z", xi },
-      { participantId: "identity-y", displayName: "Renamed Y", xi },
+      { participantId: "identity-z", displayName: "Renamed Z", xi: secondXi },
+      { participantId: "identity-y", displayName: "Renamed Y", xi: firstXi },
+    ],
+  });
+  const identicalXiParticipants = simulateDraftOffChallenge({
+    catalog,
+    challengeSeed: transitionSeedInput.challengeSeed,
+    eraId: transitionSeedInput.eraId,
+    roundOrdinal: 1,
+    participants: [
+      { participantId: "same-xi-one", displayName: "Same XI One", xi: firstXi },
+      { participantId: "same-xi-two", displayName: "Same XI Two", xi: firstXi },
     ],
   });
 
-  assert.deepEqual(first.campaigns[0]!.matches, first.campaigns[1]!.matches);
-  assert.deepEqual(first.campaigns[0]!.aggregate, first.campaigns[1]!.aggregate);
-  assert.equal(first.campaigns[0]!.submissionHash, first.campaigns[1]!.submissionHash);
-  assert.notEqual(first.campaigns[0]!.resultIdentityHash, first.campaigns[1]!.resultIdentityHash);
+  assert.deepEqual(identicalXiParticipants.campaigns[0]!.matches, identicalXiParticipants.campaigns[1]!.matches);
+  assert.deepEqual(identicalXiParticipants.campaigns[0]!.aggregate, identicalXiParticipants.campaigns[1]!.aggregate);
+  assert.equal(identicalXiParticipants.campaigns[0]!.submissionHash, identicalXiParticipants.campaigns[1]!.submissionHash);
+  assert.equal(identicalXiParticipants.campaigns[0]!.gameplayXiIdentity, identicalXiParticipants.campaigns[1]!.gameplayXiIdentity);
+  assert.notEqual(identicalXiParticipants.campaigns[0]!.resultIdentityHash, identicalXiParticipants.campaigns[1]!.resultIdentityHash);
   assert.deepEqual(renamedAndReordered.schedule, first.schedule);
-  assert.deepEqual(renamedAndReordered.campaigns[0]!.matches, first.campaigns[0]!.matches);
+  const firstByXi = new Map(first.campaigns.map((campaign) => [campaign.gameplayXiIdentity, campaign]));
+  const renamedByXi = new Map(renamedAndReordered.campaigns.map((campaign) => [campaign.gameplayXiIdentity, campaign]));
+  assert.deepEqual([...renamedByXi.keys()].sort(), [...firstByXi.keys()].sort());
+  for (const [gameplayXiIdentity, campaign] of firstByXi) {
+    assert.deepEqual(renamedByXi.get(gameplayXiIdentity)?.matches, campaign.matches);
+    assert.deepEqual(renamedByXi.get(gameplayXiIdentity)?.aggregate, campaign.aggregate);
+  }
+  assert.equal(deriveDraftOffGameplayXiIdentity({
+    catalogFingerprint: catalog.fingerprint,
+    eraId: transitionSeedInput.eraId,
+    xi: firstXi,
+  }), deriveDraftOffGameplayXiIdentity({
+    catalogFingerprint: catalog.fingerprint,
+    eraId: transitionSeedInput.eraId,
+    xi: { ...firstXi, picks: [...firstXi.picks].reverse() },
+  }));
+  assert.equal(deriveDraftOffGameplayXiIdentity({
+    catalogFingerprint: catalog.fingerprint,
+    eraId: transitionSeedInput.eraId,
+    xi: firstXi,
+  }), deriveDraftOffGameplayXiIdentity({
+    catalogFingerprint: catalog.fingerprint,
+    eraId: transitionSeedInput.eraId,
+    xi: {
+      ...firstXi,
+      rootSeed: "irrelevant-draft-history-seed",
+      revision: firstXi.revision + 100,
+      rngCounters: { normalSpin: 99, voluntaryRespin: 99, deadSpinRecovery: 99 },
+      respin: { status: "USED" },
+      history: [],
+    },
+  }));
   assert.ok(first.campaigns.flatMap((campaign) => campaign.matches)
     .every((match) => match.result.firstBattingTeamId === DRAFT_OFF_ENTRY_TEAM_ID
       || match.result.chasingTeamId === DRAFT_OFF_ENTRY_TEAM_ID));
-  const sharedRandomness = canonicalJson({ seeds: first.seeds, schedule: first.schedule });
-  for (const forbidden of ["identity-a", "identity-b", "First Name", "Second Name"]) {
+  const sharedRandomness = canonicalJson({
+    seeds: first.seeds,
+    schedule: first.schedule,
+    campaignRandomness: first.campaigns.map((campaign) => ({
+      gameplayXiIdentity: campaign.gameplayXiIdentity,
+      simulationSeeds: campaign.matches.map((match) => match.simulationSeed),
+    })),
+  });
+  for (const forbidden of [
+    "identity-a", "identity-b", "First Name", "Second Name",
+    "identity-y", "identity-z", "Renamed Y", "Renamed Z",
+  ]) {
     assert.equal(sharedRandomness.includes(forbidden), false, forbidden);
   }
 });

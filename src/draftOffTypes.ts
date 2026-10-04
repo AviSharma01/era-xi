@@ -5,6 +5,7 @@ import type { XiCompleteState } from "./eraDraftTypes.js";
 export const DRAFT_OFF_VERSION = "ipl-draft-off/v1" as const;
 export const DRAFT_OFF_SEED_VERSION = "ipl-draft-off-seeds/v1" as const;
 export const DRAFT_OFF_SCHEDULE_VERSION = "ipl-draft-off-schedule/v1" as const;
+export const DRAFT_OFF_XI_VARIANCE_VERSION = "ipl-draft-off-xi-variance/v1" as const;
 export const DRAFT_OFF_MATCH_COUNT = 20 as const;
 export const DRAFT_OFF_ENTRY_TEAM_ID = "draft-off-entry" as const;
 
@@ -53,6 +54,7 @@ export type DraftOffCampaignAggregate = {
 
 export type DraftOffCampaignMatch = {
   readonly fixture: DraftOffFixture;
+  readonly simulationSeed: string;
   readonly result: MatchResultV2;
 };
 
@@ -60,6 +62,7 @@ export type DraftOffCampaignResult = {
   readonly participantId: string;
   readonly displayName: string;
   readonly submissionHash: string;
+  readonly gameplayXiIdentity: string;
   readonly resultIdentityHash: string;
   readonly evaluation: TeamEvaluationV2;
   readonly scheduleHash: string;
