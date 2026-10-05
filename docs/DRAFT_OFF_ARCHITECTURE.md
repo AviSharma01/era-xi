@@ -1,6 +1,6 @@
 # Draft-Off Architecture
 
-Implemented through M1/M1.1 (competitive simulation) and M2 (competition domain). Draft-Off backend, realtime rooms, UI, and deployment are not implemented yet. The gameplay decision record is [DRAFT_OFF_GAMEPLAY_VALIDATION.md](DRAFT_OFF_GAMEPLAY_VALIDATION.md).
+Implemented through M1/M1.1 (competitive simulation), M2 (competition domain), and M3 (provider-independent authoritative room service). Draft-Off backend transport, realtime integration, UI, and deployment are not implemented yet. The gameplay decision record is [DRAFT_OFF_GAMEPLAY_VALIDATION.md](DRAFT_OFF_GAMEPLAY_VALIDATION.md).
 
 ## Frozen simulation contract
 
@@ -55,7 +55,57 @@ Resolution records its trigger/time, eligible and ineligible IDs, immutable chal
 
 The canonical save contains version fields, genesis, accepted command events, and the expected state hash. Restoration strictly parses the format, rejects catalog/version drift, and replays through the same reducer. Replay reconstructs private drafts, submissions, and results, validates recorded events, and checks the final canonical hash. Derived campaign results are recomputed rather than trusted from a saved snapshot. Restored state is deeply frozen.
 
-This is provider-independent serialization/replay only: no repository/database abstraction, storage adapter, HTTP API, WebSocket, authentication, or realtime infrastructure is present.
+The M2 save format remains provider-independent and domain-only. M3 adds the separate repository and service boundary below without changing that format.
+
+## M3 authoritative room service
+
+`src/draftOffRoomService.ts` wraps M2 without modifying its lifecycle or simulation. `src/draftOffRoomTypes.ts` defines trusted caller identities, service command envelopes, safe views, receipts, and the injected clock contract. `src/draftOffRoomRepository.ts` supplies the atomic repository contract, an in-memory implementation, and a deterministic fake clock. `src/draftOffRoomProjection.ts` owns participant-facing projections.
+
+### Repository and canonical restoration
+
+Each room record stores only canonical M2 serialization and an idempotency receipt ledger. Every service repository read or transaction restores through `restoreDraftOffCompetition`, including reads of duplicate-command receipts. Room IDs must match the restored competition ID. There is no authoritative mutable state cache; canonical restore/replay correctness takes precedence over optimization.
+
+In-memory transactions serialize operations for one room and permit independent rooms to proceed concurrently. State and receipts commit together only after the transaction callback succeeds. Exceptions leave the prior record unchanged and release the queue. Rejected commands and no-ops can add receipts without advancing M2's revision. Repository records and service responses are deeply frozen. The repository is an internal trusted boundary and must never be exposed to participants.
+
+### Commands and revisions
+
+| Service command | Required concurrency check | Authority |
+| --- | --- | --- |
+| `JOIN`, `LEAVE`, `START` | `expectedRoomRevision` equals current M2 revision | Self join/rejoin/leave; host start |
+| `SPIN`, `RESPIN`, `LOCK_PLAYER`, `SUBMIT` | `expectedDraftRevision`, checked by M2 | Caller’s own rostered participant |
+| Deadline finalization | Current state inside the transaction | Internal system only |
+
+All public commands include `roomId` and `commandId`. Participant-local envelopes have no room-revision field: unrelated entrants can draft concurrently from the same observed room version. Same-participant races remain protected by M2's nested draft revision. Global M2 revision still versions persistence and appears in reads and responses for synchronization.
+
+Service envelopes are validated for exact fields and copied before entering the asynchronous queue. Caller-supplied target participant IDs, actor IDs, timestamps, finalization commands, or extra revision fields are rejected. The service derives actor identity from a trusted `PARTICIPANT` context; authenticating that context belongs to a future adapter. Host/member permission checks happen at the service boundary, while phase, roster locking, draft legality, nested revision, submission, and deadline behavior remain M2's responsibility.
+
+Within a transaction, the service restores M2, checks command receipts, applies lifecycle CAS when appropriate, authorizes, and reduces through M2. `atMs` comes from the clock at execution, after restoration. If a clock predates the latest accepted timestamp (including a restored save), the effective timestamp is clamped to that timestamp to preserve M2's nondecreasing-time contract. Clock values must be non-negative safe-integer milliseconds.
+
+### Retries and failures
+
+Command IDs are unique across a room. A canonical fingerprint includes actor identity and the entire envelope, including the relevant expected revision. Identical retries return the original receipt, even when its view is older than the current room. Clients use a fresh read to synchronize and a new command ID after correcting rejected input. Reusing an ID for different input returns `COMMAND_ID_CONFLICT` and never reveals another actor's receipt.
+
+Accepted, unchanged, domain-rejected, authorization-rejected, and stale-revision outcomes receive receipts. Structurally invalid envelopes and invalid actors are rejected before transaction execution. Exceptions before transaction commit do not create a success receipt. A response lost after commit, including a failure in subsequent scheduling reconciliation, is recovered by exact retry. Receipts remain unbounded for M3; retention belongs to later storage integration. The `deadline:` command-ID namespace is reserved for internal finalization.
+
+Simulation remains synchronous inside M2's atomic transition. A failure during final submission or deadline resolution publishes no partial submission or result. The optional runtime dependency exists for deterministic fault injection in tests; the default runtime is the unmodified M2 implementation.
+
+### Clock and service restoration
+
+`DraftOffClock` supplies `nowMs()` and cancellable `scheduleAt()`. The fake clock advances explicitly, delivers due callbacks in deadline/registration order, awaits callback completion, and propagates failures. Advancing to a later time means callbacks observe that actual later execution time. No sleeps or wall-clock timers are used in tests.
+
+`createRoom` constructs a lobby through M2. `restoreRoom` imports a validated canonical M2 save into a new record with an empty receipt ledger. `resumeRoom` restores an existing record, preserving its receipts. A restarted service retains retry guarantees only when using the same repository; importing the M2 save alone cannot recover M3 command IDs.
+
+Scheduling reconciliation runs under the room transaction lock. Active future deadlines arm one callback per service instance; overdue restoration finalizes immediately. Early all-submitted resolution cancels the timer after commit. A deterministic internal command ID prevents duplicate finalization. At the exact deadline, M2 closes manual submission and draft commands, even if their execution precedes timer delivery. Early/spurious callbacks do not reserve the internal command ID.
+
+Call `dispose()` to release an old service instance's timers before replacing it, then `resumeRoom` for each known room. A failed timer callback leaves state and receipt unchanged and surfaces the failure to the clock caller; `resumeRoom` safely retries overdue finalization. There is no retry loop or provider-specific scheduler in M3.
+
+### Privacy and deferred presentation
+
+Registered participants can read public membership/round status, timing, global revision, and only their own draft through `projectEraDraftPublicState`. Host privileges do not grant access to other private drafts. Shared resolution exposes contest status and a leaderboard summary without submission/campaign hashes or simulation internals. Canonical competition state, accepted history, save data, seeds, other entrants' picks/candidates, frozen submissions, XIs, evaluations, and detailed campaigns never leave participant-facing service methods.
+
+Richer post-resolution XI, evaluation, and campaign exposure remains part of the Draft-Off vision and is deferred to a later product/UI milestone. M3's conservative projection is not a removal of that direction.
+
+M3 adds no Cloudflare/Durable Objects, database, HTTP routes, WebSockets, real authentication, UI, or deployment code. These adapters remain outside this milestone.
 
 ## Future multi-round compatibility
 
