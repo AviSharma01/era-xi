@@ -9,6 +9,7 @@ docs/*.md
 !docs/COUNTRY_OVERSEAS_METADATA.md
 !docs/RELEASE.md
 !docs/DRAFT_OFF_GAMEPLAY_VALIDATION.md
+!docs/DRAFT_OFF_ARCHITECTURE.md
 
 # Full downloaded source data
 data/raw/cricsheet/
