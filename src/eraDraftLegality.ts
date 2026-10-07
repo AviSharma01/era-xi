@@ -102,23 +102,47 @@ export function evaluateFutureCompletion(
   const keeperIds = new Set(catalog.getKeeperCapablePlayerIds(eraId));
   const draftedIds = new Set(picks.map((pick) => pick.playerId));
   const keeperAlreadyDrafted = picks.some((pick) => keeperIds.has(pick.playerId));
-  const minimumCostByPlayer = new Map<string, number>();
-
-  for (const teamSeason of catalog.getTeamSeasonsForEra(eraId)) {
-    for (const player of catalog.getCandidatesForTeamSeason(teamSeason.teamSeasonId)) {
-      if (draftedIds.has(player.playerId)) continue;
-      if ((player as { rosterStatus: string }).rosterStatus === "UNKNOWN") {
+  const index = catalog.getCompletionCostIndex?.(eraId);
+  let remainingCanonicalPlayers: number;
+  let domesticPlayers = 0;
+  let getMinimumCost: (playerId: string) => number | undefined;
+  if (index) {
+    for (const player of index.unknownRows) {
+      if (!draftedIds.has(player.playerId)) {
         throw new EraDraftInvariantError("UNKNOWN_REMAINING_ROSTER_STATUS", `${player.playerTeamSeasonId} has unresolved roster status.`);
       }
-      const cost = player.rosterStatus === "INDIAN" ? 0 : 1;
-      minimumCostByPlayer.set(player.playerId, Math.min(minimumCostByPlayer.get(player.playerId) ?? 1, cost));
     }
+    remainingCanonicalPlayers = index.canonicalPlayers;
+    domesticPlayers = index.domesticPlayers;
+    for (const playerId of draftedIds) {
+      const cost = index.getMinimumCost(playerId);
+      if (cost === undefined) continue;
+      remainingCanonicalPlayers -= 1;
+      if (cost === 0) domesticPlayers -= 1;
+    }
+    getMinimumCost = (playerId) => draftedIds.has(playerId) ? undefined : index.getMinimumCost(playerId);
+  } else {
+    // Preserve the original ordered scan for catalogs that do not supply an immutable index.
+    const minimumCostByPlayer = new Map<string, number>();
+    for (const teamSeason of catalog.getTeamSeasonsForEra(eraId)) {
+      for (const player of catalog.getCandidatesForTeamSeason(teamSeason.teamSeasonId)) {
+        if (draftedIds.has(player.playerId)) continue;
+        if ((player as { rosterStatus: string }).rosterStatus === "UNKNOWN") {
+          throw new EraDraftInvariantError("UNKNOWN_REMAINING_ROSTER_STATUS", `${player.playerTeamSeasonId} has unresolved roster status.`);
+        }
+        const cost = player.rosterStatus === "INDIAN" ? 0 : 1;
+        minimumCostByPlayer.set(player.playerId, Math.min(minimumCostByPlayer.get(player.playerId) ?? 1, cost));
+      }
+    }
+    remainingCanonicalPlayers = minimumCostByPlayer.size;
+    for (const cost of minimumCostByPlayer.values()) if (cost === 0) domesticPlayers += 1;
+    getMinimumCost = (playerId) => minimumCostByPlayer.get(playerId);
   }
 
   const base = {
     remainingSlots,
     remainingOverseasCapacity,
-    remainingCanonicalPlayers: minimumCostByPlayer.size,
+    remainingCanonicalPlayers,
     keeperAlreadyDrafted,
   };
   if (remainingSlots < 0 || remainingOverseasCapacity < 0) {
@@ -134,9 +158,8 @@ export function evaluateFutureCompletion(
   }
 
   if (keeperAlreadyDrafted) {
-    const costs = [...minimumCostByPlayer.values()].sort((left, right) => left - right);
-    const minimumOverseasNeeded = costs.length >= remainingSlots
-      ? costs.slice(0, remainingSlots).reduce((total, cost) => total + cost, 0)
+    const minimumOverseasNeeded = remainingCanonicalPlayers >= remainingSlots
+      ? Math.max(0, remainingSlots - domesticPlayers)
       : null;
     return freezeFeasibility({
       ...base,
@@ -149,15 +172,11 @@ export function evaluateFutureCompletion(
   let minimumOverseasNeeded: number | null = null;
   const viableKeeperPlayerIds: string[] = [];
   for (const keeperId of [...keeperIds].sort()) {
-    const keeperCost = minimumCostByPlayer.get(keeperId);
+    const keeperCost = getMinimumCost(keeperId);
     if (keeperCost === undefined) continue;
-    const otherCosts = [...minimumCostByPlayer]
-      .filter(([playerId]) => playerId !== keeperId)
-      .map(([, cost]) => cost)
-      .sort((left, right) => left - right);
-    if (otherCosts.length < remainingSlots - 1) continue;
-    const completionCost = keeperCost
-      + otherCosts.slice(0, remainingSlots - 1).reduce((total, cost) => total + cost, 0);
+    if (remainingCanonicalPlayers - 1 < remainingSlots - 1) continue;
+    const otherDomesticPlayers = domesticPlayers - (keeperCost === 0 ? 1 : 0);
+    const completionCost = keeperCost + Math.max(0, remainingSlots - 1 - otherDomesticPlayers);
     minimumOverseasNeeded = minimumOverseasNeeded === null
       ? completionCost
       : Math.min(minimumOverseasNeeded, completionCost);
