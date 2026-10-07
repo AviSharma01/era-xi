@@ -1,0 +1,101 @@
+{
+  "era": "era-impact",
+  "inspectorTarget": "workerd: worker core:user:stage-a",
+  "diagnosticClientMs": 86.85312499999998,
+  "heapBefore": {
+    "usedSize": 56590420,
+    "totalSize": 82067456,
+    "embedderHeapUsedSize": 385992,
+    "backingStorageSize": 371094
+  },
+  "heapAfter": {
+    "usedSize": 69520860,
+    "totalSize": 109576192,
+    "embedderHeapUsedSize": 385992,
+    "backingStorageSize": 423417
+  },
+  "profileDurationMs": 127.024,
+  "sampleCount": 75,
+  "hottestSelfSamples": [
+    {
+      "functionName": "(idle)",
+      "selfSampleMs": 39.418
+    },
+    {
+      "functionName": "evaluateFutureCompletion",
+      "selfSampleMs": 24.837
+    },
+    {
+      "functionName": "load",
+      "selfSampleMs": 18.863
+    },
+    {
+      "functionName": "(garbage collector)",
+      "selfSampleMs": 6.283
+    },
+    {
+      "functionName": "evaluateSelectionLegality",
+      "selfSampleMs": 5.522
+    },
+    {
+      "functionName": "freeze",
+      "selfSampleMs": 5.023
+    },
+    {
+      "functionName": "(anonymous)",
+      "selfSampleMs": 4.268
+    },
+    {
+      "functionName": "assertEraDraftState",
+      "selfSampleMs": 3.776
+    },
+    {
+      "functionName": "canonicalSha256",
+      "selfSampleMs": 2.886
+    },
+    {
+      "functionName": "canonicalValue",
+      "selfSampleMs": 2.513
+    },
+    {
+      "functionName": "process",
+      "selfSampleMs": 2.498
+    },
+    {
+      "functionName": "update",
+      "selfSampleMs": 1.258
+    },
+    {
+      "functionName": "getKeeperCapablePlayerIds",
+      "selfSampleMs": 1.258
+    },
+    {
+      "functionName": "digestInto",
+      "selfSampleMs": 1.254
+    },
+    {
+      "functionName": "(program)",
+      "selfSampleMs": 1.254
+    },
+    {
+      "functionName": "freezeDeep5",
+      "selfSampleMs": 1.251
+    },
+    {
+      "functionName": "teamSeasonHasViableSelection",
+      "selfSampleMs": 1.25
+    },
+    {
+      "functionName": "HashMD",
+      "selfSampleMs": 1.247
+    },
+    {
+      "functionName": "spin",
+      "selfSampleMs": 1.238
+    },
+    {
+      "functionName": "assertDraftOffCompetitionState",
+      "selfSampleMs": 0.011
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "era": "era-impact",
+  "inspectorTarget": "workerd: worker core:user:stage-a",
+  "diagnosticClientMs": 315.8137089999999,
+  "heapBefore": {
+    "usedSize": 55386332,
+    "totalSize": 82329600,
+    "embedderHeapUsedSize": 385992,
+    "backingStorageSize": 344456
+  },
+  "heapAfter": {
+    "usedSize": 61264952,
+    "totalSize": 130301952,
+    "embedderHeapUsedSize": 385992,
+    "backingStorageSize": 276356
+  },
+  "profileDurationMs": 353.395,
+  "sampleCount": 259,
+  "hottestSelfSamples": [
+    {
+      "functionName": "evaluateFutureCompletion",
+      "selfSampleMs": 206.292
+    },
+    {
+      "functionName": "(idle)",
+      "selfSampleMs": 36.86
+    },
+    {
+      "functionName": "assertEraDraftState",
+      "selfSampleMs": 22.707
+    },
+    {
+      "functionName": "load",
+      "selfSampleMs": 16.207
+    },
+    {
+      "functionName": "(program)",
+      "selfSampleMs": 12.564
+    },
+    {
+      "functionName": "(garbage collector)",
+      "selfSampleMs": 11.325
+    },
+    {
+      "functionName": "freeze",
+      "selfSampleMs": 6.286
+    },
+    {
+      "functionName": "process",
+      "selfSampleMs": 6.263
+    },
+    {
+      "functionName": "evaluateSelectionLegality",
+      "selfSampleMs": 5.87
+    },
+    {
+      "functionName": "(anonymous)",
+      "selfSampleMs": 4.638
+    },
+    {
+      "functionName": "canonicalValue",
+      "selfSampleMs": 3.789
+    },
+    {
+      "functionName": "update",
+      "selfSampleMs": 3.778
+    },
+    {
+      "functionName": "validateHistory",
+      "selfSampleMs": 2.526
+    },
+    {
+      "functionName": "validatePicks",
+      "selfSampleMs": 2.506
+    },
+    {
+      "functionName": "json",
+      "selfSampleMs": 1.315
+    },
+    {
+      "functionName": "TextEncoder",
+      "selfSampleMs": 1.258
+    },
+    {
+      "functionName": "deriveDraftOffSeeds",
+      "selfSampleMs": 1.256
+    },
+    {
+      "functionName": "getKeeperCapablePlayerIds",
+      "selfSampleMs": 1.256
+    },
+    {
+      "functionName": "getPlayer",
+      "selfSampleMs": 1.254
+    },
+    {
+      "functionName": "get",
+      "selfSampleMs": 1.252
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "label": "Focused legality/equivalence",
+      "exitCode": 0,
+      "testCount": 14
+    },
+    {
+      "label": "Root typecheck",
+      "exitCode": 0
+    },
+    {
+      "label": "Full release pipeline",
+      "exitCode": 0,
+      "testCount": 276
+    },
+    {
+      "label": "Stage A typecheck",
+      "exitCode": 0
+    },
+    {
+      "label": "Native runtime correctness",
+      "exitCode": 0,
+      "testCount": 6
+    },
+    {
+      "label": "Full unchanged matrix run 1",
+      "exitCode": 0
+    },
+    {
+      "label": "Full unchanged matrix run 2",
+      "exitCode": 0
+    },
+    {
+      "label": "Separate unchanged profile",
+      "exitCode": 0
+    }
+  ],
+  "fixtureHashEquality": true,
+  "fixtureCount": 80,
+  "harnessUnchanged": true,
+  "initialSandboxReleaseFailure": "Local preview port 4173 denied; full authorized rerun exited 0."
+}

@@ -1,0 +1,11 @@
+{
+  "decision": "HOLD",
+  "gates": {
+    "warmSnapshot": false,
+    "warmCommands": false,
+    "cold": false,
+    "bursts": false,
+    "final": false,
+    "deadlineResolution": false
+  }
+}

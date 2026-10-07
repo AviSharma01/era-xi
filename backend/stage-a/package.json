@@ -1,0 +1,19 @@
+{
+  "name": "draft-off-stage-a-local-only",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node prepare.mjs",
+    "benchmark": "node benchmark.mjs",
+    "typecheck": "../../node_modules/.bin/tsc -p tsconfig.json",
+    "test": "node --test correctness.test.mjs"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261005.1",
+    "esbuild": "0.28.1",
+    "miniflare": "5.20261001.0-alpha"
+  }
+}
