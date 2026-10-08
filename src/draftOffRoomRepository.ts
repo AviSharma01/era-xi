@@ -1,4 +1,5 @@
 import type { DraftOffClock, DraftOffRoomRepositoryRecord } from "./draftOffRoomTypes.js";
+import type { DraftOffRoomLifecycle } from "./draftOffRoomLifecycle.js";
 
 export class DraftOffRoomRepositoryError extends Error {
   readonly name = "DraftOffRoomRepositoryError";
@@ -11,10 +12,12 @@ export class DraftOffRoomRepositoryError extends Error {
 export type DraftOffRoomTransactionResult<T> = {
   readonly record: DraftOffRoomRepositoryRecord;
   readonly value: T;
+  /** Optional advisory scheduling hint; adapters must verify it against restored canonical state. */
+  readonly lifecycle?: DraftOffRoomLifecycle;
 };
 
 export interface DraftOffRoomRepository {
-  create(roomId: string, record: DraftOffRoomRepositoryRecord): Promise<void>;
+  create(roomId: string, record: DraftOffRoomRepositoryRecord, lifecycle?: DraftOffRoomLifecycle): Promise<void>;
   read(roomId: string): Promise<DraftOffRoomRepositoryRecord | undefined>;
   /** Serialize per room and atomically commit the entire returned record only on success. */
   transact<T>(

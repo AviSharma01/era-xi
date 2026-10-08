@@ -10,9 +10,11 @@ import type {
   DraftOffCompetitionState,
 } from "./draftOffCompetitionTypes.js";
 import { projectDraftOffRoom } from "./draftOffRoomProjection.js";
+import { projectDraftOffRoomLifecycle } from "./draftOffRoomLifecycle.js";
 import {
   DraftOffRoomRepositoryError,
   type DraftOffRoomRepository,
+  type DraftOffRoomTransactionResult,
 } from "./draftOffRoomRepository.js";
 import type {
   CreateDraftOffRoomInput,
@@ -76,7 +78,7 @@ export class DraftOffRoomService {
     await this.repository.create(input.roomId, {
       serializedCompetition: this.runtime.serialize(state),
       receipts: {},
-    });
+    }, projectDraftOffRoomLifecycle(state));
     return projectDraftOffRoom(this.catalog, state, participantId);
   }
 
@@ -85,7 +87,7 @@ export class DraftOffRoomService {
     await this.repository.create(state.competitionId, {
       serializedCompetition: this.runtime.serialize(state),
       receipts: {},
-    });
+    }, projectDraftOffRoomLifecycle(state));
     await this.reconcileDeadline(state.competitionId);
   }
 
@@ -140,19 +142,21 @@ export class DraftOffRoomService {
     participantId: string,
     envelope: DraftOffRoomCommandEnvelope,
     record: DraftOffRoomRepositoryRecord,
-  ): { readonly record: DraftOffRoomRepositoryRecord; readonly value: DraftOffRoomCommandResult } {
+  ): DraftOffRoomTransactionResult<DraftOffRoomCommandResult> {
     const state = this.restoreRecord(envelope.roomId, record);
+    const unchanged = (result: DraftOffRoomTransactionResult<DraftOffRoomCommandResult>) =>
+      ({ ...result, lifecycle: projectDraftOffRoomLifecycle(state) });
     const fingerprint = canonicalSha256({ actor: { kind: "PARTICIPANT", participantId }, envelope });
     const existing = Object.hasOwn(record.receipts, envelope.commandId) ? record.receipts[envelope.commandId] : undefined;
     if (existing) {
-      if (existing.fingerprint === fingerprint) return { record, value: existing.result };
+      if (existing.fingerprint === fingerprint) return unchanged({ record, value: existing.result });
       const conflict = this.rejectedForParticipant(
         state,
         participantId,
         "COMMAND_ID_CONFLICT",
         "Command ID was already used for different input.",
       );
-      return { record, value: conflict };
+      return unchanged({ record, value: conflict });
     }
 
     let serviceRejection: DraftOffRoomCommandResult | undefined;
@@ -166,7 +170,7 @@ export class DraftOffRoomService {
     } else {
       serviceRejection = authorize(state, participantId, envelope, this.catalog);
     }
-    if (serviceRejection) return receipt(record, envelope.commandId, fingerprint, serviceRejection);
+    if (serviceRejection) return unchanged(receipt(record, envelope.commandId, fingerprint, serviceRejection));
 
     const atMs = authoritativeClockTime(this.clock.nowMs(), state.lastAcceptedAtMs);
     const command = toCompetitionCommand(participantId, envelope, atMs);
@@ -192,7 +196,7 @@ export class DraftOffRoomService {
         : record.serializedCompetition,
       receipts: record.receipts,
     };
-    return receipt(nextRecord, envelope.commandId, fingerprint, result);
+    return { ...receipt(nextRecord, envelope.commandId, fingerprint, result), lifecycle: projectDraftOffRoomLifecycle(nextState) };
   }
 
   private rejectedForParticipant(
@@ -214,19 +218,20 @@ export class DraftOffRoomService {
     if (this.disposed) return;
     const overdue = await this.repository.transact(roomId, (record) => {
       const state = this.restoreRecord(roomId, record);
-      if (this.disposed) return { record, value: undefined };
+      const lifecycle = projectDraftOffRoomLifecycle(state);
+      if (this.disposed) return { record, value: undefined, lifecycle };
       const active = state.rounds.find((round) => round.phase === "DRAFTING");
       if (!active || active.phase !== "DRAFTING") {
         this.cancelDeadline(roomId);
-        return { record, value: undefined };
+        return { record, value: undefined, lifecycle };
       }
       if (active.deadlineAtMs <= this.clock.nowMs()) {
         this.cancelDeadline(roomId);
-        return { record, value: { roundId: active.roundId, deadlineAtMs: active.deadlineAtMs } };
+        return { record, value: { roundId: active.roundId, deadlineAtMs: active.deadlineAtMs }, lifecycle };
       }
       const existing = this.scheduledDeadlines.get(roomId);
       if (existing?.roundId === active.roundId && existing.deadlineAtMs === active.deadlineAtMs) {
-        return { record, value: undefined };
+        return { record, value: undefined, lifecycle };
       }
       this.cancelDeadline(roomId);
       let scheduled!: ScheduledDeadline;
@@ -238,7 +243,7 @@ export class DraftOffRoomService {
       });
       scheduled = { roundId: active.roundId, deadlineAtMs: active.deadlineAtMs, task };
       this.scheduledDeadlines.set(roomId, scheduled);
-      return { record, value: undefined };
+      return { record, value: undefined, lifecycle };
     });
     if (overdue) await this.finalizeDeadline(roomId, overdue.roundId, overdue.deadlineAtMs);
   }
@@ -249,12 +254,13 @@ export class DraftOffRoomService {
     await this.repository.transact(roomId, (record) => {
       const fingerprint = canonicalSha256({ actor: { kind: "SYSTEM" }, roomId, roundId, deadlineAtMs });
       const state = this.restoreRecord(roomId, record);
-      if (this.disposed) return { record, value: undefined };
+      const lifecycle = projectDraftOffRoomLifecycle(state);
+      if (this.disposed) return { record, value: undefined, lifecycle };
       const existing = Object.hasOwn(record.receipts, commandId) ? record.receipts[commandId] : undefined;
-      if (existing) return { record, value: undefined };
+      if (existing) return { record, value: undefined, lifecycle };
       const atMs = authoritativeClockTime(this.clock.nowMs(), state.lastAcceptedAtMs);
       // An early/spurious timer delivery must not reserve the deadline command ID.
-      if (atMs < deadlineAtMs) return { record, value: undefined };
+      if (atMs < deadlineAtMs) return { record, value: undefined, lifecycle };
       const transition = this.runtime.reduce(this.catalog, state, { type: "FINALIZE_ROUND", roundId, atMs });
       const nextState = transition.state;
       const result: DraftOffRoomCommandResult = transition.ok
@@ -272,7 +278,7 @@ export class DraftOffRoomService {
         receipts: record.receipts,
       };
       const completed = receipt(nextRecord, commandId, fingerprint, result);
-      return { record: completed.record, value: undefined };
+      return { record: completed.record, value: undefined, lifecycle: projectDraftOffRoomLifecycle(nextState) };
     });
   }
 

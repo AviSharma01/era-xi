@@ -1,0 +1,121 @@
+{
+  "decision": "PASS for committing M4 Stage B; no commit or push performed",
+  "scope": "Durable room persistence and deadline/alarm/retention lifecycle only",
+  "checks": [
+    {
+      "command": "npm test",
+      "result": "PASS",
+      "tests": 279,
+      "note": "All 278 existing tests plus the new M3 lifecycle-hint assertion; M1-M3 regressions unchanged."
+    },
+    {
+      "command": "npm run typecheck",
+      "result": "PASS"
+    },
+    {
+      "command": "npm run typecheck --prefix backend/stage-a",
+      "result": "PASS"
+    },
+    {
+      "command": "npm run typecheck --prefix backend/stage-b",
+      "result": "PASS"
+    },
+    {
+      "command": "npm run test --prefix backend/stage-a",
+      "result": "PASS",
+      "tests": 6,
+      "note": "Unchanged native Stage A suite; run against freshly rebuilt shared M3 code."
+    },
+    {
+      "command": "npm run test --prefix backend/stage-b",
+      "result": "PASS",
+      "tests": 19,
+      "scenarios": 18,
+      "note": "Native workerd/SQLite, production bundle isolation, atomic rollback, alarms, eviction, restart, retention and retired markers."
+    },
+    {
+      "command": "npm run performance --prefix backend/stage-b",
+      "result": "PASS",
+      "evidence": "performance.json",
+      "note": "Small sequential matched indexed check only; no expensive full matrix rerun."
+    },
+    {
+      "check": "all 80 fixture SHA-256 hashes compared with committed indexed milestone",
+      "result": "PASS",
+      "evidence": "performance.json"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS"
+    }
+  ],
+  "incidents": [
+    {
+      "kind": "sandbox",
+      "note": "Initial native test attempts could not bind loopback sockets (EPERM). The authorized escalated runs passed."
+    },
+    {
+      "kind": "harness startup",
+      "evidence": "startup-incident.json",
+      "note": "Two startup attempts failed before measurement; the unchanged Stage A harness succeeded from its normal cwd. Matching each harness module root resolved the comparison startup failure. No measured samples were retried or discarded."
+    }
+  ],
+  "limitations": [
+    "Local workerd loopback results do not establish deployed Cloudflare latency, Internet RTT, provider quota headroom or multi-room throughput.",
+    "The performance check is deliberately small; percentiles are directional and burst responses share room queues.",
+    "Retired marker scope is the named room Durable Object only; a global code directory and guest credentials belong to later stages.",
+    "The optional scheduling hint extends the internal M3 repository boundary without changing canonical bytes, command semantics or participant response shapes."
+  ],
+  "deferred": [
+    "Stages C-E",
+    "guest enrollment and reconnect credentials",
+    "public product HTTP API",
+    "WebSockets and realtime",
+    "rate limiting",
+    "polished UI",
+    "deployment and Cloudflare resource creation"
+  ],
+  "uncommitted": true,
+  "unpushed": true,
+  "schedulingAuthorityFollowUp": {
+    "decision": "PASS; read-only audit HOLD resolved; uncommitted and unpushed",
+    "report": "hint-authority-report.md",
+    "checks": [
+      {
+        "command": "npm run test --prefix backend/stage-b",
+        "result": "PASS",
+        "tests": 29,
+        "scenarios": 27
+      },
+      {
+        "command": "node --test dist/draftOffRoomRepository.test.js dist/draftOffRoomService.test.js dist/draftOffRoomProjection.test.js dist/draftOffCompetitionPersistence.test.js",
+        "result": "PASS",
+        "tests": 32
+      },
+      {
+        "command": "npm run typecheck",
+        "result": "PASS"
+      },
+      {
+        "command": "npm run typecheck --prefix backend/stage-a",
+        "result": "PASS"
+      },
+      {
+        "command": "npm run typecheck --prefix backend/stage-b",
+        "result": "PASS"
+      },
+      {
+        "command": "git diff --check",
+        "result": "PASS"
+      },
+      {
+        "command": "npm run performance --prefix backend/stage-b -- --hint-authority",
+        "result": "PASS",
+        "evidence": "hint-authority-performance.json",
+        "note": "Only a small latency check; extra replay work remains within all original gates."
+      }
+    ],
+    "formats": "Canonical save/replay, room record and receipt formats unchanged",
+    "authority": "Every durable scheduling commit replays canonical bytes; hint reuse requires exact immutable data fields matching restored phase/time. Destructive room cleanup replays canonical state in its own transaction."
+  }
+}

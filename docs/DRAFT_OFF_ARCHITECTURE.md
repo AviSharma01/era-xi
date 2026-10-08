@@ -1,6 +1,6 @@
 # Draft-Off Architecture
 
-Implemented through M1/M1.1 (competitive simulation), M2 (competition domain), and M3 (provider-independent authoritative room service). Draft-Off backend transport, realtime integration, UI, and deployment are not implemented yet. The gameplay decision record is [DRAFT_OFF_GAMEPLAY_VALIDATION.md](DRAFT_OFF_GAMEPLAY_VALIDATION.md).
+Implemented through M1/M1.1 (competitive simulation), M2 (competition domain), M3 (provider-independent authoritative room service), and M4 Stage B (Cloudflare durable room persistence and alarm/retention lifecycle). Stage A and its indexed feasibility optimizations remain the runtime baseline. Public backend transport, guest credentials, realtime integration, UI, and deployment are not implemented yet. The gameplay decision record is [DRAFT_OFF_GAMEPLAY_VALIDATION.md](DRAFT_OFF_GAMEPLAY_VALIDATION.md).
 
 ## Frozen simulation contract
 
@@ -105,7 +105,49 @@ Registered participants can read public membership/round status, timing, global 
 
 Richer post-resolution XI, evaluation, and campaign exposure remains part of the Draft-Off vision and is deferred to a later product/UI milestone. M3's conservative projection is not a removal of that direction.
 
-M3 adds no Cloudflare/Durable Objects, database, HTTP routes, WebSockets, real authentication, UI, or deployment code. These adapters remain outside this milestone.
+M3 remains provider-independent. Its Cloudflare persistence and clock adapters are implemented in M4 Stage B below; public HTTP routes, WebSockets, real authentication, UI, and deployment remain deferred.
+
+## M4 Stage B: durable persistence and alarm lifecycle
+
+`backend/cloudflare/room.ts` provides one SQLite-backed `DraftOffRoom` Durable Object per room, addressed with `ROOMS.idFromName(roomId)`. Room creation verifies the object identity. The object's operation queue serializes commands, reads, recovery, creation, and alarms. `backend/cloudflare/repository.ts` implements the existing M3 atomic repository contract using the SQLite-backed storage KV API, with its own transaction queue for direct trusted repository callers. The Worker entry point and the production object's HTTP handler return 404. Only internal Worker/DO calls accept trusted M3 actors; they are not an authentication mechanism or a public API.
+
+### Storage and the atomic scheduling boundary
+
+| Stored key | Contents |
+| --- | --- |
+| `descriptor` | Versioned canonical room ID and selected era; persisted with room creation. |
+| `competition` | Unmodified canonical M2 save bytes; no derived authoritative snapshot. |
+| `receipt:<commandId>` | Exact M3 fingerprint and original result, including original participant view. |
+| `wake` | Derived scheduling metadata: deadline, lobby expiry, or completed-room expiry, with authoritative logical time. |
+| `retired` | After expiry only: room ID, expiry time, and bounded marker purge time. |
+
+`src/draftOffRoomLifecycle.ts` projects phase and timing facts from validated M2 state. M3 supplies this optional advisory hint on repository creation and transaction results, including receipts, rejected commands, no-ops, restoration, and deadline reconciliation. It is separate from the repository record and canonical save format. Older repositories may ignore it. Every durable commit strictly restores/replays the exact canonical bytes being committed, whether a hint is supplied or not. The shared projector reuses only an immutable data-only hint whose exact fields, phase, and time match that restored state; missing, stale, wrong-phase, wrong-time, malformed, and accessor-bearing hints are ignored and replaced. Hint reuse saves projection allocation only; it never skips canonical validation or grants the hint scheduling authority.
+
+One storage transaction commits changed canonical bytes, receipt changes, the lifecycle wake derived from restored state, and the native alarm. START therefore cannot publish a deadline without its receipt and durable alarm. The adapter never parses accepted history to infer lifecycle, applies a domain command, or decides who submits/resolves. Failed callbacks or writes roll back the whole transaction; exact retries recover committed receipts through M3. The scheduling hint on an old receipt retry reflects the current validated room, not the historical view in that receipt; a mismatching hint supplied by another trusted caller is repaired before the alarm is committed.
+
+The adapter uses Cloudflare's [SQLite transaction API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#transaction); [alarms](https://developers.cloudflare.com/durable-objects/api/alarms/) share that storage boundary. Native storage remains the source of canonical bytes and receipts. Every M3 read/transaction, even an exact retry, still restores through the canonical replay validator. Corrupt saves, room-ID mismatch, catalog drift, and version mismatch fail closed. No restored state, command results, or feasibility results are cached. The catalog loader reuses Stage A's verified content-addressed era artifacts and eagerly built minimum-cost index.
+
+### Clock, eviction, overdue recovery, and alarm delivery
+
+`backend/cloudflare/clock.ts` bridges real `Date.now()` to M3's cancellable callback registration. Callback registration is in memory; the repository persists the native alarm independently in the state transaction. Constructors do not overwrite an alarm. A cold request or alarm loads the descriptor, verifies/builds the scoped catalog, reconstructs M3, and calls `resumeRoom`; this strictly restores canonical state, retains receipts, and resolves an overdue deadline through M3. Warm access also resumes an overdue room if native delivery was missed. Restart requires neither a browser connection nor an imported save.
+
+A warm native alarm delivers M3's due callback. Cold, early, duplicate, or repeated delivery resumes M3 instead. M3's reserved deterministic deadline receipt and canonical reducer remain responsible for idempotency and exact deadline behavior. An early alarm never reserves that receipt; the repository re-arms the authoritative future wake. Failures propagate to the native handler for provider retry; there is no adapter retry loop. A repeated delivery after resolution only reconciles retention, with no new submission, resolution, or deadline receipt.
+
+The final pre-deadline submission continues to resolve atomically with `ALL_SUBMITTED`. Its commit replaces the obsolete deadline alarm with completed-room expiry; M3 then cancels its in-memory deadline callback. At/after the deadline, overdue recovery runs M3 before participant access, so late manual submissions cannot become pre-deadline submissions.
+
+### Retention and retired markers
+
+The approved storage policy is fixed: lobby expiry is creation + 24 hours; completed-room expiry is authoritative completion + 7 days. Reads, retries, membership changes, and repeated alarms do not extend either anchor. Drafting rooms use their deadline as the wake; completed expiry replaces it. Retention is storage housekeeping, not a new M2 phase or gameplay transition. Every warm access and every destructive room expiry transaction restores canonical state again, derives phase/time through the shared projector, and repairs wake/alarm metadata before deciding whether expiry is due. A premature stored wake cannot delete a live room; a later/wrong-kind wake cannot extend retention or postpone overdue recovery. Corrupt canonical bytes fail closed before cleanup. After verified expiry removes the canonical payload, the minimal retired marker retains the verified expiry anchor for its final bounded purge.
+
+At expiry, one transaction removes canonical/private payloads, all receipts, descriptor, and wake, and retains only a minimal retired marker with purge time expiry + 30 days. The same named room object refuses recreation during that interval. A native alarm deletes the marker at its bound; cold access also prunes overdue markers. Late expiry delivery does not extend the bound and creates no marker if that bound already passed. Repeated expiry/purge delivery is harmless. This is local lifecycle storage only: no global code allocator, enrollment, reconnect credentials, or future Stage C directory has been added. Exact-retry guarantees end when the room expires.
+
+### Verification and implemented boundary
+
+`backend/stage-b/` is a separate local-only integration entry point. Its explicit fixture binding, loopback guard, fixture actors, imports, epoch offsets, inspection, corruption, and fault injection never enter the production Worker bundle. It reuses Stage A's exact pinned Miniflare/workerd dependencies, SQLite configuration, compatibility date, fixtures, and independent-connection HTTP measurement helper. Generated bundles and SQLite state remain ignored/temporary. No Cloudflare resource or deployment configuration is created.
+
+Native tests cover creation/eviction, all-era canonical restoration and exact receipts, state/receipt/alarm rollback, atomic START, participant races, restore-first corruption failures, client-free warm/cold deadlines, early/duplicate/repeated alarms, failed deadline commit recovery, warm/cold overdue recovery, final pre-deadline submission, early resolution, alarms after resolution, process restart with the same SQLite directory, retention anchors, expiry-on-access, autonomous expiry/purge, and bounded retired-code reuse. Existing M1–M3 and Stage A tests remain authoritative. A small sequential matched latency check is retained in `backend/stage-b/results/`; it does not rerun the full Stage A matrix.
+
+Stage B stops here. Stages C–E, public authentication/enrollment, HTTP product API, WebSockets/realtime, rate limiting, UI, and deployment remain outside the implemented boundary.
 
 ## Future multi-round compatibility
 

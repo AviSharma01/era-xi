@@ -8,6 +8,7 @@ import {
 import { DraftOffRoomService, type DraftOffRoomRuntime } from "./draftOffRoomService.js";
 import type { DraftOffCompetitionState } from "./draftOffCompetitionTypes.js";
 import type { DraftOffRoomCommandEnvelope, DraftOffRoomRepositoryRecord } from "./draftOffRoomTypes.js";
+import { projectDraftOffRoomLifecycle, type DraftOffRoomLifecycle } from "./draftOffRoomLifecycle.js";
 import {
   baseState, catalog, changed, completeXi, host, joinedState, legalLock,
   ManualDraftOffClock, member, outsider, participant, rejection, roomInput, startedState, success,
@@ -39,6 +40,61 @@ const spin = (commandId: string, expectedDraftRevision = 1): DraftOffRoomCommand
 const submit = (commandId: string, state: DraftOffCompetitionState, id: string): DraftOffRoomCommandEnvelope => ({
   roomId: "room", commandId, expectedDraftRevision: participant(state, id).draftState.revision,
   command: { type: "SUBMIT" },
+});
+
+test("durable scheduling hints come from current validated state, including old receipt retries", async () => {
+  class SchedulingRepository extends InMemoryDraftOffRoomRepository {
+    readonly hints: DraftOffRoomLifecycle[] = [];
+    async create(roomId: string, record: DraftOffRoomRepositoryRecord, lifecycle?: DraftOffRoomLifecycle) {
+      assert.deepEqual(lifecycle, projectDraftOffRoomLifecycle(restoreDraftOffCompetition(catalog, record.serializedCompetition)));
+      this.hints.push(lifecycle!);
+      await super.create(roomId, record);
+    }
+    async transact<T>(roomId: string, operation: (record: DraftOffRoomRepositoryRecord) => DraftOffRoomTransactionResult<T> | Promise<DraftOffRoomTransactionResult<T>>) {
+      return super.transact(roomId, async (record) => {
+        const completed = await operation(record);
+        assert.deepEqual(completed.lifecycle, projectDraftOffRoomLifecycle(restoreDraftOffCompetition(catalog, completed.record.serializedCompetition)));
+        this.hints.push(completed.lifecycle!);
+        return completed;
+      });
+    }
+  }
+  const repository = new SchedulingRepository(), clock = new FakeDraftOffClock(0);
+  const service = new DraftOffRoomService(catalog, repository, clock);
+  await service.createRoom(host, roomInput);
+  assert.deepEqual(repository.hints.at(-1), { phase: "LOBBY", createdAtMs: 0 });
+  await service.execute(member, join("join-hint", 0));
+  const started = success(await service.execute(host, start("start-hint", 1)));
+  assert.deepEqual(repository.hints.at(-1), { phase: "IN_PROGRESS", deadlineAtMs: 100 });
+  await clock.advanceTo(100);
+  assert.deepEqual(repository.hints.at(-1), { phase: "COMPLETE", completedAtMs: 100 });
+  assert.deepEqual(await service.execute(host, start("start-hint", 1)), started);
+  assert.deepEqual(repository.hints.at(-1), { phase: "COMPLETE", completedAtMs: 100 });
+});
+
+test("lifecycle projection only reuses hints matching authoritative phase, fields and time", () => {
+  const state = startedState();
+  const expected = projectDraftOffRoomLifecycle(state);
+  assert.strictEqual(projectDraftOffRoomLifecycle(state, expected), expected);
+  for (const hint of [
+    undefined,
+    Object.freeze({ phase: "LOBBY", createdAtMs: 0 }),
+    Object.freeze({ phase: "IN_PROGRESS", deadlineAtMs: 101 }),
+    Object.freeze({ phase: "COMPLETE", completedAtMs: 0 }),
+    Object.freeze({ phase: "IN_PROGRESS", deadlineAtMs: 100, extra: true }),
+    Object.freeze({ phase: "IN_PROGRESS" }),
+    Object.freeze({ phase: "IN_PROGRESS", deadlineAtMs: Number.NaN }),
+    Object.freeze({ get phase() { throw new Error("Hints must not execute accessors"); }, deadlineAtMs: 100 }),
+    { phase: "IN_PROGRESS", deadlineAtMs: 100 },
+  ]) {
+    const projected = projectDraftOffRoomLifecycle(state, hint as DraftOffRoomLifecycle | undefined);
+    assert.deepEqual(projected, expected);
+    assert.notStrictEqual(projected, hint);
+    assert.ok(Object.isFrozen(projected));
+  }
+  const lobby = baseState();
+  assert.deepEqual(projectDraftOffRoomLifecycle(lobby, Object.freeze({ phase: "LOBBY", createdAtMs: 999 })),
+    projectDraftOffRoomLifecycle(lobby));
 });
 
 test("create, join, leave and rejoin use trusted identity and preserve M2 membership", async () => {

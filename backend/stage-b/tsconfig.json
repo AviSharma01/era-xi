@@ -1,0 +1,7 @@
+{
+  "extends": "../stage-a/tsconfig.json",
+  "compilerOptions": {
+    "typeRoots": ["../stage-a/node_modules/@types", "../stage-a/node_modules", "../../node_modules/@types"]
+  },
+  "include": ["../cloudflare/*.ts", "harness.ts", "../stage-a/.generated/catalogs.ts"]
+}
