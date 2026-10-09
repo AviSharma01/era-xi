@@ -10,6 +10,7 @@ export const ROOM_RETENTION = Object.freeze({ lobbyMs: DAY, completedMs: 7 * DAY
 export type RoomDescriptor = { version: 1; roomId: string; eraId: EraId };
 export type RoomWake = { kind: 'DEADLINE' | 'LOBBY_EXPIRY' | 'COMPLETED_EXPIRY'; atMs: number };
 export type RetiredRoom = { version: 1; roomId: string; retiredAtMs: number; purgeAtMs: number };
+export type CompanionCommit = (tx: DurableObjectTransaction, next: DraftOffRoomRepositoryRecord) => Promise<void>;
 
 export function freezeDeep<T>(value: T): T {
   if (value && typeof value === 'object' && !Object.isFrozen(value)) {
@@ -48,6 +49,7 @@ export class DurableDraftOffRoomRepository implements DraftOffRoomRepository {
     private readonly catalog: EraDraftCatalog,
     private readonly toAlarmTime: (atMs: number) => number = (atMs) => atMs,
     private readonly beforeCommit: () => void = () => {},
+    private readonly companion: () => CompanionCommit | undefined = () => undefined,
   ) {}
 
   private async exclusive<T>(operation: () => Promise<T>): Promise<T> {
@@ -99,6 +101,7 @@ export class DurableDraftOffRoomRepository implements DraftOffRoomRepository {
       if (previous?.receipts[id] !== receipt) await tx.put(`receipt:${id}`, receipt);
     }
     await persistWake(tx, wakeForLifecycle(lifecycle), this.toAlarmTime);
+    await this.companion()?.(tx, next);
     this.beforeCommit();
   }
 }

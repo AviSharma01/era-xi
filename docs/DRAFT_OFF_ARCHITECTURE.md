@@ -1,6 +1,6 @@
 # Draft-Off Architecture
 
-Implemented through M1/M1.1 (competitive simulation), M2 (competition domain), M3 (provider-independent authoritative room service), and M4 Stage B (Cloudflare durable room persistence and alarm/retention lifecycle). Stage A and its indexed feasibility optimizations remain the runtime baseline. Public backend transport, guest credentials, realtime integration, UI, and deployment are not implemented yet. The gameplay decision record is [DRAFT_OFF_GAMEPLAY_VALIDATION.md](DRAFT_OFF_GAMEPLAY_VALIDATION.md).
+Implemented through M1/M1.1 (competitive simulation), M2 (competition domain), M3 (provider-independent authoritative room service), and M4 Stage C (guest enrollment, reconnect credentials and HTTP authentication), on Stage B's durable persistence/alarm lifecycle. Stage A and its indexed feasibility optimizations remain the runtime baseline. Realtime integration, UI and deployment remain deferred. The gameplay decision record is [DRAFT_OFF_GAMEPLAY_VALIDATION.md](DRAFT_OFF_GAMEPLAY_VALIDATION.md).
 
 ## Frozen simulation contract
 
@@ -109,7 +109,7 @@ M3 remains provider-independent. Its Cloudflare persistence and clock adapters a
 
 ## M4 Stage B: durable persistence and alarm lifecycle
 
-`backend/cloudflare/room.ts` provides one SQLite-backed `DraftOffRoom` Durable Object per room, addressed with `ROOMS.idFromName(roomId)`. Room creation verifies the object identity. The object's operation queue serializes commands, reads, recovery, creation, and alarms. `backend/cloudflare/repository.ts` implements the existing M3 atomic repository contract using the SQLite-backed storage KV API, with its own transaction queue for direct trusted repository callers. The Worker entry point and the production object's HTTP handler return 404. Only internal Worker/DO calls accept trusted M3 actors; they are not an authentication mechanism or a public API.
+`backend/cloudflare/room.ts` provides one SQLite-backed `DraftOffRoom` Durable Object per room, addressed with `ROOMS.idFromName(roomId)`. Room creation verifies the object identity. The object's operation queue serializes commands, reads, recovery, creation, and alarms. `backend/cloudflare/repository.ts` implements the existing M3 atomic repository contract using the SQLite-backed storage KV API, with its own transaction queue for direct trusted repository callers. At the Stage B boundary the Worker and object's HTTP handlers returned 404. Trusted actor RPCs remain internal; they are not authentication. Stage C adds a separate adapter boundary below; the object's HTTP handler remains closed.
 
 ### Storage and the atomic scheduling boundary
 
@@ -148,6 +148,20 @@ At expiry, one transaction removes canonical/private payloads, all receipts, des
 Native tests cover creation/eviction, all-era canonical restoration and exact receipts, state/receipt/alarm rollback, atomic START, participant races, restore-first corruption failures, client-free warm/cold deadlines, early/duplicate/repeated alarms, failed deadline commit recovery, warm/cold overdue recovery, final pre-deadline submission, early resolution, alarms after resolution, process restart with the same SQLite directory, retention anchors, expiry-on-access, autonomous expiry/purge, and bounded retired-code reuse. Existing M1–M3 and Stage A tests remain authoritative. A small sequential matched latency check is retained in `backend/stage-b/results/`; it does not rerun the full Stage A matrix.
 
 Stage B stops here. Stages C–E, public authentication/enrollment, HTTP product API, WebSockets/realtime, rate limiting, UI, and deployment remain outside the implemented boundary.
+
+## M4 Stage C: guest enrollment and HTTP authentication
+
+The Worker exposes four strict `/api/draft-off/v1` routes for CREATE, JOIN, authenticated GET and commands. The DO validates room-scoped reconnect verifiers before constructing M3 participant actors. Enrollment generates identities internally; browsers never supply actors, participant IDs, seeds, timestamps or deadline/finalization commands. GET reconnects without changing membership; authenticated REJOIN delegates to M3 JOIN with the stored identity/name.
+
+CREATE maps the first 60 bits of a secret Enrollment-Key digest to a 12-character unambiguous base32 invite code and directly to the named DO. Stored full digests distinguish true collisions and conflicting input. A collision explicitly permits a new key; uncertainty retries the same key. No directory, D1 or automatic probing exists. IDs are 128 server-random bits in lowercase hex (compatible with existing roster sorting); credentials are 256 server-random bits.
+
+Enrollment-Key is pending recovery material, not routine auth. The transport helper verifies its storage before sending and deletes it only after verified reconnect-credential storage. The server persists a verifier plus AES-GCM-sealed recovery copy, with an HKDF wrapping key derived from the supplied Enrollment-Key and room/operation/participant/input-bound context. Plaintext tokens and Enrollment-Keys are not stored. Exact retry returns the original enrollment result/view, surviving eviction/restart; it does not rejoin a LEFT participant. Credentials remain valid until room expiry.
+
+A Cloudflare-only companion callback writes settings, enrollment/auth and command mappings inside the existing canonical-state/receipt/wake/alarm transaction. START's server-derived envelope/deadline commits with its receipt and is reused on retry. JOIN derives its internal command ID and current global CAS revision under the room queue. Lifecycle commands retain global revisions; drafting/submission retains private revisions. M1–M3 and Stage B scheduling/retention semantics remain unchanged. Expiry deletes all adapter records, leaving the original bounded minimal marker. Retry guarantees end at expiry.
+
+Origin checks use exact configured frontend origins; requests have strict schemas/media/streamed byte limits. Limits are centralized/configurable adapter safeguards. Native edge controls are permissive/per-location; durable room buckets throttle rejected/stale attempts, while lifetime ceilings count only successful commits. Successful retries survive those ceilings and remain durable until expiry. Rejected enrollment/command mappings and receipts share one bounded FIFO, evicted atomically through the adapter companion; their exact replay/conflict guarantee lasts only while cached, after which they may be re-evaluated. Rejections cannot permanently consume successful admission capacity. M3 source and trusted Stage B receipt semantics remain unchanged. Failures expose fixed safe codes/messages. Views come only from M3's safe projections/receipts; host authority grants no opponent-private access. Logs allow only generated request IDs, route templates, status/code and elapsed time.
+
+`backend/stage-c/` verifies production HTTP, response-loss/client-storage recovery, spoofing/wrong-room/expired auth, native constant-time comparison, privacy, atomic rollback, restart, corruption, lifecycle/revision contracts, configurable limits, all eras and a small eight-player HTTP smoke. Test controls remain in the separate loopback bundle. Full contracts/configuration are in [the adapter README](../backend/cloudflare/README.md). Stage C stops before WebSockets, realtime, UI, accounts or deployment.
 
 ## Future multi-round compatibility
 

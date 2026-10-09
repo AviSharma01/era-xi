@@ -1,0 +1,4 @@
+{
+  "extends": "../stage-b/tsconfig.json",
+  "include": ["../cloudflare/*.ts", "../client/*.ts", "harness.ts", "../stage-a/.generated/catalogs.ts"]
+}
