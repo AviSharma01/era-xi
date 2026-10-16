@@ -15,7 +15,7 @@ export class StageCTestRoom extends DraftOffRoom {
   protected nowMs() { return Date.now() + this.offset; }
   protected toAlarmTime(atMs: number) { return atMs - this.offset; }
   protected beforeCommit() { if (this.fail) { this.fail = false; throw new Error('Injected commit failure'); } }
-  private async loadClock() { this.offset = await this.ctx.storage.get<number>('test:offset') ?? 0; }
+  protected async loadClock() { this.offset = await this.ctx.storage.get<number>('test:offset') ?? 0; }
   async control(action: string, input: any) {
     if (action === 'legacy-create') return this.createRoom({ kind: 'PARTICIPANT', participantId: 'p0' }, {
       roomId: input.roomCode, hostDisplayName: 'Player 0', initialRound: {

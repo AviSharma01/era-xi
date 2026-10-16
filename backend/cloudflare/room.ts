@@ -8,14 +8,19 @@ import { DurableDraftOffClock } from './clock';
 import { DurableDraftOffRoomRepository, expireRoom, reconcileRetiredRoom, type RoomDescriptor, type RoomWake } from './repository';
 import type { CompanionCommit } from './repository';
 import { restoreDraftOffCompetition } from '../../src/draftOffCompetitionPersistence';
+import { DraftOffCompetitionDataError, DraftOffCompetitionInvariantError } from '../../src/draftOffCompetitionTypes';
 import { projectDraftOffRoom } from '../../src/draftOffRoomProjection';
 import { ApiError, commandReply, errorReply, type Operation, type ApiReply, type Settings, type SafeEnrollment } from './contracts';
 import { digest, enrollmentDigest, equalDigest, participantId, randomSecret, recoveryContext, recover, roomCode, seal, verifier,
   type AuthRecord, type EnrollmentRecord } from './enrollment';
 import { consume, limits, type LimitEnv } from './limits';
 import { retainNegativeResult } from './negativeResults';
+import { allowedOrigin } from './origin';
+import { consumeSocketTicket, issueSocketTicket, pruneSocketTickets, verifySocketTicket } from './socketTickets';
+import { attachment, closeSocket, REALTIME_PROTOCOL, ROOM_EXPIRED, samePublicContent, snapshotBytes, SOCKET_REPLACED, upgradeInput } from './realtime';
+import type { CommittedRoomChange } from './repository';
 
-export interface RoomEnv extends LimitEnv { ROOMS: DurableObjectNamespace }
+export interface RoomEnv extends LimitEnv { ROOMS: DurableObjectNamespace; ALLOWED_ORIGINS?: string }
 
 /** Internal trusted RPCs plus the adapter-local guest enrollment/authentication boundary. */
 export class DraftOffRoom extends DurableObject<RoomEnv> {
@@ -43,7 +48,8 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
     const catalog = await loadRoomCatalog(descriptor.eraId);
     const clock = new DurableDraftOffClock(() => this.nowMs());
     const repository = new DurableDraftOffRoomRepository(this.ctx.storage, descriptor, catalog,
-      (atMs) => this.toAlarmTime(atMs), () => this.beforeCommit(), () => this.companion);
+      (atMs) => this.toAlarmTime(atMs), () => this.beforeCommit(), () => this.companion,
+      change => this.broadcastCommitted(change, catalog));
     const service = new DraftOffRoomService(catalog, repository, clock);
     try {
       if (resume) await service.resumeRoom(descriptor.roomId);
@@ -53,16 +59,19 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
   protected async existingRoom() {
     const descriptor = await this.ctx.storage.get<RoomDescriptor>('descriptor');
     if (!descriptor) {
+      this.closeSockets(ROOM_EXPIRED, 'Room unavailable');
       await reconcileRetiredRoom(this.ctx.storage, this.nowMs(), (atMs) => this.toAlarmTime(atMs));
       throw new DraftOffRoomRepositoryError('ROOM_NOT_FOUND', 'Room has expired or does not exist.');
     }
     await this.initialize(descriptor, true);
     if (await expireRoom(this.ctx.storage, this.catalog!, this.nowMs(), (atMs) => this.toAlarmTime(atMs))) {
+      this.closeSockets(ROOM_EXPIRED, 'Room unavailable');
       this.resetService();
       throw new DraftOffRoomRepositoryError('ROOM_NOT_FOUND', 'Room has expired.');
     }
     const wake = await this.ctx.storage.get<RoomWake>('wake'); // Repaired from canonical state above.
     if (wake?.kind === 'DEADLINE' && this.nowMs() >= wake.atMs) await this.service!.resumeRoom(descriptor.roomId);
+    await this.ctx.storage.transaction(tx => pruneSocketTickets(tx, this.nowMs()));
     return this.service!;
   }
   async createRoom(actor: DraftOffRoomActor, input: CreateDraftOffRoomInput) {
@@ -96,7 +105,10 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
       this.outstanding++;
       try { return await this.exclusive(() => this.handlePublic(operation)); }
       finally { this.outstanding--; }
-    } catch (error) { return errorReply(error); }
+    } catch (error) {
+      if (error instanceof DraftOffCompetitionDataError || error instanceof DraftOffCompetitionInvariantError) this.closeSockets(1011, 'Room temporarily unavailable');
+      return errorReply(error);
+    }
   }
   private async liveRoom(enrollment = false) {
     try { return await this.existingRoom(); }
@@ -117,13 +129,20 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
     const service = await this.liveRoom();
     const actor = { kind: 'PARTICIPANT' as const, participantId: auth.participantId };
     const policy = limits(this.env);
+    if (operation.kind === 'SOCKET_TICKET') {
+      allowedOrigin(new Request('https://room.invalid', { headers: { Origin: operation.origin } }), this.env);
+      // Preserve the same registered-participant access as authenticated GET, including LEFT.
+      await service.readRoom(actor, operation.roomCode);
+      return { status: 201, body: await issueSocketTicket(this.ctx.storage, operation.roomCode, auth.participantId,
+        operation.origin, this.nowMs(), policy, () => this.beforeCommit()) };
+    }
     await consume(this.ctx.storage, `${operation.kind}:${auth.participantId}`, this.nowMs(),
       operation.kind === 'READ' ? policy.readsPerMinute : policy.commandsPerMinute,
       operation.kind === 'READ' ? policy.readBurst : policy.commandBurst);
     const settings = await this.ctx.storage.get<Settings>('api:settings');
     if (!settings || ![10, 15].includes(settings.draftMinutes)) throw new ApiError(503, 'TEMPORARY_UNAVAILABLE');
     if (operation.kind === 'READ') return { status: 200, body: { ok: true, roomCode: operation.roomCode,
-      participantId: auth.participantId, settings, view: await service.readRoom(actor, operation.roomCode) } };
+      participantId: auth.participantId, settings, view: await service.readRoom(actor, operation.roomCode), serverTimeMs: this.nowMs() } };
     const input = operation.input;
     const fingerprint = await digest('draft-off-http-command-v1', operation.roomCode, actor, input);
     const mappingKey = `api:command:${input.commandId}`;
@@ -244,12 +263,93 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
   async alarm() {
     return this.exclusive(async () => {
       const descriptor = await this.ctx.storage.get<RoomDescriptor>('descriptor');
-      if (!descriptor) return reconcileRetiredRoom(this.ctx.storage, this.nowMs(), (atMs) => this.toAlarmTime(atMs));
+      if (!descriptor) {
+        this.closeSockets(ROOM_EXPIRED, 'Room unavailable');
+        return reconcileRetiredRoom(this.ctx.storage, this.nowMs(), (atMs) => this.toAlarmTime(atMs));
+      }
       const cold = !this.service;
       await this.initialize(descriptor, true); // M3 performs cold overdue resolution.
       if (!cold && !await this.clock!.deliverDue()) await this.service!.resumeRoom(descriptor.roomId);
-      if (await expireRoom(this.ctx.storage, this.catalog!, this.nowMs(), (atMs) => this.toAlarmTime(atMs))) this.resetService();
+      if (await expireRoom(this.ctx.storage, this.catalog!, this.nowMs(), (atMs) => this.toAlarmTime(atMs))) {
+        this.closeSockets(ROOM_EXPIRED, 'Room unavailable'); this.resetService();
+      } else await this.ctx.storage.transaction(tx => pruneSocketTickets(tx, this.nowMs()));
     });
   }
-  async fetch(_request: Request) { return new Response('No public room API in Stage B', { status: 404 }); }
+  private closeSockets(code: number, reason: string) {
+    for (const ws of this.ctx.getWebSockets()) closeSocket(ws, code, reason);
+  }
+  private broadcastCommitted(change: CommittedRoomChange, catalog: EraDraftCatalog) {
+    const sockets = this.ctx.getWebSockets().filter(ws => ws.readyState === WebSocket.OPEN);
+    if (!sockets.length) return;
+    try {
+      if (change.previousSerialized && samePublicContent(restoreDraftOffCompetition(catalog, change.previousSerialized), change.state)) return;
+      const bytes = snapshotBytes(change.state, this.nowMs(), limits(this.env).snapshotBytes);
+      const registered = new Set(change.state.participants.map(participant => participant.participantId));
+      for (const ws of sockets) {
+        const bound = attachment(ws);
+        if (!bound || bound.roomId !== change.state.competitionId || !registered.has(bound.participantId)) { closeSocket(ws, 1008, 'Invalid connection'); continue; }
+        try { ws.send(bytes); } catch { closeSocket(ws, 1011, 'Reconnect required'); }
+      }
+    } catch { this.closeSockets(1011, 'Reconnect required'); }
+  }
+  async fetch(request: Request) {
+    // Everything except the narrowly scoped socket upgrade remains closed.
+    if (!/^\/api\/draft-off\/v1\/rooms\/[^/]+\/realtime$/.test(new URL(request.url).pathname)) return new Response(null, { status: 404 });
+    let admitted = false;
+    try {
+      const policy = limits(this.env);
+      if (this.outstanding >= policy.outstandingOperations) throw new ApiError(429, 'RATE_LIMITED');
+      this.outstanding++; admitted = true;
+      return await this.exclusive(async () => {
+        const input = upgradeInput(request, this.env);
+        if (!this.env.ROOMS.idFromName(input.roomCode).equals(this.ctx.id)) throw new ApiError(401, 'AUTHENTICATION_FAILED');
+        // Invalid traffic must not recreate adapter rows in absent/retired rooms.
+        if (!await this.ctx.storage.get('descriptor')) { await this.liveRoom(); throw new ApiError(401, 'AUTHENTICATION_FAILED'); }
+        await consume(this.ctx.storage, 'socket-upgrade:room', this.nowMs(), policy.upgradesPerMinute, policy.upgradeBurst);
+        await verifySocketTicket(this.ctx.storage, input.roomCode, input.ticket, input.origin, this.nowMs());
+        await this.liveRoom();
+        const canonical = await this.ctx.storage.get<string>('competition');
+        const state = restoreDraftOffCompetition(this.catalog!, canonical!);
+        const bytes = snapshotBytes(state, this.nowMs(), policy.snapshotBytes);
+        let replacement: WebSocket | undefined;
+        const participantId = await consumeSocketTicket(this.ctx.storage, input.roomCode, input.ticket, input.origin, this.nowMs(),
+          new Set(state.participants.map(participant => participant.participantId)), id => {
+            const sockets = this.ctx.getWebSockets().filter(ws => ws.readyState === WebSocket.OPEN);
+            const own = sockets.filter(ws => attachment(ws)?.participantId === id)
+              .sort((a, b) => attachment(a)!.connectedAtMs - attachment(b)!.connectedAtMs);
+            replacement = own.length >= policy.socketsPerParticipant ? own[0] : undefined;
+            if (sockets.length - (replacement ? 1 : 0) >= policy.socketsPerRoom) throw new ApiError(429, 'RATE_LIMITED');
+          }, () => this.beforeCommit());
+        // Consumed tickets are never refunded if acceptance or the initial send fails.
+        if (replacement) closeSocket(replacement, SOCKET_REPLACED, 'Connection replaced');
+        const pair = new WebSocketPair();
+        const ws = pair[1];
+        try {
+          ws.serializeAttachment({ version: 1, roomId: input.roomCode, participantId, connectionId: crypto.randomUUID(), connectedAtMs: this.nowMs() });
+          this.ctx.acceptWebSocket(ws, [`participant:${participantId}`]);
+          ws.send(bytes);
+          return new Response(null, { status: 101, webSocket: pair[0], headers: {
+            'Sec-WebSocket-Protocol': REALTIME_PROTOCOL, 'Cache-Control': 'private, no-store', 'X-Content-Type-Options': 'nosniff',
+          } });
+        } catch { closeSocket(ws, 1011, 'Reconnect required'); throw new ApiError(503, 'TEMPORARY_UNAVAILABLE'); }
+      });
+    } catch (error) {
+      if (error instanceof DraftOffCompetitionDataError || error instanceof DraftOffCompetitionInvariantError) this.closeSockets(1011, 'Room temporarily unavailable');
+      const reply = errorReply(error);
+      return Response.json(reply.body, { status: reply.status, headers: { 'Cache-Control': 'private, no-store', 'X-Content-Type-Options': 'nosniff', Vary: 'Origin',
+        ...(reply.retryAfter ? { 'Retry-After': String(reply.retryAfter) } : {}) } });
+    } finally { if (admitted) this.outstanding--; }
+  }
+  async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {
+    return this.exclusive(async () => {
+      const size = typeof message === 'string' ? new TextEncoder().encode(message).byteLength : message.byteLength;
+      closeSocket(ws, size > limits(this.env).socketMessageBytes ? 1009 : 1008, 'Client messages are not supported');
+    });
+  }
+  async webSocketClose(ws: WebSocket, _code: number, _reason: string, _wasClean: boolean) {
+    return this.exclusive(async () => { closeSocket(ws, 1000, 'Closed'); });
+  }
+  async webSocketError(ws: WebSocket, _error: unknown) {
+    return this.exclusive(async () => { closeSocket(ws, 1011, 'Reconnect required'); });
+  }
 }

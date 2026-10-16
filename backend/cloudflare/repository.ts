@@ -4,6 +4,7 @@ import { projectDraftOffRoomLifecycle, type DraftOffRoomLifecycle } from '../../
 import { DraftOffRoomRepositoryError, type DraftOffRoomRepository, type DraftOffRoomTransactionResult } from '../../src/draftOffRoomRepository';
 import type { DraftOffRoomRepositoryRecord } from '../../src/draftOffRoomTypes';
 import type { EraId } from '../../src/teamEvaluationV2';
+import type { DraftOffCompetitionState } from '../../src/draftOffCompetitionTypes';
 
 const DAY = 86_400_000;
 export const ROOM_RETENTION = Object.freeze({ lobbyMs: DAY, completedMs: 7 * DAY, retiredMs: 30 * DAY });
@@ -11,6 +12,7 @@ export type RoomDescriptor = { version: 1; roomId: string; eraId: EraId };
 export type RoomWake = { kind: 'DEADLINE' | 'LOBBY_EXPIRY' | 'COMPLETED_EXPIRY'; atMs: number };
 export type RetiredRoom = { version: 1; roomId: string; retiredAtMs: number; purgeAtMs: number };
 export type CompanionCommit = (tx: DurableObjectTransaction, next: DraftOffRoomRepositoryRecord) => Promise<void>;
+export type CommittedRoomChange = { previousSerialized?: string; state: DraftOffCompetitionState };
 
 export function freezeDeep<T>(value: T): T {
   if (value && typeof value === 'object' && !Object.isFrozen(value)) {
@@ -50,6 +52,7 @@ export class DurableDraftOffRoomRepository implements DraftOffRoomRepository {
     private readonly toAlarmTime: (atMs: number) => number = (atMs) => atMs,
     private readonly beforeCommit: () => void = () => {},
     private readonly companion: () => CompanionCommit | undefined = () => undefined,
+    private readonly afterCommit: (change: CommittedRoomChange) => void = () => {},
   ) {}
 
   private async exclusive<T>(operation: () => Promise<T>): Promise<T> {
@@ -68,13 +71,16 @@ export class DurableDraftOffRoomRepository implements DraftOffRoomRepository {
   }
   async create(roomId: string, record: DraftOffRoomRepositoryRecord, lifecycle?: DraftOffRoomLifecycle) {
     this.requireRoom(roomId);
-    await this.exclusive(() => this.storage.transaction(async (tx) => {
-      if (await tx.get('competition') !== undefined || await tx.get('retired') !== undefined) {
-        throw new DraftOffRoomRepositoryError('ROOM_ALREADY_EXISTS', 'Room exists or its code is retired.');
-      }
-      await tx.put('descriptor', this.descriptor);
-      await this.commit(tx, undefined, record, lifecycle);
-    }));
+    await this.exclusive(async () => {
+      const change = await this.storage.transaction(async (tx) => {
+        if (await tx.get('competition') !== undefined || await tx.get('retired') !== undefined) {
+          throw new DraftOffRoomRepositoryError('ROOM_ALREADY_EXISTS', 'Room exists or its code is retired.');
+        }
+        await tx.put('descriptor', this.descriptor);
+        return this.commit(tx, undefined, record, lifecycle);
+      });
+      this.notify(change);
+    });
   }
   async read(roomId: string) {
     this.requireRoom(roomId);
@@ -82,18 +88,29 @@ export class DurableDraftOffRoomRepository implements DraftOffRoomRepository {
   }
   async transact<T>(roomId: string, operation: (record: DraftOffRoomRepositoryRecord) => DraftOffRoomTransactionResult<T> | Promise<DraftOffRoomTransactionResult<T>>): Promise<T> {
     this.requireRoom(roomId);
-    return this.exclusive(() => this.storage.transaction(async (tx) => {
-      const previous = await this.load(tx);
-      if (!previous) throw new DraftOffRoomRepositoryError('ROOM_NOT_FOUND', 'Room has expired or does not exist.');
-      const completed = await operation(previous);
-      await this.commit(tx, previous, completed.record, completed.lifecycle);
-      return completed.value;
-    }));
+    return this.exclusive(async () => {
+      const committed = await this.storage.transaction(async (tx) => {
+        const previous = await this.load(tx);
+        if (!previous) throw new DraftOffRoomRepositoryError('ROOM_NOT_FOUND', 'Room has expired or does not exist.');
+        const completed = await operation(previous);
+        const change = await this.commit(tx, previous, completed.record, completed.lifecycle);
+        return { value: completed.value, change };
+      });
+      this.notify(committed.change);
+      return committed.value;
+    });
+  }
+  private notify(change: CommittedRoomChange | undefined) {
+    // Never inside a retryable transaction. Notifications cannot undo a commit or
+    // prevent M3's subsequent scheduling reconciliation, even if an observer fails.
+    if (change) { try { this.afterCommit(change); } catch { /* Advisory only. */ } }
   }
   private async commit(tx: DurableObjectTransaction, previous: DraftOffRoomRepositoryRecord | undefined, next: DraftOffRoomRepositoryRecord, lifecycle?: DraftOffRoomLifecycle) {
     // Always restore the exact bytes being committed. The hint can only reuse a
     // matching immutable projection; it cannot supply phase/time or bypass replay.
-    lifecycle = restoredLifecycle(this.catalog, next.serializedCompetition, this.descriptor.roomId, lifecycle);
+    const state = restoreDraftOffCompetition(this.catalog, next.serializedCompetition);
+    if (state.competitionId !== this.descriptor.roomId) throw new Error('Canonical room ID mismatch');
+    lifecycle = projectDraftOffRoomLifecycle(state, lifecycle);
     if (next.serializedCompetition !== previous?.serializedCompetition) await tx.put('competition', next.serializedCompetition);
     const removed = Object.keys(previous?.receipts ?? {}).filter((id) => !Object.hasOwn(next.receipts, id));
     if (removed.length) await tx.delete(removed.map((id) => `receipt:${id}`));
@@ -103,6 +120,8 @@ export class DurableDraftOffRoomRepository implements DraftOffRoomRepository {
     await persistWake(tx, wakeForLifecycle(lifecycle), this.toAlarmTime);
     await this.companion()?.(tx, next);
     this.beforeCommit();
+    return next.serializedCompetition === previous?.serializedCompetition ? undefined
+      : { previousSerialized: previous?.serializedCompetition, state };
   }
 }
 

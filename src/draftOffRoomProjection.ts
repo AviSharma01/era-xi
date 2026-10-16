@@ -1,7 +1,7 @@
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { projectEraDraftPublicState } from "./eraDraftProjection.js";
 import type { DraftOffCompetitionState } from "./draftOffCompetitionTypes.js";
-import type { DraftOffRoomView } from "./draftOffRoomTypes.js";
+import type { DraftOffPublicRoomView, DraftOffRoomView } from "./draftOffRoomTypes.js";
 
 export function projectDraftOffRoom(
   catalog: EraDraftCatalog,
@@ -11,9 +11,24 @@ export function projectDraftOffRoom(
   const viewer = state.participants.find((participant) => participant.participantId === participantId);
   if (!viewer) throw new DraftOffRoomProjectionError("VIEWER_NOT_REGISTERED", "Participant is not registered in this room.");
 
-  const round = [...state.rounds].sort((left, right) => right.roundOrdinal - left.roundOrdinal)[0]!;
+  const round = currentRound(state);
+  const ownRoundState = round.phase === "PENDING" ? undefined : round.participants.find((participant) => participant.participantId === participantId);
+  const { resolution, ...shared } = projectDraftOffPublicRoom(state);
+  // Preserve the existing private HTTP shape, optional fields and JSON field order.
+  return freezeDeep({ ...shared,
+    ...(ownRoundState ? { myDraft: projectEraDraftPublicState(catalog, ownRoundState.draftState) } : {}),
+    ...(resolution ? { resolution } : {}),
+  } satisfies DraftOffRoomView);
+}
+
+function currentRound(state: DraftOffCompetitionState) {
+  return [...state.rounds].sort((left, right) => right.roundOrdinal - left.roundOrdinal)[0]!;
+}
+
+/** Explicit shared whitelist. Never derive this by deleting fields from a private view. */
+export function projectDraftOffPublicRoom(state: DraftOffCompetitionState): DraftOffPublicRoomView {
+  const round = currentRound(state);
   const roundParticipants = round.phase === "PENDING" ? [] : round.participants;
-  const ownRoundState = roundParticipants.find((participant) => participant.participantId === participantId);
   const participants = state.participants.map((participant) => {
     const roundParticipant = roundParticipants.find((candidate) => candidate.participantId === participant.participantId);
     return {
@@ -41,7 +56,6 @@ export function projectDraftOffRoom(
         deadlineAtMs: round.deadlineAtMs,
       }),
     },
-    ...(ownRoundState ? { myDraft: projectEraDraftPublicState(catalog, ownRoundState.draftState) } : {}),
     ...(round.phase === "RESOLVED" ? {
       resolution: {
         trigger: round.resolution.trigger,
@@ -61,7 +75,7 @@ export function projectDraftOffRoom(
         })),
       },
     } : {}),
-  } satisfies DraftOffRoomView);
+  } satisfies DraftOffPublicRoomView);
 }
 
 export class DraftOffRoomProjectionError extends Error {

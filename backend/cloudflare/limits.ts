@@ -2,7 +2,11 @@ import { ApiError } from './contracts';
 export const DEFAULT_LIMITS = Object.freeze({ bodyBytes: 4096, createPerMinute: 10, enrollmentPerMinute: 120,
   requestsPerMinute: 600, roomEnrollmentsPerMinute: 20, roomEnrollmentBurst: 8,
   readsPerMinute: 60, readBurst: 10, commandsPerMinute: 30, commandBurst: 6,
-  outstandingOperations: 16, enrollmentRecords: 256, participantCommandIds: 512, negativeResultRecords: 64 });
+  outstandingOperations: 16, enrollmentRecords: 256, participantCommandIds: 512, negativeResultRecords: 64,
+  socketsPerParticipant: 3, socketsPerRoom: 24, ticketLifetimeMs: 30_000,
+  ticketsPerMinute: 10, ticketBurst: 3, roomTicketsPerMinute: 60, roomTicketBurst: 16,
+  pendingTicketsPerParticipant: 4, pendingTicketsPerRoom: 32,
+  upgradesPerMinute: 120, upgradeBurst: 32, snapshotBytes: 131_072, socketMessageBytes: 1024 });
 export type Limits = { [K in keyof typeof DEFAULT_LIMITS]: number };
 export type LimitEnv = { STAGE_C_LIMITS?: string };
 /** Provisioning/local harness definitions must use the same policy as the Worker environment. */
@@ -23,11 +27,13 @@ export function limits(env: LimitEnv): Limits {
 type Bucket = { tokens: number; atMs: number };
 /** Separate housekeeping records; never touches the lifecycle alarm. Call under the room queue. */
 export async function consume(storage: DurableObjectStorage, key: string, nowMs: number, perMinute: number, burst: number) {
-  await storage.transaction(async tx => {
-    const previous = await tx.get<Bucket>(`api:bucket:${key}`);
-    const atMs = Math.max(nowMs, previous?.atMs ?? nowMs);
-    const tokens = Math.min(burst, (previous?.tokens ?? burst) + (atMs - (previous?.atMs ?? atMs)) * perMinute / 60_000);
-    if (tokens < 1) throw new ApiError(429, 'RATE_LIMITED');
-    await tx.put(`api:bucket:${key}`, { tokens: tokens - 1, atMs });
-  });
+  await storage.transaction(tx => consumeBucket(tx, key, nowMs, perMinute, burst));
+}
+
+export async function consumeBucket(tx: DurableObjectTransaction, key: string, nowMs: number, perMinute: number, burst: number) {
+  const previous = await tx.get<Bucket>(`api:bucket:${key}`);
+  const atMs = Math.max(nowMs, previous?.atMs ?? nowMs);
+  const tokens = Math.min(burst, (previous?.tokens ?? burst) + (atMs - (previous?.atMs ?? atMs)) * perMinute / 60_000);
+  if (tokens < 1) throw new ApiError(429, 'RATE_LIMITED');
+  await tx.put(`api:bucket:${key}`, { tokens: tokens - 1, atMs });
 }

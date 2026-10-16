@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { createHash } from "node:crypto";
 import { projectEraDraftPublicState } from "./eraDraftProjection.js";
-import { projectDraftOffRoom } from "./draftOffRoomProjection.js";
+import { projectDraftOffPublicRoom, projectDraftOffRoom } from "./draftOffRoomProjection.js";
 import { serializeDraftOffCompetition } from "./draftOffCompetitionPersistence.js";
 import { FakeDraftOffClock, InMemoryDraftOffRoomRepository } from "./draftOffRoomRepository.js";
 import { DraftOffRoomService } from "./draftOffRoomService.js";
@@ -63,7 +64,35 @@ function assertView(state: DraftOffCompetitionState, id: string, view: DraftOffR
   assert.ok(Object.isFrozen(view));
   assert.ok(Object.isFrozen(view.participants));
   assert.ok(Object.isFrozen(view.round));
+  const { myDraft: _private, ...shared } = view;
+  assert.deepEqual(projectDraftOffPublicRoom(state), shared);
+  assert.ok(!Object.hasOwn(projectDraftOffPublicRoom(state), 'myDraft'));
 }
+
+test("Stage D extraction preserves exact pre-Stage-D private HTTP JSON across phases", () => {
+  // Captured from the committed Stage C projector, before extraction. Includes
+  // values, optional-field absence, nested shape, and original JSON key order.
+  const lobby = baseState(), active = startedState();
+  const spun = changed(active, { type: 'APPLY_DRAFT_COMMAND', participantId: 'member', atMs: 20, expectedDraftRevision: 1, draftCommand: { type: 'SPIN' } });
+  const picked = changed(spun, { type: 'APPLY_DRAFT_COMMAND', participantId: 'member', atMs: 20, expectedDraftRevision: 2, draftCommand: legalLock(spun, 'member') });
+  const complete = completeXi(active, 'host');
+  const submitted = changed(complete, { type: 'SUBMIT_XI', participantId: 'host', atMs: 30, expectedDraftRevision: participant(complete, 'host').draftState.revision });
+  const resolved = changed(submitted, { type: 'FINALIZE_ROUND', roundId: 'round-1', atMs: 100 });
+  const noContest = changed(active, { type: 'FINALIZE_ROUND', roundId: 'round-1', atMs: 100 });
+  const expected = {
+    lobby: '65ca99df7709fb6bc7be6c77145d5f9503e1e52b0dbfbcf1155fbaa38338e359',
+    active: '418168b8da6ba22d34fb513b14a56aa94456f088b8b76cd3a6f647eb32b31cac',
+    spun: 'b5ef91705b2e67082c2fb1e870a9c5b185b7c8e89beebac9cfce6d7416849875',
+    picked: 'b1ce933f63715b3df50a8ac802c8134c78762b39b0faea0d404e6a84d6fc0b6f',
+    complete: 'ba30bb9b6f50466fd0d17b0e97b336fcc897bc1d62569596c896596b87447980',
+    submitted: '4506f5dab41eae759051c1fa4d9219b52eb86f0c43af627de4603586a1381ff7',
+    resolved: '6647d717279fcc5f99f08e50e15ab69a65f68bbcd14fb196e6844850bb32dc20',
+    noContest: '24a11ae5a96efc8428fc7a8cb261f256d5b23990313bd1424e09ea0a9828cfd1',
+  };
+  for (const [label, state] of Object.entries({ lobby, active, spun, picked, complete, submitted, resolved, noContest })) {
+    assert.equal(createHash('sha256').update(JSON.stringify(projectDraftOffRoom(catalog, state, 'host'))).digest('hex'), expected[label as keyof typeof expected], label);
+  }
+});
 
 test("room projections whitelist all shared fields and expose only the caller draft across every phase", () => {
   const lobby = baseState();

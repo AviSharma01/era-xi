@@ -1,6 +1,8 @@
 import { ApiError, createInput, errorReply, joinInput, publicCommand, type ApiReply, type Operation } from './contracts';
 import { digest, normalizeCode, roomCode, secret } from './enrollment';
 import { limits, type LimitEnv } from './limits';
+import { allowedOrigin } from './origin';
+import { upgradeInput } from './realtime';
 export interface HttpEnv extends LimitEnv {
   ROOMS: DurableObjectNamespace;
   ALLOWED_ORIGINS?: string;
@@ -10,22 +12,11 @@ export interface HttpEnv extends LimitEnv {
 }
 export function route(pathname: string) {
   if (pathname === '/api/draft-off/v1/rooms') return { kind: 'CREATE' as const, method: 'POST', template: '/rooms' };
-  const match = /^\/api\/draft-off\/v1\/rooms\/([^/]+)(?:\/(join|commands))?$/.exec(pathname);
+  const match = /^\/api\/draft-off\/v1\/rooms\/([^/]+)(?:\/(join|commands|socket-tickets|realtime))?$/.exec(pathname);
   if (!match) return undefined;
-  return { kind: match[2] === 'join' ? 'JOIN' as const : match[2] === 'commands' ? 'COMMAND' as const : 'READ' as const,
-    method: match[2] ? 'POST' : 'GET', code: match[1], template: match[2] ? `/rooms/:code/${match[2]}` : '/rooms/:code' };
-}
-function allowedOrigin(request: Request, env: HttpEnv): string {
-  let origins: unknown;
-  try { origins = JSON.parse(env.ALLOWED_ORIGINS ?? ''); } catch { throw new ApiError(503, 'SERVICE_UNAVAILABLE'); }
-  if (!Array.isArray(origins) || !origins.length || origins.some(origin => {
-    try { const parsed = new URL(origin); return typeof origin !== 'string' || parsed.origin !== origin || !['https:', 'http:'].includes(parsed.protocol)
-      || (parsed.protocol === 'http:' && !['localhost', '127.0.0.1', '[::1]'].includes(parsed.hostname)); }
-    catch { return true; }
-  })) throw new ApiError(503, 'SERVICE_UNAVAILABLE');
-  const origin = request.headers.get('Origin');
-  if (!origin || !origins.includes(origin)) throw new ApiError(403, 'ORIGIN_NOT_ALLOWED');
-  return origin;
+  return { kind: match[2] === 'join' ? 'JOIN' as const : match[2] === 'commands' ? 'COMMAND' as const
+      : match[2] === 'socket-tickets' ? 'SOCKET_TICKET' as const : match[2] === 'realtime' ? 'REALTIME' as const : 'READ' as const,
+    method: match[2] && match[2] !== 'realtime' ? 'POST' : 'GET', code: match[1], template: match[2] ? `/rooms/:code/${match[2]}` : '/rooms/:code' };
 }
 async function jsonBody(request: Request, maxBytes: number): Promise<unknown> {
   if (!/^application\/json(?:\s*;\s*charset=utf-8)?$/i.test(request.headers.get('Content-Type') ?? '') || request.headers.has('Content-Encoding')) throw new ApiError(415, 'UNSUPPORTED_MEDIA_TYPE');
@@ -80,6 +71,17 @@ export async function handleHttp(request: Request, env: HttpEnv): Promise<Respon
       if (!(await env.REQUEST_RATE.limit({ key: source })).success) throw new ApiError(429, 'RATE_LIMITED');
       const edge = selected.kind === 'CREATE' ? env.CREATE_RATE : env.ENROLLMENT_RATE;
       if ((selected.kind !== 'COMMAND' || !request.headers.has('Authorization')) && !(await edge.limit({ key: source })).success) throw new ApiError(429, 'RATE_LIMITED');
+      if (selected.kind === 'REALTIME') {
+        upgradeInput(request, env);
+        const code = normalizeCode(selected.code!);
+        const stub = env.ROOMS.get(env.ROOMS.idFromName(code));
+        // Forward only the upgrade essentials, never cookies or unrelated credentials.
+        const upgraded = await stub.fetch(new Request(new URL(`/api/draft-off/v1/rooms/${code}/realtime`, request.url), {
+          headers: { Upgrade: 'websocket', Origin: origin, 'Sec-WebSocket-Protocol': request.headers.get('Sec-WebSocket-Protocol')! },
+        }));
+        console.info(JSON.stringify({ requestId: id, route: template, status: upgraded.status, elapsedMs: Date.now() - start }));
+        return upgraded;
+      }
       let operation: Operation;
       if (selected.kind === 'CREATE' || selected.kind === 'JOIN') {
         if (request.headers.has('Authorization')) throw new ApiError(400, 'INVALID_REQUEST');
@@ -94,6 +96,10 @@ export async function handleHttp(request: Request, env: HttpEnv): Promise<Respon
         if (selected.kind === 'READ') {
           if (request.body || Number(request.headers.get('Content-Length') ?? 0) !== 0) throw new ApiError(400, 'INVALID_REQUEST');
           operation = { kind: 'READ', roomCode: code, credential };
+        } else if (selected.kind === 'SOCKET_TICKET') {
+          const body = await jsonBody(request, policy.bodyBytes);
+          if (!body || typeof body !== 'object' || Array.isArray(body) || Object.keys(body).length) throw new ApiError(400, 'INVALID_REQUEST');
+          operation = { kind: 'SOCKET_TICKET', roomCode: code, credential, origin };
         } else operation = { kind: 'COMMAND', roomCode: code, credential, input: publicCommand(await jsonBody(request, policy.bodyBytes)) };
       }
       const stub = env.ROOMS.get(env.ROOMS.idFromName(operation.roomCode)) as DurableObjectStub & { publicOperation(operation: Operation): Promise<ApiReply> };

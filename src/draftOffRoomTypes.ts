@@ -63,7 +63,7 @@ export type DraftOffRoomLeaderboardRowView = {
   readonly netRunRate: number;
 };
 
-export type DraftOffRoomView = {
+export type DraftOffPublicRoomView = {
   readonly roomId: string;
   readonly revision: number;
   readonly phase: "LOBBY" | "IN_PROGRESS" | "COMPLETE";
@@ -77,7 +77,6 @@ export type DraftOffRoomView = {
     readonly startedAtMs?: number;
     readonly deadlineAtMs?: number;
   };
-  readonly myDraft?: EraDraftPublicView;
   readonly resolution?: {
     readonly trigger: "ALL_SUBMITTED" | "DEADLINE";
     readonly contestStatus: "CONTESTED" | "UNCONTESTED" | "NO_CONTEST";
@@ -86,6 +85,15 @@ export type DraftOffRoomView = {
     readonly ineligibleParticipantIds: readonly string[];
     readonly leaderboard: readonly DraftOffRoomLeaderboardRowView[];
   };
+};
+
+export type DraftOffRoomView = DraftOffPublicRoomView & { readonly myDraft?: EraDraftPublicView };
+
+export type DraftOffRoomSnapshotMessage = {
+  readonly version: 1;
+  readonly type: "ROOM_SNAPSHOT";
+  readonly serverTimeMs: number;
+  readonly view: DraftOffPublicRoomView;
 };
 
 export type DraftOffRoomServiceRejectionCode =

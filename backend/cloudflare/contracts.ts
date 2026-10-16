@@ -15,10 +15,12 @@ export type Operation =
   | { kind: 'CREATE'; roomCode: string; enrollmentKey: string; input: CreateInput }
   | { kind: 'JOIN'; roomCode: string; enrollmentKey: string; input: { displayName: string } }
   | { kind: 'READ'; roomCode: string; credential: string }
+  | { kind: 'SOCKET_TICKET'; roomCode: string; credential: string; origin: string }
   | { kind: 'COMMAND'; roomCode: string; credential: string; input: PublicCommand };
 export type ApiFailure = { ok: false; error: { code: string; message: string }; roomRevision?: number; view?: DraftOffRoomView };
-export type SnapshotSuccess = { ok: true; roomCode: string; participantId: string; settings: Settings; view: DraftOffRoomView };
-export type ApiBody = EnrollmentSuccess | SnapshotSuccess | Extract<DraftOffRoomCommandResult, { ok: true }> | ApiFailure | null;
+export type SnapshotSuccess = { ok: true; roomCode: string; participantId: string; settings: Settings; view: DraftOffRoomView; serverTimeMs: number };
+export type SocketTicketSuccess = { ok: true; ticket: string; expiresAtMs: number };
+export type ApiBody = EnrollmentSuccess | SafeEnrollment | SnapshotSuccess | SocketTicketSuccess | Extract<DraftOffRoomCommandResult, { ok: true }> | ApiFailure | null;
 export type ApiReply = { status: number; body: ApiBody; retryAfter?: number };
 export type EnrollmentSuccess = { ok: true; roomCode: string; participantId: string;
   reconnectCredential: string; settings: Settings; view: DraftOffRoomView };
