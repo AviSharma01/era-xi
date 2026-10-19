@@ -4,6 +4,6 @@
   "type": "module",
   "engines": { "node": ">=22" },
   "scripts": {
-    "test": "cd ../stage-d && node --test --test-concurrency=1 ../stage-e/verification.test.mjs"
+    "test": "cd ../stage-d && node --test --test-concurrency=1 ../stage-e/latency.test.mjs ../stage-e/verification.test.mjs"
   }
 }

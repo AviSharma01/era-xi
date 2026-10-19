@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url';
 import { delimiter, dirname } from 'node:path';
 
 // The same sequential correctness lane is used locally and in CI. No benchmarks.
+// Stage E records latency in observe mode by default; controlled hosts may opt in
+// to DRAFT_OFF_PERFORMANCE_MODE=enforce without changing correctness coverage.
 const root = fileURLToPath(new URL('../', import.meta.url));
 if (Number(process.versions.node.split('.')[0]) < 22) throw new Error('Backend verification requires Node >=22.');
 function run(args) {

@@ -20,6 +20,21 @@ git status --short
 
 Stage E uses real HTTP commands and WebSocket upgrades. Its reused Stage D isolated controls only inspect storage, shift a test clock, inject failures or force hibernation/restart. They are never a development/product API. Temporary SQLite state includes credentials and private drafts: do not publish it or raw request traces. Stage E removes its own temporary state on completion. Persist only aggregate checks and numeric timing samples. Native regression packages create temporary directories per their existing harnesses; remove any retained local fixture state when no longer needed.
 
+### Correctness CI and controlled performance checks
+
+Ordinary Stage E tests and `verify:backend` default to `DRAFT_OFF_PERFORMANCE_MODE=observe`; GitHub's backend job sets this explicitly. Both complete multiplayer flows and all gameplay, authentication, privacy, realtime, submission, result and recovery assertions remain mandatory, with their existing bounded test/transport waits. The original p95 ≤2,000 ms / max ≤3,000 ms budgets are measured and reported, but do not fail correctness on a shared runner. These small correlated samples (16 late spin/lock responses, two batch pairs and one final submission for eight players) are directional, not a controlled cross-platform performance baseline.
+
+For a dedicated performance check on the recorded baseline host, with no competing builds/tests/load and the pinned runtime, run after the builds above:
+
+```sh
+set -eu
+DRAFT_OFF_PERFORMANCE_MODE=enforce npm test --prefix backend/stage-e
+```
+
+This enforces the unchanged 2s/3s budgets for the same metric groups as before; no benchmark matrix is added. Both modes print and save numeric samples, count/p50/p95/max, exact violating metric names, budget/mode, correctness status and Node/platform/CPU context. Reports are written from `finally`, before any timing assertion, including partial measurements on functional failure. A timing pass never overrides a correctness failure. GitHub emits a warning on any budget breach and uploads only `multiplayer-smoke.json` and `production-smoke.json` from `.generated/results/` for seven days, even after failure. No request, response, socket, credential, application-log or SQLite payloads are uploaded. Committed historical evidence is preserved.
+
+Inspect warnings and compare reports on the same runtime/host before accepting a performance change; a green observe-mode job establishes correctness, not performance or deployment readiness. A breach on a controlled host requires diagnosis. Repeat deployed latency/quota checks before public launch. The first hosted failure at commit `93b3837` reached the final eight-player timing assertion after every functional assertion passed, but the former generic error and write-after-assert ordering discarded its exact metric/value; those historical measurements cannot be reconstructed from the run log.
+
 ## Local interactive backend
 
 Build as above. To run the **production entrypoint locally**, from `backend/stage-d`, execute:

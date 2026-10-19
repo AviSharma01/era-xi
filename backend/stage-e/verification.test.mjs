@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createHash, randomBytes } from 'node:crypto';
@@ -8,6 +8,7 @@ import { performance } from 'node:perf_hooks';
 import WebSocket from '../stage-a/node_modules/ws/wrapper.mjs';
 import { call, control, origin, startRuntime } from '../stage-d/runtime.mjs';
 import { parseRoomSnapshot } from '../stage-d/.generated/client.js';
+import { recordLatency } from './latency.mjs';
 
 // Reuse the unmodified Stage D runtime and isolated controls. All gameplay,
 // enrollment, snapshots and socket auth go through the real product interfaces.
@@ -56,19 +57,14 @@ function connect(runtime, room, ticket) {
   const closed = new Promise(resolve => ws.once('close', code => resolve(code)));
   return { ws, messages, opened, closed, selected: () => selected };
 }
-function summarize(samples) {
-  const sorted = [...samples].sort((a, b) => a - b), round = n => Math.round(n * 100) / 100;
-  return { count: sorted.length, p50Ms: round(sorted[Math.ceil(sorted.length * .5) - 1]),
-    p95Ms: round(sorted[Math.ceil(sorted.length * .95) - 1]), maxMs: round(sorted.at(-1)), samplesMs: samples.map(round) };
-}
-
 test('M4 Stage E combined HTTP/WebSocket multiplayer, recovery, privacy and directional latency smoke', { timeout: 240000 }, async () => {
   const statePath = mkdtempSync(join(tmpdir(), 'draft-off-stage-e-'));
   const sockets = [], logs = [], secrets = [], timings = {};
-  let runtime;
+  let runtime, correctnessPassed = false, evidence;
   const timed = async (name, action) => {
-    const start = performance.now(), result = await action();
-    (timings[name] ??= []).push(performance.now() - start); return result;
+    const start = performance.now();
+    try { return await action(); }
+    finally { (timings[name] ??= []).push(performance.now() - start); }
   };
   const start = async () => { runtime = await startRuntime(statePath, { overrides: permissive }); logs.push(runtime.logs); };
   const snapshot = async room => {
@@ -257,33 +253,33 @@ test('M4 Stage E combined HTTP/WebSocket multiplayer, recovery, privacy and dire
     for (const [file, expected] of Object.entries(baseline)) {
       assert.equal(createHash('sha256').update(readFileSync(new URL(`../stage-a/.generated/fixtures/${file}`, import.meta.url))).digest('hex'), expected);
     }
-    // A small smoke, not a new percentile/benchmark matrix. Shared-queue client
-    // responses are correlated; original burst p95/max gate is 2s/3s.
-    const latency = Object.fromEntries(Object.entries(timings).map(([name, samples]) => [name, summarize(samples)]));
-    for (const name of ['concurrentSpinBatch', 'concurrentLockBatch', 'submit', 'deadlineToPublicSnapshot']) {
-      assert.ok(latency[name].p95Ms <= 2000 && latency[name].maxMs <= 3000, `${name} responsiveness regression`);
-    }
-    mkdirSync(new URL('.generated/results/', import.meta.url), { recursive: true });
-    writeFileSync(new URL('.generated/results/multiplayer-smoke.json', import.meta.url), JSON.stringify({ status: 'PASS', timestamp: new Date().toISOString(),
+    evidence = {
       participants: 3, era: 'era-impact', manualSubmissions: 1, deadlineAutoSubmissions: 1, incompleteAtDeadline: 1,
       contestedLeaderboardRows: 2, exactEnrollmentRecoveryAfterRestart: true, exactCommandRetriesAfterHibernationAndRestart: true,
       participantRevisionIsolation: true, sameParticipantRaceProtected: true, credentialClassesSeparated: true,
       hibernationWithSurvivingSockets: true, persistedRuntimeRestart: true, nativeDeadlineAfterHibernation: true,
       fixedCompletedRetentionAndMinimalMarker: true, publicOnlyIdenticalSocketSnapshots: true, noSecretsInHttpErrorsOrApplicationLogs: true,
       applicationLogEventsScanned: entries.length, canonicalFixtureHashesUnchanged: Object.keys(baseline).length,
-      permissiveLocalRateOverrides: true, latency, limitations: ['Local loopback only; no deployed latency/quota claim.',
-        'Small correlated sample; no expensive Stage A matrix repeated.', 'External observability configuration is a future deployment gate.'] }, null, 2) + '\n');
+      permissiveLocalRateOverrides: true };
+    correctnessPassed = true;
   } finally {
-    for (const client of sockets) client.ws.terminate();
-    if (runtime) await runtime.mf.dispose();
-    rmSync(statePath, { recursive: true, force: true });
+    try {
+      recordLatency({ file: 'multiplayer-smoke.json', samples: timings, correctnessPassed,
+        gatedMetrics: ['concurrentSpinBatch', 'concurrentLockBatch', 'submit', 'deadlineToPublicSnapshot'],
+        details: { ...evidence, participants: 3, era: 'era-impact', limitations: ['Local loopback only; no deployed latency/quota claim.',
+          'Small correlated sample; no expensive Stage A matrix repeated.', 'External observability configuration is a future deployment gate.'] } });
+    } finally {
+      for (const client of sockets) client.ws.terminate();
+      if (runtime) await runtime.mf.dispose();
+      rmSync(statePath, { recursive: true, force: true });
+    }
   }
 });
 
 test('eight-player production HTTP/WebSocket full drafts and late concurrent latency smoke', { timeout: 240000 }, async () => {
   const statePath = mkdtempSync(join(tmpdir(), 'draft-off-stage-e-production-'));
   const clients = [], secrets = [], samples = { spin: [], lock: [], spinBatch: [], lockBatch: [], finalSubmit: [] };
-  let runtime;
+  let runtime, correctnessPassed = false, evidence;
   try {
     runtime = await startRuntime(statePath, { production: true, overrides: permissive });
     assert.equal((await fetch(new URL('/__test/anything/inspect', runtime.url))).status, 404);
@@ -309,8 +305,9 @@ test('eight-player production HTTP/WebSocket full drafts and late concurrent lat
     };
     const command = async (room, input, metric) => {
       const begin = performance.now();
-      const reply = await call(runtime, `/rooms/${room.roomCode}/commands`, { method: 'POST', token: room.reconnectCredential, body: input });
-      if (metric) samples[metric].push(performance.now() - begin);
+      let reply;
+      try { reply = await call(runtime, `/rooms/${room.roomCode}/commands`, { method: 'POST', token: room.reconnectCredential, body: input }); }
+      finally { if (metric) samples[metric].push(performance.now() - begin); }
       assert.equal(reply.status, 200); safeHttp(reply.body, secrets); return reply.body.view;
     };
     const lobby = await read(host);
@@ -342,18 +339,22 @@ test('eight-player production HTTP/WebSocket full drafts and late concurrent lat
     for (const client of clients) for (const bytes of client.messages) {
       parseRoomSnapshot(bytes, host.roomCode); safeHttp(JSON.parse(bytes), secrets);
     }
-    const latency = Object.fromEntries(Object.entries(samples).map(([name, values]) => [name, summarize(values)]));
-    for (const row of Object.values(latency)) assert.ok(row.p95Ms <= 2000 && row.maxMs <= 3000, 'Eight-player responsiveness regression');
-    mkdirSync(new URL('.generated/results/', import.meta.url), { recursive: true });
-    writeFileSync(new URL('.generated/results/production-smoke.json', import.meta.url), JSON.stringify({ status: 'PASS', timestamp: new Date().toISOString(),
+    evidence = {
       productionBundle: true, participants: 8, era: 'era-impact', completedXis: 8, contestedLeaderboardRows: 8,
       trigger: 'ALL_SUBMITTED', identicalPublicSnapshots: true, privateProgressDoesNotBroadcast: true,
-      fixtureControlsUnavailable: true, permissiveLocalRateOverrides: true, latency,
-      limitations: ['Two late spin/lock burst pairs; correlated responses, not independent trials.',
-        'Local workerd loopback, no deployed Cloudflare or multi-room claim.', 'Original 2s p95 / 3s max burst/final gates retained; no expensive Stage A matrix.'] }, null, 2) + '\n');
+      fixtureControlsUnavailable: true, permissiveLocalRateOverrides: true };
+    correctnessPassed = true;
   } finally {
-    for (const client of clients) client.ws.terminate();
-    if (runtime) await runtime.mf.dispose();
-    rmSync(statePath, { recursive: true, force: true });
+    try {
+      recordLatency({ file: 'production-smoke.json', samples, correctnessPassed, gatedMetrics: Object.keys(samples),
+        details: { ...evidence, productionBundle: true, participants: 8, era: 'era-impact',
+          limitations: ['Two late spin/lock burst pairs; correlated responses, not independent trials.',
+            'Local workerd loopback, no deployed Cloudflare or multi-room claim.',
+            'Original 2s p95 / 3s max budgets; enforced only in controlled performance mode. No expensive Stage A matrix.'] } });
+    } finally {
+      for (const client of clients) client.ws.terminate();
+      if (runtime) await runtime.mf.dispose();
+      rmSync(statePath, { recursive: true, force: true });
+    }
   }
 });
