@@ -1,0 +1,98 @@
+{
+  "status": "PASS",
+  "timestamp": "2026-10-18T14:48:03.731Z",
+  "productionBundle": true,
+  "participants": 8,
+  "era": "era-impact",
+  "completedXis": 8,
+  "contestedLeaderboardRows": 8,
+  "trigger": "ALL_SUBMITTED",
+  "identicalPublicSnapshots": true,
+  "privateProgressDoesNotBroadcast": true,
+  "fixtureControlsUnavailable": true,
+  "permissiveLocalRateOverrides": true,
+  "latency": {
+    "spin": {
+      "count": 16,
+      "p50Ms": 614.02,
+      "p95Ms": 1214.29,
+      "maxMs": 1214.29,
+      "samplesMs": [
+        130.61,
+        281.55,
+        412.77,
+        544.18,
+        677.03,
+        810.71,
+        951.14,
+        1073.28,
+        148.76,
+        317.54,
+        465.17,
+        614.02,
+        763.59,
+        919.92,
+        1080.15,
+        1214.29
+      ]
+    },
+    "lock": {
+      "count": 16,
+      "p50Ms": 672.29,
+      "p95Ms": 1280.49,
+      "maxMs": 1280.49,
+      "samplesMs": [
+        183.06,
+        341.09,
+        516.65,
+        672.29,
+        840.92,
+        983.95,
+        1127.58,
+        1252.67,
+        159.07,
+        340.98,
+        498.24,
+        658.18,
+        820.07,
+        980.35,
+        1140.55,
+        1280.49
+      ]
+    },
+    "spinBatch": {
+      "count": 2,
+      "p50Ms": 1073.71,
+      "p95Ms": 1214.69,
+      "maxMs": 1214.69,
+      "samplesMs": [
+        1073.71,
+        1214.69
+      ]
+    },
+    "lockBatch": {
+      "count": 2,
+      "p50Ms": 1253.05,
+      "p95Ms": 1280.88,
+      "maxMs": 1280.88,
+      "samplesMs": [
+        1253.05,
+        1280.88
+      ]
+    },
+    "finalSubmit": {
+      "count": 1,
+      "p50Ms": 383.2,
+      "p95Ms": 383.2,
+      "maxMs": 383.2,
+      "samplesMs": [
+        383.2
+      ]
+    }
+  },
+  "limitations": [
+    "Two late spin/lock burst pairs; correlated responses, not independent trials.",
+    "Local workerd loopback, no deployed Cloudflare or multi-room claim.",
+    "Original 2s p95 / 3s max burst/final gates retained; no expensive Stage A matrix."
+  ]
+}

@@ -1,6 +1,6 @@
 # Draft-Off Architecture
 
-Implemented through M1/M1.1 (competitive simulation), M2 (competition domain), M3 (provider-independent authoritative room service), and M4 Stage D (advisory realtime through hibernating WebSockets), on Stage C's guest HTTP authentication and Stage B's durable persistence/alarm lifecycle. Stage A and its indexed feasibility optimizations remain the runtime baseline. Stage E, UI and deployment remain deferred. The gameplay decision record is [DRAFT_OFF_GAMEPLAY_VALIDATION.md](DRAFT_OFF_GAMEPLAY_VALIDATION.md).
+Implemented through M1/M1.1 (competitive simulation), M2 (competition domain), M3 (provider-independent authoritative room service), and M4 Stages A–E (local backend verification and M5 handoff). Stage D supplies advisory realtime through hibernating WebSockets, on Stage C's guest HTTP authentication and Stage B's durable persistence/alarm lifecycle. Stage A and its indexed feasibility optimizations remain the runtime baseline. UI and deployment remain deferred. See the [Stage E report](../backend/stage-e/results/report.md), [M5 client contract](../backend/stage-e/M5_CONTRACT.md), and [local/future staging runbook](../backend/stage-e/RUNBOOK.md). The gameplay decision record is [DRAFT_OFF_GAMEPLAY_VALIDATION.md](DRAFT_OFF_GAMEPLAY_VALIDATION.md).
 
 ## Frozen simulation contract
 

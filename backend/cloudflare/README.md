@@ -1,4 +1,6 @@
-# Draft-Off Cloudflare adapters — through Stage D
+# Draft-Off Cloudflare adapters — M4 backend handoff
+
+Stage E verification and M5 handoff: [results](../stage-e/results/report.md), [client contract](../stage-e/M5_CONTRACT.md), and [local/future staging runbook](../stage-e/RUNBOOK.md). No deployment configuration or remote resources have been created.
 
 One SQLite-backed `DraftOffRoom` DO per canonical public invite code, routed with `ROOMS.idFromName(code)`. The DO ID, invite code, participant ID and reconnect credential are separate identities. Codes grant no participant authority. The Worker invokes typed `publicOperation` for product HTTP; DO `fetch` accepts only the authenticated realtime upgrade. Legacy trusted actor RPCs are internal and never populated from browser actor fields.
 
@@ -74,7 +76,7 @@ An authenticated ticket request derives identity from Stage C auth, validates th
 
 Upgrade first verifies the ticket cheaply before catalog replay/recovery, then validates canonical state and atomically rechecks/deletes the verifier under the existing room queue. Origin binding prevents redemption from another allowed Origin. Constant-time verifier comparison and a separate digest domain prevent using a reconnect credential directly as a ticket. Identity comes only from the stored assertion. Capacity rejection leaves the ticket unconsumed. Once consumed, acceptance/transport failure never refunds it: obtain a fresh ticket. Storage transactions cannot atomically guarantee network delivery.
 
-Ticket headers remain sensitive even though URLs are clean. Application logs never record request/response headers or ticket bodies; the native tests scan enabled structured logs for issued secrets and the ticket prefix. No deployed edge logging/Logpush/observability configuration is enabled or created by this milestone, so local evidence makes no claim about an external account's settings. Future deployment must exclude `Sec-WebSocket-Protocol`, Authorization and ticket response bodies from any header/body capture. This implementation has no URL-ticket logging exception to audit.
+Ticket headers remain sensitive even though URLs are clean. Application logs never record request/response headers or ticket bodies; the native tests scan enabled structured logs for issued secrets and the ticket prefix. No deployed edge logging/Logpush/observability configuration is enabled or created by this milestone, so local evidence makes no claim about an external account's settings. Before staging, explicitly redact or disable capture of `Authorization`, `Enrollment-Key`, and `Sec-WebSocket-Protocol` ticket values, ticket-response bodies, enrollment responses containing reconnect credentials, and all private request/response/socket payloads. Apply this to Worker observability, traces, Logpush/tails, proxies, error reporters, browser telemetry and session replay; use only the application metadata allowlist (`requestId`, route template, status, safe code, elapsedMs). Verify the effective settings and a secret-canary check before admitting guests. See the [deployment gate](../stage-e/RUNBOOK.md#future-staging-deployment-gates). This implementation has no URL-ticket logging exception to audit.
 
 ### Public contract and committed broadcasts
 
