@@ -10,7 +10,7 @@ test('real workerd/SQLite adapter correctness and recovery', { timeout: 180000 }
   let runtime=await startRuntime(path);
   try {
     await t.test('all five eras restore lobby and drafting; fixture receipts reproduce the exact M3 result',async()=>{
-      const inventory=JSON.parse(readFileSync(new URL('results/artifact-inventory.json',import.meta.url)));
+      const inventory=JSON.parse(readFileSync(new URL('.generated/artifact-inventory.json',import.meta.url)));
       for(const {eraId}of inventory){
         await seed(runtime,'correctness',fixture(eraId,2,'lobby'));
         assert.equal((await request(runtime,'correctness','snapshot')).result.phase,'LOBBY');

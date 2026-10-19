@@ -14,7 +14,6 @@ const directory = new URL('./.generated/', import.meta.url);
 const root = new URL('../../data/processed/era-draft/web/v1/public/data/era-draft/v1/', import.meta.url);
 const manifest = JSON.parse(readFileSync(new URL('manifest.json', root), 'utf8'));
 mkdirSync(new URL('fixtures/', directory), { recursive: true });
-mkdirSync(new URL('results/', import.meta.url), { recursive: true });
 const inventory = [];
 let modules = `export const manifest = ${JSON.stringify(manifest)};\n`;
 const bindings = [];
@@ -97,7 +96,7 @@ for (const [index, entry] of manifest.eras.entries()) {
 }
 modules += `export const artifacts: Record<string, string> = {${bindings.join(',')}};\n`;
 writeFileSync(new URL('catalogs.ts', directory), modules);
-writeFileSync(new URL('results/artifact-inventory.json', import.meta.url), JSON.stringify(inventory, null, 2) + '\n');
+writeFileSync(new URL('artifact-inventory.json', directory), JSON.stringify(inventory, null, 2) + '\n');
 await build({ entryPoints: [new URL('worker.ts', import.meta.url).pathname], outfile: new URL('worker.js', directory).pathname,
   bundle: true, format: 'esm', platform: 'browser', target: 'es2022', external: ['cloudflare:workers'],
   loader: { '.json': 'text' }, sourcemap: true, metafile: true,

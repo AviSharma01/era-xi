@@ -62,7 +62,7 @@ test('Stage B native workerd / SQLite persistence and lifecycle', { timeout: 180
     });
 
     await t.test('all eras retain canonical saves and exact historical M3 receipts through eviction', async () => {
-      const inventory = JSON.parse(readFileSync(new URL('../stage-a/results/artifact-inventory.json', import.meta.url)));
+      const inventory = JSON.parse(readFileSync(new URL('../stage-a/.generated/artifact-inventory.json', import.meta.url)));
       for (const { eraId } of inventory) {
         const data = fixture(eraId, 2, 'late');
         await seed(runtime, 'eras', data);

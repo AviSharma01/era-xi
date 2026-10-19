@@ -6,8 +6,14 @@ type TestEnv = HttpEnv & { STAGE_D_ONLY: string };
 /** Loopback-only fixture bundle. Never imported into production. */
 export class StageDTestRoom extends StageCTestRoom {
   private instanceId = crypto.randomUUID();
+  private releaseQueue?: () => void;
   async fetch(request: Request) { await this.loadClock(); return super.fetch(request); }
   async stageDControl(action: string, input: any) {
+    if (action === 'hold-queue') {
+      void this.exclusive(() => new Promise<void>(resolve => { this.releaseQueue = resolve; }));
+      return true;
+    }
+    if (action === 'release-queue') { this.releaseQueue?.(); this.releaseQueue = undefined; return true; }
     if (action === 'instance') return this.exclusive(async () => ({ instanceId: this.instanceId, sockets: this.ctx.getWebSockets().length,
       attachments: this.ctx.getWebSockets().map(ws => ws.deserializeAttachment()) }));
     if (action === 'alarm') { await this.alarm(); return true; }

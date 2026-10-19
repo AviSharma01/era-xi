@@ -12,17 +12,17 @@ const response = body => new Response(JSON.stringify(body), { headers: { 'Conten
 const deferred = () => { let resolve; const promise = new Promise(r => { resolve = r; }); return { promise, resolve }; };
 const flush = async () => { for (let i = 0; i < 15; i++) await new Promise(resolve => setImmediate(resolve)); };
 
-function setup({ policy = {}, read, events } = {}) {
-  let revision = 0, sequence = 0, reads = 0, tickets = 0;
+function setup({ policy = {}, read, issue, events } = {}) {
+  let revision = 0, sequence = 0, reads = 0, tickets = 0, now = 0;
   const timers = new Map(), sockets = [], publicViews = [], privateViews = [], errors = [], requests = [];
   const client = createDraftOffRealtimeClient({ apiOrigin: 'https://api.example', roomCode: code, reconnectCredential: 'C'.repeat(43), policy,
-    events,
+    events, nowMs: () => now,
     onSnapshot: reply => privateViews.push(reply), onPublicSnapshot: reply => publicViews.push(reply), onError: error => errors.push(error), random: () => 0,
     setTimer(callback, delay) { const id = ++sequence; timers.set(id, { callback, delay }); return id; }, clearTimer(id) { timers.delete(id); },
     async transport(url, options) {
       requests.push({ url, options });
-      if (url.endsWith('/socket-tickets')) { tickets++; return response({ ok: true, ticket: String(tickets).padStart(43, 'A'), expiresAtMs: 30000 }); }
-      reads++; return read ? read(reads, revision) : response(snapshot(revision));
+      if (url.endsWith('/socket-tickets')) { tickets++; if (issue) return issue(tickets); return response({ ok: true, ticket: String(tickets).padStart(43, 'A'), expiresAtMs: 30000 }); }
+      reads++; return read ? read(reads, revision, options) : response(snapshot(revision));
     },
     createSocket(url, protocols) {
       const socket = { url, protocols, protocol: 'draft-off.v1', readyState: 1,
@@ -34,7 +34,7 @@ function setup({ policy = {}, read, events } = {}) {
   });
   return { client, timers, sockets, publicViews, privateViews, errors, requests,
     setRevision(value) { revision = value; }, stats: () => ({ reads, tickets }),
-    async fire(delay) { const found = [...timers].find(([, timer]) => timer.delay === delay); assert.ok(found, `Missing timer ${delay}`); timers.delete(found[0]); found[1].callback(); await flush(); },
+    async fire(delay) { const found = [...timers].find(([, timer]) => timer.delay === delay); assert.ok(found, `Missing timer ${delay}`); timers.delete(found[0]); now += delay; found[1].callback(); await flush(); },
   };
 }
 
@@ -197,4 +197,114 @@ test('focus/online and one deadline timer resync independently of periodic polli
     assert.ok(![...state.timers.values()].some(timer => timer.delay === 60000));
   } finally { state.client.stop(); }
   assert.equal(handlers.size, 0);
+});
+
+
+test('request timeout releases stalled fetch/body resyncs and ignores late replies', async () => {
+  for (const phase of ['fetch', 'body']) {
+    const pending = deferred(); let signal, cancelled = false;
+    const state = setup({ policy: { requestTimeoutMs: 2345 }, read: (count, _revision, options) => {
+      if (count !== 1) return response(snapshot(7));
+      signal = options.signal;
+      return phase === 'fetch' ? pending.promise : new Response(new ReadableStream({ cancel() { cancelled = true; } }));
+    } });
+    try {
+      const started = state.client.start(); await flush();
+      assert.ok([...state.timers.values()].some(timer => timer.delay === 2345), 'HTTP timeout must cover ' + phase);
+      await state.fire(2345); await started;
+      assert.equal(signal.aborted, true);
+      if (phase === 'body') assert.equal(cancelled, true);
+      assert.equal(state.stats().tickets, 1, 'Realtime startup can continue after failed GET');
+      await state.client.resync(); assert.equal(state.privateViews.at(-1).view.revision, 7);
+      pending.resolve(response(snapshot(99))); await flush();
+      assert.ok(!state.privateViews.some(reply => reply.view.revision === 99));
+    } finally { state.client.stop(); }
+    assert.equal(state.timers.size, 0);
+  }
+});
+
+test('disposal aborts a stalled request and body without waiting for the HTTP timeout', async () => {
+  for (const phase of ['fetch', 'body']) {
+    let signal, cancelled = false;
+    const state = setup({ read: (_count, _revision, options) => {
+      signal = options.signal;
+      return phase === 'fetch' ? new Promise(() => {}) : new Response(new ReadableStream({ cancel() { cancelled = true; } }));
+    } });
+    const started = state.client.start(); await flush(); state.client.stop(); await flush();
+    assert.equal(signal.aborted, true); assert.equal(state.timers.size, 0);
+    if (phase === 'body') assert.equal(cancelled, true);
+    // A transport which ignores AbortSignal must not prevent disposal from settling.
+    assert.equal(state.stats().tickets, 0);
+    await started;
+  }
+});
+
+test('429 cooldown gates GET, ticket/reconnect and caller-driven resync until Retry-After', async () => {
+  for (const limited of ['GET', 'TICKET', 'RECONNECT']) {
+    const throttled = () => new Response('{}', { status: 429, headers: { 'Retry-After': '60' } });
+    const state = setup({ read: count => limited === 'GET' && count === 1 ? throttled() : response(snapshot(7)),
+      issue: count => ((limited === 'TICKET' && count === 1) || (limited === 'RECONNECT' && count === 2)) ? throttled() : response({ ok: true, ticket: 'A'.repeat(43), expiresAtMs: 30000 }) });
+    try {
+      await state.client.start();
+      if (limited === 'RECONNECT') { state.sockets[0].close(1006); await flush(); await state.fire(500); }
+      const before = state.stats();
+      await state.client.resync(); await state.client.resync();
+      assert.deepEqual(state.stats(), before, 'Explicit resync must respect cooldown');
+      assert.ok([...state.timers.values()].every(timer => timer.delay >= 60000), 'No early automatic retry');
+      await state.fire(60000);
+      assert.ok(state.stats().reads > before.reads || state.stats().tickets > before.tickets);
+      await state.client.resync(); assert.equal(state.privateViews.at(-1).view.revision, 7);
+    } finally { state.client.stop(); }
+  }
+});
+
+test('Retry-After HTTP dates and missing values use bounded recovery scheduling', async () => {
+  for (const header of [new Date(60000).toUTCString(), null]) {
+    let calls = 0;
+    const state = setup({ read: () => ++calls === 1 ? new Response('{}', { status: 429,
+      headers: header ? { 'Retry-After': header } : {} }) : response(snapshot(2)) });
+    try {
+      await state.client.start();
+      assert.ok([...state.timers.values()].every(timer => timer.delay >= 60000));
+      await state.fire(60000); await state.client.resync();
+      assert.equal(state.privateViews.at(-1).view.revision, 2);
+    } finally { state.client.stop(); }
+  }
+});
+
+
+test('stalled ticket acquisition times out and reconnect obtains a fresh ticket', async () => {
+  const state = setup({ policy: { requestTimeoutMs: 2345 }, issue: count => count === 1 ? new Promise(() => {})
+    : response({ ok: true, ticket: 'A'.repeat(43), expiresAtMs: 30000 }) });
+  try {
+    const started = state.client.start(); await flush(); await state.fire(2345); await started;
+    assert.equal(state.sockets.length, 0); await state.fire(500);
+    assert.equal(state.stats().tickets, 2); assert.equal(state.sockets.length, 1);
+  } finally { state.client.stop(); }
+});
+
+test('a ticket issued during an in-flight GET 429 cannot start an upgrade during cooldown', async () => {
+  const pending = deferred();
+  const state = setup({ read: count => count === 1 ? response(snapshot(1))
+    : new Response('{}', { status: 429, headers: { 'Retry-After': '60' } }), issue: () => pending.promise });
+  try {
+    const started = state.client.start(); await flush();
+    await state.client.resync();
+    pending.resolve(response({ ok: true, ticket: 'A'.repeat(43), expiresAtMs: 30000 })); await started;
+    assert.equal(state.sockets.length, 0);
+    assert.ok([...state.timers.values()].every(timer => timer.delay >= 60000));
+  } finally { state.client.stop(); }
+});
+
+
+test('valid zero or elapsed Retry-After does not impose the missing-header cooldown', async () => {
+  for (const header of ['0', new Date(0).toUTCString()]) {
+    const state = setup({ read: count => count === 1 ? new Response('{}', { status: 429, headers: { 'Retry-After': header } })
+      : response(snapshot(3)) });
+    try {
+      await state.client.start();
+      assert.ok(![...state.timers.values()].some(timer => timer.delay === 60000));
+      await state.client.resync(); assert.equal(state.privateViews.at(-1).view.revision, 3);
+    } finally { state.client.stop(); }
+  }
 });

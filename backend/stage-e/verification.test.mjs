@@ -263,8 +263,8 @@ test('M4 Stage E combined HTTP/WebSocket multiplayer, recovery, privacy and dire
     for (const name of ['concurrentSpinBatch', 'concurrentLockBatch', 'submit', 'deadlineToPublicSnapshot']) {
       assert.ok(latency[name].p95Ms <= 2000 && latency[name].maxMs <= 3000, `${name} responsiveness regression`);
     }
-    mkdirSync(new URL('results/', import.meta.url), { recursive: true });
-    writeFileSync(new URL('results/multiplayer-smoke.json', import.meta.url), JSON.stringify({ status: 'PASS', timestamp: new Date().toISOString(),
+    mkdirSync(new URL('.generated/results/', import.meta.url), { recursive: true });
+    writeFileSync(new URL('.generated/results/multiplayer-smoke.json', import.meta.url), JSON.stringify({ status: 'PASS', timestamp: new Date().toISOString(),
       participants: 3, era: 'era-impact', manualSubmissions: 1, deadlineAutoSubmissions: 1, incompleteAtDeadline: 1,
       contestedLeaderboardRows: 2, exactEnrollmentRecoveryAfterRestart: true, exactCommandRetriesAfterHibernationAndRestart: true,
       participantRevisionIsolation: true, sameParticipantRaceProtected: true, credentialClassesSeparated: true,
@@ -344,8 +344,8 @@ test('eight-player production HTTP/WebSocket full drafts and late concurrent lat
     }
     const latency = Object.fromEntries(Object.entries(samples).map(([name, values]) => [name, summarize(values)]));
     for (const row of Object.values(latency)) assert.ok(row.p95Ms <= 2000 && row.maxMs <= 3000, 'Eight-player responsiveness regression');
-    mkdirSync(new URL('results/', import.meta.url), { recursive: true });
-    writeFileSync(new URL('results/production-smoke.json', import.meta.url), JSON.stringify({ status: 'PASS', timestamp: new Date().toISOString(),
+    mkdirSync(new URL('.generated/results/', import.meta.url), { recursive: true });
+    writeFileSync(new URL('.generated/results/production-smoke.json', import.meta.url), JSON.stringify({ status: 'PASS', timestamp: new Date().toISOString(),
       productionBundle: true, participants: 8, era: 'era-impact', completedXis: 8, contestedLeaderboardRows: 8,
       trigger: 'ALL_SUBMITTED', identicalPublicSnapshots: true, privateProgressDoesNotBroadcast: true,
       fixtureControlsUnavailable: true, permissiveLocalRateOverrides: true, latency,

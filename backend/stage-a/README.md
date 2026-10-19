@@ -75,7 +75,7 @@ Deadline-to-completed-handler uses the same p95 ≤2 s / max ≤3 s budget as fi
 
 ## Outputs
 
-- `results/artifact-inventory.json`: verified sizes, compression, and era counts.
+- `results/artifact-inventory.json`: retained baseline sizes, compression, and era counts. Current preparation writes its inventory to ignored `.generated/artifact-inventory.json`, preserving this baseline.
 - `results/full.json`: raw measured samples, summaries, individual burst clients, deadline trials, and process-cold samples.
 - `results/diagnostic.json` and `diagnostic.cpuprofile`: separate CPU/heap diagnostic.
 - `results/report.md`: findings, gate decision, limitations, and proposed next action.

@@ -279,3 +279,25 @@ test('an oversized realtime projection cannot roll back a public commit or weake
     assert.equal(final.phase, 'COMPLETE'); assert.equal(final.resolution.contestStatus, 'NO_CONTEST');
   } finally { for (const client of clients) client.ws.close(); await runtime.mf.dispose(); }
 });
+
+
+test('unsupported socket-message floods close while the gameplay queue is held', { timeout: 60000 }, async () => {
+  const runtime = await startRuntime(temp(), { overrides: permissive }); const clients = []; let host;
+  try {
+    host = await create(runtime); const member = await guest(runtime, host);
+    const abusive = await open(runtime, host), healthy = await open(runtime, member); clients.push(abusive, healthy);
+    const before = await control(runtime, host.roomCode, 'inspect');
+    await control(runtime, host.roomCode, 'hold-queue');
+    for (let index = 0; index < 64; index++) abusive.ws.send('{"type":"START"}');
+    const closed = await Promise.race([abusive.closed, delay(1500).then(() => { throw new Error('Unsupported frames waited behind gameplay'); })]);
+    assert.equal(closed.code, 1008); assert.equal(healthy.ws.readyState, WebSocket.OPEN);
+    await control(runtime, host.roomCode, 'release-queue');
+    assert.equal((await snapshot(runtime, member)).status, 200);
+    const after = await control(runtime, host.roomCode, 'inspect');
+    assert.equal(after.records.competition, before.records.competition);
+    assert.deepEqual(after.records.wake, before.records.wake); assert.equal(after.alarm, before.alarm);
+  } finally {
+    if (host) await control(runtime, host.roomCode, 'release-queue');
+    for (const client of clients) client.ws.terminate(); await runtime.mf.dispose();
+  }
+});

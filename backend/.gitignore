@@ -1,0 +1,10 @@
+# Local builds and runtime state, including future backend deployment tooling.
+.generated/
+.state/
+.wrangler/
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*

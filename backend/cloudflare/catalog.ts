@@ -1,3 +1,5 @@
+// Build-time, data-only module from the committed content-addressed V1 artifacts.
+// No Stage A harness, fixture, runtime, dependency or control code enters this import.
 import { artifacts, manifest } from '../stage-a/.generated/catalogs';
 import { buildScopedEraDraftCatalog } from '../../src/eraDraftScopedCatalog';
 import type { EraId } from '../../src/teamEvaluationV2';

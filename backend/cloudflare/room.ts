@@ -13,7 +13,7 @@ import { projectDraftOffRoom } from '../../src/draftOffRoomProjection';
 import { ApiError, commandReply, errorReply, type Operation, type ApiReply, type Settings, type SafeEnrollment } from './contracts';
 import { digest, enrollmentDigest, equalDigest, participantId, randomSecret, recoveryContext, recover, roomCode, seal, verifier,
   type AuthRecord, type EnrollmentRecord } from './enrollment';
-import { consume, limits, type LimitEnv } from './limits';
+import { checkBucket, consume, limits, type LimitEnv } from './limits';
 import { retainNegativeResult } from './negativeResults';
 import { allowedOrigin } from './origin';
 import { consumeSocketTicket, issueSocketTicket, pruneSocketTickets, verifySocketTicket } from './socketTickets';
@@ -126,9 +126,18 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
     const auth = await this.ctx.storage.get<AuthRecord>(`api:auth:${hash}`);
     const matches = equalDigest(hash, auth?.verifier ?? '0'.repeat(64));
     if (!matches || auth?.version !== 1 || auth.roomCode !== operation.roomCode) throw new ApiError(401, 'AUTHENTICATION_FAILED');
+    const policy = limits(this.env);
+    // Only verified credentials can probe fixed participant buckets. This read-only
+    // preflight avoids replay work on already exhausted budgets; it grants no access.
+    // Actual consumption and ticket issuance retain their existing transactions.
+    if (operation.kind === 'SOCKET_TICKET') {
+      await checkBucket(this.ctx.storage, 'socket-tickets:room', this.nowMs(), policy.roomTicketsPerMinute, policy.roomTicketBurst);
+      await checkBucket(this.ctx.storage, `socket-tickets:${auth.participantId}`, this.nowMs(), policy.ticketsPerMinute, policy.ticketBurst);
+    } else await checkBucket(this.ctx.storage, `${operation.kind}:${auth.participantId}`, this.nowMs(),
+      operation.kind === 'READ' ? policy.readsPerMinute : policy.commandsPerMinute,
+      operation.kind === 'READ' ? policy.readBurst : policy.commandBurst);
     const service = await this.liveRoom();
     const actor = { kind: 'PARTICIPANT' as const, participantId: auth.participantId };
-    const policy = limits(this.env);
     if (operation.kind === 'SOCKET_TICKET') {
       allowedOrigin(new Request('https://room.invalid', { headers: { Origin: operation.origin } }), this.env);
       // Preserve the same registered-participant access as authenticated GET, including LEFT.
@@ -341,15 +350,17 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
     } finally { if (admitted) this.outstanding--; }
   }
   async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {
-    return this.exclusive(async () => {
-      const size = typeof message === 'string' ? new TextEncoder().encode(message).byteLength : message.byteLength;
-      closeSocket(ws, size > limits(this.env).socketMessageBytes ? 1009 : 1008, 'Client messages are not supported');
-    });
+    // Unsupported frames have no gameplay authority. Close immediately instead of
+    // retaining attacker-controlled payloads behind canonical room transactions.
+    const ceiling = limits(this.env).socketMessageBytes;
+    const oversized = typeof message === 'string'
+      ? message.length > ceiling || new TextEncoder().encode(message).byteLength > ceiling : message.byteLength > ceiling;
+    closeSocket(ws, oversized ? 1009 : 1008, 'Client messages are not supported');
   }
   async webSocketClose(ws: WebSocket, _code: number, _reason: string, _wasClean: boolean) {
-    return this.exclusive(async () => { closeSocket(ws, 1000, 'Closed'); });
+    closeSocket(ws, 1000, 'Closed');
   }
   async webSocketError(ws: WebSocket, _error: unknown) {
-    return this.exclusive(async () => { closeSocket(ws, 1011, 'Reconnect required'); });
+    closeSocket(ws, 1011, 'Reconnect required');
   }
 }

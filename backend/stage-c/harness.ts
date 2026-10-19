@@ -8,6 +8,8 @@ export class StageCTestRoom extends DraftOffRoom {
   private offset = 0;
   private fail = false;
   private lastFailure?: string;
+  private recoveryCount = 0;
+  protected async existingRoom() { this.recoveryCount++; return super.existingRoom(); }
   protected async handlePublic(operation: Parameters<DraftOffRoom['publicOperation']>[0]) {
     try { return await super.handlePublic(operation); }
     catch (error) { this.lastFailure = error instanceof Error ? error.stack : 'Unknown failure'; throw error; }
@@ -26,6 +28,7 @@ export class StageCTestRoom extends DraftOffRoom {
       await this.loadClock();
       if (action === 'inspect') return { records: Object.fromEntries(await this.ctx.storage.list()), alarm: await this.ctx.storage.getAlarm() };
       if (action === 'failure') return { failure: this.lastFailure };
+      if (action === 'recovery-count') return this.recoveryCount;
       if (action === 'offset') { this.offset = input.offset; await this.ctx.storage.put('test:offset', this.offset); return true; }
       if (action === 'fail') { this.fail = true; return true; }
       if (action === 'put') { await this.ctx.storage.put(input.key, input.value); return true; }

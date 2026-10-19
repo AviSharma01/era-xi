@@ -5,6 +5,9 @@
   "scripts": {
     "build": "node prepare.mjs",
     "typecheck": "../../node_modules/.bin/tsc -p tsconfig.json",
-    "test": "node --test --test-concurrency=1 correctness.test.mjs"
+    "test": "node --test --test-concurrency=1 client.test.mjs correctness.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

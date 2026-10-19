@@ -236,8 +236,8 @@ test('Stage C native HTTP, enrollment, authentication and persistence', { timeou
       assert.ok(memberRead.body.view.participants.every(row => !('picks' in row))); assert.equal(memberRead.body.view.myDraft.picks.length, 0);
       await control(runtime, host.roomCode, 'offset', { offset: started.body.view.round.deadlineAtMs - Date.now() + 20 });
       const resolved = await snapshot(runtime, host); assert.equal(resolved.body.view.resolution.contestStatus, 'UNCONTESTED'); safe(resolved.body);
-      mkdirSync(new URL('results/', import.meta.url), { recursive: true });
-      writeFileSync(new URL('results/http-smoke.json', import.meta.url), JSON.stringify({ era: 'era-impact', participants: 8, spinBurstMs: burstMs,
+      mkdirSync(new URL('.generated/results/', import.meta.url), { recursive: true });
+      writeFileSync(new URL('.generated/results/http-smoke.json', import.meta.url), JSON.stringify({ era: 'era-impact', participants: 8, spinBurstMs: burstMs,
         completedLegalXi: true, submission: true, deadlineRecovery: true, privacyChecks: true }, null, 2) + '\n');
     });
   } finally { await runtime.mf.dispose(); }
@@ -547,5 +547,33 @@ test('production bundle serves product HTTP and has no fixture/debug routes', { 
     const bundle = readFileSync(new URL('.generated/worker.js', import.meta.url), 'utf8');
     for (const needle of ['StageCTestRoom', 'STAGE_C_ONLY', 'test:offset', 'Injected commit failure', '/__test/', 'legacy-create']) assert.ok(!bundle.includes(needle));
     assert.equal(DEFAULT_LIMITS.bodyBytes, 4096);
+  } finally { await runtime.mf.dispose(); }
+});
+
+
+test('exhausted authenticated read/command/ticket budgets reject before canonical recovery, including cold objects', { timeout: 60000 }, async () => {
+  const runtime = await startRuntime(temp(), { overrides: { ...permissive, readBurst: 1, readsPerMinute: 1,
+    commandBurst: 1, commandsPerMinute: 1, ticketBurst: 1, ticketsPerMinute: 1 } });
+  try {
+    const host = (await create(runtime)).body;
+    assert.equal((await snapshot(runtime, host)).status, 200);
+    assert.equal((await command(runtime, host, lifecycle('host-leave', 0, 'LEAVE'))).status, 403);
+    const issue = () => call(runtime, `/rooms/${host.roomCode}/socket-tickets`, { method: 'POST', token: host.reconnectCredential, body: {} });
+    assert.equal((await issue()).status, 201);
+    const count = await control(runtime, host.roomCode, 'recovery-count');
+    const before = await control(runtime, host.roomCode, 'inspect');
+    for (let index = 0; index < 4; index++) {
+      error(await snapshot(runtime, host), 429, 'RATE_LIMITED');
+      error(await command(runtime, host, lifecycle('blocked-' + index, 0, 'LEAVE')), 429, 'RATE_LIMITED');
+      error(await issue(), 429, 'RATE_LIMITED');
+    }
+    assert.equal(await control(runtime, host.roomCode, 'recovery-count'), count);
+    assert.deepEqual(await control(runtime, host.roomCode, 'inspect'), before, 'Preflight rejection writes no state/receipts/buckets/alarms');
+    await runtime.mf.unsafeEvictDurableObject('stage-c', 'StageCTestRoom', { name: host.roomCode });
+    error(await snapshot(runtime, host), 429, 'RATE_LIMITED'); error(await issue(), 429, 'RATE_LIMITED');
+    assert.equal(await control(runtime, host.roomCode, 'recovery-count'), 0);
+    await control(runtime, host.roomCode, 'offset', { offset: 61000 });
+    assert.equal((await snapshot(runtime, host)).status, 200);
+    assert.ok(await control(runtime, host.roomCode, 'recovery-count') > 0);
   } finally { await runtime.mf.dispose(); }
 });

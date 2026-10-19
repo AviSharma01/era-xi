@@ -25,6 +25,16 @@ export function limits(env: LimitEnv): Limits {
   return { ...DEFAULT_LIMITS, ...overrides };
 }
 type Bucket = { tokens: number; atMs: number };
+function replenished(previous: Bucket | undefined, nowMs: number, perMinute: number, burst: number) {
+  const atMs = Math.max(nowMs, previous?.atMs ?? nowMs);
+  const tokens = Math.min(burst, (previous?.tokens ?? burst) + (atMs - (previous?.atMs ?? atMs)) * perMinute / 60_000);
+  if (tokens < 1) throw new ApiError(429, 'RATE_LIMITED');
+  return { tokens, atMs };
+}
+/** Read-only fast rejection before canonical replay. Consumption still occurs atomically below. */
+export async function checkBucket(storage: DurableObjectStorage, key: string, nowMs: number, perMinute: number, burst: number) {
+  replenished(await storage.get<Bucket>(`api:bucket:${key}`), nowMs, perMinute, burst);
+}
 /** Separate housekeeping records; never touches the lifecycle alarm. Call under the room queue. */
 export async function consume(storage: DurableObjectStorage, key: string, nowMs: number, perMinute: number, burst: number) {
   await storage.transaction(tx => consumeBucket(tx, key, nowMs, perMinute, burst));
@@ -32,8 +42,6 @@ export async function consume(storage: DurableObjectStorage, key: string, nowMs:
 
 export async function consumeBucket(tx: DurableObjectTransaction, key: string, nowMs: number, perMinute: number, burst: number) {
   const previous = await tx.get<Bucket>(`api:bucket:${key}`);
-  const atMs = Math.max(nowMs, previous?.atMs ?? nowMs);
-  const tokens = Math.min(burst, (previous?.tokens ?? burst) + (atMs - (previous?.atMs ?? atMs)) * perMinute / 60_000);
-  if (tokens < 1) throw new ApiError(429, 'RATE_LIMITED');
+  const { tokens, atMs } = replenished(previous, nowMs, perMinute, burst);
   await tx.put(`api:bucket:${key}`, { tokens: tokens - 1, atMs });
 }
