@@ -1,0 +1,38 @@
+{
+  "verifiedAt": "2026-10-06 07:32:25 UTC",
+  "checks": [
+    {
+      "label": "Stage A typecheck",
+      "cmd": "node node_modules/typescript/bin/tsc -p backend/stage-a/tsconfig.json",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "label": "Root TypeScript build",
+      "cmd": "node node_modules/typescript/bin/tsc",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "label": "Native workerd/SQLite correctness",
+      "cmd": "node --test correctness.test.mjs",
+      "exitCode": 0,
+      "testCount": 6,
+      "durationMs": 113641.544792,
+      "coverage": [
+        "all five eras and exact receipt replay",
+        "participant concurrency and stale CAS",
+        "atomic state/receipt/alarm rollback",
+        "persistent restart and overdue recovery",
+        "cold native alarm and harmless repeated wake after resolution"
+      ]
+    },
+    {
+      "label": "M1\u2013M3 regressions",
+      "cmd": "node --test dist/draftOffSimulation.test.js dist/draftOffCompetition.test.js dist/draftOffCompetitionPersistence.test.js dist/draftOffRoomRepository.test.js dist/draftOffRoomProjection.test.js dist/draftOffRoomService.test.js",
+      "exitCode": 0,
+      "testCount": 43
+    }
+  ],
+  "commandPathNormalization": "Executable paths normalized for publication; original measurements used Node v22.22.2."
+}

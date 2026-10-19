@@ -1,0 +1,12 @@
+{
+  "phase": "startup before first measurement",
+  "adapter": "stageA",
+  "error": "MiniflareCoreError ERR_RUNTIME_FAILURE: service core:user:stage-a: Uncaught Error: internal error; reference = 5otee3as5heieqmc25lj66fq",
+  "workerdTimestampMs": 1791476951578,
+  "node": "v22.23.3",
+  "successfulSamples": 0,
+  "handling": "Diagnostic retained. Run a fresh small comparison; no measured sample is dropped or retried.",
+  "secondAttempt": { "workerdTimestampMs": 1791477493287, "reference": "309ljjfutohpvohnuo4bhgn4", "successfulSamples": 0 },
+  "diagnosis": "The unchanged Stage A native suite starts successfully from its own npm cwd. Miniflare V5 derives its main module name relative to cwd; calling Stage A from the Stage B package produces an outside-root module name. The comparison driver now starts each unchanged harness from its normal cwd.",
+  "cause": "Inferred harness module-root mismatch, not an observed room interaction regression."
+}

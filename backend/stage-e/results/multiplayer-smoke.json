@@ -1,0 +1,172 @@
+{
+  "status": "PASS",
+  "timestamp": "2026-10-18T14:47:47.090Z",
+  "participants": 3,
+  "era": "era-impact",
+  "manualSubmissions": 1,
+  "deadlineAutoSubmissions": 1,
+  "incompleteAtDeadline": 1,
+  "contestedLeaderboardRows": 2,
+  "exactEnrollmentRecoveryAfterRestart": true,
+  "exactCommandRetriesAfterHibernationAndRestart": true,
+  "participantRevisionIsolation": true,
+  "sameParticipantRaceProtected": true,
+  "credentialClassesSeparated": true,
+  "hibernationWithSurvivingSockets": true,
+  "persistedRuntimeRestart": true,
+  "nativeDeadlineAfterHibernation": true,
+  "fixedCompletedRetentionAndMinimalMarker": true,
+  "publicOnlyIdenticalSocketSnapshots": true,
+  "noSecretsInHttpErrorsOrApplicationLogs": true,
+  "applicationLogEventsScanned": 123,
+  "canonicalFixtureHashesUnchanged": 80,
+  "permissiveLocalRateOverrides": true,
+  "latency": {
+    "lock": {
+      "count": 32,
+      "p50Ms": 40.31,
+      "p95Ms": 105.37,
+      "maxMs": 116.05,
+      "samplesMs": [
+        8.75,
+        17.47,
+        23.58,
+        10.59,
+        21.79,
+        30.73,
+        14.65,
+        30.45,
+        42.42,
+        18.55,
+        40.31,
+        57.5,
+        24.1,
+        51.51,
+        72.61,
+        24.81,
+        52.52,
+        73.5,
+        27.88,
+        58.65,
+        84.59,
+        32.09,
+        66.9,
+        93.93,
+        34.96,
+        74.85,
+        105.37,
+        39.55,
+        82.9,
+        116.05,
+        42.22,
+        83.58
+      ]
+    },
+    "concurrentLockBatch": {
+      "count": 11,
+      "p50Ms": 73.73,
+      "p95Ms": 116.24,
+      "maxMs": 116.24,
+      "samplesMs": [
+        23.93,
+        30.93,
+        42.63,
+        57.7,
+        73.19,
+        73.73,
+        84.78,
+        94.12,
+        105.54,
+        116.24,
+        83.69
+      ]
+    },
+    "spin": {
+      "count": 29,
+      "p50Ms": 41.91,
+      "p95Ms": 101.51,
+      "maxMs": 113.35,
+      "samplesMs": [
+        10.72,
+        22.88,
+        31.59,
+        12.66,
+        26.53,
+        38.18,
+        18.75,
+        37.93,
+        54.89,
+        20.51,
+        57.97,
+        79.47,
+        33.67,
+        64.99,
+        87.27,
+        26.74,
+        56.25,
+        79.47,
+        31.1,
+        64.8,
+        90.49,
+        34.47,
+        71.9,
+        101.51,
+        39.03,
+        81.11,
+        113.35,
+        41.91,
+        82.79
+      ]
+    },
+    "concurrentSpinBatch": {
+      "count": 10,
+      "p50Ms": 79.69,
+      "p95Ms": 113.49,
+      "maxMs": 113.49,
+      "samplesMs": [
+        31.82,
+        38.35,
+        55.16,
+        79.69,
+        87.47,
+        79.63,
+        90.68,
+        101.67,
+        113.49,
+        82.9
+      ]
+    },
+    "restartSnapshot": {
+      "count": 1,
+      "p50Ms": 94.06,
+      "p95Ms": 94.06,
+      "maxMs": 94.06,
+      "samplesMs": [
+        94.06
+      ]
+    },
+    "submit": {
+      "count": 1,
+      "p50Ms": 57.33,
+      "p95Ms": 57.33,
+      "maxMs": 57.33,
+      "samplesMs": [
+        57.33
+      ]
+    },
+    "deadlineToPublicSnapshot": {
+      "count": 1,
+      "p50Ms": 105,
+      "p95Ms": 105,
+      "maxMs": 105,
+      "samplesMs": [
+        105
+      ]
+    }
+  },
+  "limitations": [
+    "Local loopback only; no deployed latency/quota claim.",
+    "Small correlated sample; no expensive Stage A matrix repeated.",
+    "External observability configuration is a future deployment gate."
+  ]
+}

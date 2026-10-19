@@ -1,0 +1,31 @@
+{
+  "failedAttempt": "Thirteenth burst trial, after 12 checkpointed successful trials",
+  "error": "TypeError: fetch failed; UND_ERR_SOCKET: other side closed; Promise.all participant index 7; no response bytes",
+  "timing": "Failure duration was not captured by the original driver; do not include it as a successful latency sample",
+  "evidence": {
+    "inspectedAt": "2026-10-06T06:45:06.893Z",
+    "lastCommandType": "APPLY_DRAFT_COMMAND",
+    "spinReceipts": {
+      "0": true,
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true
+    },
+    "lockReceipts": {
+      "0": true,
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": null,
+      "5": null,
+      "6": null,
+      "7": null
+    }
+  },
+  "changedClientDriver": "Node built-in HTTP, agent:false, one connection per request; no automatic retries",
+  "cause": "Unresolved local transport failure; cannot attribute to production Cloudflare or domain behavior"
+}

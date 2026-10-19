@@ -1,0 +1,187 @@
+{
+  "mode": "profile",
+  "startedAt": "2026-10-05T20:07:41.432Z",
+  "environment": {
+    "node": "v22.22.2",
+    "platform": "darwin",
+    "arch": "arm64",
+    "osRelease": "25.5.0",
+    "cpu": "Apple M5",
+    "cpuCount": 10,
+    "memoryBytes": 25769803776
+  },
+  "inventory": [
+    {
+      "counts": {
+        "eligibleProfiles": 451,
+        "opponents": 8,
+        "teamSeasons": 24
+      },
+      "eraId": "era-foundation",
+      "path": "eras/foundation.7ccabd5739e5408e7e7dbabfc6b40e123b8bca5f4cda1fd20244bba15cbda9dc.json",
+      "sha256": "7ccabd5739e5408e7e7dbabfc6b40e123b8bca5f4cda1fd20244bba15cbda9dc",
+      "sizeBytes": 1684668,
+      "gzipBytes": 87412
+    },
+    {
+      "counts": {
+        "eligibleProfiles": 515,
+        "opponents": 11,
+        "teamSeasons": 28
+      },
+      "eraId": "era-expansion",
+      "path": "eras/expansion.1783e19be7739652492574e9eb98a845b3db0e5b9390d7b4c35569d92778836c.json",
+      "sha256": "1783e19be7739652492574e9eb98a845b3db0e5b9390d7b4c35569d92778836c",
+      "sizeBytes": 1942454,
+      "gzipBytes": 102209
+    },
+    {
+      "counts": {
+        "eligibleProfiles": 559,
+        "opponents": 10,
+        "teamSeasons": 32
+      },
+      "eraId": "era-transition",
+      "path": "eras/transition.15be2727428f843eb86f7b3aca6595bdca29d9dd5b69c03b535352549b70b4d3.json",
+      "sha256": "15be2727428f843eb86f7b3aca6595bdca29d9dd5b69c03b535352549b70b4d3",
+      "sizeBytes": 2105072,
+      "gzipBytes": 106215
+    },
+    {
+      "counts": {
+        "eligibleProfiles": 728,
+        "opponents": 10,
+        "teamSeasons": 42
+      },
+      "eraId": "era-modern-pre-impact",
+      "path": "eras/modern-pre-impact.d7e17ff5acc1a32ccf7e17c453500a90971243bafe7765b58d8beeb1523c7abb.json",
+      "sha256": "d7e17ff5acc1a32ccf7e17c453500a90971243bafe7765b58d8beeb1523c7abb",
+      "sizeBytes": 2724850,
+      "gzipBytes": 133754
+    },
+    {
+      "counts": {
+        "eligibleProfiles": 739,
+        "opponents": 10,
+        "teamSeasons": 40
+      },
+      "eraId": "era-impact",
+      "path": "eras/impact.b691b605e760f14911814e722473e06e25ec87302f7364b92ad658a3bde4d19f.json",
+      "sha256": "b691b605e760f14911814e722473e06e25ec87302f7364b92ad658a3bde4d19f",
+      "sizeBytes": 2763649,
+      "gzipBytes": 138305
+    }
+  ],
+  "samples": {},
+  "bursts": [],
+  "checks": [],
+  "limitations": [
+    "Local loopback HTTP, not production Cloudflare hardware or internet latency.",
+    "Worker phase clocks may be IO-coarsened; client timings use Node monotonic time.",
+    "Cold percentiles are directional; raw samples and maxima are retained."
+  ],
+  "diagnostic": {
+    "era": "era-impact",
+    "inspectorTarget": "workerd: worker core:user:stage-a",
+    "diagnosticClientMs": 4619.780583000001,
+    "heapBefore": {
+      "usedSize": 56529412,
+      "totalSize": 116670464,
+      "embedderHeapUsedSize": 385992,
+      "backingStorageSize": 336044
+    },
+    "heapAfter": {
+      "usedSize": 78773244,
+      "totalSize": 127664128,
+      "embedderHeapUsedSize": 385992,
+      "backingStorageSize": 381359
+    },
+    "profileDurationMs": 4663.205,
+    "sampleCount": 3695,
+    "hottestSelfSamples": [
+      {
+        "functionName": "evaluateFutureCompletion",
+        "selfSampleMs": 3715.741
+      },
+      {
+        "functionName": "(anonymous)",
+        "selfSampleMs": 509.85
+      },
+      {
+        "functionName": "(program)",
+        "selfSampleMs": 207.81
+      },
+      {
+        "functionName": "assertEraDraftState",
+        "selfSampleMs": 57.775
+      },
+      {
+        "functionName": "(idle)",
+        "selfSampleMs": 42.727
+      },
+      {
+        "functionName": "evaluateSelectionLegality",
+        "selfSampleMs": 39.509
+      },
+      {
+        "functionName": "(garbage collector)",
+        "selfSampleMs": 27.57
+      },
+      {
+        "functionName": "load",
+        "selfSampleMs": 16.095
+      },
+      {
+        "functionName": "process",
+        "selfSampleMs": 6.278
+      },
+      {
+        "functionName": "freeze",
+        "selfSampleMs": 5.026
+      },
+      {
+        "functionName": "canonicalSha256",
+        "selfSampleMs": 5.023
+      },
+      {
+        "functionName": "list",
+        "selfSampleMs": 3.817
+      },
+      {
+        "functionName": "validatePicks",
+        "selfSampleMs": 2.514
+      },
+      {
+        "functionName": "getCandidatesForTeamSeason",
+        "selfSampleMs": 2.508
+      },
+      {
+        "functionName": "validateHistory",
+        "selfSampleMs": 2.507
+      },
+      {
+        "functionName": "canonicalValue",
+        "selfSampleMs": 2.507
+      },
+      {
+        "functionName": "applyDraftCommand",
+        "selfSampleMs": 1.872
+      },
+      {
+        "functionName": "validateRoundParticipant",
+        "selfSampleMs": 1.259
+      },
+      {
+        "functionName": "getKeeperCapablePlayerIds",
+        "selfSampleMs": 1.259
+      },
+      {
+        "functionName": "frozenLegality",
+        "selfSampleMs": 1.258
+      }
+    ]
+  },
+  "completedAt": "2026-10-05T20:07:51.214Z",
+  "summaries": {},
+  "updatedAt": "2026-10-05T20:07:51.214Z"
+}

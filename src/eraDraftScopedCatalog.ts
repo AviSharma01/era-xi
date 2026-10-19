@@ -1,3 +1,4 @@
+import { buildEraDraftCompletionIndex, type EraDraftCompletionIndex } from "./eraDraftCompletionIndex.js";
 import { canonicalJson } from "./eraDraftCanonical.js";
 import {
   parseEraDraftHistoricalStats,
@@ -246,6 +247,7 @@ export function buildScopedEraDraftCatalog(
 class ScopedCatalog implements EraDraftCatalog {
   readonly fingerprint: string;
   readonly diagnostics: EraDraftCatalogDiagnostics;
+  readonly #completionIndex: EraDraftCompletionIndex;
   readonly #artifact: EraDraftWebArtifact;
   readonly #teamSeasonById: ReadonlyMap<TeamSeasonId, EraDraftTeamSeason>;
   readonly #teamSeasons: readonly EraDraftTeamSeason[];
@@ -282,9 +284,14 @@ class ScopedCatalog implements EraDraftCatalog {
     this.#keeperIds = input.keeperIds;
     this.#simulationContent = input.simulationContent;
     this.#opponents = input.opponents;
+    this.#completionIndex = buildEraDraftCompletionIndex(input.teamSeasons
+      .flatMap(team => input.candidatesByTeamSeason.get(team.teamSeasonId) ?? []));
     Object.freeze(this);
   }
 
+  getCompletionCostIndex(eraId: EraId): EraDraftCompletionIndex | undefined {
+    return eraId === this.#artifact.eraId ? this.#completionIndex : undefined;
+  }
   getEra(eraId: EraId): EraDraftEra | undefined { return eraId === this.#artifact.eraId ? this.#artifact.era : undefined; }
   getEraIds(): readonly EraId[] { return Object.freeze([this.#artifact.eraId]); }
   getEraForSeason(seasonId: string): EraId | undefined { return this.#artifact.era.seasonIds.includes(seasonId) ? this.#artifact.eraId : undefined; }

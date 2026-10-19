@@ -1,0 +1,195 @@
+{
+  "milestone": "M4 Stage E",
+  "status": "PASS",
+  "verifiedAt": "2026-10-18T14:50:47.844Z",
+  "baseCommit": "17086e0803b3e159bd3d4334af69e2cf275ccc9a",
+  "scope": "Final backend verification and M5 handoff only",
+  "checks": {
+    "release": {
+      "status": "PASS",
+      "rootTests": {
+        "passed": 281,
+        "failed": 0
+      },
+      "productionBuild": "PASS",
+      "productionRouteArtifactMimeNoticesSmoke": "PASS",
+      "allEraSmokeGames": 25
+    },
+    "fullValidation": {
+      "completedRuns": {
+        "completeGames": 5000,
+        "byEra": {
+          "era-foundation": 1000,
+          "era-expansion": 1000,
+          "era-transition": 1000,
+          "era-modern-pre-impact": 1000,
+          "era-impact": 1000
+        }
+      },
+      "correctnessCounters": {
+        "invariantFailures": 0,
+        "illegalCompletedXis": 0,
+        "hiddenLeaks": 0,
+        "wrongEraOpponentLeakage": 0,
+        "malformedShortlists": 0,
+        "duplicateShortlistProfiles": 0,
+        "invalidLeagueStructures": 0,
+        "invalidPlayoffStructures": 0,
+        "invalidChampions": 0,
+        "serializationFailures": 0,
+        "restoreDivergences": 0,
+        "replayEventMismatches": 0,
+        "replayFinalHashMismatches": 0,
+        "nondeterministicResults": 0,
+        "unexpectedDeadEnds": 0,
+        "unexpectedSimulationRejections": 0,
+        "catalogProvenanceInconsistencies": 0
+      },
+      "acceptance": {
+        "passed": true,
+        "allCorrectnessCountersZero": true,
+        "legalDraftCompletionRate": 1,
+        "completeGameRate": 1,
+        "allEraSimulationContentAvailable": true,
+        "everyStrategyRepresentedInEveryEra": true
+      }
+    },
+    "native": {
+      "stageA": {
+        "tests": 6,
+        "passed": 6,
+        "failed": 0
+      },
+      "stageBIncludingHintAuthority": {
+        "tests": 29,
+        "passed": 29,
+        "failed": 0
+      },
+      "stageC": {
+        "tests": 24,
+        "passed": 24,
+        "failed": 0
+      },
+      "stageD": {
+        "tests": 19,
+        "passed": 19,
+        "failed": 0
+      }
+    },
+    "stageE": {
+      "passed": 2,
+      "failed": 0
+    },
+    "typechecks": [
+      "root",
+      "stage-a",
+      "stage-b",
+      "stage-c",
+      "stage-d"
+    ],
+    "stageESyntax": "PASS",
+    "diffWhitespace": "PASS",
+    "canonicalFixtureHashesUnchanged": 80
+  },
+  "runtime": {
+    "node": "24.22.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "miniflare": "5.20261001.0-alpha",
+    "workerd": "1.20261001.1",
+    "compatibilityDate": "2026-10-01",
+    "storage": "SQLite Durable Object",
+    "backendBundleRawBytes": 11501543,
+    "backendBundleGzipBytes": 628548
+  },
+  "endToEnd": {
+    "combined": "multiplayer-smoke.json",
+    "production": "production-smoke.json",
+    "stageCRegressionSmoke": "stage-c-http-smoke.json",
+    "realProductHttpAndWebSockets": true,
+    "fixtureControlsOnlyForClockStorageFaultsAndLifecycle": true,
+    "importedCanonicalSaves": false,
+    "trustedActorGameplayShortcuts": false,
+    "productionEightFullXis": true,
+    "hibernationAndReinstantiationWithSurvivingSockets": true,
+    "persistedRuntimeRestart": true,
+    "exactRetriesAndPrivateRevisionIsolation": true,
+    "nativeDeadlineResolution": true,
+    "allSubmittedResolution": true,
+    "fixedRetentionAndCleanup": true,
+    "smallLatencyCheckWithinOriginalBurstFinalGates": true,
+    "expensiveStageABenchmarkMatrixRepeated": false
+  },
+  "securityPrivacy": {
+    "localFindings": "No blocker found",
+    "applicationLogEventsScannedInCombinedFlow": 123,
+    "publicOnlyWhitelistedIdenticalWebSocketSnapshots": true,
+    "onlyCallerDraftOnAuthenticatedHttp": true,
+    "uniformSafeAuthErrors": true,
+    "distinctEnrollmentReconnectAndTicketAuthority": true,
+    "plaintextCredentialsOrEnrollmentKeysPersisted": false,
+    "sensitiveEvidenceRetained": false,
+    "requiredRedactionOrCaptureDisabled": [
+      "Authorization",
+      "Enrollment-Key",
+      "Sec-WebSocket-Protocol ticket values",
+      "socket-ticket response bodies",
+      "enrollment credential response bodies",
+      "private request/response/WebSocket payloads"
+    ],
+    "applicationLogAllowlist": [
+      "requestId",
+      "route template",
+      "status",
+      "safe code",
+      "elapsedMs"
+    ],
+    "externalObservabilityConfigurationAudited": false
+  },
+  "handoff": {
+    "clientContract": "../M5_CONTRACT.md",
+    "runbook": "../RUNBOOK.md",
+    "m5Blockers": [],
+    "remainingDeploymentOnly": [
+      "Account/environment and HTTPS API/frontend origins/routes",
+      "ROOMS SQLite namespace/binding and new_sqlite_classes migration",
+      "CREATE_RATE/ENROLLMENT_RATE/REQUEST_RATE namespace IDs and matching 60s thresholds",
+      "ALLOWED_ORIGINS and optional STAGE_C_LIMITS",
+      "Effective redaction/capture settings and canary verification across external sinks",
+      "Packaging/runtime/plan quota and deployed latency checks",
+      "Node >=22 native backend gate in chosen CI/release process"
+    ]
+  },
+  "boundaries": {
+    "deployment": false,
+    "remoteResourcesCreated": false,
+    "m5OrUiWork": false,
+    "newArchitectureOrFunctionality": false,
+    "dependenciesChanged": false,
+    "gameplayOrBalanceChanged": false,
+    "dataChanged": false,
+    "canonicalSaveMigration": false,
+    "stageBRetentionDeadlineSemanticsChanged": false,
+    "priorStageEvidenceChanged": false,
+    "committed": false,
+    "pushed": false
+  },
+  "verificationNotes": [
+    "Initial release preview was sandbox-blocked; entire gate passed after loopback permission.",
+    "Combined rehearsal passed during full validation; final retained Stage E runs were sequential after full validation, without concurrent workload.",
+    "Local loopback smoke does not establish deployed latency, plan quotas or multi-room throughput.",
+    "No UI/browser accessibility matrix or offline Python data rebuild was required for unchanged UI/data; existing Stage D actual-browser protocol evidence was inspected."
+  ],
+  "evidenceSha256": {
+    "backend/cloudflare/README.md": "4e7c9935085674a8215e18ec41743f48e3411a976292302966eeb7a7f4e079f8",
+    "docs/DRAFT_OFF_ARCHITECTURE.md": "2c3694f5d907997f31afa4d1a0e63caa702a696cc8c731e82ed24384a57f1e72",
+    "backend/stage-e/package.json": "2e9e5a910d378739229ff530e6be3940959f9c3f7577bb1899f3f0b341565f17",
+    "backend/stage-e/verification.test.mjs": "9b48ebe728d4350d8b792cfcd3146e06fcf01a85738a4b271effcea08659e9c0",
+    "backend/stage-e/M5_CONTRACT.md": "9ecc160d5c8a52d531993fc282087e9438af299ee7ab684669dd876d0a4959f4",
+    "backend/stage-e/RUNBOOK.md": "b38bf6c26310d6eae34df126e770dd29e13e3347c919b7ffec1f2b2c5496c4b0",
+    "backend/stage-e/results/report.md": "ce7e8174ba4631cbd809e8ed1f67e48bd04298ce7c6cfb3ef22710dbcda629c8",
+    "backend/stage-e/results/multiplayer-smoke.json": "234682653b50237ba833c0d7aca2172e0f6a7c36d2a752e5d9a893f02670ff9e",
+    "backend/stage-e/results/production-smoke.json": "332b4ad2f9a515b2ad4363787e8ef16256b2c2bda3ab4fa560ffb0c554e64557",
+    "backend/stage-e/results/stage-c-http-smoke.json": "b01a3b52ac9d33eb37b5aafef79654d5b5edda0cfba8120c027ad4ec277c6f54"
+  }
+}

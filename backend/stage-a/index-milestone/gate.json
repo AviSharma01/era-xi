@@ -1,0 +1,31 @@
+{
+  "decision": "GO",
+  "runs": [
+    {
+      "decision": "GO",
+      "gates": {
+        "warmSnapshot": true,
+        "warmCommands": true,
+        "cold": true,
+        "bursts": true,
+        "final": true,
+        "deadlineResolution": true
+      }
+    },
+    {
+      "decision": "GO",
+      "gates": {
+        "warmSnapshot": true,
+        "warmCommands": true,
+        "cold": true,
+        "bursts": true,
+        "final": true,
+        "deadlineResolution": true
+      }
+    }
+  ],
+  "matchedImpactBursts": [
+    true,
+    true
+  ]
+}

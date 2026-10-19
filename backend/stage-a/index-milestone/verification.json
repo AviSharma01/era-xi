@@ -1,0 +1,57 @@
+{
+  "checks": [
+    {
+      "label": "Focused legality/equivalence",
+      "exitCode": 0,
+      "testCount": 18
+    },
+    {
+      "label": "Root typecheck",
+      "exitCode": 0
+    },
+    {
+      "label": "Full release pipeline",
+      "exitCode": 0,
+      "testCount": 278
+    },
+    {
+      "label": "Stage A typecheck",
+      "exitCode": 0
+    },
+    {
+      "label": "Native runtime correctness",
+      "exitCode": 0,
+      "testCount": 6
+    },
+    {
+      "label": "Unchanged full matrix run 1",
+      "exitCode": 0
+    },
+    {
+      "label": "Unchanged full matrix run 2",
+      "exitCode": 0
+    },
+    {
+      "label": "Two matched Impact burst runs",
+      "exitCode": 0
+    },
+    {
+      "label": "Unchanged separate profile",
+      "exitCode": 0
+    }
+  ],
+  "fixtureCount": 80,
+  "fixtureHashEquality": true,
+  "harnessUnchanged": true,
+  "commands": {
+    "equivalence": "node --test dist/eraDraftFeasibility.test.js dist/eraDraftLegality.test.js dist/eraDraftScopedCatalog.test.js",
+    "release": "npm run verify:release",
+    "typecheck": "npm run typecheck",
+    "stageATypecheck": "node node_modules/typescript/bin/tsc -p backend/stage-a/tsconfig.json",
+    "native": "node --test correctness.test.mjs",
+    "full": "node benchmark.mjs full (twice, sequential)",
+    "matched": "node index-milestone/matched-impact.mjs",
+    "profile": "node benchmark.mjs profile"
+  },
+  "runtime": "Node v22.22.2; pinned Stage A Miniflare/workerd"
+}

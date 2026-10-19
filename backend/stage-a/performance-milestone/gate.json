@@ -1,0 +1,37 @@
+{
+  "baseline": {
+    "decision": "HOLD",
+    "gates": {
+      "warmSnapshot": false,
+      "warmCommands": false,
+      "cold": false,
+      "bursts": false,
+      "final": false,
+      "deadlineResolution": false
+    }
+  },
+  "runs": [
+    {
+      "decision": "HOLD",
+      "gates": {
+        "warmSnapshot": true,
+        "warmCommands": true,
+        "cold": true,
+        "bursts": false,
+        "final": true,
+        "deadlineResolution": true
+      }
+    },
+    {
+      "decision": "HOLD",
+      "gates": {
+        "warmSnapshot": true,
+        "warmCommands": true,
+        "cold": true,
+        "bursts": false,
+        "final": true,
+        "deadlineResolution": true
+      }
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
+import { buildEraDraftCompletionIndex, type EraDraftCompletionIndex } from "./eraDraftCompletionIndex.js";
 import { canonicalJson } from "./eraDraftCanonical.js";
 import {
   deriveEraDraftHistoricalStats,
@@ -171,6 +172,8 @@ export interface EraDraftCatalog {
   getCandidatesForTeamSeason(teamSeasonId: TeamSeasonId): readonly EraDraftPlayerRecord[];
   getPlayerVariantsForEra(eraId: EraId, playerId: string): readonly EraDraftPlayerRecord[];
   getKeeperCapablePlayerIds(eraId: EraId): readonly string[];
+  /** Optional derived index for immutable catalogs. Adapters changing candidates must omit/rebuild it. */
+  getCompletionCostIndex?(eraId: EraId): EraDraftCompletionIndex | undefined;
   getSimulationContent(eraId: EraId): SimulationContentAvailability;
   getEnvironment(eraId: EraId): EraEnvironmentV2 | undefined;
   getOpponentProfiles(eraId: EraId): readonly EraOpponentProfileV2[];
@@ -587,6 +590,7 @@ export function buildEraDraftCatalog(documents: EraDraftCatalogDocuments): EraDr
 class EraDraftCatalogImpl implements EraDraftCatalog {
   readonly fingerprint: string;
   readonly diagnostics: EraDraftCatalogDiagnostics;
+  readonly #completionIndexByEra: ReadonlyMap<EraId, EraDraftCompletionIndex>;
   readonly #eraById: ReadonlyMap<EraId, EraDraftEra>;
   readonly #eraBySeason: ReadonlyMap<string, EraId>;
   readonly #teamSeasonById: ReadonlyMap<TeamSeasonId, EraDraftTeamSeason>;
@@ -630,9 +634,13 @@ class EraDraftCatalogImpl implements EraDraftCatalog {
     this.#simulationContentByEra = input.simulationContentByEra;
     this.#environmentByEra = input.environmentByEra;
     this.#opponentsByEra = input.opponentsByEra;
+    this.#completionIndexByEra = new Map([...input.teamSeasonsByEra].map(([eraId, teams]) => [eraId,
+      buildEraDraftCompletionIndex(teams.flatMap(team => input.candidatesByTeamSeason.get(team.teamSeasonId) ?? [])),
+    ]));
     Object.freeze(this);
   }
 
+  getCompletionCostIndex(eraId: EraId): EraDraftCompletionIndex | undefined { return this.#completionIndexByEra.get(eraId); }
   getEra(eraId: EraId): EraDraftEra | undefined { return this.#eraById.get(eraId); }
   getEraIds(): readonly EraId[] { return ERA_IDS; }
   getEraForSeason(seasonId: string): EraId | undefined { return this.#eraBySeason.get(seasonId); }

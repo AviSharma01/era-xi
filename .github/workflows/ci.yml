@@ -19,3 +19,33 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run verify:release
+  backend-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.0'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            backend/stage-a/package-lock.json
+      - run: npm ci
+      - run: npm ci --prefix backend/stage-a
+      - run: npm run verify:backend
+        env:
+          DRAFT_OFF_PERFORMANCE_MODE: observe
+      - name: Retain sanitized Stage E latency reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-stage-e-latency-${{ github.run_attempt }}
+          path: |
+            backend/stage-e/.generated/results/multiplayer-smoke.json
+            backend/stage-e/.generated/results/production-smoke.json
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 7
+      - run: git diff --exit-code -- backend/stage-a/results backend/stage-a/index-milestone backend/stage-a/performance-milestone backend/stage-b/results backend/stage-c/results backend/stage-d/results backend/stage-e/results data tests/fixtures
+        if: always()

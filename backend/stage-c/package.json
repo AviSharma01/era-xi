@@ -1,0 +1,13 @@
+{
+  "name": "draft-off-stage-c-local-only",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node prepare.mjs",
+    "typecheck": "../../node_modules/.bin/tsc -p tsconfig.json",
+    "test": "node --test --test-concurrency=1 client.test.mjs correctness.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

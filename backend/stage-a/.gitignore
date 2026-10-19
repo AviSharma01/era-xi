@@ -1,0 +1,7 @@
+node_modules/
+.generated/
+.state/
+.wrangler/
+*.log
+results/full.checkpoint-*.json
+results/*.json.tmp
