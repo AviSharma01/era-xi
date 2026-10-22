@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactElement, type RefObject } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactElement, type RefObject } from "react";
 
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
@@ -29,6 +29,8 @@ import {
 import { fetchEraDraftManifest, fetchScopedEraDraftCatalog, eraDraftManifestUrl, type EraDraftWebManifest } from "./eraDraftWebData.js";
 import { ERA_IDS, type EraId } from "./teamEvaluationV2.js";
 import { appRoutePath, matchAppRoute, navigateToAppRoute, type AppRoute } from "./webRoutes.js";
+
+const DraftOffApp = lazy(() => import("./draftOffApp.js"));
 
 const ERA_COPY: Readonly<Record<EraId, { ordinal: string; title: string; years: string; flavor: string }>> = {
   "era-foundation": { ordinal: "01", title: "Foundation", years: "2008–2010", flavor: "The first blueprints. Raw squads, instant icons." },
@@ -82,6 +84,7 @@ export function EraDraftApp(): ReactElement {
   }, [route, session]);
 
   useEffect(() => {
+    if (route === "DRAFT_OFF" || manifest) return;
     let active = true;
     const url = eraDraftManifestUrl(import.meta.env.BASE_URL);
     setManifestLoading(true);
@@ -94,7 +97,7 @@ export function EraDraftApp(): ReactElement {
       if (active) setManifestLoading(false);
     });
     return () => { active = false; };
-  }, [manifestRequest]);
+  }, [manifestRequest, route]);
 
   const navigate = (next: AppRoute): void => navigateToAppRoute(next);
 
@@ -235,6 +238,8 @@ export function EraDraftApp(): ReactElement {
   const loadingEra = pendingOperation?.kind === "START" ? pendingOperation.eraId : null;
   const loadingContinue = pendingOperation?.kind === "CONTINUE";
 
+  if (route === "DRAFT_OFF") return <Suspense fallback={<main className="era-shell gameplay-shell"><p role="status">Loading Draft-Off…</p></main>}><DraftOffApp /></Suspense>;
+
   if (route === "ERA_DRAFT") {
     if (!session) return <LoadingSession />;
     if (session.state.phase === "GAME_COMPLETE") {
@@ -310,6 +315,9 @@ export function Landing(props: {
         </a>
         <div className="landing-header-actions">
         <a className="classic-link" href={appRoutePath("CLASSIC", props.basePath)}>Classic 2016 <span aria-hidden="true">↗</span></a>
+        <a className="classic-link" href={appRoutePath("DRAFT_OFF", props.basePath)} onClick={(event) => {
+          if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); navigateToAppRoute("DRAFT_OFF"); }
+        }}>Draft-Off <span aria-hidden="true">↗</span></a>
         {resumeSummary && <>
           <span id="continue-summary" className="landing-sr-only">Continue {ERA_COPY[resumeSummary.eraId].title}. {saveSummaryLabel(
             resumeSummary.phase, resumeSummary.pickCount,

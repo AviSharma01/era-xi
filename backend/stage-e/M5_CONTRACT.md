@@ -1,6 +1,6 @@
 # M5 client contract — existing `/api/draft-off/v1`
 
-This freezes the existing Stage C/D transport for M5 integration. No M5/UI implementation is included. The executable authorities are `backend/cloudflare/contracts.ts`, `src/draftOffRoomTypes.ts`, `src/eraDraftTypes.ts` (draft views), `backend/client/draftOff.ts` and `backend/client/realtime.ts`. Changes to their transport semantics require a separate review.
+This freezes the existing Stage C/D transport for M5 integration. M5.1 room-entry integration is described at the end of this document; gameplay and detailed results remain deferred. The executable authorities are `backend/cloudflare/contracts.ts`, `src/draftOffRoomTypes.ts`, `src/eraDraftTypes.ts` (draft views), `backend/client/draftOff.ts` and `backend/client/realtime.ts`. Changes to their transport semantics require a separate review.
 
 ## Enrollment and identity
 
@@ -72,3 +72,7 @@ Errors are `{ok:false,error:{code,message},roomRevision?,view?}` with safe fixed
 Lobby retention is creation +24h; completed retention is completion +7d. Expiry ends all credential/retry/recovery guarantees, removes private/auth/receipt/ticket state, and leaves a minimal retired-code marker for 30d from the fixed expiry anchor. Access never extends retention. There is no account, credential rotation, name-based recovery, settings edit, directory/list API, presence, socket command channel, spectator API or post-completion private-results endpoint.
 
 M5 observability must redact/disable Authorization, Enrollment-Key, Sec-WebSocket-Protocol ticket values, ticket and enrollment response bodies, and private payloads in fetch wrappers, errors, traces, analytics and session replay. Production configuration remains a separate [deployment gate](RUNBOOK.md#future-staging-deployment-gates).
+
+## M5.1 client integration note
+
+The original `backend/client/draftOff.ts` and `backend/client/realtime.ts` exports remain compatibility entrypoints. Their M4-compatible implementations now live in `src/draftOffEnrollmentClient.ts` and `src/draftOffRealtimeClient.ts`, with transport-only types shared through `src/draftOffClientTypes.ts`. HTTP routes, envelopes, projections and realtime semantics above are unchanged. The frontend adds a bounded fetch adapter shared by enrollment, reconciliation, tickets and journaled commands, enforcing coordinated Retry-After cooldown without changing the M4 helper defaults. Command replies remain historical receipts: only authenticated reconciliation publishes room/private state. Enrollment offers an optional synchronous UI handoff after verified credential storage and before pending cleanup; it rechecks current persisted ownership before activation, and callers that omit the handoff retain M4 behavior. M5.1 adds no gameplay controls or results contract.

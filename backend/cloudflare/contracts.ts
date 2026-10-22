@@ -1,16 +1,12 @@
+import type { Settings, PublicCommand, SnapshotSuccess } from '../../src/draftOffClientTypes.js';
+export type { Settings, PublicCommand, SnapshotSuccess } from '../../src/draftOffClientTypes.js';
 import { ERA_IDS, type EraId } from '../../src/teamEvaluationV2';
 import type { DraftOffRoomCommandResult, DraftOffRoomView } from '../../src/draftOffRoomTypes';
 
 export class ApiError extends Error {
   constructor(readonly status: number, readonly code: string) { super(code); }
 }
-export type Settings = { draftMinutes: 10 | 15 };
 export type CreateInput = Settings & { displayName: string; eraId: EraId };
-export type PublicCommand =
-  | { commandId: string; expectedRoomRevision: number; command: { type: 'LEAVE' | 'REJOIN' | 'START' } }
-  | { commandId: string; expectedDraftRevision: number; command:
-      { type: 'SPIN' | 'RESPIN' | 'SUBMIT' } |
-      { type: 'LOCK_PLAYER'; playerTeamSeasonId: string; battingPosition: number } };
 export type Operation =
   | { kind: 'CREATE'; roomCode: string; enrollmentKey: string; input: CreateInput }
   | { kind: 'JOIN'; roomCode: string; enrollmentKey: string; input: { displayName: string } }
@@ -18,7 +14,6 @@ export type Operation =
   | { kind: 'SOCKET_TICKET'; roomCode: string; credential: string; origin: string }
   | { kind: 'COMMAND'; roomCode: string; credential: string; input: PublicCommand };
 export type ApiFailure = { ok: false; error: { code: string; message: string }; roomRevision?: number; view?: DraftOffRoomView };
-export type SnapshotSuccess = { ok: true; roomCode: string; participantId: string; settings: Settings; view: DraftOffRoomView; serverTimeMs: number };
 export type SocketTicketSuccess = { ok: true; ticket: string; expiresAtMs: number };
 export type ApiBody = EnrollmentSuccess | SafeEnrollment | SnapshotSuccess | SocketTicketSuccess | Extract<DraftOffRoomCommandResult, { ok: true }> | ApiFailure | null;
 export type ApiReply = { status: number; body: ApiBody; retryAfter?: number };

@@ -1,0 +1,156 @@
+import { createDraftOffRealtimeClient, type RealtimeClientOptions } from "./draftOffRealtimeClient.js";
+import { createDraftOffTransport } from "./draftOffClientTransport.js";
+import type { PublicCommand, SnapshotSuccess } from "./draftOffClientTypes.js";
+import { enrollGuest, type EnrollmentStorage } from "./draftOffEnrollmentClient.js";
+
+export type GuestCredential = { participantId: string; reconnectCredential: string };
+export function readDraftOffCredential(storage: EnrollmentStorage, code: string): GuestCredential | null {
+  const raw = storage.getItem(`draft-off:credential:${code}`);
+  if (raw === null) return null;
+  const value = JSON.parse(raw) as GuestCredential;
+  if (!value || typeof value.participantId !== "string" || !/^p_[a-f0-9]{32}$/.test(value.participantId) ||
+    typeof value.reconnectCredential !== "string" || !/^[A-Za-z0-9_-]{43}$/.test(value.reconnectCredential)) throw new Error("Stored room access is unavailable.");
+  return value;
+}
+
+/** Activate only inside the helper's verified storage handoff, before pending cleanup.
+ * The callback is synchronous: no awaited work may separate this guard from navigation.
+ */
+export async function enrollDraftOffGuest(options: {
+  apiOrigin: string; operation: "CREATE" | "JOIN"; roomCode?: string; input: unknown;
+  storage: EnrollmentStorage; transport?: typeof fetch; isActive: () => boolean;
+  onEnrolled: (roomCode: string, credential: GuestCredential) => void;
+}) {
+  let activated = false;
+  const reply = await enrollGuest(options.apiOrigin, options.operation, options.roomCode, options.input,
+    options.storage, options.transport, (enrollment, ownsAttempt) => {
+      const credential = readDraftOffCredential(options.storage, enrollment.roomCode);
+      if (credential?.participantId !== enrollment.participantId || credential.reconnectCredential !== enrollment.reconnectCredential) return;
+      // Read current persisted ownership AFTER credential readback and immediately
+      // before handing off the active room. No storage mutation or await intervenes.
+      if (!options.isActive() || !ownsAttempt()) return;
+      options.onEnrolled(enrollment.roomCode, credential);
+      activated = true;
+    });
+  return { ...reply, activated };
+}
+
+type Journal = { version: 1; roomCode: string; participantId: string; envelope: PublicCommand };
+export type DraftOffSessionState = {
+  snapshot: SnapshotSuccess | null; pending: boolean; error: string | null; accessUnavailable: boolean;
+};
+
+function validEnvelope(value: PublicCommand): boolean {
+  if (!value || typeof value !== "object" || !/^[A-Za-z0-9_-]{1,80}$/.test(value.commandId) || !value.command) return false;
+  const lifecycle = ["START", "LEAVE", "REJOIN"].includes(value.command.type);
+  const revision = lifecycle ? "expectedRoomRevision" : "expectedDraftRevision";
+  if (Object.keys(value).sort().join() !== ["commandId", "command", revision].sort().join()) return false;
+  const number = (value as unknown as Record<string, unknown>)[revision];
+  if (!Number.isSafeInteger(number) || (number as number) < 0) return false;
+  if (value.command.type === "LOCK_PLAYER") return Object.keys(value.command).sort().join() === "battingPosition,playerTeamSeasonId,type" &&
+    typeof value.command.playerTeamSeasonId === "string" && !!value.command.playerTeamSeasonId && Number.isSafeInteger(value.command.battingPosition) && value.command.battingPosition >= 1 && value.command.battingPosition <= 11;
+  return ["START", "LEAVE", "REJOIN", "SPIN", "RESPIN", "SUBMIT"].includes(value.command.type) && Object.keys(value.command).join() === "type";
+}
+
+/** Owns one guest's intents, never domain state. HTTP GET remains the only snapshot publisher. */
+export function createDraftOffSession(options: {
+  apiOrigin: string; roomCode: string; credential: GuestCredential; journalStorage: EnrollmentStorage;
+  onChange: (state: DraftOffSessionState) => void;
+  transport?: ReturnType<typeof createDraftOffTransport>;
+  realtime?: Pick<RealtimeClientOptions, "createSocket" | "events" | "policy">;
+}) {
+  const transport = options.transport ?? createDraftOffTransport();
+  const slot = `draft-off:command:${options.roomCode}:${options.credential.participantId}`;
+  let state: DraftOffSessionState = { snapshot: null, pending: false, error: null, accessUnavailable: false };
+  let stopped = false, sending = false, started = false, awaitingSnapshot = false, confirmedRevision = -1;
+  let journal: Journal | null = null, stored: string | null = options.journalStorage.getItem(slot);
+  if (stored !== null) {
+    const parsed = JSON.parse(stored) as Journal;
+    if (!parsed || parsed.version !== 1 || parsed.roomCode !== options.roomCode || parsed.participantId !== options.credential.participantId || !validEnvelope(parsed.envelope)) throw new Error("Pending command cannot be safely recovered.");
+    journal = freezeJournal(parsed); state.pending = true;
+  }
+  const publish = (patch: Partial<DraftOffSessionState>) => { if (!stopped) { state = { ...state, ...patch }; options.onChange(state); } };
+  const realtime = createDraftOffRealtimeClient({ ...options.realtime, apiOrigin: options.apiOrigin, roomCode: options.roomCode,
+    reconnectCredential: options.credential.reconnectCredential, transport: transport.fetch,
+    onPublicSnapshot() {},
+    onSnapshot(snapshot) {
+      if (snapshot.participantId !== options.credential.participantId) {
+        publish({ error: "Room access could not be verified.", accessUnavailable: true }); realtime.stop(); transport.stop(); return;
+      }
+      const draft = snapshot.view.myDraft;
+      if (!snapshot.settings || ![10, 15].includes(snapshot.settings.draftMinutes) ||
+        (draft !== undefined && (!draft || !Number.isSafeInteger(draft.revision) || draft.revision < 0 ||
+          !["SETUP", "AWAITING_SPIN", "AWAITING_PICK", "XI_COMPLETE"].includes(draft.phase)))) {
+        publish({ error: "The room response could not be verified. Your saved access is preserved." }); return;
+      }
+      if (snapshot.view.revision < confirmedRevision || (state.snapshot && snapshot.view.revision < state.snapshot.view.revision)) return;
+      awaitingSnapshot = false;
+      publish({ snapshot, pending: journal !== null || sending, error: journal ? state.error : null });
+    },
+    onError(code) {
+      publish(code === "AUTHENTICATION_FAILED" ? { accessUnavailable: true, error: "Room access is unavailable. The room may have expired or this browser may no longer have access." }
+        : { error: "Updates are temporarily unavailable. Your room access and pending actions are preserved." });
+    },
+  });
+  function clearJournal() {
+    if (options.journalStorage.getItem(slot) !== stored) throw new Error("Pending command storage changed in another session.");
+    options.journalStorage.removeItem(slot);
+    if (options.journalStorage.getItem(slot) !== null) throw new Error("Pending command cleanup could not be verified.");
+    journal = null; stored = null;
+  }
+  async function retry() {
+    if (stopped || sending || !journal || state.accessUnavailable) return;
+    sending = true; publish({ pending: true, error: null });
+    const attempt = journal, record = stored;
+    try {
+      if (options.journalStorage.getItem(slot) !== record) throw new Error("Pending command storage changed.");
+      const reply = await transport.fetch(new URL(`/api/draft-off/v1/rooms/${options.roomCode}/commands`, options.apiOrigin), {
+        method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${options.credential.reconnectCredential}` },
+        body: JSON.stringify(attempt.envelope),
+      });
+      const body: unknown = await reply.json();
+      if (stopped || journal !== attempt || options.journalStorage.getItem(slot) !== record) return;
+      if (!body || typeof body !== "object") throw new Error("INVALID_COMMAND_REPLY");
+      const result = body as { ok?: boolean; changed?: boolean; roomRevision?: number; error?: { code?: string } };
+      if (reply.status === 401) {
+        publish({ accessUnavailable: true, error: "Room access is unavailable. Your pending action is preserved." }); realtime.stop(); transport.stop(); return;
+      }
+      const success = reply.status === 200 && result.ok === true && typeof result.changed === "boolean" && Number.isSafeInteger(result.roomRevision) && result.roomRevision! >= 0;
+      const definitive = [400, 403, 404, 409, 413, 415, 422].includes(reply.status) && result.ok === false && typeof result.error?.code === "string";
+      if (!success && !definitive) throw new Error("UNCERTAIN_COMMAND_REPLY");
+      if (Number.isSafeInteger(result.roomRevision) && result.roomRevision! >= 0) confirmedRevision = Math.max(confirmedRevision, result.roomRevision!);
+      clearJournal();
+      awaitingSnapshot = true;
+      realtime.observeCommand(result);
+      await realtime.resync();
+      if (!success) publish({ error: `Action rejected (${result.error!.code}). Refresh the room before trying a corrected action.` });
+    } catch { publish({ error: "The action is not yet confirmed. Retry the saved action; do not create a replacement." }); }
+    finally { sending = false; publish({ pending: journal !== null || awaitingSnapshot || !state.snapshot || state.snapshot.view.revision < confirmedRevision }); }
+  }
+  return {
+    getState: () => state,
+    async start() { if (started || stopped) return; started = true; await realtime.start(); if (!stopped && state.snapshot && journal) await retry(); },
+    async command(command: PublicCommand["command"]) {
+      if (stopped || journal || sending || state.pending || state.accessUnavailable || !state.snapshot) throw new Error("Room is not ready for a new action.");
+      const snapshot = state.snapshot;
+      const copied = JSON.parse(JSON.stringify(command)) as PublicCommand["command"];
+      const lifecycle = ["START", "LEAVE", "REJOIN"].includes(copied.type);
+      if (!lifecycle && !snapshot.view.myDraft) throw new Error("No private draft is available.");
+      const envelope = { commandId: crypto.randomUUID(), ...(lifecycle ? { expectedRoomRevision: snapshot.view.revision } : { expectedDraftRevision: snapshot.view.myDraft!.revision }), command: copied } as PublicCommand;
+      if (!validEnvelope(envelope)) throw new Error("Invalid command intent.");
+      const next = freezeJournal({ version: 1, roomCode: options.roomCode, participantId: options.credential.participantId, envelope });
+      const raw = JSON.stringify(next);
+      if (options.journalStorage.getItem(slot) !== null) throw new Error("A saved action must be recovered first.");
+      options.journalStorage.setItem(slot, raw);
+      if (options.journalStorage.getItem(slot) !== raw) throw new Error("Pending action storage could not be verified.");
+      journal = next; stored = raw;
+      await retry();
+    },
+    retry,
+    resync: () => realtime.resync(),
+    stop() { stopped = true; realtime.stop(); transport.stop(); },
+  };
+}
+function freezeJournal(value: Journal): Journal {
+  Object.freeze(value.envelope.command); Object.freeze(value.envelope); return Object.freeze(value);
+}

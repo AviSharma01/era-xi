@@ -18,7 +18,7 @@ server.stderr.on("data", (chunk) => { diagnostics += chunk; });
 
 try {
   await waitForServer();
-  for (const path of ["/", "/era-draft", "/classic"]) {
+  for (const path of ["/", "/era-draft", "/classic", "/draft-off", "/draft-off/rooms/0123456789AB"]) {
     const response = await fetch(`${origin}${path}`, { redirect: "error" });
     assert(response.ok, `${path} returned ${response.status}`);
     assert(response.headers.get("content-type")?.includes("text/html"), `${path} did not return HTML`);
