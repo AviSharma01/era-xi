@@ -132,9 +132,13 @@ function RoomBootstrap({ apiOrigin, code, credential }: { apiOrigin: string; cod
   const session = useRef<ReturnType<typeof createDraftOffSession> | null>(null);
   useEffect(() => {
     try {
-      const client = createDraftOffSession({ apiOrigin, roomCode: code, credential, journalStorage: sessionStorage, onChange: setState });
+      const client = createDraftOffSession({ apiOrigin, roomCode: code, credential, credentialStorage: localStorage,
+        journalStorage: sessionStorage, onChange: setState });
       session.current = client; void client.start();
-      return () => { client.stop(); session.current = null; };
+      const verify = () => { client.verifyCredential(); };
+      window.addEventListener("storage", verify);
+      window.addEventListener("focus", verify);
+      return () => { window.removeEventListener("storage", verify); window.removeEventListener("focus", verify); client.stop(); session.current = null; };
     } catch { setState(current => ({ ...current, error: "Room recovery storage cannot be safely read. Saved access has been preserved." })); }
   }, [apiOrigin, code, credential]);
   const loadResults = useCallback((participantId: string, signal?: AbortSignal) => session.current

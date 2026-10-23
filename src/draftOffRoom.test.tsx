@@ -50,6 +50,19 @@ test("presentation clock clamps elapsed time and never changes authoritative pha
   } finally { await ui.close(); }
 });
 
+test("access loss removes the private workspace and open player inspection", async () => {
+  const ui = await mount(snapshot(spun()));
+  try {
+    await ui.click('.candidate-card:not([aria-disabled="true"])');
+    assert.ok(ui.document.querySelector('.room-position-option'));
+    await ui.render({ snapshot: null, pending: false, error: 'Saved room access changed. Reload to restore access.', accessUnavailable: true });
+    assert.match(ui.document.body.textContent!, /Room access unavailable/);
+    assert.equal(ui.document.querySelector('.candidate-card'), null);
+    assert.equal(ui.document.querySelector('.room-position-option'), null);
+    assert.equal(ui.document.querySelector('dialog'), null);
+  } finally { await ui.close(); }
+});
+
 test("lobby exposes only supported host/member controls and public roster", () => {
   const html = renderToStaticMarkup(<DraftOffRoomExperience code={code} state={roomState(snapshot())} actions={actions} />);
   assert.match(html, /Start 10-minute draft/); assert.match(html, /Host/); assert.match(html, /Copy invite link/);

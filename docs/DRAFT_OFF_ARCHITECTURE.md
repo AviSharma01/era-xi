@@ -200,3 +200,9 @@ The additive authenticated `GET /api/draft-off/v1/rooms/{code}/results/{particip
 `draftOffResultsClient.ts` validates the exact response recursively. The existing session shares its transport, READ quota/cooldown and credentials, deduplicates selected-entry requests and keeps at most eight results in memory. Active-session plus room/round/participant identity rejects stale replies without a room revision. The room displays the existing final leaderboard, selected submitted XI/player inspector, team evaluation and twenty regulation score summaries with authoritative outcomes. No two-XI comparison, M5.4 recovery changes or local simulation was added.
 
 The reviewed endpoint types and matrix are in [M5 contract](../backend/stage-e/M5_CONTRACT.md#m53-authenticated-results-extension), with verification evidence in [M5.3 handoff](../backend/stage-e/M5_3_HANDOFF.md).
+
+## M5.4 recovery hardening
+
+The existing session invalidates private state when authenticated access is lost or its persisted credential changes. Browser storage/focus events and checks at request/publication boundaries stop the obsolete session without changing another tab's credentials or command journal. An already published final public leaderboard remains visible on authentication failure. A verified receipt allows retry/cleanup recovery after an interrupted journal deletion, preserving the original command envelope and ownership checks.
+
+The realtime helper bounds each immediate reconciliation flight to two GETs, yielding repeated stale responses to its existing fallback timer. Snapshot callbacks that dispose the session cannot rearm timers. These are client reliability changes; backend authority, routes, receipts, canonical persistence, rate limits and simulation remain unchanged. The [M5.4 handoff](../backend/stage-e/M5_4_HANDOFF.md) records the failure matrix, native recovery tests and validation boundaries.

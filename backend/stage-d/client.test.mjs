@@ -12,12 +12,12 @@ const response = body => new Response(JSON.stringify(body), { headers: { 'Conten
 const deferred = () => { let resolve; const promise = new Promise(r => { resolve = r; }); return { promise, resolve }; };
 const flush = async () => { for (let i = 0; i < 15; i++) await new Promise(resolve => setImmediate(resolve)); };
 
-function setup({ policy = {}, read, issue, events } = {}) {
+function setup({ policy = {}, read, issue, events, onSnapshot } = {}) {
   let revision = 0, sequence = 0, reads = 0, tickets = 0, now = 0;
   const timers = new Map(), sockets = [], publicViews = [], privateViews = [], errors = [], requests = [];
   const client = createDraftOffRealtimeClient({ apiOrigin: 'https://api.example', roomCode: code, reconnectCredential: 'C'.repeat(43), policy,
     events, nowMs: () => now,
-    onSnapshot: reply => privateViews.push(reply), onPublicSnapshot: reply => publicViews.push(reply), onError: error => errors.push(error), random: () => 0,
+    onSnapshot: reply => { privateViews.push(reply); onSnapshot?.(reply); }, onPublicSnapshot: reply => publicViews.push(reply), onError: error => errors.push(error), random: () => 0,
     setTimer(callback, delay) { const id = ++sequence; timers.set(id, { callback, delay }); return id; }, clearTimer(id) { timers.delete(id); },
     async transport(url, options) {
       requests.push({ url, options });
@@ -307,4 +307,32 @@ test('valid zero or elapsed Retry-After does not impose the missing-header coold
       await state.client.resync(); assert.equal(state.privateViews.at(-1).view.revision, 3);
     } finally { state.client.stop(); }
   }
+});
+
+test('repeated stale HTTP snapshots cannot create an unbounded immediate reconciliation loop', async () => {
+  // Bound the faulty implementation too: a sentinel failure ends its request storm.
+  let current = false;
+  const state = setup({ read: count => {
+    if (count > 12 && !current) throw new Error('stale response storm');
+    return response(snapshot(current ? 5 : 1));
+  } });
+  try {
+    await state.client.start();
+    state.client.observeCommand({ roomRevision: 5 }); await flush();
+    assert.ok(state.stats().reads <= 3, 'At most two immediate reconciliation reads per flight');
+    assert.deepEqual(state.privateViews.map(reply => reply.view.revision), [1]);
+    current = true;
+    await state.fire(DEFAULT_REALTIME_CLIENT_POLICY.reconciliationIntervalMs);
+    assert.equal(state.privateViews.at(-1).view.revision, 5);
+  } finally { state.client.stop(); }
+});
+
+test('disposal from snapshot validation cannot rearm deadline timers or publish public callbacks', async () => {
+  const drafting = snapshot(1);
+  drafting.view.phase = 'IN_PROGRESS';
+  drafting.view.round = { ...drafting.view.round, phase: 'DRAFTING', startedAtMs: 500, deadlineAtMs: 3000 };
+  const state = setup({ read: () => response(drafting), onSnapshot: () => state.client.stop() });
+  await state.client.start();
+  assert.equal(state.timers.size, 0); assert.equal(state.publicViews.length, 0);
+  assert.equal(state.stats().tickets, 0);
 });

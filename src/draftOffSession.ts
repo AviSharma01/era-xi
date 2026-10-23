@@ -58,6 +58,7 @@ function validEnvelope(value: PublicCommand): boolean {
 /** Owns one guest's intents, never domain state. HTTP GET remains the only snapshot publisher. */
 export function createDraftOffSession(options: {
   apiOrigin: string; roomCode: string; credential: GuestCredential; journalStorage: EnrollmentStorage;
+  credentialStorage?: EnrollmentStorage;
   onChange: (state: DraftOffSessionState) => void;
   transport?: ReturnType<typeof createDraftOffTransport>;
   realtime?: Pick<RealtimeClientOptions, "createSocket" | "events" | "policy">;
@@ -66,6 +67,7 @@ export function createDraftOffSession(options: {
   const slot = `draft-off:command:${options.roomCode}:${options.credential.participantId}`;
   let state: DraftOffSessionState = { snapshot: null, pending: false, error: null, accessUnavailable: false };
   let stopped = false, sending = false, started = false, awaitingSnapshot = false, confirmedRevision = -1;
+  let receiptConfirmed = false;
   const resultsCache = new Map<string, ResultsSuccess>();
   const resultsPending = new Map<string, { promise: Promise<ResultsSuccess>; signal?: AbortSignal }>();
   let journal: Journal | null = null, stored: string | null = options.journalStorage.getItem(slot);
@@ -75,13 +77,36 @@ export function createDraftOffSession(options: {
     journal = freezeJournal(parsed); state.pending = true; state.pendingCommand = journal.envelope.command.type; state.retryAvailable = true;
   }
   const publish = (patch: Partial<DraftOffSessionState>) => { if (!stopped) { state = { ...state, ...patch }; options.onChange(state); } };
+  function stop() {
+    stopped = true; resultsCache.clear(); resultsPending.clear(); realtime.stop(); transport.stop();
+  }
+  function loseAccess(message: string, preserveLeaderboard = false) {
+    let snapshot: SnapshotSuccess | null = null;
+    if (preserveLeaderboard && state.snapshot?.view.phase === "COMPLETE") {
+      const { myDraft: _private, ...view } = state.snapshot.view;
+      snapshot = { ...state.snapshot, view };
+    }
+    publish({ snapshot, accessUnavailable: true, error: message, retryAvailable: false });
+    stop();
+  }
+  function verifyCredential(): boolean {
+    if (stopped || state.accessUnavailable) return false;
+    if (!options.credentialStorage) return true;
+    try {
+      const current = readDraftOffCredential(options.credentialStorage, options.roomCode);
+      if (current?.participantId === options.credential.participantId && current.reconnectCredential === options.credential.reconnectCredential) return true;
+    } catch { /* Storage loss cannot authorize continued private access. */ }
+    loseAccess("Saved room access changed or cannot be read. Reload after restoring browser storage. Pending actions are preserved.");
+    return false;
+  }
   const realtime = createDraftOffRealtimeClient({ ...options.realtime, apiOrigin: options.apiOrigin, roomCode: options.roomCode,
-    reconnectCredential: options.credential.reconnectCredential, transport: transport.fetch,
+    reconnectCredential: options.credential.reconnectCredential,
+    transport: (input, init) => verifyCredential() ? transport.fetch(input, init) : Promise.reject(new Error("AUTHENTICATION_FAILED")),
     onPublicSnapshot() {},
     onSnapshot(snapshot) {
+      if (!verifyCredential()) return;
       if (snapshot.participantId !== options.credential.participantId) {
-        resultsCache.clear();
-        publish({ error: "Room access could not be verified.", accessUnavailable: true }); realtime.stop(); transport.stop(); return;
+        loseAccess("Room access could not be verified."); return;
       }
       const draft = snapshot.view.myDraft;
       if (!snapshot.settings || ![10, 15].includes(snapshot.settings.draftMinutes) ||
@@ -94,22 +119,25 @@ export function createDraftOffSession(options: {
       publish({ snapshot, pending: journal !== null || sending, error: journal ? state.error : null });
     },
     onError(code) {
-      if (code === "AUTHENTICATION_FAILED") resultsCache.clear();
-      publish(code === "AUTHENTICATION_FAILED" ? { accessUnavailable: true, error: "Room access is unavailable. The room may have expired or this browser may no longer have access." }
-        : { error: code === "REALTIME_UNAVAILABLE" || code === "INVALID_REALTIME_MESSAGE"
+      if (code === "AUTHENTICATION_FAILED") {
+        loseAccess("Room access is unavailable. The room may have expired or this browser may no longer have access.", true); return;
+      }
+      if (!verifyCredential()) return;
+      publish({ error: code === "REALTIME_UNAVAILABLE" || code === "INVALID_REALTIME_MESSAGE"
           ? "Live updates are interrupted. Room refresh continues over HTTP."
           : "The room could not refresh. Saved access and pending actions are preserved." });
     },
   });
   function clearJournal() {
-    if (options.journalStorage.getItem(slot) !== stored) throw new Error("Pending command storage changed in another session.");
-    options.journalStorage.removeItem(slot);
+    const current = options.journalStorage.getItem(slot);
+    if (current !== stored && !(receiptConfirmed && current === null)) throw new Error("Pending command storage changed in another session.");
+    if (current !== null) options.journalStorage.removeItem(slot);
     if (options.journalStorage.getItem(slot) !== null) throw new Error("Pending command cleanup could not be verified.");
-    journal = null; stored = null;
+    journal = null; stored = null; receiptConfirmed = false;
   }
   function loadResults(targetParticipantId: string, signal?: AbortSignal): Promise<ResultsSuccess> {
     const snapshot = state.snapshot;
-    if (stopped || state.accessUnavailable || !snapshot) return Promise.reject(new ResultsClientError("AUTHENTICATION_FAILED"));
+    if (!verifyCredential() || !snapshot) return Promise.reject(new ResultsClientError("AUTHENTICATION_FAILED"));
     const { view } = snapshot;
     if (view.phase !== "COMPLETE" || view.round.phase !== "RESOLVED" || !view.resolution) return Promise.reject(new ResultsClientError("RESULTS_NOT_READY"));
     const me = view.participants.find(row => row.participantId === options.credential.participantId);
@@ -128,7 +156,7 @@ export function createDraftOffSession(options: {
         const result = await fetchDraftOffResults({ apiOrigin: options.apiOrigin, credential: options.credential.reconnectCredential,
           identity, transport: transport.fetch, signal });
         // Session ownership and round identity are sufficient: resolved campaigns never mutate.
-        if (stopped || state.accessUnavailable || signal?.aborted || state.snapshot?.view.round.roundId !== identity.roundId) throw new ResultsClientError("RESULTS_REQUEST_ABORTED");
+        if (!verifyCredential() || signal?.aborted || state.snapshot?.view.round.roundId !== identity.roundId) throw new ResultsClientError("RESULTS_REQUEST_ABORTED");
         if (result.displayName !== row.displayName || (["played", "won", "lost", "points", "netRunRate"] as const)
           .some(key => result.campaign.aggregate[key] !== row[key])) throw new ResultsClientError("INVALID_RESULTS_RESPONSE");
         if (resultsCache.size >= 8) resultsCache.delete(resultsCache.keys().next().value!);
@@ -136,9 +164,7 @@ export function createDraftOffSession(options: {
         return result;
       } catch (error) {
         if (!stopped && error instanceof ResultsClientError && error.code === "AUTHENTICATION_FAILED") {
-          resultsCache.clear();
-          publish({ accessUnavailable: true, error: "Room access is unavailable. Saved access is preserved." });
-          realtime.stop(); transport.stop();
+          loseAccess("Room access is unavailable. Saved access is preserved.", true);
         } else if (!stopped && error instanceof ResultsClientError && error.code === "RESULTS_NOT_READY") {
           void realtime.resync();
         }
@@ -149,26 +175,31 @@ export function createDraftOffSession(options: {
     return promise;
   }
   async function retry() {
-    if (stopped || sending || !journal || state.accessUnavailable) return;
+    if (!verifyCredential() || sending || !journal) return;
     sending = true; publish({ pending: true, error: null, pendingCommand: journal.envelope.command.type, retryAvailable: false });
     const attempt = journal, record = stored;
     try {
-      if (options.journalStorage.getItem(slot) !== record) throw new Error("Pending command storage changed.");
+      const current = options.journalStorage.getItem(slot);
+      if (current !== record && !(receiptConfirmed && current === null)) throw new Error("Pending command storage changed.");
       const reply = await transport.fetch(new URL(`/api/draft-off/v1/rooms/${options.roomCode}/commands`, options.apiOrigin), {
         method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${options.credential.reconnectCredential}` },
         body: JSON.stringify(attempt.envelope),
       });
       const body: unknown = await reply.json();
-      if (stopped || journal !== attempt || options.journalStorage.getItem(slot) !== record) return;
+      if (!verifyCredential() || journal !== attempt) return;
+      const persisted = options.journalStorage.getItem(slot);
+      if (persisted !== record && !(receiptConfirmed && persisted === null)) throw new Error("Pending command storage changed.");
       if (!body || typeof body !== "object") throw new Error("INVALID_COMMAND_REPLY");
       const result = body as { ok?: boolean; changed?: boolean; roomRevision?: number; error?: { code?: string } };
       if (reply.status === 401) {
-        resultsCache.clear();
-        publish({ accessUnavailable: true, error: "Room access is unavailable. Your pending action is preserved." }); realtime.stop(); transport.stop(); return;
+        loseAccess("Room access is unavailable. Your pending action is preserved.", true); return;
       }
       const success = reply.status === 200 && result.ok === true && typeof result.changed === "boolean" && Number.isSafeInteger(result.roomRevision) && result.roomRevision! >= 0;
       const definitive = [400, 403, 404, 409, 413, 415, 422].includes(reply.status) && result.ok === false && typeof result.error?.code === "string";
       if (!success && !definitive) throw new Error("UNCERTAIN_COMMAND_REPLY");
+      // A verified receipt permits idempotent cleanup if a prior remove succeeded
+      // before storage threw. A different saved record is never ours to remove.
+      receiptConfirmed = true;
       if (Number.isSafeInteger(result.roomRevision) && result.roomRevision! >= 0) confirmedRevision = Math.max(confirmedRevision, result.roomRevision!);
       clearJournal();
       awaitingSnapshot = true;
@@ -181,9 +212,9 @@ export function createDraftOffSession(options: {
   }
   return {
     getState: () => state,
-    async start() { if (started || stopped) return; started = true; await realtime.start(); if (!stopped && state.snapshot && journal) await retry(); },
+    async start() { if (started || !verifyCredential()) return; started = true; await realtime.start(); if (!stopped && state.snapshot && journal) await retry(); },
     async command(command: PublicCommand["command"]) {
-      if (stopped || journal || sending || state.pending || state.accessUnavailable || !state.snapshot) throw new Error("Room is not ready for a new action.");
+      if (!verifyCredential() || journal || sending || state.pending || !state.snapshot) throw new Error("Room is not ready for a new action.");
       const snapshot = state.snapshot;
       const copied = JSON.parse(JSON.stringify(command)) as PublicCommand["command"];
       const lifecycle = ["START", "LEAVE", "REJOIN"].includes(copied.type);
@@ -202,8 +233,9 @@ export function createDraftOffSession(options: {
     loadResults,
     resultsRetryAtMs: () => transport.cooldownUntil(),
     subscribeResultsCooldown: transport.subscribeCooldown,
-    resync: () => realtime.resync(),
-    stop() { stopped = true; resultsCache.clear(); resultsPending.clear(); realtime.stop(); transport.stop(); },
+    verifyCredential,
+    resync: () => verifyCredential() ? realtime.resync() : Promise.resolve(),
+    stop,
   };
 }
 function freezeJournal(value: Journal): Journal {

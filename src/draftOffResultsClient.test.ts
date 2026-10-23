@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { parseDraftOffResults, fetchDraftOffResults } from "./draftOffResultsClient.js";
 import { createDraftOffSession } from "./draftOffSession.js";
+import type { EnrollmentStorage } from "./draftOffEnrollmentClient.js";
 import { createDraftOffTransport } from "./draftOffClientTransport.js";
 import { projectDraftOffRoom } from "./draftOffRoomProjection.js";
 import type { SnapshotSuccess } from "./draftOffClientTypes.js";
@@ -11,7 +12,7 @@ const state = resultsResolved(), body = resultsBody(state);
 const plain = () => JSON.parse(JSON.stringify(body));
 const noopEvents = { addEventListener() {}, removeEventListener() {} };
 const storage = () => { const rows = new Map<string,string>(); return { getItem: (key: string) => rows.get(key) ?? null, setItem: (key: string, value: string) => { rows.set(key,value); }, removeItem: (key: string) => { rows.delete(key); } }; };
-function setup(result: (url: string, init?: RequestInit) => Promise<Response>, transportOptions: { now?: () => number } = {}) {
+function setup(result: (url: string, init?: RequestInit) => Promise<Response>, transportOptions: { now?: () => number } = {}, credentialStorage?: EnrollmentStorage) {
   let snapshot: SnapshotSuccess = { ok: true, roomCode, participantId: hostId, settings: { draftMinutes: 10 }, serverTimeMs: 100,
     view: projectDraftOffRoom(catalog, state, hostId) };
   let calls = 0;
@@ -20,7 +21,7 @@ function setup(result: (url: string, init?: RequestInit) => Promise<Response>, t
     return Response.json(String(url).endsWith("/socket-tickets") ? { ok: true, ticket: "T".repeat(43), expiresAtMs: Date.now()+30000 } : snapshot);
   } });
   const client = createDraftOffSession({ apiOrigin: "https://api.test", roomCode, credential: { participantId: hostId, reconnectCredential: "A".repeat(43) },
-    journalStorage: storage(), transport, onChange() {}, realtime: { events: noopEvents, createSocket: () => ({ protocol: "draft-off.v1", close() {} }) as unknown as WebSocket } });
+    credentialStorage, journalStorage: storage(), transport, onChange() {}, realtime: { events: noopEvents, createSocket: () => ({ protocol: "draft-off.v1", close() {} }) as unknown as WebSocket } });
   return { client, calls: () => calls, setSnapshot: (value: SnapshotSuccess) => { snapshot=value; }, snapshot: () => snapshot };
 }
 
@@ -116,6 +117,10 @@ test("results 401 removes access, 409 resyncs, and 429 shares cooldown with room
     const fixture=setup(async () => Response.json({ ok:false,error:{code,message:"Request rejected."} },{status}));
     try { await fixture.client.start(); await assert.rejects(fixture.client.loadResults(hostId), new RegExp(code));
       assert.equal(fixture.client.getState().accessUnavailable,status===401);
+      if (status===401) {
+        assert.equal(fixture.client.getState().snapshot?.view.myDraft,undefined);
+        assert.deepEqual(fixture.client.getState().snapshot?.view.resolution,fixture.snapshot().view.resolution);
+      }
     } finally { fixture.client.stop(); }
   }
   let now=1000;
@@ -123,6 +128,29 @@ test("results 401 removes access, 409 resyncs, and 429 shares cooldown with room
   try { await fixture.client.start(); await assert.rejects(fixture.client.loadResults(hostId),/RATE_LIMITED/);
     assert.equal(fixture.client.resultsRetryAtMs(),3000); await assert.rejects(fixture.client.loadResults(memberId),/COOLDOWN/);
     assert.equal(fixture.calls(),1); now=3000; await assert.rejects(fixture.client.loadResults(hostId),/RATE_LIMITED/); assert.equal(fixture.calls(),2);
+  } finally { fixture.client.stop(); }
+});
+
+test("credential replacement discards cached and in-flight results without touching replacement access", async () => {
+  const saved = storage(), slot = `draft-off:credential:${roomCode}`;
+  saved.setItem(slot, JSON.stringify({ participantId: hostId, reconnectCredential: 'A'.repeat(43) }));
+  let release!: (reply: Response) => void, signal: AbortSignal | undefined;
+  const fixture = setup(async (url, init) => {
+    if (url.endsWith(hostId)) return Response.json(body);
+    signal = init?.signal ?? undefined;
+    return new Promise(resolve => { release = resolve; });
+  }, {}, saved);
+  try {
+    await fixture.client.start(); await fixture.client.loadResults(hostId);
+    const pending = fixture.client.loadResults(memberId), rejected = assert.rejects(pending, /ABORTED/);
+    const replacement = JSON.stringify({ participantId: memberId, reconnectCredential: 'B'.repeat(43) });
+    saved.setItem(slot, replacement);
+    assert.equal(fixture.client.verifyCredential(), false); // Same check used by the browser storage event.
+    assert.equal(signal!.aborted, true);
+    release(Response.json(resultsBody(state, hostId, memberId))); await rejected;
+    assert.equal(fixture.client.getState().snapshot, null);
+    await assert.rejects(fixture.client.loadResults(hostId), /AUTHENTICATION_FAILED/);
+    assert.equal(fixture.calls(), 2); assert.equal(saved.getItem(slot), replacement);
   } finally { fixture.client.stop(); }
 });
 

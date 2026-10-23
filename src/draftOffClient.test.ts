@@ -19,10 +19,10 @@ function snapshot(revision = 2, draftRevision = 1): SnapshotSuccess {
 const silentSocket = () => ({ protocol: "draft-off.v1", close() {} }) as unknown as WebSocket;
 const response = (body: unknown, status = 200) => Response.json(body, { status });
 const flush = async () => { for (let i = 0; i < 5; i++) await new Promise(resolve => setImmediate(resolve)); };
-function setup(send: typeof fetch, journalStorage = storage()) {
+function setup(send: typeof fetch, journalStorage = storage(), credentialStorage?: EnrollmentStorage, timeoutMs?: number) {
   let latest: ReturnType<ReturnType<typeof createDraftOffSession>["getState"]> | undefined;
   const client = createDraftOffSession({ apiOrigin: "https://api.test", roomCode: code, credential, journalStorage,
-    transport: createDraftOffTransport({ fetch: send }), realtime: { createSocket: silentSocket, events: { addEventListener() {}, removeEventListener() {} } },
+    credentialStorage, transport: createDraftOffTransport({ fetch: send, timeoutMs }), realtime: { createSocket: silentSocket, events: { addEventListener() {}, removeEventListener() {} } },
     onChange: state => { latest = state; } });
   return { client, journalStorage, latest: () => latest };
 }
@@ -252,4 +252,93 @@ test("response loss retains exact enrollment recovery and disposed UI cannot act
   assert.equal(requests[0].body, requests[1].body); assert.equal(saved.getItem(slot), null);
   active = false;
   assert.equal((await enrollDraftOffGuest(options)).activated, false); assert.equal(activations, 1);
+});
+
+test("authentication loss clears the private snapshot and stops further old-session requests", async () => {
+  let expired = false, reads = 0;
+  const fixture = setup(async (url) => {
+    reads++;
+    return expired ? response({ ok: false, error: { code: "AUTHENTICATION_FAILED" } }, 401)
+      : String(url).endsWith('/socket-tickets') ? response({ ok: true, ticket: 'T'.repeat(43), expiresAtMs: 30000 }) : response(snapshot());
+  });
+  try {
+    await fixture.client.start(); assert.ok(fixture.latest()!.snapshot!.view.myDraft);
+    expired = true; await fixture.client.resync();
+    assert.equal(fixture.latest()!.accessUnavailable, true);
+    assert.equal(fixture.latest()!.snapshot, null);
+    const before = reads; await fixture.client.resync(); assert.equal(reads, before);
+  } finally { fixture.client.stop(); }
+});
+
+for (const change of ['removed', 'replaced', 'unreadable'] as const) {
+  test(`credential ${change} invalidates private session state before another request`, async () => {
+    const saved = storage(), journal = storage(), slot = `draft-off:credential:${code}`;
+    saved.setItem(slot, JSON.stringify(credential));
+    let requests = 0;
+    const fixture = setup(server(async () => response({ ok: true, changed: true, roomRevision: 3 }), () => {
+      requests++; return snapshot();
+    }), journal, saved);
+    try {
+      await fixture.client.start();
+      if (change === 'removed') saved.removeItem(slot);
+      if (change === 'replaced') saved.setItem(slot, JSON.stringify({ ...credential, reconnectCredential: 'D'.repeat(43) }));
+      if (change === 'unreadable') saved.getItem = () => { throw new Error('storage unavailable'); };
+      const before = requests;
+      await fixture.client.resync();
+      assert.equal(fixture.latest()!.accessUnavailable, true);
+      assert.equal(fixture.latest()!.snapshot, null);
+      assert.equal(requests, before);
+      await assert.rejects(fixture.client.command({ type: 'SPIN' }), /not ready/);
+      assert.equal(journal.rows.size, 0);
+    } finally { fixture.client.stop(); }
+  });
+}
+
+test("cleanup interrupted after journal deletion can recover the confirmed exact command without a reload", async () => {
+  const saved = storage(), remove = saved.removeItem, sent: string[] = [];
+  let fail = true;
+  saved.removeItem = key => { remove(key); if (fail) { fail = false; throw new Error('storage interrupted after deletion'); } };
+  const fixture = setup(server(async init => {
+    sent.push(init.body as string); return response({ ok: true, changed: true, roomRevision: 3 });
+  }, () => snapshot(3)), saved);
+  try {
+    await fixture.client.start(); await fixture.client.command({ type: 'SPIN' });
+    assert.equal(fixture.latest()!.pending, true); assert.equal(saved.rows.size, 0);
+    await fixture.client.retry();
+    assert.equal(fixture.latest()!.pending, false);
+    assert.equal(sent.length, 2); assert.equal(sent[0], sent[1]);
+  } finally { fixture.client.stop(); }
+});
+
+test("503 and stalled committed bodies preserve the same envelope until a verified receipt and fresh GET", async () => {
+  const sent: string[] = []; let cancelled = false;
+  const fixture = setup(server(async init => {
+    sent.push(init.body as string);
+    if (sent.length === 1) return response({ ok: false, error: { code: 'TEMPORARY_UNAVAILABLE' } }, 503);
+    if (sent.length === 2) return new Response(new ReadableStream({ cancel() { cancelled = true; } }));
+    return response({ ok: true, changed: true, roomRevision: 3, view: { privateReceiptSentinel: true } });
+  }, () => snapshot(3)), storage(), undefined, 20);
+  try {
+    await fixture.client.start(); await fixture.client.command({ type: 'SPIN' });
+    const journal = [...fixture.journalStorage.rows.values()][0];
+    assert.equal(fixture.latest()!.retryAvailable, true);
+    await fixture.client.retry();
+    assert.equal(cancelled, true); assert.equal([...fixture.journalStorage.rows.values()][0], journal);
+    await fixture.client.retry(); assert.equal(fixture.latest()!.pending, false);
+    assert.equal(sent.length, 3); assert.ok(sent.every(body => body === sent[0]));
+    assert.doesNotMatch(JSON.stringify(fixture.latest()), /privateReceiptSentinel/);
+  } finally { fixture.client.stop(); }
+});
+
+test("cleanup recovery never deletes a different session's journal", async () => {
+  const saved = storage(); let commands = 0;
+  const fixture = setup(server(async () => { commands++; return response({ ok: true, changed: true, roomRevision: 3 }); }), saved);
+  const replacement = 'newer-session-record';
+  saved.removeItem = key => { saved.setItem(key, replacement); throw new Error('another session replaced storage'); };
+  try {
+    await fixture.client.start(); await fixture.client.command({ type: 'SPIN' });
+    await fixture.client.retry();
+    assert.equal(commands, 1); assert.deepEqual([...saved.rows.values()], [replacement]);
+    assert.equal(fixture.latest()!.pending, true);
+  } finally { fixture.client.stop(); }
 });

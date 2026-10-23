@@ -175,6 +175,7 @@ export function createDraftOffRealtimeClient(options: RealtimeClientOptions) {
     observeRevision(message.view.revision);
     if (message.view.revision >= knownRevision && message.view.revision > publicRevision) {
       publicRevision = message.view.revision; options.onPublicSnapshot(message);
+      if (!running) return;
       const round = message.view.round;
       if (round.phase !== 'DRAFTING') { clear(deadlineTimer); deadlineTimer = undefined; }
       else if (round.deadlineAtMs !== undefined) {
@@ -192,7 +193,9 @@ export function createDraftOffRealtimeClient(options: RealtimeClientOptions) {
     if (sync) return sync;
     sync = (async () => {
       try {
+        let reads = 0;
         do {
+          reads++;
           requested = false;
           const reply = await request('') as SnapshotSuccess;
           if (!running) return;
@@ -205,11 +208,14 @@ export function createDraftOffRealtimeClient(options: RealtimeClientOptions) {
             // A pending GET cannot publish below a newer command or socket revision.
             if (privateRevision >= knownRevision) options.onSnapshot(reply);
           }
+          if (!running) return; // A consumer may dispose after detecting lost session ownership.
           applyPublic(publicMessage);
           if (reply.view.revision >= knownRevision) terminal = reply.view.phase === 'COMPLETE';
           if (terminal) { clear(pollTimer); clear(retryTimer); }
           if (privateRevision < knownRevision) requested = true;
-        } while (running && requested);
+          // One immediate follow-up closes in-flight races. Repeated stale replies
+          // must yield to the existing fallback timer instead of flooding HTTP.
+        } while (running && requested && reads < 2);
       } catch { if (running) report('HTTP_RESYNC_FAILED'); }
       finally { sync = undefined; }
     })();

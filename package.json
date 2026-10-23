@@ -24,7 +24,7 @@
     "verify:backend": "node backend/verify.mjs",
     "verify:release": "npm test && npm run build:web && npm run smoke:web-build && npm run validate:era-draft:smoke",
     "dev:draft-off": "node backend/dev.mjs",
-    "test:draft-off-client:local": "node --test --test-concurrency=1 backend/m5-client.test.mjs backend/m5-gameplay.test.mjs backend/m5-results.test.mjs"
+    "test:draft-off-client:local": "node --test --test-concurrency=1 backend/m5-client.test.mjs backend/m5-gameplay.test.mjs backend/m5-results.test.mjs backend/m5-recovery.test.mjs"
   },
   "devDependencies": {
     "@types/jsdom": "^21.1.7",
