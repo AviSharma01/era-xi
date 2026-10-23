@@ -10,6 +10,7 @@ import type { CompanionCommit } from './repository';
 import { restoreDraftOffCompetition } from '../../src/draftOffCompetitionPersistence';
 import { DraftOffCompetitionDataError, DraftOffCompetitionInvariantError } from '../../src/draftOffCompetitionTypes';
 import { projectDraftOffRoom } from '../../src/draftOffRoomProjection';
+import { DRAFT_OFF_RESULTS_MAX_BYTES, DraftOffResultsError, type ResultsSuccess } from '../../src/draftOffResultsTypes';
 import { ApiError, commandReply, errorReply, type Operation, type ApiReply, type Settings, type SafeEnrollment } from './contracts';
 import { digest, enrollmentDigest, equalDigest, participantId, randomSecret, recoveryContext, recover, roomCode, seal, verifier,
   type AuthRecord, type EnrollmentRecord } from './enrollment';
@@ -107,6 +108,8 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
       finally { this.outstanding--; }
     } catch (error) {
       if (error instanceof DraftOffCompetitionDataError || error instanceof DraftOffCompetitionInvariantError) this.closeSockets(1011, 'Room temporarily unavailable');
+      if (error instanceof DraftOffResultsError) return errorReply(new ApiError(
+        error.code === 'AUTHENTICATION_FAILED' ? 401 : error.code === 'RESULTS_NOT_READY' ? 409 : 404, error.code));
       return errorReply(error);
     }
   }
@@ -127,15 +130,17 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
     const matches = equalDigest(hash, auth?.verifier ?? '0'.repeat(64));
     if (!matches || auth?.version !== 1 || auth.roomCode !== operation.roomCode) throw new ApiError(401, 'AUTHENTICATION_FAILED');
     const policy = limits(this.env);
+    const isRead = operation.kind === 'READ' || operation.kind === 'RESULTS';
+    const bucket = `${isRead ? 'READ' : operation.kind}:${auth.participantId}`;
     // Only verified credentials can probe fixed participant buckets. This read-only
     // preflight avoids replay work on already exhausted budgets; it grants no access.
     // Actual consumption and ticket issuance retain their existing transactions.
     if (operation.kind === 'SOCKET_TICKET') {
       await checkBucket(this.ctx.storage, 'socket-tickets:room', this.nowMs(), policy.roomTicketsPerMinute, policy.roomTicketBurst);
       await checkBucket(this.ctx.storage, `socket-tickets:${auth.participantId}`, this.nowMs(), policy.ticketsPerMinute, policy.ticketBurst);
-    } else await checkBucket(this.ctx.storage, `${operation.kind}:${auth.participantId}`, this.nowMs(),
-      operation.kind === 'READ' ? policy.readsPerMinute : policy.commandsPerMinute,
-      operation.kind === 'READ' ? policy.readBurst : policy.commandBurst);
+    } else await checkBucket(this.ctx.storage, bucket, this.nowMs(),
+      isRead ? policy.readsPerMinute : policy.commandsPerMinute,
+      isRead ? policy.readBurst : policy.commandBurst);
     const service = await this.liveRoom();
     const actor = { kind: 'PARTICIPANT' as const, participantId: auth.participantId };
     if (operation.kind === 'SOCKET_TICKET') {
@@ -145,9 +150,15 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
       return { status: 201, body: await issueSocketTicket(this.ctx.storage, operation.roomCode, auth.participantId,
         operation.origin, this.nowMs(), policy, () => this.beforeCommit()) };
     }
-    await consume(this.ctx.storage, `${operation.kind}:${auth.participantId}`, this.nowMs(),
-      operation.kind === 'READ' ? policy.readsPerMinute : policy.commandsPerMinute,
-      operation.kind === 'READ' ? policy.readBurst : policy.commandBurst);
+    await consume(this.ctx.storage, bucket, this.nowMs(),
+      isRead ? policy.readsPerMinute : policy.commandsPerMinute,
+      isRead ? policy.readBurst : policy.commandBurst);
+    if (operation.kind === 'RESULTS') {
+      const body: ResultsSuccess = { ok: true, version: 1, roomCode: operation.roomCode,
+        ...await service.readResults(actor, operation.roomCode, operation.targetParticipantId) };
+      if (new TextEncoder().encode(JSON.stringify(body)).length > DRAFT_OFF_RESULTS_MAX_BYTES) throw new ApiError(503, 'TEMPORARY_UNAVAILABLE');
+      return { status: 200, body };
+    }
     const settings = await this.ctx.storage.get<Settings>('api:settings');
     if (!settings || ![10, 15].includes(settings.draftMinutes)) throw new ApiError(503, 'TEMPORARY_UNAVAILABLE');
     if (operation.kind === 'READ') return { status: 200, body: { ok: true, roomCode: operation.roomCode,

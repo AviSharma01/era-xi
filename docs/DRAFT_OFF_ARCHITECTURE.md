@@ -1,6 +1,6 @@
 # Draft-Off Architecture
 
-Implemented through M1/M1.1 (competitive simulation), M2 (competition domain), M3 (provider-independent authoritative room service), and M4 Stages A–E (local backend verification and M5 handoff). Stage D supplies advisory realtime through hibernating WebSockets, on Stage C's guest HTTP authentication and Stage B's durable persistence/alarm lifecycle. Stage A and its indexed feasibility optimizations remain the runtime baseline. M5.1 now supplies room entry, authenticated bootstrap and journaled client-command infrastructure; gameplay UI, detailed results and deployment remain deferred. See the [Stage E report](../backend/stage-e/results/report.md), [M5 client contract](../backend/stage-e/M5_CONTRACT.md), and [local/future staging runbook](../backend/stage-e/RUNBOOK.md). The gameplay decision record is [DRAFT_OFF_GAMEPLAY_VALIDATION.md](DRAFT_OFF_GAMEPLAY_VALIDATION.md).
+Implemented through M1/M1.1 (competitive simulation), M2 (competition domain), M3 (provider-independent authoritative room service), and M4 Stages A–E (local backend verification and M5 handoff). Stage D supplies advisory realtime through hibernating WebSockets, on Stage C's guest HTTP authentication and Stage B's durable persistence/alarm lifecycle. Stage A and its indexed feasibility optimizations remain the runtime baseline. M5.1 supplies room entry, authenticated bootstrap and journaled commands; M5.2 supplies playable timed drafting and the leaderboard; M5.3 adds selected-entry authenticated results browsing. Deployment remains deferred. See the [Stage E report](../backend/stage-e/results/report.md), [M5 client contract](../backend/stage-e/M5_CONTRACT.md), and [local/future staging runbook](../backend/stage-e/RUNBOOK.md). The gameplay decision record is [DRAFT_OFF_GAMEPLAY_VALIDATION.md](DRAFT_OFF_GAMEPLAY_VALIDATION.md).
 
 ## Frozen simulation contract
 
@@ -103,7 +103,7 @@ Call `dispose()` to release an old service instance's timers before replacing it
 
 Registered participants can read public membership/round status, timing, global revision, and only their own draft through `projectEraDraftPublicState`. Host privileges do not grant access to other private drafts. Shared resolution exposes contest status and a leaderboard summary without submission/campaign hashes or simulation internals. Canonical competition state, accepted history, save data, seeds, other entrants' picks/candidates, frozen submissions, XIs, evaluations, and detailed campaigns never leave participant-facing service methods.
 
-Richer post-resolution XI, evaluation, and campaign exposure remains part of the Draft-Off vision and is deferred to a later product/UI milestone. M3's conservative projection is not a removal of that direction.
+M3's conservative room projection remains unchanged. M5.3 below adds post-resolution XI, evaluation and campaign exposure through a separate authenticated endpoint restricted to locked-round entrants.
 
 M3 remains provider-independent. Its Cloudflare persistence and clock adapters are implemented in M4 Stage B below; public HTTP routes, WebSockets, real authentication, UI, and deployment remain deferred.
 
@@ -190,3 +190,13 @@ This structure accommodates a future Last XI Standing sequence such as Qualifyin
 ## Pre-merge transport remediation
 
 M4's transport helpers now bound HTTP fetch/body consumption and share Retry-After cooldowns across reconciliation and reconnection. Definitive enrollment rejection permits corrected input without sacrificing uncertain-outcome recovery. Exhausted authenticated durable buckets reject before canonical recovery through a read-only check, and unsupported socket frames bypass the gameplay queue to close immediately. These safeguards add no game authority or save-format change. The [runbook](../backend/stage-e/RUNBOOK.md) specifies precedence and remaining deployment limits. A separate pinned backend CI lane runs A–E correctness, retaining the independent V1 release gate and immutable historical evidence.
+
+## M5.3 selected-entry results
+
+The additive authenticated `GET /api/draft-off/v1/rooms/{code}/results/{participantId}` projects one eligible frozen submission and its authoritative twenty-match campaign after canonical resolution. Every locked-round entrant may inspect eligible entries, including entrants whose own XI was incomplete. Members LEFT at START receive no detailed access. Existing room views, socket frames and receipts are unchanged; there is no spectator endpoint or bulk results bundle.
+
+`draftOffResultsProjection.ts` consumes restored state and the verified room catalog; it never invokes evaluation or simulation. A small shared whitelist in `eraDraftProjection.ts` maps an already authoritative evaluation to existing reveal/player/strength summaries. Solo reveal output remains identical. Canonical restoration continues to reconstruct campaigns by replay and check the full state hash; the save format, durable lifecycle, retention and version compatibility are unchanged.
+
+`draftOffResultsClient.ts` validates the exact response recursively. The existing session shares its transport, READ quota/cooldown and credentials, deduplicates selected-entry requests and keeps at most eight results in memory. Active-session plus room/round/participant identity rejects stale replies without a room revision. The room displays the existing final leaderboard, selected submitted XI/player inspector, team evaluation and twenty regulation score summaries with authoritative outcomes. No two-XI comparison, M5.4 recovery changes or local simulation was added.
+
+The reviewed endpoint types and matrix are in [M5 contract](../backend/stage-e/M5_CONTRACT.md#m53-authenticated-results-extension), with verification evidence in [M5.3 handoff](../backend/stage-e/M5_3_HANDOFF.md).

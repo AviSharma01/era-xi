@@ -2,6 +2,8 @@ import { createDraftOffRealtimeClient, type RealtimeClientOptions } from "./draf
 import { createDraftOffTransport } from "./draftOffClientTransport.js";
 import type { PublicCommand, SnapshotSuccess } from "./draftOffClientTypes.js";
 import { enrollGuest, type EnrollmentStorage } from "./draftOffEnrollmentClient.js";
+import { fetchDraftOffResults, ResultsClientError } from "./draftOffResultsClient.js";
+import type { ResultsSuccess } from "./draftOffResultsTypes.js";
 
 export type GuestCredential = { participantId: string; reconnectCredential: string };
 export function readDraftOffCredential(storage: EnrollmentStorage, code: string): GuestCredential | null {
@@ -64,6 +66,8 @@ export function createDraftOffSession(options: {
   const slot = `draft-off:command:${options.roomCode}:${options.credential.participantId}`;
   let state: DraftOffSessionState = { snapshot: null, pending: false, error: null, accessUnavailable: false };
   let stopped = false, sending = false, started = false, awaitingSnapshot = false, confirmedRevision = -1;
+  const resultsCache = new Map<string, ResultsSuccess>();
+  const resultsPending = new Map<string, { promise: Promise<ResultsSuccess>; signal?: AbortSignal }>();
   let journal: Journal | null = null, stored: string | null = options.journalStorage.getItem(slot);
   if (stored !== null) {
     const parsed = JSON.parse(stored) as Journal;
@@ -76,6 +80,7 @@ export function createDraftOffSession(options: {
     onPublicSnapshot() {},
     onSnapshot(snapshot) {
       if (snapshot.participantId !== options.credential.participantId) {
+        resultsCache.clear();
         publish({ error: "Room access could not be verified.", accessUnavailable: true }); realtime.stop(); transport.stop(); return;
       }
       const draft = snapshot.view.myDraft;
@@ -89,6 +94,7 @@ export function createDraftOffSession(options: {
       publish({ snapshot, pending: journal !== null || sending, error: journal ? state.error : null });
     },
     onError(code) {
+      if (code === "AUTHENTICATION_FAILED") resultsCache.clear();
       publish(code === "AUTHENTICATION_FAILED" ? { accessUnavailable: true, error: "Room access is unavailable. The room may have expired or this browser may no longer have access." }
         : { error: code === "REALTIME_UNAVAILABLE" || code === "INVALID_REALTIME_MESSAGE"
           ? "Live updates are interrupted. Room refresh continues over HTTP."
@@ -100,6 +106,47 @@ export function createDraftOffSession(options: {
     options.journalStorage.removeItem(slot);
     if (options.journalStorage.getItem(slot) !== null) throw new Error("Pending command cleanup could not be verified.");
     journal = null; stored = null;
+  }
+  function loadResults(targetParticipantId: string, signal?: AbortSignal): Promise<ResultsSuccess> {
+    const snapshot = state.snapshot;
+    if (stopped || state.accessUnavailable || !snapshot) return Promise.reject(new ResultsClientError("AUTHENTICATION_FAILED"));
+    const { view } = snapshot;
+    if (view.phase !== "COMPLETE" || view.round.phase !== "RESOLVED" || !view.resolution) return Promise.reject(new ResultsClientError("RESULTS_NOT_READY"));
+    const me = view.participants.find(row => row.participantId === options.credential.participantId);
+    const row = view.resolution.leaderboard.find(row => row.participantId === targetParticipantId);
+    if (!me?.roundStatus || !row || !view.resolution.eligibleParticipantIds.includes(targetParticipantId)) return Promise.reject(new ResultsClientError("RESULT_UNAVAILABLE"));
+    const key = `${view.round.roundId}:${targetParticipantId}`;
+    const cached = resultsCache.get(key);
+    if (cached) return signal?.aborted ? Promise.reject(new ResultsClientError("RESULTS_REQUEST_ABORTED")) : Promise.resolve(cached);
+    const pending = resultsPending.get(key);
+    if (pending && !pending.signal?.aborted) return pending.promise;
+    const identity = { roomCode: options.roomCode, roundId: view.round.roundId, roundOrdinal: view.round.roundOrdinal,
+      eraId: view.round.eraId, participantId: targetParticipantId };
+    let promise!: Promise<ResultsSuccess>;
+    promise = (async () => {
+      try {
+        const result = await fetchDraftOffResults({ apiOrigin: options.apiOrigin, credential: options.credential.reconnectCredential,
+          identity, transport: transport.fetch, signal });
+        // Session ownership and round identity are sufficient: resolved campaigns never mutate.
+        if (stopped || state.accessUnavailable || signal?.aborted || state.snapshot?.view.round.roundId !== identity.roundId) throw new ResultsClientError("RESULTS_REQUEST_ABORTED");
+        if (result.displayName !== row.displayName || (["played", "won", "lost", "points", "netRunRate"] as const)
+          .some(key => result.campaign.aggregate[key] !== row[key])) throw new ResultsClientError("INVALID_RESULTS_RESPONSE");
+        if (resultsCache.size >= 8) resultsCache.delete(resultsCache.keys().next().value!);
+        resultsCache.set(key, result);
+        return result;
+      } catch (error) {
+        if (!stopped && error instanceof ResultsClientError && error.code === "AUTHENTICATION_FAILED") {
+          resultsCache.clear();
+          publish({ accessUnavailable: true, error: "Room access is unavailable. Saved access is preserved." });
+          realtime.stop(); transport.stop();
+        } else if (!stopped && error instanceof ResultsClientError && error.code === "RESULTS_NOT_READY") {
+          void realtime.resync();
+        }
+        throw error;
+      } finally { if (resultsPending.get(key)?.promise === promise) resultsPending.delete(key); }
+    })();
+    resultsPending.set(key, { promise, signal });
+    return promise;
   }
   async function retry() {
     if (stopped || sending || !journal || state.accessUnavailable) return;
@@ -116,6 +163,7 @@ export function createDraftOffSession(options: {
       if (!body || typeof body !== "object") throw new Error("INVALID_COMMAND_REPLY");
       const result = body as { ok?: boolean; changed?: boolean; roomRevision?: number; error?: { code?: string } };
       if (reply.status === 401) {
+        resultsCache.clear();
         publish({ accessUnavailable: true, error: "Room access is unavailable. Your pending action is preserved." }); realtime.stop(); transport.stop(); return;
       }
       const success = reply.status === 200 && result.ok === true && typeof result.changed === "boolean" && Number.isSafeInteger(result.roomRevision) && result.roomRevision! >= 0;
@@ -151,8 +199,11 @@ export function createDraftOffSession(options: {
       await retry();
     },
     retry,
+    loadResults,
+    resultsRetryAtMs: () => transport.cooldownUntil(),
+    subscribeResultsCooldown: transport.subscribeCooldown,
     resync: () => realtime.resync(),
-    stop() { stopped = true; realtime.stop(); transport.stop(); },
+    stop() { stopped = true; resultsCache.clear(); resultsPending.clear(); realtime.stop(); transport.stop(); },
   };
 }
 function freezeJournal(value: Journal): Journal {

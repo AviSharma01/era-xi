@@ -20,6 +20,7 @@ import type {
   RevealedState,
 } from "./eraDraftTypes.js";
 import { EraDraftDataError, type DraftPresentationFit, type DraftStatusView } from "./eraDraftTypes.js";
+import type { TeamEvaluationV2 } from "./teamEvaluationV2.js";
 import type { FitClassification } from "./playerRoleContract.js";
 import {
   buildStandingsV2,
@@ -266,7 +267,20 @@ export function projectEraDraftRevealState(
   assertEraDraftState(catalog, state);
   const era = catalog.getEra(state.eraId)!;
   const picks = projectPicks(catalog, state.picks);
-  const players = state.evaluation.players.map((evaluated) => {
+  const revealed = projectEraDraftRevealedEvaluation(catalog, state.evaluation);
+  return freezeDeep({
+    phase: "REVEALED", revision: state.revision, eraId: state.eraId, eraLabel: era.label,
+    status: projectDraftStatus(catalog, state), picks,
+    players: revealed.players, evaluation: revealed.evaluation,
+  } satisfies EraDraftRevealView);
+}
+
+/** Shared whitelist only: uses an already authoritative evaluation, never evaluates. */
+export function projectEraDraftRevealedEvaluation(
+  catalog: EraDraftCatalog,
+  evaluation: TeamEvaluationV2,
+): Pick<EraDraftRevealView, "players" | "evaluation"> {
+  const players = evaluation.players.map((evaluated) => {
     const player = catalog.getPlayer(evaluated.quality.playerTeamSeasonId)!;
     const slot = evaluated.role.battingFit.slots[evaluated.position - 1]!;
     return {
@@ -288,32 +302,26 @@ export function projectEraDraftRevealState(
   };
   for (const player of players) fitCounts[player.presentationFit] += 1;
   return freezeDeep({
-    phase: "REVEALED",
-    revision: state.revision,
-    eraId: state.eraId,
-    eraLabel: era.label,
-    status: projectDraftStatus(catalog, state),
-    picks,
     players,
     evaluation: {
       strength: {
-        overall: state.evaluation.adjustedStrength.overall,
-        batting: state.evaluation.adjustedStrength.batting,
-        bowling: state.evaluation.adjustedStrength.bowling,
+        overall: evaluation.adjustedStrength.overall,
+        batting: evaluation.adjustedStrength.batting,
+        bowling: evaluation.adjustedStrength.bowling,
       },
-      tierCounts: { ...state.evaluation.diagnostics.tierCounts },
+      tierCounts: { ...evaluation.diagnostics.tierCounts },
       fitCounts,
       construction: {
-        overseasCount: state.evaluation.diagnostics.overseasCount,
+        overseasCount: evaluation.diagnostics.overseasCount,
         overseasLimit: 4,
-        hasWicketkeeper: state.evaluation.diagnostics.hasWicketkeeper,
-        deployedBowlingUnits: state.evaluation.diagnostics.deployedBowlingUnits,
+        hasWicketkeeper: evaluation.diagnostics.hasWicketkeeper,
+        deployedBowlingUnits: evaluation.diagnostics.deployedBowlingUnits,
         requiredBowlingUnits: 5,
-        frontlineBowlers: state.evaluation.diagnostics.bowlingWorkloadCounts.FRONTLINE,
-        supportBowlers: state.evaluation.diagnostics.bowlingWorkloadCounts.SUPPORT,
+        frontlineBowlers: evaluation.diagnostics.bowlingWorkloadCounts.FRONTLINE,
+        supportBowlers: evaluation.diagnostics.bowlingWorkloadCounts.SUPPORT,
       },
     },
-  } satisfies EraDraftRevealView);
+  });
 }
 
 export function projectEraDraftGameCompleteState(

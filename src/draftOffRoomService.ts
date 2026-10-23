@@ -10,6 +10,8 @@ import type {
   DraftOffCompetitionState,
 } from "./draftOffCompetitionTypes.js";
 import { projectDraftOffRoom } from "./draftOffRoomProjection.js";
+import { projectDraftOffParticipantResults } from "./draftOffResultsProjection.js";
+import type { DraftOffParticipantResultsView } from "./draftOffResultsTypes.js";
 import { projectDraftOffRoomLifecycle } from "./draftOffRoomLifecycle.js";
 import {
   DraftOffRoomRepositoryError,
@@ -104,6 +106,14 @@ export class DraftOffRoomService {
     if (!record) throw new DraftOffRoomRepositoryError("ROOM_NOT_FOUND", `Room ${roomId} does not exist.`);
     const state = this.restoreRecord(roomId, record);
     return projectDraftOffRoom(this.catalog, state, participantId);
+  }
+
+  async readResults(actor: DraftOffRoomActor, roomId: string, targetParticipantId: string): Promise<DraftOffParticipantResultsView> {
+    const participantId = requireParticipantActor(actor);
+    const record = await this.repository.read(roomId);
+    if (!record) throw new DraftOffRoomRepositoryError("ROOM_NOT_FOUND", "Room is unavailable.");
+    const state = this.restoreRecord(roomId, record);
+    return projectDraftOffParticipantResults(this.catalog, state, participantId, targetParticipantId);
   }
 
   async execute(

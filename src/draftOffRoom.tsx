@@ -5,6 +5,7 @@ import type { DraftOffRoomView } from "./draftOffRoomTypes.js";
 import type { DraftCandidateIdentityView, DraftPickView, EraDraftPublicView } from "./eraDraftTypes.js";
 import { CandidateGallery, SelectedPlayerDetail, PlayerInspector, FitBadge, fitLabel, friendly } from "./eraDraftPlayerPresentation.js";
 import { appRoutePath, draftOffRoomPath } from "./webRoutes.js";
+import { DraftOffResultsBrowser, type ResultsLoader } from "./draftOffResults.js";
 
 export const DRAFT_OFF_ERA_LABELS = {
   "era-foundation": "Foundation · 2008–2010", "era-expansion": "Expansion · 2011–2013",
@@ -13,7 +14,8 @@ export const DRAFT_OFF_ERA_LABELS = {
 
 type Command = PublicCommand["command"];
 type ActiveDraft = Exclude<EraDraftPublicView, { phase: "SETUP" }>;
-export type DraftOffRoomActions = { command: (command: Command) => Promise<void>; retry: () => Promise<void>; resync: () => Promise<void> };
+export type DraftOffRoomActions = { command: (command: Command) => Promise<void>; retry: () => Promise<void>; resync: () => Promise<void>;
+  loadResults?: ResultsLoader; resultsRetryAtMs?: () => number; subscribeResultsCooldown?: (listener: () => void) => () => void };
 const INITIAL_ROOM: DraftOffSessionState = { snapshot: null, pending: false, error: null, accessUnavailable: false };
 export { INITIAL_ROOM };
 
@@ -95,7 +97,7 @@ export function DraftOffRoomExperience({ code, state, actions }: {
         {state.retryAvailable && <button className="primary-action" onClick={() => void actions.retry()}>Retry saved action</button>}</div>}
     </div>}
     {view.phase === "LOBBY" ? <Lobby snapshot={snapshot} code={code} blocked={blocked} onCommand={send} />
-      : view.phase === "COMPLETE" ? <Leaderboard snapshot={snapshot} />
+      : view.phase === "COMPLETE" ? <FinalResults key={`${code}:${view.round.roundId}:${snapshot.participantId}`} snapshot={snapshot} code={code} actions={actions} accessUnavailable={state.accessUnavailable} />
         : me?.roundStatus === "SUBMITTED" ? <Waiting snapshot={snapshot} expired={expired} />
           : me?.roundStatus === "DRAFTING" && view.myDraft && view.myDraft.phase !== "SETUP" ? <DraftWorkspace key={view.round.roundId} draft={view.myDraft} blocked={blocked || expired} onCommand={send} expired={expired} countdown={formatDraftCountdown(remaining)} />
             : <section className="draft-off-panel"><h1>You’re outside this round</h1><p>You left before the host started. The roster is now fixed. You can still see public room status and the final leaderboard.</p></section>}
@@ -209,16 +211,39 @@ function Waiting({ snapshot, expired }: { snapshot: SnapshotSuccess; expired: bo
   return <div className="room-waiting-layout"><section className="draft-off-panel"><p className="eyebrow">Submission confirmed</p><h1>Your XI is locked in.</h1><p>{expired ? "Checking the final result with the server." : "The room is still drafting. Results arrive when everyone submits or time runs out."}</p><p>Your submission is final. Private XIs and ratings remain hidden.</p><ParticipantList view={snapshot.view} me={snapshot.participantId} /></section>
     {draft && draft.phase !== "SETUP" && <CompactXi draft={draft} preview={null} onInspect={setInspected} />}{inspected && <PlayerInspector player={inspected} onClose={() => setInspected(null)} />}</div>;
 }
-function Leaderboard({ snapshot }: { snapshot: SnapshotSuccess }) {
+const noCooldown = () => 0;
+function FinalResults({ snapshot, code, actions, accessUnavailable }: { snapshot: SnapshotSuccess; code: string; actions: DraftOffRoomActions; accessUnavailable: boolean }) {
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const result = snapshot.view.resolution, round = snapshot.view.round;
+  const entrant = snapshot.view.participants.find(row => row.participantId === snapshot.participantId)?.roundStatus !== undefined;
+  const rows = result?.leaderboard ?? [];
+  const selected = rows.find(row => row.participantId === selectedId) ?? rows.find(row => row.participantId === snapshot.participantId) ?? rows[0];
+  const available = entrant && !accessUnavailable && !!actions.loadResults && round.phase === "RESOLVED";
+  const select = (id: string) => {
+    setSelectedId(id);
+    requestAnimationFrame(() => {
+      const heading = document.getElementById("participant-results-title");
+      heading?.focus({ preventScroll: true });
+      heading?.closest(".room-participant-results")?.scrollIntoView?.({ block: "start" });
+    });
+  };
+  return <>
+    <Leaderboard snapshot={snapshot} selectedId={available ? selected?.participantId : undefined} onSelect={available ? select : undefined} />
+    {available && selected && <DraftOffResultsBrowser key={selected.participantId} identity={{ roomCode: code, roundId: round.roundId,
+      roundOrdinal: round.roundOrdinal, eraId: round.eraId, participantId: selected.participantId }} displayName={selected.displayName}
+      loadResults={actions.loadResults!} retryAtMs={actions.resultsRetryAtMs ?? noCooldown} subscribeCooldown={actions.subscribeResultsCooldown} />}
+  </>;
+}
+function Leaderboard({ snapshot, selectedId, onSelect }: { snapshot: SnapshotSuccess; selectedId?: string; onSelect?: (id: string) => void }) {
   const result = snapshot.view.resolution;
   if (!result) return <section className="draft-off-panel"><h1>Checking results</h1><p>Refresh the room to load the authoritative leaderboard.</p></section>;
   const mine = snapshot.view.participants.find(row => row.participantId === snapshot.participantId);
   const title = result.contestStatus === "NO_CONTEST" ? "No eligible XIs this round." : result.contestStatus === "UNCONTESTED" ? "An uncontested result." : "The room has its result.";
-  return <section className="draft-off-panel room-results"><p className="eyebrow">Draft-Off · Final leaderboard</p><h1>{title}</h1>
+  return <section id="final-leaderboard" className="draft-off-panel room-results"><p className="eyebrow">Draft-Off · Final leaderboard</p><h1>{title}</h1>
     <p>{result.contestStatus === "NO_CONTEST" ? "No one completed a legal XI before the deadline, so no campaigns were simulated." : result.contestStatus === "UNCONTESTED" ? "Only one XI was eligible. Its twenty-match campaign is shown without a contested victory." : "Every eligible XI faced the same twenty historical fixtures in the same order."}</p>
     {mine?.roundStatus === "INELIGIBLE" && <p className="draft-off-notice">Your XI was incomplete at the deadline and was excluded from the leaderboard.</p>}
     {result.leaderboard.length > 0 && <><div className="room-leaderboard-scroll"><table><caption>Ranked by points, then full-precision net run rate. Exact ties share rank.</caption><thead><tr><th scope="col">Rank</th><th scope="col">Player</th><th scope="col">P</th><th scope="col">W</th><th scope="col">L</th><th scope="col">Pts</th><th scope="col">NRR</th></tr></thead>
-      <tbody>{result.leaderboard.map(row => <tr key={row.participantId} className={row.participantId === snapshot.participantId ? "room-my-result" : undefined}><td data-label="Rank">{row.rank}</td><th scope="row">{row.displayName}{row.participantId === snapshot.participantId && <small>You</small>}</th><td data-label="Played">{row.played}</td><td data-label="Won">{row.won}</td><td data-label="Lost">{row.lost}</td><td data-label="Points"><strong>{row.points}</strong></td><td data-label="NRR">{row.netRunRate >= 0 ? "+" : ""}{row.netRunRate.toFixed(3)}</td></tr>)}</tbody></table></div><p className="draft-off-footnote">Displayed NRR is rounded; ranking uses the backend’s full precision.</p></>}
+      <tbody>{result.leaderboard.map(row => <tr key={row.participantId} className={row.participantId === snapshot.participantId ? "room-my-result" : undefined}><td data-label="Rank">{row.rank}</td><th scope="row">{row.displayName}{row.participantId === snapshot.participantId && <small>You</small>}{onSelect && <button className="room-view-results" aria-pressed={row.participantId === selectedId} aria-label={`View ${row.displayName} results`} onClick={() => onSelect(row.participantId)}>{row.participantId === selectedId ? "Viewing results" : "View results"}</button>}</th><td data-label="Played">{row.played}</td><td data-label="Won">{row.won}</td><td data-label="Lost">{row.lost}</td><td data-label="Points"><strong>{row.points}</strong></td><td data-label="NRR">{row.netRunRate >= 0 ? "+" : ""}{row.netRunRate.toFixed(3)}</td></tr>)}</tbody></table></div><p className="draft-off-footnote">Displayed NRR is rounded; ranking uses the backend’s full precision.</p></>}
     {result.ineligibleParticipantIds.length > 0 && <p>{result.ineligibleParticipantIds.length} {result.ineligibleParticipantIds.length === 1 ? "incomplete XI was" : "incomplete XIs were"} excluded at the deadline.</p>}
     <p className="draft-off-footnote">{result.trigger === "ALL_SUBMITTED" ? "Resolved early: every entrant submitted." : "Resolved at the shared deadline."} Start a new private room for another challenge.</p><a className="secondary-action" href={appRoutePath("DRAFT_OFF", import.meta.env?.BASE_URL ?? "/")}>New Draft-Off room</a>
   </section>;

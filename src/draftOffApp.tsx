@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import { createDraftOffTransport, draftOffApiOrigin } from "./draftOffClientTransport.js";
 import { enrollDraftOffGuest, createDraftOffSession, readDraftOffCredential, type DraftOffSessionState } from "./draftOffSession.js";
 import { DraftOffRoomExperience, DRAFT_OFF_ERA_LABELS as ERAS, INITIAL_ROOM } from "./draftOffRoom.js";
@@ -137,7 +137,12 @@ function RoomBootstrap({ apiOrigin, code, credential }: { apiOrigin: string; cod
       return () => { client.stop(); session.current = null; };
     } catch { setState(current => ({ ...current, error: "Room recovery storage cannot be safely read. Saved access has been preserved." })); }
   }, [apiOrigin, code, credential]);
+  const loadResults = useCallback((participantId: string, signal?: AbortSignal) => session.current
+    ? session.current.loadResults(participantId, signal) : Promise.reject(new Error("Room is not connected.")), [apiOrigin, code, credential]);
+  const resultsRetryAtMs = useCallback(() => session.current?.resultsRetryAtMs() ?? 0, [apiOrigin, code, credential]);
+  const subscribeResultsCooldown = useCallback((listener: () => void) => session.current?.subscribeResultsCooldown(listener) ?? (() => {}), [apiOrigin, code, credential]);
   return <DraftOffRoomExperience code={code} state={state} actions={{
+    loadResults, resultsRetryAtMs, subscribeResultsCooldown,
     command: command => session.current ? session.current.command(command) : Promise.reject(new Error("Room is not connected.")),
     retry: () => session.current?.retry() ?? Promise.resolve(),
     resync: () => session.current?.resync() ?? Promise.resolve(),

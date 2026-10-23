@@ -85,7 +85,10 @@ function CurrentSeasonStats(props: {
   </div>;
 }
 
-export function PlayerInspector({ player, onClose }: { player: DraftPickView | DraftCandidateIdentityView; onClose: () => void }): ReactElement {
+export type PlayerInspectorView = Pick<DraftPickView, "playerName" | "teamName" | "seasonYear" | "displayRole" | "rosterStatus" | "keeperCapability" | "historicalStats" | "tierAppearance"> & {
+  readonly battingPosition?: DraftPickView["battingPosition"];
+};
+export function PlayerInspector({ player, onClose }: { player: PlayerInspectorView; onClose: () => void }): ReactElement {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const openerRef = useRef<HTMLElement | null>(null);

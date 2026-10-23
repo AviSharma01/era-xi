@@ -15,6 +15,7 @@ export function createDraftOffTransport(options: {
   const send = options.fetch ?? fetch, now = options.now ?? Date.now;
   let until = 0, stopped = false;
   const active = new Set<AbortController>();
+  const cooldownListeners = new Set<() => void>();
   const transport: typeof fetch = async (input, init) => {
     if (stopped) throw new Error("TRANSPORT_STOPPED");
     if (now() < until) throw new Error("HTTP_COOLDOWN");
@@ -36,7 +37,12 @@ export function createDraftOffTransport(options: {
       if (response.status === 429) {
         const header = response.headers.get("Retry-After"), time = now();
         const target = header && /^\d+$/.test(header.trim()) ? time + Number(header) * 1000 : Date.parse(header ?? "");
-        until = Math.max(until, Number.isSafeInteger(target) ? Math.max(time, target) : time + 60_000);
+        const next = Math.max(until, Number.isSafeInteger(target) ? Math.max(time, target) : time + 60_000);
+        if (next !== until) {
+          until = next;
+          // Read-only observers cannot change request/cooldown semantics or fail a fetch.
+          for (const listener of cooldownListeners) { try { listener(); } catch { /* Presentation only. */ } }
+        }
       }
       const max = options.maxBytes ?? 2_097_152, declared = response.headers.get("Content-Length");
       if (declared !== null && (!/^\d+$/.test(declared) || Number(declared) > max)) {
@@ -63,5 +69,7 @@ export function createDraftOffTransport(options: {
     try { return await Promise.race([operation, aborted]); }
     finally { clearTimeout(timer); active.delete(controller); parent?.removeEventListener("abort", cancel); controller.signal.removeEventListener("abort", interrupted); }
   };
-  return { fetch: transport, cooldownUntil: () => until, stop() { stopped = true; active.forEach(controller => controller.abort()); active.clear(); } };
+  return { fetch: transport, cooldownUntil: () => until,
+    subscribeCooldown(listener: () => void) { cooldownListeners.add(listener); return () => { cooldownListeners.delete(listener); }; },
+    stop() { stopped = true; cooldownListeners.clear(); active.forEach(controller => controller.abort()); active.clear(); } };
 }

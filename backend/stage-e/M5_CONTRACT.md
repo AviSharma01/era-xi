@@ -1,6 +1,6 @@
 # M5 client contract — existing `/api/draft-off/v1`
 
-This freezes the existing Stage C/D transport for M5 integration. M5.1 room-entry integration is described at the end of this document; gameplay and detailed results remain deferred. The executable authorities are `backend/cloudflare/contracts.ts`, `src/draftOffRoomTypes.ts`, `src/eraDraftTypes.ts` (draft views), `backend/client/draftOff.ts` and `backend/client/realtime.ts`. Changes to their transport semantics require a separate review.
+This freezes the existing Stage C/D transport for M5 integration. M5.1/M5.2 client integration and the additive M5.3 results endpoint are described below. The original transport remains unchanged. The executable authorities are `backend/cloudflare/contracts.ts`, `src/draftOffRoomTypes.ts`, `src/eraDraftTypes.ts` (draft views), `backend/client/draftOff.ts` and `backend/client/realtime.ts`. Changes to their transport semantics require a separate review.
 
 ## Enrollment and identity
 
@@ -48,7 +48,7 @@ Host alone starts; the server derives round/deadline from stored duration and ex
 
 `view` is `DraftOffRoomView`: `{roomId,revision,phase,participants,round,resolution?,myDraft?}`. Each participant row has only `{participantId,displayName,role,membershipStatus,roundStatus?}`. Round fields are `{roundId,roundOrdinal,label,eraId,phase,startedAtMs?,deadlineAtMs?}`. Resolution has `{trigger,contestStatus,resolvedAtMs,eligibleParticipantIds,ineligibleParticipantIds,leaderboard}`; leaderboard rows are `{rank,participantId,displayName,played,won,lost,points,netRunRate}`. Preserve optional absence. Timing is safe integer milliseconds; use `serverTimeMs` to estimate countdown offset.
 
-Only authenticated HTTP includes the caller's optional `myDraft`, typed as `EraDraftPublicView`: SETUP, AWAITING_SPIN, AWAITING_PICK or XI_COMPLETE. Draft phases carry their own revision; active phases expose picks/status/era identity, with spin/candidates only in AWAITING_PICK. The host has no additional private visibility. Ratings, other XIs, submissions, seeds, saves, hashes, histories, receipts, detailed campaigns and evaluation/reveal payloads are outside this contract, including after completion. M5 can consume the shared leaderboard and own existing draft projection; richer final results need a separately approved contract extension.
+Only authenticated HTTP includes the caller's optional `myDraft`, typed as `EraDraftPublicView`: SETUP, AWAITING_SPIN, AWAITING_PICK or XI_COMPLETE. Draft phases carry their own revision; active phases expose picks/status/era identity, with spin/candidates only in AWAITING_PICK. The host has no additional private visibility. Ratings, other XIs, submissions, seeds, saves, hashes, histories, receipts, detailed campaigns and evaluation/reveal payloads remain outside the existing room/bootstrap/realtime payloads, including after completion. The separately approved M5.3 endpoint below adds only the selected-entry results whitelist.
 
 Obtain a fresh socket ticket by authenticated HTTP, then connect:
 
@@ -69,7 +69,7 @@ Defaults: HTTP request timeout 10s (`policy.requestTimeoutMs`, covering fetch an
 
 Errors are `{ok:false,error:{code,message},roomRevision?,view?}` with safe fixed messages; registered command failures may include only the caller's view. Statuses: 400 malformed; 401 auth; 403 Origin/authority; 404 unavailable JOIN/unknown route; 405 method; 409 key/ID/revision/phase/capacity/deadline conflict; 413 size; 415 media; 422 incomplete/illegal draft; 429 limits; 503 configuration/temporary failure. Check codes, not message text. Distinguish `STALE_ROOM_REVISION`, `STALE_DRAFT_REVISION`, `COMMAND_ID_CONFLICT`, `ENROLLMENT_KEY_CONFLICT`, `ROOM_CODE_COLLISION` and `ROOM_CODE_UNAVAILABLE`. Authenticated missing/expired/wrong-room/invalid credentials share the same 401 body. The helper reports coarse transport errors through `onError`; never attach private payloads to reporting.
 
-Lobby retention is creation +24h; completed retention is completion +7d. Expiry ends all credential/retry/recovery guarantees, removes private/auth/receipt/ticket state, and leaves a minimal retired-code marker for 30d from the fixed expiry anchor. Access never extends retention. There is no account, credential rotation, name-based recovery, settings edit, directory/list API, presence, socket command channel, spectator API or post-completion private-results endpoint.
+Lobby retention is creation +24h; completed retention is completion +7d. Expiry ends all credential/retry/recovery guarantees, removes private/auth/receipt/ticket state, and leaves a minimal retired-code marker for 30d from the fixed expiry anchor. Access never extends retention. There is no account, credential rotation, name-based recovery, settings edit, directory/list API, presence, socket command channel, spectator API or public/spectator results endpoint. The additive authenticated results endpoint below has narrower locked-round access.
 
 M5 observability must redact/disable Authorization, Enrollment-Key, Sec-WebSocket-Protocol ticket values, ticket and enrollment response bodies, and private payloads in fetch wrappers, errors, traces, analytics and session replay. Production configuration remains a separate [deployment gate](RUNBOOK.md#future-staging-deployment-gates).
 
@@ -79,4 +79,28 @@ The original `backend/client/draftOff.ts` and `backend/client/realtime.ts` expor
 
 ## M5.2 UI integration note
 
-The player-facing room consumes the same M4 HTTP/WebSocket projections and M5.1 session controller. New session fields describe pending action/retry feedback only. The countdown is a presentation estimate anchored to `serverTimeMs` and monotonic browser elapsed time; reaching zero does not resolve or submit locally. Public updates reconcile through authenticated HTTP. The lobby, manual submission, waiting and leaderboard add no routes, envelopes, domain rules or additional private visibility. Reused V1 player presentation is independent of both mode controllers. A proposed future results projection is documented for review in [M5.2 handoff](M5_2_HANDOFF.md); it is not implemented or part of this frozen contract.
+The player-facing room consumes the same M4 HTTP/WebSocket projections and M5.1 session controller. New session fields describe pending action/retry feedback only. The countdown is a presentation estimate anchored to `serverTimeMs` and monotonic browser elapsed time; reaching zero does not resolve or submit locally. Public updates reconcile through authenticated HTTP. The lobby, manual submission, waiting and leaderboard add no routes, envelopes, domain rules or additional private visibility. Reused V1 player presentation is independent of both mode controllers. The historical proposal in [M5.2 handoff](M5_2_HANDOFF.md) is superseded by the approved additive M5.3 extension below; the original room/realtime payloads remain frozen.
+
+## M5.3 authenticated results extension
+
+`GET /api/draft-off/v1/rooms/{code}/results/{participantId}` is the only new route. Its exact version-1 success/error types are in `src/draftOffResultsTypes.ts`; `src/draftOffResultsClient.ts` recursively validates the success allowlist. No changes to any existing endpoint payload, command receipt, public snapshot, WebSocket frame or retry contract are implied.
+
+The request uses the existing room-bound Bearer credential, approved exact Origin, bodyless GET validation and no query/Enrollment-Key. Target participant IDs use `p_[a-f0-9]{32}`. All normal edge limits apply; results and room GET consume the **same** durable participant READ bucket (default 60/minute, burst 10), including pre-replay rejection. Responses remain private/no-store. Logs contain the route template, never concrete participant paths or private bodies.
+
+The success allowlist is `{ok:true,version:1,roomCode,roundId,roundOrdinal,eraId,participantId,displayName,players,evaluation,campaign}`. `players` contains exactly eleven `RevealPlayerView` rows plus existing `historicalStats`, ordered by positions 1–11. `evaluation` is the existing explicit `TeamEvaluationSummaryView`. `campaign.aggregate` copies the nine authoritative fields: played/won/lost/points/runsFor/ballsFacedForNrr/runsAgainst/ballsBowledForNrr/netRunRate. `campaign.matches` contains exactly twenty ordered rows: `{matchId,sequence,opponent:{profileId,teamName,seasonYear},firstInnings,secondInnings,outcome,resultType,margin}`. Each innings is `{side:'ENTRY'|'OPPONENT',runs,wickets,balls,allOut}`. Outcome is WIN/LOSS relative to the inspected entry; runs/wickets margins are positive integers, Super Over margin is null and its scores remain regulation innings. No Super Over scorecard is fabricated.
+
+All keys are required. Nullable existing ratings/statistics and historical era-best summaries are preserved. Roster status is INDIAN/OVERSEAS only. The independent results ceiling is 2,097,152 serialized UTF-8 bytes, matching the existing client HTTP bound; server oversize/inconsistency fails safely with 503 and no truncation. No raw states, seeds, hashes, receipts, auth data, other campaigns or evaluator internals are returned.
+
+| Gate | Result |
+| --- | --- |
+| Invalid/missing/wrong-room/expired credential or unavailable room | Existing indistinguishable 401 AUTHENTICATION_FAILED |
+| Registered viewer, current round not resolved | 409 RESULTS_NOT_READY before any target lookup |
+| Resolved, viewer outside locked roster or target not eligible | Identical 404 RESULT_UNAVAILABLE |
+| Resolved, locked entrant viewing an eligible submitted XI | 200; includes viewers with an incomplete/ineligible XI |
+| Missing eligible campaign/submission, corrupt replay or projection inconsistency | Safe 503 TEMPORARY_UNAVAILABLE |
+
+Host/member access is identical. LEFT-at-start members retain only their existing room/leaderboard access; they cannot inspect details. NO_CONTEST has no inspectable target; UNCONTESTED retains its full single-entry campaign. Errors carry only `{ok:false,error:{code,message}}`, never a room view or revision. New fixed messages are “Results are not ready.” and “Result is unavailable.” Normal Origin/syntax/throttling gates can reject first.
+
+The service projects the frozen submission and the canonical restored resolution. Existing restoration still replays the resolver; no additional evaluation or simulation is invoked by results construction. Existing overdue recovery resolves before the new route checks readiness. Retention anchors, native alarms, saves, hashes and catalog/version validation are unchanged; no migration or result-cache infrastructure was added.
+
+The session lazily fetches selected entries through its existing transport, retaining at most eight validated responses in memory. Identity checks use room/round/era/target and active session ownership, with cancellation on obsolete selections/disposal; immutable resolved results need no room-revision field. Leaderboard metrics are cross-checked, never recalculated. Access failure removes displayed results and clears the session cache. See [M5.3 handoff](M5_3_HANDOFF.md) for implementation and validation evidence.

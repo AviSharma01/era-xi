@@ -139,6 +139,40 @@
 }
 @media (prefers-reduced-motion: reduce) { .draft-off-shell * { scroll-behavior: auto !important; } }
 
+.draft-off-shell .room-view-results { display: block; margin-top: 6px; min-height: 36px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 4px; background: transparent; color: var(--gold-light); font: inherit; font-size: 12px; cursor: pointer; }
+.draft-off-shell .room-view-results[aria-pressed="true"] { border-color: var(--gold); background: #c8a66912; }
+.draft-off-shell .room-participant-results { margin-top: 32px; min-width: 0; scroll-margin-top: calc(var(--room-bar-height, 90px) + 20px); }
+.draft-off-shell #final-leaderboard { scroll-margin-top: calc(var(--room-bar-height, 90px) + 20px); }
+.draft-off-shell .room-results-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 20px; }
+.draft-off-shell .room-results-heading h2 { margin: 0; font: 500 28px/1.2 "Space Grotesk", sans-serif; overflow-wrap: anywhere; }
+.draft-off-shell .room-results-heading a { flex-shrink: 0; }
+.draft-off-shell .room-result-team-layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(270px, 1fr); align-items: start; gap: 20px; }
+.draft-off-shell .room-revealed-list, .draft-off-shell .room-campaign-matches { list-style: none; margin: 20px 0 0; padding: 0; }
+.draft-off-shell .room-revealed-player { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 8px 12px; align-items: center; padding: 16px 0; border-top: 1px solid var(--line); }
+.draft-off-shell .room-result-position { font: 12px "Geist Mono", monospace; color: var(--muted); }
+.draft-off-shell .room-result-player-name { min-width: 0; padding: 0; border: 0; text-align: left; background: transparent; color: inherit; cursor: pointer; overflow-wrap: anywhere; }
+.draft-off-shell .room-result-player-name :is(strong, small) { display: block; }
+.draft-off-shell .room-result-player-name strong { font-size: 15px; }.draft-off-shell .room-result-player-name small { margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.draft-off-shell .room-result-ratings { text-align: right; font-family: "Geist Mono", monospace; }
+.draft-off-shell .room-result-ratings strong { display: block; font-size: 22px; font-weight: 500; color: var(--gold-light); }.draft-off-shell .room-result-ratings strong small { font-size: 12px; }
+.draft-off-shell .room-result-ratings > span { display: block; margin-top: 6px; color: var(--muted); font-size: 10px; }
+.draft-off-shell .room-revealed-player > .fit-badge { grid-column: 2/-1; justify-self: start; }
+.draft-off-shell .room-team-assessment .strength-grid { margin: 20px 0; }.draft-off-shell .room-team-assessment .reveal-metric { padding: 12px 8px; }
+.draft-off-shell .room-team-assessment .assessment-section { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }.draft-off-shell .room-team-assessment h4 { margin: 0 0 10px; font-size: 13px; }
+.draft-off-shell .room-campaign { margin-top: 20px; }.draft-off-shell .room-campaign-summary { display: flex; flex-wrap: wrap; gap: 24px; margin: 24px 0 12px; }
+.draft-off-shell .room-campaign-summary span { display: block; color: var(--muted); font-size: 11px; margin-bottom: 6px; }.draft-off-shell .room-campaign-summary strong { font: 500 26px "Geist Mono", monospace; }
+.draft-off-shell .room-campaign-matches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }.draft-off-shell .room-campaign-matches > li { min-width: 0; }
+.draft-off-shell .room-campaign-matches .match-result { height: 100%; margin: 0; padding: 20px; }.draft-off-shell .room-match-heading { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.draft-off-shell .room-match-heading > span:first-child { color: var(--muted); font: 10px "Geist Mono", monospace; }.draft-off-shell .room-match-heading strong { flex: 1; font-size: 12px; }
+.draft-off-shell .room-campaign .innings-row { gap: 12px; }.draft-off-shell .room-campaign .innings-row > span { min-width: 0; overflow-wrap: anywhere; }.draft-off-shell .room-campaign .innings-row > div { flex-shrink: 0; text-align: right; }
+.draft-off-shell .room-campaign .innings-row small { display: block; color: var(--muted); margin-top: 4px; font-size: 10px; }.draft-off-shell .room-campaign .match-verdict { margin-top: 12px; font-size: 12px; }
+@media (max-width: 999px) { .draft-off-shell .room-result-team-layout { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 699px) {
+  .draft-off-shell .room-campaign-matches { grid-template-columns: minmax(0, 1fr); }.draft-off-shell .room-results-heading { align-items: flex-start; }.draft-off-shell .room-results-heading h2 { font-size: 23px; }
+  .draft-off-shell .room-participant-results .draft-off-panel { padding: 16px; }.draft-off-shell .room-campaign-matches .match-result { padding: 16px; }
+  .draft-off-shell .room-revealed-player { grid-template-columns: 22px minmax(0, 1fr) auto; column-gap: 8px; }.draft-off-shell .room-result-ratings strong { font-size: 20px; }.draft-off-shell .room-result-ratings > span { max-width: 115px; line-height: 1.6; }
+}
+
 .draft-off-shell .room-sheet-clock { margin-left: auto; font: 500 16px/28px "Geist Mono", monospace; color: var(--gold-light); white-space: nowrap; }
 .draft-off-shell .room-placement-sheet > header { position: sticky; top: -20px; z-index: 4; background: #17181a; padding-block: 12px; }
 
