@@ -38,6 +38,7 @@ export async function enrollDraftOffGuest(options: {
 type Journal = { version: 1; roomCode: string; participantId: string; envelope: PublicCommand };
 export type DraftOffSessionState = {
   snapshot: SnapshotSuccess | null; pending: boolean; error: string | null; accessUnavailable: boolean;
+  pendingCommand?: PublicCommand["command"]["type"]; retryAvailable?: boolean;
 };
 
 function validEnvelope(value: PublicCommand): boolean {
@@ -67,7 +68,7 @@ export function createDraftOffSession(options: {
   if (stored !== null) {
     const parsed = JSON.parse(stored) as Journal;
     if (!parsed || parsed.version !== 1 || parsed.roomCode !== options.roomCode || parsed.participantId !== options.credential.participantId || !validEnvelope(parsed.envelope)) throw new Error("Pending command cannot be safely recovered.");
-    journal = freezeJournal(parsed); state.pending = true;
+    journal = freezeJournal(parsed); state.pending = true; state.pendingCommand = journal.envelope.command.type; state.retryAvailable = true;
   }
   const publish = (patch: Partial<DraftOffSessionState>) => { if (!stopped) { state = { ...state, ...patch }; options.onChange(state); } };
   const realtime = createDraftOffRealtimeClient({ ...options.realtime, apiOrigin: options.apiOrigin, roomCode: options.roomCode,
@@ -89,7 +90,9 @@ export function createDraftOffSession(options: {
     },
     onError(code) {
       publish(code === "AUTHENTICATION_FAILED" ? { accessUnavailable: true, error: "Room access is unavailable. The room may have expired or this browser may no longer have access." }
-        : { error: "Updates are temporarily unavailable. Your room access and pending actions are preserved." });
+        : { error: code === "REALTIME_UNAVAILABLE" || code === "INVALID_REALTIME_MESSAGE"
+          ? "Live updates are interrupted. Room refresh continues over HTTP."
+          : "The room could not refresh. Saved access and pending actions are preserved." });
     },
   });
   function clearJournal() {
@@ -100,7 +103,7 @@ export function createDraftOffSession(options: {
   }
   async function retry() {
     if (stopped || sending || !journal || state.accessUnavailable) return;
-    sending = true; publish({ pending: true, error: null });
+    sending = true; publish({ pending: true, error: null, pendingCommand: journal.envelope.command.type, retryAvailable: false });
     const attempt = journal, record = stored;
     try {
       if (options.journalStorage.getItem(slot) !== record) throw new Error("Pending command storage changed.");
@@ -125,7 +128,8 @@ export function createDraftOffSession(options: {
       await realtime.resync();
       if (!success) publish({ error: `Action rejected (${result.error!.code}). Refresh the room before trying a corrected action.` });
     } catch { publish({ error: "The action is not yet confirmed. Retry the saved action; do not create a replacement." }); }
-    finally { sending = false; publish({ pending: journal !== null || awaitingSnapshot || !state.snapshot || state.snapshot.view.revision < confirmedRevision }); }
+    finally { sending = false; publish({ pending: journal !== null || awaitingSnapshot || !state.snapshot || state.snapshot.view.revision < confirmedRevision,
+      pendingCommand: journal?.envelope.command.type, retryAvailable: journal !== null && !state.accessUnavailable }); }
   }
   return {
     getState: () => state,

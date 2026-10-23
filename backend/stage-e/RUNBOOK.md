@@ -66,7 +66,7 @@ await local.mf.dispose();
 rmSync(localState, { recursive: true, force: true });
 ```
 
-M5.1 adds `/draft-off` and `/draft-off/rooms/{CODE}` for enrollment and authenticated bootstrap only. Gameplay controls remain M5.2.
+M5.1 added `/draft-off` and `/draft-off/rooms/{CODE}` for enrollment and authenticated bootstrap. M5.2 adds the lobby, independent timed drafting, submission/waiting and authoritative leaderboard. Detailed results remain outside the current contract. See [M5.2 handoff](M5_2_HANDOFF.md).
 
 For interactive development after the builds above, use two terminals at the repository root:
 
@@ -78,13 +78,21 @@ npm run dev:draft-off
 VITE_DRAFT_OFF_API_ORIGIN=http://127.0.0.1:8787 npm run dev:web -- --port 5173 --strictPort
 ```
 
-Use the API origin printed by the launcher if `DRAFT_OFF_LOCAL_PORT` is changed. The launcher binds loopback only, allows exactly `http://127.0.0.1:5173`, uses the production entrypoint and unchanged interactive rate limits, and creates no deployed resources. No API origin is assumed in a web build: an unset origin shows a disconnected Draft-Off entry while solo remains available. The configured value must be a root HTTPS origin or loopback HTTP origin, without credentials, query, fragment or path prefix.
+Use the API origin printed by the launcher if `DRAFT_OFF_LOCAL_PORT` is changed. The launcher binds loopback only, defaults to allowing exactly `http://127.0.0.1:5173`, uses the production entrypoint and unchanged interactive rate limits, and creates no deployed resources. No API origin is assumed in a web build: an unset origin shows a disconnected Draft-Off entry while solo remains available. The configured value must be a root HTTPS origin or loopback HTTP origin, without credentials, query, fragment or path prefix.
+
+For two storage-isolated local browser clients without another browser profile, explicitly allow both loopback frontend origins:
+
+```sh
+DRAFT_OFF_LOCAL_ORIGINS='["http://127.0.0.1:5173","http://localhost:5173"]' npm run dev:draft-off
+```
+
+Open the host on `127.0.0.1:5173` and change only the frontend hostname to `localhost:5173` for the guest invite. These are separate storage origins, not separate incognito profiles. This optional JSON list accepts only exact loopback HTTP origins (maximum four); it changes no deployed CORS configuration or gameplay limits.
 
 The launcher prints its private temporary state directory. Set `DRAFT_OFF_LOCAL_STATE` to that same directory when restarting to preserve rooms; do not publish it. Dispose with Ctrl-C and remove only the temporary directory you created when its rooms are no longer needed. No local state is served as a web asset.
 
 Guest credentials and exact pending enrollments use localStorage. One browser profile has one identity per room; use separate profiles/contexts for different players. Pending command envelopes use sessionStorage, survive refresh in that tab and are retried exactly after authenticated bootstrap. Returning after the tab journal is gone reads current state without reconstructing an old intent. Storage failures block enrollment/commands before unverified requests; uncertain outcomes preserve recovery. No numeric ratings, other private drafts or detailed results are added to the UI.
 
-`npm run test:draft-off-client:local` runs the M5.1 controller/enrollment integration against real local production HTTP/WebSockets after root and Stage D builds. It is also included after A–E in `verify:backend`. Automated bursts explicitly override test limits; interactive defaults are unchanged. The test injects response loss, restores the command journal, checks private versus room revisions and privacy, and restarts persisted native state. It removes its own temporary storage and prints no private bodies or credentials. The production backend bundle is `.generated/worker.js`, never `.generated/harness.js`; it exports `DraftOffRoom` and the Worker handler. Generated source maps and embedded catalogs are server-only; do not serve them as web assets.
+`npm run test:draft-off-client:local` runs the M5.1 controller/enrollment integration and M5.2 two-/eight-entrant gameplay journeys against real local production HTTP/WebSockets after root and Stage D builds. It is also included after A–E in `verify:backend`. Automated bursts explicitly override test limits; interactive defaults are unchanged. The test injects response loss, restores the command journal, checks private versus room revisions and privacy, and restarts persisted native state. M5.2 additionally checks lost command replies, drafting/waiting refresh, submission freezing, HTTP-only fallback and complete campaigns. Deadline scenarios reuse the existing isolated native test-clock harness; those controls are never served by the interactive launcher. Tests run sequentially. It removes its own temporary storage and prints no private bodies or credentials. The production backend bundle is `.generated/worker.js`, never `.generated/harness.js`; it exports `DraftOffRoom` and the Worker handler. Generated source maps and embedded catalogs are server-only; do not serve them as web assets.
 
 ## Future staging deployment gates
 

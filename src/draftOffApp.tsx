@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createDraftOffTransport, draftOffApiOrigin } from "./draftOffClientTransport.js";
 import { enrollDraftOffGuest, createDraftOffSession, readDraftOffCredential, type DraftOffSessionState } from "./draftOffSession.js";
-import { appRoutePath, draftOffRoomCode, draftOffRoomPath, normalizeDraftOffCode, navigateToAppRoute, navigateToDraftOffRoom } from "./webRoutes.js";
+import { DraftOffRoomExperience, DRAFT_OFF_ERA_LABELS as ERAS, INITIAL_ROOM } from "./draftOffRoom.js";
+import { appRoutePath, draftOffRoomCode, normalizeDraftOffCode, navigateToAppRoute, navigateToDraftOffRoom } from "./webRoutes.js";
 import { ERA_IDS, type EraId } from "./teamEvaluationV2.js";
 import "./draftOff.css";
 
-const ERAS: Record<EraId, string> = {
-  "era-foundation": "Foundation · 2008–2010", "era-expansion": "Expansion · 2011–2013",
-  "era-transition": "Transition · 2014–2017", "era-modern-pre-impact": "Modern Pre-Impact · 2018–2022", "era-impact": "Impact · 2023–2026",
-};
 type PendingEnrollment = { record?: string; operation: "CREATE" | "JOIN"; roomCode?: string; input: { displayName: string; eraId?: EraId; draftMinutes?: 10 | 15 } };
 function pendingEnrollment(code: string | null): PendingEnrollment | null {
   const operation = code ? "JOIN" : "CREATE";
@@ -131,9 +128,8 @@ function RoomEntry({ apiOrigin, code }: { apiOrigin: string; code: string | null
 }
 
 function RoomBootstrap({ apiOrigin, code, credential }: { apiOrigin: string; code: string; credential: NonNullable<ReturnType<typeof readDraftOffCredential>> }) {
-  const [state, setState] = useState<DraftOffSessionState>({ snapshot: null, pending: false, error: null, accessUnavailable: false });
+  const [state, setState] = useState<DraftOffSessionState>(INITIAL_ROOM);
   const session = useRef<ReturnType<typeof createDraftOffSession> | null>(null);
-  const [copyMessage, setCopyMessage] = useState<string | null>(null);
   useEffect(() => {
     try {
       const client = createDraftOffSession({ apiOrigin, roomCode: code, credential, journalStorage: sessionStorage, onChange: setState });
@@ -141,21 +137,9 @@ function RoomBootstrap({ apiOrigin, code, credential }: { apiOrigin: string; cod
       return () => { client.stop(); session.current = null; };
     } catch { setState(current => ({ ...current, error: "Room recovery storage cannot be safely read. Saved access has been preserved." })); }
   }, [apiOrigin, code, credential]);
-  const snapshot = state.snapshot;
-  return <section className="draft-off-panel" aria-labelledby="room-title"><p className="eyebrow">Authenticated room</p><h1 id="room-title">{code}</h1>
-    {state.error && <p className="draft-off-notice" role="status">{state.error}</p>}
-    {!snapshot && !state.error && <p role="status">Restoring current room…</p>}
-    {snapshot && <><p>{ERAS[snapshot.view.round.eraId]} · {snapshot.settings.draftMinutes} minutes · {snapshot.view.phase === "LOBBY" ? "Lobby" : snapshot.view.phase === "IN_PROGRESS" ? "Round in progress" : "Round complete"}</p>
-      <ul className="draft-off-members">{snapshot.view.participants.map(participant => <li key={participant.participantId}><strong>{participant.displayName}</strong><span>{participant.participantId === credential.participantId ? "You · " : ""}{participant.role === "HOST" ? "Host · " : ""}{participant.membershipStatus === "JOINED" ? "Joined" : "Left"}</span></li>)}</ul>
-      <p>Room connected. Your identity is saved for this room.</p>
-      <button className="secondary-action" onClick={() => {
-        const link = new URL(draftOffRoomPath(code), window.location.origin).href;
-        void navigator.clipboard?.writeText(link).then(() => setCopyMessage("Invite link copied."), () => setCopyMessage("Copy the room URL from the address bar."));
-        if (!navigator.clipboard) setCopyMessage("Copy the room URL from the address bar.");
-      }}>Copy invite link</button>{copyMessage && <p role="status">{copyMessage}</p>}
-    </>}
-    {!state.accessUnavailable && <div className="draft-off-tabs"><button className="secondary-action" onClick={() => void session.current?.resync()}>Refresh room</button>
-      {state.pending && <button className="secondary-action" onClick={() => void session.current?.retry()}>Retry saved action</button>}</div>}
-    <p className="draft-off-footnote">Private drafts are visible only to their owner. Closing this page does not leave the room.</p>
-  </section>;
+  return <DraftOffRoomExperience code={code} state={state} actions={{
+    command: command => session.current ? session.current.command(command) : Promise.reject(new Error("Room is not connected.")),
+    retry: () => session.current?.retry() ?? Promise.resolve(),
+    resync: () => session.current?.resync() ?? Promise.resolve(),
+  }} />;
 }
