@@ -20,7 +20,7 @@ const runtime = await startRuntime(state, { production: true, port,
   bindings: { ALLOWED_ORIGINS: JSON.stringify(origins) } });
 console.log(`Local Draft-Off API: ${runtime.url.origin}`);
 console.log(`Local state directory (private; preserve for restart): ${state}`);
-console.log(`Frontend: VITE_DRAFT_OFF_API_ORIGIN=${runtime.url.origin} npm run dev:web -- --port 5173 --strictPort`);
+console.log(`Frontend: VITE_DRAFT_OFF_ENABLED=true VITE_DRAFT_OFF_API_ORIGIN=${runtime.url.origin} npm run dev:web -- --port 5173 --strictPort`);
 let closing = false;
 async function close() { if (closing) return; closing = true; await runtime.mf.dispose(); process.exit(0); }
 process.on('SIGINT', close); process.on('SIGTERM', close);

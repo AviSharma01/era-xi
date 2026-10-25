@@ -2,6 +2,12 @@
 export interface EnrollmentStorage { getItem(key: string): string | null; setItem(key: string, value: string): void; removeItem(key: string): void }
 type Pending = { key: string; input: string };
 type StoredEnrollment = { roomCode: string; participantId: string; reconnectCredential: string };
+export type EnrollmentLock = <T>(name: string, work: () => Promise<T>) => Promise<T>;
+/** No localStorage read/write sequence is a cross-tab mutex. Unsupported browsers fail closed. */
+export const browserEnrollmentLock: EnrollmentLock = async (name, work) => {
+  if (!navigator.locks) throw new Error('ENROLLMENT_LOCK_UNAVAILABLE');
+  return await navigator.locks.request(name, work);
+};
 export async function enrollGuest(apiOrigin: string, operation: 'CREATE' | 'JOIN', roomCode: string | undefined,
   input: unknown, storage: EnrollmentStorage, transport: typeof fetch = fetch,
   onStored?: (enrollment: StoredEnrollment, ownsAttempt: () => boolean) => void) {
@@ -26,10 +32,21 @@ export async function enrollGuest(apiOrigin: string, operation: 'CREATE' | 'JOIN
   const result = await response.json() as { ok: boolean; roomCode?: string; participantId?: string; reconnectCredential?: string; error?: { code: string } };
   if (!ownsAttempt()) return { status: response.status, body: result };
   if (response.status === 201 && result.ok && result.roomCode && result.participantId && result.reconnectCredential) {
+    if (operation === 'JOIN' && result.roomCode !== roomCode) return { status: response.status, body: result };
     const credentialSlot = `draft-off:credential:${result.roomCode}`;
     const saved = JSON.stringify({ participantId: result.participantId, reconnectCredential: result.reconnectCredential });
-    storage.setItem(credentialSlot, saved);
-    if (storage.getItem(credentialSlot) !== saved) throw new Error('Credential storage could not be verified.');
+    const current = storage.getItem(credentialSlot);
+    // Even a response owning the pending key cannot replace an established identity.
+    // Preserve the exact key/input on conflict, including malformed existing storage.
+    const matches = (raw: string) => {
+      try { const value = JSON.parse(raw); return value?.participantId === result.participantId && value?.reconnectCredential === result.reconnectCredential; }
+      catch { return false; }
+    };
+    if (current !== null && !matches(current)) return { status: response.status, body: result };
+    if (!ownsAttempt()) return { status: response.status, body: result };
+    if (current === null) storage.setItem(credentialSlot, saved);
+    const readback = storage.getItem(credentialSlot);
+    if (readback === null || !matches(readback)) throw new Error('Credential storage could not be verified.');
     // A UI may activate synchronously while the exact persisted attempt still
     // exists. A historical reply must never authorize navigation via credentials alone.
     if (ownsAttempt()) onStored?.({ roomCode: result.roomCode, participantId: result.participantId,

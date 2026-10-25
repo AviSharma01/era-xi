@@ -34,7 +34,8 @@ function server(command: (init: RequestInit) => Promise<Response>, read = () => 
 test("Draft-Off routing respects nested bases, codes and existing routes", () => {
   assert.equal(appRoutePath("DRAFT_OFF", "/games/"), "/games/draft-off");
   assert.equal(draftOffRoomPath(code.toLowerCase(), "/games/"), "/games/draft-off/rooms/0123456789AB");
-  assert.equal(matchAppRoute("/games/draft-off/rooms/0123456789ab/", "/games/"), "DRAFT_OFF");
+  assert.equal(matchAppRoute("/games/draft-off/rooms/0123456789ab/", "/games/", true), "DRAFT_OFF");
+  assert.equal(matchAppRoute("/games/draft-off/rooms/0123456789ab/", "/games/", false), null);
   for (const path of ["/draft-off/rooms/0123456789AB", "/games/draft-off/rooms/0123456789AB/extra", "/games/draft-off/rooms/invalid"]) assert.equal(draftOffRoomCode(path, "/games/"), null);
   assert.equal(matchAppRoute("/classic", "/"), "CLASSIC");
   assert.equal(matchAppRoute("/era-draft", "/"), "ERA_DRAFT");
@@ -158,7 +159,7 @@ function enrollmentOptions(saved: EnrollmentStorage, transport: typeof fetch, on
 }
 
 for (const operation of ["CREATE", "JOIN"] as const) {
-  test(`${operation}: delayed enrollment A cannot navigate over another tab's recoverable enrollment B`, async () => {
+  test(`${operation}: delayed enrollment cannot displace current recovery or an established JOIN identity`, async () => {
     const saved = storage(), navigations: string[] = [];
     const requests: { init: RequestInit; resolve: (value: Response) => void; reject: (reason: Error) => void }[] = [];
     const transport: typeof fetch = (_url, init) => new Promise((resolve, reject) => { requests.push({ init: init!, resolve, reject }); });
@@ -170,6 +171,16 @@ for (const operation of ["CREATE", "JOIN"] as const) {
     const duplicate = enrollGuest(options.apiOrigin, operation, roomCode, options.input, saved, transport);
     requests[1].resolve(enrollmentReply()); await duplicate;
     assert.equal(saved.getItem(slot), null);
+    if (operation === "JOIN") {
+      const savedIdentity = saved.getItem(`draft-off:credential:${code}`);
+      const resumed = await enrollDraftOffGuest({ ...options, input: { displayName: "B" } });
+      assert.equal(resumed.resumed, true); assert.equal(resumed.activated, true);
+      assert.equal(requests.length, 2, "Existing identity prevents a fresh JOIN");
+      requests[0].resolve(enrollmentReply()); assert.equal((await old).activated, false);
+      assert.deepEqual(navigations, [code]); assert.equal(saved.getItem(slot), null);
+      assert.equal(saved.getItem(`draft-off:credential:${code}`), savedIdentity);
+      return;
+    }
     const newer = enrollDraftOffGuest({ ...options, input: { displayName: "B" } });
     const pendingB = saved.getItem(slot); assert.ok(pendingB);
     requests[0].resolve(enrollmentReply());
@@ -181,7 +192,7 @@ for (const operation of ["CREATE", "JOIN"] as const) {
     const recovered = enrollDraftOffGuest({ ...options, input: { displayName: "B" } });
     assert.equal(new Headers(requests[3].init.headers).get("Enrollment-Key"), new Headers(requests[2].init.headers).get("Enrollment-Key"));
     assert.equal(requests[3].init.body, requests[2].init.body);
-    const nextRoom = operation === "JOIN" ? code : "0123456789AC";
+    const nextRoom = "0123456789AC";
     requests[3].resolve(enrollmentReply(nextRoom, "p_" + "b".repeat(32), "D".repeat(43)));
     assert.equal((await recovered).activated, true);
     assert.deepEqual(navigations, [nextRoom]); assert.equal(saved.getItem(slot), null);
@@ -251,7 +262,7 @@ test("response loss retains exact enrollment recovery and disposed UI cannot act
   assert.equal(new Headers(requests[0].headers).get("Enrollment-Key"), new Headers(requests[1].headers).get("Enrollment-Key"));
   assert.equal(requests[0].body, requests[1].body); assert.equal(saved.getItem(slot), null);
   active = false;
-  assert.equal((await enrollDraftOffGuest(options)).activated, false); assert.equal(activations, 1);
+  await assert.rejects(enrollDraftOffGuest(options), /no longer active/); assert.equal(activations, 1);
 });
 
 test("authentication loss clears the private snapshot and stops further old-session requests", async () => {
@@ -340,5 +351,47 @@ test("cleanup recovery never deletes a different session's journal", async () =>
     await fixture.client.retry();
     assert.equal(commands, 1); assert.deepEqual([...saved.rows.values()], [replacement]);
     assert.equal(fixture.latest()!.pending, true);
+  } finally { fixture.client.stop(); }
+});
+
+test("verified receipt cleanup permission resets before the next uncertain command", async () => {
+  const saved = storage(), sent: string[] = [];
+  const fixture = setup(server(async init => {
+    sent.push(init.body as string);
+    if (sent.length === 1) return response({ ok: true, changed: true, roomRevision: 3 });
+    throw new Error('lost response for a different intent');
+  }, () => snapshot(3)), saved);
+  try {
+    await fixture.client.start(); await fixture.client.command({ type: 'SPIN' });
+    assert.equal(fixture.latest()!.pending, false);
+    await fixture.client.command({ type: 'RESPIN' });
+    assert.equal(fixture.latest()!.pending, true);
+    assert.notEqual(sent[0], sent[1]);
+    // Absence is only recoverable for the same intent with a verified receipt.
+    saved.rows.clear(); await fixture.client.retry();
+    assert.equal(sent.length, 2); assert.equal(fixture.latest()!.pending, true);
+  } finally { fixture.client.stop(); }
+});
+
+test("mid-retry journal replacement survives a delayed verified receipt", async () => {
+  const saved = storage(); let release!: (reply: Response) => void, commands = 0;
+  const fixture = setup(server(async () => {
+    commands++;
+    if (commands === 1) throw new Error('lost first response');
+    return new Promise(resolve => { release = resolve; });
+  }), saved);
+  try {
+    await fixture.client.start(); await fixture.client.command({ type: 'SPIN' });
+    const slot = [...saved.rows.keys()][0]!;
+    const replacement = JSON.stringify({ ...JSON.parse(saved.rows.get(slot)!), envelope: {
+      commandId: 'replacement-intent', expectedDraftRevision: 2, command: { type: 'RESPIN' },
+    } });
+    const pending = fixture.client.retry(); await flush();
+    saved.setItem(slot, replacement);
+    release(response({ ok: true, changed: true, roomRevision: 3 })); await pending;
+    assert.equal(saved.getItem(slot), replacement);
+    assert.equal(fixture.latest()!.pending, true);
+    assert.equal(fixture.latest()!.snapshot!.view.revision, 2);
+    await fixture.client.retry(); assert.equal(commands, 2);
   } finally { fixture.client.stop(); }
 });

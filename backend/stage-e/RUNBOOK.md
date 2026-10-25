@@ -1,6 +1,6 @@
 # Draft-Off local development and future staging runbook
 
-M4 ends at local backend verification. These instructions provision nothing. M5 consumes the [frozen contract](M5_CONTRACT.md); existing solo web release instructions remain in `docs/RELEASE.md`.
+M5.6 closes local acceptance; M6 staging still requires separate authorization. These instructions provision nothing. M5 consumes the [frozen contract](M5_CONTRACT.md); existing solo web release instructions remain in `docs/RELEASE.md`.
 
 ## Local prerequisites and verification
 
@@ -66,7 +66,7 @@ await local.mf.dispose();
 rmSync(localState, { recursive: true, force: true });
 ```
 
-M5.1 added `/draft-off` and `/draft-off/rooms/{CODE}` for enrollment and authenticated bootstrap. M5.2 adds the lobby, independent timed drafting, submission/waiting and authoritative leaderboard. Detailed results remain outside the current contract. See [M5.2 handoff](M5_2_HANDOFF.md).
+M5.1 added `/draft-off` and `/draft-off/rooms/{CODE}` for enrollment and authenticated bootstrap. M5.2 adds the lobby, independent timed drafting, submission/waiting and authoritative leaderboard. M5.3 adds authenticated selected-entry results and M5.5 adds two-XI comparison. See the [current contract](M5_CONTRACT.md) and [M5.6 acceptance/handoff](M5_6_HANDOFF.md); the earlier M5.2 proposal is historical.
 
 For interactive development after the builds above, use two terminals at the repository root:
 
@@ -75,7 +75,7 @@ npm run dev:draft-off
 ```
 
 ```sh
-VITE_DRAFT_OFF_API_ORIGIN=http://127.0.0.1:8787 npm run dev:web -- --port 5173 --strictPort
+VITE_DRAFT_OFF_ENABLED=true VITE_DRAFT_OFF_API_ORIGIN=http://127.0.0.1:8787 npm run dev:web -- --port 5173 --strictPort
 ```
 
 Use the API origin printed by the launcher if `DRAFT_OFF_LOCAL_PORT` is changed. The launcher binds loopback only, defaults to allowing exactly `http://127.0.0.1:5173`, uses the production entrypoint and unchanged interactive rate limits, and creates no deployed resources. No API origin is assumed in a web build: an unset origin shows a disconnected Draft-Off entry while solo remains available. The configured value must be a root HTTPS origin or loopback HTTP origin, without credentials, query, fragment or path prefix.
@@ -92,7 +92,7 @@ The launcher prints its private temporary state directory. Set `DRAFT_OFF_LOCAL_
 
 Guest credentials and exact pending enrollments use localStorage. One browser profile has one identity per room; use separate profiles/contexts for different players. Pending command envelopes use sessionStorage, survive refresh in that tab and are retried exactly after authenticated bootstrap. Returning after the tab journal is gone reads current state without reconstructing an old intent. Storage failures block enrollment/commands before unverified requests; uncertain outcomes preserve recovery. Draft-phase numeric ratings and other entrants’ private drafts remain hidden. After resolution, M5.3 lets authenticated locked-round entrants inspect eligible submitted XIs and campaigns through the results endpoint.
 
-`npm run test:draft-off-client:local` runs the M5.1 controller/enrollment integration and M5.2 two-/eight-entrant gameplay journeys and M5.3 authenticated results checks against real local production HTTP/WebSockets after root and Stage D builds. It is also included after A–E in `verify:backend`. Automated bursts explicitly override test limits; interactive defaults are unchanged. The test injects response loss, restores the command journal, checks private versus room revisions and privacy, and restarts persisted native state. M5.2 additionally checks lost command replies, drafting/waiting refresh, submission freezing, HTTP-only fallback and complete campaigns. Deadline scenarios reuse the existing isolated native test-clock harness; those controls are never served by the interactive launcher. Tests run sequentially. It removes its own temporary storage and prints no private bodies or credentials. The production backend bundle is `.generated/worker.js`, never `.generated/harness.js`; it exports `DraftOffRoom` and the Worker handler. Generated source maps and embedded catalogs are server-only; do not serve them as web assets.
+`npm run test:draft-off-client:local` runs the M5.1 controller/enrollment integration and M5.2 two-/eight-entrant gameplay journeys and M5.3 authenticated results checks against real local production HTTP/WebSockets after root and Stage D builds. It also includes M5.4 recovery and the M5.6 combined five-era/duration matrix, and runs after A–E in `verify:backend`. Automated bursts explicitly override test limits; interactive defaults are unchanged. The test injects response loss, restores the command journal, checks private versus room revisions and privacy, and restarts persisted native state. M5.2 additionally checks lost command replies, drafting/waiting refresh, submission freezing, HTTP-only fallback and complete campaigns. Deadline scenarios reuse the existing isolated native test-clock harness; those controls are never served by the interactive launcher. Tests run sequentially. It removes its own temporary storage and prints no private bodies or credentials. The production backend bundle is `.generated/worker.js`, never `.generated/harness.js`; it exports `DraftOffRoom` and the Worker handler. Generated source maps and embedded catalogs are server-only; do not serve them as web assets.
 
 ## Future staging deployment gates
 
@@ -124,3 +124,41 @@ Definitive enrollment rejections allow correction with a fresh pending key: 400 
 Authenticated GET/command/ticket requests check exhausted durable buckets before catalog/replay recovery. The preflight is read-only; normal consumption still occurs in its original transaction and no state access is authorized by a bucket check. Throttled requests can receive 429 before expiry/corruption recovery; native alarms and subsequent admitted access remain responsible for canonical recovery and cleanup. Invalid credentials still fail before bucket inspection. Unsupported socket frames and close/error handling do not enter the gameplay queue, so a held queue cannot retain a frame flood. None of these safeguards changes membership, receipts, deadlines or retention anchors.
 
 Production `catalog.ts` imports only the generated data module from Stage A preparation: the manifest and exact committed V1 artifact strings. It imports no harness, fixtures, test controls, Miniflare or Node runtime. Production-bundle isolation and catalog hash checks remain in the correctness suites. Extracting this data-only build step from Stage A can wait until deployment packaging; no runtime separation fix is necessary now. These local safeguards do not establish Internet-scale abuse resistance, platform quota headroom or external capture/redaction settings; those remain staging gates above.
+
+## M5.6 browser acceptance and M6 handoff
+
+### Independent pre-merge remediation checks
+
+The default build keeps Draft-Off disabled, including direct room routes. Local/staging opt-in requires **both** `VITE_DRAFT_OFF_ENABLED=true` and an explicit `VITE_DRAFT_OFF_API_ORIGIN`. Never add the enable flag to a public production environment as M5 housekeeping. Follow `docs/RELEASE.md` after separately approved M6 backend/privacy/recovery validation. Build-time flag changes require rebuilding; the API origin alone cannot enable the mode.
+
+Guest enrollment requires Web Locks in a secure browser context (HTTPS or loopback). There is no unsafe localStorage-lock fallback. Existing saved room access remains readable; unsupported locking blocks new enrollment with an explicit message. Same-origin tabs serialize enrollment and adopt the profile's existing identity rather than creating another one. Keep uncertain pending material when resolving conflicts; never manually rotate a recovery key to bypass a pending attempt.
+
+Run focused regressions before the ordinary full gates:
+
+```sh
+npm run test:m5-premerge
+npm run verify:release
+npm run verify:backend
+```
+
+The focused suite also runs in the root `npm test`/V1 CI lane. It bundles actual UI modules using the existing Vite dependency, exercises concurrent enrollment/conflicting replies, delayed solo Start/Continue and root/nested release flags, and creates only temporary test bundles. No additional package is needed.
+
+With an already installed Playwright and Chrome, run both browser scripts after root/Stage D preparation:
+
+```sh
+DRAFT_OFF_PLAYWRIGHT_MODULE=/absolute/path/playwright/index.mjs CHROME_BIN=/absolute/path/chrome DRAFT_OFF_BROWSER_OUTPUT=/private/tmp/draft-off-premerge-evidence node scripts/draft_off_premerge_browser_validation.mjs
+DRAFT_OFF_PLAYWRIGHT_MODULE=/absolute/path/playwright/index.mjs CHROME_BIN=/absolute/path/chrome DRAFT_OFF_BROWSER_OUTPUT=/private/tmp/draft-off-m56-remediation-evidence node scripts/draft_off_m55_browser_validation.mjs
+```
+
+The first script builds default-disabled and explicitly enabled production variants under `/` and `/games/`, even when the API origin is configured; checks direct navigation, Classic, delayed Start/Continue, normal solo save/Continue and real pre-opened/concurrent same-profile tabs against the production Worker. The existing M5.6 walkthrough explicitly enables only its temporary local build and retains full create/join/draft/submit/results/comparison coverage. Both preserve historical evidence, retain sanitized summaries/screenshots in the selected temporary directory and remove private SQLite state. Neither installs packages or deploys anything. Browser checks remain local prerequisites, separate from CI's DOM/native lanes.
+
+The [M5.6 report](M5_6_HANDOFF.md) records actual local execution and separates native workerd, simulated DOM and real Chromium evidence. Reuse the existing browser walkthrough after the root/Stage D builds. Supply the absolute path to an already installed Playwright module and a local Chrome binary; this does not install packages:
+
+```sh
+DRAFT_OFF_PLAYWRIGHT_MODULE=/absolute/path/playwright/index.mjs CHROME_BIN=/absolute/path/chrome DRAFT_OFF_BROWSER_OUTPUT=/private/tmp/draft-off-m56-transition-browser-evidence node scripts/draft_off_m55_browser_validation.mjs
+DRAFT_OFF_PLAYWRIGHT_MODULE=/absolute/path/playwright/index.mjs CHROME_BIN=/absolute/path/chrome DRAFT_OFF_BROWSER_ERA=era-impact DRAFT_OFF_BROWSER_MINUTES=15 DRAFT_OFF_BROWSER_OUTPUT=/private/tmp/draft-off-m56-impact-browser-evidence node scripts/draft_off_m55_browser_validation.mjs
+```
+
+Use fresh output directories; retain earlier evidence. Each run builds a separate production frontend for its temporary production Worker, binds loopback preview port 5275 and opens two isolated guest contexts. It uses real UI enrollment, invites, drafting, submissions, selected results and comparison. Rate overrides accommodate accelerated automation only; neither interactive defaults nor production clocks change. All SQLite state is temporary and removed in `finally`; do not retain browser profiles, traces, HARs or raw enrollment/command bodies. Summary JSON and screenshots contain no credentials. Browser execution/loopback binds may require sandbox permission. Run separately from Stage E timing smokes.
+
+Native A–E/M5 suites own accelerated deadline, hibernation, restart, default-limit and authorization edge cases; the browser walkthrough does not claim to force those cases through the production entrypoint. Before M6, follow every outstanding deployment gate above, including bundle/runtime/SQLite migration/namespace configuration, exact HTTPS origins, native rate bindings, observability canaries and CPU/quota measurements. Repeat the product journey over deployed HTTPS/WSS and validate autonomous alarms, physical devices, browser engines, suspension and real networks. Local acceptance is not deployment approval.

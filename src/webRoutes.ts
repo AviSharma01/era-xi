@@ -7,21 +7,27 @@ export const APP_ROUTE_SEGMENTS = Object.freeze({
 
 export type AppRoute = keyof typeof APP_ROUTE_SEGMENTS;
 
+/** Explicit release opt-in, independent of API configuration; all builds default off. */
+export function draftOffEnabled(value = import.meta.env?.VITE_DRAFT_OFF_ENABLED): boolean {
+  return value === "true";
+}
+
 export function appRoutePath(route: AppRoute, base = import.meta.env.BASE_URL): string {
   const basePath = normalizedBasePath(base);
   const segment = APP_ROUTE_SEGMENTS[route];
   return segment ? `${basePath}${segment}` : basePath;
 }
 
-export function matchAppRoute(pathname: string, base = import.meta.env.BASE_URL): AppRoute | null {
+export function matchAppRoute(pathname: string, base = import.meta.env.BASE_URL, draftOffAvailable = draftOffEnabled()): AppRoute | null {
   const basePath = normalizedBasePath(base);
   const normalizedPath = pathname.endsWith("/") && pathname !== basePath ? pathname.slice(0, -1) : pathname;
   for (const route of Object.keys(APP_ROUTE_SEGMENTS) as AppRoute[]) {
+    if (route === "DRAFT_OFF" && !draftOffAvailable) continue;
     const expected = appRoutePath(route, base);
     const normalizedExpected = expected.endsWith("/") && expected !== basePath ? expected.slice(0, -1) : expected;
     if (normalizedPath === normalizedExpected) return route;
   }
-  if (draftOffRoomCode(pathname, base)) return "DRAFT_OFF";
+  if (draftOffAvailable && draftOffRoomCode(pathname, base)) return "DRAFT_OFF";
   return null;
 }
 

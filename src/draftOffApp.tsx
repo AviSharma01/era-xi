@@ -4,6 +4,7 @@ import { enrollDraftOffGuest, createDraftOffSession, readDraftOffCredential, typ
 import { DraftOffRoomExperience, DRAFT_OFF_ERA_LABELS as ERAS, INITIAL_ROOM } from "./draftOffRoom.js";
 import { appRoutePath, draftOffRoomCode, normalizeDraftOffCode, navigateToAppRoute, navigateToDraftOffRoom } from "./webRoutes.js";
 import { ERA_IDS, type EraId } from "./teamEvaluationV2.js";
+import { browserEnrollmentLock } from "./draftOffEnrollmentClient.js";
 import "./draftOff.css";
 
 type PendingEnrollment = { record?: string; operation: "CREATE" | "JOIN"; roomCode?: string; input: { displayName: string; eraId?: EraId; draftMinutes?: 10 | 15 } };
@@ -50,16 +51,37 @@ function RoomEntry({ apiOrigin, code }: { apiOrigin: string; code: string | null
   const [pending, setPending] = useState(initial.pending);
   const [busy, setBusy] = useState(false), [message, setMessage] = useState<string | null>(initial.error);
   const [unavailable, setUnavailable] = useState(false);
+  const [storageError, setStorageError] = useState(initial.error);
   const [resumeCode, setResumeCode] = useState<string | null>(() => { try { return normalizeDraftOffCode(localStorage.getItem("draft-off:last-room") ?? ""); } catch { return null; } });
   const owner = useRef(0), inFlight = useRef(false);
+  const credentialRef = useRef(credential); credentialRef.current = credential;
   const transport = useRef<ReturnType<typeof createDraftOffTransport> | null>(null);
   useEffect(() => {
     transport.current = createDraftOffTransport();
     return () => { owner.current++; transport.current?.stop(); };
   }, []);
+  useEffect(() => {
+    const refresh = () => {
+      try {
+        const current = code ? readDraftOffCredential(localStorage, code) : null;
+        if (current && (current.participantId !== credentialRef.current?.participantId || current.reconnectCredential !== credentialRef.current?.reconnectCredential)) {
+          // Invalidate an in-flight form's handoff without deleting its recovery.
+          owner.current++; setCredential(current);
+        }
+        const nextPending = pendingEnrollment(code);
+        if (nextPending) {
+          setOperation(nextPending.operation);
+          setRoom(nextPending.roomCode ?? "");
+        }
+        setPending(nextPending); setStorageError(null);
+      } catch { setStorageError("Browser storage cannot be safely read. Saved room access and recovery are preserved."); }
+    };
+    window.addEventListener("storage", refresh); window.addEventListener("focus", refresh);
+    return () => { window.removeEventListener("storage", refresh); window.removeEventListener("focus", refresh); };
+  }, [code]);
   if (credential && code) return <RoomBootstrap apiOrigin={apiOrigin} code={code} credential={credential} />;
   async function submit(event: FormEvent) {
-    event.preventDefault(); if (inFlight.current || initial.error) return;
+    event.preventDefault(); if (inFlight.current || storageError) return;
     const normalized = operation === "JOIN" ? normalizeDraftOffCode(room) : undefined;
     if (operation === "JOIN" && !normalized) { setMessage("Enter the complete 12-character room code."); return; }
     if (!pending && operation === "JOIN" && !code) { navigateToDraftOffRoom(normalized!); return; }
@@ -69,6 +91,7 @@ function RoomEntry({ apiOrigin, code }: { apiOrigin: string; code: string | null
     try {
       const reply = await enrollDraftOffGuest({ apiOrigin, operation: intent.operation, roomCode: intent.roomCode,
         input: intent.input, storage: localStorage, transport: transport.current!.fetch,
+        withLock: browserEnrollmentLock, expectedPendingRecord: pending?.record ?? null,
         isActive: () => generation === owner.current,
         onEnrolled(roomCode, credential) {
           // Activation runs synchronously while this exact persisted attempt owns recovery.
@@ -78,6 +101,7 @@ function RoomEntry({ apiOrigin, code }: { apiOrigin: string; code: string | null
         },
       });
       if (generation !== owner.current) return;
+      if (reply.resumed) return;
       const result = reply.body;
       if (reply.status === 201 && result.ok && result.roomCode && result.participantId && result.reconnectCredential) {
         if (!reply.activated) setMessage("Enrollment changed in another tab. Current room recovery was preserved.");
@@ -87,10 +111,15 @@ function RoomEntry({ apiOrigin, code }: { apiOrigin: string; code: string | null
       setUnavailable(result.error?.code === "ROOM_CODE_UNAVAILABLE");
       setMessage(result.error?.code === "ROOM_CODE_COLLISION" ? "Room-code collision. Retry the saved enrollment with its replacement key."
         : `Enrollment not completed (${result.error?.code ?? "UNCONFIRMED"}). Saved recovery is preserved where required.`);
-    } catch { if (generation === owner.current) setMessage("Enrollment is not confirmed. Restore storage/network access and retry the saved attempt with the same name and settings."); }
+    } catch (error) { if (generation === owner.current) setMessage(error instanceof Error && error.message === "ENROLLMENT_LOCK_UNAVAILABLE"
+      ? "This browser cannot safely coordinate room enrollment. Use a browser with Web Locks support. Saved recovery is preserved."
+      : "Enrollment is not confirmed. Restore storage/network access and retry the saved attempt with the same name and settings."); }
     finally {
       if (generation === owner.current) {
-        try { setPending(pendingEnrollment(intent.roomCode ?? null)); } catch { setMessage("Enrollment recovery storage cannot be read. No replacement identity was created."); }
+        try {
+          setPending(pendingEnrollment(intent.roomCode ?? null));
+          if (code) setCredential(readDraftOffCredential(localStorage, code));
+        } catch { setStorageError("Enrollment recovery storage cannot be read. No replacement identity was created."); }
         inFlight.current = false; setBusy(false);
       }
     }
@@ -110,9 +139,9 @@ function RoomEntry({ apiOrigin, code }: { apiOrigin: string; code: string | null
         {operation === "CREATE" && <><label>Era<select value={pending?.input.eraId ?? era} disabled={busy || !!pending} onChange={event => setEra(event.target.value as EraId)}>{ERA_IDS.map(id => <option key={id} value={id}>{ERAS[id]}</option>)}</select></label>
           <label>Draft time<select value={pending?.input.draftMinutes ?? minutes} disabled={busy || !!pending} onChange={event => setMinutes(Number(event.target.value) as 10 | 15)}><option value={10}>10 minutes</option><option value={15}>15 minutes</option></select></label>
           <p>Era and time are fixed when the room is created.</p></>}
-        <button className="primary-action" disabled={busy || !!initial.error}>{busy ? "Confirming enrollment…" : pending ? "Retry saved enrollment" : operation === "CREATE" ? "Create private room" : code ? "Join private room" : "Continue to room"}</button>
+        <button className="primary-action" disabled={busy || !!storageError}>{busy ? "Confirming enrollment…" : pending ? "Retry saved enrollment" : operation === "CREATE" ? "Create private room" : code ? "Join private room" : "Continue to room"}</button>
       </form>
-      {message && <p className="draft-off-notice" role="status">{message}</p>}
+      {(storageError || message) && <p className="draft-off-notice" role="status">{storageError ?? message}</p>}
       {unavailable && pending?.operation === "CREATE" && <button className="secondary-action" onClick={() => {
         if (!window.confirm("Abandon this unavailable room creation? Its recovery key will be forgotten. This does not create or join another room.")) return;
         try {

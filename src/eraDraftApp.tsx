@@ -30,7 +30,7 @@ import {
 } from "./eraDraftUiPersistence.js";
 import { fetchEraDraftManifest, fetchScopedEraDraftCatalog, eraDraftManifestUrl, type EraDraftWebManifest } from "./eraDraftWebData.js";
 import { ERA_IDS, type EraId } from "./teamEvaluationV2.js";
-import { appRoutePath, matchAppRoute, navigateToAppRoute, type AppRoute } from "./webRoutes.js";
+import { appRoutePath, matchAppRoute, navigateToAppRoute, draftOffEnabled, type AppRoute } from "./webRoutes.js";
 
 const DraftOffApp = lazy(() => import("./draftOffApp.js"));
 
@@ -68,11 +68,20 @@ export function EraDraftApp(): ReactElement {
   const [terminalError, setTerminalError] = useState<string | null>(null);
   const operationIdRef = useRef(0);
   const operationPendingRef = useRef(false);
+  const routeRef = useRef(route);
+  const ownsOperation = (id: number, owner: AppRoute | null) => id === operationIdRef.current
+    && owner === routeRef.current && owner === matchAppRoute(window.location.pathname);
 
   useEffect(() => {
-    const onPopState = (): void => setRoute(matchAppRoute(window.location.pathname));
+    const onPopState = (): void => {
+      const next = matchAppRoute(window.location.pathname);
+      if (next !== routeRef.current) {
+        operationIdRef.current++; operationPendingRef.current = false; setPendingOperation(null);
+      }
+      routeRef.current = next; setRoute(next);
+    };
     window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
+    return () => { window.removeEventListener("popstate", onPopState); operationIdRef.current++; };
   }, []);
 
   useEffect(() => {
@@ -128,26 +137,28 @@ export function EraDraftApp(): ReactElement {
     operationPendingRef.current = true;
     const operationId = operationIdRef.current + 1;
     operationIdRef.current = operationId;
+    const ownerRoute = routeRef.current;
     setPendingOperation({ kind: "START", eraId, source });
     if (source === "TERMINAL") setTerminalError(null);
     else setManifestError(null);
     try {
       const manifestUrl = eraDraftManifestUrl(import.meta.env.BASE_URL);
       const catalog = await fetchScopedEraDraftCatalog({ manifest, manifestUrl, eraId });
+      if (!ownsOperation(operationId, ownerRoute)) return;
       const setup = createEraDraftGame({ catalog, rootSeed: createRootSeed() });
       const chosen = reduceEraDraft(catalog, setup, { type: "CHOOSE_ERA", eraId });
       if (!chosen.ok || chosen.state.phase !== "AWAITING_SPIN") throw new Error("The selected era could not start.");
-      if (operationId !== operationIdRef.current) return;
+      if (!ownsOperation(operationId, ownerRoute)) return;
       acceptTransition(catalog, chosen);
       setOverwriteEra(null);
       navigate("ERA_DRAFT");
     } catch (error) {
-      if (operationId !== operationIdRef.current) return;
+      if (!ownsOperation(operationId, ownerRoute)) return;
       const message = error instanceof Error ? error.message : "The selected era could not be loaded.";
       if (source === "TERMINAL") setTerminalError(message);
       else setManifestError(message);
     } finally {
-      if (operationId === operationIdRef.current) {
+      if (ownsOperation(operationId, ownerRoute)) {
         operationPendingRef.current = false;
         setPendingOperation(null);
       }
@@ -177,22 +188,23 @@ export function EraDraftApp(): ReactElement {
     operationPendingRef.current = true;
     const operationId = operationIdRef.current + 1;
     operationIdRef.current = operationId;
+    const ownerRoute = routeRef.current;
     setPendingOperation({ kind: "CONTINUE" });
     setLandingNotice(null);
     try {
       const manifestUrl = eraDraftManifestUrl(import.meta.env.BASE_URL);
       const restored = await loadAndRestoreEraDraftUiSave({ save: savedGame.save, manifest, manifestUrl });
-      if (operationId !== operationIdRef.current) return;
+      if (!ownsOperation(operationId, ownerRoute)) return;
       setSession(restored);
       setPersistenceWarning(null);
       navigate("ERA_DRAFT");
     } catch (error) {
-      if (operationId !== operationIdRef.current) return;
+      if (!ownsOperation(operationId, ownerRoute)) return;
       const message = error instanceof Error ? error.message : "The local save could not be restored.";
       if (classifySaveRestoreFailure(error) === "INVALID") setSavedGame({ kind: "INVALID", message });
       else setLandingNotice(`${message} Your saved game was kept. Try again when the era data is available.`);
     } finally {
-      if (operationId === operationIdRef.current) {
+      if (ownsOperation(operationId, ownerRoute)) {
         operationPendingRef.current = false;
         setPendingOperation(null);
       }
@@ -317,9 +329,9 @@ export function Landing(props: {
         </a>
         <div className="landing-header-actions">
         <a className="classic-link" href={appRoutePath("CLASSIC", props.basePath)}>Classic 2016 <span aria-hidden="true">↗</span></a>
-        <a className="classic-link" href={appRoutePath("DRAFT_OFF", props.basePath)} onClick={(event) => {
+        {draftOffEnabled() && <a className="classic-link" href={appRoutePath("DRAFT_OFF", props.basePath)} onClick={(event) => {
           if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); navigateToAppRoute("DRAFT_OFF"); }
-        }}>Draft-Off <span aria-hidden="true">↗</span></a>
+        }}>Draft-Off <span aria-hidden="true">↗</span></a>}
         {resumeSummary && <>
           <span id="continue-summary" className="landing-sr-only">Continue {ERA_COPY[resumeSummary.eraId].title}. {saveSummaryLabel(
             resumeSummary.phase, resumeSummary.pickCount,

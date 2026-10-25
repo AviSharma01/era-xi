@@ -6,6 +6,18 @@
 
 The browser requires HTTPS in production because Era Draft verifies catalog SHA-256 hashes with Web Crypto. V1 supports current evergreen Chrome, Edge, Firefox and Safari releases with JavaScript, Web Crypto and local storage enabled. The game remains playable in the current tab when local storage is unavailable, with an explicit warning.
 
+## Draft-Off release gate
+
+Draft-Off is disabled by default in **all** builds. Only the exact build-time value `VITE_DRAFT_OFF_ENABLED=true` enables its navigation, `/draft-off` and `/draft-off/rooms/{CODE}` (also under a configured Vite base). Disabled direct routes use the existing not-found screen and cannot enroll, bootstrap a room or contact the Draft-Off API. Classic and solo routes remain available.
+
+`VITE_DRAFT_OFF_API_ORIGIN` is independent configuration: setting it alone does not enable Draft-Off. An enabled build without a valid API origin remains disconnected. Local testing requires both variables, for example:
+
+```sh
+VITE_DRAFT_OFF_ENABLED=true VITE_DRAFT_OFF_API_ORIGIN=http://127.0.0.1:8787 npm run dev:web
+```
+
+Keep the flag absent in public production hosting until separately authorized M6 deployment, backend bindings/origins, privacy/observability, quotas and real-network recovery checks are complete. Then explicitly enable it only for the approved staging build, verify the built artifact and multiplayer journey, and obtain the separate production-release decision before enabling a public build. Changing a host environment variable requires a rebuild; it is not a runtime switch. Review production and preview environment settings/branch triggers independently. M5 remediation provisions and deploys nothing.
+
 ## Automated gate
 
 Run from a clean checkout with Node 20:

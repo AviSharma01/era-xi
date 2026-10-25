@@ -1,7 +1,7 @@
 import { createDraftOffRealtimeClient, type RealtimeClientOptions } from "./draftOffRealtimeClient.js";
 import { createDraftOffTransport } from "./draftOffClientTransport.js";
 import type { PublicCommand, SnapshotSuccess } from "./draftOffClientTypes.js";
-import { enrollGuest, type EnrollmentStorage } from "./draftOffEnrollmentClient.js";
+import { enrollGuest, type EnrollmentStorage, type EnrollmentLock } from "./draftOffEnrollmentClient.js";
 import { fetchDraftOffResults, ResultsClientError } from "./draftOffResultsClient.js";
 import type { ResultsSuccess } from "./draftOffResultsTypes.js";
 
@@ -21,20 +21,40 @@ export function readDraftOffCredential(storage: EnrollmentStorage, code: string)
 export async function enrollDraftOffGuest(options: {
   apiOrigin: string; operation: "CREATE" | "JOIN"; roomCode?: string; input: unknown;
   storage: EnrollmentStorage; transport?: typeof fetch; isActive: () => boolean;
+  withLock?: EnrollmentLock; expectedPendingRecord?: string | null;
   onEnrolled: (roomCode: string, credential: GuestCredential) => void;
 }) {
-  let activated = false;
-  const reply = await enrollGuest(options.apiOrigin, options.operation, options.roomCode, options.input,
-    options.storage, options.transport, (enrollment, ownsAttempt) => {
-      const credential = readDraftOffCredential(options.storage, enrollment.roomCode);
-      if (credential?.participantId !== enrollment.participantId || credential.reconnectCredential !== enrollment.reconnectCredential) return;
-      // Read current persisted ownership AFTER credential readback and immediately
-      // before handing off the active room. No storage mutation or await intervenes.
-      if (!options.isActive() || !ownsAttempt()) return;
-      options.onEnrolled(enrollment.roomCode, credential);
-      activated = true;
-    });
-  return { ...reply, activated };
+  const enroll = async () => {
+    if (!options.isActive()) throw new Error("Enrollment owner is no longer active.");
+    if (options.operation === "JOIN" && options.roomCode) {
+      const current = readDraftOffCredential(options.storage, options.roomCode);
+      if (current) {
+        // A queued or stale form resumes the profile's identity; no new key or request.
+        if (!options.isActive()) throw new Error("Enrollment owner is no longer active.");
+        options.onEnrolled(options.roomCode, current);
+        return { resumed: true as const, activated: true };
+      }
+    }
+    const slot = `draft-off:pending:${options.operation}:${options.roomCode ?? ""}`;
+    if (options.expectedPendingRecord !== undefined && options.storage.getItem(slot) !== options.expectedPendingRecord) {
+      throw new Error("Enrollment recovery changed. Read the current attempt before retrying.");
+    }
+    let activated = false;
+    const reply = await enrollGuest(options.apiOrigin, options.operation, options.roomCode, options.input,
+      options.storage, options.transport, (enrollment, ownsAttempt) => {
+        const credential = readDraftOffCredential(options.storage, enrollment.roomCode);
+        if (credential?.participantId !== enrollment.participantId || credential.reconnectCredential !== enrollment.reconnectCredential) return;
+        // Read current persisted ownership AFTER credential readback and immediately
+        // before handing off the active room. No storage mutation or await intervenes.
+        if (!options.isActive() || !ownsAttempt()) return;
+        options.onEnrolled(enrollment.roomCode, credential);
+        activated = true;
+      });
+    return { ...reply, resumed: false as const, activated };
+  };
+  return options.withLock
+    ? options.withLock(`draft-off:enrollment:${options.operation}:${options.roomCode ?? ""}`, enroll)
+    : enroll();
 }
 
 type Journal = { version: 1; roomCode: string; participantId: string; envelope: PublicCommand };

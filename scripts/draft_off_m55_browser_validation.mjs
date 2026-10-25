@@ -1,16 +1,18 @@
-// Local M5.5 browser validation. Uses the production Worker and built frontend.
+// Local M5.5/M5.6 browser acceptance; extends the existing walkthrough. Uses the production Worker and built frontend.
 // Provide a locally installed Playwright module and Chrome binary; no dependency download.
 // DRAFT_OFF_PLAYWRIGHT_MODULE=/absolute/path/playwright/index.mjs CHROME_BIN=/path/to/chrome node scripts/draft_off_m55_browser_validation.mjs
 import assert from 'node:assert/strict';
 import { spawn, spawnSync } from 'node:child_process';
 import { mkdtempSync, rmSync, mkdirSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { randomBytes } from 'node:crypto';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { startRuntime } from '../backend/stage-d/runtime.mjs';
 const { chromium } = await import(process.env.DRAFT_OFF_PLAYWRIGHT_MODULE ?? 'playwright');
 const root = fileURLToPath(new URL('../', import.meta.url));
+const eraId = process.env.DRAFT_OFF_BROWSER_ERA ?? 'era-transition';
+const minutes = Number(process.env.DRAFT_OFF_BROWSER_MINUTES ?? 10);
+assert.ok([10,15].includes(minutes));
 const frontend = 'http://127.0.0.1:5275';
 const out = process.env.DRAFT_OFF_BROWSER_OUTPUT ?? mkdtempSync(join(tmpdir(), 'draft-off-m55-browser-'));
 mkdirSync(out, { recursive: true });
@@ -21,8 +23,7 @@ const runtime = await startRuntime(statePath, { production: true,
   overrides: { requestsPerMinute:50000,enrollmentPerMinute:50000,readBurst:1000,readsPerMinute:5000,commandsPerMinute:5000,commandBurst:1000,ticketsPerMinute:1000,ticketBurst:100 },
   bindings: { ALLOWED_ORIGINS: JSON.stringify([frontend]) } });
 let server, browser;
-const evidence = { checks: [], output: out, viewports: ['1440×1000 desktop','390×844 touch','320×640 narrow touch','720×500 desktop reflow'], reducedMotion: true };
-const key = () => randomBytes(32).toString('base64url');
+const evidence = { checks: [], output: out, viewports: ['1440×1000 desktop','390×844 touch','320×640 narrow touch','720×500 desktop reflow'], reducedMotion: true, eraId, minutes };
 async function call(path, { method='GET', body, token, enroll }={}) {
   const reply = await fetch(new URL('/api/draft-off/v1'+path,runtime.url), { method, headers: { Origin:frontend,'CF-Connecting-IP':'198.18.50.55',
     ...(body?{'Content-Type':'application/json'}:{}),...(token?{Authorization:'Bearer '+token}:{}),...(enroll?{'Enrollment-Key':enroll}:{}) },...(body?{body:JSON.stringify(body)}:{}) });
@@ -77,29 +78,65 @@ async function checkComparisonIdentity(page, entry) {
   }
 }
 
+process.once('SIGTERM',async()=>{ await browser?.close();server?.kill('SIGTERM');await runtime.mf.dispose();rmSync(statePath,{recursive:true,force:true});process.exit(1); });
 try {
-  const build = spawnSync(join(root,'node_modules/.bin/vite'), ['build','--outDir',join(out,'web')], {cwd:root,env:{...process.env,VITE_DRAFT_OFF_API_ORIGIN:runtime.url.origin},stdio:'pipe'});
+  const build = spawnSync(join(root,'node_modules/.bin/vite'), ['build','--outDir',join(out,'web')], {cwd:root,env:{...process.env,VITE_DRAFT_OFF_ENABLED:'true',VITE_DRAFT_OFF_API_ORIGIN:runtime.url.origin},stdio:'pipe'});
   assert.equal(build.status,0,build.stderr?.toString());
   server = spawn(join(root,'node_modules/.bin/vite'),['preview','--outDir',join(out,'web'),'--host','127.0.0.1','--port','5275','--strictPort'],{cwd:root,stdio:'ignore'});
   for(let n=0;n<80;n++){try{if((await fetch(frontend)).ok)break;}catch{}await new Promise(resolve=>setTimeout(resolve,100));}
   assert.equal((await fetch(new URL('/__test/anything/inspect',runtime.url))).status,404);
-  const host = await call('/rooms',{method:'POST',enroll:key(),body:{displayName:'Desktop entrant',eraId:'era-transition',draftMinutes:10}});
-  const member = await call('/rooms/'+host.roomCode+'/join',{method:'POST',enroll:key(),body:{displayName:'Mobile entrant with a long display name'}});
-  const entries = [host,member];
   browser = await chromium.launch({executablePath:process.env.CHROME_BIN,headless:true});
   evidence.browser=browser.version();
-  const guests=[];
-  for(const [i,entry] of entries.entries()) {
-    const context=await browser.newContext({viewport:i===0?{width:1440,height:1000}:{width:390,height:844},...(i===1?{isMobile:true,hasTouch:true}:{}),reducedMotion:'reduce'});
-    await context.addInitScript(({code,id,credential})=>localStorage.setItem('draft-off:credential:'+code,JSON.stringify({participantId:id,reconnectCredential:credential})),{code:entry.roomCode,id:entry.participantId,credential:entry.reconnectCredential});
-    const page=await context.newPage(),errors=[],targets=[];
+  const guests=[], entries=[];
+  let invite;
+  for(let i=0;i<2;i++) {
+    const context=await browser.newContext({viewport:i===0?{width:1440,height:1000}:{width:390,height:844},...(i===1?{isMobile:true,hasTouch:true}:{}),reducedMotion:'reduce',permissions:['clipboard-read','clipboard-write']});
+    const page=await context.newPage(),errors=[],targets=[],failed=[],observations=[];
     page.on('pageerror',e=>errors.push(e.message));
+    page.on('console',msg=>{
+      if(msg.type()!=='error')return;
+      const item={message:msg.text(),url:msg.location().url};
+      // Existing optional icon is absent. Record this cosmetic design-pass item;
+      // every other console error and every failed application request still fails.
+      if(item.url===frontend+'/favicon.ico'&&item.message==='Failed to load resource: the server responded with a status of 404 (Not Found)') observations.push('Optional favicon.ico returned 404');
+      else errors.push(item);
+    });
+    page.on('response',response=>{if(response.status()>=400)failed.push({path:new URL(response.url()).pathname,status:response.status()});});
+    page.on('requestfailed',request=>{if(request.failure()?.errorText!=='net::ERR_ABORTED')failed.push({path:new URL(request.url()).pathname,error:request.failure()?.errorText});});
     page.on('request',request=>{const path=new URL(request.url()).pathname;if(path.includes('/results/'))targets.push(path.split('/').at(-1));});
-    await page.goto(frontend+'/draft-off/rooms/'+entry.roomCode);
+    console.log(JSON.stringify({enrollment:i,step:'open'}));
+    await page.goto(i===0?frontend+'/draft-off':invite);
+    await page.getByLabel('Display name',{exact:true}).fill(i===0?'Desktop entrant':'Mobile entrant with a long display name');
+    if(i===0) {
+      await page.getByRole('combobox',{name:/^Era/}).selectOption(eraId);
+      await page.getByRole('combobox',{name:/^Draft time/}).selectOption(String(minutes));
+    }
+    await page.getByRole('button',{name:i===0?'Create private room':'Join private room',exact:true}).click();
     await page.getByRole('heading',{name:'Same era. Your own XI.'}).waitFor();
-    guests.push({page,context,entry,errors,targets});
+    console.log(JSON.stringify({enrollment:i,step:'lobby'}));
+    const code=new URL(page.url()).pathname.split('/').at(-1);
+    const credential=await page.evaluate(code=>JSON.parse(localStorage.getItem('draft-off:credential:'+code)),code);
+    const entry={roomCode:code,...credential};entries.push(entry);
+    assert.equal(await page.getByRole('combobox',{name:/^Era/}).count(),0);
+    if(i===0) {
+      invite=await page.getByLabel('Invite link',{exact:true}).inputValue();
+      assert.equal(invite,frontend+'/draft-off/rooms/'+code);
+      await page.getByRole('button',{name:'Copy invite link',exact:true}).click();
+      await page.getByText('Invite link copied.',{exact:true}).waitFor();
+      assert.equal(await page.evaluate(()=>Promise.race([navigator.clipboard.readText(),new Promise((_,reject)=>setTimeout(()=>reject(new Error('Clipboard read timed out')),3000))])),invite);
+      assert.equal(await page.getByRole('button',{name:`Start ${minutes}-minute draft`}).isDisabled(),true);
+    } else {
+      assert.equal(await page.getByRole('button',{name:/Start .*minute draft/}).count(),0);
+      await page.getByRole('button',{name:'Leave lobby',exact:true}).click();
+      await page.getByRole('button',{name:'Rejoin lobby',exact:true}).click();
+      await page.getByRole('button',{name:'Leave lobby',exact:true}).waitFor();
+    }
+    await page.reload();await page.getByRole('heading',{name:'Same era. Your own XI.'}).waitFor();
+    assert.deepEqual(await page.evaluate(code=>JSON.parse(localStorage.getItem('draft-off:credential:'+code)),code),credential);
+    guests.push({page,context,entry,errors,targets,failed,observations});
   }
-  await guests[0].page.getByRole('button',{name:'Start 10-minute draft'}).click();
+  await guests[0].page.getByRole('button',{name:`Start ${minutes}-minute draft`}).click();
+  evidence.checks.push({uiCreateJoin:true,codeOnlyInvite:true,clipboard:true,fixedSettings:true,hostOnlyStart:true,leaveRejoin:true,lobbyReload:true});
   for(const [i,{page}] of guests.entries()) {
     let releaseLock;
     const heldLock=new Promise(resolve=>{releaseLock=resolve;});
@@ -111,6 +148,11 @@ try {
     });
     for(let pick=1;pick<=11;pick++) {
       await page.getByRole('button',{name:'Spin franchise',exact:true}).click();
+      if(pick===1) {
+        await page.getByRole('button',{name:'Respin · 1 left',exact:true}).click();
+        await page.getByText('Respin used',{exact:true}).waitFor();
+      }
+      if(pick===2) { await page.reload(); await page.locator('.candidate-card').first().waitFor(); }
       const choices=page.locator('.candidate-card:not([aria-disabled="true"]):enabled');
       const candidate=i===0?choices.first():choices.last();
       await candidate.waitFor(); await frame(page); await candidate.focus(); await page.keyboard.press('Enter');
@@ -159,7 +201,7 @@ try {
       await page.locator('.room-locked-player').first().click();
       await page.locator('.player-inspector[open] [role="timer"]').waitFor();await shot(page,'desktop-waiting-inspection');await page.keyboard.press('Escape');
     }
-    evidence.checks.push({gameplay:i===0?'desktop':'mobile',uiPicks:11,keyboardSelection:true,modalClock:true,pendingFeedback:true,submission:true});
+    evidence.checks.push({gameplay:i===0?'desktop':'mobile',uiPicks:11,respin:true,activeDraftReload:true,keyboardSelection:true,modalClock:true,pendingFeedback:true,submission:true});
   }
   const submissions=await Promise.all(entries.map(async entry=>(await call('/rooms/'+entry.roomCode+'/results/'+entry.participantId,{token:entry.reconnectCredential})).players.map(p=>[p.battingPosition,p.playerTeamSeasonId])));
   assert.notDeepEqual(submissions[0],submissions[1]);evidence.distinctSubmittedXIs=true;
@@ -227,13 +269,17 @@ try {
     await page.getByRole('heading',{name:'Room access unavailable',exact:true}).waitFor();assert.equal(await page.locator('#xi-comparison').count(),0);await storageTab.close();
     const meta=await page.locator('meta[name="viewport"]').getAttribute('content');
     assert.doesNotMatch(meta??'',/user-scalable\s*=\s*(no|0)|maximum-scale\s*=\s*1(?:\D|$)/i);
-    assert.deepEqual(guest.errors,[]);
+    assert.deepEqual(guest.failed,[]);assert.deepEqual(guest.errors,[]);
+    evidence.checks.push({context:name,consoleErrors:0,unexpectedFailedRequests:0,observations:guest.observations});
     evidence.checks.push({results:name,pairedPositions:11,pairedFixtures:20,serverAlignment:true,identityAfterSwap:true,fixtureDisclosures:true,cacheReuse:true,reload:true,storageEventInvalidation:true,noHorizontalOverflow:true});
   }
   // Existing V1 route remains independently loadable in the same built frontend.
   const solo=await browser.newPage({viewport:{width:1440,height:1000}});await solo.goto(frontend+'/era-draft');await solo.getByRole('heading',{name:'Choose your chapter.'}).waitFor({timeout:10000});
   evidence.checks.push({soloRoute:true});
   writeFileSync(join(out,'summary.json'),JSON.stringify(evidence,null,2)+'\n');console.log(JSON.stringify(evidence));
+} catch(error) {
+  for(const [n,context] of (browser?.contexts()??[]).entries()) { const page=context.pages()[0];if(page) await page.screenshot({path:join(out,`failure-${n}.png`)}).catch(()=>{}); }
+  throw error;
 } finally {
   await browser?.close();server?.kill('SIGTERM');await runtime.mf.dispose();rmSync(statePath,{recursive:true,force:true});
 }

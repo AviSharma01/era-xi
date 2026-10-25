@@ -330,11 +330,16 @@ test('real CREATE/JOIN response loss recovers through the pending-key client hel
     await assert.rejects(enrollGuest(runtime.url, 'CREATE', undefined, createInput, storage, loseResponse));
     const host = await enrollGuest(runtime.url, 'CREATE', undefined, createInput, storage, transport); assert.equal(host.status, 201); assert.deepEqual(host.body, lost);
     assert.equal(map.has('draft-off:pending:CREATE:'), false);
+    // Guests use separate browser profiles; JOIN must never replace the host's identity.
+    const memberMap = new Map(), memberStorage = { getItem: key => memberMap.get(key) ?? null,
+      setItem: (key, value) => memberMap.set(key, value), removeItem: key => memberMap.delete(key) };
+    const hostCredential = map.get(`draft-off:credential:${host.body.roomCode}`);
     const joinInput = { displayName: 'Member' };
-    await assert.rejects(enrollGuest(runtime.url, 'JOIN', host.body.roomCode, joinInput, storage, loseResponse));
-    const member = await enrollGuest(runtime.url, 'JOIN', host.body.roomCode, joinInput, storage, transport); assert.equal(member.status, 201); assert.deepEqual(member.body, lost);
+    await assert.rejects(enrollGuest(runtime.url, 'JOIN', host.body.roomCode, joinInput, memberStorage, loseResponse));
+    const member = await enrollGuest(runtime.url, 'JOIN', host.body.roomCode, joinInput, memberStorage, transport); assert.equal(member.status, 201); assert.deepEqual(member.body, lost);
     assert.equal((await snapshot(runtime, member.body)).body.view.participants.length, 2);
-    assert.equal(map.has(`draft-off:pending:JOIN:${host.body.roomCode}`), false);
+    assert.equal(memberMap.has(`draft-off:pending:JOIN:${host.body.roomCode}`), false);
+    assert.equal(map.get(`draft-off:credential:${host.body.roomCode}`), hostCredential);
   } finally { await runtime.mf.dispose(); }
 });
 

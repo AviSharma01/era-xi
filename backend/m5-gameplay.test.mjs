@@ -19,7 +19,7 @@ async function fixture(production, run) {
   const runtime = await startRuntime(path, { production, overrides: { requestsPerMinute: 50000, readBurst: 1000, readsPerMinute: 5000, commandBurst: 1000, commandsPerMinute: 5000, ticketBurst: 100, ticketsPerMinute: 1000, roomTicketBurst: 1000, roomTicketsPerMinute: 5000, pendingTicketsPerParticipant: 100, pendingTicketsPerRoom: 200 } });
   const send = async (url, init) => { const headers = new Headers(init?.headers); headers.set('Origin', origin); if(!headers.has('CF-Connecting-IP')) headers.set('CF-Connecting-IP', '198.18.0.52'); return fetch(url, { ...init, headers }); };
   let code, connection = 0;
-  async function enroll(name, host = false) { const saved = storage(); const reply = await enrollGuest(runtime.url.origin, host ? 'CREATE' : 'JOIN', host ? undefined : code, host ? { displayName: name, eraId: 'era-foundation', draftMinutes: 10 } : { displayName: name }, saved, send); assert.equal(reply.status, 201); if (host) code = reply.body.roomCode; return saved; }
+  async function enroll(name, host = false, eraId = 'era-foundation', draftMinutes = 10) { const saved = storage(); const reply = await enrollGuest(runtime.url.origin, host ? 'CREATE' : 'JOIN', host ? undefined : code, host ? { displayName: name, eraId, draftMinutes } : { displayName: name }, saved, send); assert.equal(reply.status, 201); if (host) code = reply.body.roomCode; return saved; }
   function connect(saved, { brokenSocket = false, loseCommand = false, journal = storage() } = {}) {
     const ip = `198.18.${process.pid % 250}.${++connection}`;
     let state, lose = loseCommand; const bodies = [];
@@ -35,14 +35,16 @@ async function fixture(production, run) {
       onChange: next => { state = next; } });
     clients.push(client); return { client, state: () => state, bodies, journal, saved };
   }
-  async function draft(player, count = 11) {
+  async function draft(player, count = 11, reverse = false) {
     for (let n = 0; n < count; n++) {
       await player.client.command({ type: 'SPIN' });
       const before = player.state().snapshot.view.myDraft;
       assert.equal(before.phase, 'AWAITING_PICK');
-      const candidate = before.candidates.find(row => row.available && row.positions.some(slot => slot.available));
+      const candidates = before.candidates.filter(row => row.available && row.positions.some(slot => slot.available));
+      const candidate = reverse ? candidates.at(-1) : candidates[0];
       assert.ok(candidate);
-      const slot = candidate.positions.find(slot => slot.available);
+      const positions = candidate.positions.filter(slot => slot.available);
+      const slot = reverse ? positions.at(-1) : positions[0];
       await player.client.command({ type: 'LOCK_PLAYER', playerTeamSeasonId: candidate.playerTeamSeasonId, battingPosition: slot.battingPosition });
       assert.equal(player.state().snapshot.view.myDraft.status.pickCount, n + 1);
       assert.equal(JSON.parse(player.bodies.at(-1)).expectedDraftRevision, before.revision);
@@ -125,3 +127,65 @@ test('M5.2 production backend: eight entrants finish independent XIs and receive
   assert.ok(result.leaderboard.every(row => row.played === 20));
   for (const player of players) assert.deepEqual(player.state().snapshot.view.resolution, result);
 }));
+
+// Combined acceptance matrix, not a Cartesian benchmark. Existing journeys also
+// cover Foundation/10/two+eight and Transition/10 in the real browser.
+for (const [eraId, minutes, count] of [
+  ['era-foundation', 15, 2], ['era-expansion', 10, 2],
+  ['era-transition', 15, 2], ['era-modern-pre-impact', 10, 2],
+  ['era-impact', 15, 8],
+]) {
+  test(`M5.6 production acceptance: ${eraId}/${minutes} minutes/${count} entrants, distinct strategies and aligned campaigns`,
+    { timeout: 180000 }, () => fixture(true, async ({ runtime, code, enroll, connect, draft }) => {
+      const saved = [await enroll('Matrix host', true, eraId, minutes)];
+      for (let i = 1; i < count; i++) saved.push(await enroll(`Matrix member ${i}`));
+      const players = saved.map(row => connect(row));
+      for (const player of players) await player.client.start();
+      // Member START fails and cannot change fixed settings or room phase.
+      await players[1].client.command({ type: 'START' });
+      assert.equal(players[1].state().snapshot.view.phase, 'LOBBY');
+      await players[0].client.resync(); await players[0].client.command({ type: 'START' });
+      for (const player of players) {
+        await player.client.resync();
+        const snapshot = player.state().snapshot;
+        assert.equal(snapshot.settings.draftMinutes, minutes);
+        assert.equal(snapshot.view.round.eraId, eraId);
+        const duration = snapshot.view.round.deadlineAtMs - snapshot.view.round.startedAtMs;
+        // Deadline is derived immediately before the START event timestamp;
+        // match the established native Stage E tolerance for that clock read.
+        assert.ok(duration > minutes * 60000 - 1000 && duration <= minutes * 60000);
+        assert.equal(snapshot.view.round.deadlineAtMs, players[0].state().snapshot.view.round.deadlineAtMs);
+      }
+      for (const [i, player] of players.entries()) await draft(player, 11, i % 2 === 1);
+      const picks = players.map(player => player.state().snapshot.view.myDraft.picks);
+      assert.notDeepEqual(picks[0], picks[1]);
+      for (const player of players) await player.client.command({ type: 'SUBMIT' });
+      for (const player of players) await player.client.resync();
+      const resolution = players[0].state().snapshot.view.resolution;
+      assert.equal(resolution.contestStatus, 'CONTESTED');
+      assert.equal(resolution.leaderboard.length, count);
+      const campaigns = [];
+      for (const player of players) {
+        assert.deepEqual(player.state().snapshot.view.resolution, resolution);
+        const participantId = player.state().snapshot.participantId;
+        const result = await player.client.loadResults(participantId);
+        assert.equal(result.players.length, 11);
+        assert.equal(new Set(result.players.map(row => row.playerId)).size, 11);
+        assert.ok(result.players.some(row => row.keeperCapability === 'CONFIRMED'));
+        assert.ok(result.players.filter(row => row.rosterStatus === 'OVERSEAS').length <= 4);
+        const { aggregate: a, matches } = result.campaign;
+        assert.equal(matches.length, 20);
+        assert.equal(a.won, matches.filter(row => row.outcome === 'WIN').length);
+        assert.equal(a.lost, 20 - a.won); assert.equal(a.points, a.won * 2);
+        assert.equal(a.netRunRate, 6 * a.runsFor / a.ballsFacedForNrr - 6 * a.runsAgainst / a.ballsBowledForNrr);
+        const row = resolution.leaderboard.find(row => row.participantId === participantId);
+        for (const field of ['played','won','lost','points','netRunRate']) assert.equal(row[field], a[field]);
+        campaigns.push(matches);
+      }
+      assert.notDeepEqual(campaigns[0], campaigns[1]);
+      const fixtureKeys = rows => rows.map(row => [row.sequence, row.matchId, row.opponent.profileId]);
+      for (const campaign of campaigns) assert.deepEqual(fixtureKeys(campaign), fixtureKeys(campaigns[0]));
+      const forbidden = await fetch(new URL(`/__test/${code()}/inspect`, runtime.url));
+      assert.equal(forbidden.status, 404);
+    }));
+}
