@@ -1,26 +1,23 @@
+import type { Settings, PublicCommand, SnapshotSuccess } from '../../src/draftOffClientTypes.js';
+export type { Settings, PublicCommand, SnapshotSuccess } from '../../src/draftOffClientTypes.js';
 import { ERA_IDS, type EraId } from '../../src/teamEvaluationV2';
 import type { DraftOffRoomCommandResult, DraftOffRoomView } from '../../src/draftOffRoomTypes';
+import type { ResultsSuccess } from '../../src/draftOffResultsTypes';
 
 export class ApiError extends Error {
   constructor(readonly status: number, readonly code: string) { super(code); }
 }
-export type Settings = { draftMinutes: 10 | 15 };
 export type CreateInput = Settings & { displayName: string; eraId: EraId };
-export type PublicCommand =
-  | { commandId: string; expectedRoomRevision: number; command: { type: 'LEAVE' | 'REJOIN' | 'START' } }
-  | { commandId: string; expectedDraftRevision: number; command:
-      { type: 'SPIN' | 'RESPIN' | 'SUBMIT' } |
-      { type: 'LOCK_PLAYER'; playerTeamSeasonId: string; battingPosition: number } };
 export type Operation =
   | { kind: 'CREATE'; roomCode: string; enrollmentKey: string; input: CreateInput }
   | { kind: 'JOIN'; roomCode: string; enrollmentKey: string; input: { displayName: string } }
   | { kind: 'READ'; roomCode: string; credential: string }
+  | { kind: 'RESULTS'; roomCode: string; credential: string; targetParticipantId: string }
   | { kind: 'SOCKET_TICKET'; roomCode: string; credential: string; origin: string }
   | { kind: 'COMMAND'; roomCode: string; credential: string; input: PublicCommand };
 export type ApiFailure = { ok: false; error: { code: string; message: string }; roomRevision?: number; view?: DraftOffRoomView };
-export type SnapshotSuccess = { ok: true; roomCode: string; participantId: string; settings: Settings; view: DraftOffRoomView; serverTimeMs: number };
 export type SocketTicketSuccess = { ok: true; ticket: string; expiresAtMs: number };
-export type ApiBody = EnrollmentSuccess | SafeEnrollment | SnapshotSuccess | SocketTicketSuccess | Extract<DraftOffRoomCommandResult, { ok: true }> | ApiFailure | null;
+export type ApiBody = EnrollmentSuccess | SafeEnrollment | SnapshotSuccess | ResultsSuccess | SocketTicketSuccess | Extract<DraftOffRoomCommandResult, { ok: true }> | ApiFailure | null;
 export type ApiReply = { status: number; body: ApiBody; retryAfter?: number };
 export type EnrollmentSuccess = { ok: true; roomCode: string; participantId: string;
   reconnectCredential: string; settings: Settings; view: DraftOffRoomView };
@@ -77,6 +74,7 @@ const messages: Record<string, string> = {
   ENROLLMENT_KEY_CONFLICT: 'Enrollment key was used for different input.', ROOM_CODE_COLLISION: 'Room code collision. Use a new enrollment key.',
   ROOM_CODE_UNAVAILABLE: 'Room code is unavailable.', TEMPORARY_UNAVAILABLE: 'Temporarily unavailable. Retry the same request.',
   SERVICE_UNAVAILABLE: 'Service is unavailable.',
+  RESULTS_NOT_READY: 'Results are not ready.', RESULT_UNAVAILABLE: 'Result is unavailable.',
 };
 const conflictCodes = new Set(['COMMAND_ID_CONFLICT', 'STALE_ROOM_REVISION', 'STALE_DRAFT_REVISION', 'INVALID_PHASE',
   'DISPLAY_NAME_RESERVED', 'PARTICIPANT_LIMIT', 'PARTICIPANT_FINALIZED', 'DEADLINE_REACHED', 'PARTICIPANT_NOT_JOINED']);

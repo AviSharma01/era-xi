@@ -26,4 +26,5 @@ for (const [name, expected] of Object.entries(baseline)) {
   if (createHash('sha256').update(bytes).digest('hex') !== expected) throw new Error(`Canonical fixture changed: ${name}`);
 }
 for (const stage of ['a', 'b', 'c', 'd', 'e']) run(['test', '--prefix', `backend/stage-${stage}`]);
+run(['run', 'test:draft-off-client:local']);
 console.log(`Backend correctness PASS; ${Object.keys(baseline).length} canonical fixtures unchanged.`);

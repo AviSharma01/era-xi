@@ -12,6 +12,8 @@ export interface HttpEnv extends LimitEnv {
 }
 export function route(pathname: string) {
   if (pathname === '/api/draft-off/v1/rooms') return { kind: 'CREATE' as const, method: 'POST', template: '/rooms' };
+  const results = /^\/api\/draft-off\/v1\/rooms\/([^/]+)\/results\/([^/]+)$/.exec(pathname);
+  if (results) return { kind: 'RESULTS' as const, method: 'GET', code: results[1], targetParticipantId: results[2], template: '/rooms/:code/results/:participantId' };
   const match = /^\/api\/draft-off\/v1\/rooms\/([^/]+)(?:\/(join|commands|socket-tickets|realtime))?$/.exec(pathname);
   if (!match) return undefined;
   return { kind: match[2] === 'join' ? 'JOIN' as const : match[2] === 'commands' ? 'COMMAND' as const
@@ -55,6 +57,7 @@ export async function handleHttp(request: Request, env: HttpEnv): Promise<Respon
     origin = allowedOrigin(request, env);
     if (url.search) throw new ApiError(400, 'INVALID_REQUEST');
     if ('code' in selected) normalizeCode(selected.code!);
+    if (selected.kind === 'RESULTS' && !/^p_[a-f0-9]{32}$/.test(selected.targetParticipantId)) throw new ApiError(400, 'INVALID_REQUEST');
     if (request.method === 'OPTIONS') {
       const method = request.headers.get('Access-Control-Request-Method');
       const headers = (request.headers.get('Access-Control-Request-Headers') ?? '').split(',').map(value => value.trim().toLowerCase()).filter(Boolean);
@@ -93,9 +96,10 @@ export async function handleHttp(request: Request, env: HttpEnv): Promise<Respon
         if (request.headers.has('Enrollment-Key')) throw new ApiError(400, 'INVALID_REQUEST');
         const match = /^Bearer ([A-Za-z0-9_-]+)$/.exec(request.headers.get('Authorization') ?? '');
         const credential = secret(match?.[1], true), code = normalizeCode(selected.code!);
-        if (selected.kind === 'READ') {
+        if (selected.kind === 'READ' || selected.kind === 'RESULTS') {
           if (request.body || Number(request.headers.get('Content-Length') ?? 0) !== 0) throw new ApiError(400, 'INVALID_REQUEST');
-          operation = { kind: 'READ', roomCode: code, credential };
+          operation = selected.kind === 'READ' ? { kind: 'READ', roomCode: code, credential }
+            : { kind: 'RESULTS', roomCode: code, credential, targetParticipantId: selected.targetParticipantId! };
         } else if (selected.kind === 'SOCKET_TICKET') {
           const body = await jsonBody(request, policy.bodyBytes);
           if (!body || typeof body !== 'object' || Array.isArray(body) || Object.keys(body).length) throw new ApiError(400, 'INVALID_REQUEST');

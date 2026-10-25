@@ -1,6 +1,6 @@
 # Draft-Off Architecture
 
-Implemented through M1/M1.1 (competitive simulation), M2 (competition domain), M3 (provider-independent authoritative room service), and M4 Stages A–E (local backend verification and M5 handoff). Stage D supplies advisory realtime through hibernating WebSockets, on Stage C's guest HTTP authentication and Stage B's durable persistence/alarm lifecycle. Stage A and its indexed feasibility optimizations remain the runtime baseline. UI and deployment remain deferred. See the [Stage E report](../backend/stage-e/results/report.md), [M5 client contract](../backend/stage-e/M5_CONTRACT.md), and [local/future staging runbook](../backend/stage-e/RUNBOOK.md). The gameplay decision record is [DRAFT_OFF_GAMEPLAY_VALIDATION.md](DRAFT_OFF_GAMEPLAY_VALIDATION.md).
+Implemented through M1/M1.1 (competitive simulation), M2 (competition domain), M3 (provider-independent authoritative room service), and M4 Stages A–E (local backend verification and M5 handoff). Stage D supplies advisory realtime through hibernating WebSockets, on Stage C's guest HTTP authentication and Stage B's durable persistence/alarm lifecycle. Stage A and its indexed feasibility optimizations remain the runtime baseline. M5.1 supplies room entry, authenticated bootstrap and journaled commands; M5.2 supplies playable timed drafting and the leaderboard; M5.3 adds selected-entry authenticated results browsing. Deployment remains deferred. See the [Stage E report](../backend/stage-e/results/report.md), [M5 client contract](../backend/stage-e/M5_CONTRACT.md), and [local/future staging runbook](../backend/stage-e/RUNBOOK.md). The gameplay decision record is [DRAFT_OFF_GAMEPLAY_VALIDATION.md](DRAFT_OFF_GAMEPLAY_VALIDATION.md).
 
 ## Frozen simulation contract
 
@@ -103,7 +103,7 @@ Call `dispose()` to release an old service instance's timers before replacing it
 
 Registered participants can read public membership/round status, timing, global revision, and only their own draft through `projectEraDraftPublicState`. Host privileges do not grant access to other private drafts. Shared resolution exposes contest status and a leaderboard summary without submission/campaign hashes or simulation internals. Canonical competition state, accepted history, save data, seeds, other entrants' picks/candidates, frozen submissions, XIs, evaluations, and detailed campaigns never leave participant-facing service methods.
 
-Richer post-resolution XI, evaluation, and campaign exposure remains part of the Draft-Off vision and is deferred to a later product/UI milestone. M3's conservative projection is not a removal of that direction.
+M3's conservative room projection remains unchanged. M5.3 below adds post-resolution XI, evaluation and campaign exposure through a separate authenticated endpoint restricted to locked-round entrants.
 
 M3 remains provider-independent. Its Cloudflare persistence and clock adapters are implemented in M4 Stage B below; public HTTP routes, WebSockets, real authentication, UI, and deployment remain deferred.
 
@@ -190,3 +190,27 @@ This structure accommodates a future Last XI Standing sequence such as Qualifyin
 ## Pre-merge transport remediation
 
 M4's transport helpers now bound HTTP fetch/body consumption and share Retry-After cooldowns across reconciliation and reconnection. Definitive enrollment rejection permits corrected input without sacrificing uncertain-outcome recovery. Exhausted authenticated durable buckets reject before canonical recovery through a read-only check, and unsupported socket frames bypass the gameplay queue to close immediately. These safeguards add no game authority or save-format change. The [runbook](../backend/stage-e/RUNBOOK.md) specifies precedence and remaining deployment limits. A separate pinned backend CI lane runs A–E correctness, retaining the independent V1 release gate and immutable historical evidence.
+
+## M5.3 selected-entry results
+
+The additive authenticated `GET /api/draft-off/v1/rooms/{code}/results/{participantId}` projects one eligible frozen submission and its authoritative twenty-match campaign after canonical resolution. Every locked-round entrant may inspect eligible entries, including entrants whose own XI was incomplete. Members LEFT at START receive no detailed access. Existing room views, socket frames and receipts are unchanged; there is no spectator endpoint or bulk results bundle.
+
+`draftOffResultsProjection.ts` consumes restored state and the verified room catalog; it never invokes evaluation or simulation. A small shared whitelist in `eraDraftProjection.ts` maps an already authoritative evaluation to existing reveal/player/strength summaries. Solo reveal output remains identical. Canonical restoration continues to reconstruct campaigns by replay and check the full state hash; the save format, durable lifecycle, retention and version compatibility are unchanged.
+
+`draftOffResultsClient.ts` validates the exact response recursively. The existing session shares its transport, READ quota/cooldown and credentials, deduplicates selected-entry requests and keeps at most eight results in memory. Active-session plus room/round/participant identity rejects stale replies without a room revision. The room displays the existing final leaderboard, selected submitted XI/player inspector, team evaluation and twenty regulation score summaries with authoritative outcomes. No two-XI comparison, M5.4 recovery changes or local simulation was added.
+
+The reviewed endpoint types and matrix are in [M5 contract](../backend/stage-e/M5_CONTRACT.md#m53-authenticated-results-extension), with verification evidence in [M5.3 handoff](../backend/stage-e/M5_3_HANDOFF.md).
+
+## M5.4 recovery hardening
+
+The existing session invalidates private state when authenticated access is lost or its persisted credential changes. Browser storage/focus events and checks at request/publication boundaries stop the obsolete session without changing another tab's credentials or command journal. An already published final public leaderboard remains visible on authentication failure. A verified receipt allows retry/cleanup recovery after an interrupted journal deletion, preserving the original command envelope and ownership checks.
+
+The realtime helper bounds each immediate reconciliation flight to two GETs, yielding repeated stale responses to its existing fallback timer. Snapshot callbacks that dispose the session cannot rearm timers. These are client reliability changes; backend authority, routes, receipts, canonical persistence, rate limits and simulation remain unchanged. The [M5.4 handoff](../backend/stage-e/M5_4_HANDOFF.md) records the failure matrix, native recovery tests and validation boundaries.
+
+### M5.5 comparison and interaction refinement
+
+Resolved round entrants can compare two eligible submitted XIs through the same authenticated results loader and eight-entry session cache. The result browser's selection/session-scoped loading hook is shared with comparison; each selection cancels obsolete work and suppresses late responses. Session invalidation still removes all private detail and stops requests. Existing cooldown subscriptions govern retries; comparison adds no polling, endpoint or persisted cache.
+
+The view pairs locked batting positions and the twenty ordered fixture identities, preserving exact server ranks, full authoritative campaign aggregates, evaluations and Super Over semantics. Mobile layouts stack A and B within each position/fixture rather than separating whole teams. It explicitly explains that entries play independent campaigns against the same opponents. Section links return to participant selection after inspecting long campaigns. An unexpected schedule mismatch blocks the comparison.
+
+The room's presentation clock is also visible in player inspection, XI review and submission dialogs. Modal headers retain the clock when scrolling; native dialog focus/inertness and focus restoration are preserved. Pending placement feedback, minimum touch controls, long-name wrapping, reduced motion and short-height/narrow-screen reflow remain scoped to Draft-Off. The V1 inspector's optional countdown is omitted by solo callers. See [M5.5 handoff](../backend/stage-e/M5_5_HANDOFF.md) for validation and review evidence.

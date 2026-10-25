@@ -1,6 +1,6 @@
 # M5 client contract — existing `/api/draft-off/v1`
 
-This freezes the existing Stage C/D transport for M5 integration. No M5/UI implementation is included. The executable authorities are `backend/cloudflare/contracts.ts`, `src/draftOffRoomTypes.ts`, `src/eraDraftTypes.ts` (draft views), `backend/client/draftOff.ts` and `backend/client/realtime.ts`. Changes to their transport semantics require a separate review.
+This freezes the existing Stage C/D transport for M5 integration. M5.1/M5.2 client integration and the additive M5.3 results endpoint are described below. The original transport remains unchanged. The executable authorities are `backend/cloudflare/contracts.ts`, `src/draftOffRoomTypes.ts`, `src/eraDraftTypes.ts` (draft views), `backend/client/draftOff.ts` and `backend/client/realtime.ts`. Changes to their transport semantics require a separate review.
 
 ## Enrollment and identity
 
@@ -48,7 +48,7 @@ Host alone starts; the server derives round/deadline from stored duration and ex
 
 `view` is `DraftOffRoomView`: `{roomId,revision,phase,participants,round,resolution?,myDraft?}`. Each participant row has only `{participantId,displayName,role,membershipStatus,roundStatus?}`. Round fields are `{roundId,roundOrdinal,label,eraId,phase,startedAtMs?,deadlineAtMs?}`. Resolution has `{trigger,contestStatus,resolvedAtMs,eligibleParticipantIds,ineligibleParticipantIds,leaderboard}`; leaderboard rows are `{rank,participantId,displayName,played,won,lost,points,netRunRate}`. Preserve optional absence. Timing is safe integer milliseconds; use `serverTimeMs` to estimate countdown offset.
 
-Only authenticated HTTP includes the caller's optional `myDraft`, typed as `EraDraftPublicView`: SETUP, AWAITING_SPIN, AWAITING_PICK or XI_COMPLETE. Draft phases carry their own revision; active phases expose picks/status/era identity, with spin/candidates only in AWAITING_PICK. The host has no additional private visibility. Ratings, other XIs, submissions, seeds, saves, hashes, histories, receipts, detailed campaigns and evaluation/reveal payloads are outside this contract, including after completion. M5 can consume the shared leaderboard and own existing draft projection; richer final results need a separately approved contract extension.
+Only authenticated HTTP includes the caller's optional `myDraft`, typed as `EraDraftPublicView`: SETUP, AWAITING_SPIN, AWAITING_PICK or XI_COMPLETE. Draft phases carry their own revision; active phases expose picks/status/era identity, with spin/candidates only in AWAITING_PICK. The host has no additional private visibility. Ratings, other XIs, submissions, seeds, saves, hashes, histories, receipts, detailed campaigns and evaluation/reveal payloads remain outside the existing room/bootstrap/realtime payloads, including after completion. The separately approved M5.3 endpoint below adds only the selected-entry results whitelist.
 
 Obtain a fresh socket ticket by authenticated HTTP, then connect:
 
@@ -69,6 +69,66 @@ Defaults: HTTP request timeout 10s (`policy.requestTimeoutMs`, covering fetch an
 
 Errors are `{ok:false,error:{code,message},roomRevision?,view?}` with safe fixed messages; registered command failures may include only the caller's view. Statuses: 400 malformed; 401 auth; 403 Origin/authority; 404 unavailable JOIN/unknown route; 405 method; 409 key/ID/revision/phase/capacity/deadline conflict; 413 size; 415 media; 422 incomplete/illegal draft; 429 limits; 503 configuration/temporary failure. Check codes, not message text. Distinguish `STALE_ROOM_REVISION`, `STALE_DRAFT_REVISION`, `COMMAND_ID_CONFLICT`, `ENROLLMENT_KEY_CONFLICT`, `ROOM_CODE_COLLISION` and `ROOM_CODE_UNAVAILABLE`. Authenticated missing/expired/wrong-room/invalid credentials share the same 401 body. The helper reports coarse transport errors through `onError`; never attach private payloads to reporting.
 
-Lobby retention is creation +24h; completed retention is completion +7d. Expiry ends all credential/retry/recovery guarantees, removes private/auth/receipt/ticket state, and leaves a minimal retired-code marker for 30d from the fixed expiry anchor. Access never extends retention. There is no account, credential rotation, name-based recovery, settings edit, directory/list API, presence, socket command channel, spectator API or post-completion private-results endpoint.
+Lobby retention is creation +24h; completed retention is completion +7d. Expiry ends all credential/retry/recovery guarantees, removes private/auth/receipt/ticket state, and leaves a minimal retired-code marker for 30d from the fixed expiry anchor. Access never extends retention. There is no account, credential rotation, name-based recovery, settings edit, directory/list API, presence, socket command channel, spectator API or public/spectator results endpoint. The additive authenticated results endpoint below has narrower locked-round access.
 
 M5 observability must redact/disable Authorization, Enrollment-Key, Sec-WebSocket-Protocol ticket values, ticket and enrollment response bodies, and private payloads in fetch wrappers, errors, traces, analytics and session replay. Production configuration remains a separate [deployment gate](RUNBOOK.md#future-staging-deployment-gates).
+
+## M5.1 client integration note
+
+The original `backend/client/draftOff.ts` and `backend/client/realtime.ts` exports remain compatibility entrypoints. Their M4-compatible implementations now live in `src/draftOffEnrollmentClient.ts` and `src/draftOffRealtimeClient.ts`, with transport-only types shared through `src/draftOffClientTypes.ts`. HTTP routes, envelopes, projections and realtime semantics above are unchanged. The frontend adds a bounded fetch adapter shared by enrollment, reconciliation, tickets and journaled commands, enforcing coordinated Retry-After cooldown without changing the M4 helper defaults. Command replies remain historical receipts: only authenticated reconciliation publishes room/private state. Enrollment offers an optional synchronous UI handoff after verified credential storage and before pending cleanup; it rechecks current persisted ownership before activation, and callers that omit the handoff retain M4 behavior. M5.1 adds no gameplay controls or results contract.
+
+## M5.2 UI integration note
+
+The player-facing room consumes the same M4 HTTP/WebSocket projections and M5.1 session controller. New session fields describe pending action/retry feedback only. The countdown is a presentation estimate anchored to `serverTimeMs` and monotonic browser elapsed time; reaching zero does not resolve or submit locally. Public updates reconcile through authenticated HTTP. The lobby, manual submission, waiting and leaderboard add no routes, envelopes, domain rules or additional private visibility. Reused V1 player presentation is independent of both mode controllers. The historical proposal in [M5.2 handoff](M5_2_HANDOFF.md) is superseded by the approved additive M5.3 extension below; the original room/realtime payloads remain frozen.
+
+## M5.3 authenticated results extension
+
+`GET /api/draft-off/v1/rooms/{code}/results/{participantId}` is the only new route. Its exact version-1 success/error types are in `src/draftOffResultsTypes.ts`; `src/draftOffResultsClient.ts` recursively validates the success allowlist. No changes to any existing endpoint payload, command receipt, public snapshot, WebSocket frame or retry contract are implied.
+
+The request uses the existing room-bound Bearer credential, approved exact Origin, bodyless GET validation and no query/Enrollment-Key. Target participant IDs use `p_[a-f0-9]{32}`. All normal edge limits apply; results and room GET consume the **same** durable participant READ bucket (default 60/minute, burst 10), including pre-replay rejection. Responses remain private/no-store. Logs contain the route template, never concrete participant paths or private bodies.
+
+The success allowlist is `{ok:true,version:1,roomCode,roundId,roundOrdinal,eraId,participantId,displayName,players,evaluation,campaign}`. `players` contains exactly eleven `RevealPlayerView` rows plus existing `historicalStats`, ordered by positions 1–11. `evaluation` is the existing explicit `TeamEvaluationSummaryView`. `campaign.aggregate` copies the nine authoritative fields: played/won/lost/points/runsFor/ballsFacedForNrr/runsAgainst/ballsBowledForNrr/netRunRate. `campaign.matches` contains exactly twenty ordered rows: `{matchId,sequence,opponent:{profileId,teamName,seasonYear},firstInnings,secondInnings,outcome,resultType,margin}`. Each innings is `{side:'ENTRY'|'OPPONENT',runs,wickets,balls,allOut}`. Outcome is WIN/LOSS relative to the inspected entry; runs/wickets margins are positive integers, Super Over margin is null and its scores remain regulation innings. No Super Over scorecard is fabricated.
+
+All keys are required. Nullable existing ratings/statistics and historical era-best summaries are preserved. Roster status is INDIAN/OVERSEAS only. The independent results ceiling is 2,097,152 serialized UTF-8 bytes, matching the existing client HTTP bound; server oversize/inconsistency fails safely with 503 and no truncation. No raw states, seeds, hashes, receipts, auth data, other campaigns or evaluator internals are returned.
+
+| Gate | Result |
+| --- | --- |
+| Invalid/missing/wrong-room/expired credential or unavailable room | Existing indistinguishable 401 AUTHENTICATION_FAILED |
+| Registered viewer, current round not resolved | 409 RESULTS_NOT_READY before any target lookup |
+| Resolved, viewer outside locked roster or target not eligible | Identical 404 RESULT_UNAVAILABLE |
+| Resolved, locked entrant viewing an eligible submitted XI | 200; includes viewers with an incomplete/ineligible XI |
+| Missing eligible campaign/submission, corrupt replay or projection inconsistency | Safe 503 TEMPORARY_UNAVAILABLE |
+
+Host/member access is identical. LEFT-at-start members retain only their existing room/leaderboard access; they cannot inspect details. NO_CONTEST has no inspectable target; UNCONTESTED retains its full single-entry campaign. Errors carry only `{ok:false,error:{code,message}}`, never a room view or revision. New fixed messages are “Results are not ready.” and “Result is unavailable.” Normal Origin/syntax/throttling gates can reject first.
+
+The service projects the frozen submission and the canonical restored resolution. Existing restoration still replays the resolver; no additional evaluation or simulation is invoked by results construction. Existing overdue recovery resolves before the new route checks readiness. Retention anchors, native alarms, saves, hashes and catalog/version validation are unchanged; no migration or result-cache infrastructure was added.
+
+The session lazily fetches selected entries through its existing transport, retaining at most eight validated responses in memory. Identity checks use room/round/era/target and active session ownership, with cancellation on obsolete selections/disposal; immutable resolved results need no room-revision field. Leaderboard metrics are cross-checked, never recalculated. Access failure removes displayed results and clears the session cache. See [M5.3 handoff](M5_3_HANDOFF.md) for implementation and validation evidence.
+
+## M5.4 client recovery hardening
+
+Reconciliation performs at most two immediate GETs per flight, retaining its monotonic revision floor. Repeated stale replies then yield to the existing HTTP fallback; focus/online, command and socket reconciliation remain available. Disposal inside a snapshot callback cannot rearm deadline timers or publish further callbacks.
+
+The browser session verifies its existing persisted credential before requests and private publication, and on storage/focus events. Missing, replaced or unreadable access stops the old session, cancels requests and removes its private snapshot/results cache; the journal and replacement credentials are preserved. Authentication failure also clears private state while retaining an already published final public leaderboard. Recovery after a credential change requires reloading with the current stored access; there is no cross-tab command coordinator or credential-rotation API.
+
+A verified command receipt permits cleanup recovery when storage deleted the journal before throwing. Only that same immutable envelope can be retried; another session's different record is never deleted. The acknowledgment flag is memory-only, with no journal/save schema change. Existing 429 cooldown, 503 uncertainty, exact idempotency, deadlines, results authorization and production route contracts are unchanged. See the [M5.4 matrix and handoff](M5_4_HANDOFF.md).
+
+## M5.5 comparison and usability note
+
+The resolved-room UI now offers individual results or a comparison of two distinct eligible leaderboard entries. Both selections use the existing authenticated `loadResults` session API and its in-memory cache, request cancellation, identity validation, shared cooldown and access invalidation. Only locked round entrants, including incomplete entrants, can open it; fewer than two eligible submissions cannot be compared. Switching result views does not persist private results or add requests for already cached entries.
+
+Comparison preserves server ranks and campaign aggregates. Players align by locked batting position; fixtures align by sequence, match ID and canonical opponent profile, including recurring opponents. A mismatched schedule fails closed. Each XI independently faces the shared historical schedule; comparison introduces no direct match between entrants, local ranking, evaluation or simulation. Regulation innings and winner-relative Super Over verdicts use the same presentation as individual results.
+
+Placement, locked-XI, player-inspection and submission dialogs display the existing presentation countdown. Zero remains a server-checking state, never a local submission/resolution. Sticky modal headers, focus restoration, pending feedback, touch controls, narrow-layout stacking and reduced-motion rules are presentation only. The shared V1 inspector accepts an optional countdown; V1 callers omit it and retain existing behavior. No HTTP, realtime, persistence, authority, deadline or solo contract changes are part of M5.5.
+
+## M5.6 local acceptance boundary
+
+The [M5.6 report and M6 handoff](M5_6_HANDOFF.md) consolidate the existing contract/security/recovery evidence and add a production-entrypoint combined era/duration matrix, the two verified-receipt/journal ownership regressions, and real-browser UI enrollment/invite/respin/reload checks. These additions change no wire types, endpoints, gameplay, credentials, receipts, persistence, canonical data or limits. The [runbook](RUNBOOK.md#m56-browser-acceptance-and-m6-handoff) records repeatable local browser commands and outstanding staging gates. Historical M5.2–M5.5 evidence remains intact; local acceptance does not establish deployed quotas, external observability settings or device/network coverage.
+
+## Independent pre-merge remediation
+
+Browser enrollment now uses an origin-scoped Web Lock across pending-key selection, the bounded request and credential handoff/cleanup. The lock is named by operation/room and serializes genuinely concurrent tabs; unavailable locking fails closed without creating a key or sending enrollment. Under the lock, JOIN resumes the existing room credential before considering a new request, and compares the form's expected pending record with current storage. Storage/focus events refresh open forms. Lost replies retain their exact original key/input. A conflicting success cannot overwrite a different stored identity or delete its pending recovery; identical credential recovery remains idempotent. The lower-level transport helper retains its M4 signature and response types. No server authentication, wire, retention or command-journal schema changes are involved.
+
+Solo Start/Continue operations retain their existing controller, but route changes invalidate their generation synchronously. Async publication also requires the owning route; leaving and returning cannot revive an old operation or clear a newer operation's pending state.
+
+`VITE_DRAFT_OFF_ENABLED=true` is an explicit build-time opt-in, independent of the API origin. It defaults off, hides navigation and blocks direct Draft-Off activation under root/nested bases. See `docs/RELEASE.md` and the runbook for M6 activation gates. The flag is release control; existing backend authentication remains authoritative.

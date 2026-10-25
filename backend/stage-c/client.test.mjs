@@ -111,18 +111,19 @@ test('ROOM_CODE_UNAVAILABLE preserves the CREATE attempt and never silently rota
 });
 
 
-test('a delayed duplicate success cannot overwrite credentials after a newer enrollment finishes', async () => {
+test('conflicting JOIN success and delayed duplicates preserve the established identity and exact recovery', async () => {
   const saved = storage(), requests = [], slot = 'draft-off:pending:JOIN:' + code;
   const send = (_url, request) => { const pending = deferred(); requests.push({ ...pending, request }); return pending.promise; };
   const first = enrollGuest('https://api.example', 'JOIN', code, { displayName: 'Old' }, saved, send);
   const duplicate = enrollGuest('https://api.example', 'JOIN', code, { displayName: 'Old' }, saved, send);
   requests[0].resolve(enrollmentSuccess('old')); await first;
-  const newer = enrollGuest('https://api.example', 'JOIN', code, { displayName: 'New' }, saved, send);
-  requests[2].resolve(enrollmentSuccess()); await newer;
   const credentials = saved.getItem('draft-off:credential:' + code);
+  const newer = enrollGuest('https://api.example', 'JOIN', code, { displayName: 'New' }, saved, send);
+  const pending = saved.getItem(slot);
+  requests[2].resolve(enrollmentSuccess()); await newer;
   requests[1].resolve(enrollmentSuccess('old')); await duplicate;
-  assert.equal(saved.getItem(slot), null);
-  assert.ok(saved.getItem('draft-off:credential:' + code) === credentials, 'Stale success must not write credentials even when no pending record remains');
+  assert.equal(saved.getItem(slot), pending);
+  assert.ok(saved.getItem('draft-off:credential:' + code) === credentials, 'Conflicting or stale success must preserve the established identity');
 });
 
 test('credential-storage side effects cannot clear a pending attempt installed during success handling', async () => {

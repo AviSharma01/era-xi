@@ -2,9 +2,15 @@ export const APP_ROUTE_SEGMENTS = Object.freeze({
   HOME: "",
   ERA_DRAFT: "era-draft",
   CLASSIC: "classic",
+  DRAFT_OFF: "draft-off",
 } as const);
 
 export type AppRoute = keyof typeof APP_ROUTE_SEGMENTS;
+
+/** Explicit release opt-in, independent of API configuration; all builds default off. */
+export function draftOffEnabled(value = import.meta.env?.VITE_DRAFT_OFF_ENABLED): boolean {
+  return value === "true";
+}
 
 export function appRoutePath(route: AppRoute, base = import.meta.env.BASE_URL): string {
   const basePath = normalizedBasePath(base);
@@ -12,14 +18,16 @@ export function appRoutePath(route: AppRoute, base = import.meta.env.BASE_URL): 
   return segment ? `${basePath}${segment}` : basePath;
 }
 
-export function matchAppRoute(pathname: string, base = import.meta.env.BASE_URL): AppRoute | null {
+export function matchAppRoute(pathname: string, base = import.meta.env.BASE_URL, draftOffAvailable = draftOffEnabled()): AppRoute | null {
   const basePath = normalizedBasePath(base);
   const normalizedPath = pathname.endsWith("/") && pathname !== basePath ? pathname.slice(0, -1) : pathname;
   for (const route of Object.keys(APP_ROUTE_SEGMENTS) as AppRoute[]) {
+    if (route === "DRAFT_OFF" && !draftOffAvailable) continue;
     const expected = appRoutePath(route, base);
     const normalizedExpected = expected.endsWith("/") && expected !== basePath ? expected.slice(0, -1) : expected;
     if (normalizedPath === normalizedExpected) return route;
   }
+  if (draftOffAvailable && draftOffRoomCode(pathname, base)) return "DRAFT_OFF";
   return null;
 }
 
@@ -35,3 +43,25 @@ function normalizedBasePath(base: string): string {
   return pathname.endsWith("/") ? pathname : `${pathname}/`;
 }
 
+
+export function normalizeDraftOffCode(input: string): string | null {
+  const code = input.trim().toUpperCase();
+  return /^[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{12}$/.test(code) ? code : null;
+}
+
+export function draftOffRoomPath(code: string, base = import.meta.env.BASE_URL): string {
+  const normalized = normalizeDraftOffCode(code);
+  if (!normalized) throw new Error("Invalid room code.");
+  return `${appRoutePath("DRAFT_OFF", base)}/rooms/${normalized}`;
+}
+
+export function draftOffRoomCode(pathname: string, base = import.meta.env.BASE_URL): string | null {
+  const prefix = `${appRoutePath("DRAFT_OFF", base)}/rooms/`;
+  if (!pathname.startsWith(prefix)) return null;
+  return normalizeDraftOffCode(pathname.slice(prefix.length).replace(/\/$/, ""));
+}
+
+export function navigateToDraftOffRoom(code: string): void {
+  window.history.pushState(null, "", draftOffRoomPath(code));
+  window.dispatchEvent(new PopStateEvent("popstate"));
+}
