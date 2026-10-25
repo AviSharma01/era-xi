@@ -88,7 +88,7 @@ function CurrentSeasonStats(props: {
 export type PlayerInspectorView = Pick<DraftPickView, "playerName" | "teamName" | "seasonYear" | "displayRole" | "rosterStatus" | "keeperCapability" | "historicalStats" | "tierAppearance"> & {
   readonly battingPosition?: DraftPickView["battingPosition"];
 };
-export function PlayerInspector({ player, onClose }: { player: PlayerInspectorView; onClose: () => void }): ReactElement {
+export function PlayerInspector({ player, onClose, countdown }: { player: PlayerInspectorView; onClose: () => void; countdown?: string }): ReactElement {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const openerRef = useRef<HTMLElement | null>(null);
@@ -107,7 +107,9 @@ export function PlayerInspector({ player, onClose }: { player: PlayerInspectorVi
   const showBowl = player.displayRole === "BOWLER" || player.displayRole === "ALL_ROUNDER";
   const content = <>
     <header><p className="eyebrow">Player details{'battingPosition' in player ? ` · Slot ${String(player.battingPosition).padStart(2, "0")}` : " · Preview"}</p>
+      {countdown && <span className="room-sheet-clock" role="timer" aria-label={`${countdown} remaining`}>{countdown}</span>}
       <button ref={closeRef} className="quiet-button" onClick={onClose} aria-label="Close player details">Close ×</button></header>
+    {countdown === "00:00" && <p role="status">Time reached. Checking final status with the server.</p>}
     <div className="inspector-identity"><span className="inspector-monogram" aria-hidden="true">{monogram(player.playerName)}</span>
       <div><h3 id="inspector-title">{player.playerName}</h3><p>{player.teamName} · {player.seasonYear}</p></div></div>
     <p>{friendly(player.displayRole)} · {player.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}{player.keeperCapability === "CONFIRMED" && player.displayRole !== "WICKETKEEPER_BATTER" ? " · WK" : ""}</p>

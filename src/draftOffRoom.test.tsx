@@ -101,12 +101,19 @@ test("mobile has candidate → placement → confirm, own XI and inspection dial
     await ui.click('.candidate-card:not([aria-disabled="true"])');
     assert.equal(ui.document.querySelectorAll(".room-placement-sheet[open]").length, 1);
     assert.ok(ui.document.querySelector('.room-placement-sheet [role="timer"]'));
+    await ui.click('.room-placement-body > .quiet-button');
+    assert.ok(ui.document.querySelector('.player-inspector[open] [role="timer"]'));
+    const close = ui.document.querySelector<HTMLButtonElement>('.player-inspector button')!;
+    await act(async () => close.dispatchEvent(new ui.document.defaultView!.KeyboardEvent('keydown', {key:'Tab',bubbles:true,cancelable:true})));
+    assert.equal(ui.document.activeElement, close);
+    await ui.click('.player-inspector button');
     await ui.click('.room-placement-sheet .room-position-option:not(:disabled)');
     await ui.click('.room-placement-sheet .room-confirm-pick');
     assert.equal(commands.length, 1); assert.equal(commands[0]!.type, "LOCK_PLAYER");
     await ui.click('.room-placement-sheet header button');
     const xiButton = [...ui.document.querySelectorAll<HTMLButtonElement>("button")].find(button => button.textContent?.startsWith("Your XI"))!;
     await act(async () => xiButton.click()); assert.match(ui.document.querySelector(".room-dialog[open]")!.textContent!, /Your locked XI/);
+    assert.ok(ui.document.querySelector('.room-dialog[open] [role="timer"]'));
   } finally { await ui.close(); }
 });
 
@@ -115,6 +122,7 @@ test("submission requires confirmation and server-submitted participants have no
   const ui = await mount(snapshot(domain), false, async command => { commands.push(command); });
   try {
     await ui.click('.room-draft-actions .primary-action'); assert.equal(commands.length, 0);
+    assert.ok(ui.document.querySelector('.room-dialog[open] [role="timer"]'));
     const submit = [...ui.document.querySelectorAll<HTMLButtonElement>("dialog button")].find(button => button.textContent === "Submit and lock XI")!;
     await act(async () => submit.click()); assert.deepEqual(commands, [{ type: "SUBMIT" }]);
     const submitted = changed(domain, { type: "SUBMIT_XI", participantId: "host", atMs: 20, expectedDraftRevision: participant(domain, "host").draftState.revision });
@@ -122,6 +130,9 @@ test("submission requires confirmation and server-submitted participants have no
     assert.match(ui.document.body.textContent!, /Your XI is locked in/);
     assert.equal(ui.document.querySelector(".room-draft-actions"), null);
     assert.equal(ui.document.querySelectorAll(".room-locked-player").length, 11);
+    await ui.click('.room-locked-player');
+    assert.ok(ui.document.querySelector('.player-inspector[open] [role="timer"]'));
+    await ui.click('.player-inspector button');
     assert.ok([...ui.document.querySelectorAll(".draft-off-members li")].filter(row => row.textContent?.startsWith("Member")).every(row => row.textContent === "MemberDrafting"));
   } finally { await ui.close(); }
 });
@@ -154,4 +165,24 @@ test("uncertain intent blocks replacement actions and exposes exact retry recove
     assert.equal(ui.document.querySelector<HTMLButtonElement>(".room-draft-actions button")!.disabled, true);
     assert.ok(![...ui.document.querySelectorAll("button")].some(button => button.textContent === "Retry saved action"));
   } finally { await ui.close(); }
+});
+
+test("mobile pending placement and server deadline remain explicit inside the modal", async () => {
+  const value=snapshot(spun()),ui=await mount(value,true);
+  try {
+    await ui.click('.candidate-card:not([aria-disabled="true"])');
+    const selected=ui.document.querySelector('.room-placement-body .selected-player-copy h3')!.textContent;
+    assert.equal(ui.document.querySelector('.room-sheet-confirm .room-placement-context strong')!.textContent,selected);
+    assert.equal(ui.document.querySelectorAll('.room-placement-body .room-xi li').length,11);
+    await ui.render({...roomState(value),pending:true,pendingCommand:'LOCK_PLAYER'});
+    assert.equal(ui.document.querySelector('.room-sheet-confirm .room-placement-context strong')!.textContent,selected);
+    assert.match(ui.document.querySelector('.room-placement-sheet')!.textContent!,/Waiting for server confirmation/);
+    assert.equal(ui.document.querySelector('.room-placement-sheet .room-confirm-pick')!.textContent,'Waiting for server…');
+    assert.ok([...ui.document.querySelectorAll<HTMLButtonElement>('.room-placement-sheet .room-position-option')].every(button=>button.disabled));
+    const expired=structuredClone(value);Object.assign(expired.view.round,{deadlineAtMs:19});
+    await ui.render(roomState(expired));
+    assert.equal(ui.document.querySelector('.room-placement-sheet [role="timer"]')!.textContent,'00:00');
+    assert.match(ui.document.querySelector('.room-placement-sheet [role="status"]')!.textContent!,/Checking final status with the server/);
+    assert.equal(ui.document.querySelector('#final-leaderboard'),null);
+  }finally{await ui.close();}
 });

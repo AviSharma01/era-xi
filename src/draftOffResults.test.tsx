@@ -5,16 +5,18 @@ import { createRoot } from "react-dom/client";
 import { JSDOM } from "jsdom";
 import { DraftOffRoomExperience, type DraftOffRoomActions } from "./draftOffRoom.js";
 import { ResultsClientError } from "./draftOffResultsClient.js";
+import type { DraftOffCampaignResult } from "./draftOffTypes.js";
 import type { ResultsLoader } from "./draftOffResults.js";
 import type { ResultsSuccess } from "./draftOffResultsTypes.js";
 import { projectDraftOffRoom } from "./draftOffRoomProjection.js";
-import { catalog, hostId, memberId, leftId, roomCode, resultsBody, resultsResolved, assertResultsAgainstState } from "./draftOffResultsTestSupport.js";
+import { catalog, hostId, memberId, leftId, roomCode, resultsBody, resultsLobby, resultsStarted, resultsResolved, assertResultsAgainstState } from "./draftOffResultsTestSupport.js";
 import type { DraftOffSessionState } from "./draftOffSession.js";
 import { createDraftOffTransport } from "./draftOffClientTransport.js";
-import { participant } from "./draftOffRoomTestSupport.js";
+import { changed, completeXi, participant } from "./draftOffRoomTestSupport.js";
 import { restoreDraftOffCompetition, serializeDraftOffCompetition } from "./draftOffCompetitionPersistence.js";
 import { DraftOffRoomService } from "./draftOffRoomService.js";
 import { InMemoryDraftOffRoomRepository } from "./draftOffRoomRepository.js";
+import { createDraftOffSession } from "./draftOffSession.js";
 import { ManualDraftOffClock } from "./draftOffRoomTestSupport.js";
 
 function session(domain = resultsResolved(), viewer = hostId): DraftOffSessionState {
@@ -34,6 +36,7 @@ async function mount(initial: DraftOffSessionState, loader: ResultsLoader, retry
   await render();
   return {document:dom.window.document,render,
     async click(selector:string){const node=dom.window.document.querySelector<HTMLButtonElement>(selector);assert.ok(node,selector);await act(async()=>node.click());},
+    async choose(label:string, value:string){const select=[...dom.window.document.querySelectorAll("label")].find(node=>node.textContent?.startsWith(label))?.querySelector("select");assert.ok(select,label);await act(async()=>{select.value=value;select.dispatchEvent(new dom.window.Event("change",{bubbles:true}));});},
     async close(){await act(async()=>root.unmount());Object.assign(globalThis,previous);dom.window.close();}};
 }
 
@@ -63,7 +66,7 @@ test("results screen retains leaderboard, lazily loads own XI, inspection, asses
       expectedPicks.map(pick => catalog.getPlayer(pick.playerTeamSeasonId)!.canonicalDisplayName));
     const round = domain.rounds[0]!;
     assert.equal(round.phase, "RESOLVED"); if (round.phase !== "RESOLVED") return;
-    const campaign = round.resolution.challengeResult!.campaigns.find(c => c.participantId === memberId)!;
+    const campaign: DraftOffCampaignResult = round.resolution.challengeResult!.campaigns.find(c => c.participantId === memberId)!;
     assert.match(ui.document.querySelector(".room-campaign-summary")!.textContent!, new RegExp(`${campaign.aggregate.won}–${campaign.aggregate.lost}`));
   }finally{await ui.close();}
 });
@@ -181,4 +184,220 @@ test("canonical restoration → results projection → presentation preserves Su
       assert.doesNotMatch(card.textContent!, /won by|null/);
     }
   } finally { await ui.close(); service.dispose(); }
+});
+
+const compareButton = '[aria-label="Results views"] button:nth-child(2)';
+const comparisonRow = (document: Document, section: string, label: string) => [...document.querySelectorAll(`#${section} .room-comparison-row`)].find(row => row.querySelector('h4')?.textContent === label)!;
+
+function assertComparisonIdentity(document: Document, expected: readonly [ResultsSuccess, ResultsSuccess]) {
+  for(const [side, body] of expected.entries()) {
+    const label=`${side===0?'A':'B'} · ${body.displayName}`;
+    for(const section of ['comparison-players','comparison-teams','comparison-campaign']) {
+      for(const row of document.querySelectorAll(`#${section} .room-comparison-row`)) {
+        assert.equal(row.querySelectorAll('.room-comparison-label')[side]!.textContent,label);
+      }
+    }
+    assert.deepEqual([...document.querySelectorAll('.room-comparison-players > li')].map(row=>row.querySelectorAll('.room-comparison-player strong')[side]!.textContent),body.players.map(player=>player.playerName));
+    assert.equal(comparisonRow(document,'comparison-teams','Overall strength').querySelectorAll('.room-comparison-value > strong')[side]!.textContent,body.evaluation.strength.overall.toFixed(1));
+    assert.equal(comparisonRow(document,'comparison-campaign','Wins').querySelectorAll('.room-comparison-value > strong')[side]!.textContent,String(body.campaign.aggregate.won));
+    assert.equal(document.querySelectorAll('.room-fixture-legend p')[side]!.textContent,label);
+    for(const [n,row] of [...document.querySelectorAll('.room-comparison-fixtures > li')].entries()) {
+      const match=body.campaign.matches[n];
+      assert.equal(row.querySelectorAll('.room-fixture-outcome')[side]!.getAttribute('aria-label'),`${label}: ${match.outcome}${match.resultType==='super_over'?', Super Over':''}`);
+      assert.equal(row.querySelectorAll('.room-comparison-match-pair > div > .room-comparison-label')[side]!.textContent,label);
+      assert.equal(row.querySelectorAll('.match-outcome')[side]!.textContent,match.outcome);
+    }
+  }
+}
+
+test("two-XI comparison preserves independently derived orders, evaluations, aggregates and all shared fixtures", async () => {
+  const domain = resultsResolved(2, "era-transition", "m53-super-over-50");
+  const bodies = new Map([hostId, memberId].map(id => [id, resultsBody(domain, hostId, id)]));
+  bodies.forEach((body, id) => assertResultsAgainstState(body, domain, id));
+  const ui = await mount(session(domain), async id => bodies.get(id)!);
+  try {
+    await ui.click(compareButton);
+    assert.match(ui.document.querySelector('#xi-comparison')!.textContent!, /independently faced|did not play each other/);
+    assertComparisonIdentity(ui.document,[bodies.get(hostId)!,bodies.get(memberId)!]);
+    const players = ui.document.querySelectorAll('.room-comparison-players > li'); assert.equal(players.length, 11);
+    const round = domain.rounds[0]!; assert.equal(round.phase, 'RESOLVED'); if (round.phase !== 'RESOLVED') return;
+    for (const [i, id] of [hostId, memberId].entries()) {
+      const picks = [...participant(domain, id).draftState.picks].sort((a,b) => a.battingPosition-b.battingPosition);
+      const campaign: DraftOffCampaignResult = round.resolution.challengeResult!.campaigns.find(c => c.participantId === id)!;
+      const rank = round.resolution.leaderboard.find(row => row.participantId === id)!.rank;
+      assert.ok(comparisonRow(ui.document,'comparison-campaign','Final rank').querySelectorAll('.room-comparison-value > strong')[i]!.textContent!.startsWith(`Rank ${rank}`));
+      for (const [n, row] of [...players].entries()) {
+        assert.equal(row.getAttribute('data-position'), String(n+1));
+        const cell = row.querySelectorAll('.room-comparison-player')[i]!;
+        assert.equal(cell.querySelector('strong')!.textContent, catalog.getPlayer(picks[n].playerTeamSeasonId)!.canonicalDisplayName);
+        assert.ok(cell.textContent!.includes(campaign.evaluation.players.find(p => p.position === n+1)!.quality.overall.overallRating.toFixed(1)));
+      }
+      for (const [label, expected] of [['Overall strength',campaign.evaluation.adjustedStrength.overall],['Batting strength',campaign.evaluation.adjustedStrength.batting],['Bowling strength',campaign.evaluation.adjustedStrength.bowling]] as const) {
+        assert.equal(comparisonRow(ui.document, 'comparison-teams', label).querySelectorAll('.room-comparison-value > strong')[i]!.textContent, expected.toFixed(1));
+      }
+      for (const [label, expected] of [['Wins',campaign.aggregate.won],['Losses',campaign.aggregate.lost],['Points',campaign.aggregate.points]] as const) {
+        assert.equal(comparisonRow(ui.document, 'comparison-campaign', label).querySelectorAll('.room-comparison-value > strong')[i]!.textContent, String(expected));
+      }
+    }
+    for(const [i,id] of [hostId,memberId].entries()) {
+      const body=bodies.get(id)!, c=body.evaluation.construction;
+      const text=(label:string)=>comparisonRow(ui.document,'comparison-teams',label).querySelectorAll('.room-comparison-value')[i]!.textContent!;
+      assert.ok(text('Quality mix').includes((['S','A','B','C','D'] as const).map(tier=>`${tier} × ${body.evaluation.tierCounts[tier]}`).join(' · ')));
+      assert.ok(text('Bowling balance').includes(`${c.deployedBowlingUnits.toFixed(1)} / ${c.requiredBowlingUnits} units · ${c.frontlineBowlers} frontline · ${c.supportBowlers} support`));
+      assert.ok(text('Team construction').includes(`${c.overseasCount} / ${c.overseasLimit} overseas · Wicketkeeper confirmed`));
+      const nrr=body.campaign.aggregate.netRunRate;
+      assert.equal(comparisonRow(ui.document,'comparison-campaign','Net run rate').querySelectorAll('.room-comparison-value > strong')[i]!.textContent,`${nrr>=0?'+':''}${nrr.toFixed(3)}`);
+    }
+    const fixtures = ui.document.querySelectorAll('.room-comparison-fixtures > li'); assert.equal(fixtures.length,20);
+    assert.ok(new Set(bodies.get(hostId)!.campaign.matches.map(m => m.opponent.profileId)).size < 20);
+    for (const [n, row] of [...fixtures].entries()) {
+      assert.equal(row.getAttribute('data-sequence'), String(n+1));
+      for (const [i, id] of [hostId, memberId].entries()) {
+        const expected = bodies.get(id)!.campaign.matches[n], card = row.querySelectorAll('.match-result')[i]!;
+        assert.ok(row.querySelector('.room-fixture-summary-title')!.textContent!.includes(`${expected.opponent.teamName} ${expected.opponent.seasonYear}`));
+        assert.equal(card.querySelector('.match-outcome')!.textContent,expected.outcome);
+        assert.deepEqual([...card.querySelectorAll('.innings-row b')].map(node => node.textContent),[expected.firstInnings,expected.secondInnings].map(inn => `${inn.runs}/${inn.wickets}`));
+        assert.deepEqual([...card.querySelectorAll('.innings-row > div small')].map(node => node.textContent),[expected.firstInnings,expected.secondInnings].map(inn => `${Math.floor(inn.balls/6)}.${inn.balls%6} overs${inn.allOut?' · all out':''}`));
+        if (expected.resultType === 'super_over') {
+          const winner = expected.outcome === 'WIN' ? bodies.get(id)!.displayName : `${expected.opponent.teamName} ${expected.opponent.seasonYear}`;
+          assert.equal(card.querySelector('.match-verdict')!.textContent, `${winner} won the Super Over`);
+          assert.doesNotMatch(card.textContent!, /won by|null/);
+        }
+      }
+    }
+    const inspect = ui.document.querySelector<HTMLButtonElement>('.room-comparison-player button')!;
+    inspect.focus(); await act(async () => inspect.click());
+    assert.equal(ui.document.activeElement?.getAttribute('aria-label'), 'Close player details');
+    await ui.click('.player-inspector button'); assert.equal(ui.document.activeElement, inspect);
+    await ui.click('.room-comparison-selectors button');
+    assertComparisonIdentity(ui.document,[bodies.get(memberId)!,bodies.get(hostId)!]);
+  } finally { await ui.close(); }
+});
+
+test("comparison selection uses only eligible entrants, switches a third entry and swaps without duplicate XIs", async () => {
+  const thirdId = 'p_'+'4'.repeat(32);
+  let domain = changed(resultsLobby(), {type:'JOIN_COMPETITION',participantId:thirdId,displayName:'A very long participant name '.repeat(2),atMs:4});
+  const incompleteId = 'p_'+'5'.repeat(32);
+  domain = changed(domain,{type:'JOIN_COMPETITION',participantId:incompleteId,displayName:'Incomplete entrant',atMs:5});
+  domain = changed(domain,{type:'START_ROUND',actorParticipantId:hostId,roundId:'r1',atMs:10,deadlineAtMs:100});
+  for (const id of [hostId,memberId,thirdId]) domain=completeXi(domain,id);
+  domain=changed(domain,{type:'FINALIZE_ROUND',roundId:'r1',atMs:100});
+  const calls:string[]=[];
+  const ui=await mount(session(domain,incompleteId),async id=>{calls.push(id);return resultsBody(domain,incompleteId,id);});
+  try {
+    assert.match(ui.document.body.textContent!,/Your XI was incomplete/);
+    await ui.click(compareButton);
+    assert.equal(ui.document.querySelectorAll('.room-comparison-selectors select').length,2);
+    for(const select of ui.document.querySelectorAll('select')) {
+      assert.equal(select.options.length,3);assert.ok(![...select.options].some(o=>o.value===leftId));
+      assert.equal([...select.options].filter(o=>o.disabled).length,1);
+    }
+    await ui.choose('XI B',thirdId);
+    assert.equal(ui.document.querySelectorAll<HTMLSelectElement>('select')[1].value,thirdId);
+    assert.ok(calls.includes(thirdId));
+    assertComparisonIdentity(ui.document,[resultsBody(domain,incompleteId,hostId),resultsBody(domain,incompleteId,thirdId)]);
+    const swap=[...ui.document.querySelectorAll<HTMLButtonElement>('button')].find(button=>button.textContent==='Swap XIs')!;
+    await act(async()=>swap.click());
+    assert.deepEqual([...ui.document.querySelectorAll('select')].map(select=>select.value),[thirdId,hostId]);
+    assertComparisonIdentity(ui.document,[resultsBody(domain,incompleteId,thirdId),resultsBody(domain,incompleteId,hostId)]);
+    assert.match(ui.document.querySelector('#xi-comparison')!.textContent!,/Shared rank/); // identical canonical XIs have exact ties
+    await ui.click('[aria-label="Results views"] button:first-child');
+    assert.equal(ui.document.querySelector('#xi-comparison'),null);assert.equal(ui.document.querySelectorAll('.room-revealed-player').length,11);
+  }finally{await ui.close();}
+});
+
+test("comparison reuses the real authenticated session cache across modes and swaps", async () => {
+  const domain=resultsResolved(), initial=session(domain), calls:string[]=[];
+  const transport=createDraftOffTransport({fetch:async(url)=>{
+    if(String(url).includes('/results/')){const id=String(url).split('/').at(-1)!;calls.push(id);return Response.json(resultsBody(domain,hostId,id));}
+    return Response.json(String(url).endsWith('/socket-tickets')?{ok:true,ticket:'T'.repeat(43),expiresAtMs:Date.now()+30000}:initial.snapshot);
+  }});
+  const client=createDraftOffSession({apiOrigin:'https://api.test',roomCode,credential:{participantId:hostId,reconnectCredential:'A'.repeat(43)},
+    journalStorage:{getItem:()=>null,setItem(){},removeItem(){}},transport,onChange(){},realtime:{events:{addEventListener(){},removeEventListener(){}},createSocket:()=>({protocol:'draft-off.v1',close(){}}) as unknown as WebSocket}});
+  await client.start();const ui=await mount(initial,client.loadResults);
+  try{
+    await ui.click(compareButton);assert.deepEqual(calls,[hostId,memberId]);
+    await ui.click('.room-comparison-selectors button');assert.deepEqual(calls,[hostId,memberId]);
+    await ui.click('[aria-label="Results views"] button:first-child');
+    await ui.click(compareButton);assert.deepEqual(calls,[hostId,memberId]);
+  }finally{await ui.close();client.stop();}
+});
+
+test("comparison ignores aborted selection/session replies and clears both XIs and inspection on access loss", async () => {
+  const domain=resultsResolved(), pending:Array<{id:string;signal:AbortSignal;finish:(body:ResultsSuccess)=>void}>=[];
+  const loader:ResultsLoader=async(id,signal)=>new Promise(resolve=>pending.push({id,signal:signal!,finish:resolve}));
+  const ui=await mount(session(domain),loader);
+  try{
+    await ui.click(compareButton);assert.equal(pending[0].signal.aborted,true);
+    await ui.click('.room-comparison-selectors button');
+    assert.equal(pending[1].signal.aborted,true);assert.equal(pending[2].signal.aborted,true);
+    await act(async()=>{for(const p of pending.slice(0,3))p.finish(resultsBody(domain,hostId,p.id));});
+    assert.equal(ui.document.querySelectorAll('.room-comparison-players > li').length,0);
+    await act(async()=>{for(const p of pending.slice(3))p.finish(resultsBody(domain,hostId,p.id));});
+    assert.equal(ui.document.querySelectorAll('.room-comparison-players > li').length,11);
+    await ui.click('.room-comparison-player button');assert.ok(ui.document.querySelector('dialog[open]'));
+    await ui.render({...session(domain),accessUnavailable:true});
+    assert.equal(ui.document.querySelector('#xi-comparison'),null);assert.equal(ui.document.querySelector('dialog'),null);
+    assert.equal(ui.document.querySelectorAll('.room-results tbody tr').length,2);
+    assert.ok(pending.every(p=>p.signal.aborted));
+  }finally{await ui.close();}
+});
+
+test("comparison failures identify the participant, preserve leaderboard and retry only the failed load", async () => {
+  const domain=resultsResolved(), calls:string[]=[];let fail=true;
+  const ui=await mount(session(domain),async id=>{calls.push(id);if(id===memberId&&fail)throw new Error('offline');return resultsBody(domain,hostId,id);});
+  try{
+    await ui.click(compareButton);assert.match(ui.document.querySelector('#xi-comparison [role=alert]')!.textContent!,/Results member/);
+    assert.equal(ui.document.querySelectorAll('.room-comparison-players > li').length,0);
+    assert.equal(ui.document.querySelectorAll('.room-results tbody tr').length,2);
+    const count=calls.filter(id=>id===hostId).length;fail=false;
+    await ui.click('#xi-comparison .secondary-action');
+    assert.equal(calls.filter(id=>id===hostId).length,count);assert.equal(ui.document.querySelectorAll('.room-comparison-players > li').length,11);
+    // Replacing the authenticated loader hides both prior results immediately.
+    let finish!:(body:ResultsSuccess)=>void;
+    await ui.render(session(domain),async()=>new Promise(resolve=>{finish=resolve;}));
+    assert.equal(ui.document.querySelectorAll('.room-comparison-players > li').length,0);
+    const wrong=structuredClone(resultsBody(domain));Object.assign(wrong,{roundId:'wrong-round'});
+    await act(async()=>finish(wrong));assert.match(ui.document.querySelector('#xi-comparison [role=alert]')!.textContent!,/could not be verified/);
+  }finally{await ui.close();}
+});
+
+test("comparison is unavailable before resolution or with fewer than two eligible results",async()=>{
+  let calls=0;
+  const active=await mount(session(resultsStarted()),async()=>{calls++;throw new Error('Must not load');});
+  try{assert.equal(active.document.querySelector(compareButton),null);assert.equal(calls,0);}finally{await active.close();}
+  for(const eligible of [0,1]){
+    const domain=resultsResolved(eligible),ui=await mount(session(domain),async id=>resultsBody(domain,hostId,id));
+    try{const button=ui.document.querySelector<HTMLButtonElement>(compareButton);assert.ok(!button||button.disabled);assert.equal(ui.document.querySelector('#xi-comparison'),null);}finally{await ui.close();}
+  }
+});
+
+test("comparison fails closed on mismatched shared fixture identity instead of pairing recurring opponents",async()=>{
+  const domain=resultsResolved();
+  const ui=await mount(session(domain),async id=>{
+    const body=structuredClone(resultsBody(domain,hostId,id));
+    if(id===memberId)Object.assign(body.campaign.matches[0].opponent,{profileId:'another-valid-profile'});
+    return body;
+  });
+  try{await ui.click(compareButton);assert.match(ui.document.querySelector('#xi-comparison [role=alert]')!.textContent!,/could not be aligned/);assert.equal(ui.document.querySelectorAll('.room-comparison-fixtures > li').length,0);}finally{await ui.close();}
+});
+
+test("fixture overview starts compact, expands independently and preserves Super Over context",async()=>{
+  const domain=resultsResolved(2,'era-transition','m53-super-over-50'),calls:string[]=[];
+  const ui=await mount(session(domain),async id=>{calls.push(id);return resultsBody(domain,hostId,id);});
+  try {
+    await ui.click(compareButton);
+    const fixtures=[...ui.document.querySelectorAll<HTMLDetailsElement>('.room-comparison-fixture')];
+    assert.equal(fixtures.length,20);assert.ok(fixtures.every(detail=>!detail.open));
+    assert.equal(ui.document.querySelectorAll('.room-fixture-outcome').length,40);
+    const first=fixtures[0], third=fixtures[2];
+    assert.match(first.querySelectorAll('.room-fixture-outcome')[1]!.textContent!,/LOSS.*Super Over/);
+    assert.match(third.querySelector('.room-fixture-outcome')!.textContent!,/WIN.*Super Over/);
+    const before=calls.length;
+    await ui.click('.room-comparison-fixture summary');assert.equal(first.open,true);assert.equal(third.open,false);
+    assert.equal(first.querySelectorAll('.innings-row').length,4);
+    assert.match(first.querySelectorAll('.match-verdict')[1]!.textContent!,/won the Super Over/);
+    await ui.click('.room-comparison-fixture summary');assert.equal(first.open,false);
+    assert.equal(calls.length,before); // Disclosure never refetches or simulates.
+  }finally{await ui.close();}
 });

@@ -5,7 +5,7 @@ import type { DraftOffRoomView } from "./draftOffRoomTypes.js";
 import type { DraftCandidateIdentityView, DraftPickView, EraDraftPublicView } from "./eraDraftTypes.js";
 import { CandidateGallery, SelectedPlayerDetail, PlayerInspector, FitBadge, fitLabel, friendly } from "./eraDraftPlayerPresentation.js";
 import { appRoutePath, draftOffRoomPath } from "./webRoutes.js";
-import { DraftOffResultsBrowser, type ResultsLoader } from "./draftOffResults.js";
+import { DraftOffComparison, DraftOffResultsBrowser, type ResultsLoader } from "./draftOffResults.js";
 
 export const DRAFT_OFF_ERA_LABELS = {
   "era-foundation": "Foundation · 2008–2010", "era-expansion": "Expansion · 2011–2013",
@@ -98,7 +98,7 @@ export function DraftOffRoomExperience({ code, state, actions }: {
     </div>}
     {view.phase === "LOBBY" ? <Lobby snapshot={snapshot} code={code} blocked={blocked} onCommand={send} />
       : view.phase === "COMPLETE" ? <FinalResults key={`${code}:${view.round.roundId}:${snapshot.participantId}`} snapshot={snapshot} code={code} actions={actions} accessUnavailable={state.accessUnavailable} />
-        : me?.roundStatus === "SUBMITTED" ? <Waiting snapshot={snapshot} expired={expired} />
+        : me?.roundStatus === "SUBMITTED" ? <Waiting snapshot={snapshot} expired={expired} countdown={formatDraftCountdown(remaining)} />
           : me?.roundStatus === "DRAFTING" && view.myDraft && view.myDraft.phase !== "SETUP" ? <DraftWorkspace key={view.round.roundId} draft={view.myDraft} blocked={blocked || expired} onCommand={send} expired={expired} countdown={formatDraftCountdown(remaining)} />
             : <section className="draft-off-panel"><h1>You’re outside this round</h1><p>You left before the host started. The roster is now fixed. You can still see public room status and the final leaderboard.</p></section>}
     {expired && <p className="draft-off-notice" role="status">Time reached. Checking final status with the server. Complete legal XIs auto-submit; incomplete XIs are excluded.</p>}
@@ -142,7 +142,7 @@ function Dialog({ title, children, onClose, className = "", countdown }: { title
     return () => { const target = opener.current; requestAnimationFrame(() => { if (!ref.current?.open && target?.isConnected) target.focus(); }); };
   }, []);
   return <dialog ref={ref} className={`room-dialog ${className}`} aria-labelledby={id} onCancel={event => { event.preventDefault(); onClose(); }} onKeyDown={event => { if (event.key === "Escape") event.stopPropagation(); }}>
-    <header><h2 id={id}>{title}</h2>{countdown && <span className="room-sheet-clock" role="timer" aria-label={`${countdown} remaining`}>{countdown}</span>}<button className="quiet-button" onClick={onClose}>Close</button></header>{children}
+    <header><h2 id={id}>{title}</h2>{countdown && <span className="room-sheet-clock" role="timer" aria-label={`${countdown} remaining`}>{countdown}</span>}<button className="quiet-button" onClick={onClose}>Close</button></header>{countdown === "00:00" && <p role="status">Time reached. Checking final status with the server.</p>}{children}
   </dialog>;
 }
 function CompactXi({ draft, selected, preview, onPreview, onInspect, blocked }: {
@@ -170,18 +170,18 @@ function DraftWorkspace({ draft, blocked, expired, countdown, onCommand }: { dra
   const actionRef = useRef<HTMLButtonElement>(null), previous = useRef(draft.revision);
   useEffect(() => {
     if (previous.current === draft.revision) return;
-    previous.current = draft.revision; setSelectedId(null); setPreview(null); setInspected(null); setConfirmSubmit(false);
+    previous.current = draft.revision; setSelectedId(null); setPreview(null); setInspected(null); setConfirmSubmit(false); setShowXi(false);
     setNotice(draft.phase === "XI_COMPLETE" ? "Eleven picks locked. Your XI is complete." : draft.phase === "AWAITING_SPIN" ? "Pick locked. Spin the next franchise-season." : "Franchise-season ready. Choose your player.");
     requestAnimationFrame(() => actionRef.current?.focus());
   }, [draft.revision, draft.phase]);
   useEffect(() => {
-    const escape = (event: KeyboardEvent) => { if (event.key === "Escape" && !inspected) { setSelectedId(null); setPreview(null); } };
+    const escape = (event: KeyboardEvent) => { if (event.key === "Escape" && !inspected && !showXi && !confirmSubmit) { setSelectedId(null); setPreview(null); } };
     window.addEventListener("keydown", escape); return () => window.removeEventListener("keydown", escape);
-  }, [inspected]);
+  }, [inspected, showXi, confirmSubmit]);
   const selected = draft.phase === "AWAITING_PICK" ? draft.candidates.find(row => row.playerTeamSeasonId === selectedId) : undefined;
   const option = selected?.positions.find(row => row.battingPosition === preview && row.available);
   const lock = () => { if (!selected || !option || blocked) return; void onCommand({ type: "LOCK_PLAYER", playerTeamSeasonId: selected.playerTeamSeasonId, battingPosition: option.battingPosition }); };
-  const confirmation = <button className="primary-action room-confirm-pick" disabled={blocked || !option} onClick={lock}>{option ? `Confirm pick · Slot ${String(option.battingPosition).padStart(2, "0")}` : "Choose a position"}</button>;
+  const confirmation = <button className="primary-action room-confirm-pick" disabled={blocked || !option} onClick={lock}>{blocked && !expired ? "Waiting for server…" : option ? `Confirm pick · Slot ${String(option.battingPosition).padStart(2, "0")}` : "Choose a position"}</button>;
   const xi = <CompactXi draft={draft} selected={selected} preview={preview} blocked={blocked} onPreview={setPreview} onInspect={setInspected} />;
   const submitButton = <button ref={actionRef} className="primary-action" disabled={blocked} onClick={() => setConfirmSubmit(true)}>Submit XI</button>;
   return <>
@@ -199,37 +199,54 @@ function DraftWorkspace({ draft, blocked, expired, countdown, onCommand }: { dra
       {expired && <p>Checking the server’s deadline decision…</p>}
     </section>{!small && xi}</div>
     <p className="sr-status" aria-live="polite">{notice}</p>
-    {small && selected && <Dialog title="Place your player" countdown={countdown} className="room-placement-sheet" onClose={() => { setSelectedId(null); setPreview(null); }}><SelectedPlayerDetail candidate={selected} /><button className="quiet-button" onClick={() => setInspected(selected)}>Inspect season</button>{xi}<div className="room-sheet-confirm">{confirmation}</div></Dialog>}
-    {showXi && <Dialog title="Your locked XI" onClose={() => setShowXi(false)}><CompactXi draft={draft} preview={null} onInspect={setInspected} /></Dialog>}
-    {confirmSubmit && <Dialog title="Submit and lock your XI?" onClose={() => setConfirmSubmit(false)}><p>Submission is final. Your eleven players and batting positions will be frozen while the room finishes.</p><p>Results arrive when everyone submits or the shared deadline passes.</p><button className="primary-action" disabled={blocked} onClick={() => { setConfirmSubmit(false); void onCommand({ type: "SUBMIT" }); }}>Submit and lock XI</button><button className="secondary-action" onClick={() => setConfirmSubmit(false)}>Keep reviewing</button></Dialog>}
-    {inspected && <PlayerInspector player={inspected} onClose={() => setInspected(null)} />}
+    {blocked && !expired && <p role="status" className="draft-off-notice">Waiting for server confirmation. Your XI will update when the action is confirmed.</p>}
+    {small && selected && <Dialog title="Place your player" countdown={countdown} className="room-placement-sheet" onClose={() => { setSelectedId(null); setPreview(null); }}><div className="room-placement-body"><SelectedPlayerDetail candidate={selected} />{blocked && !expired && <p role="status">Waiting for server confirmation. Your saved action is preserved.</p>}<button className="quiet-button" onClick={() => setInspected(selected)}>Inspect season</button>{xi}</div><div className="room-sheet-confirm"><div className="room-placement-context"><strong>{selected.playerName}</strong><small>Selected player · {selected.teamName} · {selected.seasonYear}</small></div>{confirmation}</div></Dialog>}
+    {showXi && <Dialog title="Your locked XI" countdown={countdown} onClose={() => setShowXi(false)}><CompactXi draft={draft} preview={null} onInspect={setInspected} /></Dialog>}
+    {confirmSubmit && <Dialog title="Submit and lock your XI?" countdown={countdown} onClose={() => setConfirmSubmit(false)}><p>Submission is final. Your eleven players and batting positions will be frozen while the room finishes.</p><p>Results arrive when everyone submits or the shared deadline passes.</p><button className="primary-action" disabled={blocked} onClick={() => { setConfirmSubmit(false); void onCommand({ type: "SUBMIT" }); }}>Submit and lock XI</button><button className="secondary-action" onClick={() => setConfirmSubmit(false)}>Keep reviewing</button></Dialog>}
+    {inspected && <PlayerInspector player={inspected} countdown={countdown} onClose={() => setInspected(null)} />}
   </>;
 }
-function Waiting({ snapshot, expired }: { snapshot: SnapshotSuccess; expired: boolean }) {
+function Waiting({ snapshot, expired, countdown }: { snapshot: SnapshotSuccess; expired: boolean; countdown: string }) {
   const [inspected, setInspected] = useState<DraftPickView | null>(null);
   const draft = snapshot.view.myDraft;
   return <div className="room-waiting-layout"><section className="draft-off-panel"><p className="eyebrow">Submission confirmed</p><h1>Your XI is locked in.</h1><p>{expired ? "Checking the final result with the server." : "The room is still drafting. Results arrive when everyone submits or time runs out."}</p><p>Your submission is final. Private XIs and ratings remain hidden.</p><ParticipantList view={snapshot.view} me={snapshot.participantId} /></section>
-    {draft && draft.phase !== "SETUP" && <CompactXi draft={draft} preview={null} onInspect={setInspected} />}{inspected && <PlayerInspector player={inspected} onClose={() => setInspected(null)} />}</div>;
+    {draft && draft.phase !== "SETUP" && <CompactXi draft={draft} preview={null} onInspect={setInspected} />}{inspected && <PlayerInspector player={inspected} countdown={countdown} onClose={() => setInspected(null)} />}</div>;
 }
 const noCooldown = () => 0;
 function FinalResults({ snapshot, code, actions, accessUnavailable }: { snapshot: SnapshotSuccess; code: string; actions: DraftOffRoomActions; accessUnavailable: boolean }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [compare, setCompare] = useState(false);
+  const [pair, setPair] = useState<[string, string] | null>(null);
   const result = snapshot.view.resolution, round = snapshot.view.round;
   const entrant = snapshot.view.participants.find(row => row.participantId === snapshot.participantId)?.roundStatus !== undefined;
   const rows = result?.leaderboard ?? [];
   const selected = rows.find(row => row.participantId === selectedId) ?? rows.find(row => row.participantId === snapshot.participantId) ?? rows[0];
   const available = entrant && !accessUnavailable && !!actions.loadResults && round.phase === "RESOLVED";
   const select = (id: string) => {
-    setSelectedId(id);
+    setSelectedId(id); setCompare(false);
     requestAnimationFrame(() => {
       const heading = document.getElementById("participant-results-title");
       heading?.focus({ preventScroll: true });
       heading?.closest(".room-participant-results")?.scrollIntoView?.({ block: "start" });
     });
   };
+  const first = rows.find(row => row.participantId === pair?.[0]) ?? selected;
+  const second = rows.find(row => row.participantId === pair?.[1] && row !== first) ?? rows.find(row => row !== first);
+  const identity = { roomCode: code, roundId: round.roundId, roundOrdinal: round.roundOrdinal, eraId: round.eraId };
   return <>
     <Leaderboard snapshot={snapshot} selectedId={available ? selected?.participantId : undefined} onSelect={available ? select : undefined} />
-    {available && selected && <DraftOffResultsBrowser key={selected.participantId} identity={{ roomCode: code, roundId: round.roundId,
+    {available && rows.length > 0 && <section id="comparison-selection" tabIndex={-1} className="draft-off-panel room-results-controls" aria-label="Results views">
+      <div className="draft-off-tabs"><button className="secondary-action" aria-pressed={!compare} onClick={() => setCompare(false)}>Individual results</button><button className="secondary-action" aria-pressed={compare} disabled={rows.length < 2} onClick={() => setCompare(true)}>Compare two XIs</button></div>
+      {rows.length < 2 && <p>Comparison needs two eligible submitted XIs. You can inspect the eligible XI below.</p>}
+      {compare && first && second && <div className="room-comparison-selectors">
+        {([first, second] as const).map((entry, i) => <label key={i}>XI {i === 0 ? "A" : "B"}<select value={entry.participantId} onChange={event => setPair(i === 0 ? [event.target.value, second.participantId] : [first.participantId, event.target.value])}>
+          {rows.map(row => <option key={row.participantId} value={row.participantId} disabled={row.participantId === (i === 0 ? second : first).participantId}>{row.displayName} · Rank {row.rank}</option>)}
+        </select></label>)}
+        <button className="secondary-action" onClick={() => setPair([second.participantId, first.participantId])}>Swap XIs</button>
+      </div>}
+    </section>}
+    {available && compare && first && second && <DraftOffComparison identity={identity} entries={[first, second]} loadResults={actions.loadResults!} retryAtMs={actions.resultsRetryAtMs ?? noCooldown} subscribeCooldown={actions.subscribeResultsCooldown} />}
+    {available && !compare && selected && <DraftOffResultsBrowser key={selected.participantId} identity={{ roomCode: code, roundId: round.roundId,
       roundOrdinal: round.roundOrdinal, eraId: round.eraId, participantId: selected.participantId }} displayName={selected.displayName}
       loadResults={actions.loadResults!} retryAtMs={actions.resultsRetryAtMs ?? noCooldown} subscribeCooldown={actions.subscribeResultsCooldown} />}
   </>;
