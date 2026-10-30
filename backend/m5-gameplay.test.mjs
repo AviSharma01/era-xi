@@ -114,7 +114,9 @@ test('M5.2 native backend deadline: complete XI auto-submits, incomplete XI excl
   assert.equal(next.state().snapshot.view.resolution.contestStatus, 'NO_CONTEST'); assert.deepEqual(next.state().snapshot.view.resolution.leaderboard, []);
 }));
 
-test('M5.2 production backend: eight entrants finish independent XIs and receive one leaderboard', { timeout: 90000 }, () => fixture(true, async ({ enroll, connect, draft }) => {
+// This sequential HTTP/reconciliation journey took ~81s on main in CI.
+// Match the eight-entrant acceptance matrix's correctness budget; latency gates stay separate.
+test('M5.2 production backend: eight entrants finish independent XIs and receive one leaderboard', { timeout: 180000 }, () => fixture(true, async ({ enroll, connect, draft }) => {
   const players = [connect(await enroll('Host eight', true))];
   for (let i = 1; i < 8; i++) players.push(connect(await enroll(`Guest ${i}`)));
   for (const player of players) await player.client.start();
