@@ -1,3 +1,6 @@
+import { draftOffFormatDescription, draftOffFormatLabel, type DraftOffFormat } from "./draftOffFormat.js";
+import { readDraftOffInvite } from "./draftOffInviteClient.js";
+import type { DraftOffInvite } from "./draftOffClientTypes.js";
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import { createDraftOffTransport, draftOffApiOrigin } from "./draftOffClientTransport.js";
 import { enrollDraftOffGuest, createDraftOffSession, readDraftOffCredential, type DraftOffSessionState } from "./draftOffSession.js";
@@ -7,7 +10,7 @@ import { ERA_IDS, type EraId } from "./teamEvaluationV2.js";
 import { browserEnrollmentLock } from "./draftOffEnrollmentClient.js";
 import "./draftOff.css";
 
-type PendingEnrollment = { record?: string; operation: "CREATE" | "JOIN"; roomCode?: string; input: { displayName: string; eraId?: EraId; draftMinutes?: 10 | 15 } };
+type PendingEnrollment = { record?: string; operation: "CREATE" | "JOIN"; roomCode?: string; input: { displayName: string; eraId?: EraId; draftMinutes?: 10 | 15; format?: DraftOffFormat } };
 function pendingEnrollment(code: string | null): PendingEnrollment | null {
   const operation = code ? "JOIN" : "CREATE";
   const raw = localStorage.getItem(`draft-off:pending:${operation}:${code ?? ""}`);
@@ -48,6 +51,9 @@ function RoomEntry({ apiOrigin, code }: { apiOrigin: string; code: string | null
   const [room, setRoom] = useState(code ?? "");
   const [era, setEra] = useState<EraId>(initial.pending?.input.eraId ?? "era-foundation");
   const [minutes, setMinutes] = useState<10 | 15>(initial.pending?.input.draftMinutes ?? 15);
+  const [format, setFormat] = useState<DraftOffFormat>(initial.pending?.input.format ?? "VARIED");
+  const [invite, setInvite] = useState<DraftOffInvite | null>(null);
+  const [inviteError, setInviteError] = useState(false), [inviteAttempt, setInviteAttempt] = useState(0);
   const [pending, setPending] = useState(initial.pending);
   const [busy, setBusy] = useState(false), [message, setMessage] = useState<string | null>(initial.error);
   const [unavailable, setUnavailable] = useState(false);
@@ -79,6 +85,14 @@ function RoomEntry({ apiOrigin, code }: { apiOrigin: string; code: string | null
     window.addEventListener("storage", refresh); window.addEventListener("focus", refresh);
     return () => { window.removeEventListener("storage", refresh); window.removeEventListener("focus", refresh); };
   }, [code]);
+  useEffect(() => {
+    if (!code || credential) return;
+    const abort = new AbortController(); setInvite(null); setInviteError(false);
+    void readDraftOffInvite(apiOrigin, code, transport.current!.fetch, abort.signal)
+      .then(value => { if (!abort.signal.aborted) setInvite(value); })
+      .catch(() => { if (!abort.signal.aborted) setInviteError(true); });
+    return () => abort.abort();
+  }, [apiOrigin, code, credential, inviteAttempt]);
   if (credential && code) return <RoomBootstrap apiOrigin={apiOrigin} code={code} credential={credential} />;
   async function submit(event: FormEvent) {
     event.preventDefault(); if (inFlight.current || storageError) return;
@@ -86,7 +100,7 @@ function RoomEntry({ apiOrigin, code }: { apiOrigin: string; code: string | null
     if (operation === "JOIN" && !normalized) { setMessage("Enter the complete 12-character room code."); return; }
     if (!pending && operation === "JOIN" && !code) { navigateToDraftOffRoom(normalized!); return; }
     const intent: PendingEnrollment = pending ?? { operation, ...(normalized ? { roomCode: normalized } : {}),
-      input: operation === "CREATE" ? { displayName: name.trim(), eraId: era, draftMinutes: minutes } : { displayName: name.trim() } };
+      input: operation === "CREATE" ? { displayName: name.trim(), eraId: era, draftMinutes: minutes, format } : { displayName: name.trim() } };
     inFlight.current = true; const generation = ++owner.current; setBusy(true); setMessage(null); setUnavailable(false);
     try {
       const reply = await enrollDraftOffGuest({ apiOrigin, operation: intent.operation, roomCode: intent.roomCode,
@@ -132,14 +146,22 @@ function RoomEntry({ apiOrigin, code }: { apiOrigin: string; code: string | null
       <h2 id="enrollment-title">{code ? `Join room ${code}` : "Enter Draft-Off"}</h2>
       {!code && <div className="draft-off-tabs"><button className="secondary-action" disabled={busy || !!pending} aria-pressed={operation === "CREATE"} onClick={() => setOperation("CREATE")}>Create room</button>
         <button className="secondary-action" disabled={busy || !!pending} aria-pressed={operation === "JOIN"} onClick={() => setOperation("JOIN")}>Join room</button></div>}
+      {code && <div className="room-invite-settings" aria-live="polite">{invite ? <><strong>{draftOffFormatLabel(invite.format)}</strong>
+        <p>{draftOffFormatDescription(invite.format)}</p><p>{ERAS[invite.eraId]} · {invite.draftMinutes} minutes · Settings are fixed.</p></>
+        : inviteError ? <><p>Invite details are unavailable. Check the room code or retry.</p><button className="secondary-action" onClick={() => setInviteAttempt(value => value + 1)}>Retry invite details</button></>
+          : <p>Checking the room’s format and settings…</p>}</div>}
       {pending && <p role="status">Saved enrollment awaiting confirmation. Retry uses the exact original name, settings and recovery key.</p>}
       <form onSubmit={event => void submit(event)} aria-busy={busy}>
         {operation === "JOIN" && <label>Room code<input value={room} required readOnly={!!code || !!pending} disabled={busy} autoCapitalize="characters" spellCheck={false} onChange={event => setRoom(event.target.value)} /></label>}
         {(operation === "CREATE" || code) && <label>Display name<input value={pending?.input.displayName ?? name} required readOnly={!!pending} disabled={busy} autoComplete="nickname" onChange={event => setName(event.target.value)} /></label>}
         {operation === "CREATE" && <><label>Era<select value={pending?.input.eraId ?? era} disabled={busy || !!pending} onChange={event => setEra(event.target.value as EraId)}>{ERA_IDS.map(id => <option key={id} value={id}>{ERAS[id]}</option>)}</select></label>
           <label>Draft time<select value={pending?.input.draftMinutes ?? minutes} disabled={busy || !!pending} onChange={event => setMinutes(Number(event.target.value) as 10 | 15)}><option value={10}>10 minutes</option><option value={15}>15 minutes</option></select></label>
-          <p>Era and time are fixed when the room is created.</p></>}
-        <button className="primary-action" disabled={busy || !!storageError}>{busy ? "Confirming enrollment…" : pending ? "Retry saved enrollment" : operation === "CREATE" ? "Create private room" : code ? "Join private room" : "Continue to room"}</button>
+          <label>Draft format<select value={pending && !pending.input.format ? "RECOVERY" : pending?.input.format ?? format} disabled={busy || !!pending} onChange={event => setFormat(event.target.value as DraftOffFormat)}>
+            {pending && !pending.input.format && <option value="RECOVERY">Confirming saved format</option>}
+            <option value="VARIED">Varied Draft</option><option value="MIRROR">Mirror Draft</option></select></label>
+          <p>{pending && !pending.input.format ? "Your room’s format will be confirmed after recovery." : draftOffFormatDescription(pending?.input.format ?? format)}</p>
+          <p>Era, time and format are fixed when the room is created.</p></>}
+        <button className="primary-action" disabled={busy || !!storageError || (!!code && !invite && !pending)}>{busy ? "Confirming enrollment…" : pending ? "Retry saved enrollment" : operation === "CREATE" ? "Create private room" : code ? "Join private room" : "Continue to room"}</button>
       </form>
       {(storageError || message) && <p className="draft-off-notice" role="status">{storageError ?? message}</p>}
       {unavailable && pending?.operation === "CREATE" && <button className="secondary-action" onClick={() => {

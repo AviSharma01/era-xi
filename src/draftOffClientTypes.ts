@@ -1,6 +1,9 @@
+import type { DraftOffFormat } from './draftOffFormat.js';
+import type { EraId } from './teamEvaluationV2.js';
 import type { DraftOffRoomView } from './draftOffRoomTypes.js';
 
-export type Settings = { draftMinutes: 10 | 15 };
+export type Settings = { draftMinutes: 10 | 15; format?: DraftOffFormat };
+export type DraftOffInvite = { ok: true; version: 2; roomCode: string; eraId: EraId; draftMinutes: 10 | 15; format: DraftOffFormat };
 export type PublicCommand =
   | { commandId: string; expectedRoomRevision: number; command: { type: 'LEAVE' | 'REJOIN' | 'START' } }
   | { commandId: string; expectedDraftRevision: number; command:

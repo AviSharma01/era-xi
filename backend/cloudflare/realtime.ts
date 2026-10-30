@@ -33,7 +33,7 @@ export function closeSocket(ws: WebSocket, code: number, reason: string) {
 }
 
 export function snapshotBytes(state: DraftOffCompetitionState, nowMs: number, maxBytes: number) {
-  const message: DraftOffRoomSnapshotMessage = { version: 1, type: 'ROOM_SNAPSHOT',
+  const message: DraftOffRoomSnapshotMessage = { version: state.genesis.format === undefined ? 1 : 2, type: 'ROOM_SNAPSHOT',
     serverTimeMs: Math.max(nowMs, state.lastAcceptedAtMs), view: projectDraftOffPublicRoom(state) };
   const serialized = JSON.stringify(message);
   if (new TextEncoder().encode(serialized).byteLength > maxBytes) throw new ApiError(503, 'TEMPORARY_UNAVAILABLE');

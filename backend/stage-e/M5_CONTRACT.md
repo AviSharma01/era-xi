@@ -132,3 +132,42 @@ Browser enrollment now uses an origin-scoped Web Lock across pending-key selecti
 Solo Start/Continue operations retain their existing controller, but route changes invalidate their generation synchronously. Async publication also requires the owning route; leaving and returning cannot revive an old operation or clear a newer operation's pending state.
 
 `VITE_DRAFT_OFF_ENABLED=true` is an explicit build-time opt-in, independent of the API origin. It defaults off, hides navigation and blocks direct Draft-Off activation under root/nested bases. See `docs/RELEASE.md` and the runbook for M6 activation gates. The flag is release control; existing backend authentication remains authoritative.
+
+## Format-aware extension (competition v2)
+
+New CREATE accepts optional `format: 'VARIED' | 'MIRROR'`; omission defaults to
+Varied only for new room creation. The creation UI sends an explicit selection.
+JOIN and every command continue to reject format/settings/seed overrides. Selected
+format cannot change. New room/enrollment settings are `{draftMinutes,format}` and
+`view.round` additionally requires `format`. Historical v1 rooms keep the old
+settings and round shapes, interpreted as Mirror. Updated clients validate both
+shapes strictly. Existing endpoint paths, results payloads and command envelopes
+are unchanged; frontend/backend must be released together for new rooms.
+
+New rooms emit `ROOM_SNAPSHOT.version:2` with required `view.round.format`; legacy
+rooms continue emitting version 1 without it. The existing `draft-off.v1` ticket
+subprotocol and socket attachment versions are unchanged. Private seeds remain
+outside all public and authenticated HTTP/socket projections.
+
+The sole additive pre-enrollment route is bodyless `GET
+/api/draft-off/v1/rooms/{code}/invite`, returning exactly
+`{ok:true,version:2,roomCode,eraId,draftMinutes,format}`. It needs approved Origin,
+accepts no Authorization/Enrollment-Key/query/Content-Encoding, and shares existing
+edge request/enrollment throttles. A separate durable invite bucket reuses room
+enrollment rate/burst limits before canonical recovery. It returns private/no-store;
+unknown or expired rooms return 404 ROOM_UNAVAILABLE. No roster, phase, timing,
+private draft or results are returned. The UI waits for validated invite metadata
+before offering a fresh JOIN; saved enrollment recovery remains available.
+
+Canonical engine/state/save versions are v2 only when genesis has an explicit
+format. V1 replay and hashes stay unchanged, including pending rooms and old
+CREATE response recovery. No SQL migration, schedule/simulation version change or
+historical fixture regeneration is part of this extension. See
+[format architecture](../../docs/DRAFT_OFF_ARCHITECTURE.md#varied-and-mirror-formats-competition-v2).
+
+Focused evidence: `src/draftOffFormat.test.ts`, `backend/m5-formats.test.mjs`, the
+format-aware M5 gameplay matrix and
+`scripts/draft_off_formats_browser_validation.mjs`. The browser runner uses a local
+production Worker/build, two independent desktop/mobile guest contexts, both
+formats, 44 total UI picks, respins, reloads, submissions and aligned results. Its
+summary/screenshots go to a temporary directory, never historical evidence folders.

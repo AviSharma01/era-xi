@@ -1,3 +1,4 @@
+import { deriveDraftOffParticipantSeed, isDraftOffFormat } from "./draftOffFormat.js";
 import { canonicalSha256 } from "./eraDraftCanonical.js";
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
@@ -11,6 +12,8 @@ import {
 } from "./draftOffSimulation.js";
 import {
   DRAFT_OFF_COMPETITION_ENGINE_VERSION,
+  DRAFT_OFF_COMPETITION_ENGINE_V2,
+  DRAFT_OFF_COMPETITION_STATE_V2,
   DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION,
   DRAFT_OFF_ROUND_RESOLUTION_VERSION,
   DRAFT_OFF_SUBMISSION_VERSION,
@@ -42,6 +45,7 @@ export function createDraftOffCompetition(
   catalog: EraDraftCatalog,
   input: DraftOffCompetitionGenesis,
 ): DraftOffCompetitionState {
+  if (Object.hasOwn(input, "format") && !isDraftOffFormat(input.format)) throw new DraftOffCompetitionInvariantError("INVALID_FORMAT", "Unsupported Draft-Off format.");
   requireId(input.competitionId, "competitionId");
   requireTimestamp(input.createdAtMs, "createdAtMs");
   requireId(input.host.participantId, "host participantId");
@@ -70,8 +74,8 @@ export function createDraftOffCompetition(
     initialRound: { ...input.initialRound, label },
   });
   const state = freezeDeep({
-    engineVersion: DRAFT_OFF_COMPETITION_ENGINE_VERSION,
-    schemaVersion: DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION,
+    engineVersion: input.format === undefined ? DRAFT_OFF_COMPETITION_ENGINE_VERSION : DRAFT_OFF_COMPETITION_ENGINE_V2,
+    schemaVersion: input.format === undefined ? DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION : DRAFT_OFF_COMPETITION_STATE_V2,
     catalogFingerprint: catalog.fingerprint,
     competitionId: input.competitionId,
     phase: "LOBBY",
@@ -220,7 +224,7 @@ function startRound(
     roundOrdinal: round.roundOrdinal,
   });
   const participants = roster.map((member): DraftOffRoundParticipant => {
-    const setup = createEraDraftGame({ catalog, rootSeed: seeds.draftRootSeed });
+    const setup = createEraDraftGame({ catalog, rootSeed: deriveDraftOffParticipantSeed(seeds.draftRootSeed, member.participantId, state.genesis.format ?? "MIRROR") });
     const chosen = reduceEraDraft(catalog, setup, { type: "CHOOSE_ERA", eraId: round.eraId });
     if (!chosen.ok || chosen.state.phase !== "AWAITING_SPIN") {
       throw new DraftOffCompetitionInvariantError("ROUND_INITIALIZATION_FAILED", "Shared Era Draft initialization failed.");

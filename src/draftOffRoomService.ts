@@ -65,6 +65,7 @@ export class DraftOffRoomService {
     const participantId = requireParticipantActor(actor);
     const createdAtMs = authoritativeClockTime(this.clock.nowMs(), 0);
     const state = this.runtime.create(this.catalog, {
+      ...(input.format === undefined ? {} : { format: input.format }),
       competitionId: input.roomId,
       catalogFingerprint: this.catalog.fingerprint,
       createdAtMs,

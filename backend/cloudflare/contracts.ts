@@ -1,3 +1,5 @@
+import { isDraftOffFormat } from '../../src/draftOffFormat.js';
+import type { DraftOffInvite } from '../../src/draftOffClientTypes.js';
 import type { Settings, PublicCommand, SnapshotSuccess } from '../../src/draftOffClientTypes.js';
 export type { Settings, PublicCommand, SnapshotSuccess } from '../../src/draftOffClientTypes.js';
 import { ERA_IDS, type EraId } from '../../src/teamEvaluationV2';
@@ -11,13 +13,14 @@ export type CreateInput = Settings & { displayName: string; eraId: EraId };
 export type Operation =
   | { kind: 'CREATE'; roomCode: string; enrollmentKey: string; input: CreateInput }
   | { kind: 'JOIN'; roomCode: string; enrollmentKey: string; input: { displayName: string } }
+  | { kind: 'INVITE'; roomCode: string }
   | { kind: 'READ'; roomCode: string; credential: string }
   | { kind: 'RESULTS'; roomCode: string; credential: string; targetParticipantId: string }
   | { kind: 'SOCKET_TICKET'; roomCode: string; credential: string; origin: string }
   | { kind: 'COMMAND'; roomCode: string; credential: string; input: PublicCommand };
 export type ApiFailure = { ok: false; error: { code: string; message: string }; roomRevision?: number; view?: DraftOffRoomView };
 export type SocketTicketSuccess = { ok: true; ticket: string; expiresAtMs: number };
-export type ApiBody = EnrollmentSuccess | SafeEnrollment | SnapshotSuccess | ResultsSuccess | SocketTicketSuccess | Extract<DraftOffRoomCommandResult, { ok: true }> | ApiFailure | null;
+export type ApiBody = DraftOffInvite | EnrollmentSuccess | SafeEnrollment | SnapshotSuccess | ResultsSuccess | SocketTicketSuccess | Extract<DraftOffRoomCommandResult, { ok: true }> | ApiFailure | null;
 export type ApiReply = { status: number; body: ApiBody; retryAfter?: number };
 export type EnrollmentSuccess = { ok: true; roomCode: string; participantId: string;
   reconnectCredential: string; settings: Settings; view: DraftOffRoomView };
@@ -37,10 +40,13 @@ export function displayName(value: unknown): string {
   return name;
 }
 export function createInput(value: unknown): CreateInput {
-  const input = object(value); keys(input, ['displayName', 'eraId'], ['draftMinutes']);
+  const input = object(value); keys(input, ['displayName', 'eraId'], ['draftMinutes', 'format']);
   const minutes = input.draftMinutes === undefined ? 15 : input.draftMinutes;
   if (!ERA_IDS.includes(input.eraId as EraId) || (minutes !== 10 && minutes !== 15)) throw new ApiError(400, 'INVALID_REQUEST');
-  return { displayName: displayName(input.displayName), eraId: input.eraId as EraId, draftMinutes: minutes };
+  if (Object.hasOwn(input, 'format') && !isDraftOffFormat(input.format)) throw new ApiError(400, 'INVALID_REQUEST');
+  // Preserve omitted format in the enrollment fingerprint so legacy lost replies still recover.
+  return { displayName: displayName(input.displayName), eraId: input.eraId as EraId, draftMinutes: minutes,
+    ...(Object.hasOwn(input, 'format') ? { format: input.format as 'VARIED' | 'MIRROR' } : {}) };
 }
 export function joinInput(value: unknown) { const input = object(value); keys(input, ['displayName']); return { displayName: displayName(input.displayName) }; }
 export function publicCommand(value: unknown): PublicCommand {

@@ -46,6 +46,7 @@ export function projectDraftOffPublicRoom(state: DraftOffCompetitionState): Draf
     phase: state.phase,
     participants,
     round: {
+      ...(state.genesis.format === undefined ? {} : { format: state.genesis.format }),
       roundId: round.roundId,
       roundOrdinal: round.roundOrdinal,
       label: round.label,

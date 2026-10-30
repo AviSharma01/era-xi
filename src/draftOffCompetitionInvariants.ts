@@ -1,3 +1,4 @@
+import { deriveDraftOffParticipantSeed, isDraftOffFormat } from "./draftOffFormat.js";
 import { canonicalJson, canonicalSha256 } from "./eraDraftCanonical.js";
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { assertEraDraftState } from "./eraDraftInvariants.js";
@@ -5,6 +6,8 @@ import { canonicalEraDraftStateHash } from "./eraDraftPersistence.js";
 import { deriveDraftOffSeeds, deriveDraftOffSubmissionHash } from "./draftOffSimulation.js";
 import {
   DRAFT_OFF_COMPETITION_ENGINE_VERSION,
+  DRAFT_OFF_COMPETITION_ENGINE_V2,
+  DRAFT_OFF_COMPETITION_STATE_V2,
   DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION,
   DRAFT_OFF_ROUND_RESOLUTION_VERSION,
   DRAFT_OFF_SUBMISSION_VERSION,
@@ -19,9 +22,11 @@ export function assertDraftOffCompetitionState(
   catalog: EraDraftCatalog,
   state: DraftOffCompetitionState,
 ): void {
+  const modern = Object.hasOwn(state.genesis, "format");
+  if (modern && !isDraftOffFormat(state.genesis.format)) fail("INVALID_FORMAT", "Unsupported Draft-Off format.");
   if (
-    state.engineVersion !== DRAFT_OFF_COMPETITION_ENGINE_VERSION
-    || state.schemaVersion !== DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION
+    state.engineVersion !== (modern ? DRAFT_OFF_COMPETITION_ENGINE_V2 : DRAFT_OFF_COMPETITION_ENGINE_VERSION)
+    || state.schemaVersion !== (modern ? DRAFT_OFF_COMPETITION_STATE_V2 : DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION)
   ) fail("STATE_VERSION_MISMATCH", "Competition state uses unsupported version fields.");
   if (state.catalogFingerprint !== catalog.fingerprint || state.genesis.catalogFingerprint !== catalog.fingerprint) {
     fail("CATALOG_FINGERPRINT_MISMATCH", "Competition state belongs to a different catalog.");
@@ -185,7 +190,7 @@ function validateRoundParticipant(
     || draftPhase === "REVEALED"
     || draftPhase === "GAME_COMPLETE"
     || participant.draftState.eraId !== round.eraId
-    || participant.draftState.rootSeed !== round.seeds.draftRootSeed
+    || participant.draftState.rootSeed !== deriveDraftOffParticipantSeed(round.seeds.draftRootSeed, participant.participantId, state.genesis.format ?? "MIRROR")
   ) fail("INVALID_PRIVATE_DRAFT", "Round participant has an invalid private Era Draft state.");
   if (participant.status === "SUBMITTED") {
     if (participant.draftState.phase !== "XI_COMPLETE" || participant.submission.xi !== participant.draftState) {

@@ -1,3 +1,4 @@
+import type { DraftOffFormat } from "./draftOffFormat.js";
 import type { DraftOffChallengeResult, DraftOffLeaderboardRow, DraftOffSeedBundle } from "./draftOffTypes.js";
 import type {
   AwaitingPickState,
@@ -13,6 +14,10 @@ import type { EraId } from "./teamEvaluationV2.js";
 export const DRAFT_OFF_COMPETITION_ENGINE_VERSION = "ipl-draft-off-competition-engine/v1" as const;
 export const DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION = "ipl-draft-off-competition-state/v1" as const;
 export const DRAFT_OFF_COMPETITION_SAVE_VERSION = "ipl-draft-off-competition-save/v1" as const;
+export const DRAFT_OFF_COMPETITION_ENGINE_V2 = "ipl-draft-off-competition-engine/v2" as const;
+export const DRAFT_OFF_COMPETITION_STATE_V2 = "ipl-draft-off-competition-state/v2" as const;
+export const DRAFT_OFF_COMPETITION_SAVE_V2 = "ipl-draft-off-competition-save/v2" as const;
+
 export const DRAFT_OFF_SUBMISSION_VERSION = "ipl-draft-off-submission/v1" as const;
 export const DRAFT_OFF_ROUND_RESOLUTION_VERSION = "ipl-draft-off-round-resolution/v1" as const;
 
@@ -40,6 +45,8 @@ export type DraftOffRoundGenesis = {
 };
 
 export type DraftOffCompetitionGenesis = {
+  /** Absent only in historical v1 mirrored competitions. */
+  readonly format?: DraftOffFormat;
   readonly competitionId: string;
   readonly catalogFingerprint: string;
   readonly createdAtMs: number;
@@ -124,8 +131,8 @@ export type ResolvedDraftOffRound = Omit<ActiveDraftOffRound, "phase"> & {
 export type DraftOffRoundState = PendingDraftOffRound | ActiveDraftOffRound | ResolvedDraftOffRound;
 
 export type DraftOffCompetitionState = {
-  readonly engineVersion: typeof DRAFT_OFF_COMPETITION_ENGINE_VERSION;
-  readonly schemaVersion: typeof DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION;
+  readonly engineVersion: typeof DRAFT_OFF_COMPETITION_ENGINE_VERSION | typeof DRAFT_OFF_COMPETITION_ENGINE_V2;
+  readonly schemaVersion: typeof DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION | typeof DRAFT_OFF_COMPETITION_STATE_V2;
   readonly catalogFingerprint: string;
   readonly competitionId: string;
   readonly phase: DraftOffCompetitionPhase;

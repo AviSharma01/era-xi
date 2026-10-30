@@ -5,6 +5,8 @@ import { enrollDraftOffGuest, createDraftOffSession } from "./draftOffSession.js
 import { appRoutePath, draftOffRoomCode, draftOffRoomPath, matchAppRoute } from "./webRoutes.js";
 import { enrollGuest, type EnrollmentStorage } from "./draftOffEnrollmentClient.js";
 import type { SnapshotSuccess } from "./draftOffClientTypes.js";
+import { parseRoomSnapshot } from "./draftOffRealtimeClient.js";
+import { readDraftOffInvite } from "./draftOffInviteClient.js";
 
 const code = "0123456789AB", credential = { participantId: "p_" + "a".repeat(32), reconnectCredential: "C".repeat(43) };
 const storage = () => { const rows = new Map<string, string>(); return { rows, getItem: (key: string) => rows.get(key) ?? null,
@@ -19,6 +21,32 @@ function snapshot(revision = 2, draftRevision = 1): SnapshotSuccess {
 const silentSocket = () => ({ protocol: "draft-off.v1", close() {} }) as unknown as WebSocket;
 const response = (body: unknown, status = 200) => Response.json(body, { status });
 const flush = async () => { for (let i = 0; i < 5; i++) await new Promise(resolve => setImmediate(resolve)); };
+
+test("format-aware and legacy socket contracts validate strictly without private fields", () => {
+  const { myDraft: _private, ...view } = snapshot().view;
+  const legacy = { version: 1, type: "ROOM_SNAPSHOT", serverTimeMs: 1, view };
+  assert.equal(parseRoomSnapshot(JSON.stringify(legacy), code).version, 1);
+  for (const format of ["VARIED", "MIRROR"]) {
+    const modern = { ...legacy, version: 2, view: { ...view, round: { ...view.round, format } } };
+    assert.equal(parseRoomSnapshot(JSON.stringify(modern), code).view.round.format, format);
+    for (const bad of [
+      { ...modern, version: 1 },
+      { ...modern, view: { ...view } },
+      { ...modern, view: { ...modern.view, round: { ...modern.view.round, format: "BALANCED" } } },
+      { ...modern, view: { ...modern.view, myDraft: {} } },
+      { ...modern, view: { ...modern.view, round: { ...modern.view.round, rootSeed: "private" } } },
+    ]) assert.throws(() => parseRoomSnapshot(JSON.stringify(bad), code));
+  }
+});
+
+test("invite client accepts only the exact public metadata whitelist and matching room", async () => {
+  const invite = { ok: true, version: 2, roomCode: code, eraId: "era-foundation", draftMinutes: 10, format: "VARIED" };
+  assert.deepEqual(await readDraftOffInvite("https://api.test", code, async () => response(invite)), invite);
+  for (const bad of [{ ...invite, rootSeed: "private" }, { ...invite, format: "BALANCED" }, { ...invite, roomCode: "different" },
+    { ...invite, version: 1 }, { ...invite, eraId: "unknown" }, { ...invite, draftMinutes: 30 }]) {
+    await assert.rejects(readDraftOffInvite("https://api.test", code, async () => response(bad)));
+  }
+});
 function setup(send: typeof fetch, journalStorage = storage(), credentialStorage?: EnrollmentStorage, timeoutMs?: number) {
   let latest: ReturnType<ReturnType<typeof createDraftOffSession>["getState"]> | undefined;
   const client = createDraftOffSession({ apiOrigin: "https://api.test", roomCode: code, credential, journalStorage,

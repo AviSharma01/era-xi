@@ -1,3 +1,4 @@
+import { isDraftOffFormat } from '../../src/draftOffFormat.js';
 import { DurableObject } from 'cloudflare:workers';
 import type { EraDraftCatalog } from '../../src/eraDraftData';
 import { DraftOffRoomService } from '../../src/draftOffRoomService';
@@ -125,6 +126,20 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
   protected async handlePublic(operation: Operation): Promise<ApiReply> {
     if (!this.env.ROOMS.idFromName(operation.roomCode).equals(this.ctx.id)) throw new ApiError(400, 'INVALID_REQUEST');
     if (operation.kind === 'CREATE' || operation.kind === 'JOIN') return this.enroll(operation);
+    if (operation.kind === 'INVITE') {
+      const policy = limits(this.env);
+      // Unknown invite codes must not leave durable rate-bucket records behind.
+      if (!await this.ctx.storage.get('descriptor')) throw new ApiError(404, 'ROOM_UNAVAILABLE');
+      // Bound unauthenticated canonical replay before doing any room work.
+      await consume(this.ctx.storage, 'invite', this.nowMs(), policy.roomEnrollmentsPerMinute, policy.roomEnrollmentBurst);
+      await this.liveRoom(true);
+      const canonical = await this.ctx.storage.get<string>('competition');
+      const state = restoreDraftOffCompetition(this.catalog!, canonical!);
+      const settings = await this.ctx.storage.get<Settings>('api:settings');
+      if (!settings || ![10, 15].includes(settings.draftMinutes) || (Object.hasOwn(settings, 'format') && !isDraftOffFormat(settings.format))) throw new ApiError(503, 'TEMPORARY_UNAVAILABLE');
+      return { status: 200, body: { ok: true, version: 2, roomCode: operation.roomCode,
+        eraId: state.genesis.initialRound.eraId, draftMinutes: settings.draftMinutes, format: state.genesis.format ?? 'MIRROR' } };
+    }
     const hash = await verifier(operation.roomCode, operation.credential);
     const auth = await this.ctx.storage.get<AuthRecord>(`api:auth:${hash}`);
     const matches = equalDigest(hash, auth?.verifier ?? '0'.repeat(64));
@@ -160,7 +175,7 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
       return { status: 200, body };
     }
     const settings = await this.ctx.storage.get<Settings>('api:settings');
-    if (!settings || ![10, 15].includes(settings.draftMinutes)) throw new ApiError(503, 'TEMPORARY_UNAVAILABLE');
+    if (!settings || ![10, 15].includes(settings.draftMinutes) || (Object.hasOwn(settings, 'format') && !isDraftOffFormat(settings.format))) throw new ApiError(503, 'TEMPORARY_UNAVAILABLE');
     if (operation.kind === 'READ') return { status: 200, body: { ok: true, roomCode: operation.roomCode,
       participantId: auth.participantId, settings, view: await service.readRoom(actor, operation.roomCode), serverTimeMs: this.nowMs() } };
     const input = operation.input;
@@ -238,9 +253,9 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
     const hash = await verifier(code, credential);
     const sealed = await seal(enrollmentKey, recoveryContext(kind, code, id, fingerprint), credential);
     const actor = { kind: 'PARTICIPANT' as const, participantId: id };
-    const settings: Settings = kind === 'CREATE' ? { draftMinutes: operation.input.draftMinutes }
+    const settings: Settings = kind === 'CREATE' ? { draftMinutes: operation.input.draftMinutes, format: operation.input.format ?? 'VARIED' }
       : (await this.ctx.storage.get<Settings>('api:settings'))!;
-    if (!settings || ![10, 15].includes(settings.draftMinutes)) throw new ApiError(503, 'TEMPORARY_UNAVAILABLE');
+    if (!settings || ![10, 15].includes(settings.draftMinutes) || (Object.hasOwn(settings, 'format') && !isDraftOffFormat(settings.format))) throw new ApiError(503, 'TEMPORARY_UNAVAILABLE');
     const commandId = `enroll:join:${fullDigest}`;
     this.companion = async (tx, next) => {
       const receipt = kind === 'JOIN' ? next.receipts[commandId] : undefined;
@@ -265,7 +280,7 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
       if (kind === 'CREATE') {
         this.resetService();
         await this.initialize({ version: 1, roomId: code, eraId: operation.input.eraId }, false);
-        await this.service!.createRoom(actor, { roomId: code, hostDisplayName: input.displayName,
+        await this.service!.createRoom(actor, { roomId: code, hostDisplayName: input.displayName, format: settings.format!,
           initialRound: { roundId: 'r1', roundOrdinal: 1, label: 'Era XI Draft-Off', eraId: operation.input.eraId, challengeSeed: randomSecret() } });
       } else {
         const canonical = await this.ctx.storage.get<string>('competition');

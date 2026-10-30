@@ -19,7 +19,7 @@ async function fixture(production, run) {
   const runtime = await startRuntime(path, { production, overrides: { requestsPerMinute: 50000, readBurst: 1000, readsPerMinute: 5000, commandBurst: 1000, commandsPerMinute: 5000, ticketBurst: 100, ticketsPerMinute: 1000, roomTicketBurst: 1000, roomTicketsPerMinute: 5000, pendingTicketsPerParticipant: 100, pendingTicketsPerRoom: 200 } });
   const send = async (url, init) => { const headers = new Headers(init?.headers); headers.set('Origin', origin); if(!headers.has('CF-Connecting-IP')) headers.set('CF-Connecting-IP', '198.18.0.52'); return fetch(url, { ...init, headers }); };
   let code, connection = 0;
-  async function enroll(name, host = false, eraId = 'era-foundation', draftMinutes = 10) { const saved = storage(); const reply = await enrollGuest(runtime.url.origin, host ? 'CREATE' : 'JOIN', host ? undefined : code, host ? { displayName: name, eraId, draftMinutes } : { displayName: name }, saved, send); assert.equal(reply.status, 201); if (host) code = reply.body.roomCode; return saved; }
+  async function enroll(name, host = false, eraId = 'era-foundation', draftMinutes = 10, format) { const saved = storage(); const reply = await enrollGuest(runtime.url.origin, host ? 'CREATE' : 'JOIN', host ? undefined : code, host ? { displayName: name, eraId, draftMinutes, ...(format ? { format } : {}) } : { displayName: name }, saved, send); assert.equal(reply.status, 201); if (host) code = reply.body.roomCode; return saved; }
   function connect(saved, { brokenSocket = false, loseCommand = false, journal = storage() } = {}) {
     const ip = `198.18.${process.pid % 250}.${++connection}`;
     let state, lose = loseCommand; const bodies = [];
@@ -130,14 +130,15 @@ test('M5.2 production backend: eight entrants finish independent XIs and receive
 
 // Combined acceptance matrix, not a Cartesian benchmark. Existing journeys also
 // cover Foundation/10/two+eight and Transition/10 in the real browser.
-for (const [eraId, minutes, count] of [
+for (const [eraId, minutes, count, format] of [
   ['era-foundation', 15, 2], ['era-expansion', 10, 2],
   ['era-transition', 15, 2], ['era-modern-pre-impact', 10, 2],
   ['era-impact', 15, 8],
+  ['era-foundation', 10, 2, 'MIRROR'], ['era-impact', 15, 8, 'MIRROR'],
 ]) {
-  test(`M5.6 production acceptance: ${eraId}/${minutes} minutes/${count} entrants, distinct strategies and aligned campaigns`,
+  test(`M5.6 production acceptance: ${eraId}/${minutes} minutes/${count} entrants/${format ?? "VARIED default"}, distinct strategies and aligned campaigns`,
     { timeout: 180000 }, () => fixture(true, async ({ runtime, code, enroll, connect, draft }) => {
-      const saved = [await enroll('Matrix host', true, eraId, minutes)];
+      const saved = [await enroll('Matrix host', true, eraId, minutes, format)];
       for (let i = 1; i < count; i++) saved.push(await enroll(`Matrix member ${i}`));
       const players = saved.map(row => connect(row));
       for (const player of players) await player.client.start();
@@ -149,6 +150,8 @@ for (const [eraId, minutes, count] of [
         await player.client.resync();
         const snapshot = player.state().snapshot;
         assert.equal(snapshot.settings.draftMinutes, minutes);
+        assert.equal(snapshot.settings.format, format ?? "VARIED");
+        assert.equal(snapshot.view.round.format, format ?? "VARIED");
         assert.equal(snapshot.view.round.eraId, eraId);
         const duration = snapshot.view.round.deadlineAtMs - snapshot.view.round.startedAtMs;
         // Deadline is derived immediately before the START event timestamp;
