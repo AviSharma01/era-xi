@@ -10,6 +10,7 @@ docs/*.md
 !docs/RELEASE.md
 !docs/DRAFT_OFF_GAMEPLAY_VALIDATION.md
 !docs/DRAFT_OFF_ARCHITECTURE.md
+docs/design/
 
 # Full downloaded source data
 data/raw/cricsheet/
