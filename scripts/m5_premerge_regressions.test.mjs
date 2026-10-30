@@ -125,7 +125,7 @@ for(const base of ['/','/games/'])for(const enabled of [false,true])test(`build 
       await ui.navigate(path);
       for(let i=0;enabled&&!document.querySelector('.draft-off-shell')&&i<40;i++)await act(async()=>{await new Promise(resolve=>setTimeout(resolve,25));});assert.equal(document.querySelectorAll('.draft-off-shell').length,enabled?1:0, path+': '+document.body.textContent);assert.equal(document.querySelectorAll('form').length,enabled?1:0,path+': '+document.body.textContent);
     }
-    assert.equal(apiCalls,0);await ui.navigate(base);assert.ok(document.querySelector('.era-picker'));
+    assert.equal(apiCalls,enabled?1:0);await ui.navigate(base);assert.ok(document.querySelector('.era-picker'));
   }finally{await ui.close();}
 });
 
@@ -159,7 +159,8 @@ for(const notification of ['storage','focus'])test(`JOIN form adopts another tab
     await act(async()=>{window.dispatchEvent(notification==='storage'?new ui.dom.window.StorageEvent('storage',{key:slot}):new ui.dom.window.Event('focus'));await flush();});
     assert.equal(document.querySelector('.draft-off-tabs button:first-child').getAttribute('aria-pressed'),'true');
     assert.equal(document.querySelector('input').value,'Other tab');assert.equal(document.querySelectorAll('input').length,1);
-    assert.deepEqual([...document.querySelectorAll('select')].map(el=>el.value),['era-transition','10']);
+    assert.deepEqual([...document.querySelectorAll('select')].map(el=>el.value),['era-transition','10','RECOVERY']);
+    assert.match(document.body.textContent,/format will be confirmed after recovery/);
     assert.ok(document.querySelector('form').checkValidity());assert.equal(localStorage.getItem(slot),record);
     await ui.click('form button');assert.equal(requests.length,1);assert.equal(requests[0].body,input);
     assert.equal(new Headers(requests[0].headers).get('Enrollment-Key'),'K'.repeat(43));assert.equal(localStorage.getItem(slot),record);

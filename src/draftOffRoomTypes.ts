@@ -1,3 +1,4 @@
+import type { DraftOffFormat } from "./draftOffFormat.js";
 import type { DraftOffCompetitionRejectionCode } from "./draftOffCompetitionTypes.js";
 import type { DraftOffDraftCommand } from "./draftOffCompetitionTypes.js";
 import type { EraDraftPublicView } from "./eraDraftTypes.js";
@@ -9,6 +10,7 @@ export type DraftOffRoomActor =
 
 export type CreateDraftOffRoomInput = {
   readonly roomId: string;
+  readonly format?: DraftOffFormat;
   readonly hostDisplayName: string;
   readonly initialRound: {
     readonly roundId: string;
@@ -69,6 +71,8 @@ export type DraftOffPublicRoomView = {
   readonly phase: "LOBBY" | "IN_PROGRESS" | "COMPLETE";
   readonly participants: readonly DraftOffRoomParticipantView[];
   readonly round: {
+    /** Present for format-aware v2 rooms; absent historical rooms are Mirror. */
+    readonly format?: DraftOffFormat;
     readonly roundId: string;
     readonly roundOrdinal: number;
     readonly label: string;
@@ -90,7 +94,7 @@ export type DraftOffPublicRoomView = {
 export type DraftOffRoomView = DraftOffPublicRoomView & { readonly myDraft?: EraDraftPublicView };
 
 export type DraftOffRoomSnapshotMessage = {
-  readonly version: 1;
+  readonly version: 1 | 2;
   readonly type: "ROOM_SNAPSHOT";
   readonly serverTimeMs: number;
   readonly view: DraftOffPublicRoomView;

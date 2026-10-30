@@ -214,3 +214,64 @@ Resolved round entrants can compare two eligible submitted XIs through the same 
 The view pairs locked batting positions and the twenty ordered fixture identities, preserving exact server ranks, full authoritative campaign aggregates, evaluations and Super Over semantics. Mobile layouts stack A and B within each position/fixture rather than separating whole teams. It explicitly explains that entries play independent campaigns against the same opponents. Section links return to participant selection after inspecting long campaigns. An unexpected schedule mismatch blocks the comparison.
 
 The room's presentation clock is also visible in player inspection, XI review and submission dialogs. Modal headers retain the clock when scrolling; native dialog focus/inertness and focus restoration are preserved. Pending placement feedback, minimum touch controls, long-name wrapping, reduced motion and short-height/narrow-screen reflow remain scoped to Draft-Off. The V1 inspector's optional countdown is omitted by solo callers. See [M5.5 handoff](../backend/stage-e/M5_5_HANDOFF.md) for validation and review evidence.
+
+## Varied and Mirror formats (competition v2)
+
+New public CREATE requests default to `VARIED`; hosts may explicitly select `MIRROR`.
+The selected format is immutable room configuration in `genesis.format`, not a draft
+command or an editable setting. It is exposed in new rooms' `round.format` and
+`settings.format` from creation through results. The existing room/results UI adds
+only a creation selector, explanatory copy, invite details and a room-bar label.
+Varied opportunities can be unequal in an individual round; no quality balancing,
+forced uniqueness or compensation is applied.
+
+The existing seed bundle remains `ipl-draft-off-seeds/v1`, byte-for-byte. Mirror
+uses its shared `draftRootSeed`. Varied derives each actual root with canonical
+SHA-256 over `{version: "ipl-draft-off-participant-seeds/v1", domain:
+"participant-draft-opportunities", roomDraftSeed, participantId}`. Only the existing
+room draft seed and immutable server-issued participant ID enter this derivation.
+Names, roster order/size, timestamps and transport activity do not. The unchanged
+Era Draft engine owns normal spins, respins, legality, recovery and nested replay.
+The format policy is pinned by competition engine v2; changing its derivation
+requires a new engine contract, not silently changing the v2 implementation.
+
+Format-aware competitions use engine/state/save `/v2`. The constructor consumes
+canonical genesis: missing format explicitly denotes historical v1, not the public
+CREATE default. Restoration validates matching version triples and requires format
+in v2 genesis; v1 forbids it. Every existing v1 state, including pending lobbies,
+continues through the original mirrored path with no inserted keys or rewritten
+hashes. New explicit Mirror rooms have v2 metadata but reproduce the historical
+private drafts and gameplay outcomes for equivalent inputs. No database or Durable
+Object descriptor migration is required. The 80 Stage A fixtures and historical
+Stage A–E evidence remain unchanged; new seed/state vectors live separately in
+`src/draftOffFormat.test.ts`.
+
+HTTP paths stay under `/api/draft-off/v1`. Their format-aware extension requires
+`format: VARIED | MIRROR` in both settings and projected round metadata for new
+rooms; legacy responses retain exact field absence. Strict updated clients accept
+both shapes and reject unknown formats, extra fields and inconsistent settings.
+`ROOM_SNAPSHOT.version` is 2 for new rooms (requires `round.format`) and remains 1
+for legacy rooms (forbids that field). The ticket/authentication subprotocol remains
+`draft-off.v1`; no credential or socket-attachment version changes are needed.
+Old clients are not expected to understand new rooms; deploy frontend and backend
+together before public activation rather than adding unused API migration routes.
+
+An omitted CREATE format remains omitted in the enrollment fingerprint. This
+preserves exact recovery of historical lost CREATE replies; only genuinely new
+room creation applies the Varied default. Explicit format is part of request
+identity, so changing it while retrying an enrollment key is a conflict.
+
+`GET /rooms/{code}/invite` is an additive, unauthenticated metadata-only endpoint
+for the pre-enrollment join screen. It returns exactly `{ok:true, version:2,
+roomCode, eraId, draftMinutes, format}`; historical rooms explicitly report Mirror
+here without changing their saved state. It requires the approved Origin, rejects
+credentials/query/body/content encoding, uses existing edge request/enrollment
+limits plus a bounded durable invite bucket before replay, and returns private,
+no-store responses. Unknown/expired rooms return the existing 404 unavailable
+error. It exposes no roster, phase, deadline, seed, draft, result or credential.
+Existing authenticated room/results authorization and privacy remain intact.
+
+The shared twenty-fixture schedule, XI evaluation, XI-specific residual variance,
+submission/result hashing, leaderboard rules, retention and exact command retry
+semantics retain their existing versions. Identical ordered XIs still receive the
+same match outputs regardless of format, identity or draft history.

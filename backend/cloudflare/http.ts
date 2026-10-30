@@ -14,11 +14,11 @@ export function route(pathname: string) {
   if (pathname === '/api/draft-off/v1/rooms') return { kind: 'CREATE' as const, method: 'POST', template: '/rooms' };
   const results = /^\/api\/draft-off\/v1\/rooms\/([^/]+)\/results\/([^/]+)$/.exec(pathname);
   if (results) return { kind: 'RESULTS' as const, method: 'GET', code: results[1], targetParticipantId: results[2], template: '/rooms/:code/results/:participantId' };
-  const match = /^\/api\/draft-off\/v1\/rooms\/([^/]+)(?:\/(join|commands|socket-tickets|realtime))?$/.exec(pathname);
+  const match = /^\/api\/draft-off\/v1\/rooms\/([^/]+)(?:\/(join|commands|socket-tickets|realtime|invite))?$/.exec(pathname);
   if (!match) return undefined;
-  return { kind: match[2] === 'join' ? 'JOIN' as const : match[2] === 'commands' ? 'COMMAND' as const
+  return { kind: match[2] === 'invite' ? 'INVITE' as const : match[2] === 'join' ? 'JOIN' as const : match[2] === 'commands' ? 'COMMAND' as const
       : match[2] === 'socket-tickets' ? 'SOCKET_TICKET' as const : match[2] === 'realtime' ? 'REALTIME' as const : 'READ' as const,
-    method: match[2] && match[2] !== 'realtime' ? 'POST' : 'GET', code: match[1], template: match[2] ? `/rooms/:code/${match[2]}` : '/rooms/:code' };
+    method: match[2] && !['realtime', 'invite'].includes(match[2]) ? 'POST' : 'GET', code: match[1], template: match[2] ? `/rooms/:code/${match[2]}` : '/rooms/:code' };
 }
 async function jsonBody(request: Request, maxBytes: number): Promise<unknown> {
   if (!/^application\/json(?:\s*;\s*charset=utf-8)?$/i.test(request.headers.get('Content-Type') ?? '') || request.headers.has('Content-Encoding')) throw new ApiError(415, 'UNSUPPORTED_MEDIA_TYPE');
@@ -92,6 +92,10 @@ export async function handleHttp(request: Request, env: HttpEnv): Promise<Respon
         const body = await jsonBody(request, policy.bodyBytes);
         operation = selected.kind === 'CREATE' ? { kind: 'CREATE', roomCode: await roomCode(enrollmentKey), enrollmentKey, input: createInput(body) }
           : { kind: 'JOIN', roomCode: normalizeCode(selected.code!), enrollmentKey, input: joinInput(body) };
+      } else if (selected.kind === 'INVITE') {
+        if (request.headers.has('Enrollment-Key') || request.headers.has('Authorization') || request.headers.has('Content-Encoding')
+          || request.body || Number(request.headers.get('Content-Length') ?? 0) !== 0) throw new ApiError(400, 'INVALID_REQUEST');
+        operation = { kind: 'INVITE', roomCode: normalizeCode(selected.code!) };
       } else {
         if (request.headers.has('Enrollment-Key')) throw new ApiError(400, 'INVALID_REQUEST');
         const match = /^Bearer ([A-Za-z0-9_-]+)$/.exec(request.headers.get('Authorization') ?? '');

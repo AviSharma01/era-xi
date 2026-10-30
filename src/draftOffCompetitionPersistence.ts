@@ -1,8 +1,12 @@
+import { isDraftOffFormat } from "./draftOffFormat.js";
 import { canonicalJson, canonicalSha256 } from "./eraDraftCanonical.js";
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { createDraftOffCompetition, reduceDraftOffCompetition } from "./draftOffCompetition.js";
 import {
   DRAFT_OFF_COMPETITION_ENGINE_VERSION,
+  DRAFT_OFF_COMPETITION_ENGINE_V2,
+  DRAFT_OFF_COMPETITION_STATE_V2,
+  DRAFT_OFF_COMPETITION_SAVE_V2,
   DRAFT_OFF_COMPETITION_SAVE_VERSION,
   DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION,
   DraftOffCompetitionDataError,
@@ -15,9 +19,9 @@ import {
 import type { EraId } from "./teamEvaluationV2.js";
 
 type DraftOffCompetitionSave = {
-  readonly saveVersion: typeof DRAFT_OFF_COMPETITION_SAVE_VERSION;
-  readonly engineVersion: typeof DRAFT_OFF_COMPETITION_ENGINE_VERSION;
-  readonly stateSchemaVersion: typeof DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION;
+  readonly saveVersion: typeof DRAFT_OFF_COMPETITION_SAVE_VERSION | typeof DRAFT_OFF_COMPETITION_SAVE_V2;
+  readonly engineVersion: DraftOffCompetitionState["engineVersion"];
+  readonly stateSchemaVersion: DraftOffCompetitionState["schemaVersion"];
   readonly genesis: DraftOffCompetitionGenesis;
   readonly history: readonly DraftOffCompetitionHistoryEntry[];
   readonly stateHash: string;
@@ -29,9 +33,9 @@ export function canonicalDraftOffCompetitionStateHash(state: DraftOffCompetition
 
 export function serializeDraftOffCompetition(state: DraftOffCompetitionState): string {
   return canonicalJson({
-    saveVersion: DRAFT_OFF_COMPETITION_SAVE_VERSION,
-    engineVersion: DRAFT_OFF_COMPETITION_ENGINE_VERSION,
-    stateSchemaVersion: DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION,
+    saveVersion: state.engineVersion === DRAFT_OFF_COMPETITION_ENGINE_V2 ? DRAFT_OFF_COMPETITION_SAVE_V2 : DRAFT_OFF_COMPETITION_SAVE_VERSION,
+    engineVersion: state.engineVersion,
+    stateSchemaVersion: state.schemaVersion,
     genesis: state.genesis,
     history: state.history,
     stateHash: canonicalDraftOffCompetitionStateHash(state),
@@ -89,10 +93,11 @@ export function restoreDraftOffCompetition(
   }
   const row = object(parsed, "save");
   exactKeys(row, ["saveVersion", "engineVersion", "stateSchemaVersion", "genesis", "history", "stateHash"], "save");
-  requireVersion(row.saveVersion, DRAFT_OFF_COMPETITION_SAVE_VERSION, "UNSUPPORTED_SAVE_VERSION");
-  requireVersion(row.engineVersion, DRAFT_OFF_COMPETITION_ENGINE_VERSION, "UNSUPPORTED_ENGINE_VERSION");
-  requireVersion(row.stateSchemaVersion, DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION, "UNSUPPORTED_STATE_SCHEMA_VERSION");
-  const genesis = parseGenesis(catalog, row.genesis);
+  const modern = row.saveVersion === DRAFT_OFF_COMPETITION_SAVE_V2;
+  requireVersion(row.saveVersion, modern ? DRAFT_OFF_COMPETITION_SAVE_V2 : DRAFT_OFF_COMPETITION_SAVE_VERSION, "UNSUPPORTED_SAVE_VERSION");
+  requireVersion(row.engineVersion, modern ? DRAFT_OFF_COMPETITION_ENGINE_V2 : DRAFT_OFF_COMPETITION_ENGINE_VERSION, "UNSUPPORTED_ENGINE_VERSION");
+  requireVersion(row.stateSchemaVersion, modern ? DRAFT_OFF_COMPETITION_STATE_V2 : DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION, "UNSUPPORTED_STATE_SCHEMA_VERSION");
+  const genesis = parseGenesis(catalog, row.genesis, modern);
   if (genesis.catalogFingerprint !== catalog.fingerprint) {
     throw new DraftOffCompetitionDataError(
       "CATALOG_FINGERPRINT_MISMATCH",
@@ -105,9 +110,10 @@ export function restoreDraftOffCompetition(
   return replayDraftOffCompetition({ catalog, genesis, history, expectedStateHash: stateHash });
 }
 
-function parseGenesis(catalog: EraDraftCatalog, value: unknown): DraftOffCompetitionGenesis {
+function parseGenesis(catalog: EraDraftCatalog, value: unknown, modern: boolean): DraftOffCompetitionGenesis {
   const row = object(value, "genesis");
-  exactKeys(row, ["competitionId", "catalogFingerprint", "createdAtMs", "host", "initialRound"], "genesis");
+  exactKeys(row, ["competitionId", "catalogFingerprint", "createdAtMs", "host", "initialRound", ...(modern ? ["format"] : [])], "genesis");
+  if (modern && !isDraftOffFormat(row.format)) invalid("Unsupported Draft-Off format.");
   const host = object(row.host, "genesis.host");
   exactKeys(host, ["participantId", "displayName"], "genesis.host");
   const round = object(row.initialRound, "genesis.initialRound");
@@ -115,6 +121,7 @@ function parseGenesis(catalog: EraDraftCatalog, value: unknown): DraftOffCompeti
   const eraId = text(round.eraId, "genesis.initialRound.eraId") as EraId;
   if (!catalog.getEra(eraId)) invalid(`Unknown era ${eraId}.`);
   return {
+    ...(modern ? { format: row.format as "VARIED" | "MIRROR" } : {}),
     competitionId: id(row.competitionId, "genesis.competitionId"),
     catalogFingerprint: hash(row.catalogFingerprint, "genesis.catalogFingerprint"),
     createdAtMs: timestamp(row.createdAtMs, "genesis.createdAtMs"),

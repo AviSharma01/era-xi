@@ -73,6 +73,19 @@ test("lobby exposes only supported host/member controls and public roster", () =
   assert.match(renderToStaticMarkup(<DraftOffRoomExperience code={code} state={roomState(snapshot(left, "member"))} actions={actions} />), /Rejoin lobby/);
 });
 
+test("format stays visible in lobby, play and results, with historical rooms identified as Mirror", () => {
+  for (const format of ["VARIED", "MIRROR", undefined] as const) {
+    for (const domain of [joinedState(), startedState(), changed(startedState(), { type: "FINALIZE_ROUND", roundId: "round-1", atMs: 100 })]) {
+      const value = snapshot(domain);
+      if (format) Object.assign(value.view.round, { format });
+      const html = renderToStaticMarkup(<DraftOffRoomExperience code={code} state={roomState(value)} actions={actions} />);
+      assert.match(html, format === "VARIED" ? /Varied Draft/ : /Mirror Draft/);
+      assert.doesNotMatch(html, /<select[^>]*format/i);
+      if (domain.phase === "LOBBY" && format === "VARIED") assert.match(html, /Opportunities can be unequal/);
+    }
+  }
+});
+
 test("desktop placement uses projected legality, survives public revisions and sends one intent", async () => {
   const value = snapshot(spun()), commands: PublicCommand["command"][] = [];
   let release!: () => void;

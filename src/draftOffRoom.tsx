@@ -1,3 +1,4 @@
+import { draftOffFormatDescription, draftOffFormatLabel } from "./draftOffFormat.js";
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
 import type { SnapshotSuccess, PublicCommand } from "./draftOffClientTypes.js";
 import type { DraftOffSessionState } from "./draftOffSession.js";
@@ -85,7 +86,7 @@ export function DraftOffRoomExperience({ code, state, actions }: {
   const stage = view.phase === "LOBBY" ? "Private lobby" : view.phase === "COMPLETE" ? "Final leaderboard" : me?.roundStatus === "SUBMITTED" ? "XI submitted" : "Draft in progress";
   return <div ref={roomRef} className={`draft-off-room room-phase-${view.phase.toLowerCase()}`}>
     <div ref={barRef} className={`draft-off-room-bar${remaining !== null && remaining <= 30_000 ? " clock-urgent" : remaining !== null && remaining <= 120_000 ? " clock-warning" : ""}`}>
-      <div className="room-bar-identity"><p className="eyebrow">Draft-Off · {stage}</p><strong>{DRAFT_OFF_ERA_LABELS[view.round.eraId]}</strong></div>
+      <div className="room-bar-identity"><p className="eyebrow">{draftOffFormatLabel(view.round.format ?? "MIRROR")} · {stage}</p><strong>{DRAFT_OFF_ERA_LABELS[view.round.eraId]}</strong></div>
       {view.phase === "IN_PROGRESS" && <div className="room-countdown" role="timer" aria-label={`${formatDraftCountdown(remaining)} remaining`}><span>Time remaining</span><strong>{formatDraftCountdown(remaining)}</strong></div>}
       <details className="room-people"><summary>{view.phase === "LOBBY" ? `${view.participants.filter(row => row.membershipStatus === "JOINED").length}/8 players` : `${submitted}/${entrants} submitted`}</summary><ParticipantList view={view} me={snapshot.participantId} /></details>
     </div>
@@ -124,9 +125,10 @@ function Lobby({ snapshot, code, blocked, onCommand }: { snapshot: SnapshotSucce
   const me = snapshot.view.participants.find(row => row.participantId === snapshot.participantId)!;
   const joined = snapshot.view.participants.filter(row => row.membershipStatus === "JOINED").length;
   return <div className="room-lobby-layout"><section className="draft-off-panel room-lobby-main"><p className="eyebrow">The challenge</p><h1>Same era. Your own XI.</h1>
+    <p>{draftOffFormatDescription(snapshot.view.round.format ?? "MIRROR")}</p>
     <p>Build eleven players against one shared deadline, then face the same twenty historical fixtures. Points first, net run rate breaks the tie.</p>
     <div className="room-settings"><div><span>Era</span><strong>{DRAFT_OFF_ERA_LABELS[snapshot.view.round.eraId]}</strong></div><div><span>Draft clock</span><strong>{snapshot.settings.draftMinutes} minutes</strong></div><div><span>Room</span><strong>{joined} / 8 players</strong></div></div>
-    <p className="draft-off-footnote">Era and time are fixed. Exactly 11 players · Max 4 overseas · A wicketkeeper · One respin. Every batting position locks.</p>
+    <p className="draft-off-footnote">Era, time and format are fixed. Exactly 11 players · Max 4 overseas · A wicketkeeper · One respin. Every batting position locks.</p>
     <h2>Players</h2><ParticipantList view={snapshot.view} me={snapshot.participantId} />
     {me.role === "HOST" ? <><button className="primary-action" disabled={blocked || joined < 2 || joined > 8} onClick={() => void onCommand({ type: "START" })}>Start {snapshot.settings.draftMinutes}-minute draft</button>
       <p>{joined < 2 ? "Invite at least one more player to start." : "Starting locks the roster and begins the shared clock for everyone."}</p></>
