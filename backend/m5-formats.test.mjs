@@ -92,7 +92,7 @@ test('persisted v1 lobby and lost CREATE reply remain Mirror without rewriting c
     const code = host.roomCode, records = (await control(runtime, code, 'inspect')).records;
     // Reconstruct the authentic legacy contract using the preserved v1 constructor/replay path.
     const current = restoreDraftOffCompetition(catalog, records.competition);
-    const { format: _format, ...genesis } = current.genesis;
+    const { format: _format, tierCaps: _caps, ...genesis } = current.genesis;
     const legacy = replayDraftOffCompetition({ catalog, genesis, history: current.history });
     const serialized = serializeDraftOffCompetition(legacy);
     await control(runtime, code, 'put', { key: 'competition', value: serialized });

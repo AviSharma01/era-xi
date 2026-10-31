@@ -175,3 +175,27 @@ format-aware M5 gameplay matrix and
 production Worker/build, two independent desktop/mobile guest contexts, both
 formats, 44 total UI picks, respins, reloads, submissions and aligned results. Its
 summary/screenshots go to a temporary directory, never historical evidence folders.
+
+## Batch 2 Standard cap extension
+
+New public CREATE uses the server-owned Standard preset (currently S ≤ 3 and S+A
+≤ 6). No request accepts cap/preset customization. The effective values persist
+in v3 competition genesis and appear in `view.round.tierCaps: {maxS,maxSA}` on
+public/authenticated views from lobby through resolution. `settings` remains
+`{draftMinutes,format}`; invite metadata keeps its exact existing version-2 shape.
+Historical v1/v2 rooms retain absent caps and their original legality, even when
+started after this change. Preset changes affect future CREATEs only.
+
+Capped rooms send `ROOM_SNAPSHOT.version:3` requiring format and valid tierCaps;
+v2 requires format and forbids tierCaps; v1 forbids both. Updated HTTP validation
+and socket parsing accept all three contracts strictly. Deploy frontend/backend
+together. Candidate position reasons add `S_TIER_LIMIT` and `SA_TIER_LIMIT`;
+existing availability/reason presentation communicates these without a redesign.
+The public whitelist adds only the effective room rules, preserving the Batch 1
+progress/reconciliation and opponent privacy contracts. Paths, credentials,
+command envelopes, retry identity, schedules and result payloads are unchanged.
+
+The [Batch 2 architecture](../../docs/DRAFT_OFF_ARCHITECTURE.md#batch-2-standard-tier-caps-competition-v3)
+records versioning and feasibility details. Executable evidence is
+`src/draftOffTierCaps.test.ts` and `backend/m5-tier-caps.test.mjs` in the release and
+backend verification gates respectively; historical fixture baselines are untouched.

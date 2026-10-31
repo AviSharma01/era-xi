@@ -1,3 +1,4 @@
+import type { EraDraftTierCaps } from "./eraDraftTierCaps.js";
 import type { DraftOffFormat } from "./draftOffFormat.js";
 import type { DraftOffChallengeResult, DraftOffLeaderboardRow, DraftOffSeedBundle } from "./draftOffTypes.js";
 import type {
@@ -17,6 +18,10 @@ export const DRAFT_OFF_COMPETITION_SAVE_VERSION = "ipl-draft-off-competition-sav
 export const DRAFT_OFF_COMPETITION_ENGINE_V2 = "ipl-draft-off-competition-engine/v2" as const;
 export const DRAFT_OFF_COMPETITION_STATE_V2 = "ipl-draft-off-competition-state/v2" as const;
 export const DRAFT_OFF_COMPETITION_SAVE_V2 = "ipl-draft-off-competition-save/v2" as const;
+
+export const DRAFT_OFF_COMPETITION_ENGINE_V3 = "ipl-draft-off-competition-engine/v3" as const;
+export const DRAFT_OFF_COMPETITION_STATE_V3 = "ipl-draft-off-competition-state/v3" as const;
+export const DRAFT_OFF_COMPETITION_SAVE_V3 = "ipl-draft-off-competition-save/v3" as const;
 
 export const DRAFT_OFF_SUBMISSION_VERSION = "ipl-draft-off-submission/v1" as const;
 export const DRAFT_OFF_ROUND_RESOLUTION_VERSION = "ipl-draft-off-round-resolution/v1" as const;
@@ -47,6 +52,8 @@ export type DraftOffRoundGenesis = {
 export type DraftOffCompetitionGenesis = {
   /** Absent only in historical v1 mirrored competitions. */
   readonly format?: DraftOffFormat;
+  /** Present only in v3; persisted effective Standard preset, not a host option. */
+  readonly tierCaps?: EraDraftTierCaps;
   readonly competitionId: string;
   readonly catalogFingerprint: string;
   readonly createdAtMs: number;
@@ -131,8 +138,8 @@ export type ResolvedDraftOffRound = Omit<ActiveDraftOffRound, "phase"> & {
 export type DraftOffRoundState = PendingDraftOffRound | ActiveDraftOffRound | ResolvedDraftOffRound;
 
 export type DraftOffCompetitionState = {
-  readonly engineVersion: typeof DRAFT_OFF_COMPETITION_ENGINE_VERSION | typeof DRAFT_OFF_COMPETITION_ENGINE_V2;
-  readonly schemaVersion: typeof DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION | typeof DRAFT_OFF_COMPETITION_STATE_V2;
+  readonly engineVersion: typeof DRAFT_OFF_COMPETITION_ENGINE_VERSION | typeof DRAFT_OFF_COMPETITION_ENGINE_V2 | typeof DRAFT_OFF_COMPETITION_ENGINE_V3;
+  readonly schemaVersion: typeof DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION | typeof DRAFT_OFF_COMPETITION_STATE_V2 | typeof DRAFT_OFF_COMPETITION_STATE_V3;
   readonly catalogFingerprint: string;
   readonly competitionId: string;
   readonly phase: DraftOffCompetitionPhase;

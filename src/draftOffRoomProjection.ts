@@ -16,7 +16,7 @@ export function projectDraftOffRoom(
   const { resolution, ...shared } = projectDraftOffPublicRoom(state);
   // Compose the shared whitelist with the caller draft in the existing top-level field order.
   return freezeDeep({ ...shared,
-    ...(ownRoundState ? { myDraft: projectEraDraftPublicState(catalog, ownRoundState.draftState) } : {}),
+    ...(ownRoundState ? { myDraft: projectEraDraftPublicState(catalog, ownRoundState.draftState, state.genesis.tierCaps) } : {}),
     ...(resolution ? { resolution } : {}),
   } satisfies DraftOffRoomView);
 }
@@ -50,6 +50,7 @@ export function projectDraftOffPublicRoom(state: DraftOffCompetitionState): Draf
     participants,
     round: {
       ...(state.genesis.format === undefined ? {} : { format: state.genesis.format }),
+      ...(state.genesis.tierCaps === undefined ? {} : { tierCaps: { ...state.genesis.tierCaps } }),
       roundId: round.roundId,
       roundOrdinal: round.roundOrdinal,
       label: round.label,

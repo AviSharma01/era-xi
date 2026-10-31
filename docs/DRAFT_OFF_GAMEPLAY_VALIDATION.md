@@ -45,3 +45,22 @@ M1 and M1.1 establish:
 - shared rank for exact ties.
 
 Venue effects and bowling-construction effects remain explicitly deferred.
+
+## Standard Draft-Off rules (Batch 2)
+
+New Draft-Off rooms use a fixed Standard preset for both Varied and Mirror:
+maximum three S-tier players and maximum six S+A players combined, with no B/C/D
+limits. Tier classification is the catalog's authoritative quality tier for the
+selected player-team-season. Hosts cannot customize caps. Keeper, maximum-four
+overseas, canonical uniqueness and locked batting positions remain required.
+Room creation freezes effective values; existing v1/v2 rooms remain uncapped.
+Solo Era Draft is unchanged. These restrictions change legal team construction,
+not ratings, simulation, position penalties, boosts or leaderboard calculations.
+
+Completion checks preserve an existential legal XI under the remaining tier and
+overseas budgets with a keeper. Tier and roster costs stay coupled to actual
+historical variants, and a canonical player can be selected once. The tests cover
+240 seeded XIs across all eras and both formats with elite-first and mixed choices
+and late respins, plus 160 deterministic scarce catalogs checked against an
+independent exhaustive search. This is feasibility validation, not a balance study
+or a claim that Varied opportunities are equal.

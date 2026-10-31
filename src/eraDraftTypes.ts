@@ -249,6 +249,8 @@ export type EraDraftSelectionRejectionCode =
   | "INVALID_POSITION"
   | "POSITION_OCCUPIED"
   | "ROSTER_STATUS_UNRESOLVED"
+  | "S_TIER_LIMIT"
+  | "SA_TIER_LIMIT"
   | "OVERSEAS_LIMIT"
   | "FUTURE_XI_IMPOSSIBLE";
 

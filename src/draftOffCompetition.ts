@@ -1,3 +1,4 @@
+import { isEraDraftTierCaps } from "./eraDraftTierCaps.js";
 import { deriveDraftOffParticipantSeed, isDraftOffFormat } from "./draftOffFormat.js";
 import { canonicalSha256 } from "./eraDraftCanonical.js";
 import type { EraDraftCatalog } from "./eraDraftData.js";
@@ -13,6 +14,8 @@ import {
 import {
   DRAFT_OFF_COMPETITION_ENGINE_VERSION,
   DRAFT_OFF_COMPETITION_ENGINE_V2,
+  DRAFT_OFF_COMPETITION_ENGINE_V3,
+  DRAFT_OFF_COMPETITION_STATE_V3,
   DRAFT_OFF_COMPETITION_STATE_V2,
   DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION,
   DRAFT_OFF_ROUND_RESOLUTION_VERSION,
@@ -46,6 +49,9 @@ export function createDraftOffCompetition(
   input: DraftOffCompetitionGenesis,
 ): DraftOffCompetitionState {
   if (Object.hasOwn(input, "format") && !isDraftOffFormat(input.format)) throw new DraftOffCompetitionInvariantError("INVALID_FORMAT", "Unsupported Draft-Off format.");
+  if (Object.hasOwn(input, "tierCaps") && (!isEraDraftTierCaps(input.tierCaps) || !isDraftOffFormat(input.format))) {
+    throw new DraftOffCompetitionInvariantError("INVALID_TIER_CAPS", "Tier caps require valid effective values and a format.");
+  }
   requireId(input.competitionId, "competitionId");
   requireTimestamp(input.createdAtMs, "createdAtMs");
   requireId(input.host.participantId, "host participantId");
@@ -70,12 +76,13 @@ export function createDraftOffCompetition(
   }
   const genesis = freezeDeep({
     ...input,
+    ...(input.tierCaps ? { tierCaps: { ...input.tierCaps } } : {}),
     host: { ...input.host, displayName },
     initialRound: { ...input.initialRound, label },
   });
   const state = freezeDeep({
-    engineVersion: input.format === undefined ? DRAFT_OFF_COMPETITION_ENGINE_VERSION : DRAFT_OFF_COMPETITION_ENGINE_V2,
-    schemaVersion: input.format === undefined ? DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION : DRAFT_OFF_COMPETITION_STATE_V2,
+    engineVersion: input.tierCaps ? DRAFT_OFF_COMPETITION_ENGINE_V3 : input.format === undefined ? DRAFT_OFF_COMPETITION_ENGINE_VERSION : DRAFT_OFF_COMPETITION_ENGINE_V2,
+    schemaVersion: input.tierCaps ? DRAFT_OFF_COMPETITION_STATE_V3 : input.format === undefined ? DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION : DRAFT_OFF_COMPETITION_STATE_V2,
     catalogFingerprint: catalog.fingerprint,
     competitionId: input.competitionId,
     phase: "LOBBY",
@@ -225,7 +232,7 @@ function startRound(
   });
   const participants = roster.map((member): DraftOffRoundParticipant => {
     const setup = createEraDraftGame({ catalog, rootSeed: deriveDraftOffParticipantSeed(seeds.draftRootSeed, member.participantId, state.genesis.format ?? "MIRROR") });
-    const chosen = reduceEraDraft(catalog, setup, { type: "CHOOSE_ERA", eraId: round.eraId });
+    const chosen = reduceEraDraft(catalog, setup, { type: "CHOOSE_ERA", eraId: round.eraId }, state.genesis.tierCaps);
     if (!chosen.ok || chosen.state.phase !== "AWAITING_SPIN") {
       throw new DraftOffCompetitionInvariantError("ROUND_INITIALIZATION_FAILED", "Shared Era Draft initialization failed.");
     }
@@ -266,7 +273,7 @@ function applyDraftCommand(
   if (participant.draftState.revision !== command.expectedDraftRevision) {
     return rejected(state, command, "STALE_DRAFT_REVISION", "Draft revision does not match the authoritative participant state.");
   }
-  const reduced = reduceEraDraft(catalog, participant.draftState, command.draftCommand);
+  const reduced = reduceEraDraft(catalog, participant.draftState, command.draftCommand, state.genesis.tierCaps);
   if (!reduced.ok) {
     return {
       ok: false,
@@ -320,7 +327,7 @@ function submitXi(
     return rejected(state, command, "INCOMPLETE_XI", "Only a complete legal XI may be submitted.");
   }
   const xi = existing.draftState;
-  assertEraDraftState(catalog, xi);
+  assertEraDraftState(catalog, xi, state.genesis.tierCaps);
   const submission = createSubmission(state, round, existing.participantId, xi, "MANUAL", command.atMs);
   const participants = round.participants.map((item): DraftOffRoundParticipant => item.participantId === command.participantId
     ? { participantId: item.participantId, status: "SUBMITTED", draftState: xi, submission }
@@ -356,7 +363,7 @@ function finalizeRound(
   const participants = round.participants.map((participant): DraftOffRoundParticipant => {
     if (participant.status !== "DRAFTING") return participant;
     if (participant.draftState.phase === "XI_COMPLETE") {
-      assertEraDraftState(catalog, participant.draftState);
+      assertEraDraftState(catalog, participant.draftState, state.genesis.tierCaps);
       const submission = createSubmission(
         state,
         round,
