@@ -1,3 +1,4 @@
+import { TEAM_EVALUATION_V3_VERSION } from '../../src/teamEvaluationV3';
 import { STANDARD_DRAFT_OFF_TIER_CAPS } from "../../src/draftOffRules.js";
 import { isDraftOffFormat } from '../../src/draftOffFormat.js';
 import { DurableObject } from 'cloudflare:workers';
@@ -170,8 +171,8 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
       isRead ? policy.readsPerMinute : policy.commandsPerMinute,
       isRead ? policy.readBurst : policy.commandBurst);
     if (operation.kind === 'RESULTS') {
-      const body: ResultsSuccess = { ok: true, version: 1, roomCode: operation.roomCode,
-        ...await service.readResults(actor, operation.roomCode, operation.targetParticipantId) };
+      const results = await service.readResults(actor, operation.roomCode, operation.targetParticipantId);
+      const body: ResultsSuccess = { ok: true, version: results.evaluation.teamEvaluationVersion ? 2 : 1, roomCode: operation.roomCode, ...results };
       if (new TextEncoder().encode(JSON.stringify(body)).length > DRAFT_OFF_RESULTS_MAX_BYTES) throw new ApiError(503, 'TEMPORARY_UNAVAILABLE');
       return { status: 200, body };
     }
@@ -281,7 +282,7 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
       if (kind === 'CREATE') {
         this.resetService();
         await this.initialize({ version: 1, roomId: code, eraId: operation.input.eraId }, false);
-        await this.service!.createRoom(actor, { roomId: code, hostDisplayName: input.displayName, format: settings.format!, tierCaps: { ...STANDARD_DRAFT_OFF_TIER_CAPS },
+        await this.service!.createRoom(actor, { roomId: code, hostDisplayName: input.displayName, format: settings.format!, teamEvaluationVersion: TEAM_EVALUATION_V3_VERSION, tierCaps: { ...STANDARD_DRAFT_OFF_TIER_CAPS },
           initialRound: { roundId: 'r1', roundOrdinal: 1, label: 'Era XI Draft-Off', eraId: operation.input.eraId, challengeSeed: randomSecret() } });
       } else {
         const canonical = await this.ctx.storage.get<string>('competition');

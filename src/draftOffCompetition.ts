@@ -1,3 +1,4 @@
+import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
 import { isEraDraftTierCaps } from "./eraDraftTierCaps.js";
 import { deriveDraftOffParticipantSeed, isDraftOffFormat } from "./draftOffFormat.js";
 import { canonicalSha256 } from "./eraDraftCanonical.js";
@@ -14,7 +15,7 @@ import {
 import {
   DRAFT_OFF_COMPETITION_ENGINE_VERSION,
   DRAFT_OFF_COMPETITION_ENGINE_V2,
-  DRAFT_OFF_COMPETITION_ENGINE_V3,
+  DRAFT_OFF_COMPETITION_ENGINE_V3, DRAFT_OFF_COMPETITION_ENGINE_V4, DRAFT_OFF_COMPETITION_STATE_V4,
   DRAFT_OFF_COMPETITION_STATE_V3,
   DRAFT_OFF_COMPETITION_STATE_V2,
   DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION,
@@ -52,6 +53,10 @@ export function createDraftOffCompetition(
   if (Object.hasOwn(input, "tierCaps") && (!isEraDraftTierCaps(input.tierCaps) || !isDraftOffFormat(input.format))) {
     throw new DraftOffCompetitionInvariantError("INVALID_TIER_CAPS", "Tier caps require valid effective values and a format.");
   }
+  if (Object.hasOwn(input, "teamEvaluationVersion") && (input.teamEvaluationVersion !== TEAM_EVALUATION_V3_VERSION
+    || !isEraDraftTierCaps(input.tierCaps) || !isDraftOffFormat(input.format))) {
+    throw new DraftOffCompetitionInvariantError("STATE_VERSION_MISMATCH", "Evaluation V3 requires a v4 competition with format and effective caps.");
+  }
   requireId(input.competitionId, "competitionId");
   requireTimestamp(input.createdAtMs, "createdAtMs");
   requireId(input.host.participantId, "host participantId");
@@ -81,8 +86,8 @@ export function createDraftOffCompetition(
     initialRound: { ...input.initialRound, label },
   });
   const state = freezeDeep({
-    engineVersion: input.tierCaps ? DRAFT_OFF_COMPETITION_ENGINE_V3 : input.format === undefined ? DRAFT_OFF_COMPETITION_ENGINE_VERSION : DRAFT_OFF_COMPETITION_ENGINE_V2,
-    schemaVersion: input.tierCaps ? DRAFT_OFF_COMPETITION_STATE_V3 : input.format === undefined ? DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION : DRAFT_OFF_COMPETITION_STATE_V2,
+    engineVersion: input.teamEvaluationVersion ? DRAFT_OFF_COMPETITION_ENGINE_V4 : input.tierCaps ? DRAFT_OFF_COMPETITION_ENGINE_V3 : input.format === undefined ? DRAFT_OFF_COMPETITION_ENGINE_VERSION : DRAFT_OFF_COMPETITION_ENGINE_V2,
+    schemaVersion: input.teamEvaluationVersion ? DRAFT_OFF_COMPETITION_STATE_V4 : input.tierCaps ? DRAFT_OFF_COMPETITION_STATE_V3 : input.format === undefined ? DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION : DRAFT_OFF_COMPETITION_STATE_V2,
     catalogFingerprint: catalog.fingerprint,
     competitionId: input.competitionId,
     phase: "LOBBY",
@@ -231,7 +236,7 @@ function startRound(
     roundOrdinal: round.roundOrdinal,
   });
   const participants = roster.map((member): DraftOffRoundParticipant => {
-    const setup = createEraDraftGame({ catalog, rootSeed: deriveDraftOffParticipantSeed(seeds.draftRootSeed, member.participantId, state.genesis.format ?? "MIRROR") });
+    const setup = createEraDraftGame({ catalog, ...(state.genesis.teamEvaluationVersion ? { teamEvaluationVersion: state.genesis.teamEvaluationVersion } : {}), rootSeed: deriveDraftOffParticipantSeed(seeds.draftRootSeed, member.participantId, state.genesis.format ?? "MIRROR") });
     const chosen = reduceEraDraft(catalog, setup, { type: "CHOOSE_ERA", eraId: round.eraId }, state.genesis.tierCaps);
     if (!chosen.ok || chosen.state.phase !== "AWAITING_SPIN") {
       throw new DraftOffCompetitionInvariantError("ROUND_INITIALIZATION_FAILED", "Shared Era Draft initialization failed.");
@@ -417,6 +422,7 @@ function resolveRound(
           eraId: round.eraId,
           roundOrdinal: round.roundOrdinal,
           participants: inputs,
+          ...(state.genesis.teamEvaluationVersion ? { teamEvaluationVersion: state.genesis.teamEvaluationVersion } : {}),
         })
       : simulateDraftOffChallenge({
           catalog,
@@ -424,6 +430,7 @@ function resolveRound(
           eraId: round.eraId,
           roundOrdinal: round.roundOrdinal,
           participants: inputs,
+          ...(state.genesis.teamEvaluationVersion ? { teamEvaluationVersion: state.genesis.teamEvaluationVersion } : {}),
         });
   const body = {
     version: DRAFT_OFF_ROUND_RESOLUTION_VERSION,

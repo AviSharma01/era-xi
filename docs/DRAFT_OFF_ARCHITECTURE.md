@@ -227,8 +227,8 @@ The room's presentation clock is also visible in player inspection, XI review an
 
 ## Varied and Mirror formats (competition v2)
 
-This section records the v2 format contract. New public rooms now use the v3
-Standard policy described in the Batch 2 section below.
+This section records the v2 format contract. New public rooms now use the v4
+Evaluation V3 contract below, retaining the Standard caps introduced in Batch 2.
 
 New public CREATE requests default to `VARIED`; hosts may explicitly select `MIRROR`.
 The selected format is immutable room configuration in `genesis.format`, not a draft
@@ -357,3 +357,25 @@ Stage A fixtures and Solo release checks remain independent verification gates.
 
 The [Batch 2 review handoff](../backend/stage-e/BATCH_2_STANDARD_TIER_CAPS_HANDOFF.md)
 lists changed files, verification outcomes and remaining integration limits.
+
+## Batch 3 Evaluation V3 (competition v4)
+
+New public Standard rooms pin `teamEvaluationVersion: "ipl-era-draft-team-evaluation/v3"`
+in genesis alongside format and effective tier caps. This selects matching
+competition engine/state/save v4 and nested Solo engine v2/state v3. Historical
+v1/v2/v3 rooms retain V2 evaluation through continuation and canonical replay,
+including pending lobbies and deadline resolution. Constructor field absence
+always selects the historical contract; restore never fills current defaults.
+
+V3 applies 0/5/12/20/30% individual batting deductions with a 20 contribution
+floor and no team-wide cap. Bowling, quality tiers, legality, Standard caps,
+frozen opponents and simulation coefficients are unchanged. Structural boosts
+remain deferred. Gameplay XI identity uses the pinned evaluator version;
+round/draft/schedule seeds and submission identity keep their existing contracts.
+
+New public frames use version 4 with the evaluation identifier. Authorized
+resolved results use envelope v2 and whitelisted batting-adjustment diagnostics;
+historical result responses remain byte-identical v1. There are no new routes,
+credentials, host options or UI layouts. Strict clients support both generations.
+See [Evaluation V3](EVALUATION_V3.md) for formulas, calibration, compatibility,
+fixtures, verification and the release/rollback procedure.

@@ -55,6 +55,12 @@ After drafting, reveal:
 
 Base player quality remains the primary driver.
 
+New Solo and Draft-Off rooms use Evaluation V3 percentage penalties on individual
+batting contributions, retaining the 20 contribution floor and existing slot
+weights without a team-wide positional cap. Historical saves/rooms retain their
+original evaluator. Opponent strengths stay frozen. Structural boosts remain a
+separate deferred post-draft adjustment. See `EVALUATION_V3.md`.
+
 The current Boost V1 system is scaffolding. Richer cricket-specific effects will be designed later from actual role and usage data.
 
 ## Era opponents

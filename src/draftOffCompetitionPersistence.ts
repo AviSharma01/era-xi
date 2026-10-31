@@ -1,3 +1,4 @@
+import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
 import { isEraDraftTierCaps, type EraDraftTierCaps } from "./eraDraftTierCaps.js";
 import { isDraftOffFormat } from "./draftOffFormat.js";
 import { canonicalJson, canonicalSha256 } from "./eraDraftCanonical.js";
@@ -6,7 +7,7 @@ import { createDraftOffCompetition, reduceDraftOffCompetition } from "./draftOff
 import {
   DRAFT_OFF_COMPETITION_ENGINE_VERSION,
   DRAFT_OFF_COMPETITION_ENGINE_V2,
-  DRAFT_OFF_COMPETITION_ENGINE_V3,
+  DRAFT_OFF_COMPETITION_ENGINE_V3, DRAFT_OFF_COMPETITION_ENGINE_V4, DRAFT_OFF_COMPETITION_STATE_V4, DRAFT_OFF_COMPETITION_SAVE_V4,
   DRAFT_OFF_COMPETITION_STATE_V3,
   DRAFT_OFF_COMPETITION_SAVE_V3,
   DRAFT_OFF_COMPETITION_STATE_V2,
@@ -23,7 +24,7 @@ import {
 import type { EraId } from "./teamEvaluationV2.js";
 
 type DraftOffCompetitionSave = {
-  readonly saveVersion: typeof DRAFT_OFF_COMPETITION_SAVE_VERSION | typeof DRAFT_OFF_COMPETITION_SAVE_V2 | typeof DRAFT_OFF_COMPETITION_SAVE_V3;
+  readonly saveVersion: typeof DRAFT_OFF_COMPETITION_SAVE_VERSION | typeof DRAFT_OFF_COMPETITION_SAVE_V2 | typeof DRAFT_OFF_COMPETITION_SAVE_V3 | typeof DRAFT_OFF_COMPETITION_SAVE_V4;
   readonly engineVersion: DraftOffCompetitionState["engineVersion"];
   readonly stateSchemaVersion: DraftOffCompetitionState["schemaVersion"];
   readonly genesis: DraftOffCompetitionGenesis;
@@ -37,7 +38,7 @@ export function canonicalDraftOffCompetitionStateHash(state: DraftOffCompetition
 
 export function serializeDraftOffCompetition(state: DraftOffCompetitionState): string {
   return canonicalJson({
-    saveVersion: state.engineVersion === DRAFT_OFF_COMPETITION_ENGINE_V3 ? DRAFT_OFF_COMPETITION_SAVE_V3 : state.engineVersion === DRAFT_OFF_COMPETITION_ENGINE_V2 ? DRAFT_OFF_COMPETITION_SAVE_V2 : DRAFT_OFF_COMPETITION_SAVE_VERSION,
+    saveVersion: state.engineVersion === DRAFT_OFF_COMPETITION_ENGINE_V4 ? DRAFT_OFF_COMPETITION_SAVE_V4 : state.engineVersion === DRAFT_OFF_COMPETITION_ENGINE_V3 ? DRAFT_OFF_COMPETITION_SAVE_V3 : state.engineVersion === DRAFT_OFF_COMPETITION_ENGINE_V2 ? DRAFT_OFF_COMPETITION_SAVE_V2 : DRAFT_OFF_COMPETITION_SAVE_VERSION,
     engineVersion: state.engineVersion,
     stateSchemaVersion: state.schemaVersion,
     genesis: state.genesis,
@@ -97,12 +98,13 @@ export function restoreDraftOffCompetition(
   }
   const row = object(parsed, "save");
   exactKeys(row, ["saveVersion", "engineVersion", "stateSchemaVersion", "genesis", "history", "stateHash"], "save");
-  const capped = row.saveVersion === DRAFT_OFF_COMPETITION_SAVE_V3;
+  const evaluationV3 = row.saveVersion === DRAFT_OFF_COMPETITION_SAVE_V4;
+  const capped = evaluationV3 || row.saveVersion === DRAFT_OFF_COMPETITION_SAVE_V3;
   const modern = capped || row.saveVersion === DRAFT_OFF_COMPETITION_SAVE_V2;
-  requireVersion(row.saveVersion, capped ? DRAFT_OFF_COMPETITION_SAVE_V3 : modern ? DRAFT_OFF_COMPETITION_SAVE_V2 : DRAFT_OFF_COMPETITION_SAVE_VERSION, "UNSUPPORTED_SAVE_VERSION");
-  requireVersion(row.engineVersion, capped ? DRAFT_OFF_COMPETITION_ENGINE_V3 : modern ? DRAFT_OFF_COMPETITION_ENGINE_V2 : DRAFT_OFF_COMPETITION_ENGINE_VERSION, "UNSUPPORTED_ENGINE_VERSION");
-  requireVersion(row.stateSchemaVersion, capped ? DRAFT_OFF_COMPETITION_STATE_V3 : modern ? DRAFT_OFF_COMPETITION_STATE_V2 : DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION, "UNSUPPORTED_STATE_SCHEMA_VERSION");
-  const genesis = parseGenesis(catalog, row.genesis, modern, capped);
+  requireVersion(row.saveVersion, evaluationV3 ? DRAFT_OFF_COMPETITION_SAVE_V4 : capped ? DRAFT_OFF_COMPETITION_SAVE_V3 : modern ? DRAFT_OFF_COMPETITION_SAVE_V2 : DRAFT_OFF_COMPETITION_SAVE_VERSION, "UNSUPPORTED_SAVE_VERSION");
+  requireVersion(row.engineVersion, evaluationV3 ? DRAFT_OFF_COMPETITION_ENGINE_V4 : capped ? DRAFT_OFF_COMPETITION_ENGINE_V3 : modern ? DRAFT_OFF_COMPETITION_ENGINE_V2 : DRAFT_OFF_COMPETITION_ENGINE_VERSION, "UNSUPPORTED_ENGINE_VERSION");
+  requireVersion(row.stateSchemaVersion, evaluationV3 ? DRAFT_OFF_COMPETITION_STATE_V4 : capped ? DRAFT_OFF_COMPETITION_STATE_V3 : modern ? DRAFT_OFF_COMPETITION_STATE_V2 : DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION, "UNSUPPORTED_STATE_SCHEMA_VERSION");
+  const genesis = parseGenesis(catalog, row.genesis, modern, capped, evaluationV3);
   if (genesis.catalogFingerprint !== catalog.fingerprint) {
     throw new DraftOffCompetitionDataError(
       "CATALOG_FINGERPRINT_MISMATCH",
@@ -115,9 +117,10 @@ export function restoreDraftOffCompetition(
   return replayDraftOffCompetition({ catalog, genesis, history, expectedStateHash: stateHash });
 }
 
-function parseGenesis(catalog: EraDraftCatalog, value: unknown, modern: boolean, capped: boolean): DraftOffCompetitionGenesis {
+function parseGenesis(catalog: EraDraftCatalog, value: unknown, modern: boolean, capped: boolean, evaluationV3: boolean): DraftOffCompetitionGenesis {
   const row = object(value, "genesis");
-  exactKeys(row, ["competitionId", "catalogFingerprint", "createdAtMs", "host", "initialRound", ...(modern ? ["format"] : []), ...(capped ? ["tierCaps"] : [])], "genesis");
+  exactKeys(row, ["competitionId", "catalogFingerprint", "createdAtMs", "host", "initialRound", ...(modern ? ["format"] : []), ...(capped ? ["tierCaps"] : []), ...(evaluationV3 ? ["teamEvaluationVersion"] : [])], "genesis");
+  if (evaluationV3 && row.teamEvaluationVersion !== TEAM_EVALUATION_V3_VERSION) invalid("Invalid evaluation policy.");
   if (modern && !isDraftOffFormat(row.format)) invalid("Unsupported Draft-Off format.");
   if (capped && !isEraDraftTierCaps(row.tierCaps)) invalid("Invalid effective tier caps.");
   const host = object(row.host, "genesis.host");
@@ -127,6 +130,7 @@ function parseGenesis(catalog: EraDraftCatalog, value: unknown, modern: boolean,
   const eraId = text(round.eraId, "genesis.initialRound.eraId") as EraId;
   if (!catalog.getEra(eraId)) invalid(`Unknown era ${eraId}.`);
   return {
+    ...(evaluationV3 ? { teamEvaluationVersion: TEAM_EVALUATION_V3_VERSION } : {}),
     ...(modern ? { format: row.format as "VARIED" | "MIRROR" } : {}),
     ...(capped ? { tierCaps: row.tierCaps as EraDraftTierCaps } : {}),
     competitionId: id(row.competitionId, "genesis.competitionId"),

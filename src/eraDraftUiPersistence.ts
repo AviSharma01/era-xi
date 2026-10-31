@@ -2,7 +2,7 @@ import { canonicalJson } from "./eraDraftCanonical.js";
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { restoreEraDraftState, serializeEraDraftState } from "./eraDraftPersistence.js";
 import {
-  ERA_DRAFT_SAVE_VERSION,
+  ERA_DRAFT_SAVE_VERSION, ERA_DRAFT_SAVE_V3,
   type AwaitingPickState,
   type AwaitingSpinState,
   type EraDraftTransitionResult,
@@ -210,7 +210,7 @@ function inspectSerializedEngineState(serialized: string): EraDraftUiSaveSummary
     throw new EraDraftUiSaveError("INVALID_UI_SAVE_STATE", "The local save contains invalid serialized engine state.", { cause: error });
   }
   const row = object(parsed, "serialized engine state");
-  if (row.saveVersion !== ERA_DRAFT_SAVE_VERSION) {
+  if (row.saveVersion !== ERA_DRAFT_SAVE_VERSION && row.saveVersion !== ERA_DRAFT_SAVE_V3) {
     throw new EraDraftUiSaveError("INVALID_UI_SAVE_STATE", "The local save contains an unsupported engine save version.");
   }
   const phase = oneOf(row.phase, ["AWAITING_SPIN", "AWAITING_PICK", "XI_COMPLETE", "REVEALED", "GAME_COMPLETE"] as const, "phase");

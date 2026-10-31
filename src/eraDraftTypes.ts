@@ -7,7 +7,14 @@ import type {
 } from "./playerRoleContract.js";
 import type { QualityTier } from "./playerQualityContract.js";
 import type { LeagueResultV2, SimulationTeamV2 } from "./simulationV2.js";
-import type { EraId, IplRosterStatus, TeamEvaluationV2 } from "./teamEvaluationV2.js";
+import type { EraId, IplRosterStatus } from "./teamEvaluationV2.js";
+
+import type { EraTeamEvaluation } from "./teamEvaluationPolicy.js";
+import type { TEAM_EVALUATION_V3_VERSION, BattingAdjustmentV3 } from "./teamEvaluationV3.js";
+
+export const ERA_DRAFT_ENGINE_V2 = "ipl-era-draft-engine/v2" as const;
+export const ERA_DRAFT_STATE_V3 = "ipl-era-draft-state/v3" as const;
+export const ERA_DRAFT_SAVE_V3 = "ipl-era-draft-save/v3" as const;
 
 export const ERA_DRAFT_ENGINE_VERSION = "ipl-era-draft-engine/v1" as const;
 export const ERA_DRAFT_STATE_SCHEMA_VERSION = "ipl-era-draft-state/v2" as const;
@@ -151,8 +158,10 @@ export type EraDraftHistoryEntry =
   | SimulateSeasonHistoryEntry;
 
 type EraDraftStateCommon = {
-  readonly engineVersion: typeof ERA_DRAFT_ENGINE_VERSION;
-  readonly schemaVersion: typeof ERA_DRAFT_STATE_SCHEMA_VERSION;
+  readonly engineVersion: typeof ERA_DRAFT_ENGINE_VERSION | typeof ERA_DRAFT_ENGINE_V2;
+  readonly schemaVersion: typeof ERA_DRAFT_STATE_SCHEMA_VERSION | typeof ERA_DRAFT_STATE_V3;
+  /** Present only on the new engine/state contract; absence pins historical V2. */
+  readonly teamEvaluationVersion?: typeof TEAM_EVALUATION_V3_VERSION;
   readonly catalogFingerprint: string;
   readonly rootSeed: string;
   readonly revision: number;
@@ -185,7 +194,7 @@ export type XiCompleteState = EraDraftStateCommon & {
 export type RevealedState = EraDraftStateCommon & {
   readonly phase: "REVEALED";
   readonly eraId: EraId;
-  readonly evaluation: TeamEvaluationV2;
+  readonly evaluation: EraTeamEvaluation;
 };
 
 export type EraDraftSimulationSeedBundle = {
@@ -228,7 +237,7 @@ export type EraDraftSeasonResult = {
 export type GameCompleteState = EraDraftStateCommon & {
   readonly phase: "GAME_COMPLETE";
   readonly eraId: EraId;
-  readonly evaluation: TeamEvaluationV2;
+  readonly evaluation: EraTeamEvaluation;
   readonly season: EraDraftSeasonResult;
 };
 
@@ -458,6 +467,7 @@ export type XiCompletePublicView = {
 export type EraDraftPublicView = SetupPublicView | AwaitingSpinPublicView | AwaitingPickPublicView | XiCompletePublicView;
 
 export type RevealPlayerView = DraftPlayerFactsView & {
+  readonly battingAdjustment?: BattingAdjustmentV3;
   readonly battingPosition: EraDraftPick["battingPosition"];
   readonly presentationFit: DraftPresentationFit;
   readonly battingRating: number | null;
@@ -467,6 +477,8 @@ export type RevealPlayerView = DraftPlayerFactsView & {
 };
 
 export type TeamEvaluationSummaryView = {
+  readonly teamEvaluationVersion?: typeof TEAM_EVALUATION_V3_VERSION;
+  readonly battingAdjustment?: { readonly baseBatting: number; readonly nominalDeduction: number; readonly appliedDeduction: number; readonly adjustedBatting: number };
   readonly strength: {
     readonly overall: number;
     readonly batting: number;

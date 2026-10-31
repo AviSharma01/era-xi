@@ -64,3 +64,12 @@ historical variants, and a canonical player can be selected once. The tests cove
 and late respins, plus 160 deterministic scarce catalogs checked against an
 independent exhaustive search. This is feasibility validation, not a balance study
 or a claim that Varied opportunities are equal.
+
+## Evaluation V3 (Batch 3)
+
+New Solo games and Draft-Off competition v4 apply the agreed percentage penalties
+to batting contributions, retain the 20 floor and remove the four-point team
+cap. Historical games retain V2; approved opponents keep frozen strengths.
+Structural boosts remain deferred. The all-era calibration, version boundaries,
+post-reveal diagnostics and verification evidence are recorded in
+[Evaluation V3](EVALUATION_V3.md).

@@ -1,3 +1,4 @@
+import type { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
 import type { EraDraftTierCaps } from "./eraDraftTierCaps.js";
 import type { DraftOffFormat } from "./draftOffFormat.js";
 import type { DraftOffCompetitionRejectionCode } from "./draftOffCompetitionTypes.js";
@@ -11,6 +12,7 @@ export type DraftOffRoomActor =
 
 export type CreateDraftOffRoomInput = {
   readonly roomId: string;
+  readonly teamEvaluationVersion?: typeof TEAM_EVALUATION_V3_VERSION;
   readonly format?: DraftOffFormat;
   /** Internal effective policy supplied by the public adapter; never a host request field. */
   readonly tierCaps?: EraDraftTierCaps;
@@ -76,9 +78,10 @@ export type DraftOffPublicRoomView = {
   readonly phase: "LOBBY" | "IN_PROGRESS" | "COMPLETE";
   readonly participants: readonly DraftOffRoomParticipantView[];
   readonly round: {
-    /** Present for format-aware v2/v3 rooms; absent historical rooms are Mirror. */
+    readonly teamEvaluationVersion?: typeof TEAM_EVALUATION_V3_VERSION;
+    /** Present for format-aware v2/v3/v4 rooms; absent historical rooms are Mirror. */
     readonly format?: DraftOffFormat;
-    /** Present only for v3 Standard rooms; absent means historical uncapped rules. */
+    /** Present for v3/v4 Standard rooms; absent means historical uncapped rules. */
     readonly tierCaps?: EraDraftTierCaps;
     readonly roundId: string;
     readonly roundOrdinal: number;
@@ -101,7 +104,7 @@ export type DraftOffPublicRoomView = {
 export type DraftOffRoomView = DraftOffPublicRoomView & { readonly myDraft?: EraDraftPublicView };
 
 export type DraftOffRoomSnapshotMessage = {
-  readonly version: 1 | 2 | 3;
+  readonly version: 1 | 2 | 3 | 4;
   readonly type: "ROOM_SNAPSHOT";
   readonly serverTimeMs: number;
   readonly view: DraftOffPublicRoomView;

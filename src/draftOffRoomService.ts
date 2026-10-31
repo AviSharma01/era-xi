@@ -65,6 +65,7 @@ export class DraftOffRoomService {
     const participantId = requireParticipantActor(actor);
     const createdAtMs = authoritativeClockTime(this.clock.nowMs(), 0);
     const state = this.runtime.create(this.catalog, {
+      ...(input.teamEvaluationVersion === undefined ? {} : { teamEvaluationVersion: input.teamEvaluationVersion }),
       ...(input.format === undefined ? {} : { format: input.format }),
       ...(input.tierCaps === undefined ? {} : { tierCaps: { ...input.tierCaps } }),
       competitionId: input.roomId,

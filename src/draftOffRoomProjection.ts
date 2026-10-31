@@ -49,6 +49,7 @@ export function projectDraftOffPublicRoom(state: DraftOffCompetitionState): Draf
     phase: state.phase,
     participants,
     round: {
+      ...(state.genesis.teamEvaluationVersion === undefined ? {} : { teamEvaluationVersion: state.genesis.teamEvaluationVersion }),
       ...(state.genesis.format === undefined ? {} : { format: state.genesis.format }),
       ...(state.genesis.tierCaps === undefined ? {} : { tierCaps: { ...state.genesis.tierCaps } }),
       roundId: round.roundId,

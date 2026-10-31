@@ -1,15 +1,16 @@
 import type { EraDraftCatalog, EraDraftPlayerRecord } from "./eraDraftData.js";
 import { EraDraftDataError, type XiCompleteState } from "./eraDraftTypes.js";
 import {
-  evaluateCompletedEraXi,
   type EraCompletedXiInput,
   type EraXiPlayerInput,
-  type TeamEvaluationV2,
 } from "./teamEvaluationV2.js";
+
+import { evaluateEraXiByVersion, evaluationVersionOf, type EraTeamEvaluation } from "./teamEvaluationPolicy.js";
+import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
 
 /**
  * The only Stage 8 pick-to-evaluator join. Input order remains draft order;
- * locked batting positions are passed explicitly for Team Evaluation V2 to validate.
+ * locked batting positions are passed explicitly to the versioned evaluator.
  */
 export function buildEraDraftEvaluationInput(
   catalog: EraDraftCatalog,
@@ -54,15 +55,17 @@ export function buildEraDraftEvaluationInput(
 export function evaluateEraDraftXi(
   catalog: EraDraftCatalog,
   state: XiCompleteState,
-): TeamEvaluationV2 {
+): EraTeamEvaluation {
   const input = buildEraDraftEvaluationInput(catalog, state);
   try {
-    return evaluateCompletedEraXi(input);
+    return evaluateEraXiByVersion(input, evaluationVersionOf(state));
   } catch (error) {
     if (error instanceof EraDraftDataError) throw error;
     throw new EraDraftDataError(
-      "TEAM_EVALUATION_V2_FAILED",
-      "Team Evaluation V2 rejected the completed Era Draft XI.",
+      evaluationVersionOf(state) === TEAM_EVALUATION_V3_VERSION ? "TEAM_EVALUATION_V3_FAILED" : "TEAM_EVALUATION_V2_FAILED",
+      evaluationVersionOf(state) === TEAM_EVALUATION_V3_VERSION
+        ? "Team Evaluation V3 rejected the completed Era Draft XI."
+        : "Team Evaluation V2 rejected the completed Era Draft XI.",
       { eraId: state.eraId },
       { cause: error },
     );

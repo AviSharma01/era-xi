@@ -1,3 +1,4 @@
+import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
 import type { EraDraftTierCaps } from "./eraDraftTierCaps.js";
 import type { DraftOffFormat } from "./draftOffFormat.js";
 import type { DraftOffChallengeResult, DraftOffLeaderboardRow, DraftOffSeedBundle } from "./draftOffTypes.js";
@@ -22,6 +23,10 @@ export const DRAFT_OFF_COMPETITION_SAVE_V2 = "ipl-draft-off-competition-save/v2"
 export const DRAFT_OFF_COMPETITION_ENGINE_V3 = "ipl-draft-off-competition-engine/v3" as const;
 export const DRAFT_OFF_COMPETITION_STATE_V3 = "ipl-draft-off-competition-state/v3" as const;
 export const DRAFT_OFF_COMPETITION_SAVE_V3 = "ipl-draft-off-competition-save/v3" as const;
+
+export const DRAFT_OFF_COMPETITION_ENGINE_V4 = "ipl-draft-off-competition-engine/v4" as const;
+export const DRAFT_OFF_COMPETITION_STATE_V4 = "ipl-draft-off-competition-state/v4" as const;
+export const DRAFT_OFF_COMPETITION_SAVE_V4 = "ipl-draft-off-competition-save/v4" as const;
 
 export const DRAFT_OFF_SUBMISSION_VERSION = "ipl-draft-off-submission/v1" as const;
 export const DRAFT_OFF_ROUND_RESOLUTION_VERSION = "ipl-draft-off-round-resolution/v1" as const;
@@ -50,9 +55,11 @@ export type DraftOffRoundGenesis = {
 };
 
 export type DraftOffCompetitionGenesis = {
+  /** Required only in v4; absent historical competitions remain on Evaluation V2. */
+  readonly teamEvaluationVersion?: typeof TEAM_EVALUATION_V3_VERSION;
   /** Absent only in historical v1 mirrored competitions. */
   readonly format?: DraftOffFormat;
-  /** Present only in v3; persisted effective Standard preset, not a host option. */
+  /** Present in v3/v4; persisted effective Standard preset, not a host option. */
   readonly tierCaps?: EraDraftTierCaps;
   readonly competitionId: string;
   readonly catalogFingerprint: string;
@@ -138,8 +145,8 @@ export type ResolvedDraftOffRound = Omit<ActiveDraftOffRound, "phase"> & {
 export type DraftOffRoundState = PendingDraftOffRound | ActiveDraftOffRound | ResolvedDraftOffRound;
 
 export type DraftOffCompetitionState = {
-  readonly engineVersion: typeof DRAFT_OFF_COMPETITION_ENGINE_VERSION | typeof DRAFT_OFF_COMPETITION_ENGINE_V2 | typeof DRAFT_OFF_COMPETITION_ENGINE_V3;
-  readonly schemaVersion: typeof DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION | typeof DRAFT_OFF_COMPETITION_STATE_V2 | typeof DRAFT_OFF_COMPETITION_STATE_V3;
+  readonly engineVersion: typeof DRAFT_OFF_COMPETITION_ENGINE_VERSION | typeof DRAFT_OFF_COMPETITION_ENGINE_V2 | typeof DRAFT_OFF_COMPETITION_ENGINE_V3 | typeof DRAFT_OFF_COMPETITION_ENGINE_V4;
+  readonly schemaVersion: typeof DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION | typeof DRAFT_OFF_COMPETITION_STATE_V2 | typeof DRAFT_OFF_COMPETITION_STATE_V3 | typeof DRAFT_OFF_COMPETITION_STATE_V4;
   readonly catalogFingerprint: string;
   readonly competitionId: string;
   readonly phase: DraftOffCompetitionPhase;

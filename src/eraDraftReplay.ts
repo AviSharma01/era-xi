@@ -1,3 +1,4 @@
+import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
 import type { EraDraftTierCaps } from "./eraDraftTierCaps.js";
 import { canonicalJson } from "./eraDraftCanonical.js";
 import type { EraDraftCatalog } from "./eraDraftData.js";
@@ -14,10 +15,11 @@ export function replayEraDraftGame(input: {
   readonly catalog: EraDraftCatalog;
   readonly rootSeed: string;
   readonly tierCaps?: EraDraftTierCaps;
+  readonly teamEvaluationVersion?: typeof TEAM_EVALUATION_V3_VERSION;
   readonly history: readonly EraDraftHistoryEntry[];
   readonly expectedStateHash?: string;
 }): EraDraftState {
-  let state: EraDraftState = createEraDraftGame({ catalog: input.catalog, rootSeed: input.rootSeed });
+  let state: EraDraftState = createEraDraftGame({ catalog: input.catalog, rootSeed: input.rootSeed, ...(Object.hasOwn(input, "teamEvaluationVersion") ? { teamEvaluationVersion: input.teamEvaluationVersion } : {}) });
   for (const recorded of input.history) {
     const result = reduceEraDraft(input.catalog, state, commandFromHistory(recorded), input.tierCaps);
     if (!result.ok) {
@@ -47,6 +49,7 @@ export function replayEraDraftState(catalog: EraDraftCatalog, expected: EraDraft
     catalog,
     tierCaps,
     rootSeed: expected.rootSeed,
+    ...(Object.hasOwn(expected, "teamEvaluationVersion") ? { teamEvaluationVersion: expected.teamEvaluationVersion } : {}),
     history: expected.history,
     expectedStateHash: canonicalEraDraftStateHash(expected),
   });

@@ -4,7 +4,7 @@ import { assertEraDraftState } from "./eraDraftInvariants.js";
 import { evaluateEraDraftXi } from "./eraDraftReveal.js";
 import { assertEraDraftSeasonResult } from "./eraDraftSimulation.js";
 import {
-  ERA_DRAFT_ENGINE_VERSION,
+  ERA_DRAFT_ENGINE_VERSION, ERA_DRAFT_ENGINE_V2, ERA_DRAFT_STATE_V3, ERA_DRAFT_SAVE_V3,
   ERA_DRAFT_OPPONENT_COMPOSITION_SCHEMA_VERSION,
   ERA_DRAFT_SAVE_VERSION,
   ERA_DRAFT_SIMULATION_SEED_VERSION,
@@ -30,10 +30,13 @@ import {
   type SimulationTeamV2,
   type StandingsRowV2,
 } from "./simulationV2.js";
-import { TEAM_EVALUATION_V2_VERSION, type EraId, type TeamEvaluationV2 } from "./teamEvaluationV2.js";
+import { TEAM_EVALUATION_V2_VERSION, type EraId } from "./teamEvaluationV2.js";
+
+import type { EraTeamEvaluation, TeamEvaluationVersion } from "./teamEvaluationPolicy.js";
+import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
 
 type EvaluationSnapshot = {
-  readonly version: typeof TEAM_EVALUATION_V2_VERSION;
+  readonly version: TeamEvaluationVersion;
   readonly eraId: EraId;
   readonly evaluationHash: string;
 };
@@ -72,13 +75,15 @@ export function restoreEraDraftState(catalog: EraDraftCatalog, serialized: strin
     REVEALED: ["eraId", "evaluationSnapshot"],
     GAME_COMPLETE: ["eraId", "evaluationSnapshot", "seasonSnapshot"],
   };
+  const modern = row.saveVersion === ERA_DRAFT_SAVE_V3;
   exactKeys(row, [
+    ...(modern ? ["teamEvaluationVersion"] : []),
     "saveVersion", "engineVersion", "stateSchemaVersion", "catalogFingerprint", "rootSeed", "phase",
     "revision", "rngCounters", "respin", "history", "picks", ...phaseKeys[phase],
   ], "save");
-  requireVersion(row.saveVersion, ERA_DRAFT_SAVE_VERSION, "UNSUPPORTED_SAVE_VERSION", "save version");
-  requireVersion(row.engineVersion, ERA_DRAFT_ENGINE_VERSION, "UNSUPPORTED_ENGINE_VERSION", "engine version");
-  requireVersion(row.stateSchemaVersion, ERA_DRAFT_STATE_SCHEMA_VERSION, "UNSUPPORTED_STATE_SCHEMA_VERSION", "state schema version");
+  requireVersion(row.saveVersion, modern ? ERA_DRAFT_SAVE_V3 : ERA_DRAFT_SAVE_VERSION, "UNSUPPORTED_SAVE_VERSION", "save version");
+  requireVersion(row.engineVersion, modern ? ERA_DRAFT_ENGINE_V2 : ERA_DRAFT_ENGINE_VERSION, "UNSUPPORTED_ENGINE_VERSION", "engine version");
+  requireVersion(row.stateSchemaVersion, modern ? ERA_DRAFT_STATE_V3 : ERA_DRAFT_STATE_SCHEMA_VERSION, "UNSUPPORTED_STATE_SCHEMA_VERSION", "state schema version");
   if (row.catalogFingerprint !== catalog.fingerprint) {
     throw new EraDraftDataError("CATALOG_FINGERPRINT_MISMATCH", "Era Draft save belongs to a different catalog.", {
       expected: catalog.fingerprint,
@@ -86,9 +91,11 @@ export function restoreEraDraftState(catalog: EraDraftCatalog, serialized: strin
     });
   }
 
+  if (modern) requireVersion(row.teamEvaluationVersion, TEAM_EVALUATION_V3_VERSION, "TEAM_EVALUATION_VERSION_MISMATCH", "evaluation policy");
   const common = {
-    engineVersion: ERA_DRAFT_ENGINE_VERSION,
-    schemaVersion: ERA_DRAFT_STATE_SCHEMA_VERSION,
+    engineVersion: modern ? ERA_DRAFT_ENGINE_V2 : ERA_DRAFT_ENGINE_VERSION,
+    schemaVersion: modern ? ERA_DRAFT_STATE_V3 : ERA_DRAFT_STATE_SCHEMA_VERSION,
+    ...(modern ? { teamEvaluationVersion: TEAM_EVALUATION_V3_VERSION } : {}),
     catalogFingerprint: text(row.catalogFingerprint, "save.catalogFingerprint"),
     rootSeed: text(row.rootSeed, "save.rootSeed"),
     revision: integer(row.revision, "save.revision", 0),
@@ -127,7 +134,8 @@ export function restoreEraDraftState(catalog: EraDraftCatalog, serialized: strin
 
 function serializableState(state: EraDraftState): object {
   const common = {
-    saveVersion: ERA_DRAFT_SAVE_VERSION,
+    saveVersion: state.teamEvaluationVersion ? ERA_DRAFT_SAVE_V3 : ERA_DRAFT_SAVE_VERSION,
+    ...(state.teamEvaluationVersion ? { teamEvaluationVersion: state.teamEvaluationVersion } : {}),
     engineVersion: state.engineVersion,
     stateSchemaVersion: state.schemaVersion,
     catalogFingerprint: state.catalogFingerprint,
@@ -161,7 +169,7 @@ function serializableState(state: EraDraftState): object {
   };
 }
 
-function snapshotEvaluation(evaluation: TeamEvaluationV2): EvaluationSnapshot {
+function snapshotEvaluation(evaluation: EraTeamEvaluation): EvaluationSnapshot {
   return {
     version: evaluation.version,
     eraId: evaluation.eraId,
@@ -169,8 +177,8 @@ function snapshotEvaluation(evaluation: TeamEvaluationV2): EvaluationSnapshot {
   };
 }
 
-function assertEvaluationSnapshot(snapshot: EvaluationSnapshot, evaluation: TeamEvaluationV2): void {
-  if (snapshot.version !== TEAM_EVALUATION_V2_VERSION) {
+function assertEvaluationSnapshot(snapshot: EvaluationSnapshot, evaluation: EraTeamEvaluation): void {
+  if (snapshot.version !== evaluation.version) {
     throw new EraDraftDataError("TEAM_EVALUATION_VERSION_MISMATCH", "Save uses an unsupported Team Evaluation version.");
   }
   if (snapshot.eraId !== evaluation.eraId || snapshot.evaluationHash !== canonicalSha256(evaluation)) {
@@ -181,11 +189,11 @@ function assertEvaluationSnapshot(snapshot: EvaluationSnapshot, evaluation: Team
 function parseEvaluationSnapshot(value: unknown): EvaluationSnapshot {
   const row = object(value, "evaluationSnapshot");
   exactKeys(row, ["version", "eraId", "evaluationHash"], "evaluationSnapshot");
-  if (row.version !== TEAM_EVALUATION_V2_VERSION) {
+  if (row.version !== TEAM_EVALUATION_V2_VERSION && row.version !== TEAM_EVALUATION_V3_VERSION) {
     throw new EraDraftDataError("TEAM_EVALUATION_VERSION_MISMATCH", "Save uses an unsupported Team Evaluation version.");
   }
   return {
-    version: TEAM_EVALUATION_V2_VERSION,
+    version: row.version,
     eraId: oneOf(row.eraId, [
       "era-foundation", "era-expansion", "era-transition", "era-modern-pre-impact", "era-impact",
     ] as const, "evaluationSnapshot.eraId"),

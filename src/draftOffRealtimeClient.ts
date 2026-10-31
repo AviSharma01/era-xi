@@ -1,3 +1,4 @@
+import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
 import { isEraDraftTierCaps } from "./eraDraftTierCaps.js";
 import { isDraftOffFormat } from './draftOffFormat.js';
 import type { DraftOffPublicRoomView, DraftOffRoomSnapshotMessage } from './draftOffRoomTypes.js';
@@ -21,7 +22,7 @@ export function parseRoomSnapshot(data: unknown, roomId: string, maxBytes: numbe
 
 /** Shared structural validation; only the WebSocket parser imposes a frame-size limit. */
 function validateRoomSnapshot(message: unknown, roomId: string): DraftOffRoomSnapshotMessage {
-  if (!record(message) || !exact(message, ['version', 'type', 'serverTimeMs', 'view']) || (message.version !== 1 && message.version !== 2 && message.version !== 3)
+  if (!record(message) || !exact(message, ['version', 'type', 'serverTimeMs', 'view']) || (message.version !== 1 && message.version !== 2 && message.version !== 3 && message.version !== 4)
     || message.type !== 'ROOM_SNAPSHOT' || !integer(message.serverTimeMs) || !record(message.view)) throw new Error('INVALID_REALTIME_MESSAGE');
   const view = message.view;
   if (!exact(view, ['roomId', 'revision', 'phase', 'participants', 'round'], ['resolution']) || view.roomId !== roomId
@@ -35,11 +36,12 @@ function validateRoomSnapshot(message: unknown, roomId: string): DraftOffRoomSna
         && integer(p.lockedPickCount) && (p.lockedPickCount as number) <= 11)))
     || !record(view.round)) throw new Error('INVALID_REALTIME_MESSAGE');
   const round = view.round;
-  if (!exact(round, ['roundId', 'roundOrdinal', 'label', 'eraId', 'phase'], ['startedAtMs', 'deadlineAtMs', ...(message.version !== 1 ? ['format'] : []), ...(message.version === 3 ? ['tierCaps'] : [])])
+  if (!exact(round, ['roundId', 'roundOrdinal', 'label', 'eraId', 'phase'], ['startedAtMs', 'deadlineAtMs', ...(message.version !== 1 ? ['format'] : []), ...((message.version === 3 || message.version === 4) ? ['tierCaps'] : []), ...(message.version === 4 ? ['teamEvaluationVersion'] : [])])
     || !['roundId', 'label', 'eraId'].every(key => typeof round[key] === 'string') || !integer(round.roundOrdinal)
     || !['PENDING', 'DRAFTING', 'RESOLVED'].includes(round.phase as string)
     || ['startedAtMs', 'deadlineAtMs'].some(key => Object.hasOwn(round, key) && !integer(round[key]))) throw new Error('INVALID_REALTIME_MESSAGE');
-  if ((message.version !== 1 && !isDraftOffFormat(round.format)) || (message.version === 3 && !isEraDraftTierCaps(round.tierCaps))) throw new Error('INVALID_REALTIME_MESSAGE');
+  if ((message.version !== 1 && !isDraftOffFormat(round.format)) || ((message.version === 3 || message.version === 4) && !isEraDraftTierCaps(round.tierCaps))
+    || (message.version === 4 && round.teamEvaluationVersion !== TEAM_EVALUATION_V3_VERSION)) throw new Error('INVALID_REALTIME_MESSAGE');
   if (Object.hasOwn(view, 'resolution')) {
     const r = view.resolution;
     if (!record(r) || !exact(r, ['trigger', 'contestStatus', 'resolvedAtMs', 'eligibleParticipantIds', 'ineligibleParticipantIds', 'leaderboard'])
@@ -230,7 +232,7 @@ export function createDraftOffRealtimeClient(options: RealtimeClientOptions) {
           if (!record(reply.settings) || !exact(reply.settings, ['draftMinutes', ...(modern ? ['format'] : [])])
             || ![10, 15].includes(reply.settings.draftMinutes as number)
             || (modern && reply.settings.format !== shared.round.format)) throw new Error('INVALID_HTTP_SETTINGS');
-          const publicMessage = validateRoomSnapshot({ version: Object.hasOwn(shared.round, 'tierCaps') ? 3 : modern ? 2 : 1, type: 'ROOM_SNAPSHOT', serverTimeMs: reply.serverTimeMs, view: shared }, options.roomCode);
+          const publicMessage = validateRoomSnapshot({ version: Object.hasOwn(shared.round, 'teamEvaluationVersion') ? 4 : Object.hasOwn(shared.round, 'tierCaps') ? 3 : modern ? 2 : 1, type: 'ROOM_SNAPSHOT', serverTimeMs: reply.serverTimeMs, view: shared }, options.roomCode);
           observeRevision(reply.view.revision);
           if (reply.view.revision >= privateRevision) {
             privateRevision = reply.view.revision;

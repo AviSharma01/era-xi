@@ -21,7 +21,8 @@ import type {
   RevealedState,
 } from "./eraDraftTypes.js";
 import { EraDraftDataError, type DraftPresentationFit, type DraftStatusView } from "./eraDraftTypes.js";
-import type { TeamEvaluationV2 } from "./teamEvaluationV2.js";
+import type { EraTeamEvaluation } from "./teamEvaluationPolicy.js";
+import { TEAM_EVALUATION_V3_VERSION, type BattingAdjustmentV3 } from "./teamEvaluationV3.js";
 import type { FitClassification } from "./playerRoleContract.js";
 import {
   buildStandingsV2,
@@ -280,13 +281,15 @@ export function projectEraDraftRevealState(
 /** Shared whitelist only: uses an already authoritative evaluation, never evaluates. */
 export function projectEraDraftRevealedEvaluation(
   catalog: EraDraftCatalog,
-  evaluation: TeamEvaluationV2,
+  evaluation: EraTeamEvaluation,
 ): Pick<EraDraftRevealView, "players" | "evaluation"> {
+  const v3 = evaluation.version === TEAM_EVALUATION_V3_VERSION ? evaluation : undefined;
   const players = evaluation.players.map((evaluated) => {
     const player = catalog.getPlayer(evaluated.quality.playerTeamSeasonId)!;
     const slot = evaluated.role.battingFit.slots[evaluated.position - 1]!;
     return {
       ...projectPlayerFacts(player),
+      ...(v3 ? { battingAdjustment: projectBattingAdjustment(v3.battingContributions.find(row => row.position === evaluated.position)!) } : {}),
       battingPosition: evaluated.position,
       presentationFit: toDraftPresentationFit(slot.classification, slot.bandDistance),
       battingRating: evaluated.quality.batting.battingRating,
@@ -306,6 +309,10 @@ export function projectEraDraftRevealedEvaluation(
   return freezeDeep({
     players,
     evaluation: {
+      ...(v3 ? { teamEvaluationVersion: TEAM_EVALUATION_V3_VERSION, battingAdjustment: {
+        baseBatting: v3.baseStrength.batting, nominalDeduction: v3.diagnostics.nominalPositionFitDeduction,
+        appliedDeduction: v3.diagnostics.appliedPositionFitDeduction, adjustedBatting: v3.adjustedStrength.batting,
+      } } : {}),
       strength: {
         overall: evaluation.adjustedStrength.overall,
         batting: evaluation.adjustedStrength.batting,
@@ -560,4 +567,16 @@ function freezeDeep<T>(value: T): T {
   if (Array.isArray(value)) value.forEach(freezeDeep);
   else Object.values(value as Record<string, unknown>).forEach(freezeDeep);
   return Object.freeze(value);
+}
+
+/** Explicit post-reveal whitelist; identities remain on the surrounding player view. */
+function projectBattingAdjustment(row: BattingAdjustmentV3): BattingAdjustmentV3 {
+  return {
+    fitClassification: row.fitClassification, bandDistance: row.bandDistance,
+    penaltySeverity: row.penaltySeverity, penaltyPercent: row.penaltyPercent, appliedPenaltyPercent: row.appliedPenaltyPercent,
+    rawContribution: row.rawContribution, effectiveContribution: row.effectiveContribution,
+    nominalDeduction: row.nominalDeduction, deduction: row.deduction,
+    aggregationWeight: row.aggregationWeight, weightedDeduction: row.weightedDeduction,
+    floorApplied: row.floorApplied, ratingImputed: row.ratingImputed,
+  };
 }
