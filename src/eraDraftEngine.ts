@@ -1,3 +1,4 @@
+import type { EraDraftTierCaps } from "./eraDraftTierCaps.js";
 import type { EraDraftCatalog, EraDraftTeamSeason } from "./eraDraftData.js";
 import { assertEraDraftState } from "./eraDraftInvariants.js";
 import { evaluateSelectionLegality, teamSeasonHasViableSelection } from "./eraDraftLegality.js";
@@ -67,15 +68,16 @@ export function reduceEraDraft(
   catalog: EraDraftCatalog,
   state: EraDraftState,
   command: EraDraftCommand,
+  tierCaps?: EraDraftTierCaps,
 ): EraDraftTransitionResult {
-  assertEraDraftState(catalog, state);
+  assertEraDraftState(catalog, state, tierCaps);
   switch (command.type) {
-    case "CHOOSE_ERA": return chooseEra(catalog, state, command);
-    case "SPIN": return spin(catalog, state, command);
-    case "LOCK_PLAYER": return lockPlayer(catalog, state, command);
-    case "RESPIN": return respin(catalog, state, command);
-    case "REVEAL_XI": return revealXi(catalog, state, command);
-    case "SIMULATE_SEASON": return simulateSeason(catalog, state, command);
+    case "CHOOSE_ERA": return chooseEra(catalog, state, command, tierCaps);
+    case "SPIN": return spin(catalog, state, command, tierCaps);
+    case "LOCK_PLAYER": return lockPlayer(catalog, state, command, tierCaps);
+    case "RESPIN": return respin(catalog, state, command, tierCaps);
+    case "REVEAL_XI": return revealXi(catalog, state, command, tierCaps);
+    case "SIMULATE_SEASON": return simulateSeason(catalog, state, command, tierCaps);
   }
 }
 
@@ -83,6 +85,7 @@ function chooseEra(
   catalog: EraDraftCatalog,
   state: EraDraftState,
   command: ChooseEraCommand,
+  tierCaps?: EraDraftTierCaps,
 ): EraDraftTransitionResult {
   if (state.phase !== "SETUP") return rejected(state, command, "INVALID_PHASE", "An era can only be chosen during SETUP.");
   if (!catalog.getEra(command.eraId)) return rejected(state, command, "UNKNOWN_ERA", `Unknown Era Draft era ${command.eraId}.`);
@@ -100,7 +103,7 @@ function chooseEra(
     revision,
     history: [...state.history, event],
   } satisfies AwaitingSpinState);
-  assertEraDraftState(catalog, next);
+  assertEraDraftState(catalog, next, tierCaps);
   return { ok: true, state: next, event };
 }
 
@@ -108,11 +111,12 @@ function spin(
   catalog: EraDraftCatalog,
   state: EraDraftState,
   command: SpinCommand,
+  tierCaps?: EraDraftTierCaps,
 ): EraDraftTransitionResult {
   if (state.phase !== "AWAITING_SPIN") return rejected(state, command, "INVALID_PHASE", "A normal spin requires AWAITING_SPIN.");
   const spinOrdinal = state.rngCounters.normalSpin;
   const triggering = selectNormalSpinTeamSeason(catalog, state.rootSeed, state.eraId, spinOrdinal);
-  const resolved = resolveViableSpin(catalog, state, triggering, `normal:${spinOrdinal}:${triggering.teamSeasonId}`);
+  const resolved = resolveViableSpin(catalog, state, triggering, `normal:${spinOrdinal}:${triggering.teamSeasonId}`, new Set(), tierCaps);
   if (!resolved) {
     throw new EraDraftInvariantError("NO_VIABLE_TEAM_SEASON", `No viable team-season remains in ${state.eraId}.`);
   }
@@ -140,7 +144,7 @@ function spin(
     history: [...state.history, event],
     currentSpin: currentSpin(resolved, "NORMAL", spinOrdinal),
   } satisfies AwaitingPickState);
-  assertEraDraftState(catalog, next);
+  assertEraDraftState(catalog, next, tierCaps);
   return { ok: true, state: next, event };
 }
 
@@ -148,6 +152,7 @@ function lockPlayer(
   catalog: EraDraftCatalog,
   state: EraDraftState,
   command: LockPlayerCommand,
+  tierCaps?: EraDraftTierCaps,
 ): EraDraftTransitionResult {
   if (state.phase !== "AWAITING_PICK") {
     return rejected(state, command, "INVALID_PHASE", "A player can only be locked from AWAITING_PICK.");
@@ -157,6 +162,7 @@ function lockPlayer(
     eraId: state.eraId,
     picks: state.picks,
     activeTeamSeasonId: state.currentSpin.teamSeasonId,
+    tierCaps,
   }, command);
   if (!legality.available) {
     const primary = legality.reasons[0]!;
@@ -191,7 +197,7 @@ function lockPlayer(
     picks,
     history: [...state.history, event],
   } satisfies AwaitingSpinState | XiCompleteState);
-  assertEraDraftState(catalog, next);
+  assertEraDraftState(catalog, next, tierCaps);
   return { ok: true, state: next, event };
 }
 
@@ -199,6 +205,7 @@ function respin(
   catalog: EraDraftCatalog,
   state: EraDraftState,
   command: RespinCommand,
+  tierCaps?: EraDraftTierCaps,
 ): EraDraftTransitionResult {
   if (state.phase !== "AWAITING_PICK") return rejected(state, command, "INVALID_PHASE", "A respin requires AWAITING_PICK.");
   if (state.respin.status !== "AVAILABLE") return rejected(state, command, "RESPIN_UNAVAILABLE", "The voluntary respin has already been used.");
@@ -215,6 +222,7 @@ function respin(
     triggering,
     `respin:${respinOrdinal}:${discardedTeamSeasonId}:${triggering.teamSeasonId}`,
     excluded,
+    tierCaps,
   );
   if (!resolved) {
     return rejected(state, command, "RESPIN_REPLACEMENT_UNAVAILABLE", "No viable replacement exists outside the discarded team-season.");
@@ -245,7 +253,7 @@ function respin(
     history: [...state.history, event],
     currentSpin: currentSpin(resolved, "RESPIN", respinOrdinal),
   } satisfies AwaitingPickState);
-  assertEraDraftState(catalog, next);
+  assertEraDraftState(catalog, next, tierCaps);
   return { ok: true, state: next, event };
 }
 
@@ -253,6 +261,7 @@ function revealXi(
   catalog: EraDraftCatalog,
   state: EraDraftState,
   command: RevealXiCommand,
+  tierCaps?: EraDraftTierCaps,
 ): EraDraftTransitionResult {
   if (state.phase !== "XI_COMPLETE") {
     return rejected(state, command, "INVALID_PHASE", "An XI can only be revealed from XI_COMPLETE.");
@@ -275,7 +284,7 @@ function revealXi(
     history: [...state.history, event],
     evaluation,
   } satisfies RevealedState);
-  assertEraDraftState(catalog, next);
+  assertEraDraftState(catalog, next, tierCaps);
   return { ok: true, state: next, event };
 }
 
@@ -283,6 +292,7 @@ function simulateSeason(
   catalog: EraDraftCatalog,
   state: EraDraftState,
   command: SimulateSeasonCommand,
+  tierCaps?: EraDraftTierCaps,
 ): EraDraftTransitionResult {
   if (state.phase !== "REVEALED") {
     return rejected(state, command, "INVALID_PHASE", "A season can only be simulated from REVEALED.");
@@ -303,7 +313,7 @@ function simulateSeason(
     history: [...state.history, event],
     season,
   } satisfies GameCompleteState);
-  assertEraDraftState(catalog, next);
+  assertEraDraftState(catalog, next, tierCaps);
   return { ok: true, state: next, event };
 }
 
@@ -313,10 +323,11 @@ function resolveViableSpin(
   triggering: EraDraftTeamSeason,
   triggerContext: string,
   excludedTeamSeasonIds: ReadonlySet<string> = new Set(),
+  tierCaps?: EraDraftTierCaps,
 ): ResolvedSpin | undefined {
   if (
     !excludedTeamSeasonIds.has(triggering.teamSeasonId)
-    && teamSeasonHasViableSelection(catalog, state.eraId, state.picks, triggering.teamSeasonId)
+    && teamSeasonHasViableSelection(catalog, state.eraId, state.picks, triggering.teamSeasonId, tierCaps)
   ) {
     return freezeState({ selected: triggering, triggeringTeamSeasonId: triggering.teamSeasonId, skippedDeadTeamSeasonIds: [] });
   }
@@ -333,7 +344,7 @@ function resolveViableSpin(
     excluded,
   );
   for (const candidate of ranked) {
-    if (teamSeasonHasViableSelection(catalog, state.eraId, state.picks, candidate.teamSeasonId)) {
+    if (teamSeasonHasViableSelection(catalog, state.eraId, state.picks, candidate.teamSeasonId, tierCaps)) {
       return freezeState({
         selected: candidate,
         triggeringTeamSeasonId: triggering.teamSeasonId,

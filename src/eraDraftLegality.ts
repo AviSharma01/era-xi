@@ -1,3 +1,5 @@
+import { countDraftTiers, type EraDraftTierCaps } from "./eraDraftTierCaps.js";
+import { evaluateTierCompletion } from "./eraDraftTierFeasibility.js";
 import type { EraDraftCatalog, EraDraftPlayerRecord } from "./eraDraftData.js";
 import {
   EraDraftInvariantError,
@@ -12,6 +14,7 @@ export type EraDraftSelectionContext = {
   readonly eraId: EraId;
   readonly picks: readonly EraDraftPick[];
   readonly activeTeamSeasonId: TeamSeasonId;
+  readonly tierCaps?: EraDraftTierCaps;
 };
 
 export type EraDraftSelectionInput = {
@@ -73,6 +76,11 @@ export function evaluateSelectionLegality(
   if (player.rosterStatus === "OVERSEAS" && countOverseas(catalog, context.picks) >= 4) {
     reasons.push(reason("OVERSEAS_LIMIT", "An Era Draft XI may contain at most four overseas players."));
   }
+  if (context.tierCaps) {
+    const counts = countDraftTiers(catalog, context.picks), tier = player.quality.overall.qualityTier;
+    if (tier === "S" && counts.s >= context.tierCaps.maxS) reasons.push(reason("S_TIER_LIMIT", `Standard Draft-Off allows at most ${context.tierCaps.maxS} S-tier players.`));
+    if ((tier === "S" || tier === "A") && counts.sa >= context.tierCaps.maxSA) reasons.push(reason("SA_TIER_LIMIT", `Standard Draft-Off allows at most ${context.tierCaps.maxSA} S+A players combined.`));
+  }
   if (reasons.length > 0 || !isBattingPosition(input.battingPosition)) return frozenLegality(reasons, player);
 
   const hypotheticalPick: EraDraftPick = {
@@ -85,7 +93,7 @@ export function evaluateSelectionLegality(
     teamSeasonId: player.teamSeasonId,
     battingPosition: input.battingPosition,
   };
-  const futureFeasibility = evaluateFutureCompletion(catalog, context.eraId, [...context.picks, hypotheticalPick]);
+  const futureFeasibility = evaluateFutureCompletion(catalog, context.eraId, [...context.picks, hypotheticalPick], context.tierCaps);
   if (!futureFeasibility.feasible) {
     reasons.push(reason("FUTURE_XI_IMPOSSIBLE", "This selection would make a legal eleven-player completion impossible."));
   }
@@ -96,7 +104,9 @@ export function evaluateFutureCompletion(
   catalog: EraDraftCatalog,
   eraId: EraId,
   picks: readonly EraDraftPick[],
+  tierCaps?: EraDraftTierCaps,
 ): FutureCompletionFeasibility {
+  if (tierCaps) return evaluateTierCompletion(catalog, eraId, picks, tierCaps);
   const remainingSlots = 11 - picks.length;
   const remainingOverseasCapacity = 4 - countOverseas(catalog, picks);
   const keeperIds = new Set(catalog.getKeeperCapablePlayerIds(eraId));
@@ -195,9 +205,10 @@ export function teamSeasonHasViableSelection(
   eraId: EraId,
   picks: readonly EraDraftPick[],
   teamSeasonId: TeamSeasonId,
+  tierCaps?: EraDraftTierCaps,
 ): boolean {
   const positions = getOpenBattingPositions(picks);
-  const context = { eraId, picks, activeTeamSeasonId: teamSeasonId };
+  const context = { eraId, picks, activeTeamSeasonId: teamSeasonId, tierCaps };
   return catalog.getCandidatesForTeamSeason(teamSeasonId).some((player) =>
     positions.some((battingPosition) => evaluateSelectionLegality(
       catalog,

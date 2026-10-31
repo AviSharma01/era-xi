@@ -227,6 +227,9 @@ The room's presentation clock is also visible in player inspection, XI review an
 
 ## Varied and Mirror formats (competition v2)
 
+This section records the v2 format contract. New public rooms now use the v3
+Standard policy described in the Batch 2 section below.
+
 New public CREATE requests default to `VARIED`; hosts may explicitly select `MIRROR`.
 The selected format is immutable room configuration in `genesis.format`, not a draft
 command or an editable setting. It is exposed in new rooms' `round.format` and
@@ -285,3 +288,72 @@ The shared twenty-fixture schedule, XI evaluation, XI-specific residual variance
 submission/result hashing, leaderboard rules, retention and exact command retry
 semantics retain their existing versions. Identical ordered XIs still receive the
 same match outputs regardless of format, identity or draft history.
+
+## Batch 2 Standard tier caps (competition v3)
+
+Every new public Draft-Off room uses the fixed Standard preset in
+`src/draftOffRules.ts`: at most three S-tier picks and six S+A picks combined.
+B/C/D have no caps. Varied and Mirror share this policy; CREATE, JOIN and commands
+accept no cap or preset customization. Existing keeper, four-overseas, canonical
+uniqueness and locked-position requirements still apply.
+
+The public CREATE adapter copies the effective `{maxS, maxSA}` values into
+`genesis.tierCaps` through the provider-independent room service. Genesis with
+format plus caps selects competition engine/state/save `/v3`. The canonical
+constructor remains an explicit-genesis API: absence of caps selects the original
+v1/v2 behavior, including historical lobbies that start after this release. It
+never supplies today's defaults during construction or restoration. Stored cap
+values are validated structurally rather than compared with the current preset,
+so changing the preset affects only subsequently created public rooms. There is
+no edit-rules command or storage migration. v3 requires both format and effective
+caps; v1/v2 saves forbid caps. Mixed version triples, missing/extra fields and
+changed genesis hashes fail restoration.
+
+The owning competition passes its stored caps to Era Draft legality, reducer,
+invariants and private projection at every boundary. This includes initialization,
+LOCK_PLAYER, SPIN/RESPIN, deterministic dead-spin recovery, manual submission,
+deadline auto-submission and canonical replay. Rejected locks do not advance
+picks, revisions, history or RNG; normal immutable rejection receipts still apply.
+`S_TIER_LIMIT` and `SA_TIER_LIMIT` distinguish direct limits from
+`FUTURE_XI_IMPOSSIBLE` when a currently affordable pick would prevent completion.
+
+The capped completion solver selects actual variants of distinct canonical players
+under the remaining S, S+A and overseas budgets, reserving a confirmed canonical
+keeper when needed. Its multiple-choice dynamic program keeps those costs coupled;
+independently minimizing tier and overseas costs could invent a historical variant
+that never existed. An exact zero-cost filler witness avoids the dynamic program
+for ordinary full-era catalogs. Catalog-only option indexes are weakly cached;
+no draft state or player selections are cached. Existing positional rules permit
+any undrafted player in any open slot; fit remains a soft factor. Future completion
+is existential across the era, with spin recovery guaranteeing access to a viable
+team-season. It does not guarantee an equally strong XI or an available voluntary
+respin when the discarded team is the sole viable team.
+
+The nested Era Draft state shape/version and RNG domains remain unchanged: it is
+owned and replayed under the v3 competition policy. Standalone Solo saves retain
+the original uncapped contract. `replayEraDraftState` accepts an explicit policy
+for diagnostics of nested drafts; authoritative room restoration always replays
+the competition genesis and accepted commands. No simulation, rating, fit penalty,
+boost, submission identity, leaderboard or fixture contract changes are included.
+
+Both public and authenticated room views expose only the effective values in
+`round.tierCaps`, from lobby through results. HTTP routes and settings stay the
+same; socket `ROOM_SNAPSHOT.version` is 3 for capped rooms, 2 for historical
+format-aware rooms and 1 for legacy Mirror. Updated strict clients validate all
+three shapes and reject cross-version fields or malformed caps. Frontend/backend
+must ship together for new rooms. Invite metadata remains its existing version-2
+whitelist. Private candidates receive the same authoritative availability/reasons
+as LOCK_PLAYER; the existing candidate gallery and placement controls already
+render these messages accessibly, so no visual redesign is required. Opponent
+progress remains only `lockedPickCount`; tier usage, identities, candidates,
+positions, ratings, seeds and private drafts remain absent from public snapshots.
+
+Batch 2 evidence lives in `src/draftOffTierCaps.test.ts` and
+`backend/m5-tier-caps.test.mjs`: cap combinations, independent exhaustive scarcity
+checks, keeper/overseas/variant coupling, capped recovery, 240 seeded legal XIs
+across five eras and both formats, v1/v2 uncapped continuation, v3 replay, retries,
+restart/reconnect, strict socket privacy and deadlines. The existing 80 frozen
+Stage A fixtures and Solo release checks remain independent verification gates.
+
+The [Batch 2 review handoff](../backend/stage-e/BATCH_2_STANDARD_TIER_CAPS_HANDOFF.md)
+lists changed files, verification outcomes and remaining integration limits.

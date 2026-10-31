@@ -95,7 +95,11 @@ Secondary mode using one specific IPL season.
 Later ruleset using visible tiers, tier costs and a fixed purse.
 
 ### Tier Cap
-Later ruleset limiting elite players and rewarding balanced construction.
+Solo Tier Cap remains a later ruleset. New Standard Draft-Off rooms use fixed
+caps of three S-tier players and six S+A players combined, with no B/C/D caps or
+host customization. Both Varied and Mirror use the same rules. Effective values
+are frozen at room creation; historical v1/v2 Draft-Off rooms remain uncapped.
+See `DRAFT_OFF_ARCHITECTURE.md` for the versioned contract.
 
 ## Current state
 

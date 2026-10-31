@@ -1,3 +1,4 @@
+import { isEraDraftTierCaps } from "./eraDraftTierCaps.js";
 import { deriveDraftOffParticipantSeed, isDraftOffFormat } from "./draftOffFormat.js";
 import { canonicalJson, canonicalSha256 } from "./eraDraftCanonical.js";
 import type { EraDraftCatalog } from "./eraDraftData.js";
@@ -7,6 +8,8 @@ import { deriveDraftOffSeeds, deriveDraftOffSubmissionHash } from "./draftOffSim
 import {
   DRAFT_OFF_COMPETITION_ENGINE_VERSION,
   DRAFT_OFF_COMPETITION_ENGINE_V2,
+  DRAFT_OFF_COMPETITION_ENGINE_V3,
+  DRAFT_OFF_COMPETITION_STATE_V3,
   DRAFT_OFF_COMPETITION_STATE_V2,
   DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION,
   DRAFT_OFF_ROUND_RESOLUTION_VERSION,
@@ -22,11 +25,13 @@ export function assertDraftOffCompetitionState(
   catalog: EraDraftCatalog,
   state: DraftOffCompetitionState,
 ): void {
+  const capped = Object.hasOwn(state.genesis, "tierCaps");
+  if (capped && (!isEraDraftTierCaps(state.genesis.tierCaps) || !isDraftOffFormat(state.genesis.format))) fail("INVALID_TIER_CAPS", "Invalid effective tier caps.");
   const modern = Object.hasOwn(state.genesis, "format");
   if (modern && !isDraftOffFormat(state.genesis.format)) fail("INVALID_FORMAT", "Unsupported Draft-Off format.");
   if (
-    state.engineVersion !== (modern ? DRAFT_OFF_COMPETITION_ENGINE_V2 : DRAFT_OFF_COMPETITION_ENGINE_VERSION)
-    || state.schemaVersion !== (modern ? DRAFT_OFF_COMPETITION_STATE_V2 : DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION)
+    state.engineVersion !== (capped ? DRAFT_OFF_COMPETITION_ENGINE_V3 : modern ? DRAFT_OFF_COMPETITION_ENGINE_V2 : DRAFT_OFF_COMPETITION_ENGINE_VERSION)
+    || state.schemaVersion !== (capped ? DRAFT_OFF_COMPETITION_STATE_V3 : modern ? DRAFT_OFF_COMPETITION_STATE_V2 : DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION)
   ) fail("STATE_VERSION_MISMATCH", "Competition state uses unsupported version fields.");
   if (state.catalogFingerprint !== catalog.fingerprint || state.genesis.catalogFingerprint !== catalog.fingerprint) {
     fail("CATALOG_FINGERPRINT_MISMATCH", "Competition state belongs to a different catalog.");
@@ -183,7 +188,7 @@ function validateRoundParticipant(
   round: ActiveDraftOffRound | ResolvedDraftOffRound,
   participant: DraftOffRoundParticipant,
 ): void {
-  assertEraDraftState(catalog, participant.draftState);
+  assertEraDraftState(catalog, participant.draftState, state.genesis.tierCaps);
   const draftPhase = (participant.draftState as { readonly phase: string }).phase;
   if (
     draftPhase === "SETUP"

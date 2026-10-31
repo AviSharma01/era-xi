@@ -1,3 +1,4 @@
+import type { EraDraftTierCaps } from "./eraDraftTierCaps.js";
 import { canonicalJson } from "./eraDraftCanonical.js";
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
@@ -12,12 +13,13 @@ import {
 export function replayEraDraftGame(input: {
   readonly catalog: EraDraftCatalog;
   readonly rootSeed: string;
+  readonly tierCaps?: EraDraftTierCaps;
   readonly history: readonly EraDraftHistoryEntry[];
   readonly expectedStateHash?: string;
 }): EraDraftState {
   let state: EraDraftState = createEraDraftGame({ catalog: input.catalog, rootSeed: input.rootSeed });
   for (const recorded of input.history) {
-    const result = reduceEraDraft(input.catalog, state, commandFromHistory(recorded));
+    const result = reduceEraDraft(input.catalog, state, commandFromHistory(recorded), input.tierCaps);
     if (!result.ok) {
       throw new EraDraftDataError(
         "REPLAY_COMMAND_REJECTED",
@@ -40,9 +42,10 @@ export function replayEraDraftGame(input: {
   return state;
 }
 
-export function replayEraDraftState(catalog: EraDraftCatalog, expected: EraDraftState): EraDraftState {
+export function replayEraDraftState(catalog: EraDraftCatalog, expected: EraDraftState, tierCaps?: EraDraftTierCaps): EraDraftState {
   return replayEraDraftGame({
     catalog,
+    tierCaps,
     rootSeed: expected.rootSeed,
     history: expected.history,
     expectedStateHash: canonicalEraDraftStateHash(expected),

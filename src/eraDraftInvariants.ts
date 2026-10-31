@@ -1,3 +1,4 @@
+import type { EraDraftTierCaps } from "./eraDraftTierCaps.js";
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { evaluateFutureCompletion, teamSeasonHasViableSelection } from "./eraDraftLegality.js";
 import { evaluateEraDraftXi } from "./eraDraftReveal.js";
@@ -12,7 +13,7 @@ import {
   type TeamSeasonId,
 } from "./eraDraftTypes.js";
 
-export function assertEraDraftState(catalog: EraDraftCatalog, state: EraDraftState): void {
+export function assertEraDraftState(catalog: EraDraftCatalog, state: EraDraftState, tierCaps?: EraDraftTierCaps): void {
   if (state.engineVersion !== ERA_DRAFT_ENGINE_VERSION || state.schemaVersion !== ERA_DRAFT_STATE_SCHEMA_VERSION) {
     fail("STATE_VERSION_MISMATCH", "Era Draft state uses unsupported version fields.");
   }
@@ -61,7 +62,7 @@ export function assertEraDraftState(catalog: EraDraftCatalog, state: EraDraftSta
 
   const era = catalog.getEra(state.eraId);
   if (!era) fail("UNKNOWN_STATE_ERA", `State references unknown era ${state.eraId}.`);
-  const feasibility = evaluateFutureCompletion(catalog, state.eraId, state.picks);
+  const feasibility = evaluateFutureCompletion(catalog, state.eraId, state.picks, tierCaps);
 
   if (state.phase === "XI_COMPLETE") {
     if ("currentSpin" in state || "evaluation" in state || "season" in state || state.picks.length !== 11) {
@@ -127,7 +128,7 @@ export function assertEraDraftState(catalog: EraDraftCatalog, state: EraDraftSta
     fail("INVALID_AWAITING_PICK_STATE", "AWAITING_PICK cannot contain evaluation, season, or a complete XI.");
   }
   validateCurrentSpin(catalog, state);
-  if (!teamSeasonHasViableSelection(catalog, state.eraId, state.picks, state.currentSpin.teamSeasonId)) {
+  if (!teamSeasonHasViableSelection(catalog, state.eraId, state.picks, state.currentSpin.teamSeasonId, tierCaps)) {
     fail("DEAD_CURRENT_SPIN", "AWAITING_PICK cannot expose a team-season without a feasible player-slot selection.");
   }
 }

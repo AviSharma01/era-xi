@@ -1,3 +1,4 @@
+import { STANDARD_DRAFT_OFF_TIER_CAPS } from "../../src/draftOffRules.js";
 import { isDraftOffFormat } from '../../src/draftOffFormat.js';
 import { DurableObject } from 'cloudflare:workers';
 import type { EraDraftCatalog } from '../../src/eraDraftData';
@@ -280,7 +281,7 @@ export class DraftOffRoom extends DurableObject<RoomEnv> {
       if (kind === 'CREATE') {
         this.resetService();
         await this.initialize({ version: 1, roomId: code, eraId: operation.input.eraId }, false);
-        await this.service!.createRoom(actor, { roomId: code, hostDisplayName: input.displayName, format: settings.format!,
+        await this.service!.createRoom(actor, { roomId: code, hostDisplayName: input.displayName, format: settings.format!, tierCaps: { ...STANDARD_DRAFT_OFF_TIER_CAPS },
           initialRound: { roundId: 'r1', roundOrdinal: 1, label: 'Era XI Draft-Off', eraId: operation.input.eraId, challengeSeed: randomSecret() } });
       } else {
         const canonical = await this.ctx.storage.get<string>('competition');

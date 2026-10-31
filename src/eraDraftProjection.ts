@@ -1,3 +1,4 @@
+import type { EraDraftTierCaps } from "./eraDraftTierCaps.js";
 import type { EraDraftCatalog, EraDraftPlayerRecord } from "./eraDraftData.js";
 import { assertEraDraftState } from "./eraDraftInvariants.js";
 import { evaluateSelectionLegality, getOpenBattingPositions } from "./eraDraftLegality.js";
@@ -32,8 +33,9 @@ import {
 export function projectEraDraftPublicState(
   catalog: EraDraftCatalog,
   state: EraDraftHiddenState,
+  tierCaps?: EraDraftTierCaps,
 ): EraDraftPublicView {
-  assertEraDraftState(catalog, state);
+  assertEraDraftState(catalog, state, tierCaps);
   if (state.phase === "SETUP") return Object.freeze({ phase: "SETUP", revision: state.revision });
   const era = catalog.getEra(state.eraId)!;
   const picks = projectPicks(catalog, state.picks);
@@ -45,7 +47,7 @@ export function projectEraDraftPublicState(
     return freezeDeep({ phase: "XI_COMPLETE", revision: state.revision, eraId: state.eraId, eraLabel: era.label, status, picks });
   }
   const teamSeason = catalog.getTeamSeason(state.currentSpin.teamSeasonId)!;
-  const context = { eraId: state.eraId, picks: state.picks, activeTeamSeasonId: teamSeason.teamSeasonId };
+  const context = { eraId: state.eraId, picks: state.picks, activeTeamSeasonId: teamSeason.teamSeasonId, tierCaps };
   const openPositions = getOpenBattingPositions(state.picks);
   const candidates = catalog.getCandidatesForTeamSeason(teamSeason.teamSeasonId)
     .map((player) => projectCandidate(catalog, player, context, openPositions))
