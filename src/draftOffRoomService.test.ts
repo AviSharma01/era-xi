@@ -267,6 +267,7 @@ test("manual submit at the deadline is rejected before timer delivery and auto-s
   }
   const view = await service.readRoom(host, "room");
   assert.equal(view.resolution!.contestStatus, "UNCONTESTED");
+  assert.deepEqual(view.participants.map(row => [row.lockedPickCount, row.roundStatus]), [[11, "SUBMITTED"], [0, "INELIGIBLE"]]);
   const bytes = (await repository.read("room"))!.serializedCompetition;
   await clock.fire();
   await service.resumeRoom("room");
@@ -295,6 +296,8 @@ test("final lock before deadline counts, whereas a lock exactly at deadline leav
     await clock.fire();
     const view = await service.readRoom(host, "room");
     assert.equal(view.resolution!.contestStatus, time === 99 ? "UNCONTESTED" : "NO_CONTEST");
+    assert.deepEqual(view.participants.map(row => [row.lockedPickCount, row.roundStatus]),
+      [[time === 99 ? 11 : 10, time === 99 ? "SUBMITTED" : "INELIGIBLE"], [0, "INELIGIBLE"]]);
   }
 });
 

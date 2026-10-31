@@ -2,7 +2,7 @@ import { draftOffFormatDescription, draftOffFormatLabel } from "./draftOffFormat
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
 import type { SnapshotSuccess, PublicCommand } from "./draftOffClientTypes.js";
 import type { DraftOffSessionState } from "./draftOffSession.js";
-import type { DraftOffRoomView } from "./draftOffRoomTypes.js";
+import type { DraftOffPublicRoomView } from "./draftOffRoomTypes.js";
 import type { DraftCandidateIdentityView, DraftPickView, EraDraftPublicView } from "./eraDraftTypes.js";
 import { CandidateGallery, SelectedPlayerDetail, PlayerInspector, FitBadge, fitLabel, friendly } from "./eraDraftPlayerPresentation.js";
 import { appRoutePath, draftOffRoomPath } from "./webRoutes.js";
@@ -78,9 +78,11 @@ export function DraftOffRoomExperience({ code, state, actions }: {
     <p role="status">{state.error ?? "Checking your identity and current room state…"}</p>
     {!state.accessUnavailable && <button className="secondary-action" onClick={() => void actions.resync()}>Refresh room</button>}</section>;
   const view = snapshot.view;
+  const publicView = state.publicSnapshot?.view;
+  const rosterView = publicView && publicView.round.roundId === view.round.roundId && publicView.revision >= view.revision ? publicView : view;
   const me = view.participants.find(row => row.participantId === snapshot.participantId);
-  const submitted = view.participants.filter(row => row.roundStatus === "SUBMITTED").length;
-  const entrants = view.participants.filter(row => row.roundStatus !== undefined).length;
+  const submitted = rosterView.participants.filter(row => row.roundStatus === "SUBMITTED").length;
+  const entrants = rosterView.participants.filter(row => row.roundStatus !== undefined).length;
   const blocked = state.pending || state.accessUnavailable;
   const expired = view.phase === "IN_PROGRESS" && remaining === 0;
   const stage = view.phase === "LOBBY" ? "Private lobby" : view.phase === "COMPLETE" ? "Final leaderboard" : me?.roundStatus === "SUBMITTED" ? "XI submitted" : "Draft in progress";
@@ -88,7 +90,7 @@ export function DraftOffRoomExperience({ code, state, actions }: {
     <div ref={barRef} className={`draft-off-room-bar${remaining !== null && remaining <= 30_000 ? " clock-urgent" : remaining !== null && remaining <= 120_000 ? " clock-warning" : ""}`}>
       <div className="room-bar-identity"><p className="eyebrow">{draftOffFormatLabel(view.round.format ?? "MIRROR")} · {stage}</p><strong>{DRAFT_OFF_ERA_LABELS[view.round.eraId]}</strong></div>
       {view.phase === "IN_PROGRESS" && <div className="room-countdown" role="timer" aria-label={`${formatDraftCountdown(remaining)} remaining`}><span>Time remaining</span><strong>{formatDraftCountdown(remaining)}</strong></div>}
-      <details className="room-people"><summary>{view.phase === "LOBBY" ? `${view.participants.filter(row => row.membershipStatus === "JOINED").length}/8 players` : `${submitted}/${entrants} submitted`}</summary><ParticipantList view={view} me={snapshot.participantId} /></details>
+      <details className="room-people"><summary>{view.phase === "LOBBY" ? `${rosterView.participants.filter(row => row.membershipStatus === "JOINED").length}/8 players` : `${submitted}/${entrants} submitted`}</summary><ParticipantList view={rosterView} me={snapshot.participantId} /></details>
     </div>
     <p className="sr-status" aria-live="polite">{view.phase === "IN_PROGRESS" && (expired ? "Draft time reached. Checking the server for final status." : remaining !== null && remaining <= 30_000 ? "Thirty seconds or less remaining." : remaining !== null && remaining <= 120_000 ? "Two minutes or less remaining." : "Draft clock running.")}</p>
     {(state.pending || state.error || localError || state.accessUnavailable) && <div className="draft-off-recovery" role="status" aria-live="polite">
@@ -99,7 +101,7 @@ export function DraftOffRoomExperience({ code, state, actions }: {
     </div>}
     {view.phase === "LOBBY" ? <Lobby snapshot={snapshot} code={code} blocked={blocked} onCommand={send} />
       : view.phase === "COMPLETE" ? <FinalResults key={`${code}:${view.round.roundId}:${snapshot.participantId}`} snapshot={snapshot} code={code} actions={actions} accessUnavailable={state.accessUnavailable} />
-        : me?.roundStatus === "SUBMITTED" ? <Waiting snapshot={snapshot} expired={expired} countdown={formatDraftCountdown(remaining)} />
+        : me?.roundStatus === "SUBMITTED" ? <Waiting snapshot={snapshot} rosterView={rosterView} expired={expired} countdown={formatDraftCountdown(remaining)} />
           : me?.roundStatus === "DRAFTING" && view.myDraft && view.myDraft.phase !== "SETUP" ? <DraftWorkspace key={view.round.roundId} draft={view.myDraft} blocked={blocked || expired} onCommand={send} expired={expired} countdown={formatDraftCountdown(remaining)} />
             : <section className="draft-off-panel"><h1>You’re outside this round</h1><p>You left before the host started. The roster is now fixed. You can still see public room status and the final leaderboard.</p></section>}
     {expired && <p className="draft-off-notice" role="status">Time reached. Checking final status with the server. Complete legal XIs auto-submit; incomplete XIs are excluded.</p>}
@@ -108,9 +110,9 @@ export function DraftOffRoomExperience({ code, state, actions }: {
 function actionLabel(type: Command["type"]) {
   return ({ START: "Starting the round", LEAVE: "Leaving the lobby", REJOIN: "Rejoining the lobby", SPIN: "Spinning franchise", RESPIN: "Using your respin", LOCK_PLAYER: "Confirming your pick", SUBMIT: "Submitting your XI" })[type];
 }
-function ParticipantList({ view, me }: { view: DraftOffRoomView; me: string }) {
+function ParticipantList({ view, me }: { view: DraftOffPublicRoomView; me: string }) {
   return <ul className="draft-off-members">{view.participants.map(row => <li key={row.participantId}><strong>{row.displayName}<small>{row.participantId === me ? "You" : ""}{row.role === "HOST" ? " · Host" : ""}</small></strong>
-    <span>{row.roundStatus === "SUBMITTED" ? "Submitted" : row.roundStatus === "DRAFTING" ? "Drafting" : row.roundStatus === "INELIGIBLE" ? "Incomplete" : row.membershipStatus === "LEFT" ? "Left lobby" : "Joined"}</span></li>)}</ul>;
+    <span>{row.lockedPickCount !== undefined && <>{row.lockedPickCount}/11 · </>}{row.roundStatus === "SUBMITTED" ? "Submitted" : row.roundStatus === "DRAFTING" ? "Drafting" : row.roundStatus === "INELIGIBLE" ? "Incomplete" : row.membershipStatus === "LEFT" ? "Left lobby" : "Joined"}</span></li>)}</ul>;
 }
 function Invite({ code }: { code: string }) {
   const [message, setMessage] = useState<string | null>(null);
@@ -208,10 +210,10 @@ function DraftWorkspace({ draft, blocked, expired, countdown, onCommand }: { dra
     {inspected && <PlayerInspector player={inspected} countdown={countdown} onClose={() => setInspected(null)} />}
   </>;
 }
-function Waiting({ snapshot, expired, countdown }: { snapshot: SnapshotSuccess; expired: boolean; countdown: string }) {
+function Waiting({ snapshot, rosterView, expired, countdown }: { snapshot: SnapshotSuccess; rosterView: DraftOffPublicRoomView; expired: boolean; countdown: string }) {
   const [inspected, setInspected] = useState<DraftPickView | null>(null);
   const draft = snapshot.view.myDraft;
-  return <div className="room-waiting-layout"><section className="draft-off-panel"><p className="eyebrow">Submission confirmed</p><h1>Your XI is locked in.</h1><p>{expired ? "Checking the final result with the server." : "The room is still drafting. Results arrive when everyone submits or time runs out."}</p><p>Your submission is final. Private XIs and ratings remain hidden.</p><ParticipantList view={snapshot.view} me={snapshot.participantId} /></section>
+  return <div className="room-waiting-layout"><section className="draft-off-panel"><p className="eyebrow">Submission confirmed</p><h1>Your XI is locked in.</h1><p>{expired ? "Checking the final result with the server." : "The room is still drafting. Results arrive when everyone submits or time runs out."}</p><p>Your submission is final. Private XIs and ratings remain hidden.</p><ParticipantList view={rosterView} me={snapshot.participantId} /></section>
     {draft && draft.phase !== "SETUP" && <CompactXi draft={draft} preview={null} onInspect={setInspected} />}{inspected && <PlayerInspector player={inspected} countdown={countdown} onClose={() => setInspected(null)} />}</div>;
 }
 const noCooldown = () => 0;

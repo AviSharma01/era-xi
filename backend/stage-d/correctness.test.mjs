@@ -103,7 +103,7 @@ test('single-use, room/Origin-bound persisted ticket and strict upgrade security
   } finally { for (const client of sockets) client.ws.close(); await runtime.mf.dispose(); }
 });
 
-test('committed public changes broadcast once; private drafting and historical retries never broadcast', { timeout: 240000 }, async () => {
+test('committed locks and statuses broadcast once; spins and historical retries never broadcast', { timeout: 240000 }, async () => {
   const runtime = await startRuntime(temp(), { overrides: permissive }); const clients = [];
   try {
     const host = await create(runtime); const a = await open(runtime, host); clients.push(a);
@@ -116,28 +116,94 @@ test('committed public changes broadcast once; private drafting and historical r
     assert.equal((await command(runtime, member, rejoin)).status, 200); await a.wait(4); await b.wait(3);
     const view = await begin(runtime, host, member); await a.wait(5); await b.wait(4); assert.equal(a.messages.at(-1), b.messages.at(-1));
     assert.equal(JSON.parse(a.messages.at(-1)).view.round.deadlineAtMs, view.round.deadlineAtMs);
+    assert.ok(view.participants.every(row => row.lockedPickCount === 0));
+    let locks = 0;
     for (const room of [host, member]) {
       let own = (await snapshot(runtime, room)).body.view;
       for (let pick = 0; pick < 11; pick++) {
         const reply = await command(runtime, room, draft(`${room.participantId}_spin_${pick}`, own.myDraft.revision, { type: 'SPIN' }));
         assert.equal(reply.status, 200); own = reply.body.view;
+        assert.equal(a.messages.length, 5 + locks); assert.equal(b.messages.length, 4 + locks);
         const locked = await command(runtime, room, draft(`${room.participantId}_lock_${pick}`, own.myDraft.revision, legalLock(own)));
         assert.equal(locked.status, 200); own = locked.body.view;
+        locks++;
+        const update = await a.wait(5 + locks); await b.wait(4 + locks);
+        assert.equal(a.messages.at(-1), b.messages.at(-1));
+        assert.equal(update.view.participants.find(row => row.participantId === room.participantId).lockedPickCount, pick + 1);
+        const { myDraft: _private, ...shared } = own;
+        assert.deepEqual(update.view, shared);
       }
     }
-    assert.equal(a.messages.length, 5); assert.equal(b.messages.length, 4);
+    assert.equal(a.messages.length, 27); assert.equal(b.messages.length, 26);
     const hostView = (await snapshot(runtime, host)).body.view;
     const submit = draft('submit-host', hostView.myDraft.revision, { type: 'SUBMIT' });
-    const submitted = await command(runtime, host, submit); assert.equal(submitted.status, 200); await a.wait(6); await b.wait(5);
+    const submitted = await command(runtime, host, submit); assert.equal(submitted.status, 200); await a.wait(28); await b.wait(27);
     assert.equal((await command(runtime, host, submit)).body.changed, true);
     const memberView = (await snapshot(runtime, member)).body.view;
     const last = await command(runtime, member, draft('submit-member', memberView.myDraft.revision, { type: 'SUBMIT' })); assert.equal(last.status, 200);
-    await a.wait(7); await b.wait(6); assert.equal(a.messages.at(-1), b.messages.at(-1));
+    await a.wait(29); await b.wait(28); assert.equal(a.messages.at(-1), b.messages.at(-1));
+    assert.ok(JSON.parse(a.messages.at(-1)).view.participants.every(row => row.lockedPickCount === 11 && row.roundStatus === 'SUBMITTED'));
     assert.equal(JSON.parse(a.messages.at(-1)).view.resolution.contestStatus, 'CONTESTED');
     assert.equal((await command(runtime, host, submit)).body.roomRevision, submitted.body.roomRevision);
     await control(runtime, host.roomCode, 'alarm'); await delay(50);
-    assert.equal(a.messages.length, 7); assert.equal(b.messages.length, 6);
+    assert.equal(a.messages.length, 29); assert.equal(b.messages.length, 28);
     for (const client of clients) safe(client, host.roomCode, [host.reconnectCredential, member.reconnectCredential]);
+  } finally { for (const client of clients) client.ws.close(); await runtime.mf.dispose(); }
+});
+
+test('lock progress is commit-atomic, idempotent and concurrent-safe, and survives hibernation, restart and reconnect', { timeout: 120000 }, async () => {
+  const statePath = temp(); let runtime = await startRuntime(statePath, { overrides: permissive }); const clients = [];
+  try {
+    const host = await create(runtime), member = await guest(runtime, host);
+    const a = await open(runtime, host), b = await open(runtime, member); clients.push(a, b);
+    const initial = await begin(runtime, host, member); await a.wait(2); await b.wait(2);
+    let own = initial;
+    const counts = view => [host, member].map(room => view.participants.find(row => row.participantId === room.participantId).lockedPickCount);
+    assert.deepEqual(counts(initial), [0, 0]);
+    const send = async (id, cmd, revision = own.myDraft.revision) => command(runtime, host, draft(id, revision, cmd));
+    assert.equal((await send('invalid-lock', { type: 'LOCK_PLAYER', playerTeamSeasonId: 'unknown', battingPosition: 1 })).status, 422);
+    own = (await send('spin', { type: 'SPIN' })).body.view;
+    own = (await send('respin', { type: 'RESPIN' })).body.view;
+    assert.equal((await send('second-respin', { type: 'RESPIN' })).status, 422);
+    assert.equal((await send('stale', legalLock(own), 0)).status, 409);
+    const input = draft('lock', own.myDraft.revision, legalLock(own));
+    const before = (await control(runtime, host.roomCode, 'inspect')).records.competition;
+    await control(runtime, host.roomCode, 'fail');
+    assert.equal((await command(runtime, host, input)).status, 503);
+    assert.equal((await control(runtime, host.roomCode, 'inspect')).records.competition, before);
+    assert.deepEqual(counts((await snapshot(runtime, member)).body.view), [0, 0]);
+    await delay(30); assert.equal(a.messages.length, 2); assert.equal(b.messages.length, 2);
+    const replies = await Promise.all([command(runtime, host, input), command(runtime, host, input)]);
+    assert.equal(replies[0].status, 200); assert.deepEqual(replies[0].body, replies[1].body);
+    const stale = await command(runtime, host, { ...input, commandId: 'stale-lock' });
+    assert.equal(stale.status, 409); assert.equal(stale.body.error.code, 'STALE_DRAFT_REVISION');
+    await a.wait(3); await b.wait(3); assert.equal(a.messages.at(-1), b.messages.at(-1));
+    assert.deepEqual(counts(JSON.parse(a.messages.at(-1)).view), [1, 0]);
+    const hibernating = await control(runtime, host.roomCode, 'instance');
+    await runtime.mf.unsafeEvictDurableObject('stage-d', 'StageDTestRoom', { name: host.roomCode, webSockets: 'hibernate' });
+    own = (await send('next-spin', { type: 'SPIN' }, replies[0].body.view.myDraft.revision)).body.view;
+    const next = draft('next-lock', own.myDraft.revision, legalLock(own));
+    const races = await Promise.all([command(runtime, host, next), command(runtime, host, { ...next, commandId: 'racing-lock' })]);
+    assert.deepEqual(races.map(reply => reply.status).sort(), [200, 409]);
+    assert.equal(races.find(reply => reply.status === 409).body.error.code, 'STALE_DRAFT_REVISION');
+    await a.wait(4); await b.wait(4);
+    assert.notEqual((await control(runtime, host.roomCode, 'instance')).instanceId, hibernating.instanceId);
+    assert.deepEqual(counts(JSON.parse(a.messages.at(-1)).view), [2, 0]);
+    assert.deepEqual((await command(runtime, host, input)).body, replies[0].body);
+    await delay(30); assert.equal(a.messages.length, 4); assert.equal(b.messages.length, 4);
+    const { myDraft: _private, ...shared } = (await snapshot(runtime, member)).body.view;
+    assert.deepEqual(JSON.parse(b.messages.at(-1)).view, shared);
+    const identity = input.command.playerTeamSeasonId;
+    for (const client of clients) safe(client, host.roomCode, [identity, host.reconnectCredential, member.reconnectCredential]);
+    for (const client of clients) { client.ws.close(); await client.closed; }
+    await runtime.mf.dispose(); runtime = await startRuntime(statePath, { overrides: permissive });
+    assert.deepEqual((await command(runtime, host, input)).body, replies[0].body);
+    for (const room of [host, member]) {
+      const fresh = await open(runtime, room); clients.push(fresh);
+      const { myDraft: _own, ...publicView } = (await snapshot(runtime, room)).body.view;
+      assert.deepEqual(JSON.parse(fresh.messages[0]).view, publicView);
+      assert.deepEqual(counts(publicView), [2, 0]);
+    }
   } finally { for (const client of clients) client.ws.close(); await runtime.mf.dispose(); }
 });
 
@@ -159,7 +225,7 @@ test('hibernated sockets survive re-instantiation; native deadlines resolve with
       const after = await control(runtime, host.roomCode, 'instance'); assert.notEqual(after.instanceId, before.instanceId);
       if (a) {
         const final = await a.wait(3); assert.equal(final.view.resolution.contestStatus, 'NO_CONTEST');
-        assert.ok(final.view.participants.every(row => row.roundStatus === 'INELIGIBLE'));
+        assert.ok(final.view.participants.every(row => row.roundStatus === 'INELIGIBLE' && row.lockedPickCount === 0));
         assert.equal(a.ws.readyState, WebSocket.OPEN); assert.equal(after.attachments[0].participantId, host.participantId);
         const beforeCount = a.messages.length;
         await control(runtime, host.roomCode, 'alarm'); await delay(30); assert.equal(a.messages.length, beforeCount);
@@ -258,6 +324,13 @@ test('production bundle excludes fixture controls and serves advisory realtime f
     await begin(runtime, host, rooms[1]);
     for (const client of clients) await client.wait(2);
     assert.equal(new Set(clients.map(client => client.messages[1])).size, 1);
+    const spun = await command(runtime, host, draft('spin', 1, { type: 'SPIN' })); assert.equal(spun.status, 200);
+    const locked = await command(runtime, host, draft('lock', spun.body.view.myDraft.revision, legalLock(spun.body.view))); assert.equal(locked.status, 200);
+    for (const client of clients) {
+      const update = await client.wait(3);
+      assert.ok(update.view.participants.every(row => row.lockedPickCount === (row.participantId === host.participantId ? 1 : 0)));
+    }
+    assert.equal(new Set(clients.map(client => client.messages[2])).size, 1);
     for (const client of clients) safe(client, host.roomCode, rooms.map(room => room.reconnectCredential));
   } finally { for (const client of clients) client.ws.close(); await runtime.mf.dispose(); }
 });

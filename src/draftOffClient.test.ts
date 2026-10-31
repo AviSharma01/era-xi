@@ -39,6 +39,58 @@ test("format-aware and legacy socket contracts validate strictly without private
   }
 });
 
+test("v1 and v2 progress accepts only bounded numerical counts and existing status, with legacy field absence", () => {
+  const { myDraft: _private, ...view } = snapshot().view;
+  for (const format of [undefined, "MIRROR", "VARIED"]) {
+    const message = { version: format ? 2 : 1, type: "ROOM_SNAPSHOT", serverTimeMs: 1,
+      view: { ...view, round: { ...view.round, ...(format ? { format } : {}) } } };
+    assert.doesNotThrow(() => parseRoomSnapshot(JSON.stringify(message), code));
+    for (const status of ["DRAFTING", "SUBMITTED", "INELIGIBLE"]) {
+      for (const count of [0, 7, 11]) {
+        const progress = { ...message, view: { ...message.view,
+          participants: [{ ...view.participants[0], roundStatus: status, lockedPickCount: count }] } };
+        assert.equal(parseRoomSnapshot(JSON.stringify(progress), code).view.participants[0]!.lockedPickCount, count);
+      }
+    }
+    for (const count of [-1, 12, 0.5, "7", null, {}, []]) {
+      const invalid = { ...message, view: { ...message.view,
+        participants: [{ ...view.participants[0], roundStatus: "DRAFTING", lockedPickCount: count }] } };
+      assert.throws(() => parseRoomSnapshot(JSON.stringify(invalid), code));
+    }
+    for (const extra of [{ lockedPickCount: 0 }, { roundStatus: "DRAFTING", lockedPickCount: 1, battingPosition: 1 },
+      { roundStatus: "DRAFTING", lockedPickCount: 1, playerTeamSeasonId: "private" }]) {
+      assert.throws(() => parseRoomSnapshot(JSON.stringify({ ...message, view: { ...message.view,
+        participants: [{ ...view.participants[0], ...extra }] } }), code));
+    }
+  }
+});
+
+test("HTTP-only sessions recover pick progress after refresh and ignore historical receipt counts", async () => {
+  let current = 0;
+  const read = () => {
+    const reply = snapshot(current + 2);
+    Object.assign(reply.view.participants[0]!, { roundStatus: "DRAFTING", lockedPickCount: current });
+    return reply;
+  };
+  const send = server(async () => response({ ok: true, changed: true, roomRevision: 2,
+    view: snapshot().view }), read);
+  const first = setup(send);
+  try {
+    await first.client.start();
+    assert.equal(first.latest()!.snapshot!.view.participants[0]!.lockedPickCount, 0);
+    current = 7;
+    await first.client.resync();
+    assert.equal(first.latest()!.snapshot!.view.participants[0]!.lockedPickCount, 7);
+    await first.client.command({ type: "SPIN" });
+    assert.equal(first.latest()!.snapshot!.view.participants[0]!.lockedPickCount, 7);
+  } finally { first.client.stop(); }
+  const refreshed = setup(send);
+  try {
+    await refreshed.client.start();
+    assert.equal(refreshed.latest()!.snapshot!.view.participants[0]!.lockedPickCount, 7);
+  } finally { refreshed.client.stop(); }
+});
+
 test("invite client accepts only the exact public metadata whitelist and matching room", async () => {
   const invite = { ok: true, version: 2, roomCode: code, eraId: "era-foundation", draftMinutes: 10, format: "VARIED" };
   assert.deepEqual(await readDraftOffInvite("https://api.test", code, async () => response(invite)), invite);
@@ -54,6 +106,63 @@ function setup(send: typeof fetch, journalStorage = storage(), credentialStorage
     onChange: state => { latest = state; } });
   return { client, journalStorage, latest: () => latest };
 }
+
+test("session publishes opponent progress separately from private HTTP and command confirmation floors", async () => {
+  const otherId = "p_" + "b".repeat(32);
+  const reply = (revision: number, count: number, draftRevision = 1) => {
+    const value = snapshot(revision, draftRevision);
+    Object.assign(value.view.participants[0]!, { roundStatus: "DRAFTING", lockedPickCount: 0 });
+    Object.assign(value.view, { participants: [...value.view.participants, { participantId: otherId, displayName: "Other",
+      role: "MEMBER", membershipStatus: "JOINED", roundStatus: "DRAFTING", lockedPickCount: count }] });
+    return value;
+  };
+  const socket = { protocol: "draft-off.v1", close() {}, onmessage: undefined as undefined | ((event: { data: string }) => void) };
+  const emit = (value: SnapshotSuccess) => {
+    const { myDraft: _private, ...view } = value.view;
+    socket.onmessage!({ data: JSON.stringify({ version: 1, type: "ROOM_SNAPSHOT", serverTimeMs: value.serverTimeMs, view }) });
+  };
+  let reads = 0, sent: Record<string, unknown> | undefined, current = reply(2, 0);
+  let delayed: Promise<Response> | undefined, release!: (value: Response) => void;
+  const client = createDraftOffSession({ apiOrigin: "https://api.test", roomCode: code, credential, journalStorage: storage(),
+    realtime: { createSocket: () => socket as unknown as WebSocket, events: { addEventListener() {}, removeEventListener() {} } },
+    transport: createDraftOffTransport({ fetch: async (url, init) => {
+      if (String(url).endsWith('/commands')) { sent = JSON.parse(init!.body as string); return response({ ok: true, changed: true, roomRevision: 11 }); }
+      if (String(url).endsWith('/socket-tickets')) return response({ ok: true, ticket: "T".repeat(43), expiresAtMs: 30000 });
+      reads++;
+      return delayed ?? response(current);
+    } }), onChange() {},
+  });
+  try {
+    await client.start(); emit(current); await flush();
+    assert.equal(reads, 2);
+    const authenticated = client.getState().snapshot;
+    delayed = new Promise(resolve => { release = resolve; });
+    const refresh = client.resync(); await flush();
+    emit(reply(10, 7)); await flush();
+    assert.equal(reads, 3);
+    assert.strictEqual(client.getState().snapshot, authenticated);
+    assert.equal(client.getState().publicSnapshot!.view.participants[1]!.lockedPickCount, 7);
+    assert.equal(client.getState().pending, false);
+    delayed = undefined; release(response(reply(3, 1, 2))); await refresh;
+    assert.equal(client.getState().snapshot!.view.myDraft!.revision, 2);
+    assert.equal(client.getState().publicSnapshot!.view.revision, 10);
+    assert.equal(reads, 3, "An older private GET must not chase the opponent's public revision");
+    delayed = new Promise(resolve => { release = resolve; });
+    const command = client.command({ type: "SPIN" }); await flush();
+    assert.equal(sent!.expectedDraftRevision, 2);
+    emit(reply(12, 8)); await flush();
+    assert.equal(client.getState().pending, true, "Public progress cannot confirm a local command");
+    delayed = undefined; release(response(reply(11, 7, 3))); await command;
+    assert.equal(client.getState().pending, false);
+    assert.equal(client.getState().snapshot!.view.revision, 11);
+    assert.equal(client.getState().snapshot!.view.myDraft!.revision, 3);
+    assert.equal(client.getState().publicSnapshot!.view.revision, 12);
+    assert.equal(client.getState().publicSnapshot!.view.participants[1]!.lockedPickCount, 8);
+    emit(reply(9, 2)); await flush();
+    assert.equal(client.getState().publicSnapshot!.view.revision, 12);
+    assert.equal(reads, 4);
+  } finally { client.stop(); }
+});
 function server(command: (init: RequestInit) => Promise<Response>, read = () => snapshot()): typeof fetch {
   return async (url, init) => String(url).endsWith("/commands") ? command(init!) : String(url).endsWith("/socket-tickets")
     ? response({ ok: true, ticket: "T".repeat(43), expiresAtMs: 30000 }) : response(read());

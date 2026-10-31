@@ -4,6 +4,7 @@ import type { PublicCommand, SnapshotSuccess } from "./draftOffClientTypes.js";
 import { enrollGuest, type EnrollmentStorage, type EnrollmentLock } from "./draftOffEnrollmentClient.js";
 import { fetchDraftOffResults, ResultsClientError } from "./draftOffResultsClient.js";
 import type { ResultsSuccess } from "./draftOffResultsTypes.js";
+import type { DraftOffRoomSnapshotMessage } from "./draftOffRoomTypes.js";
 
 export type GuestCredential = { participantId: string; reconnectCredential: string };
 export function readDraftOffCredential(storage: EnrollmentStorage, code: string): GuestCredential | null {
@@ -60,6 +61,8 @@ export async function enrollDraftOffGuest(options: {
 type Journal = { version: 1; roomCode: string; participantId: string; envelope: PublicCommand };
 export type DraftOffSessionState = {
   snapshot: SnapshotSuccess | null; pending: boolean; error: string | null; accessUnavailable: boolean;
+  /** Independently versioned public data; never confirms or replaces snapshot.myDraft. */
+  publicSnapshot?: DraftOffRoomSnapshotMessage;
   pendingCommand?: PublicCommand["command"]["type"]; retryAvailable?: boolean;
 };
 
@@ -75,7 +78,7 @@ function validEnvelope(value: PublicCommand): boolean {
   return ["START", "LEAVE", "REJOIN", "SPIN", "RESPIN", "SUBMIT"].includes(value.command.type) && Object.keys(value.command).join() === "type";
 }
 
-/** Owns one guest's intents, never domain state. HTTP GET remains the only snapshot publisher. */
+/** Owns one guest's intents. Only authenticated HTTP publishes private state/confirmation. */
 export function createDraftOffSession(options: {
   apiOrigin: string; roomCode: string; credential: GuestCredential; journalStorage: EnrollmentStorage;
   credentialStorage?: EnrollmentStorage;
@@ -106,7 +109,7 @@ export function createDraftOffSession(options: {
       const { myDraft: _private, ...view } = state.snapshot.view;
       snapshot = { ...state.snapshot, view };
     }
-    publish({ snapshot, accessUnavailable: true, error: message, retryAvailable: false });
+    publish({ snapshot, publicSnapshot: undefined, accessUnavailable: true, error: message, retryAvailable: false });
     stop();
   }
   function verifyCredential(): boolean {
@@ -122,7 +125,10 @@ export function createDraftOffSession(options: {
   const realtime = createDraftOffRealtimeClient({ ...options.realtime, apiOrigin: options.apiOrigin, roomCode: options.roomCode,
     reconnectCredential: options.credential.reconnectCredential,
     transport: (input, init) => verifyCredential() ? transport.fetch(input, init) : Promise.reject(new Error("AUTHENTICATION_FAILED")),
-    onPublicSnapshot() {},
+    onPublicSnapshot(snapshot) {
+      if (!verifyCredential() || !state.snapshot || (state.publicSnapshot && state.publicSnapshot.view.revision >= snapshot.view.revision)) return;
+      publish({ publicSnapshot: snapshot });
+    },
     onSnapshot(snapshot) {
       if (!verifyCredential()) return;
       if (snapshot.participantId !== options.credential.participantId) {
@@ -223,8 +229,7 @@ export function createDraftOffSession(options: {
       if (Number.isSafeInteger(result.roomRevision) && result.roomRevision! >= 0) confirmedRevision = Math.max(confirmedRevision, result.roomRevision!);
       clearJournal();
       awaitingSnapshot = true;
-      realtime.observeCommand(result);
-      await realtime.resync();
+      await realtime.observeCommand(result);
       if (!success) publish({ error: `Action rejected (${result.error!.code}). Refresh the room before trying a corrected action.` });
     } catch { publish({ error: "The action is not yet confirmed. Retry the saved action; do not create a replacement." }); }
     finally { sending = false; publish({ pending: journal !== null || awaitingSnapshot || !state.snapshot || state.snapshot.view.revision < confirmedRevision,

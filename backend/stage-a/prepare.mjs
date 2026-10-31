@@ -59,8 +59,14 @@ for (const [index, entry] of manifest.eras.entries()) {
       assert.ok(result.ok && result.changed, result.ok ? 'Expected state change' : result.error.code);
       state = result.state;
       const actor = { kind: 'PARTICIPANT', participantId };
+      // These frozen v1 fixtures include historical receipts. Keep their original
+      // projection bytes; fresh reads use the current projector, while exact
+      // receipt retries must continue returning the old shape without progress.
+      const currentView = projectDraftOffRoom(catalog, state, participantId);
+      const historicalView = { ...currentView,
+        participants: currentView.participants.map(({ lockedPickCount: _progress, ...row }) => row) };
       receipts = { ...receipts, [commandId]: { fingerprint: canonicalSha256({ actor, envelope }),
-        result: { ok: true, changed: true, roomRevision: state.revision, view: projectDraftOffRoom(catalog, state, participantId) } } };
+        result: { ok: true, changed: true, roomRevision: state.revision, view: historicalView } } };
       envelopes[commandId] = envelope; actors[commandId] = participantId;
     };
     const draft = id => state.rounds[0].participants.find(p => p.participantId === id).draftState;
