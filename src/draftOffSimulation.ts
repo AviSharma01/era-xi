@@ -1,3 +1,4 @@
+import { evaluationVersionOf, type EraTeamEvaluation, type TeamEvaluationVersion } from "./teamEvaluationPolicy.js";
 import { canonicalSha256 } from "./eraDraftCanonical.js";
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { assertEraDraftState } from "./eraDraftInvariants.js";
@@ -28,9 +29,7 @@ import {
   type SimulationTeamV2,
 } from "./simulationV2.js";
 import {
-  TEAM_EVALUATION_V2_VERSION,
   type EraId,
-  type TeamEvaluationV2,
 } from "./teamEvaluationV2.js";
 import type { XiCompleteState } from "./eraDraftTypes.js";
 
@@ -128,7 +127,9 @@ export function deriveDraftOffGameplayXiIdentity(input: {
   readonly catalogFingerprint: string;
   readonly eraId: EraId;
   readonly xi: XiCompleteState;
+  readonly teamEvaluationVersion?: TeamEvaluationVersion;
 }): string {
+  if (evaluationVersionOf(input) !== evaluationVersionOf(input.xi)) throw new Error("Draft-Off evaluation policy differs from XI.");
   if (!input.catalogFingerprint) throw new RangeError("Draft-Off XI identity requires a catalog fingerprint.");
   if (input.xi.phase !== "XI_COMPLETE" || input.xi.eraId !== input.eraId || input.xi.picks.length !== 11) {
     throw new Error(`Draft-Off XI identity requires a completed XI from ${input.eraId}.`);
@@ -148,7 +149,7 @@ export function deriveDraftOffGameplayXiIdentity(input: {
     domain: "gameplay-xi-identity",
     catalogFingerprint: input.catalogFingerprint,
     simulationVersion: SIMULATION_V2_VERSION,
-    teamEvaluationVersion: TEAM_EVALUATION_V2_VERSION,
+    teamEvaluationVersion: evaluationVersionOf(input),
     eraId: input.eraId,
     orderedXi,
   });
@@ -202,6 +203,7 @@ export function simulateDraftOffChallenge(input: {
   readonly eraId: EraId;
   readonly roundOrdinal: number;
   readonly participants: readonly DraftOffParticipantInput[];
+  readonly teamEvaluationVersion?: TeamEvaluationVersion;
 }): DraftOffChallengeResult {
   validateParticipants(input.participants, 2);
   return simulateDraftOffEntries(input);
@@ -217,6 +219,7 @@ export function simulateDraftOffEntries(input: {
   readonly eraId: EraId;
   readonly roundOrdinal: number;
   readonly participants: readonly DraftOffParticipantInput[];
+  readonly teamEvaluationVersion?: TeamEvaluationVersion;
 }): DraftOffChallengeResult {
   validateParticipants(input.participants, 1);
   const seeds = deriveDraftOffSeeds({
@@ -248,6 +251,7 @@ export function simulateDraftOffEntries(input: {
       environment,
       profileById,
       opponentTeams,
+      teamEvaluationVersion: evaluationVersionOf(input),
     }));
   const leaderboard = buildDraftOffLeaderboard(campaigns);
   const body = {
@@ -296,18 +300,21 @@ function simulateParticipant(input: {
   readonly environment: EraEnvironmentV2;
   readonly profileById: ReadonlyMap<string, EraOpponentProfileV2>;
   readonly opponentTeams: readonly SimulationTeamV2[];
+  readonly teamEvaluationVersion: TeamEvaluationVersion;
 }): DraftOffCampaignResult {
   const { participant } = input;
   assertEraDraftState(input.catalog, participant.xi);
   if (participant.xi.phase !== "XI_COMPLETE" || participant.xi.eraId !== input.eraId) {
     throw new Error(`${participant.participantId} must provide a completed XI from ${input.eraId}.`);
   }
+  if (evaluationVersionOf(participant.xi) !== input.teamEvaluationVersion) throw new Error("Draft-Off evaluation policy differs from submitted XI.");
   const evaluation = evaluateEraDraftXi(input.catalog, participant.xi);
   const entrant = evaluationAsDraftOffTeam(evaluation);
   const gameplayXiIdentity = deriveDraftOffGameplayXiIdentity({
     catalogFingerprint: input.catalog.fingerprint,
     eraId: input.eraId,
     xi: participant.xi,
+    teamEvaluationVersion: input.teamEvaluationVersion,
   });
   const submissionHash = deriveDraftOffSubmissionHash({
     catalogFingerprint: input.catalog.fingerprint,
@@ -387,7 +394,7 @@ function authoritativeProfiles(catalog: EraDraftCatalog, eraId: EraId): readonly
   return profiles;
 }
 
-function evaluationAsDraftOffTeam(evaluation: TeamEvaluationV2): SimulationTeamV2 {
+function evaluationAsDraftOffTeam(evaluation: EraTeamEvaluation): SimulationTeamV2 {
   return {
     teamId: DRAFT_OFF_ENTRY_TEAM_ID,
     displayName: "Draft-Off XI",

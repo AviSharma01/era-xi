@@ -193,7 +193,7 @@ test("REVEAL_XI delegates the exact drafted XI to Team Evaluation V2 without RNG
   assert.equal(revealed.evaluation.eraId, complete.eraId);
 
   for (const pick of complete.picks) {
-    const evaluated = revealed.evaluation.players.find((player) => player.position === pick.battingPosition)!;
+    const evaluated: EraCompletedXiInput["players"][number] = revealed.evaluation.players.find((player) => player.position === pick.battingPosition)!;
     assert.equal(evaluated.quality.playerTeamSeasonId, pick.playerTeamSeasonId);
     assert.equal(evaluated.quality.playerId, pick.playerId);
     assert.equal(evaluated.quality.seasonId, pick.seasonId);

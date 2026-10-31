@@ -1,3 +1,5 @@
+import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
+import { evaluationVersionOf } from "./teamEvaluationPolicy.js";
 import { isEraDraftTierCaps } from "./eraDraftTierCaps.js";
 import { deriveDraftOffParticipantSeed, isDraftOffFormat } from "./draftOffFormat.js";
 import { canonicalJson, canonicalSha256 } from "./eraDraftCanonical.js";
@@ -8,7 +10,7 @@ import { deriveDraftOffSeeds, deriveDraftOffSubmissionHash } from "./draftOffSim
 import {
   DRAFT_OFF_COMPETITION_ENGINE_VERSION,
   DRAFT_OFF_COMPETITION_ENGINE_V2,
-  DRAFT_OFF_COMPETITION_ENGINE_V3,
+  DRAFT_OFF_COMPETITION_ENGINE_V3, DRAFT_OFF_COMPETITION_ENGINE_V4, DRAFT_OFF_COMPETITION_STATE_V4,
   DRAFT_OFF_COMPETITION_STATE_V3,
   DRAFT_OFF_COMPETITION_STATE_V2,
   DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION,
@@ -27,11 +29,13 @@ export function assertDraftOffCompetitionState(
 ): void {
   const capped = Object.hasOwn(state.genesis, "tierCaps");
   if (capped && (!isEraDraftTierCaps(state.genesis.tierCaps) || !isDraftOffFormat(state.genesis.format))) fail("INVALID_TIER_CAPS", "Invalid effective tier caps.");
+  const evaluationV3 = Object.hasOwn(state.genesis, "teamEvaluationVersion");
+  if (evaluationV3 && (state.genesis.teamEvaluationVersion !== TEAM_EVALUATION_V3_VERSION || !capped)) fail("STATE_VERSION_MISMATCH", "Invalid competition evaluation policy.");
   const modern = Object.hasOwn(state.genesis, "format");
   if (modern && !isDraftOffFormat(state.genesis.format)) fail("INVALID_FORMAT", "Unsupported Draft-Off format.");
   if (
-    state.engineVersion !== (capped ? DRAFT_OFF_COMPETITION_ENGINE_V3 : modern ? DRAFT_OFF_COMPETITION_ENGINE_V2 : DRAFT_OFF_COMPETITION_ENGINE_VERSION)
-    || state.schemaVersion !== (capped ? DRAFT_OFF_COMPETITION_STATE_V3 : modern ? DRAFT_OFF_COMPETITION_STATE_V2 : DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION)
+    state.engineVersion !== (evaluationV3 ? DRAFT_OFF_COMPETITION_ENGINE_V4 : capped ? DRAFT_OFF_COMPETITION_ENGINE_V3 : modern ? DRAFT_OFF_COMPETITION_ENGINE_V2 : DRAFT_OFF_COMPETITION_ENGINE_VERSION)
+    || state.schemaVersion !== (evaluationV3 ? DRAFT_OFF_COMPETITION_STATE_V4 : capped ? DRAFT_OFF_COMPETITION_STATE_V3 : modern ? DRAFT_OFF_COMPETITION_STATE_V2 : DRAFT_OFF_COMPETITION_STATE_SCHEMA_VERSION)
   ) fail("STATE_VERSION_MISMATCH", "Competition state uses unsupported version fields.");
   if (state.catalogFingerprint !== catalog.fingerprint || state.genesis.catalogFingerprint !== catalog.fingerprint) {
     fail("CATALOG_FINGERPRINT_MISMATCH", "Competition state belongs to a different catalog.");
@@ -189,6 +193,7 @@ function validateRoundParticipant(
   participant: DraftOffRoundParticipant,
 ): void {
   assertEraDraftState(catalog, participant.draftState, state.genesis.tierCaps);
+  if (evaluationVersionOf(participant.draftState) !== evaluationVersionOf(state.genesis)) fail("STATE_VERSION_MISMATCH", "Nested draft evaluation differs from competition genesis.");
   const draftPhase = (participant.draftState as { readonly phase: string }).phase;
   if (
     draftPhase === "SETUP"
@@ -261,6 +266,7 @@ function validateResolution(state: DraftOffCompetitionState, round: ResolvedDraf
     if (resultHash !== canonicalSha256(resultBody)) fail("CHALLENGE_RESULT_HASH_MISMATCH", "Challenge result hash is invalid.");
     for (const campaign of result.campaigns) {
       const participant = round.participants.find((item) => item.participantId === campaign.participantId);
+      if (campaign.evaluation.version !== evaluationVersionOf(state.genesis)) fail("STATE_VERSION_MISMATCH", "Campaign evaluation differs from competition genesis.");
       if (participant?.status !== "SUBMITTED" || participant.submission.submissionHash !== campaign.submissionHash) {
         fail("CAMPAIGN_SUBMISSION_MISMATCH", "Campaign does not link to its immutable submission.");
       }

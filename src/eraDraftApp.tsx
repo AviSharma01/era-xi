@@ -3,6 +3,7 @@ import { lazy, Suspense, useEffect, useMemo, useRef, useState, type CSSPropertie
 import { CandidateGallery, SelectedPlayerDetail, PlayerInspector, FitBadge, fitLabel, monogram, friendly, fitClass } from "./eraDraftPlayerPresentation.js";
 
 import type { EraDraftCatalog } from "./eraDraftData.js";
+import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
 import { projectEraDraftGameCompleteState, projectEraDraftPublicState, projectEraDraftRevealState } from "./eraDraftProjection.js";
 import type {
@@ -145,7 +146,7 @@ export function EraDraftApp(): ReactElement {
       const manifestUrl = eraDraftManifestUrl(import.meta.env.BASE_URL);
       const catalog = await fetchScopedEraDraftCatalog({ manifest, manifestUrl, eraId });
       if (!ownsOperation(operationId, ownerRoute)) return;
-      const setup = createEraDraftGame({ catalog, rootSeed: createRootSeed() });
+      const setup = createEraDraftGame({ catalog, rootSeed: createRootSeed(), teamEvaluationVersion: TEAM_EVALUATION_V3_VERSION });
       const chosen = reduceEraDraft(catalog, setup, { type: "CHOOSE_ERA", eraId });
       if (!chosen.ok || chosen.state.phase !== "AWAITING_SPIN") throw new Error("The selected era could not start.");
       if (!ownsOperation(operationId, ownerRoute)) return;

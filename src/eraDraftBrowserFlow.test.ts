@@ -1,3 +1,7 @@
+import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
+import { TEAM_EVALUATION_V2_VERSION } from "./teamEvaluationV2.js";
+import { createEraDraftUiSave, loadAndRestoreEraDraftUiSave } from "./eraDraftUiPersistence.js";
+import { serializeEraDraftState } from "./eraDraftPersistence.js";
 import assert from "node:assert/strict";
 import { webcrypto } from "node:crypto";
 import test from "node:test";
@@ -13,13 +17,13 @@ const documents = loadEraDraftCatalogDocuments();
 const assets = createEraDraftWebAssets(documents);
 const manifestUrl = new URL("https://example.test/data/era-draft/v1/manifest.json");
 
-test("every fetched era reaches REVEALED through browser-facing projections", async () => {
-  for (const entry of assets.manifest.eras) {
+test("every fetched era reaches REVEALED and restores through browser-facing V2/V3 contracts", async () => {
+  for (const modern of [false, true]) for (const entry of assets.manifest.eras) {
     const file = assets.artifacts.get(entry.path)!;
     const fetcher: EraDraftWebFetch = async () => new Response(file.json);
     const catalog = await fetchScopedEraDraftCatalog({ manifest: assets.manifest, manifestUrl, eraId: entry.eraId,
       fetcher, subtle: webcrypto.subtle as unknown as SubtleCrypto });
-    let state: EraDraftHiddenState = createEraDraftGame({ catalog, rootSeed: `browser-flow:${entry.eraId}` });
+    let state: EraDraftHiddenState = createEraDraftGame({ catalog, rootSeed: `browser-flow:${entry.eraId}`, ...(modern ? { teamEvaluationVersion: TEAM_EVALUATION_V3_VERSION } : {}) });
     state = accepted(reduceEraDraft(catalog, state, { type: "CHOOSE_ERA", eraId: entry.eraId }));
     for (let pick = 0; pick < 11; pick += 1) {
       assert.equal(state.phase, "AWAITING_SPIN", `${entry.eraId} before pick ${pick + 1}`);
@@ -56,6 +60,13 @@ test("every fetched era reaches REVEALED through browser-facing projections", as
     const revealView = projectEraDraftRevealState(catalog, revealed);
     assert.equal(revealView.phase, "REVEALED");
     assert.equal(revealView.players.length, 11);
+    assert.equal(revealed.evaluation.version, modern ? TEAM_EVALUATION_V3_VERSION : TEAM_EVALUATION_V2_VERSION);
+    assert.equal(revealView.evaluation.teamEvaluationVersion, modern ? TEAM_EVALUATION_V3_VERSION : undefined);
+    assert.equal(revealView.players.every(player => !!player.battingAdjustment), modern);
+    const restored = await loadAndRestoreEraDraftUiSave({ save: createEraDraftUiSave(revealed),
+      manifest: assets.manifest, manifestUrl, fetcher, subtle: webcrypto.subtle as unknown as SubtleCrypto });
+    assert.equal(serializeEraDraftState(restored.state), serializeEraDraftState(revealed));
+
     assert.deepEqual(
       revealView.players.map((player) => player.playerTeamSeasonId),
       complete.picks.map((pick) => pick.playerTeamSeasonId),

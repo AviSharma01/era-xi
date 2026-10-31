@@ -1,0 +1,103 @@
+{
+  "provenance": "Initial Evaluation V3 / Solo engine v2 / Draft-Off competition v4 capture. Change policy through a new version; do not recapture to accept historical drift.",
+  "catalogFingerprint": "a4dfc3d6fac0e0ccce5b8803db4ffcfde9a1b8fc2c437deb8c8b66668f028339",
+  "solo": {
+    "era-foundation/XI_COMPLETE": "e9207b09a920a15015e019f329a29025a4ce7b3e6d77f40b3985535cf1567871",
+    "era-foundation/REVEALED": "63c1a779b690d257917bdba0b6752c8264c61fd867e5fb2ad36ed0e212c40b49",
+    "era-foundation/GAME_COMPLETE": "e5473719dbd9661651eb56fc849f53c27e7e7ecfe41f34aff8c9db321e510f3d",
+    "era-expansion/XI_COMPLETE": "522a682a11397c62c2e1775a65244e2807603ade56816575b0a56347f037fe34",
+    "era-expansion/REVEALED": "187c396f5c6d92f7695d53b8405391760b2739b093497c8c359fda033b64704a",
+    "era-expansion/GAME_COMPLETE": "2e0308b3df75b712bcb29007151390c627ba0067495900b0c38cad59faf1d0a2",
+    "era-transition/XI_COMPLETE": "247750c95ffe349bb4ae7adfda3d34dfc05ae88d5bf4ba86c9e54ae3117e2e3b",
+    "era-transition/REVEALED": "81788ac3c19557dc995a148b90163c79f92332fae7ae00a12190af3bf0850d90",
+    "era-transition/GAME_COMPLETE": "ff18f2f11f0393d53e5acba6eb7c855a5496e9b05c2f33177dcabca73984dd31",
+    "era-modern-pre-impact/XI_COMPLETE": "7b66a36ded4b4b26b587a12618e22b9397db3a658bad15b3cdde079f8af06af8",
+    "era-modern-pre-impact/REVEALED": "2ae2f978989dd5ba9353b15882be83aeaccc3d05a3fb900cd2b5a244c69ae4ec",
+    "era-modern-pre-impact/GAME_COMPLETE": "552490bb009ef85a3d44e0e109ece523e609146baf06f7b819a385d29b02de1e",
+    "era-impact/XI_COMPLETE": "315d05ac422cbc433726bd6552c4dc4dc0f4afdc0be3047b28f44b4c69a61c88",
+    "era-impact/REVEALED": "f9bd1381e0360b0258b4e26d283f1729ea9cba84cde8cb19df7b570a4d37e059",
+    "era-impact/GAME_COMPLETE": "faf97512f526cc68a97f79caa20a896f17331984bbc1b9a304b51d3e6d23ce17"
+  },
+  "rooms": {
+    "era-foundation/MIRROR/2": {
+      "stateHash": "f09f61fa7c48b6e6ac4ead43999cb1c0d09d11f6424c014c7882ce4176ea195e",
+      "resultsHash": "f518723fc492e211d864e35ef44615251d3a23324e326d9d40e65a69add94798"
+    },
+    "era-foundation/MIRROR/8": {
+      "stateHash": "c4560b9a7fc6e54d138891639aa1237aab35a250bf539db40edc9164fcf89e20",
+      "resultsHash": "e69ac324c301c99e23a2e0fb8eecc3c62d6724b0fbcb29c899675555930ffae4"
+    },
+    "era-foundation/VARIED/2": {
+      "stateHash": "1b6bb9ea4a5601def1736e6a0be4185981399737841c97e53baecc9535a7e520",
+      "resultsHash": "2a95e87a900d3eccda768cdea019657c231858c47c40174f3473ecdd080d7d44"
+    },
+    "era-foundation/VARIED/8": {
+      "stateHash": "84df0c630f42e3f59669ba1f2d232126ff9fd3d9870c52d945d706b04b061731",
+      "resultsHash": "6feedd8efec2beb1d25549b927c18aa63d3be56c64cb39af134ef5f417c82834"
+    },
+    "era-expansion/MIRROR/2": {
+      "stateHash": "3178fc2b3f8bfa709292252b92b64107e7ca81986d462774e95ca69c1f3c228f",
+      "resultsHash": "f943c93c9742a6e81cb18d77edd1715a353f2fc874346fe440b1bad11fa24e9a"
+    },
+    "era-expansion/MIRROR/8": {
+      "stateHash": "d39e6b929ff9f6e1b212aef547de487bf86c5a2c49d2068f13c2540b604334b6",
+      "resultsHash": "27915fa996b7b6082557cda5855819ff0359be0048a816aaf8cf89ad272a1212"
+    },
+    "era-expansion/VARIED/2": {
+      "stateHash": "bfb2cac48f2f258a6a7ac78a9a0be21c3cba2d273c8feb819ca7e3937eef61c9",
+      "resultsHash": "08b85fc817ac80494e12fac3f630d77b8fdaf8f687e1c92cd3df6a9ebd69623c"
+    },
+    "era-expansion/VARIED/8": {
+      "stateHash": "1a3cf0e0942fd5cb00a41d0f4264369693d011c9aeb40f85373da3aa5663f8bc",
+      "resultsHash": "58b4634bb2111f08597a0bf35f16c20bfd9f18818d6f2da9eed3ab5bcb68e335"
+    },
+    "era-transition/MIRROR/2": {
+      "stateHash": "440cb712fcf7f0e1e40e15fa2675029778df1c333d36f8b752ef499f447327b6",
+      "resultsHash": "055ec61e2843b7b8a55d5d0e50224b977d5a91428fcbe2a2ebe38d5fa5bc7512"
+    },
+    "era-transition/MIRROR/8": {
+      "stateHash": "98525534f159d6e2951ec3947cecdd0bdd8f26d91c6d0327a688b809ba6b2da6",
+      "resultsHash": "13390ca7ba33f9ebb2723e6d0b92017404a8e1349b94156e419eb34eab6969e1"
+    },
+    "era-transition/VARIED/2": {
+      "stateHash": "11ca44893319f07f1091e4bf558f4c56e2915a50199be48d8380907c52c33f75",
+      "resultsHash": "9494f1e84be6c460c5ae71bb0bd095b8736802e5f3321fde7f39a4424237b975"
+    },
+    "era-transition/VARIED/8": {
+      "stateHash": "b3bdcc5ebf4e60f999cabee7985335bf9c5aa8243df33f34ec1ffe29b435708a",
+      "resultsHash": "14db0743622388d60740144e59415323de8d8c09b156147b737f8a36172a5852"
+    },
+    "era-modern-pre-impact/MIRROR/2": {
+      "stateHash": "018b2665b3a7d6cbbcac80870ca28cfe2dd711ee4880294687ec1ee788c99bda",
+      "resultsHash": "43ead121acf21ce809f26a818d6cceb3dc81cd8b7e413cb745125eee447f2c60"
+    },
+    "era-modern-pre-impact/MIRROR/8": {
+      "stateHash": "e79b4ff66bde62cfb1f95933308a1b3727e87719127cdeb32c31ba7db911ce9f",
+      "resultsHash": "321f897556e7a691a3941a6a743e4841ce3cb9b1714ff5993617f3769638236a"
+    },
+    "era-modern-pre-impact/VARIED/2": {
+      "stateHash": "5fde3e0d60b7014a1c5dc669a5fd9d9fc499148b45ffd9a6821535ac35c4ea03",
+      "resultsHash": "7cb87f1947f7d1fcf8c632e492e451d04da4d1ec5786272bb7a529ed9370e4d4"
+    },
+    "era-modern-pre-impact/VARIED/8": {
+      "stateHash": "05c4c5dda843d7ef8f603f5e9afcc8bf88ec86942e399f2cfd44fd50cc50e60c",
+      "resultsHash": "8f51e0731c3f7a94d30c515a51e06196153f7a7a2cbde663a2ad6ae3ad2d693b"
+    },
+    "era-impact/MIRROR/2": {
+      "stateHash": "d813c0568dd2723ad511aa8e9f4682ba80c4e7fca323f5b43bff8a9d6d6d50d8",
+      "resultsHash": "41984faede26172163a30e866d86e6b8aa678084eb096c2350130d05b0b322cd"
+    },
+    "era-impact/MIRROR/8": {
+      "stateHash": "cd52775b559aff5460e00ce296ac88d56255664eb418881342243fbbf4e95af7",
+      "resultsHash": "0066916abad02a147a7e2b97fa97e78c1f9dcddbb5c562d7c9e248ace40fba8d"
+    },
+    "era-impact/VARIED/2": {
+      "stateHash": "922f265709b784863884427e3754946c4bf449e7b2f098a32100769360f276bf",
+      "resultsHash": "644fb8f2bd1408f0573371af3d25d0f916cd3bfbea3b5290871d20f1f56ef268"
+    },
+    "era-impact/VARIED/8": {
+      "stateHash": "07362ccbf5fefa7f6d7aff8a9fb8d4ac6e06e045879751bf4bbeb690743472d5",
+      "resultsHash": "d9bfd7785b57387a9ec7b083dd8b1da83fc34441d024375d0e898ef347232d04"
+    }
+  }
+}

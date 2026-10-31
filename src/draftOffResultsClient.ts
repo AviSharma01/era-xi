@@ -1,3 +1,5 @@
+import { POSITION_PENALTY_PERCENT, positionPenaltySeverity, TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
+import type { FitClassification } from "./playerRoleContract.js";
 import { BOWLING_FAMILIES, BOWLING_WORKLOAD_CLASSES, DERIVED_ROLES, KEEPER_STATUSES } from "./playerRoleContract.js";
 import { ERA_IDS } from "./teamEvaluationV2.js";
 import type { ResultsSuccess } from "./draftOffResultsTypes.js";
@@ -65,7 +67,8 @@ export type ResultsIdentity = Pick<ResultsSuccess, "roomCode" | "roundId" | "rou
 /** Exact recursive allowlist. No room revision: resolved content is immutable within this identity. */
 export function parseDraftOffResults(value: unknown, expected: ResultsIdentity): ResultsSuccess {
   const row = object(value, ["ok", "version", "roomCode", "roundId", "roundOrdinal", "eraId", "participantId", "displayName", "players", "evaluation", "campaign"]);
-  if (row.ok !== true || row.version !== 1) invalid();
+  if (row.ok !== true || (row.version !== 1 && row.version !== 2)) invalid();
+  const v3 = row.version === 2;
   for (const key of ["roomCode", "roundId", "participantId", "displayName"]) text(row[key]);
   if (!/^[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{12}$/.test(row.roomCode as string)
     || !/^p_[a-f0-9]{32}$/.test(row.participantId as string) || [...row.displayName as string].length > 64) invalid();
@@ -74,7 +77,7 @@ export function parseDraftOffResults(value: unknown, expected: ResultsIdentity):
   const players = list(row.players, 11).map((value, index) => {
     const p = object(value, ["playerTeamSeasonId", "playerId", "playerName", "seasonId", "seasonYear", "teamId", "teamName", "franchiseId", "franchiseName",
       "rosterStatus", "keeperCapability", "derivedRole", "displayRole", "bowlingWorkloadClass", "bowlingFamily", "battingPosition", "presentationFit",
-      "battingRating", "bowlingRating", "overallRating", "qualityTier", "historicalStats"]);
+      "battingRating", "bowlingRating", "overallRating", "qualityTier", "historicalStats", ...(v3 ? ["battingAdjustment"] : [])]);
     for (const key of ["playerTeamSeasonId", "playerId", "playerName", "seasonId", "teamId", "teamName", "franchiseId", "franchiseName"]) text(p[key]);
     integer(p.seasonYear, 1); if (p.battingPosition !== index + 1) invalid();
     oneOf(p.rosterStatus, ["INDIAN", "OVERSEAS"]); oneOf(p.keeperCapability, KEEPER_STATUSES);
@@ -82,12 +85,26 @@ export function parseDraftOffResults(value: unknown, expected: ResultsIdentity):
     oneOf(p.bowlingWorkloadClass, BOWLING_WORKLOAD_CLASSES); oneOf(p.bowlingFamily, BOWLING_FAMILIES);
     oneOf(p.presentationFit, fits); oneOf(p.qualityTier, tiers);
     nullable(p.battingRating, 20, 100); nullable(p.bowlingRating, 20, 100); number(p.overallRating, 20, 100); historical(p.historicalStats);
+    if (v3) validateBattingAdjustment(p.battingAdjustment, p.battingRating as number | null, index + 1, p.presentationFit);
     return p;
   });
   if (new Set(players.map(p => p.playerId)).size !== 11 || new Set(players.map(p => p.playerTeamSeasonId)).size !== 11) invalid();
-  const evaluation = object(row.evaluation, ["strength", "tierCounts", "fitCounts", "construction"]);
+  const evaluation = object(row.evaluation, ["strength", "tierCounts", "fitCounts", "construction", ...(v3 ? ["teamEvaluationVersion", "battingAdjustment"] : [])]);
   const strength = object(evaluation.strength, ["overall", "batting", "bowling"]);
   Object.values(strength).forEach(value => number(value, 20, 100));
+  if (v3) {
+    if (evaluation.teamEvaluationVersion !== TEAM_EVALUATION_V3_VERSION) invalid();
+    const adjustment = object(evaluation.battingAdjustment, ["baseBatting", "nominalDeduction", "appliedDeduction", "adjustedBatting"]);
+    Object.values(adjustment).forEach(value => number(value));
+    const rows = players.map(player => player.battingAdjustment as Record<string, number>);
+    const weighted = (key: string) => rows.reduce((sum, row) => sum + row[key] * row.aggregationWeight, 0);
+    close(adjustment.baseBatting, weighted("rawContribution"));
+    close(adjustment.nominalDeduction, weighted("nominalDeduction"));
+    close(adjustment.appliedDeduction, weighted("deduction"));
+    close(adjustment.adjustedBatting, weighted("effectiveContribution"));
+    close(strength.batting, adjustment.adjustedBatting as number);
+    close(strength.overall, ((strength.batting as number) + (strength.bowling as number)) / 2);
+  }
   const tierCounts = counts(evaluation.tierCounts, tiers), fitCounts = counts(evaluation.fitCounts, fits);
   for (const tier of tiers) if (tierCounts[tier] !== players.filter(p => p.qualityTier === tier).length) invalid();
   for (const fit of fits) if (fitCounts[fit] !== players.filter(p => p.presentationFit === fit).length) invalid();
@@ -148,4 +165,27 @@ export async function fetchDraftOffResults(options: {
 function freezeDeep<T>(value: T): T {
   if (value && typeof value === "object" && !Object.isFrozen(value)) { Object.values(value).forEach(freezeDeep); Object.freeze(value); }
   return value;
+}
+
+function close(actual: unknown, expected: number): void {
+  if (typeof actual !== "number" || !Number.isFinite(actual) || Math.abs(actual - expected) > 1e-9) invalid();
+}
+function validateBattingAdjustment(value: unknown, battingRating: number | null, position: number, presentationFit: unknown): void {
+  const row = object(value, ["fitClassification", "bandDistance", "penaltySeverity", "penaltyPercent", "appliedPenaltyPercent",
+    "rawContribution", "effectiveContribution", "nominalDeduction", "deduction", "aggregationWeight", "weightedDeduction", "floorApplied", "ratingImputed"]);
+  oneOf(row.fitClassification, ["NATURAL", "ACCEPTABLE", "OUT_OF_ROLE", "UNKNOWN"]);
+  let severity: keyof typeof POSITION_PENALTY_PERCENT;
+  try { severity = positionPenaltySeverity(row.fitClassification as FitClassification, row.bandDistance as number | null); }
+  catch { return invalid(); }
+  const expectedFit = severity === "MODERATE" ? "STRETCH" : severity === "MAJOR" || severity === "EXTREME" ? "MAJOR_STRETCH" : severity;
+  if (presentationFit !== expectedFit) invalid();
+  const percent = POSITION_PENALTY_PERCENT[severity];
+  if (row.penaltySeverity !== severity || row.penaltyPercent !== percent) invalid();
+  const raw = battingRating ?? 20, nominal = raw * (1 - percent / 100), effective = Math.max(20, nominal);
+  const deduction = raw - effective, weight = position <= 7 ? 0.9 / 7 : 0.1 / 4;
+  close(row.rawContribution, raw); close(row.effectiveContribution, effective);
+  close(row.nominalDeduction, raw - nominal); close(row.deduction, deduction);
+  close(row.appliedPenaltyPercent, deduction / raw * 100);
+  close(row.aggregationWeight, weight); close(row.weightedDeduction, deduction * weight);
+  if (row.floorApplied !== (effective > nominal) || row.ratingImputed !== (battingRating === null)) invalid();
 }

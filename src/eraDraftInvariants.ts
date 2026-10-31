@@ -1,10 +1,11 @@
+import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
 import type { EraDraftTierCaps } from "./eraDraftTierCaps.js";
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { evaluateFutureCompletion, teamSeasonHasViableSelection } from "./eraDraftLegality.js";
 import { evaluateEraDraftXi } from "./eraDraftReveal.js";
 import { assertEraDraftSeasonResult } from "./eraDraftSimulation.js";
 import {
-  ERA_DRAFT_ENGINE_VERSION,
+  ERA_DRAFT_ENGINE_VERSION, ERA_DRAFT_ENGINE_V2, ERA_DRAFT_STATE_V3,
   ERA_DRAFT_STATE_SCHEMA_VERSION,
   EraDraftInvariantError,
   type EraDraftHistoryEntry,
@@ -14,7 +15,10 @@ import {
 } from "./eraDraftTypes.js";
 
 export function assertEraDraftState(catalog: EraDraftCatalog, state: EraDraftState, tierCaps?: EraDraftTierCaps): void {
-  if (state.engineVersion !== ERA_DRAFT_ENGINE_VERSION || state.schemaVersion !== ERA_DRAFT_STATE_SCHEMA_VERSION) {
+  const modern = Object.hasOwn(state, "teamEvaluationVersion");
+  if ((modern && state.teamEvaluationVersion !== TEAM_EVALUATION_V3_VERSION)
+    || state.engineVersion !== (modern ? ERA_DRAFT_ENGINE_V2 : ERA_DRAFT_ENGINE_VERSION)
+    || state.schemaVersion !== (modern ? ERA_DRAFT_STATE_V3 : ERA_DRAFT_STATE_SCHEMA_VERSION)) {
     fail("STATE_VERSION_MISMATCH", "Era Draft state uses unsupported version fields.");
   }
   if (state.catalogFingerprint !== catalog.fingerprint) {

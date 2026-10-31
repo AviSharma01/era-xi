@@ -1,5 +1,6 @@
 import type { MatchResultV2 } from "./simulationV2.js";
-import type { TeamEvaluationV2, EraId } from "./teamEvaluationV2.js";
+import type { EraTeamEvaluation } from "./teamEvaluationPolicy.js";
+import type { EraId } from "./teamEvaluationV2.js";
 import type { XiCompleteState } from "./eraDraftTypes.js";
 
 export const DRAFT_OFF_VERSION = "ipl-draft-off/v1" as const;
@@ -64,7 +65,7 @@ export type DraftOffCampaignResult = {
   readonly submissionHash: string;
   readonly gameplayXiIdentity: string;
   readonly resultIdentityHash: string;
-  readonly evaluation: TeamEvaluationV2;
+  readonly evaluation: EraTeamEvaluation;
   readonly scheduleHash: string;
   readonly matches: readonly DraftOffCampaignMatch[];
   readonly aggregate: DraftOffCampaignAggregate;

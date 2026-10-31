@@ -37,7 +37,7 @@ export type DraftOffParticipantResultsView = Readonly<{
   evaluation: TeamEvaluationSummaryView;
   campaign: Readonly<{ aggregate: ResultsAggregateView; matches: readonly ResultsMatchView[] }>;
 }>;
-export type ResultsSuccess = Readonly<{ ok: true; version: 1; roomCode: string }> & DraftOffParticipantResultsView;
+export type ResultsSuccess = Readonly<{ ok: true; version: 1 | 2; roomCode: string }> & DraftOffParticipantResultsView;
 export type ResultsErrorCode = "INVALID_REQUEST" | "AUTHENTICATION_FAILED" | "ORIGIN_NOT_ALLOWED"
   | "NOT_FOUND" | "METHOD_NOT_ALLOWED" | "RESULTS_NOT_READY" | "RESULT_UNAVAILABLE"
   | "RATE_LIMITED" | "TEMPORARY_UNAVAILABLE" | "SERVICE_UNAVAILABLE";

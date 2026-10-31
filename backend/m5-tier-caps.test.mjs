@@ -11,23 +11,26 @@ import { loadEraDraftCatalog } from '../dist/eraDraftData.js';
 import { restoreDraftOffCompetition, serializeDraftOffCompetition } from '../dist/draftOffCompetitionPersistence.js';
 import { countDraftTiers } from '../dist/eraDraftTierCaps.js';
 import { parseRoomSnapshot } from '../dist/draftOffRealtimeClient.js';
+import { parseDraftOffResults } from '../dist/draftOffResultsClient.js';
+import { TEAM_EVALUATION_V3_VERSION } from '../dist/teamEvaluationV3.js';
 const secret = () => randomBytes(32).toString('base64url');
 const catalog = loadEraDraftCatalog(), caps = { maxS: 3, maxSA: 6 };
 const overrides = { requestsPerMinute: 10000, enrollmentPerMinute: 10000, readsPerMinute: 2000, readBurst: 200,
   commandsPerMinute: 2000, commandBurst: 200, roomEnrollmentsPerMinute: 1000, roomEnrollmentBurst: 100 };
 
-for (const format of ['VARIED', 'MIRROR']) test(`${format} Standard: native caps, immutable retries, v3 socket reconnect, restart and deadline auto-submission`, { timeout: 120000 }, async () => {
+for (const format of ['VARIED', 'MIRROR']) test(`${format} Standard: native caps, immutable retries, v4 socket reconnect, restart and deadline auto-submission`, { timeout: 120000 }, async () => {
   process.chdir(fileURLToPath(new URL('stage-d/', import.meta.url)));
   const path = mkdtempSync(join(tmpdir(), 'draft-off-caps-'));
   let runtime = await startRuntime(path, { overrides }), socket;
   try {
     const key = secret(), input = { displayName: 'Host', eraId: 'era-transition', format, draftMinutes: 10 };
-    for (const extra of [{ tierCaps: caps }, { maxS: 5 }, { preset: 'CUSTOM' }]) {
+    for (const extra of [{ tierCaps: caps }, { maxS: 5 }, { preset: 'CUSTOM' }, { teamEvaluationVersion: TEAM_EVALUATION_V3_VERSION }]) {
       assert.equal((await call(runtime, '/rooms', { method: 'POST', key: secret(), body: { ...input, ...extra } })).status, 400);
     }
     const created = await call(runtime, '/rooms', { method: 'POST', key, body: input }); assert.equal(created.status, 201);
     const host = created.body, code = host.roomCode;
     assert.deepEqual(host.view.round.tierCaps, caps);
+    assert.equal(host.view.round.teamEvaluationVersion, TEAM_EVALUATION_V3_VERSION);
     assert.deepEqual((await call(runtime, '/rooms', { method: 'POST', key, body: input })).body, host);
     const member = (await call(runtime, `/rooms/${code}/join`, { method: 'POST', key: secret(), body: { displayName: 'Member' } })).body;
     const read = async room => (await call(runtime, `/rooms/${code}`, { token: room.reconnectCredential })).body;
@@ -40,7 +43,7 @@ for (const format of ['VARIED', 'MIRROR']) test(`${format} Standard: native caps
       const next = new WebSocket(url, ['draft-off.v1', `ticket.${issued.body.ticket}`], { headers: { Origin: origin, 'CF-Connecting-IP': '127.0.0.1' } });
       const initial = new Promise((resolve, reject) => { next.once('message', resolve); next.once('error', reject); });
       next.on('message', bytes => frames.push(parseRoomSnapshot(bytes.toString(), code)));
-      await initial; assert.equal(frames.at(-1).version, 3); assert.deepEqual(frames.at(-1).view.round.tierCaps, caps);
+      await initial; assert.equal(frames.at(-1).version, 4); assert.deepEqual(frames.at(-1).view.round.tierCaps, caps);
       return next;
     }
     socket = await connect();
@@ -74,7 +77,8 @@ for (const format of ['VARIED', 'MIRROR']) test(`${format} Standard: native caps
     }
     assert.ok(rejected > 0, 'Elite-first drafting must encounter cap-blocked selections');
     const stored = await canonical(), state = restoreDraftOffCompetition(catalog, stored);
-    assert.match(state.engineVersion, /\/v3$/); assert.deepEqual(state.genesis.tierCaps, caps);
+    assert.match(state.engineVersion, /\/v4$/); assert.deepEqual(state.genesis.tierCaps, caps);
+    assert.equal(state.genesis.teamEvaluationVersion, TEAM_EVALUATION_V3_VERSION);
     const counts = countDraftTiers(catalog, state.rounds[0].participants.find(p => p.participantId === host.participantId).draftState.picks);
     assert.ok(counts.s <= 3 && counts.sa <= 6);
     assert.equal(serializeDraftOffCompetition(state), stored);
@@ -94,6 +98,14 @@ for (const format of ['VARIED', 'MIRROR']) test(`${format} Standard: native caps
     assert.deepEqual(ended.resolution.ineligibleParticipantIds, [member.participantId]);
     const resolved = restoreDraftOffCompetition(catalog, await canonical());
     assert.equal(resolved.rounds[0].participants.find(p => p.participantId === host.participantId).submission.source, 'DEADLINE_AUTO');
+    const response = await call(runtime, `/rooms/${code}/results/${host.participantId}`, { token: member.reconnectCredential });
+    assert.equal(response.status, 200); assert.equal(response.body.version, 2);
+    const result = parseDraftOffResults(response.body, { roomCode: code, roundId: ended.round.roundId,
+      roundOrdinal: ended.round.roundOrdinal, eraId: ended.round.eraId, participantId: host.participantId });
+    assert.equal(result.evaluation.teamEvaluationVersion, TEAM_EVALUATION_V3_VERSION);
+    assert.ok(result.players.every(p => p.battingAdjustment));
+    const authoritative = resolved.rounds[0].resolution.challengeResult.campaigns[0].evaluation.adjustedStrength;
+    assert.deepEqual(result.evaluation.strength, { batting: authoritative.batting, bowling: authoritative.bowling, overall: authoritative.overall });
     assert.deepEqual((await command(host, lastLock)).body, lastReply.body);
   } finally { socket?.terminate(); await runtime.mf.dispose(); rmSync(path, { recursive: true, force: true }); }
 });

@@ -1,3 +1,4 @@
+import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
 import type { EraDraftTierCaps } from "./eraDraftTierCaps.js";
 import type { EraDraftCatalog, EraDraftTeamSeason } from "./eraDraftData.js";
 import { assertEraDraftState } from "./eraDraftInvariants.js";
@@ -10,7 +11,7 @@ import {
   selectRespinTeamSeason,
 } from "./eraDraftRng.js";
 import {
-  ERA_DRAFT_ENGINE_VERSION,
+  ERA_DRAFT_ENGINE_VERSION, ERA_DRAFT_ENGINE_V2, ERA_DRAFT_STATE_V3,
   ERA_DRAFT_STATE_SCHEMA_VERSION,
   EraDraftInvariantError,
   type AwaitingPickState,
@@ -44,13 +45,19 @@ type ResolvedSpin = {
 export function createEraDraftGame(input: {
   readonly catalog: EraDraftCatalog;
   readonly rootSeed: string;
+  readonly teamEvaluationVersion?: typeof TEAM_EVALUATION_V3_VERSION;
 }): SetupState {
   if (typeof input.rootSeed !== "string" || input.rootSeed.length === 0) {
     throw new EraDraftInvariantError("INVALID_ROOT_SEED", "Era Draft requires an explicit non-empty root seed.");
   }
+  if (Object.hasOwn(input, "teamEvaluationVersion") && input.teamEvaluationVersion !== TEAM_EVALUATION_V3_VERSION) {
+    throw new EraDraftInvariantError("STATE_VERSION_MISMATCH", "Unsupported creation evaluation policy.");
+  }
+  const modern = input.teamEvaluationVersion === TEAM_EVALUATION_V3_VERSION;
   const state = freezeState({
-    engineVersion: ERA_DRAFT_ENGINE_VERSION,
-    schemaVersion: ERA_DRAFT_STATE_SCHEMA_VERSION,
+    engineVersion: modern ? ERA_DRAFT_ENGINE_V2 : ERA_DRAFT_ENGINE_VERSION,
+    schemaVersion: modern ? ERA_DRAFT_STATE_V3 : ERA_DRAFT_STATE_SCHEMA_VERSION,
+    ...(modern ? { teamEvaluationVersion: TEAM_EVALUATION_V3_VERSION } : {}),
     catalogFingerprint: input.catalog.fingerprint,
     rootSeed: input.rootSeed,
     revision: 0,

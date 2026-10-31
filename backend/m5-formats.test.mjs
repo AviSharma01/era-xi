@@ -82,7 +82,7 @@ test('format contracts: default Varied, explicit Mirror, invite privacy, stable 
   } finally { await runtime.mf.dispose(); rmSync(path, { recursive: true, force: true }); }
 });
 
-test('persisted v1 lobby and lost CREATE reply remain Mirror without rewriting canonical bytes', { timeout: 90000 }, async () => {
+for (const legacyVersion of [1, 2, 3]) test(`persisted v${legacyVersion} lobby and lost CREATE reply retain historical policy without rewriting canonical bytes`, { timeout: 90000 }, async () => {
   process.chdir(fileURLToPath(new URL('stage-d/', import.meta.url)));
   const path = mkdtempSync(join(tmpdir(), 'draft-off-format-legacy-'));
   let runtime = await startRuntime(path, { overrides });
@@ -92,30 +92,36 @@ test('persisted v1 lobby and lost CREATE reply remain Mirror without rewriting c
     const code = host.roomCode, records = (await control(runtime, code, 'inspect')).records;
     // Reconstruct the authentic legacy contract using the preserved v1 constructor/replay path.
     const current = restoreDraftOffCompetition(catalog, records.competition);
-    const { format: _format, tierCaps: _caps, ...genesis } = current.genesis;
+    const { format: _format, tierCaps: _caps, teamEvaluationVersion: _evaluation, ...baseGenesis } = current.genesis;
+    const genesis = { ...baseGenesis, ...(legacyVersion >= 2 ? { format: 'VARIED' } : {}),
+      ...(legacyVersion === 3 ? { tierCaps: _caps } : {}) };
+    const legacySettings = { draftMinutes: 15, ...(legacyVersion >= 2 ? { format: 'VARIED' } : {}) };
     const legacy = replayDraftOffCompetition({ catalog, genesis, history: current.history });
     const serialized = serializeDraftOffCompetition(legacy);
     await control(runtime, code, 'put', { key: 'competition', value: serialized });
-    await control(runtime, code, 'put', { key: 'api:settings', value: { draftMinutes: 15 } });
+    await control(runtime, code, 'put', { key: 'api:settings', value: legacySettings });
     const enrollment = records['api:create'];
-    enrollment.reply.body.settings = { draftMinutes: 15 };
+    enrollment.reply.body.settings = legacySettings;
     enrollment.reply.body.view = projectDraftOffRoom(catalog, legacy, host.participantId);
     await control(runtime, code, 'put', { key: 'api:create', value: enrollment });
     await runtime.mf.dispose(); runtime = await startRuntime(path, { overrides });
     const recovered = await call(runtime, '/rooms', { method: 'POST', key, body: input });
     assert.equal(recovered.status, 201); assert.equal(recovered.body.reconnectCredential, host.reconnectCredential);
-    assert.deepEqual(recovered.body.settings, { draftMinutes: 15 });
-    assert.equal(Object.hasOwn(recovered.body.view.round, 'format'), false);
-    assert.equal((await call(runtime, `/rooms/${code}/invite`)).body.format, 'MIRROR');
+    assert.deepEqual(recovered.body.settings, legacySettings);
+    assert.equal(Object.hasOwn(recovered.body.view.round, 'format'), legacyVersion >= 2);
+    assert.equal((await call(runtime, `/rooms/${code}/invite`)).body.format, legacyVersion === 1 ? 'MIRROR' : 'VARIED');
+    assert.equal(Object.hasOwn(recovered.body.view.round, 'tierCaps'), legacyVersion === 3);
+    assert.equal(Object.hasOwn(recovered.body.view.round, 'teamEvaluationVersion'), false);
     assert.equal((await control(runtime, code, 'inspect')).records.competition, serialized);
     await call(runtime, `/rooms/${code}/join`, { method: 'POST', key: secret(), body: { displayName: 'Legacy guest' } });
     const read = await call(runtime, `/rooms/${code}`, { token: host.reconnectCredential });
     const started = await call(runtime, `/rooms/${code}/commands`, { method: 'POST', token: host.reconnectCredential,
       body: { commandId: 'start', expectedRoomRevision: read.body.view.revision, command: { type: 'START' } } });
-    assert.equal(started.status, 200); assert.equal(Object.hasOwn(started.body.view.round, 'format'), false);
+    assert.equal(started.status, 200); assert.equal(Object.hasOwn(started.body.view.round, 'format'), legacyVersion >= 2);
     const restored = restoreDraftOffCompetition(catalog, (await control(runtime, code, 'inspect')).records.competition);
-    assert.equal(restored.engineVersion, 'ipl-draft-off-competition-engine/v1');
-    assert.equal(new Set(restored.rounds[0].participants.map(p => p.draftState.rootSeed)).size, 1);
+    assert.equal(restored.engineVersion, `ipl-draft-off-competition-engine/v${legacyVersion}`);
+    assert.ok(restored.rounds[0].participants.every(p => p.draftState.teamEvaluationVersion === undefined));
+    assert.equal(new Set(restored.rounds[0].participants.map(p => p.draftState.rootSeed)).size, legacyVersion === 1 ? 1 : 2);
   } finally { await runtime.mf.dispose(); rmSync(path, { recursive: true, force: true }); }
 });
 
