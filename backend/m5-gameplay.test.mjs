@@ -15,7 +15,8 @@ async function until(check) { const end = Date.now() + 15000; while (!check()) {
 async function fixture(production, run) {
   process.chdir(fileURLToPath(new URL('stage-d/', import.meta.url)));
   const path = mkdtempSync(join(tmpdir(), 'draft-off-m52-')), clients = [];
-  // Accelerated test-only request/ticket budgets; interactive defaults are unchanged.
+  // Accelerated test-only request/ticket budgets; production admission remains 16.
+  // The separate public-progress regression uses all default production limits.
   const runtime = await startRuntime(path, { production, overrides: { requestsPerMinute: 50000, readBurst: 1000, readsPerMinute: 5000, commandBurst: 1000, commandsPerMinute: 5000, ticketBurst: 100, ticketsPerMinute: 1000, roomTicketBurst: 1000, roomTicketsPerMinute: 5000, pendingTicketsPerParticipant: 100, pendingTicketsPerRoom: 200 } });
   const send = async (url, init) => { const headers = new Headers(init?.headers); headers.set('Origin', origin); if(!headers.has('CF-Connecting-IP')) headers.set('CF-Connecting-IP', '198.18.0.52'); return fetch(url, { ...init, headers }); };
   let code, connection = 0;
@@ -35,9 +36,17 @@ async function fixture(production, run) {
       onChange: next => { state = next; } });
     clients.push(client); return { client, state: () => state, bodies, journal, saved };
   }
+  async function settled(player) {
+    // Command completion can precede the validated HTTP refresh when a socket
+    // snapshot races it. Observe the same pending gate as the UI; add no GETs.
+    await until(() => !player.state().pending || player.state().retryAvailable);
+    assert.equal(player.state().pending, false, player.state().error ?? 'Draft command is awaiting confirmation');
+  }
   async function draft(player, count = 11, reverse = false) {
     for (let n = 0; n < count; n++) {
+      await settled(player);
       await player.client.command({ type: 'SPIN' });
+      await settled(player);
       const before = player.state().snapshot.view.myDraft;
       assert.equal(before.phase, 'AWAITING_PICK');
       const candidates = before.candidates.filter(row => row.available && row.positions.some(slot => slot.available));
@@ -46,11 +55,13 @@ async function fixture(production, run) {
       const positions = candidate.positions.filter(slot => slot.available);
       const slot = reverse ? positions.at(-1) : positions[0];
       await player.client.command({ type: 'LOCK_PLAYER', playerTeamSeasonId: candidate.playerTeamSeasonId, battingPosition: slot.battingPosition });
-      assert.equal(player.state().snapshot.view.myDraft.status.pickCount, n + 1);
+      await settled(player);
+      assert.equal(player.state().snapshot.view.myDraft.status.pickCount, n + 1,
+        JSON.stringify({ error: player.state().error, pending: player.state().pending, retryAvailable: player.state().retryAvailable }));
       assert.equal(JSON.parse(player.bodies.at(-1)).expectedDraftRevision, before.revision);
     }
   }
-  try { await run({ runtime, code: () => code, enroll, connect, draft }); }
+  try { await run({ runtime, code: () => code, enroll, connect, draft, settled }); }
   finally { clients.forEach(client => client.stop()); await runtime.mf.dispose(); rmSync(path, { recursive: true, force: true }); }
 }
 
@@ -59,6 +70,7 @@ test('M5.2 production backend: two independent guests draft, retry, reload, subm
   let host = connect(hostSaved), guest = connect(guestSaved, { brokenSocket: true });
   await host.client.start(); await guest.client.start();
   await host.client.command({ type: 'START' }); await until(() => guest.state()?.snapshot.view.phase === 'IN_PROGRESS');
+  assert.ok(guest.state().snapshot.view.participants.every(row => row.lockedPickCount === 0));
   // Concurrent duplicate UI intents cannot create replacement commands.
   const duplicate = await Promise.allSettled([host.client.command({ type: 'SPIN' }), host.client.command({ type: 'SPIN' })]);
   assert.equal(duplicate.filter(reply => reply.status === 'fulfilled').length, 1);
@@ -70,6 +82,8 @@ test('M5.2 production backend: two independent guests draft, retry, reload, subm
   assert.equal(host.state().snapshot.view.myDraft.revision, revision);
   const pick = async player => { const view = player.state().snapshot.view.myDraft; const row = view.candidates.find(row => row.available && row.positions.some(slot => slot.available)); await player.client.command({ type: 'LOCK_PLAYER', playerTeamSeasonId: row.playerTeamSeasonId, battingPosition: row.positions.find(slot => slot.available).battingPosition }); };
   await pick(host); await pick(guest);
+  await host.client.resync(); await guest.client.resync();
+  for (const player of [host, guest]) assert.ok(player.state().snapshot.view.participants.every(row => row.lockedPickCount === 1));
   // Lost success and refresh retry must reuse exactly the immutable journal.
   host.client.stop(); host = connect(hostSaved, { loseCommand: true }); await host.client.start();
   await host.client.command({ type: 'SPIN' }); assert.equal(host.state().pending, true); assert.equal(host.state().retryAvailable, true);
@@ -78,9 +92,11 @@ test('M5.2 production backend: two independent guests draft, retry, reload, subm
   // Finish from existing picks using only the HTTP-projected legal options.
   async function finish(player) { while (player.state().snapshot.view.myDraft.phase !== 'XI_COMPLETE') { await until(() => !player.state().pending); await player.client.command({ type: 'SPIN' }); await until(() => !player.state().pending); await pick(player); if (player.state().pending && player.state().retryAvailable) assert.fail(player.state().error); } }
   await finish(host); await finish(guest);
+  await host.client.resync(); await guest.client.resync();
   assert.equal(host.state().snapshot.view.myDraft.picks.length, 11); assert.equal(guest.state().snapshot.view.myDraft.picks.length, 11);
   for (const player of [host, guest]) {
-    assert.ok(player.state().snapshot.view.participants.every(row => Object.keys(row).sort().join() === 'displayName,membershipStatus,participantId,role,roundStatus'));
+    assert.ok(player.state().snapshot.view.participants.every(row => Object.keys(row).sort().join() === 'displayName,lockedPickCount,membershipStatus,participantId,role,roundStatus'));
+    assert.ok(player.state().snapshot.view.participants.every(row => row.lockedPickCount === 11));
     assert.ok(!JSON.stringify(player.state().snapshot).includes('baseQuality'));
   }
   await host.client.command({ type: 'SUBMIT' });
@@ -106,6 +122,11 @@ test('M5.2 native backend deadline: complete XI auto-submits, incomplete XI excl
   await host.client.resync(); await guest.client.resync();
   const result = host.state().snapshot.view.resolution;
   assert.equal(result.trigger, 'DEADLINE'); assert.equal(result.contestStatus, 'UNCONTESTED'); assert.equal(result.leaderboard.length, 1);
+  for (const player of [host, guest]) {
+    const rows = player.state().snapshot.view.participants;
+    assert.equal(rows.find(row => row.participantId === host.state().snapshot.participantId).lockedPickCount, 11);
+    assert.equal(rows.find(row => row.participantId === guest.state().snapshot.participantId).lockedPickCount, 1);
+  }
   assert.equal(result.leaderboard[0].played, 20); assert.equal(guest.state().snapshot.view.participants.find(row => row.participantId === guest.state().snapshot.participantId).roundStatus, 'INELIGIBLE');
   host.client.stop(); guest.client.stop();
   const next = connect(await enroll('Empty host', true)); const other = connect(await enroll('Empty guest'));
@@ -116,14 +137,14 @@ test('M5.2 native backend deadline: complete XI auto-submits, incomplete XI excl
 
 // This sequential HTTP/reconciliation journey took ~81s on main in CI.
 // Match the eight-entrant acceptance matrix's correctness budget; latency gates stay separate.
-test('M5.2 production backend: eight entrants finish independent XIs and receive one leaderboard', { timeout: 180000 }, () => fixture(true, async ({ enroll, connect, draft }) => {
+test('M5.2 production backend: eight entrants finish independent XIs and receive one leaderboard', { timeout: 180000 }, () => fixture(true, async ({ enroll, connect, draft, settled }) => {
   const players = [connect(await enroll('Host eight', true))];
   for (let i = 1; i < 8; i++) players.push(connect(await enroll(`Guest ${i}`)));
   for (const player of players) await player.client.start();
   await players[0].client.command({ type: 'START' });
   for (const player of players) { await player.client.resync(); await draft(player); }
-  for (const player of players) await player.client.command({ type: 'SUBMIT' });
-  for (const player of players) await player.client.resync();
+  for (const player of players) { await player.client.command({ type: 'SUBMIT' }); await settled(player); }
+  for (const player of players) { await player.client.resync(); await until(() => player.state().snapshot.view.phase === 'COMPLETE'); }
   const result = players[0].state().snapshot.view.resolution;
   assert.equal(result.leaderboard.length, 8); assert.equal(result.contestStatus, 'CONTESTED');
   assert.ok(result.leaderboard.every(row => row.played === 20));
@@ -139,7 +160,7 @@ for (const [eraId, minutes, count, format] of [
   ['era-foundation', 10, 2, 'MIRROR'], ['era-impact', 15, 8, 'MIRROR'],
 ]) {
   test(`M5.6 production acceptance: ${eraId}/${minutes} minutes/${count} entrants/${format ?? "VARIED default"}, distinct strategies and aligned campaigns`,
-    { timeout: 180000 }, () => fixture(true, async ({ runtime, code, enroll, connect, draft }) => {
+    { timeout: 180000 }, () => fixture(true, async ({ runtime, code, enroll, connect, draft, settled }) => {
       const saved = [await enroll('Matrix host', true, eraId, minutes, format)];
       for (let i = 1; i < count; i++) saved.push(await enroll(`Matrix member ${i}`));
       const players = saved.map(row => connect(row));
@@ -164,8 +185,8 @@ for (const [eraId, minutes, count, format] of [
       for (const [i, player] of players.entries()) await draft(player, 11, i % 2 === 1);
       const picks = players.map(player => player.state().snapshot.view.myDraft.picks);
       assert.notDeepEqual(picks[0], picks[1]);
-      for (const player of players) await player.client.command({ type: 'SUBMIT' });
-      for (const player of players) await player.client.resync();
+      for (const player of players) { await player.client.command({ type: 'SUBMIT' }); await settled(player); }
+      for (const player of players) { await player.client.resync(); await until(() => player.state().snapshot.view.phase === 'COMPLETE'); }
       const resolution = players[0].state().snapshot.view.resolution;
       assert.equal(resolution.contestStatus, 'CONTESTED');
       assert.equal(resolution.leaderboard.length, count);

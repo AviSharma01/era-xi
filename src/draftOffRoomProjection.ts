@@ -14,7 +14,7 @@ export function projectDraftOffRoom(
   const round = currentRound(state);
   const ownRoundState = round.phase === "PENDING" ? undefined : round.participants.find((participant) => participant.participantId === participantId);
   const { resolution, ...shared } = projectDraftOffPublicRoom(state);
-  // Preserve the existing private HTTP shape, optional fields and JSON field order.
+  // Compose the shared whitelist with the caller draft in the existing top-level field order.
   return freezeDeep({ ...shared,
     ...(ownRoundState ? { myDraft: projectEraDraftPublicState(catalog, ownRoundState.draftState) } : {}),
     ...(resolution ? { resolution } : {}),
@@ -36,7 +36,10 @@ export function projectDraftOffPublicRoom(state: DraftOffCompetitionState): Draf
       displayName: participant.displayName,
       role: participant.role,
       membershipStatus: participant.membershipStatus,
-      ...(roundParticipant ? { roundStatus: roundParticipant.status } : {}),
+      ...(roundParticipant ? {
+        roundStatus: roundParticipant.status,
+        lockedPickCount: roundParticipant.draftState.picks.length,
+      } : {}),
     };
   });
 

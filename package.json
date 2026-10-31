@@ -25,7 +25,7 @@
     "verify:release": "npm test && npm run build:web && npm run smoke:web-build && npm run validate:era-draft:smoke",
     "test:m5-premerge": "npm run build && node --test scripts/m5_premerge_regressions.test.mjs",
     "dev:draft-off": "node backend/dev.mjs",
-    "test:draft-off-client:local": "node --test --test-concurrency=1 backend/m5-formats.test.mjs backend/m5-client.test.mjs backend/m5-gameplay.test.mjs backend/m5-results.test.mjs backend/m5-recovery.test.mjs"
+    "test:draft-off-client:local": "node --test --test-concurrency=1 backend/m5-formats.test.mjs backend/m5-client.test.mjs backend/m5-gameplay.test.mjs backend/m5-results.test.mjs backend/m5-recovery.test.mjs backend/m5-public-progress.test.mjs"
   },
   "devDependencies": {
     "@types/jsdom": "^21.1.7",

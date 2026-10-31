@@ -3,7 +3,8 @@ import test from "node:test";
 import { createHash } from "node:crypto";
 import { projectEraDraftPublicState } from "./eraDraftProjection.js";
 import { projectDraftOffPublicRoom, projectDraftOffRoom } from "./draftOffRoomProjection.js";
-import { serializeDraftOffCompetition } from "./draftOffCompetitionPersistence.js";
+import { restoreDraftOffCompetition, serializeDraftOffCompetition } from "./draftOffCompetitionPersistence.js";
+import { createDraftOffCompetition } from "./draftOffCompetition.js";
 import { FakeDraftOffClock, InMemoryDraftOffRoomRepository } from "./draftOffRoomRepository.js";
 import { DraftOffRoomService } from "./draftOffRoomService.js";
 import type { DraftOffCompetitionState } from "./draftOffCompetitionTypes.js";
@@ -49,7 +50,7 @@ function assertView(state: DraftOffCompetitionState, id: string, view: DraftOffR
   ]);
   for (const entry of view.participants) {
     exactKeys(entry, ["participantId", "displayName", "role", "membershipStatus",
-      ...(round.phase === "PENDING" ? [] : ["roundStatus"]),
+      ...(round.phase === "PENDING" ? [] : ["roundStatus", "lockedPickCount"]),
     ]);
   }
   if (round.phase !== "PENDING") {
@@ -69,7 +70,7 @@ function assertView(state: DraftOffCompetitionState, id: string, view: DraftOffR
   assert.ok(!Object.hasOwn(projectDraftOffPublicRoom(state), 'myDraft'));
 }
 
-test("Stage D extraction preserves exact pre-Stage-D private HTTP JSON across phases", () => {
+test("apart from additive pick counts, pre-Stage-D private HTTP JSON retains its frozen hashes", () => {
   // Captured from the committed Stage C projector, before extraction. Includes
   // values, optional-field absence, nested shape, and original JSON key order.
   const lobby = baseState(), active = startedState();
@@ -90,7 +91,9 @@ test("Stage D extraction preserves exact pre-Stage-D private HTTP JSON across ph
     noContest: '24a11ae5a96efc8428fc7a8cb261f256d5b23990313bd1424e09ea0a9828cfd1',
   };
   for (const [label, state] of Object.entries({ lobby, active, spun, picked, complete, submitted, resolved, noContest })) {
-    assert.equal(createHash('sha256').update(JSON.stringify(projectDraftOffRoom(catalog, state, 'host'))).digest('hex'), expected[label as keyof typeof expected], label);
+    const view = projectDraftOffRoom(catalog, state, 'host');
+    const historical = { ...view, participants: view.participants.map(({ lockedPickCount: _progress, ...entry }) => entry) };
+    assert.equal(createHash('sha256').update(JSON.stringify(historical)).digest('hex'), expected[label as keyof typeof expected], label);
   }
 });
 
@@ -136,6 +139,48 @@ test("room projections whitelist all shared fields and expose only the caller dr
   assert.equal(hostView.myDraft.picks.length, 0);
   assert.equal(memberView.myDraft.picks.length, 1);
   assert.throws(() => projectDraftOffRoom(catalog, active, "outsider"), /not registered/);
+});
+
+test("public progress derives only from locked picks across v1 Mirror and both v2 formats, including replay and deadline outcomes", () => {
+  for (const format of [undefined, "MIRROR", "VARIED"] as const) {
+    let state = createDraftOffCompetition(catalog, { ...baseState().genesis, ...(format ? { format } : {}) });
+    state = changed(state, { type: "JOIN_COMPETITION", participantId: "member", displayName: "Member", atMs: 1 });
+    state = changed(state, { type: "JOIN_COMPETITION", participantId: "left", displayName: "Left", atMs: 1 });
+    state = changed(state, { type: "LEAVE_COMPETITION", participantId: "left", atMs: 1 });
+    assert.ok(projectDraftOffPublicRoom(state).participants.every(row => row.lockedPickCount === undefined));
+    state = changed(state, { type: "START_ROUND", actorParticipantId: "host", roundId: "round-1", atMs: 10, deadlineAtMs: 100 });
+    const progress = (value: DraftOffCompetitionState) => projectDraftOffPublicRoom(value).participants
+      .filter(row => row.roundStatus !== undefined).map(row => [row.participantId, row.lockedPickCount, row.roundStatus]);
+    assert.deepEqual(progress(state), [["host", 0, "DRAFTING"], ["member", 0, "DRAFTING"]]);
+    for (const type of ["SPIN", "RESPIN"] as const) {
+      state = changed(state, { type: "APPLY_DRAFT_COMMAND", participantId: "member", atMs: 20,
+        expectedDraftRevision: participant(state, "member").draftState.revision, draftCommand: { type } });
+      assert.deepEqual(progress(state), [["host", 0, "DRAFTING"], ["member", 0, "DRAFTING"]]);
+    }
+    const lock = legalLock(state, "member");
+    state = changed(state, { type: "APPLY_DRAFT_COMMAND", participantId: "member", atMs: 20,
+      expectedDraftRevision: participant(state, "member").draftState.revision, draftCommand: lock });
+    assert.deepEqual(progress(state), [["host", 0, "DRAFTING"], ["member", 1, "DRAFTING"]]);
+    state = completeXi(state, "host");
+    const complete = state;
+    const submitted = changed(state, { type: "SUBMIT_XI", participantId: "host", atMs: 30,
+      expectedDraftRevision: participant(state, "host").draftState.revision });
+    for (const before of [complete, submitted]) {
+      const final = changed(before, { type: "FINALIZE_ROUND", roundId: "round-1", atMs: 100 });
+      assert.deepEqual(progress(final), [["host", 11, "SUBMITTED"], ["member", 1, "INELIGIBLE"]]);
+      for (const value of [before, final]) {
+        const publicView = projectDraftOffPublicRoom(value);
+        assert.deepEqual(projectDraftOffPublicRoom(restoreDraftOffCompetition(catalog, serializeDraftOffCompetition(value))), publicView);
+        assert.ok(!JSON.stringify(publicView).includes(lock.playerTeamSeasonId));
+        scan(publicView);
+        for (const id of ["host", "member", "left"]) {
+          const { myDraft: _private, ...shared } = projectDraftOffRoom(catalog, value, id);
+          assert.deepEqual(shared, publicView);
+        }
+        assert.equal(publicView.participants.find(row => row.participantId === "left")!.lockedPickCount, undefined);
+      }
+    }
+  }
 });
 
 test("service responses, rejected commands and conflicting receipt access stay participant-scoped", async () => {

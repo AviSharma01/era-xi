@@ -73,6 +73,35 @@ test("lobby exposes only supported host/member controls and public roster", () =
   assert.match(renderToStaticMarkup(<DraftOffRoomExperience code={code} state={roomState(snapshot(left, "member"))} actions={actions} />), /Rejoin lobby/);
 });
 
+test("existing roster displays authoritative pick counts with drafting, submitted and incomplete statuses", () => {
+  const value = snapshot(startedState());
+  Object.assign(value.view.participants[0]!, { lockedPickCount: 7, roundStatus: "DRAFTING" });
+  Object.assign(value.view.participants[1]!, { lockedPickCount: 11, roundStatus: "SUBMITTED" });
+  const render = () => renderToStaticMarkup(<DraftOffRoomExperience code={code} state={roomState(value)} actions={actions} />);
+  assert.match(render(), /7\/11 · Drafting/);
+  assert.match(render(), /11\/11 · Submitted/);
+  Object.assign(value.view.participants[1]!, { lockedPickCount: 10, roundStatus: "INELIGIBLE" });
+  assert.match(render(), /10\/11 · Incomplete/);
+  const legacy = value.view.participants.map(({ lockedPickCount: _progress, ...row }) => row);
+  Object.assign(value.view, { participants: legacy });
+  assert.doesNotMatch(render(), /undefined|NaN|\/11 ·/);
+});
+
+test("newer public roster renders without replacing or confirming the authenticated private draft", () => {
+  const value = snapshot(startedState());
+  const { myDraft: _private, ...view } = structuredClone(value.view);
+  Object.assign(view, { revision: value.view.revision + 5 });
+  Object.assign(view.participants[0]!, { lockedPickCount: 11, roundStatus: "SUBMITTED" });
+  Object.assign(view.participants[1]!, { lockedPickCount: 7 });
+  const state = { ...roomState(value), publicSnapshot: { version: 1 as const, type: "ROOM_SNAPSHOT" as const, serverTimeMs: 25, view } };
+  const html = renderToStaticMarkup(<DraftOffRoomExperience code={code} state={state} actions={actions} />);
+  assert.match(html, /7\/11 · Drafting/);
+  assert.match(html, /11\/11 · Submitted/);
+  assert.doesNotMatch(html, /Submission confirmed/);
+  assert.match(html, /0 \/ 11 locked/);
+  assert.equal(value.view.myDraft!.phase, "AWAITING_SPIN");
+});
+
 test("format stays visible in lobby, play and results, with historical rooms identified as Mirror", () => {
   for (const format of ["VARIED", "MIRROR", undefined] as const) {
     for (const domain of [joinedState(), startedState(), changed(startedState(), { type: "FINALIZE_ROUND", roundId: "round-1", atMs: 100 })]) {
@@ -146,7 +175,7 @@ test("submission requires confirmation and server-submitted participants have no
     await ui.click('.room-locked-player');
     assert.ok(ui.document.querySelector('.player-inspector[open] [role="timer"]'));
     await ui.click('.player-inspector button');
-    assert.ok([...ui.document.querySelectorAll(".draft-off-members li")].filter(row => row.textContent?.startsWith("Member")).every(row => row.textContent === "MemberDrafting"));
+    assert.ok([...ui.document.querySelectorAll(".draft-off-members li")].filter(row => row.textContent?.startsWith("Member")).every(row => row.textContent === "Member0/11 · Drafting"));
   } finally { await ui.close(); }
 });
 

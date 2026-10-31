@@ -158,8 +158,11 @@ test('M4 Stage E combined HTTP/WebSocket multiplayer, recovery, privacy and dire
         const replay = connect(runtime, host, fresh); sockets.push(replay); assert.equal(await replay.opened, 401);
       }
     }
-    assert.ok(clients.slice(1).every(client => client.messages.length === 2), 'Private draft progress broadcast');
-    assert.equal(clients[0].messages.length, 1);
+    await until(() => clients.slice(1).every(client => client.messages.length === 34) && clients[0].messages.length === 18);
+    for (const client of clients) {
+      const progress = JSON.parse(client.messages.at(-1)).view;
+      assert.deepEqual(rooms.map(room => progress.participants.find(row => row.participantId === room.participantId).lockedPickCount), [11, 11, 10]);
+    }
     assert.equal(views[0].myDraft.phase, 'XI_COMPLETE'); assert.equal(views[1].myDraft.phase, 'XI_COMPLETE');
     // Persisted-runtime restart loses sockets, but not drafts, receipts, recovery
     // records or an unconsumed ticket. Exact enrollment retries return old views.
@@ -211,6 +214,10 @@ test('M4 Stage E combined HTTP/WebSocket multiplayer, recovery, privacy and dire
     assert.equal(final.resolution.contestStatus, 'CONTESTED'); assert.equal(final.resolution.leaderboard.length, 2);
     assert.deepEqual([...final.resolution.eligibleParticipantIds].sort(), rooms.slice(0, 2).map(room => room.participantId).sort());
     assert.deepEqual(final.resolution.ineligibleParticipantIds, [members[1].participantId]);
+    assert.deepEqual(rooms.map(room => {
+      const row = final.participants.find(row => row.participantId === room.participantId);
+      return [row.lockedPickCount, row.roundStatus];
+    }), [[11, 'SUBMITTED'], [11, 'SUBMITTED'], [10, 'INELIGIBLE']]);
     for (const client of clients) assert.deepEqual(JSON.parse(client.messages.at(-1)).view, publicOnly(final));
     const resolvedRecords = (await control(runtime, host.roomCode, 'inspect')).records;
     assert.equal(resolvedRecords.wake.atMs, final.resolution.resolvedAtMs + 7 * 86400000);
@@ -326,12 +333,13 @@ test('eight-player production HTTP/WebSocket full drafts and late concurrent lat
       if (late) samples.lockBatch.push(performance.now() - begin);
     }
     assert.ok(views.every(view => view.myDraft.phase === 'XI_COMPLETE'));
-    assert.ok(clients.every(client => client.messages.length === 2), 'Private progress broadcast in production');
+    await until(() => clients.every(client => client.messages.length === 90));
+    assert.ok(clients.every(client => JSON.parse(client.messages.at(-1)).view.participants.every(row => row.lockedPickCount === 11)));
     for (let index = 0; index < rooms.length; index++) {
       views[index] = await command(rooms[index], draft(`production_submit_${index}`, views[index].myDraft.revision, { type: 'SUBMIT' }),
         index === rooms.length - 1 ? 'finalSubmit' : undefined);
     }
-    await until(() => clients.every(client => client.messages.length === 10));
+    await until(() => clients.every(client => client.messages.length === 98));
     assert.equal(new Set(clients.map(client => client.messages.at(-1))).size, 1);
     const final = await read(host);
     assert.equal(final.phase, 'COMPLETE'); assert.equal(final.resolution.trigger, 'ALL_SUBMITTED');
@@ -341,7 +349,7 @@ test('eight-player production HTTP/WebSocket full drafts and late concurrent lat
     }
     evidence = {
       productionBundle: true, participants: 8, era: 'era-impact', completedXis: 8, contestedLeaderboardRows: 8,
-      trigger: 'ALL_SUBMITTED', identicalPublicSnapshots: true, privateProgressDoesNotBroadcast: true,
+      trigger: 'ALL_SUBMITTED', identicalPublicSnapshots: true, lockedPickProgressBroadcasts: true, privateDraftDetailsNeverBroadcast: true,
       fixtureControlsUnavailable: true, permissiveLocalRateOverrides: true };
     correctnessPassed = true;
   } finally {

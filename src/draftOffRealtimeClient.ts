@@ -26,10 +26,12 @@ function validateRoomSnapshot(message: unknown, roomId: string): DraftOffRoomSna
   if (!exact(view, ['roomId', 'revision', 'phase', 'participants', 'round'], ['resolution']) || view.roomId !== roomId
     || !integer(view.revision) || !['LOBBY', 'IN_PROGRESS', 'COMPLETE'].includes(view.phase as string)
     || !Array.isArray(view.participants) || !view.participants.every(p => record(p)
-      && exact(p, ['participantId', 'displayName', 'role', 'membershipStatus'], ['roundStatus'])
+      && exact(p, ['participantId', 'displayName', 'role', 'membershipStatus'], ['roundStatus', 'lockedPickCount'])
       && typeof p.participantId === 'string' && typeof p.displayName === 'string' && ['HOST', 'MEMBER'].includes(p.role as string)
       && ['JOINED', 'LEFT'].includes(p.membershipStatus as string)
-      && (!Object.hasOwn(p, 'roundStatus') || ['DRAFTING', 'SUBMITTED', 'INELIGIBLE'].includes(p.roundStatus as string)))
+      && (!Object.hasOwn(p, 'roundStatus') || ['DRAFTING', 'SUBMITTED', 'INELIGIBLE'].includes(p.roundStatus as string))
+      && (!Object.hasOwn(p, 'lockedPickCount') || (Object.hasOwn(p, 'roundStatus')
+        && integer(p.lockedPickCount) && (p.lockedPickCount as number) <= 11)))
     || !record(view.round)) throw new Error('INVALID_REALTIME_MESSAGE');
   const round = view.round;
   if (!exact(round, ['roundId', 'roundOrdinal', 'label', 'eraId', 'phase'], ['startedAtMs', 'deadlineAtMs', ...(message.version === 2 ? ['format'] : [])])
@@ -48,6 +50,25 @@ function validateRoomSnapshot(message: unknown, roomId: string): DraftOffRoomSna
         && ['rank', 'played', 'won', 'lost', 'points'].every(key => integer(row[key])) && typeof row.netRunRate === 'number' && Number.isFinite(row.netRunRate))) throw new Error('INVALID_REALTIME_MESSAGE');
   }
   return message as DraftOffRoomSnapshotMessage;
+}
+
+/** Only a known opponent's increasing count may bypass private reconciliation.
+ * Missing legacy counts, own changes and any lifecycle/roster change fail closed.
+ */
+function onlyOpponentProgress(before: DraftOffPublicRoomView | undefined, after: DraftOffPublicRoomView, viewerId: string | undefined) {
+  if (!before || !viewerId || before.round.phase !== 'DRAFTING' || after.round.phase !== 'DRAFTING'
+    || before.participants.length !== after.participants.length) return false;
+  let increased = false;
+  const participants = before.participants.map((previous, index) => {
+    const next = after.participants[index]!;
+    if (previous.participantId === viewerId || previous.lockedPickCount === undefined || next.lockedPickCount === undefined
+      || next.lockedPickCount < previous.lockedPickCount) return previous;
+    if (next.lockedPickCount > previous.lockedPickCount) increased = true;
+    return { ...previous, lockedPickCount: next.lockedPickCount };
+  });
+  const { revision: _before, ...previous } = before;
+  const { revision: _after, ...next } = after;
+  return increased && JSON.stringify({ ...previous, participants }) === JSON.stringify(next);
 }
 
 /** Bound HTTP JSON at the transport layer, independently of realtime frame policy. */
@@ -107,8 +128,10 @@ export function createDraftOffRealtimeClient(options: RealtimeClientOptions) {
   let retryTimer: ReturnType<typeof setTimeout> | undefined, connectTimer: ReturnType<typeof setTimeout> | undefined;
   let deadlineTimer: ReturnType<typeof setTimeout> | undefined, deadlineKey: string | undefined;
   let cooldownTimer: ReturnType<typeof setTimeout> | undefined, cooldownUntilMs = 0;
-  // Monotonic publication floor from validated HTTP/socket snapshots and HTTP command revisions.
-  let sync: Promise<void> | undefined, requested = false, knownRevision = -1, privateRevision = -1, publicRevision = -1, attempt = 0;
+  // Public progress is independent of HTTP/private confirmation. Only commands,
+  // reconnects and non-opponent-progress frames raise the required private floor.
+  let sync: Promise<void> | undefined, requested = false, requiredPrivateRevision = -1, privateRevision = -1, publicRevision = -1, attempt = 0;
+  let publicView: DraftOffPublicRoomView | undefined, viewerId: string | undefined;
   const abort = new AbortController();
   const report = (code: string) => options.onError?.(code);
   const clear = (timer: ReturnType<typeof setTimeout> | undefined) => { if (timer !== undefined) cancel(timer); };
@@ -171,12 +194,11 @@ export function createDraftOffRealtimeClient(options: RealtimeClientOptions) {
     }
   }
   function observeRevision(revision: unknown) {
-    if (integer(revision)) knownRevision = Math.max(knownRevision, revision as number);
+    if (integer(revision)) requiredPrivateRevision = Math.max(requiredPrivateRevision, revision as number);
   }
   function applyPublic(message: DraftOffRoomSnapshotMessage) {
-    observeRevision(message.view.revision);
-    if (message.view.revision >= knownRevision && message.view.revision > publicRevision) {
-      publicRevision = message.view.revision; options.onPublicSnapshot(message);
+    if (message.view.revision >= requiredPrivateRevision && message.view.revision > publicRevision) {
+      publicRevision = message.view.revision; publicView = message.view; options.onPublicSnapshot(message);
       if (!running) return;
       const round = message.view.round;
       if (round.phase !== 'DRAFTING') { clear(deadlineTimer); deadlineTimer = undefined; }
@@ -211,14 +233,16 @@ export function createDraftOffRealtimeClient(options: RealtimeClientOptions) {
           observeRevision(reply.view.revision);
           if (reply.view.revision >= privateRevision) {
             privateRevision = reply.view.revision;
-            // A pending GET cannot publish below a newer command or socket revision.
-            if (privateRevision >= knownRevision) options.onSnapshot(reply);
+            // Public opponent progress cannot invalidate authenticated private data.
+            // Commands and lifecycle/own-entry changes still require their HTTP floor.
+            if (privateRevision >= requiredPrivateRevision) options.onSnapshot(reply);
           }
           if (!running) return; // A consumer may dispose after detecting lost session ownership.
+          viewerId = reply.participantId;
           applyPublic(publicMessage);
-          if (reply.view.revision >= knownRevision) terminal = reply.view.phase === 'COMPLETE';
+          if (reply.view.revision >= Math.max(requiredPrivateRevision, publicRevision)) terminal = reply.view.phase === 'COMPLETE';
           if (terminal) { clear(pollTimer); clear(retryTimer); }
-          if (privateRevision < knownRevision) requested = true;
+          if (privateRevision < requiredPrivateRevision) requested = true;
           // One immediate follow-up closes in-flight races. Repeated stale replies
           // must yield to the existing fallback timer instead of flooding HTTP.
         } while (running && requested && reads < 2);
@@ -256,8 +280,11 @@ export function createDraftOffRealtimeClient(options: RealtimeClientOptions) {
         try {
           const message = parseRoomSnapshot(event.data, options.roomCode, policy.maxMessageBytes);
           const first = initial; initial = false; attempt = 0; clear(connectTimer); connectTimer = undefined;
+          const newer = message.view.revision > publicRevision;
+          const needsPrivate = first || (newer && !onlyOpponentProgress(publicView, message.view, viewerId));
+          if (needsPrivate) observeRevision(message.view.revision);
           applyPublic(message);
-          if (first || privateRevision < knownRevision) void resync();
+          if (needsPrivate) void resync();
         } catch { socketDisabled = true; report('INVALID_REALTIME_MESSAGE'); ws.close(1008, 'Invalid message'); }
       };
       ws.onerror = () => { /* The subsequent close schedules recovery; never log the credential-bearing protocol header. */ };
@@ -281,7 +308,7 @@ export function createDraftOffRealtimeClient(options: RealtimeClientOptions) {
     observeCommand(result: { readonly roomRevision?: number }) {
       observeRevision(result.roomRevision);
       // Receipts can contain historical private views. Always obtain a fresh GET.
-      if (running) void resync();
+      return running ? resync() : Promise.resolve();
     },
     stop,
   };

@@ -52,6 +52,8 @@ export type DraftOffRoomParticipantView = {
   readonly role: "HOST" | "MEMBER";
   readonly membershipStatus: "JOINED" | "LEFT";
   readonly roundStatus?: "DRAFTING" | "SUBMITTED" | "INELIGIBLE";
+  /** Authoritative locked picks (0–11) for round entrants; absent in pre-progress responses/receipts. */
+  readonly lockedPickCount?: number;
 };
 
 export type DraftOffRoomLeaderboardRowView = {

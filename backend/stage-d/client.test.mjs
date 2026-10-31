@@ -72,6 +72,101 @@ test('GET-connect-GET closes reconnect races without overwriting private state o
   } finally { state.client.stop(); }
 });
 
+test('public lock progress resists stale HTTP/socket replies and fallback converges without extra polling', async () => {
+  const progress = (revision, count) => {
+    const reply = snapshot(revision);
+    Object.assign(reply.view, { phase: 'IN_PROGRESS', round: { ...reply.view.round, phase: 'DRAFTING' },
+      participants: [{ ...reply.view.participants[0], roundStatus: 'DRAFTING', lockedPickCount: count }] });
+    return reply;
+  };
+  const stale = deferred(); let latest = progress(1, 0);
+  const state = setup({ read: count => count === 2 ? stale.promise : response(latest), policy: { reconciliationIntervalMs: 1234 } });
+  try {
+    await state.client.start();
+    state.sockets[0].sendSnapshot({ ...message(1), view: latest.view }); await flush();
+    latest = progress(5, 2);
+    const { myDraft: _private, ...shared } = latest.view;
+    state.sockets[0].sendSnapshot({ ...message(5), view: shared }); await flush();
+    assert.equal(state.publicViews.at(-1).view.participants[0].lockedPickCount, 2);
+    assert.equal(state.privateViews.at(-1).view.participants[0].lockedPickCount, 0);
+    stale.resolve(response(progress(3, 1))); await flush();
+    assert.deepEqual(state.privateViews.map(reply => reply.view.participants[0].lockedPickCount), [0, 2]);
+    assert.deepEqual(state.publicViews.map(reply => reply.view.participants[0].lockedPickCount), [0, 2]);
+    state.client.observeCommand({ roomRevision: 3, view: progress(3, 1).view }); await flush();
+    assert.equal(state.privateViews.at(-1).view.participants[0].lockedPickCount, 2);
+    state.sockets[0].close(4001); await flush(); // HTTP fallback remains active, without socket reconnect.
+    latest = progress(9, 4);
+    const reads = state.stats().reads;
+    await state.fire(1234);
+    assert.equal(state.stats().reads, reads + 1);
+    assert.equal(state.privateViews.at(-1).view.participants[0].lockedPickCount, 4);
+    assert.equal(state.publicViews.at(-1).view.participants[0].lockedPickCount, 4);
+  } finally { state.client.stop(); }
+});
+
+function opponentProgress(revision, count = 0, own = 0) {
+  const reply = snapshot(revision);
+  reply.view.phase = 'IN_PROGRESS'; reply.view.round.phase = 'DRAFTING';
+  reply.view.participants = [{ ...reply.view.participants[0], roundStatus: 'DRAFTING', lockedPickCount: own },
+    { participantId: 'p2', displayName: 'Opponent', role: 'MEMBER', membershipStatus: 'JOINED', roundStatus: 'DRAFTING', lockedPickCount: count }];
+  return reply;
+}
+const publicMessage = reply => {
+  const { myDraft: _private, ...shared } = reply.view;
+  return { ...message(reply.view.revision), view: shared };
+};
+
+test('opponent-only snapshots do not fetch private state or raise its floor; default fallback still reconciles', async () => {
+  let latest = opponentProgress(1);
+  const state = setup({ read: () => response(latest) });
+  try {
+    await state.client.start(); state.sockets[0].sendSnapshot(publicMessage(latest)); await flush();
+    const before = state.stats().reads;
+    for (let count = 1; count <= 11; count++) state.sockets[0].sendSnapshot(publicMessage(opponentProgress(count + 1, count)));
+    await flush();
+    assert.equal(state.stats().reads, before);
+    assert.equal(state.publicViews.at(-1).view.participants[1].lockedPickCount, 11);
+    assert.equal(state.privateViews.at(-1).view.participants[1].lockedPickCount, 0);
+    latest = opponentProgress(3, 1);
+    await state.client.resync();
+    assert.equal(state.privateViews.at(-1).view.revision, 3);
+    assert.equal(state.publicViews.at(-1).view.revision, 12);
+    assert.equal(state.stats().reads, before + 1, 'Older authenticated GET must not chase public progress');
+    latest = opponentProgress(13, 11);
+    await state.fire(DEFAULT_REALTIME_CLIENT_POLICY.reconciliationIntervalMs);
+    assert.equal(state.privateViews.at(-1).view.revision, 13);
+    assert.equal(state.publicViews.at(-1).view.revision, 13);
+  } finally { state.client.stop(); }
+});
+
+test('own-entry, lifecycle, metadata and legacy progress changes retain authoritative GET reconciliation', async () => {
+  for (const change of [
+    value => { value.view.participants[0].lockedPickCount = 1; },
+    value => { value.view.participants[1].lockedPickCount = 11; value.view.participants[1].roundStatus = 'SUBMITTED'; },
+    value => { value.view.round.deadlineAtMs = 9000; },
+    value => { value.view.phase = 'COMPLETE'; value.view.round.phase = 'RESOLVED'; },
+  ]) {
+    let latest = opponentProgress(1);
+    const state = setup({ read: () => response(latest) });
+    try {
+      await state.client.start(); state.sockets[0].sendSnapshot(publicMessage(latest)); await flush();
+      const before = state.stats().reads;
+      latest = opponentProgress(5, 1); change(latest);
+      state.sockets[0].sendSnapshot(publicMessage(latest)); await flush();
+      assert.equal(state.stats().reads, before + 1);
+      assert.equal(state.privateViews.at(-1).view.revision, 5);
+    } finally { state.client.stop(); }
+  }
+  let latest = opponentProgress(1); delete latest.view.participants[1].lockedPickCount;
+  const state = setup({ read: () => response(latest) });
+  try {
+    await state.client.start(); state.sockets[0].sendSnapshot(publicMessage(latest)); await flush();
+    const before = state.stats().reads; latest = opponentProgress(2, 1);
+    state.sockets[0].sendSnapshot(publicMessage(latest)); await flush();
+    assert.equal(state.stats().reads, before + 1);
+  } finally { state.client.stop(); }
+});
+
 test('a newer HTTP command response withholds an older in-flight GET until reconciliation catches up', async () => {
   const stale = deferred(), current = deferred();
   const state = setup({ read: count => count === 2 ? stale.promise : count === 3 ? current.promise : response(snapshot(count === 1 ? 1 : 5)) });
