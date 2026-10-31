@@ -55,7 +55,21 @@ export type TeamEvaluationV3 = Omit<TeamEvaluationV2, "version" | "battingContri
   effects: readonly [{ id: "batting_position_fit"; component: "batting"; nominalValue: number; appliedValue: number }];
 };
 
+function validateRating(value: unknown, label: string, nullable: boolean): void {
+  if (nullable && value === null) return;
+  if (typeof value !== "number" || !Number.isFinite(value) || value < STAGE_6_COMPONENT_FLOOR || value > 100) {
+    throw new TypeError(`Team Evaluation V3 ${label} must be a finite number in [20, 100]${nullable ? " or null" : ""}.`);
+  }
+}
+
 export function evaluateCompletedEraXiV3(input: EraCompletedXiInput): TeamEvaluationV3 {
+  // Validate ratings before V2 arithmetic; only explicit component nulls retain their existing semantics.
+  for (const { quality } of input.players) {
+    const label = `${quality.playerTeamSeasonId}: quality`;
+    validateRating(quality.batting?.battingRating, `${label}.batting.battingRating`, true);
+    validateRating(quality.bowling?.bowlingRating, `${label}.bowling.bowlingRating`, true);
+    validateRating(quality.overall?.overallRating, `${label}.overall.overallRating`, false);
+  }
   // V2 is frozen: reuse its identity/legality validation, base strengths and bowling deployment.
   // Its fitted contributions and capped batting outputs never enter V3 aggregation.
   const baseline = evaluateCompletedEraXi(input);

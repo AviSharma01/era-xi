@@ -14,6 +14,67 @@ function opponent(eraId: EraId, teamId: string): EraCompletedXiInput {
 }
 const close = (actual: number, expected: number) => assert.ok(Math.abs(actual - expected) < 1e-9, `${actual} != ${expected}`);
 
+test("V3 rejects invalid or missing ratings with the player and field identified", () => {
+  const fields = [
+    ["batting", "battingRating"], ["bowling", "bowlingRating"], ["overall", "overallRating"],
+  ] as const;
+  for (const [component, field] of fields) {
+    const invalid: unknown[] = [NaN, Infinity, -Infinity, undefined, 19.99, 100.01, 0, -20, "80", "", true, {}, []];
+    if (component === "overall") invalid.push(null);
+    for (const index of [0, 10]) for (const value of invalid) {
+      const input = structuredClone(opponent("era-expansion", "team-chennai-super-kings"));
+      const player = input.players[index]!;
+      Object.assign(player.quality[component], { [field]: value });
+      assert.throws(() => evaluateCompletedEraXiV3(input), {
+        name: "TypeError",
+        message: `Team Evaluation V3 ${player.quality.playerTeamSeasonId}: quality.${component}.${field} must be a finite number in [20, 100]${component === "overall" ? "" : " or null"}.`,
+      });
+    }
+    const input = structuredClone(opponent("era-expansion", "team-chennai-super-kings"));
+    Reflect.deleteProperty(input.players[0]!.quality[component], field);
+    assert.throws(() => evaluateCompletedEraXiV3(input), error =>
+      error instanceof TypeError && error.message.includes(`quality.${component}.${field} must be a finite number in [20, 100]`));
+  }
+});
+
+test("V3 accepts inclusive rating boundaries and fractional ratings without changing their values", () => {
+  for (const rating of [20, 20.01, 72.345, 99.99, 100]) {
+    const input = structuredClone(opponent("era-expansion", "team-chennai-super-kings"));
+    for (const player of input.players) {
+      player.quality.batting.battingRating = rating;
+      player.quality.bowling.bowlingRating = rating;
+      player.quality.overall.overallRating = rating;
+      Object.assign(player.role.battingFit.slots[player.position - 1]!, { classification: "NATURAL", bandDistance: 0 });
+    }
+    const before = structuredClone(input), baseline = evaluateCompletedEraXi(input), result = evaluateCompletedEraXiV3(input);
+    assert.deepEqual(input, before);
+    assert.deepEqual(result.baseStrength, baseline.baseStrength);
+    assert.equal(result.adjustedStrength.batting, baseline.adjustedStrength.batting);
+    assert.equal(result.adjustedStrength.bowling, baseline.adjustedStrength.bowling);
+    assert.equal(result.adjustedStrength.overall, baseline.adjustedStrength.overall);
+    assert.ok(result.battingContributions.every(row => row.rawContribution === rating && row.effectiveContribution === rating));
+    assert.ok(result.players.every(player => player.quality.overall.overallRating === rating));
+  }
+});
+
+test("V3 preserves null component ratings and other nullable inputs", () => {
+  const input = structuredClone(opponent("era-expansion", "team-chennai-super-kings"));
+  const batter = input.players[0]!, nonBowler = input.players[1]!;
+  Object.assign(batter.quality.batting, { battingRating: null, internalScore: null, evidenceState: "NONE" });
+  Object.assign(nonBowler.quality.bowling, { bowlingRating: null, internalScore: null, evidenceState: "NONE" });
+  nonBowler.role.allRounderLean = null;
+  nonBowler.role.phaseBowlingUsage.death.share = null;
+  Object.assign(batter.role.battingFit.slots[batter.position - 1]!, { classification: "UNKNOWN", bandDistance: null });
+  const before = structuredClone(input), result = evaluateCompletedEraXiV3(input);
+  assert.deepEqual(input, before);
+  assert.deepEqual(result.players, before.players);
+  assert.equal(result.battingContributions[0]!.rawContribution, 20);
+  assert.equal(result.battingContributions[0]!.effectiveContribution, 20);
+  assert.equal(result.battingContributions[0]!.ratingImputed, true);
+  assert.ok(result.bowlingDeployment.every(row => row.playerId !== nonBowler.quality.playerId));
+  assert.ok(Object.values(result.adjustedStrength).every(Number.isFinite));
+});
+
 test("V3 mapping respects classifications, distant acceptable evidence and invalid combinations", () => {
   for (const [classification, distance, severity, percent] of [
     ["NATURAL", 0, "NATURAL", 0], ["UNKNOWN", null, "UNKNOWN", 0],
