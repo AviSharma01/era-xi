@@ -329,7 +329,6 @@ export function Landing(props: {
           <span>ERA DRAFT</span>
         </a>
         <div className="landing-header-actions">
-        <a className="classic-link" href={appRoutePath("CLASSIC", props.basePath)}>Classic 2016 <span aria-hidden="true">↗</span></a>
         {draftOffEnabled() && <a className="classic-link" href={appRoutePath("DRAFT_OFF", props.basePath)} onClick={(event) => {
           if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); navigateToAppRoute("DRAFT_OFF"); }
         }}>Draft-Off <span aria-hidden="true">↗</span></a>}

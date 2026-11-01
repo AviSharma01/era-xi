@@ -429,7 +429,7 @@ test("Start League retains the synchronous one-call guard with the redesigned re
   } finally { await act(async () => root.unmount()); restoreGlobals(); dom.window.close(); }
 });
 
-test("homepage keeps all five era selections separate from starting and preserves nested Classic links", async () => {
+test("homepage keeps all five era selections separate from starting and does not link to Classic", async () => {
   const dom = new JSDOM("<!doctype html><div id=\"root\"></div>", { url: "https://example.test/game/" });
   const restoreGlobals = installDomGlobals(dom);
   const element = dom.window.document.querySelector<HTMLElement>("#root")!;
@@ -447,7 +447,8 @@ test("homepage keeps all five era selections separate from starting and preserve
     await act(async () => root.render(<Home />));
     assert.equal(element.querySelectorAll('.era-card[aria-pressed="true"]').length, 0);
     assert.equal(element.querySelector(".start-draft-action"), null);
-    assert.equal(element.querySelector(".classic-link")?.getAttribute("href"), "/game/classic");
+    assert.equal(element.querySelector('a[href$="/classic"]'), null);
+    assert.doesNotMatch(element.textContent ?? "", /Classic/);
     assert.equal(element.querySelector(".wordmark")?.getAttribute("href"), "/game/");
     const ids: EraId[] = ["era-foundation", "era-expansion", "era-transition", "era-modern-pre-impact", "era-impact"];
     const rows = [...element.querySelectorAll<HTMLButtonElement>(".era-card")];
