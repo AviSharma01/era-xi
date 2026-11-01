@@ -1,5 +1,7 @@
 import { useEffect, useRef, type ReactElement } from "react";
-import type { DraftCandidateIdentityView, DraftPickView, DraftPresentationFit, EraDraftPublicView } from "./eraDraftTypes.js";
+import { FitBadge, fitClass, monogram, PlayerCard, type PlayerCardPlayer } from "./components/PlayerCard.js";
+import { fitLabel, friendly } from "./copy.js";
+import type { DraftCandidateIdentityView, DraftPickView, EraDraftPublicView } from "./eraDraftTypes.js";
 
 // Shared presentation only. Solo and Draft-Off retain separate state/command controllers.
 export function CandidateGallery(props: {
@@ -48,47 +50,14 @@ export function CandidateGallery(props: {
   );
 }
 
-export function SelectedPlayerDetail({ candidate }: { candidate: DraftCandidateIdentityView }): ReactElement {
-  const showBatting = candidate.displayRole !== "BOWLER" && candidate.displayRole !== "UNKNOWN";
-  const showBowling = candidate.displayRole === "BOWLER" || candidate.displayRole === "ALL_ROUNDER";
-  return <section className={`selected-player-detail tier-${candidate.tierAppearance}`} aria-labelledby="selected-player-title">
-    <span className="selected-player-portrait" aria-hidden="true">{monogram(candidate.playerName)}</span>
-    <div className="selected-player-copy">
-      <h3 id="selected-player-title">{candidate.playerName}</h3>
-      <p>{candidate.teamName} · {candidate.seasonYear}</p>
-      <div className="selected-player-meta">
-        <span>{friendly(candidate.displayRole)}</span>
-        <span>{candidate.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}</span>
-        {candidate.keeperCapability === "CONFIRMED" && candidate.displayRole !== "WICKETKEEPER_BATTER" && <span>Wicketkeeper</span>}
-      </div>
-      <CurrentSeasonStats candidate={candidate} batting={showBatting} bowling={showBowling} />
-    </div>
-  </section>;
+export function SelectedPlayerDetail({ candidate, eraTitle }: { candidate: DraftCandidateIdentityView; eraTitle?: string }): ReactElement {
+  return <PlayerCard className="selected-player-detail" size="big" state="selected" player={candidate} eraTitle={eraTitle} />;
 }
 
-function CurrentSeasonStats(props: {
-  candidate: Pick<DraftCandidateIdentityView, "historicalStats" | "seasonYear">;
-  batting: boolean;
-  bowling: boolean;
-}): ReactElement {
-  const { batting, bowling } = props.candidate.historicalStats.currentSeason;
-  const lines: string[] = [];
-  if (props.batting) {
-    lines.push(`${batting.runs} runs · ${batting.strikeRate === null ? "—" : formatOneDecimal(batting.strikeRate)} SR`);
-  }
-  if (props.bowling) {
-    lines.push(`${bowling.wickets} wickets · ${bowling.economy === null ? "—" : formatTwoDecimals(bowling.economy)} econ`);
-  }
-  return <div className="current-season-stats" aria-label={`${props.candidate.seasonYear} current season statistics`}>
-    <span>{props.candidate.seasonYear} season</span>
-    {lines.length > 0 ? lines.map((line) => <strong key={line}>{line}</strong>) : <strong>No recorded statistics</strong>}
-  </div>;
-}
-
-export type PlayerInspectorView = Pick<DraftPickView, "playerName" | "teamName" | "seasonYear" | "displayRole" | "rosterStatus" | "keeperCapability" | "historicalStats" | "tierAppearance"> & {
+export type PlayerInspectorView = PlayerCardPlayer & Pick<DraftPickView, "historicalStats"> & {
   readonly battingPosition?: DraftPickView["battingPosition"];
 };
-export function PlayerInspector({ player, onClose, countdown }: { player: PlayerInspectorView; onClose: () => void; countdown?: string }): ReactElement {
+export function PlayerInspector({ player, onClose, countdown, eraTitle }: { player: PlayerInspectorView; onClose: () => void; countdown?: string; eraTitle?: string }): ReactElement {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const openerRef = useRef<HTMLElement | null>(null);
@@ -110,16 +79,14 @@ export function PlayerInspector({ player, onClose, countdown }: { player: Player
       {countdown && <span className="room-sheet-clock" role="timer" aria-label={`${countdown} remaining`}>{countdown}</span>}
       <button ref={closeRef} className="quiet-button" onClick={onClose} aria-label="Close player details">Close ×</button></header>
     {countdown === "00:00" && <p role="status">Time reached. Checking final status with the server.</p>}
-    <div className="inspector-identity"><span className="inspector-monogram" aria-hidden="true">{monogram(player.playerName)}</span>
-      <div><h3 id="inspector-title">{player.playerName}</h3><p>{player.teamName} · {player.seasonYear}</p></div></div>
-    <p>{friendly(player.displayRole)} · {player.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}{player.keeperCapability === "CONFIRMED" && player.displayRole !== "WICKETKEEPER_BATTER" ? " · WK" : ""}</p>
+    <PlayerCard size="big" player={player} eraTitle={eraTitle} nameId="inspector-title" />
     <div className="inspector-metrics" aria-label="Exact season statistics">
       {showBat && <><div><span>Runs</span><strong>{batting.runs}</strong></div><div><span>Strike rate</span><strong>{batting.strikeRate === null ? "—" : formatOneDecimal(batting.strikeRate)}</strong></div></>}
       {showBat && !showBowl && <div><span>Batting average</span><strong>{batting.average === null ? "—" : formatOneDecimal(batting.average)}</strong></div>}
       {showBowl && <><div><span>Wickets</span><strong>{bowling.wickets}</strong></div><div><span>Economy</span><strong>{bowling.economy === null ? "—" : formatTwoDecimals(bowling.economy)}</strong></div></>}
     </div>
   </>;
-  return <dialog ref={dialogRef} className={`player-inspector inspector-modal tier-${player.tierAppearance}`} aria-labelledby="inspector-title"
+  return <dialog ref={dialogRef} className="player-inspector inspector-modal" aria-labelledby="inspector-title"
     onCancel={(event) => { event.preventDefault(); onClose(); }} onKeyDown={(event) => {
       if (event.key === "Escape") event.stopPropagation();
       // Close is the sheet's only interactive control; keep Tab within the dialog.
@@ -127,26 +94,8 @@ export function PlayerInspector({ player, onClose, countdown }: { player: Player
     }}>{content}</dialog>;
 }
 
-export function FitBadge({ fit }: { fit: DraftPresentationFit }): ReactElement {
-  return <span className={`fit-badge fit-${fitClass(fit)}`}>{fitLabel(fit)}</span>;
-}
-
-export function fitLabel(fit: DraftPresentationFit): string {
-  // Approved UI fallback only: authoritative UNKNOWN remains neutral and unchanged.
-  return friendly(fit === "UNKNOWN" ? "ACCEPTABLE" : fit);
-}
-
-export function monogram(name: string): string {
-  return name.split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toUpperCase();
-}
-
-export function friendly(value: string): string {
-  return value.toLowerCase().replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
-}
-
-export function fitClass(fit: DraftPresentationFit): string {
-  return (fit === "UNKNOWN" ? "ACCEPTABLE" : fit).toLowerCase().replaceAll("_", "-");
-}
+export { FitBadge, fitClass, monogram };
+export { fitLabel, friendly };
 
 function candidateQuickStats(candidate: DraftCandidateIdentityView): string[] {
   const { batting, bowling } = candidate.historicalStats.currentSeason;

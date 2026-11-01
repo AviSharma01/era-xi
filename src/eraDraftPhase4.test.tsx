@@ -89,7 +89,7 @@ test("authoritative tier colours appear before reveal without letters or ratings
   const hiddenMarkup = renderToStaticMarkup(<DraftExperience session={{ catalog, state: xiComplete }}
     persistenceWarning={null} onAccepted={() => null} onExit={() => undefined} />);
   assert.doesNotMatch(hiddenMarkup, /xi-tier-[sabcd]|quality-tier|data-[^=]*tier/i);
-  assert.equal(countMatches(hiddenMarkup, /collectible-card tier-(violet|gold|cobalt|emerald|slate)/g), 11);
+  assert.equal(countMatches(hiddenMarkup, /player-card player-card-slot player-card-state-locked tier-(violet|gold|cobalt|emerald|slate)/g), 11);
   assert.doesNotMatch(hiddenMarkup, /overall-rating|component-ratings|battingRating|bowlingRating/);
 
   const revealed = accepted(reduceEraDraft(catalog, xiComplete, { type: "REVEAL_XI" }));

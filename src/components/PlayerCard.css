@@ -1,0 +1,147 @@
+/* The one player card. Every value comes from tokens.css, and only transform and opacity animate.
+   Selectors carry two classes so they win over the shells' element rules (h3, button, a). */
+
+.player-card.tier-violet { --tier-fill: var(--tier-s); --tier-deep: var(--tier-s-deep); --card-ink: var(--tier-s-ink); --card-edge-size: var(--card-edge-width-strong); }
+.player-card.tier-gold { --tier-fill: var(--tier-a); --tier-deep: var(--tier-a-deep); --card-ink: var(--tier-a-ink); --card-edge-size: var(--card-edge-width); --card-pending-veil: var(--tier-a-edge-light); }
+.player-card.tier-cobalt { --tier-fill: var(--tier-b); --tier-deep: var(--tier-b-deep); --card-ink: var(--tier-b-ink); --card-edge-size: var(--card-edge-width); }
+.player-card.tier-emerald { --tier-fill: var(--tier-c); --tier-deep: var(--tier-c-deep); --card-ink: var(--tier-c-ink); --card-edge-size: var(--card-edge-width); }
+.player-card.tier-slate { --tier-fill: var(--tier-d); --tier-deep: var(--tier-d-deep); --card-ink: var(--tier-d-ink); --card-edge-size: var(--card-edge-none); }
+
+.player-card.player-card-big { --card-radius: var(--card-radius-big); --card-gloss: var(--finish-c-gloss-big); }
+.player-card.player-card-slot { --card-radius: var(--card-radius-slot); --card-gloss: var(--finish-c-gloss-slot); }
+.player-card.player-card-mini { --card-radius: var(--card-radius-mini); --card-gloss: var(--finish-c-gloss-mini); }
+
+.player-card { position: relative; isolation: isolate; display: block; width: 100%; min-width: 0; margin: 0; padding: 0; border: 0; border-radius: var(--card-radius); background: none; color: var(--card-ink); font: var(--weight-regular) var(--type-secondary)/var(--leading-secondary) var(--font-body); letter-spacing: 0; text-align: left; text-transform: none; }
+button.player-card { cursor: pointer; }
+.player-card-body { position: relative; display: block; min-height: inherit; border-radius: inherit; }
+button.player-card-slot .player-card-body { transition: transform var(--motion-level-1) var(--ease-standard); }
+button.player-card-slot:hover .player-card-body { transform: translateY(var(--motion-lift)); }
+
+/* Surface: edge, face, finish and flash. All decorative, all clipped to the rounded shape. */
+.player-card-surface { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; }
+.player-card-edge { position: absolute; inset: 0; }
+.player-card-face { position: absolute; inset: var(--card-edge-size); overflow: hidden; border-radius: calc(var(--card-radius) - var(--card-edge-size)); background: linear-gradient(var(--finish-face-angle), var(--tier-fill), var(--tier-deep)); }
+.player-card-finish, .player-card-sheen { position: absolute; inset: 0; }
+.player-card-sheen { opacity: 0; transform: translateX(-100%); }
+
+/* S: holo, no sparkle dots, on a prismatic edge. Both hold one angle unless this card has the shimmer. */
+.tier-violet .player-card-edge { top: 50%; right: auto; bottom: auto; left: 50%; width: var(--card-prism-size); aspect-ratio: 1; background: var(--finish-s-edge); transform: translate(-50%, -50%); }
+.tier-violet .player-card-face { background: var(--finish-s-face); }
+.tier-violet .player-card-finish { right: auto; width: var(--card-holo-width); background: var(--finish-s-holo); transform: translateX(var(--card-holo-rest-x)); }
+.tier-violet.player-card-shimmer .player-card-edge { animation: var(--anim-card-edge) var(--motion-card-edge) var(--ease-linear) infinite; }
+.tier-violet.player-card-shimmer .player-card-finish { animation: var(--anim-card-holo) var(--motion-card-holo) var(--ease-in-out) infinite alternate; }
+
+/* A: mirror foil on a still gold edge. */
+.tier-gold .player-card-edge { background: var(--finish-a-edge); }
+.tier-gold .player-card-finish { background: var(--finish-a-foil); }
+.tier-gold .player-card-sheen { background: var(--finish-a-sheen); opacity: var(--card-sheen-a-rest-opacity); transform: translateX(var(--card-sheen-rest-x)); animation: var(--anim-sheen) var(--motion-sheen-a) var(--ease-in-out) infinite; animation-delay: calc(var(--card-order, 0) * var(--card-sheen-stagger)); }
+
+/* B: brushed satin on a silver edge. */
+.tier-cobalt .player-card-edge { background: var(--tier-b-edge); }
+.tier-cobalt .player-card-finish { background: var(--finish-b-satin); }
+.tier-cobalt .player-card-sheen { background: var(--finish-b-sheen); animation: var(--anim-sheen) var(--motion-sheen-b) var(--ease-in-out) infinite; animation-delay: calc(var(--card-order, 0) * var(--card-sheen-stagger)); }
+
+/* C: gloss enamel, a hard-edged highlight across the top. D: matte, flat with no edge. */
+.tier-emerald .player-card-edge { background: var(--tier-c); }
+.tier-emerald .player-card-face { background: var(--tier-c); }
+.tier-emerald .player-card-finish { background: var(--card-gloss), var(--finish-c-depth); }
+.tier-slate .player-card-face { background: var(--tier-d); }
+
+/* Portrait: an embossed monogram, in an area that can take a photo later. */
+.player-card-portrait { display: grid; flex: none; place-items: center; border-radius: var(--radius-md); background: var(--card-portrait-wash); box-shadow: var(--card-portrait-inset); color: var(--tier-fill); font-family: var(--font-display); font-weight: var(--weight-title); line-height: var(--leading-clock); letter-spacing: var(--tracking-headline); text-shadow: var(--card-emboss); }
+
+.player-card-content { position: relative; z-index: 1; display: flex; min-width: 0; }
+.player-card-copy { display: flex; flex: 1 1 auto; flex-direction: column; min-width: 0; }
+.player-card .player-card-name { margin: 0; color: inherit; font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-name); letter-spacing: var(--tracking-label); overflow-wrap: anywhere; text-transform: none; }
+.player-card-team, .player-card-note, .player-card-reason, .player-card-era-best { display: block; font-size: var(--type-small); line-height: var(--leading-small); overflow-wrap: anywhere; }
+.player-card-note { font-weight: var(--weight-medium); }
+.player-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-2); }
+/* Plates carry their own dark ground, so they stay readable on every finish. */
+.player-card-number, .player-card-marker, .player-card .player-card-fit { display: inline-flex; flex: none; align-items: center; border-radius: var(--radius-sm); background: var(--card-scrim); color: var(--color-text); }
+.player-card-number { min-width: var(--space-6); justify-content: center; padding: var(--card-plate-pad) var(--space-1h); font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); }
+.player-card-marker { min-height: var(--space-6); padding: 0 var(--space-1h); font-size: var(--type-small); font-weight: var(--weight-medium); line-height: var(--leading-small); white-space: nowrap; }
+.player-card-lock svg { display: block; width: var(--card-lock-icon); height: var(--card-lock-icon); }
+.player-card .player-card-fit { padding: var(--card-plate-pad) var(--space-1h); }
+.player-card .player-card-fit .fit-badge { font-size: var(--type-small); line-height: var(--leading-small); white-space: nowrap; }
+.player-card-stats { display: flex; flex-wrap: wrap; gap: 0 var(--space-3); font-size: var(--type-secondary); line-height: var(--leading-secondary); }
+.player-card-stat b { font-weight: var(--weight-label); }
+.player-card-tags { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); font-size: var(--type-small); line-height: var(--leading-small); }
+.player-card-meta { display: flex; flex-wrap: wrap; gap: 0 var(--space-1h); font-size: var(--type-secondary); line-height: var(--leading-secondary); }
+.player-card-meta > span + span::before { content: "· "; }
+.player-card-ribbon { position: absolute; top: 0; left: 50%; z-index: 2; transform: translateX(-50%); }
+
+/* Big */
+.player-card-big .player-card-content { gap: var(--space-4); padding: var(--space-4); }
+.player-card-big .player-card-portrait { width: var(--card-portrait-big); height: var(--card-portrait-big-tall); font-size: var(--card-monogram-big); }
+.player-card-big .player-card-copy { gap: var(--space-1); }
+.player-card-big .player-card-top:empty { display: none; }
+.player-card.player-card-big .player-card-name { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); letter-spacing: var(--tracking-headline); }
+.player-card-big .player-card-team, .player-card-big .player-card-era-best { font-size: var(--type-body); line-height: var(--leading-body); }
+.player-card-big .player-card-stats { margin-top: var(--space-1); }
+
+/* Slot */
+.player-card-slot .player-card-body { min-height: var(--card-slot-min-height); }
+.player-card-slot .player-card-content { min-height: inherit; flex-direction: column; align-items: center; gap: var(--space-1); padding: var(--space-2) var(--space-2) var(--space-3); text-align: center; }
+.player-card-slot .player-card-top { width: 100%; min-height: var(--space-6); }
+.player-card-slot .player-card-portrait { width: var(--card-portrait-slot); height: var(--card-portrait-slot); font-size: var(--card-monogram-slot); }
+.player-card-slot .player-card-stats, .player-card-slot .player-card-tags { justify-content: center; }
+.player-card-slot .player-card-tags { margin-top: auto; }
+
+/* Mini */
+.player-card-mini .player-card-body { min-height: var(--card-mini-min-height); }
+.player-card-mini .player-card-content { min-height: inherit; align-items: center; gap: var(--space-2); padding: var(--space-1h) var(--space-2); }
+.player-card-mini .player-card-portrait { width: var(--card-portrait-mini); height: var(--card-portrait-mini); border-radius: var(--radius-sm); font-size: var(--card-monogram-mini); }
+.player-card-side { display: flex; flex: none; flex-direction: column; align-items: flex-end; gap: var(--space-1); }
+
+/* States use ivory and shape, never the tier colours. */
+.player-card-state-edge { position: absolute; inset: 0; z-index: 2; border-radius: inherit; pointer-events: none; }
+.player-card-state-selected .player-card-state-edge { border-left: var(--card-state-edge-selected) solid var(--color-action); box-shadow: var(--card-selected-glow); }
+.player-card-state-locked .player-card-state-edge { border: var(--card-state-edge) solid var(--color-action); animation: fade-in var(--motion-level-2) var(--ease-out); }
+.player-card-state-preview .player-card-state-edge { border: var(--card-state-edge) dashed var(--color-action); }
+.player-card.player-card-state-preview { --card-ink: var(--color-text); }
+.player-card-state-preview .player-card-edge, .player-card-state-preview .player-card-finish, .player-card-state-preview .player-card-sheen { display: none; }
+.player-card-state-preview .player-card-face { inset: 0; border-radius: inherit; background: color-mix(in srgb, var(--tier-fill) var(--card-preview-wash), var(--color-panel)); }
+/* Pending: no lock edge until the server confirms. The pulse sits under the text and moves away from the ink. */
+.player-card-pulse { position: absolute; inset: 0; background: var(--card-pending-veil, var(--card-scrim)); opacity: var(--card-pending-rest-opacity); animation: var(--anim-card-pending) var(--motion-card-pending) var(--ease-in-out) infinite; }
+.player-card.player-card-state-unavailable { --card-ink: var(--color-text-muted); }
+.player-card-state-unavailable .player-card-sheen { display: none; }
+.player-card-state-unavailable .player-card-finish { background: none; }
+.player-card-state-unavailable .player-card-face::after { content: ""; position: absolute; inset: 0; background: var(--card-scrim); }
+.player-card .player-card-reason { color: var(--color-text); font-weight: var(--weight-medium); }
+
+/* Selection flash. Each layer rests invisible; a new flashKey remounts the body to replay it. */
+.player-card-flash, .player-card-flash > span { position: absolute; inset: 0; }
+.player-card-flash > span { opacity: 0; }
+.player-card-flash-dim { background: var(--card-flash-dim-colour); }
+.tier-violet .player-card-flash-burst { background: var(--finish-s-burst); }
+.tier-violet .player-card-flash-sweep { background: var(--finish-s-sweep); }
+.tier-gold .player-card-flash-burst, .tier-cobalt .player-card-flash-burst { background: var(--card-flash-brighten); }
+.tier-gold .player-card-flash-sweep { background: var(--finish-a-glint); }
+
+/* S, two beats: dim, then burst with a scale pop, a rainbow sweep and the edge turning. */
+.tier-violet.player-card-flash-active .player-card-body { animation: var(--anim-flash-body-s) calc(var(--motion-flash-s) - var(--motion-flash-s-delay)) var(--ease-hard-out) var(--motion-flash-s-delay) both; }
+.tier-violet.player-card-flash-active .player-card-edge { animation: var(--anim-card-edge) var(--motion-flash-s) var(--ease-hard-out); }
+.tier-violet.player-card-flash-active.player-card-shimmer .player-card-edge { animation: var(--anim-card-edge) var(--motion-card-edge) var(--ease-linear) infinite; }
+.tier-violet .player-card-flash-dim { animation: var(--anim-flash-dim) calc(var(--motion-flash-s-delay) * 2) var(--ease-in-out); }
+.tier-violet .player-card-flash-burst { animation: var(--anim-flash-burst) calc(var(--motion-flash-s) - var(--motion-flash-s-delay)) var(--ease-out) var(--motion-flash-s-delay); }
+.tier-violet .player-card-flash-sweep { animation: var(--anim-flash-sweep) calc(var(--motion-flash-s) - var(--motion-flash-s-delay)) var(--ease-in-out) var(--motion-flash-s-delay); }
+/* A, one gold glint: a narrow warm sweep and a slight brightening. No scale, no dim. */
+.tier-gold.player-card-flash-active .player-card-body { animation: var(--anim-flash-body-a) var(--motion-flash-a) var(--ease-out) both; }
+.tier-gold .player-card-flash-burst { animation: var(--anim-flash-pulse) var(--motion-flash-a) var(--ease-in-out); }
+.tier-gold .player-card-flash-sweep { animation: var(--anim-flash-sweep) var(--motion-flash-a) var(--ease-in-out); }
+/* B, one pulse. C, a quick settle. */
+.tier-cobalt.player-card-flash-active .player-card-body { animation: var(--anim-flash-body-b) var(--motion-flash-b) var(--ease-out) both; }
+.tier-cobalt .player-card-flash-burst { animation: var(--anim-flash-pulse) var(--motion-flash-b) var(--ease-in-out); }
+.tier-emerald.player-card-flash-active .player-card-body { animation: var(--anim-flash-body-c) var(--motion-flash-c) var(--ease-out) both; }
+
+/* Only transform and opacity animate; the gradients are static, with no timers, blur or layout work. */
+@keyframes card-light-sweep { 0% { transform: translateX(-100%); opacity: 0; } 2% { opacity: 1; } 10%, 100% { transform: translateX(100%); opacity: 0; } }
+@keyframes card-holo-drift { from { transform: translateX(var(--card-holo-drift-from)); } to { transform: translateX(var(--card-holo-drift-to)); } }
+@keyframes card-edge-spin { from { transform: translate(-50%, -50%) rotate(0turn); } to { transform: translate(-50%, -50%) rotate(1turn); } }
+@keyframes card-pending-pulse { 0%, 100% { opacity: var(--card-pending-low-opacity); } 50% { opacity: var(--card-pending-high-opacity); } }
+@keyframes card-flash-dim { 0%, 100% { opacity: 0; } 50% { opacity: var(--card-flash-dim-opacity); } }
+@keyframes card-flash-burst { 0% { opacity: 0; } 18% { opacity: var(--card-flash-burst-opacity); } 100% { opacity: 0; } }
+@keyframes card-flash-sweep { 0% { opacity: 0; transform: translateX(-100%); } 25% { opacity: 1; } 75% { opacity: 1; } 100% { opacity: 0; transform: translateX(100%); } }
+@keyframes card-flash-pulse { 0%, 100% { opacity: 0; } 50% { opacity: var(--card-flash-pulse-opacity); } }
+@keyframes card-flash-pop { 0% { transform: scale(1); } 22% { transform: scale(var(--card-flash-scale)); } 100% { transform: scale(1); } }
+@keyframes card-flash-settle { from { transform: scale(var(--card-flash-settle-scale)); } to { transform: scale(1); } }

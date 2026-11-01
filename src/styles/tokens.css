@@ -35,13 +35,13 @@
      and panel surfaces, -ink the text on a tier fill. */
   --tier-s: #7650B0;
   --tier-s-deep: #3D2A66;
+  --tier-s-mid: #5F3F98;
   --tier-s-bright: #BDA3EA;
   --tier-s-ink: var(--color-text);
   --tier-a: #C89A3A;
   --tier-a-deep: #A87F2B;
   --tier-a-bright: #E3BE6B;
   --tier-a-ink: var(--color-night);
-  --tier-a-wash: rgba(255, 255, 255, 0.12);
   --tier-b: #2F62AD;
   --tier-b-deep: #1A3C70;
   --tier-b-bright: #84ADEA;
@@ -55,11 +55,60 @@
   --tier-d-bright: #A3B0C2;
   --tier-d-ink: var(--color-text);
 
-  /* Marks on any tier fill. The wash sits behind monograms, so it moves away from the ink. */
-  --tier-wash-dark: rgba(8, 16, 32, 0.16);
-  --card-edge: rgba(255, 255, 255, 0.25);
-  --card-sheen: rgba(255, 255, 255, 0.13);
+  /* Finish ladder, derived. S holo and prismatic edge, A mirror foil and gold edge,
+     B brushed satin and silver edge, C gloss enamel and self-coloured edge, D matte. */
+  --prism-1: #F2789F;
+  --prism-2: #F4C56B;
+  --prism-3: #7FE3B5;
+  --prism-4: #6FC9F2;
+  --prism-5: #A98BF0;
+  --holo-1: rgba(242, 120, 159, 0.22);
+  --holo-2: rgba(244, 197, 107, 0.195);
+  --holo-3: rgba(127, 227, 181, 0.21);
+  --holo-4: rgba(111, 201, 242, 0.22);
+  --holo-5: rgba(169, 139, 240, 0.04);
+  --tier-a-edge-light: #F2DC9A;
+  --tier-a-edge-dark: #9C7424;
+  --tier-a-foil: #E9CC82;
+  --tier-a-sheen: rgba(255, 250, 225, 0.75);
+  --tier-a-glint: rgba(255, 244, 205, 0.95);
+  --tier-b-edge: #C6D1DF;
+  --tier-b-brush: rgba(255, 255, 255, 0.028);
+  --tier-b-satin: rgba(8, 16, 32, 0.2);
+  --tier-b-sheen: rgba(255, 255, 255, 0.055);
+  --tier-c-gloss: rgba(255, 255, 255, 0.2);
+  --tier-c-depth: rgba(8, 16, 32, 0.22);
+  --finish-face-angle: 160deg;
+  --finish-s-edge: conic-gradient(var(--prism-1), var(--prism-2), var(--prism-3), var(--prism-4), var(--prism-5), var(--prism-1));
+  /* One fixed-angle band pattern: frozen on slot, mini and reduced motion; it only drifts while a card holds the shimmer.
+     The bands are sized in px so the texture reads the same at every card size, over a deeper face that keeps text AA. */
+  --finish-s-face: linear-gradient(160deg, var(--tier-s) 0%, var(--tier-s-mid) 9%, var(--tier-s-deep) 100%);
+  --finish-s-holo: repeating-linear-gradient(105deg, var(--holo-5) 0, var(--holo-1) 18px, var(--holo-2) 34px, var(--holo-3) 50px, var(--holo-4) 66px, var(--holo-5) 84px, var(--holo-5) 112px);
+  --finish-s-burst: radial-gradient(circle at 50% 42%, var(--card-flash-burst-core), var(--tier-s) 75%);
+  --finish-s-sweep: linear-gradient(105deg, transparent 30%, var(--prism-1) 36%, var(--prism-2) 43%, var(--prism-3) 50%, var(--prism-4) 57%, var(--prism-5) 64%, transparent 70%);
+  --finish-a-edge: linear-gradient(135deg, var(--tier-a-edge-light), var(--tier-a-edge-dark) 45%, var(--tier-a-edge-light));
+  --finish-a-foil: linear-gradient(105deg, var(--tier-a-deep), var(--tier-a) 16%, var(--tier-a-foil) 27%, var(--tier-a) 38%, var(--tier-a-deep) 56%, var(--tier-a) 70%, var(--tier-a-foil) 82%, var(--tier-a) 92%);
+  --finish-a-sheen: linear-gradient(105deg, transparent 42%, var(--tier-a-sheen) 50%, transparent 58%);
+  --finish-a-glint: linear-gradient(105deg, transparent 40%, var(--tier-a-glint) 50%, transparent 60%);
+  --finish-b-satin: repeating-linear-gradient(90deg, var(--tier-b-brush) 0 1px, transparent 1px 3px), linear-gradient(100deg, transparent 25%, var(--tier-b-satin) 55%, transparent 85%);
+  --finish-b-sheen: linear-gradient(105deg, transparent 30%, var(--tier-b-sheen) 50%, transparent 70%);
+  /* C's gloss stops above the text at each size, so it never lowers the name's contrast. */
+  --finish-c-gloss-big: radial-gradient(ellipse 130% 13px at 50% 0%, var(--tier-c-gloss) 0 98%, transparent 100%);
+  --finish-c-gloss-slot: radial-gradient(ellipse 130% 92px at 50% 0%, var(--tier-c-gloss) 0 98%, transparent 100%);
+  --finish-c-gloss-mini: radial-gradient(ellipse 130% 6px at 50% 0%, var(--tier-c-gloss) 0 98%, transparent 100%);
+  --finish-c-depth: linear-gradient(180deg, transparent 45%, var(--tier-c-depth));
+
+  /* Player card: marks on any finish */
   --card-scrim: rgba(8, 16, 32, 0.78);
+  --card-portrait-wash: rgba(8, 16, 32, 0.14);
+  --card-emboss-highlight: rgba(255, 255, 255, 0.3);
+  --card-emboss-shadow: rgba(8, 16, 32, 0.5);
+  --card-flash-dim-colour: rgba(4, 9, 19, 1);
+  --card-flash-burst-core: #F7F2FF;
+  --card-flash-brighten: rgba(255, 255, 255, 1);
+  --card-selected-glow: 0 0 16px rgba(244, 241, 232, 0.14);
+  --card-portrait-inset: inset 0 1px 2px var(--card-emboss-shadow), inset 0 -1px 0 var(--card-emboss-highlight);
+  --card-emboss: -1px -1px 0 var(--card-emboss-highlight), 1px 1px 1px var(--card-emboss-shadow);
 
   /* State colours: treatments from the doc, hues derived */
   --color-win: #7FE3B5;
@@ -164,6 +213,44 @@
   --radius-card: var(--radius-lg);
   --radius-panel: var(--radius-xl);
 
+  /* Player card: shape and sizes */
+  --card-radius-big: var(--radius-xl);
+  --card-radius-slot: var(--radius-lg);
+  --card-radius-mini: var(--radius-md);
+  --card-edge-width: 2px;
+  --card-edge-width-strong: 3px;
+  --card-state-edge: 2px;
+  --card-state-edge-selected: 3px;
+  --card-slot-min-height: 244px;
+  --card-mini-min-height: 56px;
+  --card-portrait-big: clamp(5rem, 4.2571rem + 3.0476vw, 7rem);
+  --card-portrait-big-tall: clamp(6.25rem, 5.3214rem + 3.8095vw, 8.75rem);
+  --card-portrait-slot: 72px;
+  --card-portrait-mini: 36px;
+  --card-monogram-big: clamp(2.75rem, 2.2857rem + 1.9048vw, 4rem);
+  --card-monogram-slot: 2.25rem;
+  --card-monogram-mini: 1.125rem;
+  --card-lock-icon: 14px;
+  --card-plate-pad: 1px;
+  --card-edge-none: 0px;
+  --card-prism-size: 260%;
+  --card-holo-width: 300%;
+  --card-holo-rest-x: -33%;
+  --card-holo-drift-from: -66%;
+  --card-holo-drift-to: 0%;
+  --card-preview-wash: 22%;
+  --card-pending-rest-opacity: 0.22;
+  --card-pending-low-opacity: 0.05;
+  --card-pending-high-opacity: 0.4;
+  --card-sheen-a-rest-opacity: 0;
+  --card-sheen-rest-x: -100%;
+  --card-sheen-stagger: -1.25s;
+  --card-flash-scale: 1.05;
+  --card-flash-settle-scale: 0.975;
+  --card-flash-dim-opacity: 0.72;
+  --card-flash-burst-opacity: 0.85;
+  --card-flash-pulse-opacity: 0.22;
+
   /* Motion ladder: only levels 3 and 4 may be loud. */
   --motion-level-0: 200ms;   /* State: fades only */
   --motion-level-1: 160ms;   /* Utility: barely noticed */
@@ -177,14 +264,16 @@
   --motion-squad-stagger: 35ms;
   --motion-squad-total: 300ms;
   --motion-flash-s: 1000ms;
-  --motion-flash-s-dim: 180ms;
+  --motion-flash-s-delay: 180ms;
   --motion-flash-a: 500ms;
   --motion-flash-b: 350ms;
   --motion-flash-c: 200ms;
   --motion-flash-reduced: 150ms;
   --motion-sheen-a: 5s;
   --motion-sheen-b: 7s;
-  --motion-sheen-legacy: 14s;
+  --motion-card-holo: 5s;
+  --motion-card-edge: 6s;
+  --motion-card-pending: 2400ms;
   --motion-lock: 320ms;
   --motion-reveal-flip: 280ms;
   --motion-reveal-stagger: 100ms;
@@ -210,9 +299,19 @@
   /* Everything that moves goes through these, so base.css can remove movement in one place. */
   --motion-lift: -2px;
   --motion-nudge: 5px;
-  --anim-settle: settle;
   --anim-reveal: reveal-card;
   --anim-slot-pulse: slot-pulse;
   --anim-spinner: load-turn;
   --anim-sheen: card-light-sweep;
+  --anim-card-holo: card-holo-drift;
+  --anim-card-edge: card-edge-spin;
+  --anim-card-pending: card-pending-pulse;
+  --anim-flash-body-s: card-flash-pop;
+  --anim-flash-body-a: none;
+  --anim-flash-body-b: none;
+  --anim-flash-body-c: card-flash-settle;
+  --anim-flash-dim: card-flash-dim;
+  --anim-flash-burst: card-flash-burst;
+  --anim-flash-sweep: card-flash-sweep;
+  --anim-flash-pulse: card-flash-pulse;
 }

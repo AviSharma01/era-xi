@@ -194,7 +194,7 @@ test("draft player selection toggles, switches, escapes, stays ephemeral, and cl
     await act(async () => candidateButtons()[firstIndex]!.click());
     assert.equal(candidateButtons()[firstIndex]!.getAttribute("aria-pressed"), "true");
     assert.equal(rootElement.querySelectorAll(".xi-slot-active").length, 11);
-    assert.match(rootElement.querySelector(".selected-player-detail")?.textContent ?? "", new RegExp(`${first.seasonYear} SEASON`, "i"));
+    assert.ok(rootElement.querySelector(`.selected-player-detail [aria-label="${first.seasonYear} current season statistics"]`));
     assert.match(rootElement.querySelector(".selected-player-detail")?.textContent ?? "", new RegExp(`${first.historicalStats.currentSeason.batting.runs} runs`, "i"));
     assert.doesNotMatch(rootElement.querySelector(".candidate-section")?.textContent ?? "", /best season in this era/i);
     assert.equal(acceptedTransitions.length, 0);
@@ -236,9 +236,8 @@ test("draft player selection toggles, switches, escapes, stays ephemeral, and cl
     assert.equal(rootElement.querySelectorAll(".xi-slot-preview").length, 1);
     const previewCard = rootElement.querySelector<HTMLButtonElement>(".xi-slot-preview")!;
     assert.match(previewCard.textContent ?? "", /↑ Click slot to confirm/);
-    assert.equal(previewCard.querySelector(".xi-card-rail"), null);
-    assert.match(previewCard.querySelector(".collectible-card > .xi-fit-caption")?.textContent ?? "", /Position fit/);
-    assert.ok(previewCard.querySelector(".collectible-card > .slot-confirm-hint"));
+    assert.ok(previewCard.querySelector(".player-card-fit .fit-badge"));
+    assert.equal(previewCard.querySelectorAll(".player-card-state-edge").length, 1);
     await act(async () => { previewCard.click(); previewCard.click(); });
     assert.equal(rootElement.querySelector(".selected-player-detail"), null);
     assert.equal(rootElement.querySelectorAll(".xi-slot-active").length, 0);
@@ -350,13 +349,13 @@ test("Unknown fit uses Acceptable only in UI, with four labels and unchanged aut
     const keeper = view.candidates.find((player) => player.available && player.displayRole === "WICKETKEEPER_BATTER")!;
     assert.ok(keeper);
     await act(async () => buttons.find((button) => button.querySelector("strong")?.textContent === keeper.playerName)!.click());
-    assert.equal((element.querySelector(".selected-player-meta")!.textContent!.match(/Wicketkeeper/g) ?? []).length, 1);
+    assert.equal((element.querySelector(".selected-player-detail .player-card-meta")!.textContent!.match(/Wicketkeeper/g) ?? []).length, 1);
     await act(async () => buttons.find((button) => button.querySelector("strong")?.textContent === unknown.playerName)!.click());
     assert.equal(element.querySelectorAll(".fit-legend .fit-badge").length, 4);
     assert.equal(element.querySelectorAll(".xi-target-acceptable").length, 11);
     assert.doesNotMatch(element.querySelector(".xi-panel")!.textContent!, /Unknown|[△⚠○✓?]/);
     await act(async () => element.querySelector<HTMLButtonElement>(".xi-slot-active")!.click());
-    assert.match(element.querySelector(".xi-fit-caption")!.textContent!, /Position fit · Acceptable/);
+    assert.match(element.querySelector(".xi-slot-preview .player-card-fit")!.textContent!, /Acceptable/);
     assert.equal(JSON.stringify(state), snapshot);
     assert.ok(unknown.positions.every((position) => position.presentationFit === "UNKNOWN"));
   } finally {

@@ -41,7 +41,7 @@ async function noOverflow(page) {
 async function checkPlacement(page, width, pending=false) {
   await page.setViewportSize({width,height:width===320?640:844});await frame(page);
   const body=page.locator('.room-placement-body'), footer=page.locator('.room-sheet-confirm');
-  const selected=await body.locator('.selected-player-copy h3').textContent();
+  const selected=await body.locator('.selected-player-detail h3').textContent();
   assert.equal(await footer.locator('.room-placement-context strong').textContent(),selected);
   for(let i=0;i<11;i++) {
     const row=body.locator('.room-xi li').nth(i);await row.scrollIntoViewIfNeeded();await frame(page);

@@ -4,7 +4,9 @@ import type { SnapshotSuccess, PublicCommand } from "./draftOffClientTypes.js";
 import type { DraftOffSessionState } from "./draftOffSession.js";
 import type { DraftOffPublicRoomView } from "./draftOffRoomTypes.js";
 import type { DraftCandidateIdentityView, DraftPickView, EraDraftPublicView } from "./eraDraftTypes.js";
-import { CandidateGallery, SelectedPlayerDetail, PlayerInspector, FitBadge, fitLabel, friendly } from "./eraDraftPlayerPresentation.js";
+import { CandidateGallery, SelectedPlayerDetail, PlayerInspector, FitBadge, fitLabel } from "./eraDraftPlayerPresentation.js";
+import { PlayerCard, playerCardName } from "./components/PlayerCard.js";
+import { ERA_COPY, PLAYER_CARD_COPY } from "./copy.js";
 import { appRoutePath, draftOffRoomPath } from "./webRoutes.js";
 import { DraftOffComparison, DraftOffResultsBrowser, type ResultsLoader } from "./draftOffResults.js";
 
@@ -102,7 +104,7 @@ export function DraftOffRoomExperience({ code, state, actions }: {
     {view.phase === "LOBBY" ? <Lobby snapshot={snapshot} code={code} blocked={blocked} onCommand={send} />
       : view.phase === "COMPLETE" ? <FinalResults key={`${code}:${view.round.roundId}:${snapshot.participantId}`} snapshot={snapshot} code={code} actions={actions} accessUnavailable={state.accessUnavailable} />
         : me?.roundStatus === "SUBMITTED" ? <Waiting snapshot={snapshot} rosterView={rosterView} expired={expired} countdown={formatDraftCountdown(remaining)} />
-          : me?.roundStatus === "DRAFTING" && view.myDraft && view.myDraft.phase !== "SETUP" ? <DraftWorkspace key={view.round.roundId} draft={view.myDraft} blocked={blocked || expired} onCommand={send} expired={expired} countdown={formatDraftCountdown(remaining)} />
+          : me?.roundStatus === "DRAFTING" && view.myDraft && view.myDraft.phase !== "SETUP" ? <DraftWorkspace key={view.round.roundId} draft={view.myDraft} blocked={blocked || expired} locking={state.pending && state.pendingCommand === "LOCK_PLAYER"} onCommand={send} expired={expired} countdown={formatDraftCountdown(remaining)} />
             : <section className="draft-off-panel"><h1>You’re outside this round</h1><p>You left before the host started. The roster is now fixed. You can still see public room status and the final leaderboard.</p></section>}
     {expired && <p className="draft-off-notice" role="status">Time reached. Checking final status with the server. Complete legal XIs auto-submit; incomplete XIs are excluded.</p>}
   </div>;
@@ -149,25 +151,29 @@ function Dialog({ title, children, onClose, className = "", countdown }: { title
     <header><h2 id={id}>{title}</h2>{countdown && <span className="room-sheet-clock" role="timer" aria-label={`${countdown} remaining`}>{countdown}</span>}<button className="quiet-button" onClick={onClose}>Close</button></header>{countdown === "00:00" && <p role="status">Time reached. Checking final status with the server.</p>}{children}
   </dialog>;
 }
-function CompactXi({ draft, selected, preview, onPreview, onInspect, blocked }: {
+function CompactXi({ draft, selected, preview, onPreview, onInspect, blocked, locking }: {
   draft: ActiveDraft; selected?: DraftCandidateIdentityView; preview: number | null;
-  onPreview?: (position: number) => void; onInspect: (player: DraftPickView) => void; blocked?: boolean;
+  onPreview?: (position: number) => void; onInspect: (player: DraftPickView) => void; blocked?: boolean; locking?: boolean;
 }) {
+  const previewNameId = useId();
   return <section className="room-xi" aria-label="Your batting order"><div className="room-xi-heading"><h2>Your XI</h2><span>{draft.status.pickCount} / 11 locked</span></div>
     <div className="room-xi-status"><span>Overseas <strong>{draft.status.overseasCount}/4</strong></span><span>Keeper <strong>{draft.status.hasWicketkeeper ? "Covered" : "Needed"}</strong></span></div>
     <ol>{Array.from({ length: 11 }, (_, index) => index + 1).map(position => {
       const pick = draft.picks.find(row => row.battingPosition === position), option = selected?.positions.find(row => row.battingPosition === position);
-      return <li key={position} className={pick ? `room-slot-locked tier-${pick.tierAppearance}` : preview === position ? "room-slot-preview" : ""}><span className="room-slot-number">{String(position).padStart(2, "0")}</span>
-        {pick ? <button className="room-locked-player" aria-label={`Inspect ${pick.playerName}, position ${position}`} onClick={() => onInspect(pick)}><strong>{pick.playerName}</strong><small>{pick.teamName} · {pick.seasonYear} · {friendly(pick.displayRole)}</small><FitBadge fit={pick.presentationFit} /></button>
-          : selected ? <button className="room-position-option" disabled={blocked || !option?.available} aria-pressed={preview === position} aria-label={`Position ${position}, ${option ? fitLabel(option.presentationFit) : "unavailable"}${option && !option.available ? `, ${option.reasons.map(reason => reason.message).join(". ")}` : ""}`} onClick={() => onPreview?.(position)}>
-            <span>{preview === position ? selected.playerName : "Place player"}</span>{option && <FitBadge fit={option.presentationFit} />}{option && !option.available && <small>{option.reasons[0]?.message ?? "Unavailable"}</small>}</button>
+      // No ivory edge on the row while the lock is pending: it appears with the server's confirmation.
+      return <li key={position} className={pick ? "room-slot-locked" : preview === position ? locking ? "room-slot-pending" : "room-slot-preview" : ""}><span className="room-slot-number">{String(position).padStart(2, "0")}</span>
+        {pick ? <PlayerCard size="mini" state="locked" player={pick} order={position - 1} fit={pick.presentationFit} className="room-locked-player" label={`Inspect ${playerCardName(pick)}, position ${position}, ${fitLabel(pick.presentationFit)}`} onClick={() => onInspect(pick)} />
+          : selected ? <button className="room-position-option" disabled={blocked || !option?.available} aria-pressed={preview === position} aria-describedby={preview === position && option ? previewNameId : undefined} aria-label={`Position ${position}, ${option ? fitLabel(option.presentationFit) : "unavailable"}${option && !option.available ? `, ${option.reasons.map(reason => reason.message).join(". ")}` : ""}`} onClick={() => onPreview?.(position)}>
+            {preview === position && option ? <><PlayerCard size="mini" state={locking ? "pending" : "preview"} player={selected} fit={option.presentationFit} label={null} /><span id={previewNameId} className="sr-status">{playerCardName(selected)}, {locking ? PLAYER_CARD_COPY.locking : PLAYER_CARD_COPY.preview}</span></>
+              : <><span>Place player</span>{option && <FitBadge fit={option.presentationFit} />}</>}{option && !option.available && <small>{option.reasons[0]?.message ?? "Unavailable"}</small>}</button>
             : <span className="room-slot-empty">Open batting position</span>}
       </li>;
     })}</ol>
   </section>;
 }
-function DraftWorkspace({ draft, blocked, expired, countdown, onCommand }: { draft: ActiveDraft; blocked: boolean; expired: boolean; countdown: string; onCommand: (command: Command) => Promise<void> }) {
+function DraftWorkspace({ draft, blocked, locking, expired, countdown, onCommand }: { draft: ActiveDraft; blocked: boolean; locking: boolean; expired: boolean; countdown: string; onCommand: (command: Command) => Promise<void> }) {
   const small = useSmallScreen();
+  const eraTitle = ERA_COPY[draft.eraId].title;
   const [selectedId, setSelectedId] = useState<string | null>(null), [preview, setPreview] = useState<number | null>(null);
   const [inspected, setInspected] = useState<DraftPickView | DraftCandidateIdentityView | null>(null), [showXi, setShowXi] = useState(false), [confirmSubmit, setConfirmSubmit] = useState(false);
   const [notice, setNotice] = useState("Spin a franchise-season to begin.");
@@ -186,7 +192,7 @@ function DraftWorkspace({ draft, blocked, expired, countdown, onCommand }: { dra
   const option = selected?.positions.find(row => row.battingPosition === preview && row.available);
   const lock = () => { if (!selected || !option || blocked) return; void onCommand({ type: "LOCK_PLAYER", playerTeamSeasonId: selected.playerTeamSeasonId, battingPosition: option.battingPosition }); };
   const confirmation = <button className="primary-action room-confirm-pick" disabled={blocked || !option} onClick={lock}>{blocked && !expired ? "Waiting for server…" : option ? `Confirm pick · Slot ${String(option.battingPosition).padStart(2, "0")}` : "Choose a position"}</button>;
-  const xi = <CompactXi draft={draft} selected={selected} preview={preview} blocked={blocked} onPreview={setPreview} onInspect={setInspected} />;
+  const xi = <CompactXi draft={draft} selected={selected} preview={preview} blocked={blocked} locking={locking} onPreview={setPreview} onInspect={setInspected} />;
   const submitButton = <button ref={actionRef} className="primary-action" disabled={blocked} onClick={() => setConfirmSubmit(true)}>Submit XI</button>;
   return <>
     <div className="room-draft-actions"><div><strong>{draft.phase === "XI_COMPLETE" ? "XI complete" : `Pick ${String(draft.status.pickCount + 1).padStart(2, "0")} / 11`}</strong><span>{draft.phase === "AWAITING_PICK" ? `${draft.currentSpin.teamName} · ${draft.currentSpin.seasonYear}` : draft.phase === "XI_COMPLETE" ? "Eleven positions locked" : "Your next franchise-season"}</span></div>
@@ -198,23 +204,23 @@ function DraftWorkspace({ draft, blocked, expired, countdown, onCommand }: { dra
     <div className="room-draft-layout"><section className="room-candidates" aria-label="Draft players" aria-busy={blocked}>
       {draft.phase === "AWAITING_SPIN" && <div className="room-spin-empty"><span aria-hidden="true">{String(draft.status.pickCount + 1).padStart(2, "0")}</span><h1>{draft.status.pickCount ? "Make the next pick count." : "Eleven places. One era."}</h1><p>Spin a franchise-season, choose one historical player and lock an open batting position. Your choices stay private.</p></div>}
       {draft.phase === "AWAITING_PICK" && <><h1 className="room-workspace-title">Choose your player</h1><fieldset disabled={blocked} className="room-candidate-fieldset"><legend className="sr-status">Eligible player-season choices</legend><CandidateGallery view={draft} selectedId={selectedId} onUnavailable={setNotice} onSelect={candidate => { setSelectedId(selectedId === candidate.playerTeamSeasonId ? null : candidate.playerTeamSeasonId); setPreview(null); setNotice(`${candidate.playerName} selected. Choose an open batting position.`); }} /></fieldset>
-        {!small && (selected ? <div className="room-selected"><SelectedPlayerDetail candidate={selected} /><button className="quiet-button" onClick={() => setInspected(selected)}>Inspect season</button><p>Select an open position in your XI, then confirm above.</p><button className="quiet-button" onClick={() => { setSelectedId(null); setPreview(null); }}>Cancel selection</button></div> : <p className="draft-off-footnote">Select a player to view their season and choose a batting position.</p>)}</>}
+        {!small && (selected ? <div className="room-selected"><SelectedPlayerDetail candidate={selected} eraTitle={eraTitle} /><button className="quiet-button" onClick={() => setInspected(selected)}>Inspect season</button><p>Select an open position in your XI, then confirm above.</p><button className="quiet-button" onClick={() => { setSelectedId(null); setPreview(null); }}>Cancel selection</button></div> : <p className="draft-off-footnote">Select a player to view their season and choose a batting position.</p>)}</>}
       {draft.phase === "XI_COMPLETE" && <div className="room-complete"><p className="eyebrow">11 / 11 locked</p><h1>Your XI is ready.</h1><p>Submit to freeze your team and wait for the room. If you stay unsubmitted, the backend automatically submits a complete legal XI at the deadline.</p><p>Use Submit XI above when you are ready.</p><p>Ratings and everyone else’s picks stay hidden during drafting.</p></div>}
       {expired && <p>Checking the server’s deadline decision…</p>}
     </section>{!small && xi}</div>
     <p className="sr-status" aria-live="polite">{notice}</p>
     {blocked && !expired && <p role="status" className="draft-off-notice">Waiting for server confirmation. Your XI will update when the action is confirmed.</p>}
-    {small && selected && <Dialog title="Place your player" countdown={countdown} className="room-placement-sheet" onClose={() => { setSelectedId(null); setPreview(null); }}><div className="room-placement-body"><SelectedPlayerDetail candidate={selected} />{blocked && !expired && <p role="status">Waiting for server confirmation. Your saved action is preserved.</p>}<button className="quiet-button" onClick={() => setInspected(selected)}>Inspect season</button>{xi}</div><div className="room-sheet-confirm"><div className="room-placement-context"><strong>{selected.playerName}</strong><small>Selected player · {selected.teamName} · {selected.seasonYear}</small></div>{confirmation}</div></Dialog>}
+    {small && selected && <Dialog title="Place your player" countdown={countdown} className="room-placement-sheet" onClose={() => { setSelectedId(null); setPreview(null); }}><div className="room-placement-body"><SelectedPlayerDetail candidate={selected} eraTitle={eraTitle} />{blocked && !expired && <p role="status">Waiting for server confirmation. Your saved action is preserved.</p>}<button className="quiet-button" onClick={() => setInspected(selected)}>Inspect season</button>{xi}</div><div className="room-sheet-confirm"><div className="room-placement-context"><strong>{selected.playerName}</strong><small>Selected player · {selected.teamName} · {selected.seasonYear}</small></div>{confirmation}</div></Dialog>}
     {showXi && <Dialog title="Your locked XI" countdown={countdown} onClose={() => setShowXi(false)}><CompactXi draft={draft} preview={null} onInspect={setInspected} /></Dialog>}
     {confirmSubmit && <Dialog title="Submit and lock your XI?" countdown={countdown} onClose={() => setConfirmSubmit(false)}><p>Submission is final. Your eleven players and batting positions will be frozen while the room finishes.</p><p>Results arrive when everyone submits or the shared deadline passes.</p><button className="primary-action" disabled={blocked} onClick={() => { setConfirmSubmit(false); void onCommand({ type: "SUBMIT" }); }}>Submit and lock XI</button><button className="secondary-action" onClick={() => setConfirmSubmit(false)}>Keep reviewing</button></Dialog>}
-    {inspected && <PlayerInspector player={inspected} countdown={countdown} onClose={() => setInspected(null)} />}
+    {inspected && <PlayerInspector player={inspected} eraTitle={eraTitle} countdown={countdown} onClose={() => setInspected(null)} />}
   </>;
 }
 function Waiting({ snapshot, rosterView, expired, countdown }: { snapshot: SnapshotSuccess; rosterView: DraftOffPublicRoomView; expired: boolean; countdown: string }) {
   const [inspected, setInspected] = useState<DraftPickView | null>(null);
   const draft = snapshot.view.myDraft;
   return <div className="room-waiting-layout"><section className="draft-off-panel"><p className="eyebrow">Submission confirmed</p><h1>Your XI is locked in.</h1><p>{expired ? "Checking the final result with the server." : "The room is still drafting. Results arrive when everyone submits or time runs out."}</p><p>Your submission is final. Private XIs and ratings remain hidden.</p><ParticipantList view={rosterView} me={snapshot.participantId} /></section>
-    {draft && draft.phase !== "SETUP" && <CompactXi draft={draft} preview={null} onInspect={setInspected} />}{inspected && <PlayerInspector player={inspected} countdown={countdown} onClose={() => setInspected(null)} />}</div>;
+    {draft && draft.phase !== "SETUP" && <CompactXi draft={draft} preview={null} onInspect={setInspected} />}{inspected && <PlayerInspector player={inspected} eraTitle={draft && draft.phase !== "SETUP" ? ERA_COPY[draft.eraId].title : undefined} countdown={countdown} onClose={() => setInspected(null)} />}</div>;
 }
 const noCooldown = () => 0;
 function FinalResults({ snapshot, code, actions, accessUnavailable }: { snapshot: SnapshotSuccess; code: string; actions: DraftOffRoomActions; accessUnavailable: boolean }) {

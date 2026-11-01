@@ -1,6 +1,8 @@
-import { lazy, Suspense, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactElement, type RefObject } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ReactElement, type RefObject } from "react";
 
-import { CandidateGallery, SelectedPlayerDetail, PlayerInspector, FitBadge, fitLabel, monogram, friendly, fitClass } from "./eraDraftPlayerPresentation.js";
+import { CandidateGallery, SelectedPlayerDetail, PlayerInspector, FitBadge, fitLabel, friendly, fitClass } from "./eraDraftPlayerPresentation.js";
+import { PlayerCard, playerCardName } from "./components/PlayerCard.js";
+import { ERA_COPY } from "./copy.js";
 
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
@@ -34,14 +36,6 @@ import { ERA_IDS, type EraId } from "./teamEvaluationV2.js";
 import { appRoutePath, matchAppRoute, navigateToAppRoute, draftOffEnabled, type AppRoute } from "./webRoutes.js";
 
 const DraftOffApp = lazy(() => import("./draftOffApp.js"));
-
-const ERA_COPY: Readonly<Record<EraId, { ordinal: string; title: string; years: string; flavor: string }>> = {
-  "era-foundation": { ordinal: "01", title: "Foundation", years: "2008–2010", flavor: "The first blueprints. Raw squads, instant icons." },
-  "era-expansion": { ordinal: "02", title: "Expansion", years: "2011–2013", flavor: "New teams arrive and the league finds its shape." },
-  "era-transition": { ordinal: "03", title: "Transition", years: "2014–2017", flavor: "Power shifts, new homes, and changing dynasties." },
-  "era-modern-pre-impact": { ordinal: "04", title: "Modern Pre-Impact", years: "2018–2022", flavor: "Deep analytics meet settled franchise identities." },
-  "era-impact": { ordinal: "05", title: "Impact", years: "2023–2026", flavor: "The newest tactical era at full intensity." },
-};
 
 type DraftSession = {
   readonly catalog: EraDraftCatalog;
@@ -527,8 +521,8 @@ export function DraftExperience(props: {
           )}
 
           {view.phase === "AWAITING_PICK" && <>
-            {inspected ? <PlayerInspector player={inspected} onClose={() => setInspectedId(null)} />
-              : selected ? <SelectedPlayerDetail candidate={selected} />
+            {inspected ? <PlayerInspector player={inspected} eraTitle={era.title} onClose={() => setInspectedId(null)} />
+              : selected ? <SelectedPlayerDetail candidate={selected} eraTitle={era.title} />
                 : <div className="selected-player-empty">No player selected.</div>}
             <div className="desktop-confirm">
               {inspected && selected && <p className="pending-pick-label">Pending pick: {selected.playerName}</p>}
@@ -543,7 +537,7 @@ export function DraftExperience(props: {
               <p>Reveal your team’s ratings and construction.</p>
               <button ref={nextActionRef} className="primary-action reveal-team-action" onClick={() => transition({ type: "REVEAL_XI" })}>Reveal team <span aria-hidden="true">→</span></button></div>
           )}
-          {view.phase !== "AWAITING_PICK" && inspected && <PlayerInspector player={inspected} onClose={() => setInspectedId(null)} />}
+          {view.phase !== "AWAITING_PICK" && inspected && <PlayerInspector player={inspected} eraTitle={era.title} onClose={() => setInspectedId(null)} />}
           <p className="sr-status" aria-live="polite">{message}</p>
         </section>
 
@@ -913,22 +907,14 @@ function XiPanel(props: {
 }
 
 function XiPlayerCard({ position, pick, preview, onInspect, onConfirm }: { position: number; pick: DraftPickView; preview?: boolean; onInspect: () => void; onConfirm?: () => void }): ReactElement {
-  const style = { "--reveal-order": position - 1 } as CSSProperties;
-  return <button type="button" style={style} onClick={(event) => {
-    if (preview) onConfirm?.();
-    else { event.currentTarget.focus(); onInspect(); }
-  }} aria-label={`${preview ? "Confirm pick" : "Inspect"} ${pick.playerName}, position ${position}, ${preview ? "preview" : "confirmed"}, ${fitLabel(pick.presentationFit)}`}
-    className={`xi-slot xi-slot-occupied xi-fit-${fitClass(pick.presentationFit)}${preview ? " xi-slot-preview" : " xi-slot-locked"}`}>
-    <span className={`collectible-card tier-${pick.tierAppearance}`}>
-    <span className="position-number">{String(position).padStart(2, "0")}</span>
-    <span className="placement-marker">{preview ? "Preview" : <svg aria-label="Locked" width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor"><rect x="2" y="6" width="8" height="7" rx="1"/><path d="M4 6V4a2 2 0 0 1 4 0v2"/></svg>}</span>
-    <span className="xi-portrait" aria-hidden="true"><span>{monogram(pick.playerName)}</span></span>
-    <span className="locked-player"><strong>{pick.playerName}</strong><small>{pick.teamName} · {pick.seasonYear}</small>
-      <span>{friendly(pick.displayRole)}</span></span>
-    <span className="xi-fit-caption">Position fit · <FitBadge fit={pick.presentationFit} /></span>
-    {preview && <span className="slot-confirm-hint"><span aria-hidden="true">↑ </span>Click slot to confirm</span>}
-    </span>
-  </button>;
+  return <PlayerCard size="slot" player={pick} slotNumber={position} fit={pick.presentationFit}
+    state={preview ? "preview" : "locked"} note={preview ? "↑ Click slot to confirm" : undefined}
+    className={`xi-slot-occupied${preview ? " xi-slot-preview" : " xi-slot-locked"}`}
+    label={`${preview ? "Confirm pick" : "Inspect"} ${playerCardName(pick)}, position ${position}, ${preview ? "preview" : "confirmed"}, ${fitLabel(pick.presentationFit)}`}
+    onClick={(event) => {
+      if (preview) onConfirm?.();
+      else { event.currentTarget.focus(); onInspect(); }
+    }} />;
 }
 
 function RevealedXi({ view }: { view: EraDraftRevealView }): ReactElement {
@@ -937,7 +923,7 @@ function RevealedXi({ view }: { view: EraDraftRevealView }): ReactElement {
       <div className="revealed-list-head" role="row">{["Pos", "Player", "Overall", "Batting", "Bowling", "Position fit"].map((label) => <span role="columnheader" key={label}>{label}</span>)}</div>
       {[...view.players].sort((a, b) => a.battingPosition - b.battingPosition).map((player) => <div role="row" key={player.playerTeamSeasonId} className={`revealed-player revealed-tier-${player.qualityTier.toLowerCase()}`}>
         <span role="cell" className="revealed-position">{String(player.battingPosition).padStart(2, "0")}</span>
-        <span role="cell" className="revealed-identity"><strong>{player.playerName}</strong><small>{player.teamName} · {player.seasonYear}</small></span>
+        <span role="cell" className="revealed-identity"><PlayerCard size="mini" player={view.picks.find((pick) => pick.playerTeamSeasonId === player.playerTeamSeasonId)!} order={player.battingPosition - 1} /></span>
         <strong role="cell" className="revealed-overall" aria-label={`Overall ${formatRating(player.overallRating)}`}>{formatRating(player.overallRating)}</strong>
         <span role="cell" className="revealed-bat"><small>BAT </small>{nullableRating(player.displayRole === "BOWLER" ? null : player.battingRating)}</span>
         <span role="cell" className="revealed-bowl"><small>BOWL </small>{nullableRating(player.displayRole === "BATTER" || player.displayRole === "WICKETKEEPER_BATTER" ? null : player.bowlingRating)}</span>

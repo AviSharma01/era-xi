@@ -128,20 +128,6 @@
 .candidate-meta { font-family: var(--font-body); font-size: var(--type-small) !important; text-transform: uppercase; }
 .candidate-quick-stats { display: grid; gap: var(--space-1); color: var(--color-text-muted); font-family: var(--font-body); font-size: var(--type-small); line-height: var(--leading-small); text-align: right; white-space: nowrap; }
 .select-mark { color: var(--color-action); font-family: var(--font-body); text-align: center; }
-.selected-player-detail { flex: 0 0 auto; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: var(--space-2h) 13px; align-items: center; margin-top: var(--space-2h); padding: var(--space-3); border: 1px solid var(--color-divider-strong); border-radius: var(--radius-panel); background: linear-gradient(125deg, var(--wash-ivory-strong), var(--color-panel) 58%); box-shadow: 0 14px 32px var(--color-shadow), inset 0 0 0 1px var(--wash-ivory-faint); }
-.selected-player-portrait { width: 56px; height: 66px; display: grid; place-items: center; border: 1px solid var(--color-divider-strong); border-radius: var(--radius-md); background: radial-gradient(circle at 50% 34%, var(--color-row-hover) 0 17%, transparent 18%), linear-gradient(145deg, var(--color-row-hover), var(--color-panel)); color: var(--color-action); font-family: var(--font-body); font-size: var(--type-small); }
-.selected-player-copy { min-width: 0; }
-.selected-player-copy .eyebrow { margin-bottom: var(--space-1); }
-.selected-player-copy h3 { overflow: hidden; margin: 0; font-family: var(--font-display); font-size: var(--type-label); font-weight: var(--weight-label); text-overflow: ellipsis; white-space: nowrap; }
-.selected-player-copy > p:not(.eyebrow) { margin: 3px 0 var(--space-2); color: var(--color-text-muted); font-size: var(--type-small); }
-.selected-player-meta { display: flex; flex-wrap: wrap; gap: 5px; }
-.selected-player-meta span { padding: 3px 5px; border: 1px solid var(--color-divider-strong); border-radius: var(--radius-sm); color: var(--color-text); font-family: var(--font-body); font-size: var(--type-small); letter-spacing: var(--tracking-small); text-transform: uppercase; }
-.current-season-stats { display: flex; flex-wrap: wrap; gap: 5px var(--space-2h); align-items: baseline; margin-top: 9px; padding: var(--space-2); border: 1px solid var(--color-divider-strong); border-radius: var(--radius-md); background: var(--wash-faint); }
-.current-season-stats > span { flex: 0 0 100%; color: var(--color-action); font-family: var(--font-body); font-size: var(--type-small); letter-spacing: var(--tracking-small); text-transform: uppercase; }
-.current-season-stats strong { color: var(--color-text); font-size: var(--type-small); font-weight: var(--weight-strong); line-height: var(--leading-small); }
-.selected-player-instruction { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: var(--space-3); padding-top: 9px; border-top: 1px solid var(--color-divider-strong); text-align: left; }
-.selected-player-instruction strong { color: var(--color-action); font-size: var(--type-small); text-transform: uppercase; }
-.selected-player-instruction span { color: var(--color-text-muted); font-size: var(--type-small); }
 
 .xi-panel { min-width: 0; min-height: 0; display: flex; flex-direction: column; overflow: hidden; padding: var(--space-7) clamp(var(--space-6), 3vw, 44px) 30px; background: var(--color-panel); }
 .xi-heading { flex: 0 0 auto; display: flex; align-items: end; justify-content: space-between; gap: var(--space-4); margin-bottom: 15px; }
@@ -161,12 +147,6 @@
 button.xi-slot { cursor: default; }
 .xi-slot-active:not(:disabled) { border-color: var(--color-divider-strong); background: var(--wash-ivory-faint); color: var(--color-text); cursor: pointer; animation: var(--anim-slot-pulse) var(--motion-pulse) var(--ease-in-out) infinite; }
 .xi-slot-active:disabled { opacity: 0.52; }
-.xi-slot-locked { border-color: var(--color-divider-strong); background: linear-gradient(110deg, var(--color-panel), var(--color-panel)); color: var(--color-text); box-shadow: 0 6px 18px var(--color-shadow), inset 0 0 0 1px var(--wash-faint); animation: var(--anim-settle) var(--motion-reveal-flip) var(--ease-out); }
-.xi-fit-natural { border-color: var(--fit-natural); box-shadow: 0 7px 22px var(--wash-ivory-faint), inset 3px 0 0 var(--fit-natural); }
-.xi-fit-acceptable { border-color: var(--fit-acceptable); box-shadow: inset 3px 0 0 var(--fit-acceptable); }
-.xi-fit-stretch { border-color: var(--fit-stretch); box-shadow: inset 3px 0 0 var(--fit-stretch); }
-.xi-fit-major-stretch { border-color: var(--fit-major-stretch); box-shadow: inset 3px 0 0 var(--fit-major-stretch); }
-.xi-fit-unknown { box-shadow: inset 3px 0 0 var(--fit-unknown); }
 .xi-target-natural:not(:disabled) { box-shadow: inset 3px 0 0 var(--fit-natural); }
 .xi-target-acceptable:not(:disabled) { box-shadow: inset 3px 0 0 var(--fit-acceptable); }
 .xi-target-stretch:not(:disabled) { box-shadow: inset 3px 0 0 var(--fit-stretch); }
@@ -178,13 +158,9 @@ button.xi-slot { cursor: default; }
 .xi-portrait-empty { place-items: center; border-style: dashed; background: var(--wash-faint); }
 .xi-portrait-empty::before { display: none; }
 .xi-portrait-empty > span { width: auto; padding: 0; background: transparent; color: var(--color-text-muted); font-size: var(--type-body); }
-.empty-slot-copy, .locked-player { min-width: 0; display: grid; gap: var(--space-1); }
+.empty-slot-copy { min-width: 0; display: grid; gap: var(--space-1); }
 .empty-slot-copy strong { overflow: hidden; color: var(--color-text-muted); font-family: var(--font-display); font-size: var(--type-label); font-weight: var(--weight-label); text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
 .empty-slot-copy small { color: var(--color-text-muted); font-family: var(--font-body); font-size: var(--type-small); letter-spacing: var(--tracking-small); text-transform: uppercase; }
-.locked-player strong { overflow: hidden; font-family: var(--font-display); font-size: var(--type-label); font-weight: var(--weight-label); text-overflow: ellipsis; white-space: nowrap; }
-.locked-player small { overflow: hidden; color: var(--color-text-muted); font-size: var(--type-small); text-overflow: ellipsis; white-space: nowrap; }
-.locked-player > span { overflow: hidden; color: var(--color-text-muted); font-family: var(--font-body); font-size: var(--type-small); letter-spacing: var(--tracking-small); text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
-.xi-card-rail { min-width: 90px; display: grid; justify-items: end; gap: var(--space-1); }
 .fit-badge { padding: 5px 7px; border: 1px solid var(--color-divider-strong); border-radius: var(--radius-sm); color: var(--color-text-muted); font-family: var(--font-body); font-size: var(--type-small); letter-spacing: var(--tracking-small); text-transform: uppercase; white-space: nowrap; }
 .fit-natural { border-color: var(--fit-natural); color: var(--color-action); }
 .fit-acceptable { border-color: var(--fit-acceptable); color: var(--fit-acceptable); }
@@ -320,7 +296,6 @@ button.xi-slot { cursor: default; }
 .terminal-screen .playoff-stage:nth-child(odd) { border-right: 1px solid var(--color-divider); }
 .terminal-screen .playoff-stage:nth-last-child(-n + 2) { border-bottom: 0; }
 
-@keyframes settle { from { opacity: 0.3; transform: translateX(10px) scale(0.985); } to { opacity: 1; transform: translateX(0) scale(1); } }
 @keyframes reveal-card { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes slot-pulse { 50% { border-color: var(--color-action); } }
 @keyframes load-turn { to { transform: rotate(360deg); } }
@@ -367,13 +342,11 @@ button.xi-slot { cursor: default; }
   .candidate-grid { grid-template-columns: 1fr; }
   .candidate-card { grid-template-columns: 48px minmax(0, 1fr) 24px; }
   .candidate-quick-stats { grid-column: 2; justify-items: start; text-align: left; }
-  .selected-player-instruction { align-items: flex-start; flex-direction: column; }
   .secondary-action { min-height: 44px; }
   .draft-status strong { font-size: var(--type-small); }
   .xi-panel { min-height: 600px; }
   .xi-slot { min-height: 86px; grid-template-columns: 32px 52px minmax(0, 1fr); gap: 9px; padding: 7px; }
   .xi-portrait { width: 52px; height: 66px; }
-  .xi-card-rail { grid-column: 3; justify-items: start; min-width: 0; }
   .xi-slot-revealed .xi-card-rail { grid-template-columns: auto auto; justify-content: start; align-items: center; }
   .xi-slot-revealed .component-ratings, .xi-slot-revealed .fit-badge { grid-column: 1 / -1; }
   .fit-badge { font-size: var(--type-small); }
@@ -457,38 +430,17 @@ button.xi-slot { cursor: default; }
 .gameplay-shell .candidate-card::after { display: none; }
 .gameplay-shell .candidate-meta { font-size: var(--type-small) !important; text-transform: none; }
 .gameplay-shell .candidate-unavailable { color: var(--color-text); }
-.gameplay-shell .selected-player-detail { align-items: start; }
-.gameplay-shell .selected-player-copy > p:not(.eyebrow) { font: var(--weight-regular) var(--type-body)/var(--leading-body) var(--font-body); color: var(--color-text); }
 .gameplay-shell .playoff-locked-copy { padding: 0; border: 0; background: none; min-height: 0; }
 .gameplay-shell .playoff-locked-copy strong, .gameplay-shell .playoff-locked-copy span { color: var(--color-text); text-transform: none; }
-.gameplay-shell .candidate-card::before, .gameplay-shell .portrait-placeholder::before, .gameplay-shell .portrait-placeholder::after, .gameplay-shell .xi-portrait::before, .gameplay-shell .xi-portrait::after, .gameplay-shell .selected-player-portrait::before, .gameplay-shell .selected-player-portrait::after { display: none; }
+.gameplay-shell .candidate-card::before, .gameplay-shell .portrait-placeholder::before, .gameplay-shell .portrait-placeholder::after, .gameplay-shell .xi-portrait::before, .gameplay-shell .xi-portrait::after { display: none; }
 .gameplay-shell .portrait-placeholder { width: 28px; height: 28px; border-radius: var(--radius-xs); display: grid; place-items: center; background: var(--color-panel-raised); border-color: var(--color-divider-strong); }
 .gameplay-shell .portrait-placeholder span { font: var(--weight-label) var(--type-body)/var(--leading-label) var(--font-display); position: static; color: var(--color-text); }
 .gameplay-shell .candidate-body strong { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-name); white-space: normal; overflow: visible; }
 .gameplay-shell .candidate-body > span, .gameplay-shell .candidate-meta { font-size: var(--type-small); line-height: var(--leading-small); color: var(--color-text); }
 .gameplay-shell .candidate-quick-stats { font: var(--weight-regular) var(--type-secondary)/var(--leading-secondary) var(--font-body); color: var(--color-text); }
 .gameplay-shell .select-mark { border: 0; color: var(--color-text); background: transparent; }
-.gameplay-shell .tier-violet { --tier-fill: var(--tier-s); --tier-deep: var(--tier-s-deep); --tier-bright: var(--tier-s-bright); --tier-ink: var(--tier-s-ink); --tier-wash: var(--tier-wash-dark); }
-.gameplay-shell .tier-gold { --tier-fill: var(--tier-a); --tier-deep: var(--tier-a-deep); --tier-bright: var(--tier-a-bright); --tier-ink: var(--tier-a-ink); --tier-wash: var(--tier-a-wash); }
-.gameplay-shell .tier-cobalt { --tier-fill: var(--tier-b); --tier-deep: var(--tier-b-deep); --tier-bright: var(--tier-b-bright); --tier-ink: var(--tier-b-ink); --tier-wash: var(--tier-wash-dark); }
-.gameplay-shell .tier-emerald { --tier-fill: var(--tier-c); --tier-deep: var(--tier-c-deep); --tier-bright: var(--tier-c-bright); --tier-ink: var(--tier-c-ink); --tier-wash: var(--tier-wash-dark); }
-.gameplay-shell .tier-slate { --tier-fill: var(--tier-d); --tier-deep: var(--tier-d-deep); --tier-bright: var(--tier-d-bright); --tier-ink: var(--tier-d-ink); --tier-wash: var(--tier-wash-dark); }
-.gameplay-shell .selected-player-detail, .gameplay-shell .collectible-card { background: linear-gradient(130deg, var(--tier-fill), var(--tier-deep)); border: 1px solid color-mix(in srgb, var(--tier-bright) 65%, transparent); }
-.gameplay-shell .selected-player-detail { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: var(--space-3); padding: var(--space-4); margin: var(--space-4) 0 0; min-height: 144px; border-radius: var(--radius-sm); box-shadow: none; }
-.gameplay-shell .selected-player-portrait { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); width: 40px; height: 40px; display: grid; place-items: center; border-radius: var(--radius-xs); background: var(--tier-wash); color: var(--color-text); }
-.gameplay-shell .selected-player-copy h3 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); white-space: normal; }
-.gameplay-shell .selected-player-copy { display: contents; }
-.gameplay-shell .selected-player-portrait { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); grid-row: 1/3; }
-.gameplay-shell .selected-player-copy h3, .gameplay-shell .selected-player-copy > p { grid-column: 2; }
-.gameplay-shell .selected-player-detail .selected-player-meta, .gameplay-shell .selected-player-detail .current-season-stats { grid-column: 1/-1; }
-.gameplay-shell .selected-player-detail { row-gap: var(--space-1); }
-.gameplay-shell .selected-player-copy p, .gameplay-shell .selected-player-meta, .gameplay-shell .current-season-stats { color: var(--color-text); font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); }
-.gameplay-shell .selected-player-meta { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-2); }
-.gameplay-shell .selected-player-meta span { padding: 0; border: 0; color: var(--color-text); font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); text-transform: none; letter-spacing: 0; }
-.gameplay-shell .current-season-stats { display: grid; gap: 0; margin-top: var(--space-3); border: 0; padding: 0; background: none; }
-.gameplay-shell .current-season-stats > span { display: none; }
-.gameplay-shell .current-season-stats strong { font: var(--weight-regular) var(--type-secondary)/var(--leading-secondary) var(--font-body); }
 .gameplay-shell .selected-player-empty { min-height: 96px; padding: var(--space-6) var(--space-4); margin-top: var(--space-4); background: var(--color-panel); border: 1px solid var(--color-divider); border-radius: var(--radius-sm); color: var(--color-text-muted); }
+.gameplay-shell .selected-player-detail { margin-top: var(--space-4); }
 .gameplay-shell .desktop-confirm { margin-top: var(--space-3); }
 .gameplay-shell .confirm-pick { width: 100%; justify-content: center; }
 .gameplay-shell .pending-pick-label { font-size: var(--type-small); }
@@ -517,12 +469,6 @@ button.xi-slot { cursor: default; }
 .gameplay-shell :is(.xi-target-stretch, .xi-target-major-stretch) { border-style: dashed; }
 .gameplay-shell .xi-target-unknown { border-style: dotted; }
 .gameplay-shell .xi-slot:hover:not(:disabled) { background: var(--color-panel-raised); transform: none; box-shadow: none; }
-.gameplay-shell .xi-slot-occupied { border-color: var(--color-divider-strong); cursor: pointer; }
-.gameplay-shell .xi-fit-natural { border-color: var(--color-action); }
-.gameplay-shell .xi-fit-acceptable { border-color: var(--fit-acceptable); }
-.gameplay-shell .xi-fit-stretch { border-color: var(--fit-stretch); border-style: dashed; }
-.gameplay-shell .xi-fit-major-stretch { border-color: var(--fit-major-stretch); border-style: dashed; }
-.gameplay-shell .xi-fit-unknown { border-color: var(--fit-unknown); border-style: dotted; }
 .gameplay-shell .xi-slot-locked { animation: fade-in var(--motion-level-1) var(--ease-out); }
 .gameplay-shell .xi-slot-active { animation: none; }
 .gameplay-shell.revealed-shell .reveal-layout { animation: fade-in var(--motion-screen) var(--ease-out); }
@@ -531,35 +477,10 @@ button.xi-slot { cursor: default; }
 .gameplay-shell .xi-portrait-empty { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: auto; height: auto; border: 0; background: none; color: var(--color-text-muted); }
 .gameplay-shell .xi-portrait-empty span { font-size: var(--type-label); }
 .gameplay-shell .empty-fit-symbol { position: absolute; right: 12px; bottom: 12px; font-size: var(--type-label); }
-.gameplay-shell .collectible-card { position: relative; min-height: 162px; display: grid; grid-template-columns: 32px minmax(0, 1fr); grid-template-rows: 20px minmax(32px, auto) auto 1fr auto; gap: var(--space-1) var(--space-2h); padding: var(--space-2) 9px 0; color: var(--color-text); clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 10px), calc(100% - 6px) calc(100% - 4px), 60% calc(100% - 4px), 50% 100%, 40% calc(100% - 4px), 6px calc(100% - 4px), 0 calc(100% - 10px), 0 8px); }
-.gameplay-shell .collectible-card .position-number { color: var(--color-text); top: 6px; left: 9px; }
-.gameplay-shell .placement-marker { grid-column: 2; justify-self: end; font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); }
-.gameplay-shell .collectible-card .xi-portrait { width: 32px; height: 32px; grid-row: 2; display: grid; place-items: center; border-radius: var(--radius-xs); background: var(--tier-wash); border-color: var(--card-edge); }
-.gameplay-shell .collectible-card .xi-portrait span { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); color: var(--color-text); }
-.gameplay-shell .locked-player { display: contents; }
-.gameplay-shell .locked-player strong { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-name); grid-column: 2; grid-row: 2; align-self: center; }
-.gameplay-shell .locked-player small { grid-column: 1/-1; grid-row: 3; }
-.gameplay-shell .locked-player > span { grid-column: 1/-1; grid-row: 4; }
-.gameplay-shell .locked-player strong { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-name); white-space: normal; overflow: visible; color: var(--color-text); }
-.gameplay-shell .locked-player small, .gameplay-shell .locked-player > span { display: block; white-space: normal; overflow: visible; color: var(--color-text); font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); text-transform: none; letter-spacing: 0; }
-.gameplay-shell .xi-card-rail { grid-column: 1/-1; min-height: 28px; margin: 0 -9px; padding: 5px var(--space-1); display: flex; justify-content: center; background: var(--color-night); border: 0; }
 .gameplay-shell .xi-slot { border-width: 2px; }
 .gameplay-shell .xi-slot-active { border-color: color-mix(in srgb, var(--fit) 85%, var(--color-text)); }
-.gameplay-shell .xi-fit-natural { border-color: var(--fit-natural); }
-.gameplay-shell .xi-fit-acceptable { border-color: var(--fit-acceptable); }
-.gameplay-shell .xi-fit-stretch { border-color: var(--fit-stretch); }
-.gameplay-shell .xi-fit-major-stretch { border-color: var(--fit-major-stretch); }
 .gameplay-shell .empty-fit-label { position: absolute; bottom: 12px; left: 8px; right: 8px; text-align: center; font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); color: var(--fit); }
-.gameplay-shell .xi-fit-caption { grid-column: 1 / -1; grid-row: 5; display: block; margin-top: var(--space-2); text-align: center; font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); color: var(--color-text); }
-.gameplay-shell .xi-fit-caption .fit-badge { color: inherit; }
-.gameplay-shell .slot-confirm-hint { grid-column: 1 / -1; grid-row: 6; display: block; margin-top: var(--space-1); color: var(--color-text); text-align: center; font: var(--weight-medium) var(--type-small)/var(--leading-small) var(--font-body); }
-.gameplay-shell .collectible-card { padding-bottom: var(--space-3); grid-template-rows: 20px minmax(32px, auto) auto 1fr auto; clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px); overflow: hidden; }
-.gameplay-shell :is(.collectible-card, .selected-player-detail, .inspector-modal)::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(110deg, transparent 35%, var(--card-sheen) 50%, transparent 65%); transform: translateX(-100%); opacity: 0; animation: var(--anim-sheen) var(--motion-sheen-legacy) var(--ease-in-out) infinite; animation-delay: calc(var(--reveal-order, 0) * -1.25s); }
-.gameplay-shell .selected-player-detail { position: relative; overflow: hidden; --reveal-order: 3; }
 .gameplay-shell .inspector-modal { --reveal-order: 0; overflow-x: hidden; }
-/* Only transform/opacity animate; the gradient is static, with no timers, blur or layout work. */
-@keyframes card-light-sweep { 0% { transform: translateX(-100%); opacity: 0; } 2% { opacity: 1; } 10%, 100% { transform: translateX(100%); opacity: 0; } }
-.gameplay-shell .selected-player-meta > span + span::before { content: "· "; }
 .gameplay-shell .xi-complete-mark { display: none; }
 .gameplay-shell .complete-state { min-height: 0; align-content: start; justify-items: stretch; margin: 0; padding: var(--space-6); background: var(--color-panel); border: 1px solid var(--color-divider); border-radius: var(--radius-sm); display: grid; gap: var(--space-6); }
 .gameplay-shell .complete-state > * { margin: 0; }
@@ -570,20 +491,14 @@ button.xi-slot { cursor: default; }
 .gameplay-shell .complete-status p { font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); }
 .gameplay-shell .complete-status p:first-child { color: var(--color-action); margin-bottom: var(--space-4); }
 .gameplay-shell .complete-state .primary-action { width: 100%; }
-.gameplay-shell .player-inspector { min-height: 200px; margin-top: var(--space-4); padding: var(--space-4); border: 1px solid var(--color-divider-strong); border-radius: var(--radius-sm); background: var(--color-panel-raised); color: var(--color-text); }
-.gameplay-shell .player-inspector header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
-.gameplay-shell .inspector-identity { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-4); }
-.gameplay-shell .inspector-identity h3, .gameplay-shell .inspector-identity p { margin: 0; }
-.gameplay-shell .inspector-monogram { width: 40px; height: 40px; display: grid; place-items: center; background: var(--color-panel-raised); border: 1px solid var(--color-divider); border-radius: var(--radius-xs); }
+.gameplay-shell .player-inspector header { margin-bottom: var(--space-3); display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
 .gameplay-shell .inspector-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
 .gameplay-shell .inspector-metrics > div { padding-block: var(--space-3); border-top: 1px solid var(--color-divider); }
 .gameplay-shell .inspector-metrics span { display: block; color: var(--color-text); }
 .gameplay-shell .inspector-metrics strong { font: var(--weight-number) var(--type-number)/var(--leading-number) var(--font-display); }
-.gameplay-shell dialog.inspector-modal { position: fixed; inset: 0; margin: auto; width: min(560px, calc(100vw - 32px)); max-width: none; max-height: calc(100dvh - 48px); overflow-y: auto; padding: var(--space-7); border: 2px solid var(--tier-bright); background: linear-gradient(130deg, var(--tier-fill), var(--tier-deep)); box-shadow: 0 24px 80px var(--color-shadow); }
+.gameplay-shell dialog.inspector-modal { position: fixed; inset: 0; margin: auto; width: min(560px, calc(100vw - 32px)); max-width: none; max-height: calc(100dvh - 48px); overflow-y: auto; padding: var(--space-5); border: 1px solid var(--color-divider-strong); border-radius: var(--radius-panel); background: var(--color-panel); color: var(--color-text); box-shadow: 0 24px 80px var(--color-shadow); }
 .gameplay-shell .inspector-modal::backdrop { background: var(--color-scrim); }
-.gameplay-shell .inspector-modal .inspector-monogram { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); width: 64px; height: 72px; flex-shrink: 0; background: var(--tier-wash); border-color: var(--card-edge); }
-.gameplay-shell .inspector-modal .inspector-identity h3 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); }
-.gameplay-shell .inspector-modal .inspector-metrics { margin-top: var(--space-6); padding: var(--space-4); background: var(--card-scrim); border-radius: var(--radius-xs); }
+.gameplay-shell .inspector-modal .inspector-metrics { margin-top: var(--space-4); }
 .gameplay-shell .inspector-modal .inspector-metrics strong { font: var(--weight-number) var(--type-number)/var(--leading-number) var(--font-display); }
 @media (max-width: 759px) { .gameplay-shell dialog.inspector-modal { padding: var(--space-5); }  }
 .gameplay-shell .draft-bottom-bar, .gameplay-shell .draft-jump { display: none; }
@@ -623,8 +538,6 @@ button.xi-slot { cursor: default; }
 .gameplay-shell .revealed-player { min-height: 80px; border-top: 1px solid var(--color-divider); border-left: 3px solid var(--tier-bright); background: linear-gradient(90deg, color-mix(in srgb, var(--tier-bright) 8%, transparent), transparent 70%); }
 .gameplay-shell .revealed-tier-s { --tier-bright: var(--tier-s-bright); }.gameplay-shell .revealed-tier-a { --tier-bright: var(--tier-a-bright); }.gameplay-shell .revealed-tier-b { --tier-bright: var(--tier-b-bright); }.gameplay-shell .revealed-tier-c { --tier-bright: var(--tier-c-bright); }.gameplay-shell .revealed-tier-d { --tier-bright: var(--tier-d-bright); }
 .gameplay-shell .revealed-position { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); color: var(--color-text-muted); }
-.gameplay-shell .revealed-identity strong { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-name); display: block; }
-.gameplay-shell .revealed-identity small { display: block; font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); color: var(--color-text); }
 .gameplay-shell .revealed-overall { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); }
 .gameplay-shell .revealed-bat, .gameplay-shell .revealed-bowl { font: var(--weight-regular) var(--type-secondary)/var(--leading-secondary) var(--font-body); }
 .gameplay-shell .revealed-bat small, .gameplay-shell .revealed-bowl small { display: none; }
@@ -747,11 +660,6 @@ button.xi-slot { cursor: default; }
   .gameplay-shell .candidate-quick-stats { font: var(--weight-regular) var(--type-secondary)/var(--leading-secondary) var(--font-body); grid-column: 2; grid-row: 2; display: block; }
   .gameplay-shell .candidate-quick-stats span { display: block; }
   .gameplay-shell .candidate-card .select-mark { grid-column: 3; grid-row: 1; }
-  .gameplay-shell .collectible-card { grid-template-columns: 24px minmax(0, 1fr); column-gap: var(--space-1h); padding-inline: var(--space-1h); }
-  .gameplay-shell .collectible-card .xi-portrait { width: 24px; height: 28px; }
-  .gameplay-shell .locked-player strong { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-name); }
-  .gameplay-shell .locked-player small, .gameplay-shell .locked-player > span { font-size: var(--type-small); line-height: var(--leading-small); }
-  .gameplay-shell .xi-card-rail { margin-inline: -6px; }
   .gameplay-shell .draft-status { gap: var(--space-3); flex-wrap: wrap; }
   .gameplay-shell .draft-status :is(small, strong) { font-size: var(--type-small); }
   .gameplay-shell .reveal-intro h1 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); }
@@ -792,29 +700,10 @@ button.xi-slot { cursor: default; }
   .gameplay-shell .terminal-summary > div { border: 0; border-bottom: 1px solid var(--color-divider); }
   .gameplay-shell .terminal-screen h1 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); }
 }
-/* Centred card hierarchy, independent of desktop/mobile column count. */
-.gameplay-shell .collectible-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: 56px auto auto auto auto; align-content: start; justify-items: center; gap: var(--space-2); padding: var(--space-8) var(--space-3) var(--space-4); min-height: 244px; text-align: center; }
-.gameplay-shell .collectible-card .placement-marker { position: absolute; top: 8px; right: 10px; }
-.gameplay-shell .collectible-card .xi-portrait { grid-column: 1; grid-row: 1; position: static; width: 56px; height: 56px; margin: 0; transform: none; border-radius: var(--radius-round); }
-.gameplay-shell .collectible-card .xi-portrait span { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); width: auto; padding: 0; background: transparent; }
-.gameplay-shell .locked-player strong { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-name); grid-column: 1; grid-row: 2; }
-.gameplay-shell .locked-player small { grid-column: 1; grid-row: 3; }
-.gameplay-shell .locked-player > span { grid-column: 1; grid-row: 4; }
-.gameplay-shell .locked-player small, .gameplay-shell .locked-player > span { font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); color: var(--color-text); }
-.gameplay-shell .xi-fit-caption { margin-top: var(--space-1); }
-.gameplay-shell .slot-confirm-hint { margin-top: 0; }
 .gameplay-shell .candidate-card[aria-disabled="true"] { opacity: 0.58; cursor: help; }
 .gameplay-shell .candidate-card[aria-disabled="true"] :is(.candidate-body > span, .candidate-quick-stats) { color: var(--color-text); }
-.gameplay-shell .inspector-modal .inspector-identity { flex-direction: column; text-align: center; gap: var(--space-3); }
-.gameplay-shell .inspector-modal .inspector-identity p { margin-top: var(--space-2); }
-.gameplay-shell .inspector-modal .inspector-monogram { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); width: 72px; height: 72px; border-radius: var(--radius-round); }
-.gameplay-shell .inspector-modal > p { text-align: center; }
-@media (max-width: 759px) { .gameplay-shell .collectible-card { padding-inline: var(--space-2); }  }
 @media (max-width: 359px) { .gameplay-shell .xi-slots { grid-template-columns: minmax(0, 1fr); } }
 
-.gameplay-shell :is(.selected-player-detail, .collectible-card, dialog.inspector-modal) { color: var(--tier-ink); }
-.gameplay-shell :is(.selected-player-detail, .collectible-card, dialog.inspector-modal) :is(h3, p, small, strong, b, .eyebrow, .position-number, .placement-marker, .quiet-button, .room-sheet-clock, .selected-player-meta span, .selected-player-portrait, .xi-portrait > span, .locked-player > span, .xi-fit-caption, .slot-confirm-hint, .inspector-monogram) { color: var(--tier-ink); }
-.gameplay-shell dialog.inspector-modal .inspector-metrics :is(span, strong) { color: var(--color-text); }
 
 .landing-shell {
   position: relative;

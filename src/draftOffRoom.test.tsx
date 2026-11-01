@@ -127,9 +127,18 @@ test("desktop placement uses projected legality, survives public revisions and s
     assert.equal(ui.document.querySelector(".room-confirm-pick")?.textContent?.startsWith("Confirm pick"), true);
     const newer = structuredClone(value); Object.assign(newer.view, { revision: value.view.revision + 4 });
     await ui.render(roomState(newer));
-    assert.equal(ui.document.querySelector('[aria-pressed="true"].room-position-option')?.getAttribute("aria-label"), label);
+    const pressed = ui.document.querySelector('[aria-pressed="true"].room-position-option')!;
+    assert.equal(pressed.getAttribute("aria-label"), label);
+    assert.match(ui.document.getElementById(pressed.getAttribute("aria-describedby")!)!.textContent!, /, [SABCD] tier, .*Preview$/);
+    assert.ok(pressed.querySelector(".player-card-state-preview .player-card-state-edge"));
     await ui.click(".room-confirm-pick"); await ui.click(".room-confirm-pick");
     assert.equal(commands.length, 1); assert.equal(commands[0]!.type, "LOCK_PLAYER");
+    await ui.render({ ...roomState(newer), pending: true, pendingCommand: "LOCK_PLAYER" });
+    const pendingCard = ui.document.querySelector(".room-xi .player-card-state-pending")!;
+    assert.match(pendingCard.textContent!, /Locking…/);
+    assert.equal(ui.document.querySelector(".room-xi .player-card-state-edge"), null, "no ivory edge until the server confirms");
+    assert.equal(ui.document.querySelector(".room-slot-preview"), null);
+    await ui.render(roomState(newer));
     release(); await act(async () => Promise.resolve());
     const own = structuredClone(newer); assert.ok(own.view.myDraft); Object.assign(own.view.myDraft, { revision: own.view.myDraft.revision + 1 });
     await ui.render(roomState(own)); assert.equal(ui.document.querySelector(".room-confirm-pick"), null);
@@ -213,7 +222,7 @@ test("mobile pending placement and server deadline remain explicit inside the mo
   const value=snapshot(spun()),ui=await mount(value,true);
   try {
     await ui.click('.candidate-card:not([aria-disabled="true"])');
-    const selected=ui.document.querySelector('.room-placement-body .selected-player-copy h3')!.textContent;
+    const selected=ui.document.querySelector('.room-placement-body .selected-player-detail h3')!.textContent;
     assert.equal(ui.document.querySelector('.room-sheet-confirm .room-placement-context strong')!.textContent,selected);
     assert.equal(ui.document.querySelectorAll('.room-placement-body .room-xi li').length,11);
     await ui.render({...roomState(value),pending:true,pendingCommand:'LOCK_PLAYER'});
