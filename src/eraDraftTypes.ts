@@ -370,6 +370,8 @@ export type DraftPickView = DraftPlayerFactsView & {
   readonly pickNumber: number;
   readonly battingPosition: EraDraftPick["battingPosition"];
   readonly presentationFit: DraftPresentationFit;
+  /** V3 only, in 0–100 units; nominal batting penalty before the contribution floor. UNKNOWN is neutral (0). */
+  readonly nominalDeductionPercent?: number;
 };
 
 export type DraftCandidateIdentityView = DraftPlayerFactsView & {
@@ -381,6 +383,8 @@ export type DraftCandidateIdentityView = DraftPlayerFactsView & {
   readonly positions: readonly {
     readonly battingPosition: EraDraftPick["battingPosition"];
     readonly presentationFit: DraftPresentationFit;
+    /** V3 only, in 0–100 units; nominal batting penalty before the contribution floor. UNKNOWN is neutral (0). */
+    readonly nominalDeductionPercent?: number;
     readonly available: boolean;
     readonly reasons: readonly EraDraftSelectionRejection[];
   }[];

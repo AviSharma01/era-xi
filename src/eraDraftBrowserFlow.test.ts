@@ -18,6 +18,7 @@ const assets = createEraDraftWebAssets(documents);
 const manifestUrl = new URL("https://example.test/data/era-draft/v1/manifest.json");
 
 test("every fetched era reaches REVEALED and restores through browser-facing V2/V3 contracts", async () => {
+  const deductions = new Set<number>();
   for (const modern of [false, true]) for (const entry of assets.manifest.eras) {
     const file = assets.artifacts.get(entry.path)!;
     const fetcher: EraDraftWebFetch = async () => new Response(file.json);
@@ -36,9 +37,14 @@ test("every fetched era reaches REVEALED and restores through browser-facing V2/
       const appearances = { S: "violet", A: "gold", B: "cobalt", C: "emerald", D: "slate" } as const;
       for (const candidate of view.candidates) {
         assert.equal(candidate.tierAppearance, appearances[catalog.getPlayer(candidate.playerTeamSeasonId)!.quality.overall.qualityTier]);
+        for (const option of candidate.positions) {
+          assert.equal(Object.hasOwn(option, "nominalDeductionPercent"), modern);
+          if (modern) deductions.add(option.nominalDeductionPercent!);
+        }
       }
       assert.doesNotMatch(JSON.stringify(view), /"(?:quality|qualityTier|battingRating|bowlingRating|overallRating|internalScore|bandDistance|evaluation)"/);
       for (const pick of view.picks) {
+        assert.equal(Object.hasOwn(pick, "nominalDeductionPercent"), modern);
         assert.equal(pick.tierAppearance, appearances[catalog.getPlayer(pick.playerTeamSeasonId)!.quality.overall.qualityTier]);
         assert.ok(pick.historicalStats.currentSeason);
       }
@@ -52,6 +58,7 @@ test("every fetched era reaches REVEALED and restores through browser-facing V2/
     const complete = projectEraDraftPublicState(catalog, state);
     assert.equal(complete.phase, "XI_COMPLETE");
     if (complete.phase === "XI_COMPLETE") {
+      assert.ok(complete.picks.every(pick => Object.hasOwn(pick, "nominalDeductionPercent") === modern));
       assert.equal(complete.status.pickCount, 11);
       assert.equal(complete.status.hasWicketkeeper, true);
       assert.ok(complete.status.overseasCount <= 4);
@@ -63,6 +70,11 @@ test("every fetched era reaches REVEALED and restores through browser-facing V2/
     assert.equal(revealed.evaluation.version, modern ? TEAM_EVALUATION_V3_VERSION : TEAM_EVALUATION_V2_VERSION);
     assert.equal(revealView.evaluation.teamEvaluationVersion, modern ? TEAM_EVALUATION_V3_VERSION : undefined);
     assert.equal(revealView.players.every(player => !!player.battingAdjustment), modern);
+    for (const pick of revealView.picks) {
+      assert.equal(Object.hasOwn(pick, "nominalDeductionPercent"), modern);
+      if (modern) assert.equal(pick.nominalDeductionPercent,
+        revealView.players.find(player => player.battingPosition === pick.battingPosition)!.battingAdjustment!.penaltyPercent);
+    }
     const restored = await loadAndRestoreEraDraftUiSave({ save: createEraDraftUiSave(revealed),
       manifest: assets.manifest, manifestUrl, fetcher, subtle: webcrypto.subtle as unknown as SubtleCrypto });
     assert.equal(serializeEraDraftState(restored.state), serializeEraDraftState(revealed));
@@ -75,6 +87,7 @@ test("every fetched era reaches REVEALED and restores through browser-facing V2/
     assert.ok(revealView.players.every((player) =>
       ["NATURAL", "ACCEPTABLE", "STRETCH", "MAJOR_STRETCH", "UNKNOWN"].includes(player.presentationFit)));
   }
+  assert.deepEqual([...deductions].sort((a, b) => a - b), [0, 5, 12, 20, 30]);
 });
 
 function accepted(result: ReturnType<typeof reduceEraDraft>): EraDraftHiddenState {

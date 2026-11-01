@@ -1,4 +1,5 @@
 import type { DraftOffCampaignResult } from "./draftOffTypes.js";
+import type { DraftCandidateIdentityView } from "./eraDraftTypes.js";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
@@ -9,7 +10,7 @@ import { replayEraDraftState, replayEraDraftGame } from "./eraDraftReplay.js";
 import { projectEraDraftPublicState, projectEraDraftRevealState } from "./eraDraftProjection.js";
 import { createDraftOffCompetition } from "./draftOffCompetition.js";
 import { restoreDraftOffCompetition, serializeDraftOffCompetition } from "./draftOffCompetitionPersistence.js";
-import { projectDraftOffRoom } from "./draftOffRoomProjection.js";
+import { projectDraftOffPublicRoom, projectDraftOffRoom } from "./draftOffRoomProjection.js";
 import { projectDraftOffParticipantResults } from "./draftOffResultsProjection.js";
 import { parseDraftOffResults } from "./draftOffResultsClient.js";
 import { parseRoomSnapshot } from "./draftOffRealtimeClient.js";
@@ -30,6 +31,91 @@ const legacy = JSON.parse(readFileSync("src/fixtures/evaluationV3Legacy.json", "
 const goldens = JSON.parse(readFileSync("src/fixtures/evaluationV3Goldens.json", "utf8")) as {
   catalogFingerprint: string; solo: Record<string, string>; rooms: Record<string, { stateHash: string; resultsHash: string }>;
 };
+
+test("V3 candidate and locked-slot deductions distinguish every fit severity without hidden ratings", () => {
+  const cases = [
+    ["NATURAL", 0, "NATURAL", 0],
+    ["ACCEPTABLE", 1, "ACCEPTABLE", 5],
+    ["OUT_OF_ROLE", 2, "STRETCH", 12],
+    ["OUT_OF_ROLE", 3, "MAJOR_STRETCH", 20],
+    ["OUT_OF_ROLE", 4, "MAJOR_STRETCH", 30],
+    ["UNKNOWN", null, "UNKNOWN", 0],
+  ] as const;
+  const covered = new Set<number>();
+  for (const eraId of ERA_IDS) {
+    const setup = createEraDraftGame({ catalog, rootSeed: `fit-projection:${eraId}`, teamEvaluationVersion: TEAM_EVALUATION_V3_VERSION });
+    const chosen = reduceEraDraft(catalog, setup, { type: "CHOOSE_ERA", eraId }); assert.ok(chosen.ok);
+    const spun = reduceEraDraft(catalog, chosen.state, { type: "SPIN" }); assert.ok(spun.ok);
+    assert.equal(spun.state.phase, "AWAITING_PICK"); if (spun.state.phase !== "AWAITING_PICK") throw new Error("Expected spin");
+    const before = serializeEraDraftState(spun.state);
+    const view = projectEraDraftPublicState(catalog, spun.state);
+    assert.equal(view.phase, "AWAITING_PICK"); if (view.phase !== "AWAITING_PICK") throw new Error("Expected candidates");
+    assert.deepEqual(projectEraDraftPublicState(catalog, spun.state), view);
+    for (const [index, [classification, distance, presentationFit, percent]] of cases.entries()) {
+      const witness: { candidate: DraftCandidateIdentityView; option: DraftCandidateIdentityView["positions"][number] } | undefined =
+        view.candidates.flatMap(candidate => candidate.positions.map(option => ({ candidate, option })))
+        .find(({ candidate, option }) => {
+          const slot = catalog.getPlayer(candidate.playerTeamSeasonId)!.role.battingFit.slots[option.battingPosition - 1]!;
+          return option.available && slot.classification === classification && slot.bandDistance === distance;
+        });
+      if (!witness) continue;
+      covered.add(index);
+      const { candidate, option }: { candidate: DraftCandidateIdentityView; option: DraftCandidateIdentityView["positions"][number] } = witness;
+      assert.equal(option.presentationFit, presentationFit);
+      assert.equal(option.nominalDeductionPercent, percent);
+      assert.deepEqual(Object.keys(option).sort(), ["available", "battingPosition", "nominalDeductionPercent", "presentationFit", "reasons"]);
+      const locked = reduceEraDraft(catalog, spun.state, { type: "LOCK_PLAYER", playerTeamSeasonId: candidate.playerTeamSeasonId, battingPosition: option.battingPosition });
+      assert.ok(locked.ok); assert.equal(locked.state.phase, "AWAITING_SPIN");
+      if (locked.state.phase !== "AWAITING_SPIN") throw new Error("Expected locked pick");
+      const lockedView = projectEraDraftPublicState(catalog, locked.state);
+      assert.equal(lockedView.phase, "AWAITING_SPIN"); if (lockedView.phase !== "AWAITING_SPIN") throw new Error("Expected locked view");
+      assert.equal(lockedView.picks[0]!.presentationFit, presentationFit);
+      assert.equal(lockedView.picks[0]!.nominalDeductionPercent, percent);
+      for (const safeView of [view, lockedView]) assert.doesNotMatch(canonicalJson(safeView),
+        /"(?:quality|qualityTier|battingRating|bowlingRating|overallRating|rawContribution|effectiveContribution|appliedPenaltyPercent|battingAdjustment|evaluation|rootSeed|history|bandDistance)"/);
+    }
+    assert.equal(serializeEraDraftState(spun.state), before);
+  }
+  assert.deepEqual([...covered].sort(), cases.map((_, index) => index));
+});
+
+test("V3 room fit deductions remain caller-only in both formats and never enter shared snapshots", () => {
+  for (const format of ["MIRROR", "VARIED"] as const) {
+    let state = startRoom(roomLobby("era-transition", format, 2));
+    for (const id of [participantId(1), participantId(2)]) state = roomApply(state, {
+      type: "APPLY_DRAFT_COMMAND", participantId: id, atMs: 20,
+      expectedDraftRevision: draftOf(state, id).revision, draftCommand: { type: "SPIN" },
+    });
+    const hostView = projectDraftOffRoom(catalog, state, participantId(1)).myDraft;
+    assert.equal(hostView?.phase, "AWAITING_PICK");
+    if (hostView?.phase !== "AWAITING_PICK") throw new Error("Expected host candidates");
+    const candidate = hostView.candidates.find(candidate => candidate.available)!;
+    const option = candidate.positions.find(option => option.available)!;
+    state = roomApply(state, { type: "APPLY_DRAFT_COMMAND", participantId: participantId(1), atMs: 20,
+      expectedDraftRevision: draftOf(state, participantId(1)).revision,
+      draftCommand: { type: "LOCK_PLAYER", playerTeamSeasonId: candidate.playerTeamSeasonId, battingPosition: option.battingPosition } });
+    const before = serializeDraftOffCompetition(state);
+    const shared = projectDraftOffPublicRoom(state);
+    for (const id of [participantId(1), participantId(2)]) {
+      const { myDraft, ...publicView } = projectDraftOffRoom(catalog, state, id);
+      assert.deepEqual(publicView, shared);
+      assert.deepEqual(myDraft, projectEraDraftPublicState(catalog, draftOf(state, id), state.genesis.tierCaps));
+      if (id === participantId(1)) {
+        assert.ok(myDraft && myDraft.phase !== "SETUP");
+        assert.equal(myDraft.picks[0]!.nominalDeductionPercent, option.nominalDeductionPercent);
+      } else {
+        assert.equal(myDraft?.phase, "AWAITING_PICK");
+        if (myDraft?.phase !== "AWAITING_PICK") throw new Error("Expected member candidates");
+        assert.equal(myDraft.picks.length, 0);
+        assert.ok(myDraft.candidates.every(candidate => candidate.positions.every(option => typeof option.nominalDeductionPercent === "number")));
+      }
+    }
+    const frame = { version: 4, type: "ROOM_SNAPSHOT", serverTimeMs: 20, view: shared };
+    assert.deepEqual(parseRoomSnapshot(JSON.stringify(frame), roomCode).view, shared);
+    assert.doesNotMatch(canonicalJson(shared), /"(?:myDraft|picks|candidates|battingPosition|nominalDeductionPercent|battingRating|bowlingRating|overallRating|rawContribution|effectiveContribution)"/);
+    assert.equal(serializeDraftOffCompetition(state), before);
+  }
+});
 
 test("pre-V3 Solo save bytes, replay, evaluations and historical results remain frozen at every phase and era", () => {
   assert.equal(catalog.fingerprint, legacy.catalogFingerprint);

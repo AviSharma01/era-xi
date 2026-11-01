@@ -22,8 +22,8 @@ import type {
 } from "./eraDraftTypes.js";
 import { EraDraftDataError, type DraftPresentationFit, type DraftStatusView } from "./eraDraftTypes.js";
 import type { EraTeamEvaluation } from "./teamEvaluationPolicy.js";
-import { TEAM_EVALUATION_V3_VERSION, type BattingAdjustmentV3 } from "./teamEvaluationV3.js";
-import type { FitClassification } from "./playerRoleContract.js";
+import { TEAM_EVALUATION_V3_VERSION, POSITION_PENALTY_PERCENT, positionPenaltySeverity, type BattingAdjustmentV3 } from "./teamEvaluationV3.js";
+import type { BattingSlotFit, FitClassification } from "./playerRoleContract.js";
 import {
   buildStandingsV2,
   type MatchResultV2,
@@ -39,7 +39,7 @@ export function projectEraDraftPublicState(
   assertEraDraftState(catalog, state, tierCaps);
   if (state.phase === "SETUP") return Object.freeze({ phase: "SETUP", revision: state.revision });
   const era = catalog.getEra(state.eraId)!;
-  const picks = projectPicks(catalog, state.picks);
+  const picks = projectPicks(catalog, state.picks, state.teamEvaluationVersion);
   const status = projectDraftStatus(catalog, state);
   if (state.phase === "AWAITING_SPIN") {
     return freezeDeep({ phase: "AWAITING_SPIN", revision: state.revision, eraId: state.eraId, eraLabel: era.label, status, picks });
@@ -51,7 +51,7 @@ export function projectEraDraftPublicState(
   const context = { eraId: state.eraId, picks: state.picks, activeTeamSeasonId: teamSeason.teamSeasonId, tierCaps };
   const openPositions = getOpenBattingPositions(state.picks);
   const candidates = catalog.getCandidatesForTeamSeason(teamSeason.teamSeasonId)
-    .map((player) => projectCandidate(catalog, player, context, openPositions))
+    .map((player) => projectCandidate(catalog, player, context, openPositions, state.teamEvaluationVersion))
     .sort(compareDraftCandidatesForPresentation);
   return freezeDeep({
     phase: "AWAITING_PICK",
@@ -79,16 +79,14 @@ function projectCandidate(
   player: EraDraftPlayerRecord,
   context: Parameters<typeof evaluateSelectionLegality>[1],
   openPositions: ReturnType<typeof getOpenBattingPositions>,
+  teamEvaluationVersion: EraDraftHiddenState["teamEvaluationVersion"],
 ): DraftCandidateIdentityView {
   const displayRole = projectDraftDisplayRole(player);
   const positions = openPositions.map((battingPosition) => {
     const legality = evaluateSelectionLegality(catalog, context, { playerTeamSeasonId: player.playerTeamSeasonId, battingPosition });
     return Object.freeze({
       battingPosition,
-      presentationFit: toDraftPresentationFit(
-        player.role.battingFit.slots[battingPosition - 1]!.classification,
-        player.role.battingFit.slots[battingPosition - 1]!.bandDistance,
-      ),
+      ...projectDraftFit(player.role.battingFit.slots[battingPosition - 1]!, teamEvaluationVersion),
       available: legality.available,
       reasons: legality.reasons,
     });
@@ -269,7 +267,7 @@ export function projectEraDraftRevealState(
 ): EraDraftRevealView {
   assertEraDraftState(catalog, state);
   const era = catalog.getEra(state.eraId)!;
-  const picks = projectPicks(catalog, state.picks);
+  const picks = projectPicks(catalog, state.picks, state.teamEvaluationVersion);
   const revealed = projectEraDraftRevealedEvaluation(catalog, state.evaluation);
   return freezeDeep({
     phase: "REVEALED", revision: state.revision, eraId: state.eraId, eraLabel: era.label,
@@ -481,7 +479,11 @@ function requiredTeamName(names: ReadonlyMap<string, string>, teamId: string): s
   return name;
 }
 
-function projectPicks(catalog: EraDraftCatalog, picks: EraDraftHiddenState["picks"]): readonly DraftPickView[] {
+function projectPicks(
+  catalog: EraDraftCatalog,
+  picks: EraDraftHiddenState["picks"],
+  teamEvaluationVersion: EraDraftHiddenState["teamEvaluationVersion"],
+): readonly DraftPickView[] {
   return picks.map((pick) => {
     const player = catalog.getPlayer(pick.playerTeamSeasonId)!;
     return freezeDeep({
@@ -490,12 +492,19 @@ function projectPicks(catalog: EraDraftCatalog, picks: EraDraftHiddenState["pick
       historicalStats: projectEraDraftHistoricalStats(catalog, player),
       pickNumber: pick.pickNumber,
       battingPosition: pick.battingPosition,
-      presentationFit: toDraftPresentationFit(
-        player.role.battingFit.slots[pick.battingPosition - 1]!.classification,
-        player.role.battingFit.slots[pick.battingPosition - 1]!.bandDistance,
-      ),
+      ...projectDraftFit(player.role.battingFit.slots[pick.battingPosition - 1]!, teamEvaluationVersion),
     });
   });
+}
+
+/** Fit metadata only: never consult ratings or calculate a player's effective contribution. */
+function projectDraftFit(slot: BattingSlotFit, teamEvaluationVersion: EraDraftHiddenState["teamEvaluationVersion"]) {
+  return {
+    presentationFit: toDraftPresentationFit(slot.classification, slot.bandDistance),
+    ...(teamEvaluationVersion === TEAM_EVALUATION_V3_VERSION ? {
+      nominalDeductionPercent: POSITION_PENALTY_PERCENT[positionPenaltySeverity(slot.classification, slot.bandDistance)],
+    } : {}),
+  };
 }
 
 export function toDraftPresentationFit(

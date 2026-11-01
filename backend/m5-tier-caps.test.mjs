@@ -12,7 +12,7 @@ import { restoreDraftOffCompetition, serializeDraftOffCompetition } from '../dis
 import { countDraftTiers } from '../dist/eraDraftTierCaps.js';
 import { parseRoomSnapshot } from '../dist/draftOffRealtimeClient.js';
 import { parseDraftOffResults } from '../dist/draftOffResultsClient.js';
-import { TEAM_EVALUATION_V3_VERSION } from '../dist/teamEvaluationV3.js';
+import { TEAM_EVALUATION_V3_VERSION, POSITION_PENALTY_PERCENT, positionPenaltySeverity } from '../dist/teamEvaluationV3.js';
 const secret = () => randomBytes(32).toString('base64url');
 const catalog = loadEraDraftCatalog(), caps = { maxS: 3, maxSA: 6 };
 const overrides = { requestsPerMinute: 10000, enrollmentPerMinute: 10000, readsPerMinute: 2000, readBurst: 200,
@@ -57,6 +57,10 @@ for (const format of ['VARIED', 'MIRROR']) test(`${format} Standard: native caps
         const respun = await command(host, { commandId: 'late-respin', expectedDraftRevision: view.myDraft.revision, command: { type: 'RESPIN' } });
         assert.equal(respun.status, 200); view = respun.body.view;
       }
+      for (const candidate of view.myDraft.candidates) for (const option of candidate.positions) {
+        const slot = catalog.getPlayer(candidate.playerTeamSeasonId).role.battingFit.slots[option.battingPosition - 1];
+        assert.equal(option.nominalDeductionPercent, POSITION_PENALTY_PERCENT[positionPenaltySeverity(slot.classification, slot.bandDistance)]);
+      }
       const blocked = view.myDraft.candidates.find(c => c.positions.some(p => p.reasons.some(r => ['S_TIER_LIMIT', 'SA_TIER_LIMIT'].includes(r.code))));
       if (blocked) {
         const before = await canonical();
@@ -74,6 +78,8 @@ for (const format of ['VARIED', 'MIRROR']) test(`${format} Standard: native caps
       lastReply = await command(host, lastLock); assert.equal(lastReply.status, 200);
       assert.deepEqual((await command(host, lastLock)).body, lastReply.body);
       assert.equal(lastReply.body.view.myDraft.status.pickCount, n + 1);
+      assert.equal(lastReply.body.view.myDraft.picks.at(-1).nominalDeductionPercent,
+        choice.positions.find(p => p.battingPosition === lastLock.command.battingPosition).nominalDeductionPercent);
     }
     assert.ok(rejected > 0, 'Elite-first drafting must encounter cap-blocked selections');
     const stored = await canonical(), state = restoreDraftOffCompetition(catalog, stored);
@@ -89,7 +95,7 @@ for (const format of ['VARIED', 'MIRROR']) test(`${format} Standard: native caps
     socket = await connect();
     assert.equal((await read(member)).view.myDraft.picks.length, 0);
     assert.equal((await read(member)).view.participants.find(p => p.participantId === host.participantId).lockedPickCount, 11);
-    for (const frame of frames) for (const privateKey of ['myDraft', 'picks', 'candidates', 'rootSeed', 'qualityTier', 'history', 'rngCounters']) assert.ok(!JSON.stringify(frame).includes(`"${privateKey}"`));
+    for (const frame of frames) for (const privateKey of ['myDraft', 'picks', 'candidates', 'nominalDeductionPercent', 'rootSeed', 'qualityTier', 'history', 'rngCounters']) assert.ok(!JSON.stringify(frame).includes(`"${privateKey}"`));
     const deadline = (await read(host)).view.round.deadlineAtMs;
     await control(runtime, code, 'offset', { offset: deadline - Date.now() + 1 });
     const ended = (await read(host)).view;
