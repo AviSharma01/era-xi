@@ -1,0 +1,44 @@
+:root {
+  color: var(--color-text);
+  background: var(--color-night);
+  font-family: var(--font-body);
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+html { min-height: 100%; background: var(--color-night); }
+body { min-width: 320px; min-height: 100vh; margin: 0; background: var(--color-night); }
+button, a { font: inherit; }
+button { color: inherit; }
+button:disabled { cursor: not-allowed; }
+
+/* Double ring on any surface: ivory outside a dark gap. Important so a component's own
+   box-shadow cannot remove the gap. Controls inside clipping lists draw the ring inwards. */
+:is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring) !important;
+  outline-offset: var(--focus-gap-width) !important;
+  box-shadow: 0 0 0 var(--focus-gap-width) var(--focus-gap) !important;
+}
+:is(.candidate-card, .xi-slot, .era-card, .room-position-option, .room-locked-player):focus-visible {
+  outline-offset: calc(var(--focus-ring-width) * -1) !important;
+  box-shadow: inset 0 0 0 calc(var(--focus-ring-width) + var(--focus-gap-width)) var(--focus-gap) !important;
+}
+
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* The only reduced-motion rule: keep fades, remove movement. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-lift: 0px;
+    --motion-nudge: 0px;
+    --anim-settle: fade-in;
+    --anim-reveal: fade-in;
+    --anim-slot-pulse: none;
+    --anim-spinner: none;
+    --anim-sheen: none;
+  }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-property: opacity, color, background-color, border-color !important;
+  }
+}

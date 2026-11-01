@@ -1,0 +1,218 @@
+/* Design tokens from docs/design/ERA_XI_DESIGN_DECISIONS.md. Every colour, font,
+   type size and motion value in the Era XI and Draft-Off stylesheets comes from here.
+   "From the doc" values are quoted; "derived" values extend them for existing screens. */
+:root {
+  color-scheme: dark;
+
+  /* Base and surfaces: from the doc */
+  --color-night: #0B1527;
+  --color-panel: #16243F;
+  --color-row-selected: #22355A;
+  --color-divider: rgba(175, 200, 240, 0.14);
+  --color-text: #EEF3F7;
+  --color-text-muted: #9AABC4;
+  --color-action: #F4F1E8;
+
+  /* Base and surfaces: derived */
+  --color-night-deep: #081020;
+  --color-panel-raised: #1B2B4A;
+  --color-row-hover: #1D2E50;
+  --color-divider-strong: rgba(175, 200, 240, 0.28);
+  --color-control-edge: #7488A8;
+  --color-scrollbar: #3A4E75;
+  --color-action-hover: #FFFDF7;
+  --color-action-ink: var(--color-night);
+  --color-scrim: rgba(4, 9, 19, 0.72);
+  --color-shadow: rgba(3, 7, 16, 0.5);
+  --wash-faint: rgba(175, 200, 240, 0.03);
+  --wash-soft: rgba(175, 200, 240, 0.06);
+  --wash-ivory-faint: rgba(244, 241, 232, 0.04);
+  --wash-ivory: rgba(244, 241, 232, 0.08);
+  --wash-ivory-strong: rgba(244, 241, 232, 0.14);
+
+  /* Tier palette 1. --tier-x is the doc's base colour; the rest are derived.
+     -deep is the gradient's far end, -bright the colour for tier accents on night
+     and panel surfaces, -ink the text on a tier fill. */
+  --tier-s: #7650B0;
+  --tier-s-deep: #3D2A66;
+  --tier-s-bright: #BDA3EA;
+  --tier-s-ink: var(--color-text);
+  --tier-a: #C89A3A;
+  --tier-a-deep: #A87F2B;
+  --tier-a-bright: #E3BE6B;
+  --tier-a-ink: var(--color-night);
+  --tier-a-wash: rgba(255, 255, 255, 0.12);
+  --tier-b: #2F62AD;
+  --tier-b-deep: #1A3C70;
+  --tier-b-bright: #84ADEA;
+  --tier-b-ink: var(--color-text);
+  --tier-c: #1B7D56;
+  --tier-c-deep: #0F4F37;
+  --tier-c-bright: #5ECB9D;
+  --tier-c-ink: var(--color-text);
+  --tier-d: #4A5568;
+  --tier-d-deep: #2C3442;
+  --tier-d-bright: #A3B0C2;
+  --tier-d-ink: var(--color-text);
+
+  /* Marks on any tier fill. The wash sits behind monograms, so it moves away from the ink. */
+  --tier-wash-dark: rgba(8, 16, 32, 0.16);
+  --card-edge: rgba(255, 255, 255, 0.25);
+  --card-sheen: rgba(255, 255, 255, 0.13);
+  --card-scrim: rgba(8, 16, 32, 0.78);
+
+  /* State colours: treatments from the doc, hues derived */
+  --color-win: #7FE3B5;
+  --color-win-tint: rgba(127, 227, 181, 0.12);
+  --color-win-edge: rgba(127, 227, 181, 0.45);
+  --color-loss: #FF9C8A;
+  --color-loss-tint: rgba(255, 156, 138, 0.12);
+  --color-loss-edge: rgba(255, 156, 138, 0.45);
+  --color-warning: #FFB547;
+  --color-warning-tint: rgba(255, 181, 71, 0.1);
+  --color-warning-edge: rgba(255, 181, 71, 0.5);
+  --color-error: #FF7B7B;
+  --color-error-text: #FFC4BE;
+  --color-error-tint: rgba(255, 123, 123, 0.12);
+  --color-error-edge: rgba(255, 123, 123, 0.55);
+  --color-clock: var(--color-text);
+  --color-clock-amber: var(--color-warning);
+  --color-clock-red: var(--color-error);
+  --color-clock-checking: var(--color-text-muted);
+  --fit-natural: var(--color-action);
+  --fit-acceptable: #C7D3E3;
+  --fit-stretch: var(--color-warning);
+  --fit-major-stretch: var(--color-loss);
+  --fit-unknown: var(--color-text-muted);
+
+  /* Focus: double ring, dark gap + ivory */
+  --focus-gap: var(--color-night);
+  --focus-ring: var(--color-action);
+  --focus-gap-width: 2px;
+  --focus-ring-width: 2px;
+
+  /* Floodlight atmosphere */
+  --haze-lamp: rgba(232, 241, 255, 0.4);
+  --haze-beam: rgba(214, 229, 255, 0.14);
+  --haze-beam-soft: rgba(214, 229, 255, 0.06);
+  --haze-outfield: rgba(44, 148, 98, 0.18);
+  --atmosphere-full: 1;
+  --atmosphere-calm: 0.3;
+  --atmosphere-dense: 0.06;
+  --grain-opacity: 0.05;
+  --grain-size: 180px;
+  --grain-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+
+  /* Font roles */
+  --font-title: "Sancreek", "Rockwell", Georgia, serif;
+  --font-display: "Big Shoulders Display", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --font-name: "Big Shoulders Text", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --font-body: "Sofia Sans", system-ui, "Helvetica Neue", Arial, sans-serif;
+  --font-honours: "Cinzel", "Trajan Pro", Georgia, serif;
+
+  /* Type scale: fluid between 390 and 1440 wide. Never below 12px. */
+  --type-hero: clamp(2rem, 1.4429rem + 2.2857vw, 3.5rem);
+  --type-title: clamp(1.625rem, 1.3929rem + 0.9524vw, 2.25rem);
+  --type-number: clamp(1.75rem, 1.3786rem + 1.5238vw, 2.75rem);
+  --type-label: clamp(1rem, 0.9071rem + 0.381vw, 1.25rem);
+  --type-body: 1rem;
+  --type-secondary: 0.875rem;
+  --type-small: clamp(0.75rem, 0.7268rem + 0.0952vw, 0.8125rem);
+
+  --leading-hero: 1.02;
+  --leading-title: 1.1;
+  --leading-number: 1.1;
+  --leading-clock: 1;
+  --leading-label: 1.2;
+  --leading-body: 1.45;
+  --leading-secondary: 1.45;
+  --leading-small: 1.4;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-strong: 600;
+  --weight-label: 700;
+  --weight-number: 700;
+  --weight-title: 800;
+  --weight-hero: 800;
+
+  /* Headlines heavier and tighter; small labels slightly looser. */
+  --tracking-headline: -0.005em;
+  --tracking-label: 0.01em;
+  --tracking-small: 0.02em;
+  --tracking-caps: 0.08em;
+
+  /* Spacing and radius: the values the current CSS already uses */
+  --space-1: 4px;
+  --space-1h: 6px;
+  --space-2: 8px;
+  --space-2h: 10px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-round: 50%;
+  --radius-card: var(--radius-lg);
+  --radius-panel: var(--radius-xl);
+
+  /* Motion ladder: only levels 3 and 4 may be loud. */
+  --motion-level-0: 200ms;   /* State: fades only */
+  --motion-level-1: 160ms;   /* Utility: barely noticed */
+  --motion-level-2: 320ms;   /* Feature: clear, under 0.5s */
+  --motion-level-3: 1400ms;  /* Hero: loud, but short */
+  --motion-level-4: 4000ms;  /* Once a season */
+
+  /* Motion table */
+  --motion-spin: 1400ms;
+  --motion-respin: 900ms;
+  --motion-squad-stagger: 35ms;
+  --motion-squad-total: 300ms;
+  --motion-flash-s: 1000ms;
+  --motion-flash-s-dim: 180ms;
+  --motion-flash-a: 500ms;
+  --motion-flash-b: 350ms;
+  --motion-flash-c: 200ms;
+  --motion-flash-reduced: 150ms;
+  --motion-sheen-a: 5s;
+  --motion-sheen-b: 7s;
+  --motion-sheen-legacy: 14s;
+  --motion-lock: 320ms;
+  --motion-reveal-flip: 280ms;
+  --motion-reveal-stagger: 100ms;
+  --motion-league-match: 700ms;
+  --motion-pip-fill: 150ms;
+  --motion-standings-slide: 300ms;
+  --motion-close-match: 600ms;
+  --motion-league-complete: 500ms;
+  --motion-plate: 180ms;
+  --motion-champion: 4000ms;
+  --motion-screen: 200ms;
+  --motion-step-slide: 250ms;
+  --motion-pulse: 1800ms;
+  --motion-spinner: 850ms;
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-hard-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-linear: linear;
+
+  /* Everything that moves goes through these, so base.css can remove movement in one place. */
+  --motion-lift: -2px;
+  --motion-nudge: 5px;
+  --anim-settle: settle;
+  --anim-reveal: reveal-card;
+  --anim-slot-pulse: slot-pulse;
+  --anim-spinner: load-turn;
+  --anim-sheen: card-light-sweep;
+}
