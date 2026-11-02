@@ -45,7 +45,7 @@ test("presentation clock clamps elapsed time and never changes authoritative pha
   const ui = await mount(value);
   try {
     assert.match(ui.document.body.textContent!, /Checking final status with the server/);
-    assert.equal(ui.document.querySelector<HTMLButtonElement>(".room-draft-actions button")!.disabled, true);
+    assert.equal(ui.document.querySelector<HTMLButtonElement>(".drafting-primary")!.disabled, true);
     assert.equal(ui.document.querySelector(".room-results"), null);
   } finally { await ui.close(); }
 });
@@ -53,12 +53,12 @@ test("presentation clock clamps elapsed time and never changes authoritative pha
 test("access loss removes the private workspace and open player inspection", async () => {
   const ui = await mount(snapshot(spun()));
   try {
-    await ui.click('.candidate-card:not([aria-disabled="true"])');
-    assert.ok(ui.document.querySelector('.room-position-option'));
+    await ui.click('.squad-row:not([aria-disabled="true"])');
+    assert.ok(ui.document.querySelector('.xi-slot-active'));
     await ui.render({ snapshot: null, pending: false, error: 'Saved room access changed. Reload to restore access.', accessUnavailable: true });
     assert.match(ui.document.body.textContent!, /Room access unavailable/);
-    assert.equal(ui.document.querySelector('.candidate-card'), null);
-    assert.equal(ui.document.querySelector('.room-position-option'), null);
+    assert.equal(ui.document.querySelector('.squad-row'), null);
+    assert.equal(ui.document.querySelector('.xi-slot-active'), null);
     assert.equal(ui.document.querySelector('dialog'), null);
   } finally { await ui.close(); }
 });
@@ -120,51 +120,94 @@ test("desktop placement uses projected legality, survives public revisions and s
   let release!: () => void;
   const ui = await mount(value, false, async command => { commands.push(command); await new Promise<void>(resolve => { release = resolve; }); });
   try {
-    await ui.click('.candidate-card:not([aria-disabled="true"])');
-    const option = ui.document.querySelector<HTMLButtonElement>('.room-position-option:not(:disabled)')!;
-    const label = option.getAttribute("aria-label");
+    await ui.click('.squad-row:not([aria-disabled="true"])');
+    const option = ui.document.querySelector<HTMLButtonElement>('.xi-slot-active:not(:disabled)')!;
+    const position = option.closest<HTMLElement>(".xi-slot")!.dataset.position!;
     await act(async () => option.click());
-    assert.equal(ui.document.querySelector(".room-confirm-pick")?.textContent?.startsWith("Confirm pick"), true);
+    assert.match(ui.document.querySelector(".drafting-lock")!.textContent!, /^Lock in \d\d$/);
     const newer = structuredClone(value); Object.assign(newer.view, { revision: value.view.revision + 4 });
     await ui.render(roomState(newer));
-    const pressed = ui.document.querySelector('[aria-pressed="true"].room-position-option')!;
-    assert.equal(pressed.getAttribute("aria-label"), label);
-    assert.match(ui.document.getElementById(pressed.getAttribute("aria-describedby")!)!.textContent!, /, [SABCD] tier, .*Preview$/);
-    assert.ok(pressed.querySelector(".player-card-state-preview .player-card-state-edge"));
-    await ui.click(".room-confirm-pick"); await ui.click(".room-confirm-pick");
+    const slot = ui.document.querySelector(`.xi-slot[data-position="${position}"]`)!;
+    assert.match(slot.querySelector(".xi-slot-preview")!.getAttribute("aria-label")!, new RegExp(`, [SABCD] tier, .*position ${position}, preview, `));
+    assert.ok(slot.querySelector(".player-card-state-preview .player-card-state-edge"));
+    await ui.click(".drafting-lock"); await ui.click(".drafting-lock");
     assert.equal(commands.length, 1); assert.equal(commands[0]!.type, "LOCK_PLAYER");
     await ui.render({ ...roomState(newer), pending: true, pendingCommand: "LOCK_PLAYER" });
-    const pendingCard = ui.document.querySelector(".room-xi .player-card-state-pending")!;
+    const pendingCard = ui.document.querySelector(".xi-board .player-card-state-pending")!;
     assert.match(pendingCard.textContent!, /Locking…/);
-    assert.equal(ui.document.querySelector(".room-xi .player-card-state-edge"), null, "no ivory edge until the server confirms");
-    assert.equal(ui.document.querySelector(".room-slot-preview"), null);
+    assert.equal(ui.document.querySelector(".xi-board .player-card-state-edge"), null, "no ivory edge until the server confirms");
+    assert.match(pendingCard.getAttribute("aria-label")!, new RegExp(`position ${position}, locking, waiting for the server, `));
+    assert.ok([...ui.document.querySelectorAll(".xi-open-slot")].every(button => button.getAttribute("aria-label")!.endsWith("Waiting for server…")));
+    assert.equal(ui.document.querySelector(".xi-slot-preview"), null);
+    assert.equal(ui.document.querySelector(".drafting-lock")!.textContent, "Waiting for server…");
     await ui.render(roomState(newer));
     release(); await act(async () => Promise.resolve());
     const own = structuredClone(newer); assert.ok(own.view.myDraft); Object.assign(own.view.myDraft, { revision: own.view.myDraft.revision + 1 });
-    await ui.render(roomState(own)); assert.equal(ui.document.querySelector(".room-confirm-pick"), null);
+    await ui.render(roomState(own)); assert.equal(ui.document.querySelector(".drafting-lock"), null);
   } finally { await ui.close(); }
 });
 
-test("mobile has candidate → placement → confirm, own XI and inspection dialogs", async () => {
+test("mobile follows the step: squad, flash, placing with a button lock, and back without leaving", async () => {
   const commands: PublicCommand["command"][] = [];
   const ui = await mount(snapshot(spun()), true, async command => { commands.push(command); });
+  const view = ui.document.defaultView!;
   try {
-    await ui.click('.candidate-card:not([aria-disabled="true"])');
-    assert.equal(ui.document.querySelectorAll(".room-placement-sheet[open]").length, 1);
-    assert.ok(ui.document.querySelector('.room-placement-sheet [role="timer"]'));
-    await ui.click('.room-placement-body > .quiet-button');
+    assert.ok(ui.document.querySelector(".xi-strip"));
+    assert.equal(ui.document.querySelector(".xi-board"), null, "choosing shows the list, not the full XI");
+    await ui.click('.squad-row:not([aria-disabled="true"])');
+    assert.ok(ui.document.querySelector(".squad-flash .selected-player-detail h3"), "the card expands in the list");
+    await ui.click('.squad-flash .quiet-button');
     assert.ok(ui.document.querySelector('.player-inspector[open] [role="timer"]'));
-    const close = ui.document.querySelector<HTMLButtonElement>('.player-inspector button')!;
-    await act(async () => close.dispatchEvent(new ui.document.defaultView!.KeyboardEvent('keydown', {key:'Tab',bubbles:true,cancelable:true})));
-    assert.equal(ui.document.activeElement, close);
     await ui.click('.player-inspector button');
-    await ui.click('.room-placement-sheet .room-position-option:not(:disabled)');
-    await ui.click('.room-placement-sheet .room-confirm-pick');
+    await ui.click(".drafting-place");
+    assert.equal(ui.document.querySelectorAll(".xi-slot").length, 11);
+    assert.equal(ui.document.querySelector<HTMLButtonElement>(".drafting-lock")!.disabled, true, "lock waits for a slot");
+    assert.match(ui.document.querySelector(".drafting-bar")!.textContent!, /Change player/);
+
+    await act(async () => view.dispatchEvent(new view.PopStateEvent("popstate")));
+    assert.equal(ui.document.querySelector(".xi-board"), null, "back steps to the squad");
+    assert.ok(ui.document.querySelector(".squad-flash"), "and keeps the selected player");
+    assert.equal(ui.document.activeElement, ui.document.querySelector(".drafting-place"), "focus returns to where the step began");
+    await ui.click(".drafting-place");
+
+    await ui.click(".xi-slot-active:not(:disabled)");
+    assert.match(ui.document.querySelector(".drafting-bar")!.textContent!, /Tap Lock to confirm/);
+    assert.doesNotMatch(ui.document.querySelector(".xi-board")!.textContent!, /click/i, "no click on touch");
+    assert.equal(ui.document.activeElement, ui.document.querySelector(".drafting-lock"));
+    const previewed = ui.document.querySelector<HTMLElement>(".xi-slot-preview")!;
+    assert.notEqual(previewed.tagName, "BUTTON", "phones lock by button only");
+    await act(async () => previewed.click());
+    assert.equal(commands.length, 0);
+    await ui.click(".drafting-lock");
     assert.equal(commands.length, 1); assert.equal(commands[0]!.type, "LOCK_PLAYER");
-    await ui.click('.room-placement-sheet header button');
-    const xiButton = [...ui.document.querySelectorAll<HTMLButtonElement>("button")].find(button => button.textContent?.startsWith("Your XI"))!;
-    await act(async () => xiButton.click()); assert.match(ui.document.querySelector(".room-dialog[open]")!.textContent!, /Your locked XI/);
-    assert.ok(ui.document.querySelector('.room-dialog[open] [role="timer"]'));
+  } finally { await ui.close(); }
+});
+
+test("mobile dismisses the flash on a swipe down or a tap on its row, and swaps on another row", async () => {
+  const ui = await mount(snapshot(spun()), true);
+  const view = ui.document.defaultView!;
+  try {
+    const rows = () => [...ui.document.querySelectorAll<HTMLButtonElement>('.squad-row:not([aria-disabled="true"])')];
+    await act(async () => rows()[0]!.click());
+    const firstName = ui.document.querySelector(".squad-flash h3")!.textContent;
+    await act(async () => rows()[1]!.click());
+    assert.notEqual(ui.document.querySelector(".squad-flash h3")!.textContent, firstName);
+    assert.equal(ui.document.querySelectorAll(".squad-flash").length, 1);
+    await act(async () => rows()[1]!.click());
+    assert.equal(ui.document.querySelector(".squad-flash"), null);
+    await act(async () => rows()[0]!.click());
+    const card = ui.document.querySelector(".squad-flash-card")!;
+    const touch = (type: string, clientY: number) => {
+      const event = new view.Event(type, { bubbles: true }) as Event & Record<string, unknown>;
+      const point = [{ clientX: 100, clientY }];
+      event.touches = type === "touchend" ? [] : point; event.changedTouches = point;
+      card.dispatchEvent(event);
+    };
+    await act(async () => { touch("touchstart", 100); touch("touchend", 130); });
+    assert.ok(ui.document.querySelector(".squad-flash"), "a short drag does nothing");
+    await act(async () => { touch("touchstart", 100); touch("touchend", 200); });
+    assert.equal(ui.document.querySelector(".squad-flash"), null);
+    assert.equal(ui.document.activeElement, rows()[0], "focus returns to the row");
   } finally { await ui.close(); }
 });
 
@@ -172,14 +215,14 @@ test("submission requires confirmation and server-submitted participants have no
   const domain = completeXi(startedState(), "host"), commands: PublicCommand["command"][] = [];
   const ui = await mount(snapshot(domain), false, async command => { commands.push(command); });
   try {
-    await ui.click('.room-draft-actions .primary-action'); assert.equal(commands.length, 0);
+    await ui.click('.drafting-primary'); assert.equal(commands.length, 0);
     assert.ok(ui.document.querySelector('.room-dialog[open] [role="timer"]'));
     const submit = [...ui.document.querySelectorAll<HTMLButtonElement>("dialog button")].find(button => button.textContent === "Submit and lock XI")!;
     await act(async () => submit.click()); assert.deepEqual(commands, [{ type: "SUBMIT" }]);
     const submitted = changed(domain, { type: "SUBMIT_XI", participantId: "host", atMs: 20, expectedDraftRevision: participant(domain, "host").draftState.revision });
     await ui.render(roomState(snapshot(submitted)));
     assert.match(ui.document.body.textContent!, /Your XI is locked in/);
-    assert.equal(ui.document.querySelector(".room-draft-actions"), null);
+    assert.equal(ui.document.querySelector(".drafting"), null);
     assert.equal(ui.document.querySelectorAll(".room-locked-player").length, 11);
     await ui.click('.room-locked-player');
     assert.ok(ui.document.querySelector('.player-inspector[open] [role="timer"]'));
@@ -209,31 +252,60 @@ test("uncertain intent blocks replacement actions and exposes exact retry recove
   const value = snapshot(startedState()), ui = await mount(value);
   try {
     await ui.render({ ...roomState(value), pending: true, pendingCommand: "SPIN", retryAvailable: true, error: "Response uncertain" });
-    assert.equal(ui.document.querySelector<HTMLButtonElement>(".room-draft-actions button")!.disabled, true);
+    assert.equal(ui.document.querySelector<HTMLButtonElement>(".drafting-primary")!.disabled, true);
     assert.match(ui.document.querySelector(".draft-off-recovery")!.textContent!, /exact saved intent/);
     assert.ok([...ui.document.querySelectorAll("button")].some(button => button.textContent === "Retry saved action"));
     await ui.render({ ...roomState(value), accessUnavailable: true, error: "Room access unavailable" });
-    assert.equal(ui.document.querySelector<HTMLButtonElement>(".room-draft-actions button")!.disabled, true);
+    assert.equal(ui.document.querySelector<HTMLButtonElement>(".drafting-primary")!.disabled, true);
     assert.ok(![...ui.document.querySelectorAll("button")].some(button => button.textContent === "Retry saved action"));
   } finally { await ui.close(); }
 });
 
-test("mobile pending placement and server deadline remain explicit inside the modal", async () => {
+test("mobile pending placement and server deadline stay explicit in the placing step", async () => {
   const value=snapshot(spun()),ui=await mount(value,true);
   try {
-    await ui.click('.candidate-card:not([aria-disabled="true"])');
-    const selected=ui.document.querySelector('.room-placement-body .selected-player-detail h3')!.textContent;
-    assert.equal(ui.document.querySelector('.room-sheet-confirm .room-placement-context strong')!.textContent,selected);
-    assert.equal(ui.document.querySelectorAll('.room-placement-body .room-xi li').length,11);
+    await ui.click('.squad-row:not([aria-disabled="true"])');
+    const selected=ui.document.querySelector('.squad-flash .selected-player-detail h3')!.textContent;
+    await ui.click('.drafting-place');
+    assert.equal(ui.document.querySelector('.drafting-bar .player-card-name')!.textContent,selected);
+    assert.equal(ui.document.querySelectorAll('.xi-board .xi-slot').length,11);
+    await ui.click('.xi-slot-active:not(:disabled)');
     await ui.render({...roomState(value),pending:true,pendingCommand:'LOCK_PLAYER'});
-    assert.equal(ui.document.querySelector('.room-sheet-confirm .room-placement-context strong')!.textContent,selected);
-    assert.match(ui.document.querySelector('.room-placement-sheet')!.textContent!,/Waiting for server confirmation/);
-    assert.equal(ui.document.querySelector('.room-placement-sheet .room-confirm-pick')!.textContent,'Waiting for server…');
-    assert.ok([...ui.document.querySelectorAll<HTMLButtonElement>('.room-placement-sheet .room-position-option')].every(button=>button.disabled));
+    assert.equal(ui.document.querySelector('.drafting-bar .player-card-name')!.textContent,selected);
+    assert.equal(ui.document.querySelector('.drafting-lock')!.textContent,'Waiting for server…');
+    assert.match(ui.document.querySelector('.xi-board .player-card-state-pending')!.textContent!,/Locking…/);
+    assert.equal(ui.document.querySelector('.xi-board .player-card-state-edge'),null);
+    assert.equal(ui.document.querySelector<HTMLButtonElement>('.drafting-back')!.disabled,true,'going back waits for the server');
+    assert.equal(ui.document.querySelector<HTMLButtonElement>('.drafting-change')!.disabled,true);
+    assert.ok([...ui.document.querySelectorAll<HTMLButtonElement>('.xi-open-slot')].every(button=>button.disabled));
     const expired=structuredClone(value);Object.assign(expired.view.round,{deadlineAtMs:19});
     await ui.render(roomState(expired));
-    assert.equal(ui.document.querySelector('.room-placement-sheet [role="timer"]')!.textContent,'00:00');
-    assert.match(ui.document.querySelector('.room-placement-sheet [role="status"]')!.textContent!,/Checking final status with the server/);
+    assert.equal(ui.document.querySelector('[role="timer"]')!.getAttribute('aria-label'),'00:00 remaining');
+    assert.match(ui.document.querySelector('.draft-off-notice')!.textContent!,/Checking final status with the server/);
     assert.equal(ui.document.querySelector('#final-leaderboard'),null);
   }finally{await ui.close();}
+});
+
+test("a new spin plays the reel over a decided result; a restored one does not", async () => {
+  const value=snapshot(startedState()),ui=await mount(value);
+  try {
+    const tokens=ui.document.createElement('style');tokens.textContent=':root{--motion-spin:60000ms}';ui.document.head.append(tokens);
+    assert.equal(ui.document.querySelector('button.spin-reel'),null);
+    assert.ok(ui.document.querySelector('.spin-stage .spin-reel-rest'),'the reel waits at rest on the spin stage');
+    await ui.render(roomState(snapshot(spun())));
+    const reel=ui.document.querySelector('button.spin-reel');
+    assert.ok(reel,'the reel plays when the spin arrives');
+    assert.equal(ui.document.querySelector('.squad-row'),null,'the squad waits for the result');
+    assert.equal(ui.document.activeElement,reel);
+    await ui.click('button.spin-reel');
+    assert.equal(ui.document.querySelector('button.spin-reel'),null,'a tap lands immediately');
+    assert.ok(ui.document.querySelector('.squad-rows-entering .squad-row'),'and the rows stagger in');
+    assert.equal(ui.document.activeElement,ui.document.getElementById('draft-stage-title'));
+  }finally{await ui.close();}
+  const restored=await mount(snapshot(spun()));
+  try {
+    assert.equal(restored.document.querySelector('button.spin-reel'),null);
+    assert.equal(restored.document.querySelector('.squad-rows-entering'),null);
+    assert.ok(restored.document.querySelector('.squad-row'));
+  }finally{await restored.close();}
 });

@@ -69,7 +69,7 @@ async function soloRecovery(base){
   assert.equal(new URL(page.url()).pathname,base);assert.equal(await page.evaluate(()=>localStorage.getItem('era-draft-ui-save/v1')),null);
   // New Start remains usable after canceling the obsolete generation.
   await page.locator('.era-card').first().click();await page.locator('.start-draft-action').click();await page.getByRole('button',{name:/^Spin franchise/}).waitFor();
-  await page.getByRole('button',{name:/^Spin franchise/}).click();await page.locator('.candidate-card').first().waitFor();
+  await page.getByRole('button',{name:/^Spin franchise/}).click();await page.locator('.squad-row').first().waitFor();
   const save=await page.evaluate(()=>localStorage.getItem('era-draft-ui-save/v1'));assert.ok(save);
   await page.getByRole('button',{name:'Exit draft',exact:true}).click();await page.locator(`a[href="${base}draft-off"]`).click();await page.locator('.draft-off-shell').waitFor();
   await page.getByRole('link',{name:'Solo Era Draft',exact:true}).click();await page.reload();await page.locator('.landing-continue').waitFor();
@@ -78,7 +78,7 @@ async function soloRecovery(base){
   await page.locator(`a[href="${base}draft-off"]`).click();await page.locator('.draft-off-shell').waitFor();held.resolve();
   await page.unrouteAll({behavior:'wait'});await page.waitForTimeout(200);await frame(page);
   assert.equal(new URL(page.url()).pathname,base+'draft-off');assert.equal(await page.evaluate(()=>localStorage.getItem('era-draft-ui-save/v1')),save);
-  await page.getByRole('link',{name:'Solo Era Draft',exact:true}).click();await page.locator('.landing-continue').click();await page.locator('.candidate-card').first().waitFor();
+  await page.getByRole('link',{name:'Solo Era Draft',exact:true}).click();await page.locator('.landing-continue').click();await page.locator('.squad-row').first().waitFor();
   assert.equal(await page.evaluate(()=>localStorage.getItem('era-draft-ui-save/v1')),save);
   await page.screenshot({path:join(out,base==='/'?'solo-root-continue.png':'solo-nested-continue.png')});
   evidence.checks.push({base,delayedStartCanceled:true,awayAndBack:true,delayedContinueCanceled:true,originalSavePreserved:true,normalStartSpinContinue:true});await context.close();

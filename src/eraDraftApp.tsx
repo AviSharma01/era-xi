@@ -1,22 +1,18 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ReactElement, type RefObject } from "react";
 
-import { CandidateGallery, SelectedPlayerDetail, PlayerInspector, FitBadge, fitLabel, friendly, fitClass } from "./eraDraftPlayerPresentation.js";
-import { PlayerCard, playerCardName } from "./components/PlayerCard.js";
-import { ERA_COPY } from "./copy.js";
+import { FitBadge, friendly, fitClass } from "./eraDraftPlayerPresentation.js";
+import { PlayerCard } from "./components/PlayerCard.js";
+import { DRAFTING_COPY, ERA_COPY } from "./copy.js";
+import { DraftingWorkspace, type DraftingCommand } from "./screens/drafting/DraftingWorkspace.js";
 
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
 import { projectEraDraftGameCompleteState, projectEraDraftPublicState, projectEraDraftRevealState } from "./eraDraftProjection.js";
 import type {
-  DraftCandidateIdentityView,
-  DraftPickView,
-  DraftPresentationFit,
   EraDraftRevealView,
   EraDraftGameCompleteView,
-  EraDraftPublicView,
   EraDraftTransitionResult,
-  RevealPlayerView,
 } from "./eraDraftTypes.js";
 import {
   clearEraDraftUiSave,
@@ -417,71 +413,28 @@ export function DraftExperience(props: {
   onAccepted: (result: EraDraftTransitionResult) => string | null;
   onExit: () => void;
 }): ReactElement {
-  const { catalog } = props.session;
-  const state = props.session.state;
+  const { catalog, state } = props.session;
   const view = useMemo(() => projectEraDraftPublicState(catalog, state), [catalog, state]);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [previewPosition, setPreviewPosition] = useState<number | null>(null);
-  const [inspectedId, setInspectedId] = useState<string | null>(null);
   const confirmingRef = useRef(false);
-  const [message, setMessage] = useState("Spin to reveal a franchise-season.");
-  const nextActionRef = useRef<HTMLButtonElement>(null);
-  const completeHeadingRef = useRef<HTMLHeadingElement>(null);
-  const era = ERA_COPY[view.phase === "SETUP" ? "era-foundation" : view.eraId];
-  useEffect(() => { if (view.phase === "XI_COMPLETE") completeHeadingRef.current?.focus(); }, [view.phase]);
-
-  useEffect(() => {
-    if (selectedId === null && inspectedId === null) return;
-    const onKeyDown = (event: KeyboardEvent): void => {
-      if (event.key !== "Escape") return;
-      if (inspectedId !== null) { setInspectedId(null); return; }
-      setSelectedId(null);
-      setPreviewPosition(null);
-      setMessage("Player selection cleared.");
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [selectedId, inspectedId]);
-
-  useEffect(() => {
-    confirmingRef.current = false;
-    setSelectedId(null);
-    setPreviewPosition(null);
-    setInspectedId(null);
-  }, [state.revision]);
+  const [statusNote, setStatusNote] = useState<string | null>(null);
+  useEffect(() => { confirmingRef.current = false; }, [state.revision]);
 
   const transition = (command: Parameters<typeof reduceEraDraft>[2]): void => {
     const result = reduceEraDraft(catalog, state, command);
     if (!result.ok) {
       confirmingRef.current = false;
-      setMessage(result.error.message);
+      setStatusNote(result.error.message);
       return;
     }
-    const saveWarning = props.onAccepted(result);
-    setSelectedId(null);
-    setPreviewPosition(null);
-    setInspectedId(null);
-    const acceptedMessage = command.type === "LOCK_PLAYER"
-      ? result.state.phase === "XI_COMPLETE" ? "Pick 11 locked. Your XI is complete." : `Pick ${result.state.picks.length} locked. Spin again.`
-      : command.type === "RESPIN" ? "Respin used. A new franchise-season is ready."
-        : command.type === "REVEAL_XI" ? "Team revealed. Ratings are now available."
-          : "Franchise-season revealed. Choose one player.";
-    setMessage(saveWarning ? `${acceptedMessage} ${saveWarning}` : acceptedMessage);
-    if (command.type === "LOCK_PLAYER" && result.state.phase !== "XI_COMPLETE") requestAnimationFrame(() => nextActionRef.current?.focus());
+    setStatusNote(props.onAccepted(result));
   };
-
-  const selected = view.phase === "AWAITING_PICK" ? view.candidates.find((candidate) => candidate.playerTeamSeasonId === selectedId) : undefined;
-  const inspected = view.phase === "SETUP" ? undefined : view.picks.find((pick) => pick.playerTeamSeasonId === inspectedId)
-    ?? (selected?.playerTeamSeasonId === inspectedId ? selected : undefined);
-  const preview = selected?.positions.find((position) => position.battingPosition === previewPosition && position.available);
-  const confirmPick = (): void => {
-    // Inspection is deliberately not an input to commitment.
-    if (!selected || !preview || confirmingRef.current) return;
-    confirmingRef.current = true;
-    transition({ type: "LOCK_PLAYER", playerTeamSeasonId: selected.playerTeamSeasonId, battingPosition: preview.battingPosition });
+  const command = (next: DraftingCommand): void => {
+    if (next.type === "LOCK_PLAYER") {
+      if (confirmingRef.current) return;
+      confirmingRef.current = true;
+    }
+    transition(next);
   };
-  const confirmation = <button className="primary-action confirm-pick" disabled={!selected || !preview}
-    onClick={confirmPick}>{preview ? `Confirm Pick · Slot ${String(preview.battingPosition).padStart(2, "0")}` : "Confirm Pick"}</button>;
   return (
     <main className="era-shell draft-shell gameplay-shell">
       <div className="gameplay-atmosphere" aria-hidden="true" />
@@ -489,68 +442,17 @@ export function DraftExperience(props: {
         <button className="wordmark wordmark-button" onClick={props.onExit} aria-label="Return to era selection">
           <span className="wordmark-mark">ED</span><span>ERA DRAFT</span>
         </button>
-        <div className="draft-era-id"><span>{era.title}</span><strong>{era.years}</strong></div>
         <button className="quiet-button" onClick={props.onExit}>Exit draft</button>
       </header>
-
-      <div className="draft-layout">
-        <section id="draft-players" className="draft-stage" aria-labelledby="draft-stage-title">
-          {view.phase !== "SETUP" && view.phase !== "XI_COMPLETE" && <DraftControlRegion view={view} era={era} primaryActionRef={nextActionRef} onTransition={transition} />}
-          {props.persistenceWarning && <PersistenceWarning message={props.persistenceWarning} />}
-
-          {view.phase === "AWAITING_SPIN" && (
-            <div className="roster-empty-state">
-              <span className="roster-empty-index" aria-hidden="true">{String(view.status.pickCount + 1).padStart(2, "0")}</span>
-              <div><h2>{view.status.pickCount === 0 ? "Your first squad is waiting." : "Ready for the next spin."}</h2>
-                <p>The verified roster will appear here without changing your playing XI.</p></div>
-            </div>
-          )}
-
-          {view.phase === "AWAITING_PICK" && (
-            <CandidateGallery view={view} selectedId={selectedId} onSelect={(candidate) => {
-              setPreviewPosition(null);
-              setInspectedId(null);
-              if (candidate.playerTeamSeasonId === selectedId) {
-                setSelectedId(null);
-                setMessage("Player selection cleared.");
-                return;
-              }
-              setSelectedId(candidate.playerTeamSeasonId);
-              setMessage(`${candidate.playerName} selected. Choose an open batting position.`);
-            }} onUnavailable={(reason) => setMessage(reason)} />
-          )}
-
-          {view.phase === "AWAITING_PICK" && <>
-            {inspected ? <PlayerInspector player={inspected} eraTitle={era.title} onClose={() => setInspectedId(null)} />
-              : selected ? <SelectedPlayerDetail candidate={selected} eraTitle={era.title} />
-                : <div className="selected-player-empty">No player selected.</div>}
-            <div className="desktop-confirm">
-              {inspected && selected && <p className="pending-pick-label">Pending pick: {selected.playerName}</p>}
-              {confirmation}
-            </div>
-            <a className="draft-jump" href="#draft-xi">View XI ↓</a>
-          </>}
-
-          {view.phase === "XI_COMPLETE" && (
-            <div className="complete-state"><div><p className="eyebrow">{era.title} · {era.years}</p><h1 ref={completeHeadingRef} id="draft-stage-title" tabIndex={-1}>XI complete</h1></div>
-              <div className="complete-status"><p>11 / 11 confirmed</p><p>Overseas {view.status.overseasCount} / 4 · Wicketkeeper {view.status.hasWicketkeeper ? "covered" : "needed"}</p></div>
-              <p>Reveal your team’s ratings and construction.</p>
-              <button ref={nextActionRef} className="primary-action reveal-team-action" onClick={() => transition({ type: "REVEAL_XI" })}>Reveal team <span aria-hidden="true">→</span></button></div>
-          )}
-          {view.phase !== "AWAITING_PICK" && inspected && <PlayerInspector player={inspected} eraTitle={era.title} onClose={() => setInspectedId(null)} />}
-          <p className="sr-status" aria-live="polite">{message}</p>
-        </section>
-
-        {view.phase !== "SETUP" && <XiPanel view={view} selected={selected} previewPosition={previewPosition}
-          onInspect={setInspectedId} onConfirm={confirmPick} onPreview={(position) => {
-            setPreviewPosition(position);
-            setMessage(`Preview in position ${position}: ${fitLabel(selected!.positions.find((option) => option.battingPosition === position)!.presentationFit)}. Confirm Pick to lock.`);
-          }} />}
-      </div>
-      {view.phase === "AWAITING_PICK" && <div className="draft-bottom-bar">
-        <div><strong>{selected?.playerName ?? "No player selected"}</strong><span>{preview ? `Preview · Slot ${String(preview.battingPosition).padStart(2, "0")}` : "No preview position"}</span></div>
-        <a href="#draft-players">Back to Players ↑</a>{confirmation}
-      </div>}
+      {view.phase !== "SETUP" && <DraftingWorkspace draft={view} lockTravel statusNote={statusNote} onCommand={command}
+        warning={props.persistenceWarning && <PersistenceWarning message={props.persistenceWarning} />}
+        complete={{
+          title: DRAFTING_COPY.soloCompleteTitle,
+          detail: <div className="complete-status"><p>{DRAFTING_COPY.soloCompleteCount}</p>
+            <p>{DRAFTING_COPY.soloCompleteStatus(view.status.overseasCount, view.status.hasWicketkeeper)}</p>
+            <p>{DRAFTING_COPY.soloCompleteNext}</p></div>,
+          action: (ref) => <button ref={ref} className="primary-action drafting-primary reveal-team-action" onClick={() => transition({ type: "REVEAL_XI" })}>{DRAFTING_COPY.soloReveal} <span aria-hidden="true">→</span></button>,
+        }} />}
     </main>
   );
 }
@@ -858,65 +760,6 @@ function EvaluationRow({ label, value }: { label: string; value: string }): Reac
   return <div className="evaluation-row"><span>{label}</span><strong>{value}</strong></div>;
 }
 
-function XiPanel(props: {
-  view: Exclude<EraDraftPublicView, { phase: "SETUP" }> | EraDraftRevealView;
-  selected?: DraftCandidateIdentityView;
-  previewPosition?: number | null;
-  onPreview?: (position: number) => void;
-  onInspect?: (id: string) => void;
-  onConfirm?: () => void;
-}): ReactElement {
-  const positions = Array.from({ length: 11 }, (_, index) => index + 1);
-  const revealed = props.view.phase === "REVEALED";
-  return (
-    <aside id="draft-xi" className="xi-panel" aria-labelledby="xi-title">
-      <div className="xi-heading"><div><h2 id="xi-title">Your XI</h2></div>
-        <span className="pick-counter">{props.view.status.pickCount}<small> / 11 confirmed</small></span></div>
-      <div className="draft-status" aria-label="Draft status">
-        <Status label="Overseas" value={`${props.view.status.overseasCount}/4`} />
-        <Status label="Keeper" value={props.view.status.hasWicketkeeper ? "Ready" : "Needed"} active={props.view.status.hasWicketkeeper} />
-        <Status label={revealed ? "State" : "Respin"} value={revealed ? "Revealed" : friendly(props.view.status.respinStatus)} active={revealed} />
-      </div>
-      {props.selected && <div className="fit-legend" aria-label="Position fit legend">{(["NATURAL", "ACCEPTABLE", "STRETCH", "MAJOR_STRETCH"] as const).map((fit) => <FitBadge key={fit} fit={fit} />)}</div>}
-      <div className="xi-slots">
-        {positions.map((position) => {
-          const pick = props.view.picks.find((item) => item.battingPosition === position);
-          const revealPlayer = props.view.phase === "REVEALED"
-            ? props.view.players.find((item) => item.battingPosition === position)
-            : undefined;
-          const option = props.selected?.positions.find((item) => item.battingPosition === position);
-          const previewPick: DraftPickView | undefined = !pick && props.previewPosition === position && props.selected && option?.available
-            ? { ...props.selected, pickNumber: props.view.status.pickCount + 1, battingPosition: option.battingPosition, presentationFit: option.presentationFit } : undefined;
-          return pick || previewPick
-            ? <XiPlayerCard key={position} position={position} pick={(pick ?? previewPick)!} preview={!!previewPick}
-                onInspect={() => props.onInspect?.((pick ?? previewPick)!.playerTeamSeasonId)} onConfirm={props.onConfirm} />
-            : <button key={position} className={`xi-slot${props.selected ? " xi-slot-active" : ""}${option ? ` xi-target-${fitClass(option.presentationFit)}` : ""}`}
-                disabled={!props.selected || !option?.available}
-                title={!option?.available && option?.reasons[0] ? option.reasons[0].message : undefined}
-                aria-label={`Position ${position}${option ? ` · ${fitLabel(option.presentationFit)} · ${option.available ? "Available for preview" : option.reasons.map((reason) => reason.message).join(". ")}` : " · Open position"}`}
-                onClick={() => props.onPreview?.(position)}>
-                <span className="position-number">{String(position).padStart(2, "0")}</span>
-                <span className="xi-portrait xi-portrait-empty" aria-hidden="true"><span>+</span></span>
-                <span className="empty-fit-label">{props.selected && option ? fitLabel(option.presentationFit) : ""}</span>
-              </button>;
-        })}
-      </div>
-      {(props.view.phase === "XI_COMPLETE" || revealed) && <div className="xi-complete-mark"><span>11/11</span><strong>{revealed ? "Team revealed" : "XI complete"}</strong></div>}
-    </aside>
-  );
-}
-
-function XiPlayerCard({ position, pick, preview, onInspect, onConfirm }: { position: number; pick: DraftPickView; preview?: boolean; onInspect: () => void; onConfirm?: () => void }): ReactElement {
-  return <PlayerCard size="slot" player={pick} slotNumber={position} fit={pick.presentationFit}
-    state={preview ? "preview" : "locked"} note={preview ? "↑ Click slot to confirm" : undefined}
-    className={`xi-slot-occupied${preview ? " xi-slot-preview" : " xi-slot-locked"}`}
-    label={`${preview ? "Confirm pick" : "Inspect"} ${playerCardName(pick)}, position ${position}, ${preview ? "preview" : "confirmed"}, ${fitLabel(pick.presentationFit)}`}
-    onClick={(event) => {
-      if (preview) onConfirm?.();
-      else { event.currentTarget.focus(); onInspect(); }
-    }} />;
-}
-
 function RevealedXi({ view }: { view: EraDraftRevealView }): ReactElement {
   return <section className="revealed-xi" aria-labelledby="revealed-xi-title"><h2 id="revealed-xi-title">Your Revealed XI</h2>
     <div className="revealed-list" role="table" aria-label="Revealed player ratings">
@@ -932,44 +775,6 @@ function RevealedXi({ view }: { view: EraDraftRevealView }): ReactElement {
     </div></section>;
 }
 
-function DraftControlRegion(props: {
-  view: Exclude<EraDraftPublicView, { phase: "SETUP" }>;
-  era: (typeof ERA_COPY)[EraId];
-  primaryActionRef: RefObject<HTMLButtonElement | null>;
-  onTransition: (command: Parameters<typeof reduceEraDraft>[2]) => void;
-}): ReactElement {
-  const spinVisible = props.view.phase === "AWAITING_SPIN";
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  useEffect(() => headingRef.current?.focus(), [props.view.phase]);
-  const respinVisible = props.view.phase === "AWAITING_PICK" && props.view.status.respinStatus === "AVAILABLE";
-  return <div className="draft-control-region">
-    <div className="draft-control-labels"><p className="eyebrow">{props.era.title} · {props.era.years}</p>
-      <span>Pick {String(Math.min(props.view.status.pickCount + 1, 11)).padStart(2, "0")} / 11</span></div>
-    <div className="draft-control-main"><h1 ref={headingRef} tabIndex={-1} id="draft-stage-title">{stageTitle(props.view)}</h1>
-      <div className="draft-control-actions">
-        {spinVisible && <button ref={props.primaryActionRef} className="primary-action" onClick={() => props.onTransition({ type: "SPIN" })}>Spin franchise <span aria-hidden="true">→</span></button>}
-        {respinVisible && <button className="secondary-action" onClick={() => props.onTransition({ type: "RESPIN" })}>Respin · 1 left</button>}
-        {!respinVisible && <span className="respin-status">{props.view.status.respinStatus === "USED" ? "Respin used" : "Respin · 1 left"}</span>}
-      </div>
-    </div>
-    <div className="draft-context-strip">
-      <div className="franchise-context">
-        {props.view.phase === "AWAITING_PICK" ? <><strong>{props.view.currentSpin.teamName}</strong><span>{props.view.currentSpin.seasonYear}</span></>
-          : props.view.phase === "XI_COMPLETE" ? <><strong>Playing XI complete</strong><span>11 locked</span></>
-          : <><strong>Franchise-season</strong><span>Awaiting spin</span></>}
-      </div>
-    </div>
-  </div>;
-}
-
-
-
-
-
-function Status({ label, value, active = false }: { label: string; value: string; active?: boolean }): ReactElement {
-  return <span className={active ? "status-ready" : undefined}><small>{label}</small><strong>{value}</strong></span>;
-}
-
 export function LoadingSession(): ReactElement {
   return <main className="era-shell centered-state" aria-live="polite" aria-busy="true"><p className="eyebrow">No active game loaded</p>
     <h1>Returning to era selection…</h1><p>Choose an era or continue a verified local save from the home screen.</p></main>;
@@ -983,19 +788,6 @@ function NotFound({ onExit }: { onExit: () => void }): ReactElement {
   return <main className="era-shell centered-state"><p className="eyebrow">404</p><h1>That route is outside the boundary.</h1>
     <button className="primary-action" onClick={onExit}>Return home</button></main>;
 }
-
-function stageTitle(view: EraDraftPublicView): string {
-  if (view.phase === "SETUP") return "Start the draft";
-  if (view.phase === "AWAITING_PICK") return "Choose one player";
-  if (view.phase === "XI_COMPLETE") return "XI complete";
-  return view.status.pickCount === 0 ? "Ready to draft" : "Ready for the next spin";
-}
-
-
-
-
-
-
 
 function formatRating(value: number): string {
   return value.toFixed(1);

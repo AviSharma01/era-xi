@@ -61,7 +61,8 @@ button.player-card-slot:hover .player-card-body { transform: translateY(var(--mo
 .player-card-number { min-width: var(--space-6); justify-content: center; padding: var(--card-plate-pad) var(--space-1h); font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); }
 .player-card-marker { min-height: var(--space-6); padding: 0 var(--space-1h); font-size: var(--type-small); font-weight: var(--weight-medium); line-height: var(--leading-small); white-space: nowrap; }
 .player-card-lock svg { display: block; width: var(--card-lock-icon); height: var(--card-lock-icon); }
-.player-card .player-card-fit { padding: var(--card-plate-pad) var(--space-1h); }
+.player-card .player-card-fit { align-self: flex-start; padding: var(--card-plate-pad) var(--space-1h); }
+.player-card .player-card-fit .fit-badge-percent { position: relative; }
 .player-card .player-card-fit .fit-badge { font-size: var(--type-small); line-height: var(--leading-small); white-space: nowrap; }
 .player-card-stats { display: flex; flex-wrap: wrap; gap: 0 var(--space-3); font-size: var(--type-secondary); line-height: var(--leading-secondary); }
 .player-card-stat b { font-weight: var(--weight-label); }
@@ -86,6 +87,7 @@ button.player-card-slot:hover .player-card-body { transform: translateY(var(--mo
 .player-card-slot .player-card-portrait { width: var(--card-portrait-slot); height: var(--card-portrait-slot); font-size: var(--card-monogram-slot); }
 .player-card-slot .player-card-stats, .player-card-slot .player-card-tags { justify-content: center; }
 .player-card-slot .player-card-tags { margin-top: auto; }
+.player-card-slot .player-card-tags .player-card-fit { align-self: auto; }
 
 /* Mini */
 .player-card-mini .player-card-body { min-height: var(--card-mini-min-height); }

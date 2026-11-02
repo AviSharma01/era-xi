@@ -1,6 +1,6 @@
 import { useEffect, useState, useSyncExternalStore, type CSSProperties, type MouseEventHandler, type ReactElement, type ReactNode } from "react";
 
-import { fitLabel, friendly, PLAYER_CARD_COPY as COPY, rosterLabel, teamAbbreviation } from "../copy.js";
+import { DRAFTING_COPY, fitDisplay, fitLabel, friendly, PLAYER_CARD_COPY as COPY, rosterLabel, shortRole, teamAbbreviation } from "../copy.js";
 import type {
   DraftHistoricalStatsView,
   DraftPlayerFactsView,
@@ -24,6 +24,8 @@ export type PlayerCardProps = {
   /** Staggers resting sheens so a row of cards does not sweep in unison. */
   order?: number;
   fit?: DraftPresentationFit;
+  /** V3 games: the slot's nominal loss. Historical games have none and show the label alone. */
+  fitPercent?: number;
   /** Era title for the "His best <era> season" line on the big card. */
   eraTitle?: string;
   unavailableReason?: string;
@@ -56,8 +58,13 @@ export function fitClass(fit: DraftPresentationFit): string {
   return (fit === "UNKNOWN" ? "ACCEPTABLE" : fit).toLowerCase().replaceAll("_", "-");
 }
 
-export function FitBadge({ fit }: { fit: DraftPresentationFit }): ReactElement {
-  return <span className={`fit-badge fit-${fitClass(fit)}`}>{fitLabel(fit)}</span>;
+/** The label always carries the fit; a percentage is added for v3 games, in coral only for a loss. */
+export function FitBadge({ fit, percent }: { fit: DraftPresentationFit; percent?: number }): ReactElement {
+  if (percent === undefined) return <span className={`fit-badge fit-${fitClass(fit)}`}>{fitLabel(fit)}</span>;
+  const display = fitDisplay(fit, percent);
+  return <span className="fit-badge fit-badge-percent">{display.label}{display.loss
+    ? <> <span className="fit-percent-loss">{display.percent}</span></>
+    : <span className="sr-status">{DRAFTING_COPY.noLoss}</span>}</span>;
 }
 
 // Only one S card shimmers at a time: the most recent claimant holds the shimmer, and
@@ -122,7 +129,7 @@ function StateMarker({ state }: { state: PlayerCardState }): ReactElement | null
 }
 
 export function PlayerCard(props: PlayerCardProps): ReactElement {
-  const { player, size, state = "default", slotNumber, fit, eraTitle, note, flashKey = null, ribbon, onClick, nameId } = props;
+  const { player, size, state = "default", slotNumber, fit, fitPercent, eraTitle, note, flashKey = null, ribbon, onClick, nameId } = props;
   const isS = player.tierAppearance === "violet";
   const finishShowing = state !== "preview" && state !== "unavailable";
   const [engaged, setEngaged] = useState(false);
@@ -136,7 +143,7 @@ export function PlayerCard(props: PlayerCardProps): ReactElement {
   const portrait = <span className="player-card-portrait" aria-hidden="true"><span>{monogram(player.playerName)}</span></span>;
   const NameTag = size === "big" && !onClick ? "h3" : "strong";
   const name = <NameTag className="player-card-name" id={nameId}>{player.playerName}</NameTag>;
-  const fitTag = fit && <span className="player-card-fit"><FitBadge fit={fit} /></span>;
+  const fitTag = fit && <span className="player-card-fit"><FitBadge fit={fit} percent={fitPercent} /></span>;
   const noteLine = note && <span className="player-card-note">{note}</span>;
   const reasonLine = reason && <span className="player-card-reason">{reason}</span>;
   const shortTeam = `${teamAbbreviation(player.teamId, player.teamName)} · ${player.seasonYear}`;
@@ -180,7 +187,7 @@ export function PlayerCard(props: PlayerCardProps): ReactElement {
       {name}
       <span className="player-card-team">{shortTeam}</span>
       <Stats stats={stats} size={size} seasonYear={player.seasonYear} />
-      <span className="player-card-tags"><span className="player-card-role">{role}</span>{fitTag}</span>
+      <span className="player-card-tags"><span className="player-card-role">{shortRole(player.displayRole)}</span>{fitTag}</span>
       {noteLine}{reasonLine}
     </span>}
     {size === "mini" && <span className="player-card-content">

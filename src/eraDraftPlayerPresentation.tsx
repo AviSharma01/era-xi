@@ -1,59 +1,9 @@
 import { useEffect, useRef, type ReactElement } from "react";
-import { FitBadge, fitClass, monogram, PlayerCard, type PlayerCardPlayer } from "./components/PlayerCard.js";
+import { FitBadge, fitClass, PlayerCard, type PlayerCardPlayer } from "./components/PlayerCard.js";
 import { fitLabel, friendly } from "./copy.js";
-import type { DraftCandidateIdentityView, DraftPickView, EraDraftPublicView } from "./eraDraftTypes.js";
+import type { DraftPickView } from "./eraDraftTypes.js";
 
 // Shared presentation only. Solo and Draft-Off retain separate state/command controllers.
-export function CandidateGallery(props: {
-  view: Extract<EraDraftPublicView, { phase: "AWAITING_PICK" }>;
-  selectedId: string | null;
-  selected?: DraftCandidateIdentityView;
-  onSelect: (candidate: DraftCandidateIdentityView) => void;
-  onUnavailable: (reason: string) => void;
-}): ReactElement {
-  let previousGroup: DraftCandidateIdentityView["presentationGroup"] | null = null;
-  return (
-    <div className="candidate-section">
-      <div className="candidate-heading"><h3>Eligible squad</h3><span>{props.view.candidates.length} players</span></div>
-      <div className="candidate-grid">
-        {props.view.candidates.map((candidate) => {
-          const selected = candidate.playerTeamSeasonId === props.selectedId;
-          const unavailableReason = !candidate.available
-            ? candidate.positions.flatMap((position) => position.reasons)[0]?.message ?? "Unavailable"
-            : undefined;
-          const unavailableReasonId = `candidate-unavailable-${candidate.playerTeamSeasonId.replace(/[^a-zA-Z0-9_-]/g, "-")}`;
-          const showGroup = candidate.presentationGroup !== previousGroup;
-          previousGroup = candidate.presentationGroup;
-          return (
-            <div className="candidate-entry" key={candidate.playerTeamSeasonId}>
-              {showGroup && <div className="candidate-group-label"><span>{friendly(candidate.presentationGroup)}</span></div>}
-              <button className={`candidate-card${selected ? " candidate-card-selected" : ""}`}
-                aria-disabled={!candidate.available} aria-pressed={selected}
-                aria-describedby={unavailableReason ? unavailableReasonId : undefined}
-                onClick={() => candidate.available ? props.onSelect(candidate) : props.onUnavailable(unavailableReason!)}>
-                <span className="portrait-placeholder" aria-hidden="true"><span>{monogram(candidate.playerName)}</span></span>
-                <span className="candidate-body"><strong>{candidate.playerName}</strong><span>{friendly(candidate.displayRole)}</span>
-                  <span className="candidate-meta">{candidate.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}
-                    {candidate.keeperCapability === "CONFIRMED" && candidate.displayRole !== "WICKETKEEPER_BATTER" ? " · WK" : ""}</span>
-                  {unavailableReason && <span id={unavailableReasonId} className="candidate-unavailable">{unavailableReason}</span>}
-                </span>
-                <span className="candidate-quick-stats">
-                  {candidateQuickStats(candidate).map((line) => <span key={line}>{line}</span>)}
-                </span>
-                <span className="select-mark" aria-hidden="true">{!candidate.available ? "" : selected ? "✓" : "+"}</span>
-              </button>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-export function SelectedPlayerDetail({ candidate, eraTitle }: { candidate: DraftCandidateIdentityView; eraTitle?: string }): ReactElement {
-  return <PlayerCard className="selected-player-detail" size="big" state="selected" player={candidate} eraTitle={eraTitle} />;
-}
-
 export type PlayerInspectorView = PlayerCardPlayer & Pick<DraftPickView, "historicalStats"> & {
   readonly battingPosition?: DraftPickView["battingPosition"];
 };
@@ -94,17 +44,8 @@ export function PlayerInspector({ player, onClose, countdown, eraTitle }: { play
     }}>{content}</dialog>;
 }
 
-export { FitBadge, fitClass, monogram };
+export { FitBadge, fitClass };
 export { fitLabel, friendly };
-
-function candidateQuickStats(candidate: DraftCandidateIdentityView): string[] {
-  const { batting, bowling } = candidate.historicalStats.currentSeason;
-  const battingLine = `${batting.runs} runs · ${batting.strikeRate === null ? "—" : formatOneDecimal(batting.strikeRate)} SR`;
-  const bowlingLine = `${bowling.wickets} ${bowling.wickets === 1 ? "wkt" : "wkts"} · ${bowling.economy === null ? "—" : formatTwoDecimals(bowling.economy)} econ`;
-  if (candidate.displayRole === "ALL_ROUNDER") return [battingLine, bowlingLine];
-  if (candidate.displayRole === "BOWLER" || candidate.displayRole === "UNKNOWN") return [bowlingLine];
-  return [battingLine];
-}
 
 function formatOneDecimal(value: number): string { return value.toFixed(1); }
 function formatTwoDecimals(value: number): string { return value.toFixed(2); }

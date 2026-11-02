@@ -46,26 +46,7 @@
 .draft-off-shell .room-invite-link input { font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); }
 .draft-off-shell .draft-off-recovery { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-left: 2px solid var(--color-action); background: var(--color-panel-raised); margin-top: var(--space-4); }
 .draft-off-shell .draft-off-recovery > div { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.draft-off-shell .room-draft-actions { position: sticky; top: var(--room-bar-height); z-index: 20; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-3); padding: var(--space-4) 0; background: var(--color-night); border-bottom: 1px solid var(--color-divider); }
-.draft-off-shell .room-draft-actions > div:first-child { display: grid; gap: var(--space-1); }
-.draft-off-shell .room-draft-actions > div:first-child strong { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); }
-.draft-off-shell .room-draft-actions > div:first-child span { font-size: var(--type-small); color: var(--color-text-muted); }
-.draft-off-shell .room-draft-actions > div:last-child { display: flex; align-items: center; gap: var(--space-2); }
-.draft-off-shell .room-draft-layout, .draft-off-shell .room-waiting-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(340px, 1fr); gap: var(--space-8); margin-top: var(--space-6); align-items: start; }
-.draft-off-shell .room-candidates { min-width: 0; }
-.draft-off-shell .room-workspace-title { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); margin: 0 0 var(--space-2); }
-.draft-off-shell .room-candidate-fieldset { min-width: 0; border: 0; margin: 0; padding: 0; }
-.draft-off-shell .room-candidate-fieldset .candidate-grid { max-height: min(45dvh, 420px); }
-.draft-off-shell .room-candidate-fieldset:disabled .candidate-card { cursor: wait; opacity: .65; }
-.draft-off-shell .candidate-body strong { white-space: normal; overflow-wrap: anywhere; }
-.draft-off-shell .candidate-body .candidate-unavailable { color: var(--color-text); }
-.draft-off-shell .room-selected { margin-top: var(--space-5); }
-.draft-off-shell .room-selected > p { color: var(--color-text-muted); font-size: var(--type-small); }
-.draft-off-shell .room-selected .room-confirm-pick { width: 100%; margin-top: var(--space-1); }
-.draft-off-shell .room-spin-empty { padding: var(--space-12) var(--space-6); border: 1px solid var(--color-divider); background: var(--color-panel); }
-.draft-off-shell .room-spin-empty > span { font: var(--weight-hero) var(--type-hero)/var(--leading-hero) var(--font-display); color: var(--color-text-muted); }
-.draft-off-shell .room-spin-empty h1 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); margin: var(--space-6) 0 var(--space-3); }
-.draft-off-shell .room-spin-empty p { max-width: 440px; color: var(--color-text-muted); }
+.draft-off-shell .room-waiting-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(340px, 1fr); gap: var(--space-8); margin-top: var(--space-6); align-items: start; }
 .draft-off-shell .room-xi { min-width: 0; border: 1px solid var(--color-divider); border-radius: var(--radius-sm); background: var(--color-panel); overflow: hidden; }
 .draft-off-shell .room-xi-heading { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: baseline; justify-content: space-between; padding: var(--space-4) var(--space-4) var(--space-2); }
 .draft-off-shell .room-xi-heading h2 { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); margin: 0; }
@@ -76,18 +57,8 @@
 .draft-off-shell .room-xi li { min-height: calc(var(--card-mini-min-height) + var(--space-1h) * 2); display: grid; grid-template-columns: 36px minmax(0, 1fr); align-items: stretch; border-top: 1px solid var(--color-divider); }
 .draft-off-shell .room-slot-number { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); display: flex; align-items: center; justify-content: center; color: var(--color-text); border-right: 1px solid var(--color-divider); }
 .draft-off-shell .room-xi .room-locked-player { width: auto; margin: var(--space-1h); }
-.draft-off-shell .room-xi .room-position-option { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px var(--space-2); align-items: center; min-width: 0; width: 100%; padding: var(--space-2) var(--space-3); border: 0; background: transparent; text-align: left; cursor: pointer; color: var(--color-text); }
 .draft-off-shell .room-slot-empty { display: flex; align-items: center; padding: var(--space-3); font-size: var(--type-small); color: var(--color-text-muted); }
 .draft-off-shell .room-xi .fit-badge { font-size: var(--type-small); line-height: var(--leading-small); padding: 2px 5px; white-space: normal; text-align: center; }
-.draft-off-shell .room-xi .room-slot-preview { background: var(--color-row-selected); box-shadow: inset 3px 0 var(--color-action); }
-.draft-off-shell .room-xi .room-slot-pending { background: var(--color-row-selected); }
-.draft-off-shell .room-xi .room-position-option[aria-pressed="true"] { color: var(--color-action); }
-.draft-off-shell .room-xi .room-position-option:disabled { opacity: .55; cursor: not-allowed; }
-.draft-off-shell .room-xi .room-position-option[aria-pressed="true"]:disabled { opacity: 1; }
-.draft-off-shell .room-xi .room-position-option:has(.player-card) { grid-template-columns: minmax(0, 1fr); padding: var(--space-1h); }
-.draft-off-shell .room-position-option small { grid-column: 1/-1; font-size: var(--type-small); line-height: var(--leading-small); }
-.draft-off-shell .room-complete { padding: var(--space-8); border-left: 2px solid var(--color-action); background: var(--color-panel); }
-.draft-off-shell .room-complete h1 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); }
 .draft-off-shell .room-waiting-layout > .draft-off-panel { margin-top: 0; }
 .draft-off-shell .room-waiting-layout h1 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); }
 .draft-off-shell .room-dialog { width: min(620px, calc(100% - 32px)); max-height: 90dvh; padding: var(--space-5); border: 1px solid var(--color-divider-strong); border-radius: var(--radius-md); color: var(--color-text); background: var(--color-panel); box-shadow: 0 24px 80px var(--color-scrim); overflow: auto; }
@@ -95,8 +66,6 @@
 .draft-off-shell .room-dialog > header { display: flex; justify-content: space-between; align-items: start; gap: var(--space-4); margin-bottom: var(--space-4); }
 .draft-off-shell .room-dialog > header h2 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); margin: 0; }
 .draft-off-shell .room-dialog .room-xi { margin-top: var(--space-3); }
-.draft-off-shell .room-sheet-confirm { position: sticky; bottom: -20px; padding: var(--space-4) 0 max(var(--space-4), env(safe-area-inset-bottom)); background: var(--color-panel); z-index: 3; }
-.draft-off-shell .room-sheet-confirm .primary-action { width: 100%; }
 .draft-off-shell .room-results { margin-top: var(--space-6); }
 .draft-off-shell .room-results h1 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); }
 .draft-off-shell .room-leaderboard-scroll { overflow-x: auto; margin-top: var(--space-7); }
@@ -117,17 +86,11 @@
   .draft-off-shell .room-people > ul { width: 100%; }
   .draft-off-room { --room-bar-height: 112px; }
   .draft-off-shell .room-countdown { min-width: 96px; }
-  .draft-off-shell .room-lobby-layout, .draft-off-shell .room-draft-layout, .draft-off-shell .room-waiting-layout { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); }
+  .draft-off-shell .room-lobby-layout, .draft-off-shell .room-waiting-layout { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); }
   .draft-off-shell .room-lobby-layout > aside { margin-top: 0; }
   .draft-off-shell .room-settings { grid-template-columns: minmax(0, 1fr) 1fr; }
   .draft-off-shell .room-settings > div:first-child { grid-column: 1/-1; }
   
-  .draft-off-shell .room-draft-actions { gap: var(--space-2); padding-block: var(--space-3); }
-  .draft-off-shell .room-draft-actions > div { width: 100%; }
-  .draft-off-shell .room-draft-actions > div:last-child { justify-content: space-between; }
-  .draft-off-shell .room-candidate-fieldset .candidate-grid { max-height: 46dvh; }
-  .draft-off-shell .room-placement-sheet { max-width: none; position: fixed; inset: auto 0 0; margin: 0; width: 100%; max-height: 92dvh; border-radius: var(--radius-lg) var(--radius-lg) 0 0; padding-bottom: max(var(--space-5), env(safe-area-inset-bottom)); }
-  .draft-off-shell .room-dialog .room-xi .room-position-option { padding-inline: var(--space-2); }
   .draft-off-shell .room-xi .fit-badge { max-width: 88px; }
   .draft-off-shell .room-results :is(td, th) { padding: var(--space-2h) var(--space-2); font-size: var(--type-small); }
   .draft-off-shell .room-results tbody th { min-width: 100px; max-width: 200px; }
@@ -166,7 +129,6 @@
 }
 
 .draft-off-shell .room-sheet-clock { font: var(--weight-strong) var(--type-label)/var(--leading-label) var(--font-body); margin-left: auto; color: var(--color-clock); white-space: nowrap; }
-.draft-off-shell .room-placement-sheet > header { position: sticky; top: -20px; z-index: 4; background: var(--color-panel); padding-block: var(--space-3); }
 
 @media (max-width: 599px) {
   .draft-off-shell .room-results table, .draft-off-shell .room-results tbody { display: block; }
@@ -212,7 +174,6 @@
 .draft-off-shell .room-comparison :is(section, h2) { scroll-margin-top: calc(var(--room-bar-height, 90px) + 20px); }
 /* Preserve readable names, usable controls and clock visibility within native dialogs. */
 .draft-off-shell :is(button, .quiet-button, summary) { min-height: 44px; }
-.draft-off-shell .room-draft-actions > div:last-child { flex-wrap: wrap; }
 .draft-off-shell .room-dialog > header { position: sticky; top: -20px; z-index: 4; padding-block: var(--space-3); background: var(--color-panel); flex-wrap: wrap; align-items: center; }
 .draft-off-shell .room-dialog > header h2 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); flex: 1 1 180px; }
 .draft-off-shell .room-dialog > header .room-sheet-clock { margin-left: 0; }
@@ -231,17 +192,9 @@
 }
 @media (max-height: 540px) {
   .draft-off-shell .draft-off-room-bar { position: relative; }
-  .draft-off-shell .room-draft-actions { position: relative; top: auto; }
 }
 
 /* M5.5 usability follow-up: pinned player context and independently scrolling slots. */
-.draft-off-shell .room-placement-sheet[open] { display: flex; flex-direction: column; height: 92dvh; overflow: hidden; }
-.draft-off-shell .room-placement-sheet > header { position: static; flex-shrink: 0; padding-top: 0; margin-bottom: var(--space-2); }
-.draft-off-shell .room-placement-body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding-bottom: var(--space-3); }
-.draft-off-shell .room-placement-sheet .room-sheet-confirm { position: static; flex-shrink: 0; padding-top: var(--space-3); }
-.draft-off-shell .room-placement-context { margin-bottom: var(--space-2h); overflow-wrap: anywhere; }
-.draft-off-shell .room-placement-context strong { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-name); display: block; }
-.draft-off-shell .room-placement-context small { display: block; margin-top: var(--space-1); font-size: var(--type-small); color: var(--color-text-muted); }
 /* Native disclosure keeps twenty outcomes scannable; existing innings cards remain inside. */
 .draft-off-shell .room-fixture-legend { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); margin-block: var(--space-4); }
 .draft-off-shell .room-fixture-legend p { margin: 0; }

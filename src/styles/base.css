@@ -19,7 +19,7 @@ button:disabled { cursor: not-allowed; }
   outline-offset: var(--focus-gap-width) !important;
   box-shadow: 0 0 0 var(--focus-gap-width) var(--focus-gap) !important;
 }
-:is(.candidate-card, .xi-slot, .era-card, .room-position-option, .room-locked-player, .room-result-player-name):focus-visible {
+:is(.squad-row, .xi-strip, .era-card, .room-locked-player, .room-result-player-name):focus-visible {
   outline-offset: calc(var(--focus-ring-width) * -1) !important;
   box-shadow: inset 0 0 0 calc(var(--focus-ring-width) + var(--focus-gap-width)) var(--focus-gap) !important;
 }
@@ -55,6 +55,22 @@ button:disabled { cursor: not-allowed; }
     --motion-flash-a: var(--motion-flash-reduced);
     --motion-flash-b: var(--motion-flash-reduced);
     --motion-flash-c: var(--motion-flash-reduced);
+    /* Spin fades straight to its result; no reel scroll, no travel; steps crossfade. */
+    --anim-reel-scroll: none;
+    --anim-reel-fade: fade-in;
+    --motion-spin: var(--motion-flash-reduced);
+    --motion-respin: var(--motion-flash-reduced);
+    --anim-squad-in: fade-in;
+    --motion-squad-stagger: 0ms;
+    --anim-lock-travel: fade-in;
+    --anim-lock-settle: fade-in;
+    --anim-lock-highlight: none;
+    --motion-lock: var(--motion-flash-reduced);
+    --motion-lock-edge-delay: 0ms;
+    --anim-step-forward: fade-in;
+    --anim-step-back: fade-in;
+    --motion-step-slide: var(--motion-screen);
+    --anim-card-expand: fade-in;
   }
   *, *::before, *::after {
     scroll-behavior: auto !important;

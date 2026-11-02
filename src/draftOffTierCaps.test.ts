@@ -16,7 +16,7 @@ import { projectEraDraftPublicState } from "./eraDraftProjection.js";
 import { selectNormalSpinTeamSeason } from "./eraDraftRng.js";
 import { replayEraDraftState } from "./eraDraftReplay.js";
 import { parseRoomSnapshot } from "./draftOffRealtimeClient.js";
-import { CandidateGallery } from "./eraDraftPlayerPresentation.js";
+import { SquadList } from "./screens/drafting/SquadList.js";
 import { catalog, baseState, changed, participant, host, member, roomInput, success } from "./draftOffRoomTestSupport.js";
 import { DraftOffRoomService } from "./draftOffRoomService.js";
 import { InMemoryDraftOffRoomRepository, FakeDraftOffClock } from "./draftOffRoomRepository.js";
@@ -282,7 +282,7 @@ test("v3 public rules are whitelisted; candidate reasons work in existing UI wit
     if (candidate) {
       blocked = true;
       assert.equal(candidate.available, false);
-      const html = renderToStaticMarkup(createElement(CandidateGallery, { view: projected.myDraft, selectedId: null, onSelect() {}, onUnavailable() {} }));
+      const html = renderToStaticMarkup(createElement(SquadList, { view: projected.myDraft, selectedId: null, blocked: false, entering: false, onSelect() {} }));
       assert.ok(html.includes("Standard Draft-Off allows at most")); assert.ok(html.includes('aria-disabled="true"'));
       const before = canonicalDraftOffCompetitionStateHash(state);
       const result = reduceDraftOffCompetition(catalog, state, { type: "APPLY_DRAFT_COMMAND", participantId: "host", atMs: 20,

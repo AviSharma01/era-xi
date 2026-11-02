@@ -6,6 +6,7 @@ import "./styles/fonts.css";
 import "./styles/base.css";
 import "./eraDraftWeb.css";
 import "./components/PlayerCard.css";
+import "./screens/drafting/drafting.css";
 import { EraDraftApp } from "./eraDraftApp.js";
 
 export function mountEraDraftWebApp(root: HTMLElement): void {

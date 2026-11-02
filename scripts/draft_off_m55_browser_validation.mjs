@@ -39,22 +39,29 @@ async function noOverflow(page) {
   assert.ok(bounds.scroll<=bounds.width,JSON.stringify(bounds));
 }
 async function checkPlacement(page, width, pending=false) {
-  await page.setViewportSize({width,height:width===320?640:844});await frame(page);
-  const body=page.locator('.room-placement-body'), footer=page.locator('.room-sheet-confirm');
-  const selected=await body.locator('.selected-player-detail h3').textContent();
-  assert.equal(await footer.locator('.room-placement-context strong').textContent(),selected);
+  const height=width===320?640:844;
+  await page.setViewportSize({width,height});await frame(page);
+  const board=page.locator('.xi-board'), bar=page.locator('.drafting-bar');
+  if(pending) {
+    // The lock waits in its slot: "Locking…", no ivory edge, and the bar says so.
+    const card=board.locator('.player-card-state-pending');
+    await card.waitFor();assert.match(await card.textContent(),/Locking…/);
+    assert.equal(await card.locator('.player-card-state-edge').count(),0);
+    assert.equal(await bar.locator('.drafting-lock').textContent(),'Waiting for server…');
+    assert.equal(await page.locator('.drafting-back').isDisabled(),true);
+    assert.equal(await bar.locator('.drafting-change').isDisabled(),true);
+  } else assert.equal(await bar.locator('.player-card-name').textContent(),placementName);
   for(let i=0;i<11;i++) {
-    const row=body.locator('.room-xi li').nth(i);await row.scrollIntoViewIfNeeded();await frame(page);
-    const box=await row.boundingBox(), bounds=await body.boundingBox(), end=await footer.boundingBox();
-    assert.ok(box&&bounds&&end);
-    assert.ok(box.y>=bounds.y-1&&box.y+box.height<=bounds.y+bounds.height+1,`Position ${i+1} obstructed at ${width}px`);
-    assert.ok(box.y+box.height<=end.y+1,`Position ${i+1} behind footer`);
-    assert.equal(await row.evaluate(el=>document.elementFromPoint(el.getBoundingClientRect().x+el.getBoundingClientRect().width/2,el.getBoundingClientRect().y+el.getBoundingClientRect().height/2)?.closest('li')===el),true);
+    const slot=board.locator('.xi-slot').nth(i);await slot.scrollIntoViewIfNeeded();await frame(page);
+    const box=await slot.boundingBox(), end=await bar.boundingBox();
+    assert.ok(box&&end);
+    assert.ok(box.y>=0&&box.y+box.height<=end.y+1,`Position ${i+1} behind the bar at ${width}px`);
+    assert.equal(await slot.evaluate(el=>{const r=el.getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest('.xi-slot')===el;}),true,`Position ${i+1} covered at ${width}px`);
   }
-  const end=await footer.boundingBox();assert.ok(end.y>=0&&end.y+end.height<=(width===320?640:844)+1);
-  if(pending) assert.equal(await footer.locator('button').textContent(),'Waiting for server…');
+  const end=await bar.boundingBox();assert.ok(end.y>=0&&end.y+end.height<=height+1);
   await noOverflow(page);await shot(page,`placement-${width}${pending?'-pending':''}`);
 }
+let placementName;
 const authoritativeResults=new Map();
 async function checkComparisonIdentity(page, entry) {
   const ids=await page.locator('.room-comparison-selectors select').evaluateAll(nodes=>nodes.map(node=>node.value));
@@ -143,7 +150,8 @@ try {
     let hold=true;
     await page.route('**/commands',async route=>{
       if(hold&&route.request().postDataJSON()?.command?.type==='LOCK_PLAYER') {
-        hold=false;const response=await route.fetch();await heldLock;await route.fulfill({response});
+        // Hold the request itself: once the server has it, realtime confirms the lock before any response arrives.
+        hold=false;await heldLock;await route.continue();
       } else await route.continue();
     });
     for(let pick=1;pick<=11;pick++) {
@@ -152,11 +160,12 @@ try {
         await page.getByRole('button',{name:'Respin · 1 left',exact:true}).click();
         await page.getByText('Respin used',{exact:true}).waitFor();
       }
-      if(pick===2) { await page.reload(); await page.locator('.candidate-card').first().waitFor(); }
-      const choices=page.locator('.candidate-card:not([aria-disabled="true"]):enabled');
+      if(pick===2) { await page.reload(); await page.locator('.squad-row').first().waitFor(); }
+      const choices=page.locator('.squad-row:not([aria-disabled="true"]):enabled');
       const candidate=i===0?choices.first():choices.last();
       await candidate.waitFor(); await frame(page); await candidate.focus(); await page.keyboard.press('Enter');
-      await page.locator('.room-position-option:not(:disabled)').first().waitFor();
+      await page.locator('.selected-player-detail').waitFor();
+      if(pick===1) placementName=await page.locator('.selected-player-detail h3').textContent();
       if(pick===1) {
         await shot(page,i===0?'desktop-placement':'mobile-placement'); await noOverflow(page);
         if(i===1) {
@@ -168,15 +177,16 @@ try {
           await frame(page);assert.equal(await page.getByRole('button',{name:'Inspect season',exact:true}).evaluate(el=>el===document.activeElement),true);
         }
       }
+      if(i===1) await page.getByRole('button',{name:'Place in XI',exact:true}).click();
+      await page.locator('.xi-slot-active:not(:disabled)').first().waitFor();
       if(i===1&&pick===1) {for(const width of [390,320])await checkPlacement(page,width);await page.setViewportSize({width:390,height:844});}
-      const positions=page.locator('.room-position-option:not(:disabled)');
+      const positions=page.locator('.xi-slot-active:not(:disabled)');
       await (i===0?positions.first():positions.last()).click();
-      if(i===1&&pick===1) await shot(page,'mobile-placement-scrolled');
-      await page.getByRole('button',{name:/Confirm pick · Slot/}).click();
+      if(i===1&&pick===1) await shot(page,'mobile-placement-previewed');
+      await page.getByRole('button',{name:/^Lock in \d\d$/}).click();
       if(pick===1) {
-        const pending=page.locator(i===1?'.room-placement-sheet [role="status"]':'.draft-off-recovery');
-        await pending.waitFor();assert.match(await pending.textContent(),/Waiting for server confirmation|Confirming your pick/);
-        assert.equal(await page.locator('.room-confirm-pick').textContent(),'Waiting for server…');
+        await page.locator('.draft-off-recovery').waitFor();assert.match(await page.locator('.draft-off-recovery').textContent(),/Confirming your pick/);
+        assert.equal(await page.locator('.drafting-lock').textContent(),'Waiting for server…');
         await shot(page,i===0?'desktop-pending':'mobile-pending');
         if(i===1) {for(const width of [390,320])await checkPlacement(page,width,true);await page.setViewportSize({width:390,height:844});}
         releaseLock();
@@ -186,12 +196,9 @@ try {
       console.log(JSON.stringify({draft:i,pick}));
     }
     if(i===1) {
-      await page.getByRole('button',{name:'Your XI · 11/11'}).click();
-      await page.locator('.room-dialog[open] [role="timer"]').waitFor();
-      await page.locator('.room-dialog .room-locked-player').last().focus();await page.keyboard.press('Enter');
+      await page.locator('.xi-slot-locked').last().focus();await page.keyboard.press('Enter');
       await page.locator('.player-inspector[open] [role="timer"]').waitFor();
       await shot(page,'mobile-locked-inspection');await page.keyboard.press('Escape');await page.locator('.player-inspector').waitFor({state:'detached'});
-      await page.keyboard.press('Escape');await page.locator('.room-dialog').waitFor({state:'detached'});
     }
     await page.getByRole('button',{name:'Submit XI',exact:true}).click();
     await page.locator('.room-dialog[open] [role="timer"]').waitFor();await shot(page,i===0?'desktop-submit':'mobile-submit');

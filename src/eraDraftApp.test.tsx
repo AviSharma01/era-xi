@@ -165,10 +165,13 @@ test("draft player selection toggles, switches, escapes, stays ephemeral, and cl
   const root = createRoot(rootElement);
 
   try {
-    await act(async () => root.render(<DraftExperience session={{ catalog, state: awaitingPick }}
-      persistenceWarning={null} onAccepted={(result) => { acceptedTransitions.push(result); return null; }}
-      onExit={() => undefined} />));
-    const candidateButtons = (): HTMLButtonElement[] => [...rootElement.querySelectorAll<HTMLButtonElement>(".candidate-card")];
+    function Harness() {
+      const [live, setLive] = useState<Exclude<EraDraftState, { phase: "SETUP" | "REVEALED" | "GAME_COMPLETE" }>>(awaitingPick);
+      return <DraftExperience session={{ catalog, state: live }} persistenceWarning={null} onExit={() => undefined}
+        onAccepted={(result) => { acceptedTransitions.push(result); setLive(accepted(result) as typeof live); return null; }} />;
+    }
+    await act(async () => root.render(<Harness />));
+    const candidateButtons = (): HTMLButtonElement[] => [...rootElement.querySelectorAll<HTMLButtonElement>(".squad-row")];
     const rosterOrder = (): string[] => candidateButtons().map((button) => button.querySelector("strong")!.textContent!);
     const initialOrder = rosterOrder();
     const firstIndex = view.candidates.findIndex((candidate) => candidate.available
@@ -196,7 +199,7 @@ test("draft player selection toggles, switches, escapes, stays ephemeral, and cl
     assert.equal(rootElement.querySelectorAll(".xi-slot-active").length, 11);
     assert.ok(rootElement.querySelector(`.selected-player-detail [aria-label="${first.seasonYear} current season statistics"]`));
     assert.match(rootElement.querySelector(".selected-player-detail")?.textContent ?? "", new RegExp(`${first.historicalStats.currentSeason.batting.runs} runs`, "i"));
-    assert.doesNotMatch(rootElement.querySelector(".candidate-section")?.textContent ?? "", /best season in this era/i);
+    assert.doesNotMatch(rootElement.querySelector(".squad-panel")?.textContent ?? "", /best season in this era/i);
     assert.equal(acceptedTransitions.length, 0);
 
     await act(async () => candidateButtons()[firstIndex]!.click());
@@ -235,7 +238,7 @@ test("draft player selection toggles, switches, escapes, stays ephemeral, and cl
     assert.equal(acceptedTransitions.length, 0);
     assert.equal(rootElement.querySelectorAll(".xi-slot-preview").length, 1);
     const previewCard = rootElement.querySelector<HTMLButtonElement>(".xi-slot-preview")!;
-    assert.match(previewCard.textContent ?? "", /↑ Click slot to confirm/);
+    assert.match(previewCard.textContent ?? "", /Click again to lock/);
     assert.ok(previewCard.querySelector(".player-card-fit .fit-badge"));
     assert.equal(previewCard.querySelectorAll(".player-card-state-edge").length, 1);
     await act(async () => { previewCard.click(); previewCard.click(); });
@@ -289,7 +292,7 @@ test("confirm commits pending candidate and preview, never the inspected confirm
   const root = createRoot(element);
   try {
     await act(async () => root.render(<StrictMode><Harness /></StrictMode>));
-    const candidateButton = [...element.querySelectorAll<HTMLButtonElement>(".candidate-card")].find((button) => button.querySelector("strong")?.textContent === pending.playerName)!;
+    const candidateButton = [...element.querySelectorAll<HTMLButtonElement>(".squad-row")].find((button) => button.querySelector("strong")?.textContent === pending.playerName)!;
     await act(async () => candidateButton.click());
     const slot = element.querySelector<HTMLButtonElement>(`[aria-label^="Position ${position.battingPosition} ·"]`)!;
     await act(async () => slot.click());
@@ -302,7 +305,6 @@ test("confirm commits pending candidate and preview, never the inspected confirm
     assert.equal(dom.window.document.activeElement, close);
     await act(async () => close.dispatchEvent(new dom.window.KeyboardEvent("keydown", { key: "Tab", bubbles: true, cancelable: true })));
     assert.equal(dom.window.document.activeElement, close);
-    assert.match(element.querySelector(".pending-pick-label")?.textContent ?? "", new RegExp(pending.playerName));
     assert.ok(element.querySelector(".xi-slot-preview"));
     await act(async () => dom.window.dispatchEvent(new dom.window.KeyboardEvent("keydown", { key: "Escape" })));
     assert.equal(element.querySelector(".player-inspector"), null);
@@ -312,7 +314,7 @@ test("confirm commits pending candidate and preview, never the inspected confirm
     assert.equal(element.querySelector("dialog"), null);
     assert.equal(dom.window.document.activeElement, element.querySelector(".xi-slot-locked"));
     await act(async () => {
-      const confirm = element.querySelector<HTMLButtonElement>(".desktop-confirm .confirm-pick")!;
+      const confirm = element.querySelector<HTMLButtonElement>(".drafting-dock .drafting-lock")!;
       confirm.click(); confirm.click();
     });
     assert.equal(transitions, 1);
@@ -345,15 +347,14 @@ test("Unknown fit uses Acceptable only in UI, with four labels and unchanged aut
   const root = createRoot(element);
   try {
     await act(async () => root.render(<DraftExperience session={{ catalog, state: state as AwaitingPickState }} persistenceWarning={null} onExit={() => undefined} onAccepted={() => null} />));
-    const buttons = [...element.querySelectorAll<HTMLButtonElement>(".candidate-card")];
+    const buttons = [...element.querySelectorAll<HTMLButtonElement>(".squad-row")];
     const keeper = view.candidates.find((player) => player.available && player.displayRole === "WICKETKEEPER_BATTER")!;
     assert.ok(keeper);
     await act(async () => buttons.find((button) => button.querySelector("strong")?.textContent === keeper.playerName)!.click());
     assert.equal((element.querySelector(".selected-player-detail .player-card-meta")!.textContent!.match(/Wicketkeeper/g) ?? []).length, 1);
     await act(async () => buttons.find((button) => button.querySelector("strong")?.textContent === unknown.playerName)!.click());
-    assert.equal(element.querySelectorAll(".fit-legend .fit-badge").length, 4);
-    assert.equal(element.querySelectorAll(".xi-target-acceptable").length, 11);
-    assert.doesNotMatch(element.querySelector(".xi-panel")!.textContent!, /Unknown|[△⚠○✓?]/);
+    assert.equal(element.querySelectorAll(".xi-slot-active .fit-acceptable").length, 11);
+    assert.doesNotMatch(element.querySelector(".xi-board")!.textContent!, /Unknown|%|[△⚠○✓?]/);
     await act(async () => element.querySelector<HTMLButtonElement>(".xi-slot-active")!.click());
     assert.match(element.querySelector(".xi-slot-preview .player-card-fit")!.textContent!, /Acceptable/);
     assert.equal(JSON.stringify(state), snapshot);
@@ -380,7 +381,7 @@ test("unavailable roster rows remain keyboard reachable and expose visible reaso
   if (state.phase !== "AWAITING_PICK") assert.fail("Expected roster");
   const html = renderToStaticMarkup(<DraftExperience session={{ catalog, state }} persistenceWarning={null} onExit={() => undefined} onAccepted={() => null} />);
   const document = new JSDOM(html).window.document;
-  const unavailable = [...document.querySelectorAll<HTMLButtonElement>('.candidate-card[aria-disabled="true"]')];
+  const unavailable = [...document.querySelectorAll<HTMLButtonElement>('.squad-row[aria-disabled="true"]')];
   assert.ok(unavailable.length > 0);
   assert.ok(unavailable.some((row) => row.textContent?.includes("four overseas")));
   for (const row of unavailable) {
@@ -388,8 +389,8 @@ test("unavailable roster rows remain keyboard reachable and expose visible reaso
     const description = row.getAttribute("aria-describedby");
     assert.ok(description);
     assert.ok(document.getElementById(description!)?.textContent);
-    assert.ok(row.querySelector(".candidate-unavailable"));
-    assert.equal(row.querySelector(".select-mark")?.textContent, "");
+    assert.ok(row.querySelector(".squad-row-reason"));
+    assert.equal(row.querySelector(".squad-row-mark")?.textContent, "");
   }
 });
 

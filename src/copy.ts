@@ -61,7 +61,105 @@ export function friendly(value: string): string {
   return value.toLowerCase().replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
+const SHORT_ROLES: Readonly<Record<string, string>> = { WICKETKEEPER_BATTER: "WK-batter", ALL_ROUNDER: "All-rounder" };
+/** Small cards have one line for the role. */
+export function shortRole(role: string): string {
+  return SHORT_ROLES[role] ?? friendly(role);
+}
+
 export function fitLabel(fit: DraftPresentationFit): string {
   // Approved UI fallback only: authoritative UNKNOWN remains neutral and unchanged.
   return friendly(fit === "UNKNOWN" ? "ACCEPTABLE" : fit);
 }
+
+const FIT_LABELS: Readonly<Record<DraftPresentationFit, string>> = {
+  NATURAL: "Natural", ACCEPTABLE: "Acceptable", STRETCH: "Stretch", MAJOR_STRETCH: "Major stretch", UNKNOWN: "Untested",
+};
+/** The projection's "major stretch" spans two losses; the extreme one is only ever at the far ends of the order. */
+const OUT_OF_POSITION_PERCENT = 30;
+
+export type FitDisplay = { readonly label: string; readonly percent: string | null; readonly loss: boolean; readonly text: string };
+/** V3 games carry nominalDeductionPercent. Historical games have no percentage and keep their labels. `text` is the accessible wording. */
+export function fitDisplay(fit: DraftPresentationFit, nominalDeductionPercent: number | undefined): FitDisplay {
+  if (nominalDeductionPercent === undefined) {
+    const label = fitLabel(fit);
+    return { label, percent: null, loss: false, text: label };
+  }
+  const label = fit === "MAJOR_STRETCH" && nominalDeductionPercent >= OUT_OF_POSITION_PERCENT ? "Out of position" : FIT_LABELS[fit];
+  // Only a loss shows a number; no loss is the word alone, with "no loss" kept for assistive technology.
+  if (nominalDeductionPercent <= 0) return { label, percent: null, loss: false, text: `${label}, no loss` };
+  const percent = `\u2212${nominalDeductionPercent}%`;
+  return { label, percent, loss: true, text: `${label} ${percent}` };
+}
+
+export function slotLabel(position: number, fit: string | null, unavailableReasons: string | null): string {
+  if (fit === null) return `Position ${position} · Open position`;
+  return `Position ${position} · ${fit} · ${unavailableReasons ?? "Available for preview"}`;
+}
+
+const SLOT = (position: number): string => String(position).padStart(2, "0");
+
+export const DRAFTING_COPY = {
+  pickOf: (pick: number) => `Pick ${SLOT(pick)} / 11`,
+  spin: "Spin franchise",
+  spinSkip: "Spin franchise, skip to the result",
+  reelSkip: "Spinning. Skip to the result",
+  spinning: "Spinning a franchise-season",
+  respinAvailable: "Respin · 1 left",
+  respinUsed: "Respin used",
+  readyFirst: "Ready to draft",
+  readyNext: "Ready for the next spin",
+  squadEmpty: "Spin a franchise-season, then pick one player.",
+  squadEmptyPrivate: "Spin, then pick one player. Your picks stay private.",
+  squadTitle: "Eligible squad",
+  squadCount: (count: number) => `${count} players`,
+  squadLegend: "Eligible player-season choices",
+  keeperShort: "WK",
+  dockLabel: "Selected player",
+  clear: "Clear",
+  inspectSeason: "Inspect season",
+  chooseSlot: "Choose an open slot in your XI",
+  clickAgain: "Click again to lock",
+  tapLock: "Tap Lock to confirm",
+  tapSlot: "Tap an open slot to preview",
+  chooseFirst: "Choose a player from the squad first",
+  lock: "Lock",
+  lockIn: (position: number) => `Lock in ${SLOT(position)}`,
+  waiting: "Waiting for server…",
+  placeInXi: "Place in XI",
+  changePlayer: "Change player",
+  backToSquad: "← Squad",
+  yourXi: "Your XI",
+  lockedCount: (count: number) => `${count} / 11 locked`,
+  statusLabel: "Draft status",
+  overseas: "Overseas",
+  keeper: "Keeper",
+  keeperCovered: "Covered",
+  keeperNeeded: "Needed",
+  topOrder: "Top order",
+  middleOrder: "Middle order",
+  lowerOrder: "Lower order",
+  slotUnavailable: "Unavailable",
+  noLoss: ", no loss",
+  stripLabel: (count: number) => `Your XI, ${count} of 11 locked. View your XI`,
+  lockedSlotLabel: (name: string, position: number, fit: string) => `Inspect ${name}, position ${position}, confirmed, ${fit}`,
+  previewSlotLabel: (name: string, position: number, fit: string, small: boolean) => `${small ? "Preview" : "Confirm pick"} ${name}, position ${position}, preview, ${fit}`,
+  lockingSlotLabel: (name: string, position: number, fit: string) => `${name}, position ${position}, locking, waiting for the server, ${fit}`,
+  spinPrompt: "Spin to reveal a franchise-season.",
+  spinResult: (team: string, year: number) => `${team} ${year} revealed. Choose one player.`,
+  selectionCleared: "Player selection cleared.",
+  playerSelected: (name: string) => `${name} selected. Choose an open batting position.`,
+  slotPreview: (position: number, fit: string) => `Preview in position ${position}: ${fit}. Lock to confirm.`,
+  pickLocked: (pick: number) => `Pick ${pick} locked. Spin again.`,
+  xiComplete: "Pick 11 locked. Your XI is complete.",
+  soloCompleteTitle: "XI complete",
+  soloCompleteCount: "11 / 11 confirmed",
+  soloCompleteStatus: (overseas: number, keeperCovered: boolean) => `Overseas ${overseas} / 4 · Wicketkeeper ${keeperCovered ? "covered" : "needed"}`,
+  soloCompleteNext: "Reveal your team’s ratings and construction.",
+  soloReveal: "Reveal team",
+  roomCompleteTitle: "Your XI is ready.",
+  roomCompleteCount: "11 / 11 locked",
+  roomCompleteAutoSubmit: "Submit to freeze your team and wait for the room. If you stay unsubmitted, the backend automatically submits a complete legal XI at the deadline.",
+  roomCompleteHidden: "Ratings and everyone else’s picks stay hidden during drafting.",
+  roomSubmit: "Submit XI",
+} as const;

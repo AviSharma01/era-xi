@@ -251,6 +251,32 @@
   --card-flash-burst-opacity: 0.85;
   --card-flash-pulse-opacity: 0.22;
 
+  /* Drafting workspace: sizes */
+  --drafting-max-width: 1440px;
+  --drafting-header-height: 48px;
+  --squad-min-height: 96px;
+  --squad-monogram-size: 28px;
+  --dock-portrait-width: 4.5rem;
+  --dock-portrait-height: 5.5rem;
+  --dock-monogram: 2.5rem;
+  --xi-portrait-min: 24px;
+  --xi-portrait-floor: 600px;
+  --xi-portrait-phone: 28px;
+  --xi-strip-gap: 3px;
+  --xi-strip-min: 24px;
+  --xi-phone-min-height: 500px;
+  --xi-short-screen-height: 720px;
+  --xi-short-screen-squad: 320px;
+  --reel-height: 5.25rem;
+  --spin-stage-reel-width: 34rem;
+  --spin-stage-reel-height: 7rem;
+  --spin-stage-reel-height-phone: 4.25rem;
+  --spin-stage-button-width: 20rem;
+  --spin-stage-button-height: 56px;
+  --reel-tile-width: clamp(5.5rem, 4.75rem + 3vw, 8rem);
+  --reel-tile-gap: var(--space-2);
+  --reel-marker-height: var(--space-2);
+
   /* Motion ladder: only levels 3 and 4 may be loud. */
   --motion-level-0: 200ms;   /* State: fades only */
   --motion-level-1: 160ms;   /* Utility: barely noticed */
@@ -294,11 +320,17 @@
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-hard-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-lock: cubic-bezier(0.3, 1.12, 0.5, 1);
   --ease-linear: linear;
 
   /* Everything that moves goes through these, so base.css can remove movement in one place. */
   --motion-lift: -2px;
   --motion-nudge: 5px;
+  --motion-squad-offset: 8px;
+  --motion-step-distance: 24px;
+  --motion-lock-edge-delay: var(--motion-lock);
+  --lock-settle-scale: 1.06;
+  --flash-expand-scale: 0.9;
   --anim-reveal: reveal-card;
   --anim-slot-pulse: slot-pulse;
   --anim-spinner: load-turn;
@@ -314,4 +346,13 @@
   --anim-flash-burst: card-flash-burst;
   --anim-flash-sweep: card-flash-sweep;
   --anim-flash-pulse: card-flash-pulse;
+  --anim-reel-scroll: reel-scroll;
+  --anim-reel-fade: none;
+  --anim-squad-in: squad-row-in;
+  --anim-lock-travel: lock-travel;
+  --anim-lock-settle: lock-settle;
+  --anim-lock-highlight: lock-highlight;
+  --anim-step-forward: step-in-forward;
+  --anim-step-back: step-in-back;
+  --anim-card-expand: squad-flash-in;
 }
