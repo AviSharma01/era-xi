@@ -24,10 +24,15 @@
 .draft-off-shell .room-bar-identity p { margin: 0 0 var(--space-1); }
 .draft-off-shell .room-bar-identity > strong { display: block; font-size: var(--type-body); line-height: var(--leading-body); font-weight: var(--weight-medium); }
 .draft-off-shell .room-countdown { min-width: 116px; text-align: right; }
-.draft-off-shell .room-countdown span { display: block; color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
-.draft-off-shell .room-countdown strong { font: var(--weight-strong) var(--type-number)/var(--leading-clock) var(--font-body); color: var(--color-text); }
-.draft-off-shell .clock-warning .room-countdown strong { color: var(--color-clock-amber); }
-.draft-off-shell .clock-urgent .room-countdown strong { color: var(--color-clock-red); }
+.draft-off-shell .room-countdown > span { display: block; color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
+/* The stopwatch: Big Shoulders, every digit in its own fixed-width box so the time never jitters. */
+.draft-off-shell .room-countdown { --stopwatch-size: var(--type-number); }
+.draft-off-shell .room-countdown strong { display: inline-flex; justify-content: flex-end; font: var(--weight-strong) var(--stopwatch-size)/var(--leading-clock) var(--font-display); letter-spacing: 0; color: var(--color-clock); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stopwatch-digit { display: inline-block; width: var(--stopwatch-digit-width); text-align: center; }
+.stopwatch-separator { display: inline-block; width: var(--stopwatch-separator-width); text-align: center; }
+.draft-off-shell .stopwatch-amber :is(strong, .stopwatch-label) { color: var(--color-clock-amber); }
+.draft-off-shell .stopwatch-red :is(strong, .stopwatch-label) { color: var(--color-clock-red); }
+.draft-off-shell .stopwatch-checking strong { align-items: center; min-height: calc(var(--stopwatch-size) * var(--leading-clock)); color: var(--color-clock-checking); font-size: var(--type-label); }
 .draft-off-shell .room-people { position: relative; min-width: 144px; }
 .draft-off-shell .room-people summary { min-height: 44px; display: flex; align-items: center; justify-content: center; gap: var(--space-2h); cursor: pointer; border: 1px solid var(--color-divider); border-radius: var(--radius-xs); padding: var(--space-2) var(--space-3); list-style: none; }
 .draft-off-shell .room-people summary::after { content: "⌄"; }

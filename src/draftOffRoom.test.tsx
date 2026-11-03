@@ -4,12 +4,13 @@ import { act } from "react";
 import { createRoot } from "react-dom/client";
 import { renderToStaticMarkup } from "react-dom/server";
 import { JSDOM } from "jsdom";
-import { DraftOffRoomExperience, formatDraftCountdown, remainingDraftMs } from "./draftOffRoom.js";
+import { DraftOffRoomExperience, draftClockState, formatDraftCountdown, remainingDraftMs } from "./draftOffRoom.js";
 import type { DraftOffRoomActions } from "./draftOffRoom.js";
 import type { SnapshotSuccess, PublicCommand } from "./draftOffClientTypes.js";
 import type { DraftOffSessionState } from "./draftOffSession.js";
 import { catalog, joinedState, startedState, changed, completeXi, participant } from "./draftOffRoomTestSupport.js";
 import { projectDraftOffRoom } from "./draftOffRoomProjection.js";
+import { draftOf, participantId, roomApply, roomLobby, startRoom } from "./evaluationV3TestSupport.js";
 const code = "0123456789AB";
 function snapshot(domain = joinedState(), actor = "host"): SnapshotSuccess {
   const view = structuredClone(projectDraftOffRoom(catalog, domain, actor));
@@ -262,7 +263,7 @@ test("uncertain intent blocks replacement actions and exposes exact retry recove
 });
 
 test("mobile pending placement and server deadline stay explicit in the placing step", async () => {
-  const value=snapshot(spun()),ui=await mount(value,true);
+  const value=snapshot(spun()),ui=await mount(value,true,()=>new Promise<void>(()=>undefined));
   try {
     await ui.click('.squad-row:not([aria-disabled="true"])');
     const selected=ui.document.querySelector('.squad-flash .selected-player-detail h3')!.textContent;
@@ -270,6 +271,7 @@ test("mobile pending placement and server deadline stay explicit in the placing 
     assert.equal(ui.document.querySelector('.drafting-bar .player-card-name')!.textContent,selected);
     assert.equal(ui.document.querySelectorAll('.xi-board .xi-slot').length,11);
     await ui.click('.xi-slot-active:not(:disabled)');
+    await ui.click('.drafting-lock');
     await ui.render({...roomState(value),pending:true,pendingCommand:'LOCK_PLAYER'});
     assert.equal(ui.document.querySelector('.drafting-bar .player-card-name')!.textContent,selected);
     assert.equal(ui.document.querySelector('.drafting-lock')!.textContent,'Waiting for server…');
@@ -280,7 +282,8 @@ test("mobile pending placement and server deadline stay explicit in the placing 
     assert.ok([...ui.document.querySelectorAll<HTMLButtonElement>('.xi-open-slot')].every(button=>button.disabled));
     const expired=structuredClone(value);Object.assign(expired.view.round,{deadlineAtMs:19});
     await ui.render(roomState(expired));
-    assert.equal(ui.document.querySelector('[role="timer"]')!.getAttribute('aria-label'),'00:00 remaining');
+    assert.equal(ui.document.querySelector('[role="timer"]')!.getAttribute('aria-label'),'Time’s up. Checking with the server');
+    assert.equal(ui.document.querySelector('[role="timer"] .stopwatch-time')!.textContent,'Checking…');
     assert.match(ui.document.querySelector('.draft-off-notice')!.textContent!,/Checking final status with the server/);
     assert.equal(ui.document.querySelector('#final-leaderboard'),null);
   }finally{await ui.close();}
@@ -308,4 +311,147 @@ test("a new spin plays the reel over a decided result; a restored one does not",
     assert.equal(restored.document.querySelector('.squad-rows-entering'),null);
     assert.ok(restored.document.querySelector('.squad-row'));
   }finally{await restored.close();}
+});
+
+function deferredCommand() {
+  const commands: PublicCommand["command"][] = [];
+  let settle!: () => void;
+  const command = async (next: PublicCommand["command"]) => { commands.push(next); await new Promise<void>(resolve => { settle = resolve; }); };
+  return { commands, command, settle: () => settle() };
+}
+async function previewFirst(ui: Awaited<ReturnType<typeof mount>>) {
+  await ui.click('.squad-row:not([aria-disabled="true"])');
+  const id = ui.document.querySelector<HTMLElement>(".squad-row-selected")!.dataset.candidateId!;
+  const slot = ui.document.querySelector<HTMLButtonElement>(".xi-slot-active:not(:disabled)")!;
+  const position = Number(slot.closest<HTMLElement>(".xi-slot")!.dataset.position);
+  await act(async () => slot.click());
+  return { id, position };
+}
+const announced = (ui: Awaited<ReturnType<typeof mount>>) => ui.document.querySelector(".drafting .sr-status[aria-live]")!.textContent!;
+
+test("an optimistic lock lands in its slot at once, pending with no lock edge, and the confirmation adds the edge", async () => {
+  const state = spun(), value = snapshot(state), send = deferredCommand();
+  const ui = await mount(value, false, send.command);
+  try {
+    const { id, position } = await previewFirst(ui);
+    await ui.click(".drafting-lock");
+    // Before the room has even published its pending state.
+    const slot = ui.document.querySelector<HTMLElement>(`.xi-slot[data-position="${position}"]`)!;
+    const card = slot.querySelector(".player-card-state-pending")!;
+    assert.match(card.textContent!, /Locking…/);
+    assert.match(card.getAttribute("aria-label")!, new RegExp(`position ${position}, locking, waiting for the server, `));
+    assert.equal(slot.querySelector(".player-card-state-edge"), null, "pending never looks locked");
+    assert.equal(ui.document.activeElement, slot, "focus follows the card into its slot");
+    assert.match(announced(ui), new RegExp(`^Locking .+ in position ${position}\\. Waiting for the server\\.$`));
+    assert.ok(ui.document.querySelector(".drafting-dock-card")!.classList.contains("drafting-card-sent"), "the card has left the dock");
+    assert.equal(ui.document.querySelector<HTMLButtonElement>(".drafting-clear")!.disabled, true, "going back waits");
+    assert.equal(ui.document.querySelector(".drafting-lock")!.textContent, "Waiting for server…");
+    assert.ok([...ui.document.querySelectorAll<HTMLButtonElement>(".squad-row")].every(row => row.closest("fieldset")!.disabled));
+    await ui.render({ ...roomState(value), pending: true, pendingCommand: "LOCK_PLAYER" });
+    assert.ok(slot.querySelector(".player-card-state-pending"));
+    await ui.click(".drafting-lock");
+    assert.equal(send.commands.length, 1, "one intent, nothing extra");
+    const confirmed = changed(state, { type: "APPLY_DRAFT_COMMAND", participantId: "host", atMs: 20, expectedDraftRevision: participant(state, "host").draftState.revision, draftCommand: { type: "LOCK_PLAYER", playerTeamSeasonId: id, battingPosition: position } });
+    await ui.render({ ...roomState(snapshot(confirmed)), pending: true, pendingCommand: "LOCK_PLAYER" });
+    const locked = ui.document.querySelector(`.xi-slot[data-position="${position}"] .player-card-state-locked`)!;
+    assert.ok(locked.querySelector(".player-card-state-edge"), "the ivory edge arrives with the confirmation");
+    assert.match(locked.getAttribute("aria-label")!, new RegExp(`position ${position}, confirmed, `));
+    assert.match(announced(ui), /^Pick 1 locked\. Spin again\.$/);
+    assert.equal(ui.document.querySelector<HTMLButtonElement>(".drafting-primary")!.disabled, true, "Spin waits for the room");
+    send.settle(); await ui.render(roomState(snapshot(confirmed)));
+    assert.equal(ui.document.activeElement, ui.document.querySelector(".drafting-primary"), "focus reaches Spin once the room is free");
+    assert.equal(ui.document.querySelector(".drafting-rejected"), null);
+    assert.equal(send.commands.length, 1);
+  } finally { await ui.close(); }
+});
+
+test("a rejected optimistic lock snaps back to the dock, reopens the slot and says why", async () => {
+  const value = snapshot(spun()), send = deferredCommand();
+  const ui = await mount(value, false, send.command);
+  try {
+    const { position } = await previewFirst(ui);
+    await ui.click(".drafting-lock");
+    await ui.render({ ...roomState(value), pending: true, pendingCommand: "LOCK_PLAYER" });
+    // The room's pending ends before the send settles: still waiting.
+    await ui.render({ ...roomState(value), error: "Action rejected" });
+    assert.ok(ui.document.querySelector(".xi-board .player-card-state-pending"));
+    await act(async () => { send.settle(); await Promise.resolve(); });
+    assert.equal(ui.document.querySelector(".xi-board .player-card-state-pending"), null);
+    const reopened = ui.document.querySelector<HTMLButtonElement>(`.xi-slot[data-position="${position}"] .xi-open-slot`)!;
+    assert.equal(reopened.disabled, false, "the slot reopens");
+    const dock = ui.document.querySelector(".drafting-dock-card")!;
+    assert.ok(dock.classList.contains("drafting-card-returned") && !dock.classList.contains("drafting-card-sent"), "the card is back in the dock");
+    assert.ok(dock.querySelector(".player-card-state-selected"));
+    assert.equal(ui.document.querySelector(".drafting-rejected")!.textContent, "⚠ Not locked · Not accepted, try again");
+    assert.match(announced(ui), new RegExp(`was not locked in position ${position}\\. Not accepted, try again\\. The slot is open again\\.$`));
+    assert.equal(ui.document.activeElement, dock);
+    assert.equal(ui.document.querySelector(".drafting-lock")!.textContent, "Lock");
+    assert.ok(ui.document.querySelector(".draft-off-recovery"), "the room's recovery stays as it was");
+    // Choosing the slot again clears the reason; nothing was resent.
+    await act(async () => reopened.click());
+    assert.equal(ui.document.querySelector(".drafting-rejected"), null);
+    assert.equal(send.commands.length, 1);
+  } finally { await ui.close(); }
+});
+
+test("a transport failure keeps the card pending in its slot with the saved retry", async () => {
+  const value = snapshot(spun()), send = deferredCommand();
+  const ui = await mount(value, true, send.command);
+  try {
+    await ui.click('.squad-row:not([aria-disabled="true"])');
+    await ui.click(".drafting-place");
+    await ui.click(".xi-slot-active:not(:disabled)");
+    await ui.click(".drafting-lock");
+    assert.ok(ui.document.querySelector(".drafting-bar .drafting-card-sent"), "the bar's card has gone to its slot");
+    assert.equal(ui.document.querySelector<HTMLButtonElement>(".drafting-back")!.disabled, true);
+    // The session's order: pending, then the uncertain reply keeps the saved intent, then the send returns.
+    await ui.render({ ...roomState(value), pending: true, pendingCommand: "LOCK_PLAYER" });
+    await ui.render({ ...roomState(value), pending: true, pendingCommand: "LOCK_PLAYER", retryAvailable: true, error: "Uncertain" });
+    await act(async () => { send.settle(); await Promise.resolve(); });
+    assert.ok(ui.document.querySelector(".xi-board .player-card-state-pending"), "uncertain is still pending, never rejected");
+    assert.equal(ui.document.querySelector(".xi-board .player-card-state-edge"), null);
+    assert.ok([...ui.document.querySelectorAll("button")].some(button => button.textContent === "Retry saved action"));
+  } finally { await ui.close(); }
+});
+
+test("tier-cap chips appear only for capped rooms; the clock keeps fixed digits and names its state", async () => {
+  const uncapped = await mount(snapshot(spun()));
+  try {
+    const chips = [...uncapped.document.querySelectorAll(".xi-limits .xi-limit")].map(chip => chip.querySelector(".sr-status")!.textContent);
+    assert.deepEqual(chips, ["Overseas 0 of 4", "Wicketkeeper needed"]);
+  } finally { await uncapped.close(); }
+  let capped = startRoom(roomLobby("era-transition", "VARIED", 2));
+  capped = roomApply(capped, { type: "APPLY_DRAFT_COMMAND", participantId: participantId(1), atMs: 20, expectedDraftRevision: draftOf(capped, participantId(1)).revision, draftCommand: { type: "SPIN" } });
+  const value = snapshot(capped, participantId(1));
+  Object.assign(value.view.round, { deadlineAtMs: 20 + 90_000 });
+  const ui = await mount(value, true);
+  try {
+    const strip = ui.document.querySelector(".xi-strip-pinned .xi-limits")!;
+    assert.deepEqual([...strip.querySelectorAll(".xi-limit-face")].map(face => face.textContent), ["OS 0/4", "WK needed", "S 0/3", "S+A 0/6"]);
+    assert.ok(strip.querySelector(".xi-limit-keeper.xi-limit-needed"));
+    assert.equal(strip.querySelectorAll(".xi-limit-sa .xi-limit-swatch").length, 2);
+    const timer = ui.document.querySelector('[role="timer"]')!;
+    assert.ok(timer.classList.contains("stopwatch-amber"));
+    assert.equal(timer.getAttribute("aria-label"), "01:30 remaining");
+    assert.equal(timer.querySelector(".stopwatch-label")!.textContent, "2 min or less");
+    assert.deepEqual([...timer.querySelectorAll(".stopwatch-digit")].map(digit => digit.textContent), ["0", "1", "3", "0"]);
+  } finally { await ui.close(); }
+  assert.deepEqual([600_000, 120_001, 120_000, 30_001, 30_000, 1, 0, null].map(draftClockState), ["normal", "normal", "amber", "amber", "red", "red", "checking", "normal"]);
+});
+
+test("a draft that moves on elsewhere while a lock is out drops the pending card and says so", async () => {
+  const value = snapshot(spun()), send = deferredCommand();
+  const ui = await mount(value, false, send.command);
+  try {
+    const { position } = await previewFirst(ui);
+    const name = ui.document.querySelector(".drafting-dock .player-card-name")!.textContent!;
+    await ui.click(".drafting-lock");
+    await ui.render({ ...roomState(value), pending: true, pendingCommand: "LOCK_PLAYER" });
+    const moved = structuredClone(value); assert.ok(moved.view.myDraft); Object.assign(moved.view.myDraft, { revision: moved.view.myDraft.revision + 1 });
+    await ui.render(roomState(moved));
+    assert.equal(ui.document.querySelector(".xi-board .player-card-state-pending"), null);
+    assert.equal(ui.document.querySelector(".xi-board .player-card-state-locked"), null, "nothing is shown as locked that the server did not lock");
+    assert.equal(announced(ui), `${name} was not locked in position ${position}. Your draft changed in another tab. The slot is open again.`);
+    assert.equal(send.commands.length, 1);
+  } finally { await ui.close(); }
 });

@@ -1,5 +1,5 @@
 // Player-facing words live here, so the voice stays consistent. Screens move in as their batch touches them.
-import type { DraftPresentationFit } from "./eraDraftTypes.js";
+import type { DraftPresentationFit, EraDraftSelectionRejectionCode } from "./eraDraftTypes.js";
 import type { EraId } from "./teamEvaluationV2.js";
 
 export const ERA_COPY: Readonly<Record<EraId, { ordinal: string; title: string; years: string; flavor: string }>> = {
@@ -131,11 +131,7 @@ export const DRAFTING_COPY = {
   backToSquad: "← Squad",
   yourXi: "Your XI",
   lockedCount: (count: number) => `${count} / 11 locked`,
-  statusLabel: "Draft status",
   overseas: "Overseas",
-  keeper: "Keeper",
-  keeperCovered: "Covered",
-  keeperNeeded: "Needed",
   topOrder: "Top order",
   middleOrder: "Middle order",
   lowerOrder: "Lower order",
@@ -162,4 +158,55 @@ export const DRAFTING_COPY = {
   roomCompleteAutoSubmit: "Submit to freeze your team and wait for the room. If you stay unsubmitted, the backend automatically submits a complete legal XI at the deadline.",
   roomCompleteHidden: "Ratings and everyone else’s picks stay hidden during drafting.",
   roomSubmit: "Submit XI",
+  limitsLabel: "Draft limits",
+  overseasShort: "OS",
+  keeperChip: "WK",
+  keeperChipNeeded: "needed",
+  keeperChipCovered: "covered",
+  tierS: "S",
+  tierSA: "S+A",
+  limitFull: "full",
+  limitChipLabel: (name: string, count: number, limit: number, full: boolean) => `${name} ${count} of ${limit}${full ? ", full" : ""}`,
+  keeperChipLabel: (covered: boolean) => `Wicketkeeper ${covered ? "covered" : "needed"}`,
+  sTierName: "S tier",
+  saTierName: "S and A tiers combined",
+  cantPick: (reason: string) => `Can’t pick · ${reason}`,
+  cantPickNotice: (name: string, reason: string) => `${name}. Can’t pick: ${reason}.`,
+  lockingNotice: (name: string, position: number) => `Locking ${name} in position ${position}. Waiting for the server.`,
+  lockRejected: (reason: string) => `Not locked · ${reason}`,
+  lockRejectedNotice: (name: string, position: number, reason: string) => `${name} was not locked in position ${position}. ${reason}. The slot is open again.`,
+  lockNotAccepted: "Not accepted, try again",
+  lockTimeUp: "Time’s up",
+  lockDraftChanged: "Your draft changed in another tab",
+} as const;
+
+/** Short, always-visible reasons for each engine rejection code. The engine's own sentences are never shown. */
+export const REJECTION_COPY: Readonly<Record<EraDraftSelectionRejectionCode, string>> = {
+  DUPLICATE_CANONICAL_PLAYER: "Already in your XI",
+  PLAYER_NOT_IN_CURRENT_SPIN: "Not in this squad",
+  PLAYER_NOT_G2_ELIGIBLE: "Not eligible",
+  PLAYER_NOT_FOUND: "Not available",
+  ROSTER_STATUS_UNRESOLVED: "Roster status unknown",
+  OVERSEAS_LIMIT: "Overseas limit reached",
+  S_TIER_LIMIT: "S limit reached",
+  SA_TIER_LIMIT: "S+A limit reached",
+  FUTURE_XI_IMPOSSIBLE: "Would leave no legal XI",
+  POSITION_OCCUPIED: "Position taken",
+  INVALID_POSITION: "Not a batting position",
+};
+/** When several codes apply, the most specific player-level one is shown first. */
+const REJECTION_ORDER = Object.keys(REJECTION_COPY) as EraDraftSelectionRejectionCode[];
+export function rejectionReason(codes: readonly EraDraftSelectionRejectionCode[]): string | undefined {
+  const code = REJECTION_ORDER.find((item) => codes.includes(item));
+  return code && REJECTION_COPY[code];
+}
+
+/** The room clock. Amber at 2:00 or less, red at 0:30 or less, grey while the server checks at zero. */
+export const CLOCK_COPY = {
+  normal: "Time left",
+  amber: "2 min or less",
+  red: "30 sec or less",
+  timeUp: "Time’s up",
+  checking: "Checking…",
+  label: (time: string, checking: boolean) => (checking ? "Time’s up. Checking with the server" : `${time} remaining`),
 } as const;

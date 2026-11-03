@@ -264,6 +264,11 @@
   --xi-portrait-phone: 28px;
   --xi-strip-gap: 3px;
   --xi-strip-min: 24px;
+  /* Limit chips above the XI */
+  --limit-chip-height: 24px;
+  --limit-swatch-size: 10px;
+  --stopwatch-digit-width: 0.58em;
+  --stopwatch-separator-width: 0.3em;
   --xi-phone-min-height: 500px;
   --xi-short-screen-height: 720px;
   --xi-short-screen-squad: 320px;
@@ -328,6 +333,7 @@
   --motion-nudge: 5px;
   --motion-squad-offset: 8px;
   --motion-step-distance: 24px;
+  --motion-snap-distance: 24px;
   --motion-lock-edge-delay: var(--motion-lock);
   --lock-settle-scale: 1.06;
   --flash-expand-scale: 0.9;
@@ -355,4 +361,5 @@
   --anim-step-forward: step-in-forward;
   --anim-step-back: step-in-back;
   --anim-card-expand: squad-flash-in;
+  --anim-snap-back: snap-back;
 }

@@ -98,8 +98,6 @@ body:has(.drafting) .third-party-notices-link { display: none; }
 .xi-board-heading { display: flex; flex: none; flex-wrap: wrap; align-items: baseline; gap: 0 var(--space-3); }
 .drafting .xi-board-heading h2 { margin: 0; font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); }
 .xi-count { color: var(--color-action); font-size: var(--type-small); line-height: var(--leading-small); }
-.xi-status { display: flex; flex-wrap: wrap; gap: 0 var(--space-3); margin-left: auto; color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
-.xi-status strong { color: var(--color-text); font-weight: var(--weight-medium); }
 .xi-rows { container-type: size; display: grid; flex: 1; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: var(--space-1h); min-height: 0; }
 .xi-row-group { --xi-portrait: clamp(var(--xi-portrait-min), calc((100cqh - var(--xi-portrait-floor)) * 0.4), var(--card-portrait-slot)); display: flex; flex-direction: column; gap: var(--space-1); min-height: 0; }
 .xi-row-label { flex: none; color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
@@ -217,7 +215,7 @@ body:has(.drafting) .third-party-notices-link { display: none; }
   .draft-off-shell .draft-off-room:has(.drafting) .room-bar-identity > strong { display: none; }
   .draft-off-shell .draft-off-room:has(.drafting) .room-bar-identity p { margin: 0; }
   .draft-off-shell .draft-off-room:has(.drafting) .room-countdown { min-width: 0; }
-  .draft-off-shell .draft-off-room:has(.drafting) .room-countdown strong { font-size: var(--type-label); }
+  .draft-off-shell .draft-off-room:has(.drafting) .room-countdown { --stopwatch-size: var(--type-label); }
   .draft-off-shell .draft-off-room:has(.drafting) .room-people { flex: none; min-width: 0; }
   .draft-off-shell .draft-off-room:has(.drafting) .room-people > ul { width: min(340px, calc(100vw - 32px)); }
 }
@@ -230,3 +228,34 @@ body:has(.drafting) .third-party-notices-link { display: none; }
   .xi-rows { height: var(--xi-short-screen-height); }
   .squad-panel { min-height: var(--xi-short-screen-squad); }
 }
+
+/* Limits: "Overseas 2/4 · WK needed · S 2/3 · S+A 4/6". At a cap a chip says "full" with an ivory outline, never red;
+   a missing keeper says "needed" in amber. The words always carry the state. */
+.drafting .xi-limits { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-1h); margin: 0; padding: 0; list-style: none; }
+.xi-limit { display: flex; align-items: center; min-height: var(--limit-chip-height); padding: 0 var(--space-2); border: 1px solid var(--color-divider-strong); border-radius: var(--radius-xs); color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); white-space: nowrap; }
+.xi-limit-face { display: inline-flex; align-items: center; gap: var(--space-1); }
+.xi-limit strong { color: var(--color-text); font-weight: var(--weight-medium); }
+.xi-limit-full { border: var(--card-state-edge) solid var(--color-action); color: var(--color-text); }
+.xi-limit-needed { border-color: var(--color-warning-edge); background: var(--color-warning-tint); color: var(--color-warning); }
+.xi-limit-needed strong { color: var(--color-warning); }
+.xi-limit-swatch { width: var(--limit-swatch-size); height: var(--limit-swatch-size); border-radius: var(--radius-xs); }
+.xi-limit-swatch.tier-violet { background: var(--tier-s); }
+.xi-limit-swatch.tier-gold { background: var(--tier-a); }
+.xi-limit-swatch + .xi-limit-swatch { margin-left: calc(var(--space-1) * -0.5); }
+.xi-board-heading .xi-limits { order: 2; }
+.xi-board-heading .xi-count { order: 3; margin-left: auto; }
+.drafting-small .xi-board-heading .xi-count { margin-left: 0; }
+.drafting-small .xi-board-heading .xi-limits { flex: 1 1 100%; order: 4; }
+.xi-strip-pinned { display: flex; flex: none; flex-direction: column; gap: var(--space-1); }
+.drafting-small .xi-limits-compact .xi-limit { padding-inline: var(--space-1h); }
+
+/* Can't pick: dimmed, the short reason always visible. Tapping still opens the card, without its flash. */
+.gameplay-shell .squad-row[aria-disabled="true"] .squad-monogram { opacity: 0.55; }
+
+/* Optimistic lock: the card has left the dock for its slot; a rejection snaps it back. */
+.drafting-card-sent { visibility: hidden; }
+.drafting-card-returned { animation: var(--anim-snap-back) var(--motion-level-1) var(--ease-out); }
+@keyframes snap-back { from { opacity: 0.4; transform: translateX(var(--motion-snap-distance)); } }
+.drafting .drafting-rejected { flex: 1 1 12ch; margin: 0; color: var(--color-error-text); font-size: var(--type-small); font-weight: var(--weight-medium); line-height: var(--leading-small); text-align: right; }
+.drafting-bar .drafting-rejected { text-align: left; }
+.xi-slot[tabindex]:focus-visible { border-radius: var(--card-radius-slot); }

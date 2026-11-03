@@ -283,7 +283,7 @@ test("v3 public rules are whitelisted; candidate reasons work in existing UI wit
       blocked = true;
       assert.equal(candidate.available, false);
       const html = renderToStaticMarkup(createElement(SquadList, { view: projected.myDraft, selectedId: null, blocked: false, entering: false, onSelect() {} }));
-      assert.ok(html.includes("Standard Draft-Off allows at most")); assert.ok(html.includes('aria-disabled="true"'));
+      assert.match(html, /S(\+A)? limit reached/); assert.ok(!html.includes("Standard Draft-Off allows at most")); assert.ok(html.includes('aria-disabled="true"'));
       const before = canonicalDraftOffCompetitionStateHash(state);
       const result = reduceDraftOffCompetition(catalog, state, { type: "APPLY_DRAFT_COMMAND", participantId: "host", atMs: 20,
         expectedDraftRevision: participant(state, "host").draftState.revision, draftCommand: { type: "LOCK_PLAYER", playerTeamSeasonId: candidate.playerTeamSeasonId, battingPosition: getOpenBattingPositions(participant(state, "host").draftState.picks)[0]! } });

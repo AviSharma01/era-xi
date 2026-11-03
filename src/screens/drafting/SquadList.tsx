@@ -1,12 +1,13 @@
 import type { CSSProperties, ReactElement, ReactNode } from "react";
 
 import { monogram } from "../../components/PlayerCard.js";
-import { DRAFTING_COPY as COPY, friendly, PLAYER_CARD_COPY, rosterLabel } from "../../copy.js";
+import { DRAFTING_COPY as COPY, friendly, PLAYER_CARD_COPY, rejectionReason, rosterLabel } from "../../copy.js";
 import type { DraftCandidateIdentityView, EraDraftPublicView } from "../../eraDraftTypes.js";
 
+/** The short reason a player can't be picked, from the projection's rejection codes. */
 export function unavailableReason(candidate: DraftCandidateIdentityView): string | undefined {
-  return candidate.available ? undefined
-    : candidate.positions.flatMap((position) => position.reasons)[0]?.message ?? PLAYER_CARD_COPY.unavailable;
+  if (candidate.available) return undefined;
+  return rejectionReason(candidate.positions.flatMap((position) => position.reasons.map((reason) => reason.code))) ?? PLAYER_CARD_COPY.unavailable;
 }
 
 /** The squad as one list panel. Rows carry no tier: opening a card is the discovery. */

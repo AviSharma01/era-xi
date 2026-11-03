@@ -71,6 +71,7 @@ button:disabled { cursor: not-allowed; }
     --anim-step-back: fade-in;
     --motion-step-slide: var(--motion-screen);
     --anim-card-expand: fade-in;
+    --anim-snap-back: fade-in;
   }
   *, *::before, *::after {
     scroll-behavior: auto !important;

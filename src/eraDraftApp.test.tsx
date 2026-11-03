@@ -383,7 +383,8 @@ test("unavailable roster rows remain keyboard reachable and expose visible reaso
   const document = new JSDOM(html).window.document;
   const unavailable = [...document.querySelectorAll<HTMLButtonElement>('.squad-row[aria-disabled="true"]')];
   assert.ok(unavailable.length > 0);
-  assert.ok(unavailable.some((row) => row.textContent?.includes("four overseas")));
+  assert.ok(unavailable.some((row) => row.querySelector(".squad-row-reason")?.textContent === "Overseas limit reached"));
+  assert.ok(unavailable.every((row) => !row.textContent?.includes("four overseas")), "the engine's sentence is never shown");
   for (const row of unavailable) {
     assert.equal(row.disabled, false);
     const description = row.getAttribute("aria-describedby");

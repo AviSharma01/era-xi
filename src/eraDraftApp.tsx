@@ -444,7 +444,7 @@ export function DraftExperience(props: {
         </button>
         <button className="quiet-button" onClick={props.onExit}>Exit draft</button>
       </header>
-      {view.phase !== "SETUP" && <DraftingWorkspace draft={view} lockTravel statusNote={statusNote} onCommand={command}
+      {view.phase !== "SETUP" && <DraftingWorkspace draft={view} statusNote={statusNote} onCommand={command}
         warning={props.persistenceWarning && <PersistenceWarning message={props.persistenceWarning} />}
         complete={{
           title: DRAFTING_COPY.soloCompleteTitle,

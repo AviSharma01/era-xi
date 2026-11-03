@@ -4,7 +4,7 @@ import { act } from "react";
 import { createRoot } from "react-dom/client";
 import { JSDOM } from "jsdom";
 
-import { fitDisplay, TEAM_ABBREVIATIONS } from "../../copy.js";
+import { fitDisplay, REJECTION_COPY, rejectionReason, TEAM_ABBREVIATIONS } from "../../copy.js";
 import { DraftExperience } from "../../eraDraftApp.js";
 import { loadEraDraftCatalog } from "../../eraDraftData.js";
 import { createEraDraftGame, reduceEraDraft } from "../../eraDraftEngine.js";
@@ -144,7 +144,8 @@ test("an unavailable player opens with a visible reason, no flash and no way to 
     await ui.click('.squad-row[aria-disabled="true"]');
     const card = ui.element.querySelector(".selected-player-detail")!;
     assert.ok(card.classList.contains("player-card-state-unavailable"));
-    assert.match(card.textContent!, /four overseas/);
+    assert.match(card.textContent!, /Can’t pick · Overseas limit reached/);
+    assert.doesNotMatch(card.textContent!, /four overseas/, "the engine's sentence is never shown");
     assert.equal(card.querySelector(".player-card-flash"), null);
     assert.equal(ui.element.querySelector(".drafting-lock"), null);
     assert.equal(ui.element.querySelector(".xi-slot-active"), null, "no slot lights for a player who can't be picked");
@@ -168,4 +169,46 @@ test("selecting, clearing and locking move focus between the card, the row and L
     assert.equal(ui.element.querySelector(".selected-player-detail"), null);
     assert.equal(ui.document.activeElement, row, "Escape returns to the row");
   } finally { await ui.close(); }
+});
+
+test("every engine rejection code has a short reason, and the most specific player-level one wins", () => {
+  const codes = Object.keys(REJECTION_COPY) as (keyof typeof REJECTION_COPY)[];
+  assert.equal(codes.length, 11);
+  for (const code of codes) {
+    assert.ok(REJECTION_COPY[code].length <= 24, `${code} stays short`);
+    assert.equal(rejectionReason([code]), REJECTION_COPY[code]);
+  }
+  assert.equal(rejectionReason(["S_TIER_LIMIT"]), "S limit reached");
+  assert.equal(rejectionReason(["SA_TIER_LIMIT"]), "S+A limit reached");
+  assert.equal(rejectionReason(["OVERSEAS_LIMIT"]), "Overseas limit reached");
+  assert.equal(rejectionReason(["FUTURE_XI_IMPOSSIBLE"]), "Would leave no legal XI");
+  assert.equal(rejectionReason(["POSITION_OCCUPIED", "FUTURE_XI_IMPOSSIBLE"]), "Would leave no legal XI", "a taken slot never explains a player");
+  assert.equal(rejectionReason(["POSITION_OCCUPIED", "SA_TIER_LIMIT", "S_TIER_LIMIT"]), "S limit reached");
+  assert.equal(rejectionReason(["SA_TIER_LIMIT", "DUPLICATE_CANONICAL_PLAYER"]), "Already in your XI");
+  assert.equal(rejectionReason([]), undefined);
+});
+
+test("Solo shows only Overseas and WK, and a full cap says so in words", async () => {
+  const ui = await mount(spunGame("batch-3b-limits", TEAM_EVALUATION_V3_VERSION));
+  try {
+    assert.deepEqual([...ui.element.querySelectorAll(".xi-limits .xi-limit-face")].map((face) => face.textContent), ["Overseas 0/4", "WK needed"]);
+    assert.equal(ui.element.querySelector(".xi-limit-full"), null);
+  } finally { await ui.close(); }
+  let state: EraDraftState = spunGame("batch-3b-limits-full", TEAM_EVALUATION_V3_VERSION);
+  for (let pick = 0; pick < 4; pick += 1) {
+    const view = projectEraDraftPublicState(catalog, state as LiveState);
+    if (view.phase !== "AWAITING_PICK") assert.fail("Expected roster");
+    const overseas = view.candidates.find((player) => player.available && player.rosterStatus === "OVERSEAS")!;
+    state = accepted(reduceEraDraft(catalog, state, { type: "LOCK_PLAYER", playerTeamSeasonId: overseas.playerTeamSeasonId, battingPosition: overseas.positions.find((slot) => slot.available)!.battingPosition }));
+    state = accepted(reduceEraDraft(catalog, state, { type: "SPIN" }));
+  }
+  const full = await mount(state as LiveState);
+  try {
+    const chip = full.element.querySelector(".xi-limit-overseas.xi-limit-full")!;
+    assert.equal(chip.querySelector(".xi-limit-face")!.textContent, "Overseas 4/4 · full");
+    assert.equal(chip.querySelector(".sr-status")!.textContent, "Overseas 4 of 4, full");
+    const row = full.element.querySelector<HTMLElement>('.squad-row[aria-disabled="true"]')!;
+    assert.equal(row.querySelector(".squad-row-reason")!.textContent, "Overseas limit reached");
+    assert.equal(full.document.getElementById(row.getAttribute("aria-describedby")!)!.textContent, "Overseas limit reached");
+  } finally { await full.close(); }
 });

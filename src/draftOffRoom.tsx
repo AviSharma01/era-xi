@@ -4,9 +4,10 @@ import type { SnapshotSuccess, PublicCommand } from "./draftOffClientTypes.js";
 import type { DraftOffSessionState } from "./draftOffSession.js";
 import type { DraftOffPublicRoomView } from "./draftOffRoomTypes.js";
 import type { DraftPickView, EraDraftPublicView } from "./eraDraftTypes.js";
+import type { EraDraftTierCaps } from "./eraDraftTierCaps.js";
 import { PlayerInspector, fitLabel } from "./eraDraftPlayerPresentation.js";
 import { PlayerCard, playerCardName } from "./components/PlayerCard.js";
-import { DRAFTING_COPY, ERA_COPY } from "./copy.js";
+import { CLOCK_COPY, DRAFTING_COPY, ERA_COPY } from "./copy.js";
 import { DraftingWorkspace } from "./screens/drafting/DraftingWorkspace.js";
 import { appRoutePath, draftOffRoomPath } from "./webRoutes.js";
 import { DraftOffComparison, DraftOffResultsBrowser, type ResultsLoader } from "./draftOffResults.js";
@@ -31,6 +32,22 @@ export function formatDraftCountdown(milliseconds: number | null): string {
   if (milliseconds === null) return "—";
   const seconds = Math.ceil(milliseconds / 1000);
   return `${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`;
+}
+type ClockState = "normal" | "amber" | "red" | "checking";
+/** Amber at 2:00 or less, red at 0:30 or less, grey while the server checks at zero. */
+export function draftClockState(milliseconds: number | null): ClockState {
+  if (milliseconds === null) return "normal";
+  return milliseconds <= 0 ? "checking" : milliseconds <= 30_000 ? "red" : milliseconds <= 120_000 ? "amber" : "normal";
+}
+const CLOCK_LABELS: Readonly<Record<ClockState, string>> = { normal: CLOCK_COPY.normal, amber: CLOCK_COPY.amber, red: CLOCK_COPY.red, checking: CLOCK_COPY.timeUp };
+/** The room clock: each digit in a fixed-width box so it never jitters, and a text label beside the colour. */
+function Stopwatch({ remaining }: { remaining: number | null }) {
+  const state = draftClockState(remaining), time = formatDraftCountdown(remaining);
+  return <div className={`room-countdown stopwatch stopwatch-${state}`} role="timer" aria-label={CLOCK_COPY.label(time, state === "checking")}>
+    <span className="stopwatch-label" aria-hidden="true">{CLOCK_LABELS[state]}</span>
+    <strong className="stopwatch-time" aria-hidden="true">{state === "checking" ? CLOCK_COPY.checking
+      : [...time].map((char, index) => <span key={index} className={/\d/.test(char) ? "stopwatch-digit" : "stopwatch-separator"}>{char}</span>)}</strong>
+  </div>;
 }
 function useCountdown(snapshot: SnapshotSuccess | null) {
   const anchor = useMemo(() => ({ server: snapshot?.serverTimeMs ?? 0, local: performance.now() }), [snapshot]);
@@ -81,9 +98,9 @@ export function DraftOffRoomExperience({ code, state, actions }: {
   const quietPending = view.phase === "IN_PROGRESS" && me?.roundStatus === "DRAFTING" && state.pending && !state.retryAvailable && !state.error && !localError && !state.accessUnavailable;
   const stage = view.phase === "LOBBY" ? "Private lobby" : view.phase === "COMPLETE" ? "Final leaderboard" : me?.roundStatus === "SUBMITTED" ? "XI submitted" : "Draft in progress";
   return <div ref={roomRef} className={`draft-off-room room-phase-${view.phase.toLowerCase()}`}>
-    <div ref={barRef} className={`draft-off-room-bar${remaining !== null && remaining <= 30_000 ? " clock-urgent" : remaining !== null && remaining <= 120_000 ? " clock-warning" : ""}`}>
+    <div ref={barRef} className="draft-off-room-bar">
       <div className="room-bar-identity"><p className="eyebrow">{draftOffFormatLabel(view.round.format ?? "MIRROR")} · {stage}</p><strong>{DRAFT_OFF_ERA_LABELS[view.round.eraId]}</strong></div>
-      {view.phase === "IN_PROGRESS" && <div className="room-countdown" role="timer" aria-label={`${formatDraftCountdown(remaining)} remaining`}><span>Time remaining</span><strong>{formatDraftCountdown(remaining)}</strong></div>}
+      {view.phase === "IN_PROGRESS" && <Stopwatch remaining={remaining} />}
       <details className="room-people"><summary>{view.phase === "LOBBY" ? `${rosterView.participants.filter(row => row.membershipStatus === "JOINED").length}/8 players` : `${submitted}/${entrants} submitted`}</summary><ParticipantList view={rosterView} me={snapshot.participantId} /></details>
     </div>
     <p className="sr-status" aria-live="polite">{view.phase === "IN_PROGRESS" && (expired ? "Draft time reached. Checking the server for final status." : remaining !== null && remaining <= 30_000 ? "Thirty seconds or less remaining." : remaining !== null && remaining <= 120_000 ? "Two minutes or less remaining." : "Draft clock running.")}</p>
@@ -97,7 +114,7 @@ export function DraftOffRoomExperience({ code, state, actions }: {
     {view.phase === "LOBBY" ? <Lobby snapshot={snapshot} code={code} blocked={blocked} onCommand={send} />
       : view.phase === "COMPLETE" ? <FinalResults key={`${code}:${view.round.roundId}:${snapshot.participantId}`} snapshot={snapshot} code={code} actions={actions} accessUnavailable={state.accessUnavailable} />
         : me?.roundStatus === "SUBMITTED" ? <Waiting snapshot={snapshot} rosterView={rosterView} expired={expired} countdown={formatDraftCountdown(remaining)} />
-          : me?.roundStatus === "DRAFTING" && view.myDraft && view.myDraft.phase !== "SETUP" ? <DraftWorkspace key={view.round.roundId} draft={view.myDraft} blocked={blocked || expired} locking={state.pending && state.pendingCommand === "LOCK_PLAYER"} onCommand={send} expired={expired} countdown={formatDraftCountdown(remaining)} />
+          : me?.roundStatus === "DRAFTING" && view.myDraft && view.myDraft.phase !== "SETUP" ? <DraftWorkspace key={view.round.roundId} draft={view.myDraft} blocked={blocked || expired} locking={state.pending && state.pendingCommand === "LOCK_PLAYER"} onCommand={send} expired={expired} countdown={formatDraftCountdown(remaining)} tierCaps={view.round.tierCaps} />
             : <section className="draft-off-panel"><h1>You’re outside this round</h1><p>You left before the host started. The roster is now fixed. You can still see public room status and the final leaderboard.</p></section>}
     {expired && <p className="draft-off-notice" role="status">Time reached. Checking final status with the server. Complete legal XIs auto-submit; incomplete XIs are excluded.</p>}
   </div>;
@@ -156,12 +173,12 @@ function CompactXi({ draft, onInspect }: { draft: ActiveDraft; onInspect: (playe
     })}</ol>
   </section>;
 }
-function DraftWorkspace({ draft, blocked, locking, expired, countdown, onCommand }: { draft: ActiveDraft; blocked: boolean; locking: boolean; expired: boolean; countdown: string; onCommand: (command: Command) => Promise<void> }) {
+function DraftWorkspace({ draft, blocked, locking, expired, countdown, tierCaps, onCommand }: { draft: ActiveDraft; blocked: boolean; locking: boolean; expired: boolean; countdown: string; tierCaps?: EraDraftTierCaps; onCommand: (command: Command) => Promise<void> }) {
   const [confirmSubmit, setConfirmSubmit] = useState(false);
   useEffect(() => setConfirmSubmit(false), [draft.revision]);
   return <>
     <DraftingWorkspace draft={draft} blocked={blocked} locking={locking} expired={expired} countdown={countdown} squadHint={DRAFTING_COPY.squadEmptyPrivate}
-      onCommand={command => void onCommand(command)}
+      optimisticLock tierCaps={tierCaps} onCommand={command => onCommand(command)}
       complete={{
         title: DRAFTING_COPY.roomCompleteTitle,
         detail: <div className="room-complete"><p className="eyebrow">{DRAFTING_COPY.roomCompleteCount}</p><p>{DRAFTING_COPY.roomCompleteAutoSubmit}</p><p>{DRAFTING_COPY.roomCompleteHidden}</p></div>,
