@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactElement, ReactNode } from "react";
 
-import { monogram } from "../../components/PlayerCard.js";
+import { monogram, NoEntryIcon } from "../../components/PlayerCard.js";
 import { DRAFTING_COPY as COPY, friendly, PLAYER_CARD_COPY, rejectionReason, rosterLabel } from "../../copy.js";
 import type { DraftCandidateIdentityView, EraDraftPublicView } from "../../eraDraftTypes.js";
 
@@ -39,9 +39,8 @@ export function SquadList(props: {
               onClick={() => props.onSelect(candidate)}>
               <span className="squad-monogram" aria-hidden="true">{monogram(candidate.playerName)}</span>
               <span className="squad-row-body"><strong>{candidate.playerName}</strong>
-                <span className="squad-row-meta">{friendly(candidate.displayRole)} · {rosterLabel(candidate.rosterStatus)}
-                  {candidate.keeperCapability === "CONFIRMED" && candidate.displayRole !== "WICKETKEEPER_BATTER" ? ` · ${COPY.keeperShort}` : ""}</span>
-                {reason && <span id={reasonId} className="squad-row-reason">{reason}</span>}
+                <span className="squad-row-meta">{rowMeta(candidate)}</span>
+                {reason && <span id={reasonId} className="squad-row-reason"><NoEntryIcon />{reason}</span>}
               </span>
               <span className="squad-row-stats">{quickStats(candidate).map((line) => <span key={line}>{line}</span>)}</span>
               <span className="squad-row-mark" aria-hidden="true">{!candidate.available ? "" : selected ? "✓" : "+"}</span>
@@ -52,6 +51,28 @@ export function SquadList(props: {
       </div>
     </fieldset>
   </section>;
+}
+
+function rowMeta(candidate: DraftCandidateIdentityView): string {
+  const keeper = candidate.keeperCapability === "CONFIRMED" && candidate.displayRole !== "WICKETKEEPER_BATTER" ? ` · ${COPY.keeperShort}` : "";
+  return `${friendly(candidate.displayRole)} · ${rosterLabel(candidate.rosterStatus)}${keeper}`;
+}
+
+/**
+ * While a respin's reel runs, the squad it replaces stays in place, dimmed and inert, so the layout holds still.
+ * Decorative only: the new squad is never drawn before its reel lands.
+ */
+export function StaleSquad({ candidates }: { candidates: readonly DraftCandidateIdentityView[] }): ReactElement {
+  return <div className="squad-panel squad-panel-stale" aria-hidden="true" inert>
+    <div className="squad-heading"><span className="squad-title">{COPY.squadTitle}</span><span>{COPY.squadCount(candidates.length)}</span></div>
+    <div className="squad-rows">
+      {candidates.map((candidate) => <div key={candidate.playerTeamSeasonId} className="squad-stale-row">
+        <span className="squad-monogram">{monogram(candidate.playerName)}</span>
+        <span className="squad-row-body"><strong>{candidate.playerName}</strong><span className="squad-row-meta">{rowMeta(candidate)}</span></span>
+        <span className="squad-row-stats">{quickStats(candidate).map((line) => <span key={line}>{line}</span>)}</span>
+      </div>)}
+    </div>
+  </div>;
 }
 
 function quickStats(candidate: DraftCandidateIdentityView): string[] {

@@ -334,6 +334,15 @@
 .gameplay-shell .inspector-modal .inspector-metrics { margin-top: var(--space-4); }
 .gameplay-shell .inspector-modal .inspector-metrics strong { font: var(--weight-number) var(--type-number)/var(--leading-number) var(--font-display); }
 @media (max-width: 759px) { .gameplay-shell dialog.inspector-modal { padding: var(--space-5); }  }
+/* The portrait card beside its exact numbers; stacked, and centred, on a phone. */
+.gameplay-shell dialog.inspector-modal[open] { display: grid; grid-template-columns: var(--inspector-card-width) minmax(0, 1fr); align-items: start; gap: 0 var(--space-5); }
+.gameplay-shell .inspector-modal > :not(.player-card, .inspector-metrics) { grid-column: 1 / -1; }
+.gameplay-shell .inspector-modal .inspector-metrics { margin-top: 0; grid-template-columns: minmax(0, 1fr); gap: 0; }
+@media (max-width: 559px) {
+  .gameplay-shell dialog.inspector-modal[open] { grid-template-columns: minmax(0, 1fr); }
+  .gameplay-shell .inspector-modal > .player-card { justify-self: center; width: var(--inspector-card-width); }
+  .gameplay-shell .inspector-modal .inspector-metrics { margin-top: var(--space-4); grid-template-columns: 1fr 1fr; gap: 0 var(--space-3); }
+}
 .gameplay-shell .reveal-layout { gap: var(--space-8); }
 .gameplay-shell .reveal-intro { padding: 0; border: 0; }
 .gameplay-shell .reveal-intro h1 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); margin: var(--space-3) 0; }

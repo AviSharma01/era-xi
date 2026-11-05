@@ -23,6 +23,8 @@ export type PlayerCardProps = {
   slotNumber?: number;
   /** Staggers resting sheens so a row of cards does not sweep in unison. */
   order?: number;
+  /** S slot cards on one board take turns: this card's turn, and how many S cards share the board. */
+  sheenTurn?: { readonly index: number; readonly of: number };
   fit?: DraftPresentationFit;
   /** V3 games: the slot's nominal loss. Historical games have none and show the label alone. */
   fitPercent?: number;
@@ -119,6 +121,11 @@ function Stats({ stats, size, seasonYear }: { stats: CardStat[]; size: PlayerCar
     : <span className="player-card-stats">{lines}</span>;
 }
 
+/** The no-entry mark beside a "can't pick" reason. Decorative: the words carry the reason. */
+export function NoEntryIcon(): ReactElement {
+  return <svg className="no-entry-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor"><circle cx="8" cy="8" r="6.25" /><path d="M3.6 12.4 12.4 3.6" /></svg>;
+}
+
 function StateMarker({ state }: { state: PlayerCardState }): ReactElement | null {
   if (state === "preview") return <span className="player-card-marker">{COPY.preview}</span>;
   if (state === "pending") return <span className="player-card-marker">{COPY.locking}</span>;
@@ -136,8 +143,9 @@ export function PlayerCard(props: PlayerCardProps): ReactElement {
   const shimmering = useShimmer(isS && finishShowing && (size === "big" || (size === "slot" && (engaged || state === "selected"))));
   // D appears with no flash, and an unavailable card opens without one.
   const flashing = flashKey !== null && state !== "unavailable" && player.tierAppearance !== "slate";
-  const label = props.label === undefined ? playerCardName(player) : props.label;
   const reason = state === "unavailable" ? props.unavailableReason ?? COPY.unavailable : null;
+  // A card that can't be picked says why in its name, as well as on its face.
+  const label = props.label === undefined ? (reason ? `${playerCardName(player)}. ${reason}` : playerCardName(player)) : props.label;
   const stats = roleStats(player, size !== "big");
   const number = slotNumber === undefined ? null : <span className="player-card-number">{String(slotNumber).padStart(2, "0")}</span>;
   const portrait = <span className="player-card-portrait" aria-hidden="true"><span>{monogram(player.playerName)}</span></span>;
@@ -153,7 +161,10 @@ export function PlayerCard(props: PlayerCardProps): ReactElement {
     "player-card", `player-card-${size}`, `player-card-state-${state}`, `tier-${player.tierAppearance}`,
     shimmering ? "player-card-shimmer" : "", flashing ? "player-card-flash-active" : "", props.className ?? "",
   ].filter(Boolean).join(" ");
-  const style = { "--card-order": props.order ?? (slotNumber ?? 1) - 1 } as CSSProperties;
+  const style = {
+    "--card-order": props.order ?? (slotNumber ?? 1) - 1,
+    ...(props.sheenTurn ? { "--sheen-turn": props.sheenTurn.index, "--sheen-turns": Math.max(1, props.sheenTurn.of) } : {}),
+  } as CSSProperties;
   const engage = size === "slot" && isS ? {
     onPointerEnter: () => setEngaged(true), onPointerLeave: () => setEngaged(false),
     onFocus: () => setEngaged(true), onBlur: () => setEngaged(false),
@@ -169,17 +180,18 @@ export function PlayerCard(props: PlayerCardProps): ReactElement {
     </span>
     {ribbon != null && <span className="player-card-ribbon">{ribbon}</span>}
     {size === "big" && <span className="player-card-content">
+      {reason && <span className="player-card-reason player-card-banner"><NoEntryIcon />{reason}</span>}
+      <span className="player-card-top">{number}<StateMarker state={state} /></span>
       {portrait}
       <span className="player-card-copy">
-        <span className="player-card-top">{number}<StateMarker state={state} /></span>
         {name}
         <span className="player-card-team">{player.teamName} · {player.seasonYear}</span>
         <span className="player-card-meta"><span>{role}</span><span>{rosterLabel(player.rosterStatus)}</span>
           {player.keeperCapability === "CONFIRMED" && player.displayRole !== "WICKETKEEPER_BATTER" && <span>{COPY.keeper}</span>}</span>
         <Stats stats={stats} size={size} seasonYear={player.seasonYear} />
         {eraTitle && isEraBest(player) && <span className="player-card-era-best">{COPY.eraBest(eraTitle)}</span>}
-        {fitTag}{noteLine}{reasonLine}
       </span>
+      {fitTag}{noteLine}
     </span>}
     {size === "slot" && <span className="player-card-content">
       <span className="player-card-top">{number}<StateMarker state={state} /></span>

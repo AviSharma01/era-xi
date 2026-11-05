@@ -12,7 +12,7 @@ import { projectEraDraftPublicState } from "../../eraDraftProjection.js";
 import type { EraDraftState, EraDraftTransitionResult } from "../../eraDraftTypes.js";
 import { ERA_IDS } from "../../teamEvaluationV2.js";
 import { TEAM_EVALUATION_V3_VERSION } from "../../teamEvaluationV3.js";
-import { ERA_REEL_SEASONS, reelStrip } from "./reel.js";
+import { ERA_REEL_SEASONS, REEL_TRAVEL, reelRest, reelStrip } from "./reel.js";
 
 const catalog = loadEraDraftCatalog();
 type LiveState = Exclude<EraDraftState, { phase: "SETUP" | "REVEALED" | "GAME_COMPLETE" }>;
@@ -69,20 +69,32 @@ test("the reel's franchise-seasons are exactly the catalog's", () => {
   }
 });
 
-test("the reel lands between blanks, shows the result only at the end, and uses no engine randomness", () => {
-  for (const kind of ["SPIN", "RESPIN"] as const) {
-    const input = { eraId: "era-transition" as const, abbreviation: "MI", year: 2015, kind, seed: "7:ts:team-mumbai-indians:ipl-2015" };
-    const { tiles, resultIndex } = reelStrip(input);
-    assert.deepEqual(tiles[resultIndex], { kind: "result", abbreviation: "MI", year: 2015 });
-    for (const offset of [-2, -1, 1, 2]) assert.deepEqual(tiles[resultIndex + offset], { kind: "blank" }, "nothing else is near the result");
-    assert.equal(tiles.length, resultIndex + 3);
-    assert.ok(tiles.slice(0, resultIndex - 2).every((tile) => tile.kind === "season"));
-    assert.ok(tiles.every((tile) => tile.kind !== "season" || !(tile.abbreviation === "MI" && tile.year === 2015)), "the result never passes early");
-    assert.deepEqual(reelStrip(input), reelStrip(input), "same seed, same strip");
-    assert.notDeepEqual(reelStrip(input).tiles, reelStrip({ ...input, seed: "8:other" }).tiles);
+test("the reel shows real franchise-seasons throughout, travels 18 to 28 tiles and uses no engine randomness", () => {
+  const travels = new Set<number>();
+  for (const eraId of ERA_IDS) {
+    const seasons = Object.entries(ERA_REEL_SEASONS[eraId]).flatMap(([year, teams]) => teams.split(" ").map((team) => `${team} ${year}`));
+    for (let seed = 0; seed < 40; seed += 1) {
+      const [abbreviation, year] = seasons[seed % seasons.length]!.split(" ");
+      const input = { eraId, abbreviation: abbreviation!, year: Number(year), seed: `${seed}:${eraId}` };
+      const { tiles, startIndex, resultIndex } = reelStrip(input);
+      const travel = resultIndex - startIndex;
+      travels.add(travel);
+      assert.ok(travel >= REEL_TRAVEL.min && travel <= REEL_TRAVEL.max, `travel ${travel}`);
+      assert.deepEqual(tiles[resultIndex], { kind: "result", abbreviation: input.abbreviation, year: input.year });
+      assert.ok(startIndex >= 3 && tiles.length - resultIndex - 1 >= 3, "real tiles fill the window either side of the start and the stop");
+      tiles.forEach((tile, index) => {
+        assert.ok(seasons.includes(`${tile.abbreviation} ${tile.year}`), "every tile is a real franchise-season of the era, never a blank");
+        if (index !== resultIndex) assert.equal(tile.kind, "season");
+        if (index !== resultIndex) assert.ok(!(tile.abbreviation === input.abbreviation && tile.year === input.year), "the result never shows early or as a neighbour");
+        if (index > 0) assert.notDeepEqual(tile, tiles[index - 1], "no tile repeats its neighbour");
+      });
+      assert.deepEqual(reelStrip(input), reelStrip(input), "same seed, same strip");
+    }
   }
-  assert.ok(reelStrip({ eraId: "era-impact", abbreviation: "CSK", year: 2023, kind: "RESPIN", seed: "s" }).resultIndex
-    < reelStrip({ eraId: "era-impact", abbreviation: "CSK", year: 2023, kind: "SPIN", seed: "s" }).resultIndex, "a respin is the same reel, shorter");
+  assert.ok(travels.size >= 8, "the stop can't be read from the distance");
+  const rest = reelRest({ eraId: "era-impact", seed: "rest:3" });
+  assert.equal(rest.tiles.length, rest.centerIndex * 2 + 1);
+  assert.ok(rest.tiles.every((tile) => tile.kind === "season"), "the reel at rest shows real tiles too");
 });
 
 test("v3 slots name their number, fit and percentage; −20% and −30% differ; losses are coral", async () => {
@@ -149,9 +161,82 @@ test("an unavailable player opens with a visible reason, no flash and no way to 
     assert.equal(card.querySelector(".player-card-flash"), null);
     assert.equal(ui.element.querySelector(".drafting-lock"), null);
     assert.equal(ui.element.querySelector(".xi-slot-active"), null, "no slot lights for a player who can't be picked");
+    assert.match(card.getAttribute("aria-label")!, /\. Can’t pick · Overseas limit reached$/, "the card's name carries the reason");
+    assert.equal(card.querySelector(".player-card-banner")!.textContent, "Can’t pick · Overseas limit reached");
+    const name = card.querySelector(".player-card-name")!.textContent!;
+    const open = [...ui.element.querySelectorAll<HTMLButtonElement>(".xi-slot-unlit")];
+    assert.ok(open.length > 0 && open.every((slot) => !slot.disabled && slot.getAttribute("aria-disabled") === "true"));
+    assert.equal(open[0]!.getAttribute("aria-label"), `Position ${open[0]!.closest<HTMLElement>(".xi-slot")!.dataset.position} · Open position · ${name} can’t be placed: Overseas limit reached`);
+    const locked = ui.element.querySelectorAll(".xi-slot-locked").length;
+    await act(async () => open[0]!.click());
+    assert.equal(ui.element.querySelector(".drafting-slot-note")!.textContent, ` ${name} can’t be placed: Overseas limit reached`);
+    assert.equal(ui.element.querySelectorAll(".xi-slot-locked").length, locked, "a click changes nothing");
+    assert.equal(ui.element.querySelector(".xi-slot-preview"), null);
     await ui.click('.squad-row:not([aria-disabled="true"])');
     assert.ok(ui.element.querySelector(".selected-player-detail .player-card-flash"), "a pickable player flashes");
+    assert.equal(ui.element.querySelector(".drafting-slot-note"), null, "the note goes with the blocked player");
   } finally { await ui.close(); }
+});
+
+test("lit slots are quiet, with Natural brightest, and S cards on the board take turns with their sweep", async () => {
+  let state: EraDraftState = spunGame("batch-3c-lit", TEAM_EVALUATION_V3_VERSION);
+  for (let pick = 0; pick < 3; pick += 1) {
+    const view = projectEraDraftPublicState(catalog, state as LiveState);
+    if (view.phase !== "AWAITING_PICK") assert.fail("Expected roster");
+    const player = view.candidates.find((item) => item.available && item.tierAppearance === "violet") ?? view.candidates.find((item) => item.available)!;
+    state = accepted(reduceEraDraft(catalog, state, { type: "LOCK_PLAYER", playerTeamSeasonId: player.playerTeamSeasonId, battingPosition: player.positions.find((slot) => slot.available)!.battingPosition }));
+    state = accepted(reduceEraDraft(catalog, state, { type: "SPIN" }));
+  }
+  const view = projectEraDraftPublicState(catalog, state as LiveState);
+  if (view.phase !== "AWAITING_PICK") assert.fail("Expected roster");
+  const ui = await mount(state as LiveState);
+  try {
+    const sCards = [...ui.element.querySelectorAll<HTMLElement>(".xi-slot-locked.tier-violet")];
+    sCards.forEach((card, index) => {
+      assert.equal(card.style.getPropertyValue("--sheen-turn"), String(index));
+      assert.equal(card.style.getPropertyValue("--sheen-turns"), String(sCards.length));
+    });
+    const candidate = view.candidates.find((item) => item.available && item.positions.some((slot) => slot.presentationFit === "NATURAL" && slot.available))!;
+    await act(async () => ui.element.querySelectorAll<HTMLButtonElement>(".squad-row")[view.candidates.indexOf(candidate)]!.click());
+    for (const slot of candidate.positions.filter((item) => item.available)) {
+      const button = ui.element.querySelector(`.xi-slot[data-position="${slot.battingPosition}"] .xi-open-slot`)!;
+      assert.ok(button.classList.contains("xi-slot-active"));
+      assert.equal(button.classList.contains("xi-slot-natural"), slot.presentationFit === "NATURAL", `slot ${slot.battingPosition}`);
+    }
+  } finally { await ui.close(); }
+});
+
+test("a slot the player can't take says Not available, with the reason on focus or a tap", async () => {
+  const { XiBoard } = await import("./XiBoard.js");
+  const state = spunGame("batch-3c-slot-level", TEAM_EVALUATION_V3_VERSION);
+  const view = projectEraDraftPublicState(catalog, state);
+  if (view.phase !== "AWAITING_PICK") assert.fail("Expected roster");
+  const player = view.candidates.find((item) => item.available)!;
+  const blocked = { ...player, positions: player.positions.map((slot) => slot.battingPosition === 2 ? { ...slot, available: false, reasons: [{ code: "FUTURE_XI_IMPOSSIBLE" as const, message: "x" }] } : slot) };
+  const dom = new JSDOM('<!doctype html><div id="root"></div>');
+  const previous = { window: globalThis.window, document: globalThis.document, env: (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT };
+  Object.assign(globalThis, { window: dom.window, document: dom.window.document, IS_REACT_ACT_ENVIRONMENT: true });
+  const root = createRoot(dom.window.document.getElementById("root")!);
+  const notes: [number, string][] = [];
+  const render = (revealed: number | null) => act(async () => root.render(<XiBoard draft={view} selected={blocked} preview={null} pending={null} blocked={false} small={false} arrival={null}
+    revealed={revealed} onBlockedSlot={(position, text) => notes.push([position, text])} onPreview={() => assert.fail("never previews")} onConfirm={() => undefined} onInspect={() => undefined} onArrived={() => undefined} />));
+  try {
+    await render(null);
+    const slot = dom.window.document.querySelector<HTMLButtonElement>('.xi-slot[data-position="2"] .xi-open-slot')!;
+    assert.ok(slot.classList.contains("xi-slot-blocked") && !slot.classList.contains("xi-slot-active"));
+    assert.equal(slot.getAttribute("aria-disabled"), "true");
+    assert.match(slot.textContent!, /Not available/);
+    assert.match(slot.getAttribute("aria-label")!, /^Position 2 · .* · Would leave no legal XI$/);
+    await act(async () => slot.click());
+    assert.deepEqual(notes, [[2, "Position 2 is not available: Would leave no legal XI."]]);
+    await render(2);
+    assert.ok(dom.window.document.querySelector('.xi-slot[data-position="2"] .xi-slot-revealed .xi-open-reason'));
+    assert.ok(dom.window.document.querySelector('.xi-slot[data-position="1"] .xi-slot-active'), "legal slots light as normal");
+  } finally {
+    await act(async () => root.unmount());
+    Object.assign(globalThis, { window: previous.window, document: previous.document, IS_REACT_ACT_ENVIRONMENT: previous.env });
+    dom.window.close();
+  }
 });
 
 test("selecting, clearing and locking move focus between the card, the row and Lock", async () => {

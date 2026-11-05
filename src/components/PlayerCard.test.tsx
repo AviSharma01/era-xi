@@ -179,6 +179,25 @@ test("S keeps its holo and prismatic edge at rest on every size; only a shimmer 
   }
 });
 
+test("S slot cards sweep at rest, taking turns, and reduced motion stops the sweep; big and mini cards do not sweep", () => {
+  const css = readFileSync(new URL("../../src/components/PlayerCard.css", import.meta.url), "utf8");
+  const base = readFileSync(new URL("../../src/styles/base.css", import.meta.url), "utf8");
+  assert.match(css, /^\.tier-violet\.player-card-slot \.player-card-sheen \{[^}]*animation: var\(--anim-sheen-s\)[^}]*animation-delay: calc\(var\(--sheen-turn[^}]*\}$/m);
+  assert.doesNotMatch(css, /tier-violet\.player-card-(big|mini) \.player-card-sheen/);
+  assert.match(base, /prefers-reduced-motion: reduce[\s\S]*--anim-sheen-s: none;/);
+  const card = new JSDOM(markup({ sheenTurn: { index: 1, of: 3 } })).window.document.querySelector<HTMLElement>(".player-card")!;
+  assert.match(card.getAttribute("style")!, /--sheen-turn:1;--sheen-turns:3/);
+});
+
+test("an unavailable big card names its reason, shows it as a banner and keeps no prismatic edge or finish", () => {
+  const card = new JSDOM(markup({ size: "big", state: "unavailable", unavailableReason: "Can’t pick · S limit reached" })).window.document.querySelector(".player-card")!;
+  assert.equal(card.getAttribute("aria-label"), "JP Duminy, S tier, Delhi Daredevils 2014, Batter. Can’t pick · S limit reached");
+  assert.equal(card.querySelector(".player-card-content")!.firstElementChild!.className, "player-card-reason player-card-banner");
+  const css = readFileSync(new URL("../../src/components/PlayerCard.css", import.meta.url), "utf8");
+  assert.match(css, /\.player-card-state-unavailable \.player-card-edge \{[^}]*transform: none;[^}]*animation: none;/);
+  assert.match(css, /\.player-card-state-unavailable :is\(\.player-card-finish, \.player-card-sheen\) \{ display: none; \}/);
+});
+
 test("as a button, the card keeps its name and passes clicks; an enclosing control can name it instead", async () => {
   const ui = mountDom();
   let clicks = 0;

@@ -1,13 +1,13 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactElement, type ReactNode, type RefObject } from "react";
 
-import { PlayerCard } from "../../components/PlayerCard.js";
+import { FitBadge, NoEntryIcon, PlayerCard } from "../../components/PlayerCard.js";
 import { DRAFTING_COPY as COPY, ERA_COPY, fitDisplay, PLAYER_CARD_COPY, rejectionReason, teamAbbreviation } from "../../copy.js";
 import type { DraftCandidateIdentityView } from "../../eraDraftTypes.js";
 import { PlayerInspector, type PlayerInspectorView } from "../../eraDraftPlayerPresentation.js";
 import type { EraDraftTierCaps } from "../../eraDraftTierCaps.js";
 import { useBackStepGuard, useSmallScreen, useSpinReel, useSwipeDown, type ActiveDraft } from "./behaviour.js";
 import { ReelAtRest, SpinReel } from "./SpinReel.js";
-import { SquadList, unavailableReason } from "./SquadList.js";
+import { SquadList, StaleSquad, unavailableReason } from "./SquadList.js";
 import { XiBoard, XiStrip, type Arrival, type PendingLock } from "./XiBoard.js";
 
 export type DraftingCommand =
@@ -67,6 +67,10 @@ export function DraftingWorkspace(props: DraftingWorkspaceProps): ReactElement {
   const [notice, setNotice] = useState<string>(COPY.spinPrompt);
   const [sent, setSent] = useState<SentLock | null>(null);
   const [rejection, setRejection] = useState<{ id: string; reason: string } | null>(null);
+  // A tap on a slot that can't take the shown player: the reason, under the stage and in the slot.
+  const [slotNote, setSlotNote] = useState<{ position: number; text: string } | null>(null);
+  // The squad a respin replaces, shown dimmed while its reel runs.
+  const lastSquad = useRef<readonly DraftCandidateIdentityView[]>([]);
 
   const headingRef = useRef<HTMLHeadingElement>(null);
   const xiHeadingRef = useRef<HTMLHeadingElement>(null);
@@ -102,7 +106,7 @@ export function DraftingWorkspace(props: DraftingWorkspaceProps): ReactElement {
   };
   const clearSelection = (): void => {
     focusRow(selectedId);
-    setSelectedId(null); setPreview(null); setPlacing(false);
+    setSelectedId(null); setPreview(null); setPlacing(false); setSlotNote(null);
     setNotice(COPY.selectionCleared);
   };
   const stepBack = (): void => {
@@ -122,7 +126,7 @@ export function DraftingWorkspace(props: DraftingWorkspaceProps): ReactElement {
     if (revision.current === draft.revision) return;
     revision.current = draft.revision;
     const out = sent;
-    setSelectedId(null); setPreview(null); setInspected(null); setPlacing(false); setSent(null); setRejection(null);
+    setSelectedId(null); setPreview(null); setInspected(null); setPlacing(false); setSent(null); setRejection(null); setSlotNote(null);
     if (out && !draft.picks.some((pick) => pick.battingPosition === out.position && pick.playerTeamSeasonId === out.id)) {
       // The draft moved on without this pick: another tab, or the deadline.
       setNotice(COPY.lockRejectedNotice(out.name, out.position, expired ? COPY.lockTimeUp : COPY.lockDraftChanged));
@@ -136,6 +140,7 @@ export function DraftingWorkspace(props: DraftingWorkspaceProps): ReactElement {
       focusPrimary.current = true;
     }
   }, [draft]);
+  useEffect(() => { if (draft.phase === "AWAITING_PICK" && !reel.active) lastSquad.current = draft.candidates; });
   useEffect(() => {
     const primary = primaryRef.current;
     if (!focusPrimary.current || !primary || primary.disabled) return;
@@ -178,7 +183,7 @@ export function DraftingWorkspace(props: DraftingWorkspaceProps): ReactElement {
   }, [draft.picks, pending?.position, small]);
 
   const selectPlayer = (candidate: DraftCandidateIdentityView): void => {
-    setPreview(null); setInspected(null); setEnteringRevision(null); setRejection(null);
+    setPreview(null); setInspected(null); setEnteringRevision(null); setRejection(null); setSlotNote(null);
     if (candidate.playerTeamSeasonId === selectedId) { clearSelection(); return; }
     setSelectedId(candidate.playerTeamSeasonId);
     setFlashCount((count) => count + 1);
@@ -193,7 +198,7 @@ export function DraftingWorkspace(props: DraftingWorkspaceProps): ReactElement {
   const previewSlot = (position: number): void => {
     const target = placeable?.positions.find((item) => item.battingPosition === position);
     if (!target) return;
-    setPreview(position); setRejection(null);
+    setPreview(position); setRejection(null); setSlotNote(null);
     setNotice(COPY.slotPreview(position, fitDisplay(target.presentationFit, target.nominalDeductionPercent).text));
     focusNext.current = () => lockRef.current?.focus();
   };
@@ -216,6 +221,10 @@ export function DraftingWorkspace(props: DraftingWorkspaceProps): ReactElement {
     setEnteringRevision(draft.revision);
     reel.land();
   };
+  const explainSlot = (position: number, text: string): void => {
+    setSlotNote({ position, text });
+    setNotice(text);
+  };
   const placeInXi = (): void => {
     setDirection("forward"); setPlacing(true);
     focusNext.current = () => xiHeadingRef.current?.focus();
@@ -226,11 +235,13 @@ export function DraftingWorkspace(props: DraftingWorkspaceProps): ReactElement {
   };
 
   const spinAction = spinReady || (reel.active && reel.kind === "SPIN");
+  const respinReel = reel.active && reel.kind === "RESPIN";
   const spinButton = spinAction && <button ref={primaryRef} type="button" className="primary-action drafting-primary drafting-spin" disabled={blocked}
-    aria-label={reel.active ? COPY.spinSkip : undefined} onClick={() => { if (reel.active) landReel(); else onCommand({ type: "SPIN" }); }}>{blocked && !expired ? COPY.waiting : COPY.spin}</button>;
+    onClick={() => { if (reel.active) landReel(); else onCommand({ type: "SPIN" }); }}>{reel.active ? COPY.tapToSkip : blocked && !expired ? COPY.waiting : COPY.spin}</button>;
+  const respinStatus = <span className="drafting-respin-status">{draft.status.respinStatus === "USED" ? COPY.respinUsed : COPY.respinAvailable}</span>;
   const respinControl = draft.phase === "AWAITING_PICK" && !reel.active && draft.status.respinStatus === "AVAILABLE"
     ? <button type="button" className="secondary-action drafting-respin" disabled={blocked} onClick={() => onCommand({ type: "RESPIN" })}>{blocked && !expired ? COPY.waiting : COPY.respinAvailable}</button>
-    : !reel.active && draft.phase !== "XI_COMPLETE" && <span className="drafting-respin-status">{draft.status.respinStatus === "USED" ? COPY.respinUsed : COPY.respinAvailable}</span>;
+    : !reel.active && draft.phase !== "XI_COMPLETE" && respinStatus;
 
   const heading = draft.phase === "AWAITING_SPIN" ? (draft.status.pickCount === 0 ? COPY.readyFirst : COPY.readyNext)
     : draft.phase === "XI_COMPLETE" ? complete.title
@@ -240,13 +251,15 @@ export function DraftingWorkspace(props: DraftingWorkspaceProps): ReactElement {
         abbreviation={teamAbbreviation(draft.currentSpin.teamId, draft.currentSpin.teamName)} year={draft.currentSpin.seasonYear} onLand={landReel} />
     : null;
   const pickLine = <p className="drafting-context"><span>{era.title} · {era.years}</span><span>{COPY.pickOf(Math.min(draft.status.pickCount + 1, 11))}</span></p>;
-  // Before the spin and while its reel runs, the spin is the whole stage: reel, a large Spin, the respin and one line.
-  const stage = spinAction && <section className="spin-stage" aria-labelledby="draft-stage-title">
-    <h1 id="draft-stage-title" ref={headingRef} tabIndex={-1} className="drafting-title">{heading}</h1>
-    {reelElement ?? <ReelAtRest />}
-    {spinButton}
-    <span className="drafting-respin-status">{draft.status.respinStatus === "USED" ? COPY.respinUsed : COPY.respinAvailable}</span>
-    <p className="spin-stage-hint">{props.squadHint ?? COPY.squadEmpty}</p>
+  // Before the spin and while a reel runs, the spin is the whole stage: reel, a large Spin (or skip), the respin and one line.
+  const spinStage = (spinAction || respinReel) && <section className={`spin-stage${respinReel ? " spin-stage-respin" : ""}`} aria-labelledby="draft-stage-title">
+    <h1 id="draft-stage-title" ref={headingRef} tabIndex={-1} className="drafting-title">{respinReel ? COPY.respinTitle : heading}</h1>
+    {reelElement ?? <ReelAtRest eraId={draft.eraId} seed={`rest:${draft.revision}`} />}
+    {spinButton || <button type="button" className="secondary-action drafting-skip" onClick={landReel}>{COPY.tapToSkip}</button>}
+    {respinReel ? <p className="spin-stage-hint">{COPY.respinHint}</p> : <>
+      {respinStatus}
+      <p className="spin-stage-hint">{props.squadHint ?? COPY.squadEmpty}</p>
+    </>}
   </section>;
   const hero = draft.phase === "AWAITING_PICK" && !reel.active
     ? <h1 id="draft-stage-title" ref={headingRef} tabIndex={-1} className="drafting-hero">{draft.currentSpin.teamName} <span>{draft.currentSpin.seasonYear}</span></h1>
@@ -261,7 +274,9 @@ export function DraftingWorkspace(props: DraftingWorkspaceProps): ReactElement {
     state={selected.available ? "selected" : "unavailable"} unavailableReason={unpickable ? COPY.cantPick(unpickable) : undefined}
     flashKey={`${selected.playerTeamSeasonId}:${flashCount}`}
     fit={option?.presentationFit} fitPercent={option?.nominalDeductionPercent} />;
+  const slotNoteLine = slotNote && <p className="drafting-slot-note"><NoEntryIcon /> {slotNote.text}</p>;
   const board = <XiBoard draft={draft} selected={placeable} preview={preview} pending={pending} blocked={blocked} small={small} arrival={arrival} caps={props.tierCaps}
+    blockedSelection={selected && unpickable ? { name: selected.playerName, reason: unpickable } : undefined} revealed={slotNote?.position ?? null} onBlockedSlot={explainSlot}
     headingRef={xiHeadingRef} rootRef={boardRef} onPreview={previewSlot} onConfirm={lock} onInspect={setInspected} onArrived={() => setArrival(null)}
     leading={small && placing ? <button type="button" className="quiet-button drafting-back" disabled={blocked} onClick={stepBack}>{COPY.backToSquad}</button> : undefined} />;
 
@@ -283,7 +298,7 @@ export function DraftingWorkspace(props: DraftingWorkspaceProps): ReactElement {
           </>
           : <>
             {!placing && pickLine}
-            {stage || hero}
+            {(spinAction && spinStage) || hero}
             {board}
           </>}
       </div>
@@ -297,42 +312,64 @@ export function DraftingWorkspace(props: DraftingWorkspaceProps): ReactElement {
           ? <>
             <PlayerCard size="mini" player={placeable} state="selected" fit={option?.presentationFit} fitPercent={option?.nominalDeductionPercent}
               className={pending ? "drafting-card-sent" : rejected ? "drafting-card-returned" : undefined} />
-            {lockHint ?? <p className="drafting-hint">{pending || locking ? PLAYER_CARD_COPY.locking : option ? COPY.tapLock : COPY.tapSlot}</p>}
+            {lockHint ?? slotNoteLine ?? <p className="drafting-hint">{pending || locking ? PLAYER_CARD_COPY.locking : option ? COPY.tapLock : COPY.tapSlot}</p>}
             <div className="drafting-bar-actions">
               <button type="button" className="secondary-action drafting-change" disabled={blocked} onClick={changePlayer}>{COPY.changePlayer}</button>
               {lockButton}
             </div>
           </>
-          : <p className="drafting-hint">{COPY.chooseFirst}</p>)}
+          : slotNoteLine || <p className="drafting-hint">{COPY.chooseFirst}</p>)}
       </div>}
       {status}
       {inspector}
     </div>;
   }
 
-  return <div ref={rootRef} className={`drafting drafting-split${spinReady ? " drafting-spin-ready" : ""}`}>
-    <div className="drafting-left" id="draft-players">
+  // Desktop: squad | stage | XI. Below about 1200 wide the same pieces fall back to two columns, the stage under the squad.
+  const stageState = spinAction || respinReel ? "spin" : draft.phase === "XI_COMPLETE" ? "complete" : selected ? "card" : "empty";
+  const dockHint = lockHint ?? (pending || locking ? <p className="drafting-hint">{PLAYER_CARD_COPY.locking}</p>
+    : option ? <p className="drafting-fit-line">{COPY.inSlot(option.battingPosition)} <FitBadge fit={option.presentationFit} percent={option.nominalDeductionPercent} /></p>
+      : <p className="drafting-hint">{COPY.chooseSlot}</p>);
+  return <div ref={rootRef} className={`drafting drafting-split drafting-stage-${stageState}${spinReady ? " drafting-spin-ready" : ""}`}>
+    <div className="drafting-head">
       {pickLine}
       {props.warning}
-      {stage || <div className={`spin-area${reel.active ? " spin-area-reeling" : draft.phase === "AWAITING_PICK" ? " spin-area-picked" : ""}`}>
-        {hero}
-        {reelElement}
-        <div className="spin-area-actions">{respinControl}</div>
-      </div>}
-      {draft.phase === "AWAITING_PICK" && !reel.active && <SquadList view={draft} selectedId={selectedId} blocked={blocked}
-        entering={enteringRevision === draft.revision} onSelect={selectPlayer} />}
-      {selected && <section className="drafting-dock" aria-label={COPY.dockLabel}>
-        <div ref={cardRef} tabIndex={-1} className={`drafting-dock-card${pending ? " drafting-card-sent" : rejected ? " drafting-card-returned" : ""}`}>{bigCard}</div>
-        <div className="drafting-dock-actions">
-          <button type="button" className="quiet-button drafting-clear" disabled={blocked} onClick={clearSelection}>{COPY.clear}</button>
-          <button type="button" className="quiet-button" onClick={() => setInspected(selected)}>{COPY.inspectSeason}</button>
-          {placeable && (lockHint ?? <p className="drafting-hint">{pending || locking ? PLAYER_CARD_COPY.locking : option ? COPY.clickAgain : COPY.chooseSlot}</p>)}
-          {placeable && lockButton}
-        </div>
-      </section>}
-      {draft.phase === "XI_COMPLETE" && <div className="drafting-complete">
+    </div>
+    <div className="drafting-left" id="draft-players">
+      {draft.phase === "AWAITING_PICK" && !reel.active && <>
+        <div className="spin-area spin-area-picked">{hero}{respinControl}</div>
+        <SquadList view={draft} selectedId={selectedId} blocked={blocked} entering={enteringRevision === draft.revision} onSelect={selectPlayer} />
+      </>}
+      {respinReel && <>
+        <div className="spin-area spin-area-picked"><p className="drafting-hero drafting-hero-pending" aria-hidden="true">{COPY.respinning}</p>{respinStatus}</div>
+        <StaleSquad candidates={lastSquad.current} />
+      </>}
+      {/* With no squad left to show, the column is plain background once the XI is complete. */}
+      {spinAction && <p className="drafting-placeholder">{COPY.squadAfterSpin}</p>}
+    </div>
+    <div className="drafting-stage">
+      {spinStage}
+      {stageState === "complete" && <section className="drafting-complete" aria-labelledby="draft-stage-title">
+        <h1 id="draft-stage-title" ref={headingRef} tabIndex={-1} className="drafting-title">{complete.title}</h1>
         {complete.detail}
         {complete.action(primaryRef)}
+      </section>}
+      {stageState === "card" && selected && <section className={`drafting-dock${placeable ? "" : " drafting-dock-view-only"}`} aria-label={COPY.dockLabel}>
+        <div ref={cardRef} tabIndex={-1} className={`drafting-dock-card${pending ? " drafting-card-sent" : rejected ? " drafting-card-returned" : ""}`}>{bigCard}</div>
+        <div className="drafting-dock-actions">
+          {placeable && dockHint}
+          {placeable && lockButton}
+          {placeable && option && !pending && !locking && <p className="drafting-hint drafting-again">{COPY.clickSlotAgain(option.battingPosition)}</p>}
+          <div className="drafting-dock-links">
+            <button type="button" className="quiet-button drafting-clear" disabled={blocked} onClick={clearSelection}>{COPY.clear}</button>
+            <button type="button" className="quiet-button" onClick={() => setInspected(selected)}>{COPY.inspectSeason}</button>
+          </div>
+          {slotNoteLine}
+        </div>
+      </section>}
+      {stageState === "empty" && <div className="drafting-silhouette">
+        <div className="drafting-silhouette-card"><span className="drafting-silhouette-mono" aria-hidden="true" /><strong>{COPY.pickAPlayer}</strong></div>
+        <p className="drafting-hint">{COPY.pickAPlayerHint}</p>
       </div>}
     </div>
     {board}

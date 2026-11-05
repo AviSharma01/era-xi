@@ -35,6 +35,7 @@ button:disabled { cursor: not-allowed; }
     --anim-slot-pulse: none;
     --anim-spinner: none;
     --anim-sheen: none;
+    --anim-sheen-s: none;
     /* Finishes freeze: S holo at one angle, A a fixed highlight band, B static satin. */
     --anim-card-holo: none;
     --anim-card-edge: none;
@@ -58,6 +59,8 @@ button:disabled { cursor: not-allowed; }
     /* Spin fades straight to its result; no reel scroll, no travel; steps crossfade. */
     --anim-reel-scroll: none;
     --anim-reel-fade: fade-in;
+    --anim-reel-speed: none;
+    --anim-reel-streak: none;
     --motion-spin: var(--motion-flash-reduced);
     --motion-respin: var(--motion-flash-reduced);
     --anim-squad-in: fade-in;

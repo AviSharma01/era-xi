@@ -90,11 +90,17 @@
   --finish-a-foil: linear-gradient(105deg, var(--tier-a-deep), var(--tier-a) 16%, var(--tier-a-foil) 27%, var(--tier-a) 38%, var(--tier-a-deep) 56%, var(--tier-a) 70%, var(--tier-a-foil) 82%, var(--tier-a) 92%);
   --finish-a-sheen: linear-gradient(105deg, transparent 42%, var(--tier-a-sheen) 50%, transparent 58%);
   --finish-a-glint: linear-gradient(105deg, transparent 40%, var(--tier-a-glint) 50%, transparent 60%);
+  /* S at rest on slot cards: a soft rainbow band, wider and brighter than A's glint. */
+  --sweep-s-1: rgba(242, 120, 159, 0.5);
+  --sweep-s-2: rgba(244, 197, 107, 0.42);
+  --sweep-s-3: rgba(127, 227, 181, 0.42);
+  --sweep-s-4: rgba(111, 201, 242, 0.5);
+  --finish-s-rest-sweep: linear-gradient(105deg, transparent 34%, var(--sweep-s-1) 42%, var(--sweep-s-2) 47%, var(--sweep-s-3) 53%, var(--sweep-s-4) 58%, transparent 66%);
   --finish-b-satin: repeating-linear-gradient(90deg, var(--tier-b-brush) 0 1px, transparent 1px 3px), linear-gradient(100deg, transparent 25%, var(--tier-b-satin) 55%, transparent 85%);
   --finish-b-sheen: linear-gradient(105deg, transparent 30%, var(--tier-b-sheen) 50%, transparent 70%);
   /* C's gloss stops above the text at each size, so it never lowers the name's contrast. */
-  --finish-c-gloss-big: radial-gradient(ellipse 130% 13px at 50% 0%, var(--tier-c-gloss) 0 98%, transparent 100%);
-  --finish-c-gloss-slot: radial-gradient(ellipse 130% 92px at 50% 0%, var(--tier-c-gloss) 0 98%, transparent 100%);
+  --finish-c-gloss-big: radial-gradient(ellipse 130% 6% at 50% 0%, var(--tier-c-gloss) 0 98%, transparent 100%);
+  --finish-c-gloss-slot: radial-gradient(ellipse 130% 16% at 50% 0%, var(--tier-c-gloss) 0 98%, transparent 100%);
   --finish-c-gloss-mini: radial-gradient(ellipse 130% 6px at 50% 0%, var(--tier-c-gloss) 0 98%, transparent 100%);
   --finish-c-depth: linear-gradient(180deg, transparent 45%, var(--tier-c-depth));
 
@@ -107,6 +113,8 @@
   --card-flash-burst-core: #F7F2FF;
   --card-flash-brighten: rgba(255, 255, 255, 1);
   --card-selected-glow: 0 0 16px rgba(244, 241, 232, 0.14);
+  --card-unavailable-veil: rgba(8, 16, 32, 0.22);
+  --card-unavailable-edge: var(--color-divider-strong);
   --card-portrait-inset: inset 0 1px 2px var(--card-emboss-shadow), inset 0 -1px 0 var(--card-emboss-highlight);
   --card-emboss: -1px -1px 0 var(--card-emboss-highlight), 1px 1px 1px var(--card-emboss-shadow);
 
@@ -164,6 +172,7 @@
   --type-title: clamp(1.625rem, 1.3929rem + 0.9524vw, 2.25rem);
   --type-number: clamp(1.75rem, 1.3786rem + 1.5238vw, 2.75rem);
   --type-label: clamp(1rem, 0.9071rem + 0.381vw, 1.25rem);
+  --type-label-compact: 1rem; /* the Label role at its phone size, for short slot cards */
   --type-body: 1rem;
   --type-secondary: 0.875rem;
   --type-small: clamp(0.75rem, 0.7268rem + 0.0952vw, 0.8125rem);
@@ -221,15 +230,23 @@
   --card-edge-width-strong: 3px;
   --card-state-edge: 2px;
   --card-state-edge-selected: 3px;
-  --card-slot-min-height: 244px;
+  /* Big and slot cards are 5:7 portraits; their monograms scale with the card (cq units resolve against the card). */
+  --card-aspect: 5 / 7;
+  --card-big-pad: var(--space-4);
+  --card-portrait-big-share: 46cqw;
+  --card-big-name-size: clamp(var(--type-label), 13cqw, var(--type-title));
+  --card-big-text-size: clamp(var(--type-small), 5.9cqw, var(--type-body));
+  --card-monogram-big-share: 21cqw;
+  --card-portrait-slot-share: min(40cqw, 24cqh);
+  --card-portrait-slot-offset: min(6cqw, 4cqh);
+  --card-monogram-slot: min(20cqw, 14cqh);
+  --card-slot-gap: 3px;
   --card-mini-min-height: 56px;
-  --card-portrait-big: clamp(5rem, 4.2571rem + 3.0476vw, 7rem);
-  --card-portrait-big-tall: clamp(6.25rem, 5.3214rem + 3.8095vw, 8.75rem);
-  --card-portrait-slot: 72px;
   --card-portrait-mini: 36px;
-  --card-monogram-big: clamp(2.75rem, 2.2857rem + 1.9048vw, 4rem);
-  --card-monogram-slot: 2.25rem;
   --card-monogram-mini: 1.125rem;
+  --card-unavailable-saturation: 0.5;
+  --no-entry-icon: 1.05em;
+  --no-entry-stroke: 1.75;
   --card-lock-icon: 14px;
   --card-plate-pad: 1px;
   --card-edge-none: 0px;
@@ -245,6 +262,7 @@
   --card-sheen-a-rest-opacity: 0;
   --card-sheen-rest-x: -100%;
   --card-sheen-stagger: -1.25s;
+  --card-sheen-s-turns: 11;
   --card-flash-scale: 1.05;
   --card-flash-settle-scale: 0.975;
   --card-flash-dim-opacity: 0.72;
@@ -254,14 +272,37 @@
   /* Drafting workspace: sizes */
   --drafting-max-width: 1440px;
   --drafting-header-height: 48px;
+  /* Three zones from about 1200 wide (squad | stage | XI), two below it (squad with the card under it | XI). */
+  --drafting-gutter: 36px;
+  --drafting-list-width: clamp(18.75rem, 28vw, 25rem);
+  --drafting-stage-width: clamp(16.25rem, 21vw, 18.75rem);
+  --drafting-fallback-left: clamp(20rem, 38vw, 29.375rem);
+  --stage-card-max: 17rem;
+  --stage-actions-reserve: 190px;
+  --stage-glow: radial-gradient(60% 45% at 50% 38%, rgba(170, 195, 240, 0.1), transparent 70%);
+  --silhouette-width: 13.75rem;
+  --dock-card-fallback-width: min(14.5rem, max(9.5rem, calc((100dvh - 29rem) * 5 / 7)));
+  --flash-card-width: 11.875rem;
+  --inspector-card-width: 13.75rem;
   --squad-min-height: 96px;
   --squad-monogram-size: 28px;
-  --dock-portrait-width: 4.5rem;
-  --dock-portrait-height: 5.5rem;
-  --dock-monogram: 2.5rem;
-  --xi-portrait-min: 24px;
-  --xi-portrait-floor: 600px;
-  --xi-portrait-phone: 28px;
+  --squad-stale-opacity: 0.35;
+  --row-blocked-opacity: 0.45;
+  /* The XI: eleven 5:7 cards in rows of 3, 4 and 4, sized by whichever of width and height runs out first. */
+  --xi-gap: var(--space-3);
+  --xi-gap-phone: var(--space-1h);
+  --xi-row-gap: var(--space-2);
+  --xi-label-gap: var(--space-1);
+  --xi-label-height: calc(var(--type-small) * var(--leading-small));
+  /* Lit slots are quiet: a soft outline and muted words; Natural is brightest; the previewed slot is fully bright. */
+  --slot-lit-edge: rgba(244, 241, 232, 0.3);
+  --slot-lit-wash: rgba(22, 36, 63, 0.45);
+  --slot-lit-wash-hover: rgba(244, 241, 232, 0.07);
+  --slot-lit-text: #AEBCD2;
+  --slot-lit-number: #8EA2C2;
+  --slot-natural-edge: rgba(244, 241, 232, 0.8);
+  --slot-natural-edge-width: 1.5px;
+  --slot-natural-wash: rgba(22, 36, 63, 0.7);
   --xi-strip-gap: 3px;
   --xi-strip-min: 24px;
   /* Limit chips above the XI */
@@ -269,18 +310,21 @@
   --limit-swatch-size: 10px;
   --stopwatch-digit-width: 0.58em;
   --stopwatch-separator-width: 0.3em;
-  --xi-phone-min-height: 500px;
   --xi-short-screen-height: 720px;
   --xi-short-screen-squad: 320px;
   --reel-height: 5.25rem;
   --spin-stage-reel-width: 34rem;
-  --spin-stage-reel-height: 7rem;
+  --spin-stage-reel-height: 6rem;
   --spin-stage-reel-height-phone: 4.25rem;
-  --spin-stage-button-width: 20rem;
+  --spin-stage-button-width: 17rem;
   --spin-stage-button-height: 56px;
-  --reel-tile-width: clamp(5.5rem, 4.75rem + 3vw, 8rem);
+  --reel-tile-width: 5.25rem;
   --reel-tile-gap: var(--space-2);
-  --reel-marker-height: var(--space-2);
+  --reel-marker-height: var(--space-3);
+  /* Speed streaks while the reel is fast: still lines and a dimmed strip that fade out. Opacity only. */
+  --reel-streaks: repeating-linear-gradient(180deg, transparent 0 7px, rgba(230, 236, 245, 0.09) 7px 8px), linear-gradient(90deg, transparent, rgba(230, 236, 245, 0.06) 30%, rgba(230, 236, 245, 0.06) 70%, transparent);
+  --reel-fade: linear-gradient(90deg, var(--color-night-deep) 0, transparent 22%, transparent 78%, var(--color-night-deep) 100%);
+  --reel-speed-dim: 0.55;
 
   /* Motion ladder: only levels 3 and 4 may be loud. */
   --motion-level-0: 200ms;   /* State: fades only */
@@ -302,6 +346,7 @@
   --motion-flash-reduced: 150ms;
   --motion-sheen-a: 5s;
   --motion-sheen-b: 7s;
+  --motion-sheen-s: 7s;
   --motion-card-holo: 5s;
   --motion-card-edge: 6s;
   --motion-card-pending: 2400ms;
@@ -326,6 +371,8 @@
   --ease-hard-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-lock: cubic-bezier(0.3, 1.12, 0.5, 1);
+  /* The reel: one smooth ease-out that never passes 1, so there is no bounce or settle-back. */
+  --ease-reel: cubic-bezier(0.16, 0.84, 0.3, 1);
   --ease-linear: linear;
 
   /* Everything that moves goes through these, so base.css can remove movement in one place. */
@@ -341,6 +388,7 @@
   --anim-slot-pulse: slot-pulse;
   --anim-spinner: load-turn;
   --anim-sheen: card-light-sweep;
+  --anim-sheen-s: card-light-sweep;
   --anim-card-holo: card-holo-drift;
   --anim-card-edge: card-edge-spin;
   --anim-card-pending: card-pending-pulse;
@@ -354,6 +402,8 @@
   --anim-flash-pulse: card-flash-pulse;
   --anim-reel-scroll: reel-scroll;
   --anim-reel-fade: none;
+  --anim-reel-speed: reel-speed;
+  --anim-reel-streak: reel-streak;
   --anim-squad-in: squad-row-in;
   --anim-lock-travel: lock-travel;
   --anim-lock-settle: lock-settle;

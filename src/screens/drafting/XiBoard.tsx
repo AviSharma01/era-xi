@@ -57,10 +57,17 @@ export function LimitsStrip({ draft, caps, compact = false }: { draft: ActiveDra
 /** A lock sent to the server and not yet confirmed: the card sits in its slot with no lock edge. */
 export type PendingLock = { readonly player: DraftCandidateIdentityView; readonly position: number };
 
-/** The XI as eleven full cards in three batting rows, all visible; cards scale with the space they get. */
+/** A selected player who can't be picked at all: slots stay unlit, and a click explains instead of placing. */
+export type BlockedSelection = { readonly name: string; readonly reason: string };
+
+/** The XI as eleven 5:7 portrait cards in three batting rows, all visible; cards scale with the space they get. */
 export function XiBoard(props: {
   draft: ActiveDraft;
   selected?: DraftCandidateIdentityView;
+  blockedSelection?: BlockedSelection;
+  /** A slot whose short reason is showing after a tap. */
+  revealed?: number | null;
+  onBlockedSlot?: (position: number, reason: string) => void;
   preview: number | null;
   pending: PendingLock | null;
   blocked: boolean;
@@ -75,7 +82,9 @@ export function XiBoard(props: {
   onInspect: (pick: DraftPickView) => void;
   onArrived: () => void;
 }): ReactElement {
-  const { draft, selected, preview, pending, blocked, small, arrival } = props;
+  const { draft, selected, preview, pending, blocked, small, arrival, blockedSelection } = props;
+  // S cards on the board take turns with their resting sweep, in batting order.
+  const sPicks = draft.picks.filter((pick) => pick.tierAppearance === "violet").map((pick): number => pick.battingPosition).sort((a, b) => a - b);
   const slot = (position: number): ReactElement => {
     const pick = draft.picks.find((item) => item.battingPosition === position);
     const option = selected?.positions.find((item) => item.battingPosition === position);
@@ -87,7 +96,9 @@ export function XiBoard(props: {
     let content: ReactElement;
     if (pick) {
       const fit = fitDisplay(pick.presentationFit, pick.nominalDeductionPercent);
+      const turn = sPicks.indexOf(position);
       content = <PlayerCard size="slot" state="locked" player={pick} slotNumber={position} fit={pick.presentationFit} fitPercent={pick.nominalDeductionPercent}
+        sheenTurn={turn >= 0 ? { index: turn, of: sPicks.length } : undefined}
         className="xi-slot-occupied xi-slot-locked" label={COPY.lockedSlotLabel(playerCardName(pick), position, fit.text)} onClick={() => props.onInspect(pick)} />;
     } else if (pending?.position === position) {
       const pendingOption = pending.player.positions.find((item) => item.battingPosition === position)!;
@@ -101,17 +112,35 @@ export function XiBoard(props: {
         className="xi-slot-occupied xi-slot-preview" note={small ? undefined : COPY.clickAgain}
         label={COPY.previewSlotLabel(playerCardName(selected), position, fit.text, small)}
         onClick={small || blocked ? undefined : () => props.onConfirm()} />;
+    } else if (blockedSelection && !blocked) {
+      // Unlit, and changes nothing: a click says why this player can't go anywhere.
+      content = <button type="button" className="xi-open-slot xi-slot-unlit" aria-disabled="true"
+        aria-label={COPY.blockedSlotLabel(position, blockedSelection.name, blockedSelection.reason)}
+        onClick={() => props.onBlockedSlot?.(position, COPY.cantPlace(blockedSelection.name, blockedSelection.reason))}>
+        <span className="xi-open-number">{String(position).padStart(2, "0")}</span>
+      </button>;
+    } else if (option && !option.available && !blocked) {
+      // Legal elsewhere, not here: unlit with "Not available"; the short reason shows on focus or a tap, never on hover alone.
+      const fit = fitDisplay(option.presentationFit, option.nominalDeductionPercent);
+      const codes = option.reasons.map((item) => item.code);
+      const reason = rejectionReason(codes) ?? COPY.slotUnavailable;
+      const reasons = [...new Set(codes.map((code) => REJECTION_COPY[code]))].join(". ") || reason;
+      content = <button type="button" className={`xi-open-slot xi-slot-blocked${props.revealed === position ? " xi-slot-revealed" : ""}`} aria-disabled="true"
+        aria-label={slotLabel(position, fit.text, reasons)} onClick={() => props.onBlockedSlot?.(position, COPY.slotNotAvailableNotice(position, reason))}>
+        <span className="xi-open-number">{String(position).padStart(2, "0")}</span>
+        <small className="xi-open-unavailable">{COPY.slotNotAvailable}</small>
+        <small className="xi-open-reason">{reason}</small>
+      </button>;
     } else {
       const fit = option && fitDisplay(option.presentationFit, option.nominalDeductionPercent);
-      const codes = option && !option.available ? option.reasons.map((item) => item.code) : null;
-      const reason = codes && (rejectionReason(codes) ?? COPY.slotUnavailable);
-      const reasons = codes && ([...new Set(codes.map((code) => REJECTION_COPY[code]))].join(". ") || reason);
-      content = <button type="button" className={`xi-open-slot${selected ? " xi-slot-active" : ""}`} disabled={blocked || !selected || !option?.available}
-        aria-label={slotLabel(position, fit?.text ?? null, reasons ?? (blocked ? COPY.waiting : null))}
+      const lit = Boolean(selected && option?.available);
+      // Lit slots are quiet: a soft outline and muted words, Natural brightest, losses in coral.
+      const tone = lit ? ` xi-slot-active${option!.presentationFit === "NATURAL" ? " xi-slot-natural" : ""}` : "";
+      content = <button type="button" className={`xi-open-slot${tone}`} disabled={blocked || !lit}
+        aria-label={slotLabel(position, fit?.text ?? null, blocked && option ? COPY.waiting : null)}
         onClick={() => props.onPreview(position)}>
         <span className="xi-open-number">{String(position).padStart(2, "0")}</span>
         {option && <FitBadge fit={option.presentationFit} percent={option.nominalDeductionPercent} />}
-        {reason && <small className="xi-open-reason">{reason}</small>}
       </button>;
     }
     // The pending card takes focus while the server decides, so keyboard users hear "Locking".

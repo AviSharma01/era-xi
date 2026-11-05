@@ -1,6 +1,6 @@
 /* The shared drafting workspace, Solo and Draft-Off. Values come from tokens.css, and only transform and opacity animate. */
 
-/* The screen is exactly the viewport: the left column scrolls its list, and the XI scales to what's left. */
+/* The screen is exactly the viewport: the squad scrolls its list, and the XI scales to what's left. */
 .gameplay-shell:has(.drafting) { display: flex; flex-direction: column; height: 100dvh; min-height: 0; padding: 0 var(--space-6); overflow: hidden; }
 .gameplay-shell:has(.drafting) .game-header { flex: none; width: 100%; max-width: var(--drafting-max-width); min-height: var(--drafting-header-height); padding-block: 0; }
 body:has(.drafting) .third-party-notices-link { display: none; }
@@ -14,60 +14,102 @@ body:has(.drafting) .third-party-notices-link { display: none; }
 .draft-off-shell .draft-off-room:has(.drafting) :is(.draft-off-recovery, .draft-off-notice) { flex: none; margin-top: var(--space-2); }
 
 .drafting { position: relative; flex: 1; width: 100%; min-height: 0; animation: fade-in var(--motion-screen) var(--ease-out); }
-.drafting-split { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--space-6); max-width: var(--drafting-max-width); margin: 0 auto; padding-block: var(--space-2) var(--space-3); }
-.drafting-left { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; min-height: 0; }
+
+/* Desktop: three zones. Only the squad is a panel; the stage and the XI sit on the background. */
+.drafting-split {
+  display: grid; grid-template-columns: var(--drafting-list-width) var(--drafting-stage-width) minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas: "head stage xi" "left stage xi"; gap: var(--space-2) var(--drafting-gutter);
+  max-width: var(--drafting-max-width); margin: 0 auto; padding-block: var(--space-3) var(--space-4);
+}
+.drafting-head { grid-area: head; display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
+.drafting-left { grid-area: left; display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; min-height: 0; }
+.drafting-split .xi-board { grid-area: xi; }
 
 .drafting .drafting-context { display: flex; flex: none; justify-content: space-between; gap: var(--space-3); margin: 0; color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
 .drafting .drafting-title { margin: 0; font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); letter-spacing: var(--tracking-headline); }
 .drafting .drafting-hero { margin: 0; min-width: 0; font: var(--weight-hero) var(--type-hero)/var(--leading-hero) var(--font-display); letter-spacing: var(--tracking-headline); }
 .drafting .drafting-hero span { color: var(--color-text-muted); }
+.drafting-split .drafting-hero { font-size: var(--type-title); line-height: var(--leading-title); }
+.drafting .drafting-hero-pending { color: var(--color-text-muted); }
+.drafting .drafting-placeholder { display: grid; flex: 1; place-items: center; margin: 0; padding: var(--space-5); border: 1px solid var(--color-divider); border-radius: var(--radius-sm); color: var(--color-text-muted); font-size: var(--type-secondary); line-height: var(--leading-secondary); text-align: center; }
 
-/* Spin area */
-.spin-area { position: relative; display: flex; flex: none; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-3); min-height: var(--reel-height); }
+/* Spin area: the spun franchise-season and Respin, over the squad. */
+.spin-area { position: relative; display: flex; flex: none; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-3); }
 .spin-area-picked { flex-wrap: nowrap; align-items: flex-start; }
-.spin-area-reeling { flex-wrap: nowrap; }
-.drafting-small .spin-area { min-height: 0; }
-.spin-area-actions { display: flex; flex: none; align-items: center; gap: var(--space-3); }
 .drafting-respin-status { color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); white-space: nowrap; }
 .gameplay-shell .drafting .drafting-respin { flex: none; padding-inline: var(--space-3); font-size: var(--type-secondary); line-height: var(--leading-secondary); white-space: nowrap; }
 
-/* The reel: one strip moving once. It lands on the result between two blanks, so nothing else is ever a near miss. */
+/* The stage: no panel, a faint floodlight glow. It holds the spin, the empty silhouette, the card or the finish. */
+.drafting-stage { grid-area: stage; position: relative; isolation: isolate; container: stage / size; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 0; min-height: 0; }
+.drafting-stage::before { content: ""; position: absolute; inset: calc(var(--space-4) * -1) calc(var(--space-5) * -1); z-index: -1; background: var(--stage-glow); pointer-events: none; }
+
+/* The reel: real franchise-seasons all the way, one smooth ease-out from the start tile to the decided result. */
 .gameplay-shell .spin-reel { container-type: inline-size; position: relative; display: block; flex: 1 1 0; min-width: 0; height: var(--reel-height); padding: 0; overflow: hidden; border: 1px solid var(--color-divider-strong); border-radius: var(--radius-md); background: var(--color-night-deep); color: var(--color-text); cursor: pointer; animation: var(--anim-reel-fade) var(--motion-spin) var(--ease-out); }
-.spin-reel-strip { position: absolute; top: 0; bottom: 0; left: 0; display: flex; align-items: stretch; gap: var(--reel-tile-gap); padding-block: var(--space-2); transform: translateX(calc(50cqw - (var(--reel-result-index) + 0.5) * (var(--reel-tile-width) + var(--reel-tile-gap)) + var(--reel-tile-gap) / 2)); animation: var(--anim-reel-scroll) var(--motion-spin) var(--ease-hard-out) backwards; }
-.spin-reel-respin .spin-reel-strip { animation-duration: var(--motion-respin); }
+.spin-reel-strip {
+  --reel-pitch: calc(var(--reel-tile-width) + var(--reel-tile-gap));
+  position: absolute; top: 0; bottom: 0; left: 0; display: flex; align-items: stretch; gap: var(--reel-tile-gap); padding-block: var(--space-2);
+  transform: translateX(calc(50cqw - (var(--reel-result-index) + 0.5) * var(--reel-pitch) + var(--reel-tile-gap) / 2));
+  animation: var(--anim-reel-scroll) var(--motion-spin) var(--ease-reel) backwards, var(--anim-reel-speed) var(--motion-spin) var(--ease-linear) backwards;
+}
+.spin-reel-respin :is(.spin-reel-strip, .spin-reel-streaks) { animation-duration: var(--motion-respin); }
 .gameplay-shell .spin-reel-respin { animation-duration: var(--motion-respin); }
 .spin-reel-tile { display: flex; flex: none; flex-direction: column; align-items: center; justify-content: center; width: var(--reel-tile-width); border: 1px solid var(--color-divider-strong); border-radius: var(--radius-sm); background: var(--color-panel-raised); }
-.spin-reel-tile strong { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); letter-spacing: var(--tracking-headline); }
+.spin-reel-tile strong { font: var(--weight-title) var(--type-title)/var(--leading-clock) var(--font-display); letter-spacing: var(--tracking-headline); }
 .spin-reel-tile small { color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
-.spin-reel-blank { border-color: var(--color-divider); background: var(--wash-faint); }
+.spin-reel-streaks, .spin-reel-fade { position: absolute; inset: 0; pointer-events: none; }
+.spin-reel-streaks { background: var(--reel-streaks); opacity: 0; animation: var(--anim-reel-streak) var(--motion-spin) var(--ease-out) backwards; }
+.spin-reel-fade { background: var(--reel-fade); }
 .spin-reel-marker { position: absolute; top: 0; bottom: 0; left: 50%; width: var(--card-state-edge); margin-left: calc(var(--card-state-edge) / -2); pointer-events: none; }
 .spin-reel-marker::before, .spin-reel-marker::after { content: ""; position: absolute; left: 0; width: 100%; height: var(--reel-marker-height); background: var(--color-action); }
 .spin-reel-marker::before { top: 0; }
 .spin-reel-marker::after { bottom: 0; }
-@keyframes reel-scroll { from { transform: translateX(0); } }
-
-/* The spin stage: before the spin, and while its reel runs, the spin fills the column. */
-.spin-stage { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-3); min-height: 0; padding: var(--space-6); border: 1px solid var(--color-divider); border-radius: var(--radius-sm); background: var(--color-panel); text-align: center; }
-.gameplay-shell .spin-stage .spin-reel { flex: none; width: min(100%, var(--spin-stage-reel-width)); height: var(--spin-stage-reel-height); }
-.gameplay-shell .spin-stage .drafting-spin { width: min(100%, var(--spin-stage-button-width)); min-height: var(--spin-stage-button-height); margin-top: var(--space-2); font: var(--weight-strong) var(--type-label)/var(--leading-label) var(--font-body); }
-.drafting .spin-stage-hint { margin: 0; color: var(--color-text-muted); font-size: var(--type-secondary); line-height: var(--leading-secondary); }
 .spin-reel-rest { cursor: default; }
-.drafting-small .spin-stage { flex: none; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-2) var(--space-3); padding: var(--space-3); }
+@keyframes reel-scroll { from { transform: translateX(calc(50cqw - (var(--reel-start-index) + 0.5) * var(--reel-pitch) + var(--reel-tile-gap) / 2)); } }
+@keyframes reel-speed { from { opacity: var(--reel-speed-dim); } 55% { opacity: var(--reel-speed-dim); } 80%, to { opacity: 1; } }
+@keyframes reel-streak { from { opacity: 1; } 45% { opacity: 0.7; } 65%, to { opacity: 0; } }
+
+/* The spin stage: before the spin and while a reel runs. */
+.spin-stage { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-3); width: 100%; text-align: center; }
+.gameplay-shell .spin-stage .spin-reel { flex: none; width: min(100%, var(--spin-stage-reel-width)); height: var(--spin-stage-reel-height); }
+.gameplay-shell .spin-stage :is(.drafting-spin, .drafting-skip) { width: min(100%, var(--spin-stage-button-width)); min-height: var(--spin-stage-button-height); margin-top: var(--space-2); font: var(--weight-strong) var(--type-label)/var(--leading-label) var(--font-body); }
+.drafting .spin-stage-hint { margin: 0; color: var(--color-text-muted); font-size: var(--type-secondary); line-height: var(--leading-secondary); }
+.drafting-small .spin-stage { flex: none; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-2) var(--space-3); padding: var(--space-3); border: 1px solid var(--color-divider); border-radius: var(--radius-sm); background: var(--color-panel); }
 .drafting-small .spin-stage > .drafting-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .gameplay-shell .drafting-small .spin-stage .spin-reel { grid-column: 1 / -1; width: 100%; height: var(--spin-stage-reel-height-phone); }
 .gameplay-shell .drafting-small .spin-stage .drafting-spin { width: 100%; margin: 0; }
 .drafting-small .spin-stage-hint { grid-column: 1 / -1; }
 
+/* With a squad and nobody selected: a faint card silhouette. */
+.drafting-silhouette { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); text-align: center; }
+.drafting-silhouette-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-3); width: min(var(--silhouette-width), 80cqw); aspect-ratio: var(--card-aspect); border: var(--slot-natural-edge-width) dashed var(--color-divider-strong); border-radius: var(--card-radius-big); color: var(--color-text-muted); font: var(--weight-strong) var(--type-body)/var(--leading-body) var(--font-body); }
+.drafting-silhouette-mono { width: 46%; aspect-ratio: 1; border-radius: var(--radius-md); background: var(--wash-soft); }
+
+/* The selected player: the big portrait card with Lock, Clear and Inspect season under it. */
+.drafting-dock { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); width: 100%; }
+.drafting-dock-card { width: min(100cqw, var(--stage-card-max), calc((100cqh - var(--stage-actions-reserve)) * 5 / 7)); border-radius: var(--card-radius-big); }
+.drafting-dock-actions { display: flex; flex-direction: column; align-items: stretch; gap: var(--space-2); width: min(100cqw, var(--stage-card-max)); text-align: center; }
+.drafting-dock-links { display: flex; justify-content: center; gap: var(--space-5); }
+.gameplay-shell .drafting-dock-links .quiet-button { min-height: 0; padding: var(--space-1) 0; text-decoration: underline; text-decoration-color: var(--color-divider-strong); text-underline-offset: 3px; }
+.drafting .drafting-hint { margin: 0; color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
+.drafting .drafting-fit-line { margin: 0; color: var(--color-text); font-size: var(--type-secondary); line-height: var(--leading-secondary); }
+.drafting .drafting-slot-note { display: flex; align-items: flex-start; justify-content: center; gap: var(--space-1h); margin: 0; padding: var(--space-2) var(--space-3); border: 1px solid var(--color-divider-strong); border-radius: var(--radius-sm); background: var(--color-night-deep); color: var(--color-text); font-size: var(--type-small); font-weight: var(--weight-medium); line-height: var(--leading-small); text-align: left; }
+.drafting-slot-note .no-entry-icon { margin-top: 0.15em; }
+.drafting-complete { display: flex; flex-direction: column; align-items: stretch; gap: var(--space-4); width: 100%; }
+.drafting-complete :is(p, .eyebrow) { margin: 0 0 var(--space-2); }
+.gameplay-shell .drafting-complete :is(.complete-status p, .room-complete p:not(.eyebrow)) { color: var(--color-text); font: var(--weight-regular) var(--type-body)/var(--leading-body) var(--font-body); }
+.gameplay-shell .drafting-complete .complete-status p:first-child { margin-bottom: var(--space-2); }
+
 /* Squad: one list panel, rows on hairlines. */
 .squad-panel { display: flex; flex: 1; flex-direction: column; min-height: var(--squad-min-height); overflow: hidden; border: 1px solid var(--color-divider); border-radius: var(--radius-sm); background: var(--color-panel); }
 .squad-heading { display: flex; flex: none; align-items: baseline; justify-content: space-between; gap: var(--space-3); padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-divider); }
-.drafting .squad-heading h2 { margin: 0; font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); }
+.drafting .squad-heading :is(h2, .squad-title) { margin: 0; font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); }
 .squad-heading span { color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
 .squad-fieldset { display: flex; flex: 1; flex-direction: column; min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; }
 .squad-rows { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-color: var(--color-scrollbar) transparent; scrollbar-width: thin; }
 .squad-rows-entering .squad-entry { animation: var(--anim-squad-in) var(--motion-level-1) var(--ease-out) backwards; animation-delay: min(calc(var(--row-index) * var(--motion-squad-stagger)), var(--motion-squad-total)); }
 .squad-group-label { padding: var(--space-1) var(--space-3); border-bottom: 1px solid var(--color-divider); color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
-.gameplay-shell .squad-row { display: grid; grid-template-columns: var(--squad-monogram-size) minmax(0, 1fr) auto var(--space-4); gap: var(--space-2h); align-items: center; width: 100%; padding: var(--space-2) var(--space-3); border: 0; border-bottom: 1px solid var(--color-divider); background: transparent; color: var(--color-text); text-align: left; cursor: pointer; }
+.gameplay-shell :is(.squad-row, .squad-stale-row) { display: grid; grid-template-columns: var(--squad-monogram-size) minmax(0, 1fr) auto var(--space-4); gap: var(--space-2h); align-items: center; width: 100%; padding: var(--space-2) var(--space-3); border: 0; border-bottom: 1px solid var(--color-divider); background: transparent; color: var(--color-text); text-align: left; }
+.gameplay-shell .squad-row { cursor: pointer; }
 .gameplay-shell .squad-row:hover:not(:disabled) { background: var(--color-row-hover); }
 .gameplay-shell .squad-row-selected, .gameplay-shell .squad-row-selected:hover:not(:disabled) { background: var(--color-row-selected); box-shadow: inset var(--card-state-edge-selected) 0 0 var(--color-action); }
 .gameplay-shell .squad-row:disabled { cursor: wait; }
@@ -77,64 +119,67 @@ body:has(.drafting) .third-party-notices-link { display: none; }
 .squad-row-body > span { color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
 .squad-row-stats { display: grid; gap: 0; color: var(--color-text); font-size: var(--type-secondary); line-height: var(--leading-secondary); text-align: right; white-space: nowrap; }
 .squad-row-mark { text-align: center; }
-/* Unavailable: dimmed name, with the reason always readable. */
-.gameplay-shell .squad-row[aria-disabled="true"] strong, .gameplay-shell .squad-row[aria-disabled="true"] .squad-row-stats { color: var(--color-text-muted); }
-.drafting .squad-row .squad-row-reason { color: var(--color-text); font-weight: var(--weight-medium); }
+/* Can't pick: the whole row dims; the reason is a chip with a no-entry mark, at full contrast, and there is no "+". */
+.gameplay-shell .squad-row[aria-disabled="true"] :is(.squad-monogram, .squad-row-body > strong, .squad-row-meta, .squad-row-stats) { opacity: var(--row-blocked-opacity); }
+.drafting .squad-row .squad-row-reason { display: inline-flex; align-items: center; justify-self: start; gap: var(--space-1); margin-top: var(--space-1); padding: 0 var(--space-1h); border: 1px solid var(--color-divider-strong); border-radius: var(--radius-xs); background: var(--color-night-deep); color: var(--color-text); font-size: var(--type-small); font-weight: var(--weight-medium); line-height: var(--leading-small); }
+/* While a respin's reel runs, the old squad stays put, dimmed and inert. */
+.squad-panel-stale { opacity: var(--squad-stale-opacity); }
 
-/* The docked big card. */
-.drafting-dock { display: flex; flex: none; flex-direction: column; gap: var(--space-1); --card-portrait-big: var(--dock-portrait-width); --card-portrait-big-tall: var(--dock-portrait-height); --card-monogram-big: var(--dock-monogram); }
-.drafting-dock-card { border-radius: var(--card-radius-big); }
-.drafting-dock-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--space-3); }
-.drafting .drafting-dock-actions .drafting-lock { margin-left: auto; }
-.drafting .drafting-hint { margin: 0; color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
-.drafting-dock-actions .drafting-hint { flex: 1 1 8ch; text-align: right; }
-.drafting-complete { display: flex; flex: 1; flex-direction: column; gap: var(--space-4); justify-content: center; padding: var(--space-5); border: 1px solid var(--color-divider); border-radius: var(--radius-sm); background: var(--color-panel); }
-.drafting-complete :is(p, .eyebrow) { margin: 0 0 var(--space-2); }
-.gameplay-shell .drafting-complete :is(.complete-status p, .room-complete p:not(.eyebrow)) { color: var(--color-text); font: var(--weight-regular) var(--type-body)/var(--leading-body) var(--font-body); }
-.gameplay-shell .drafting-complete .complete-status p:first-child { margin-bottom: var(--space-2); }
+/* The XI: eleven 5:7 cards in three batting rows, all visible. The width is whichever of the zone's width and height runs out first. */
+.xi-board { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; min-height: 0; }
+.xi-board-heading { display: flex; flex: none; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); }
+.drafting .xi-board-heading h2 { margin: 0; font: var(--weight-title) var(--type-label)/var(--leading-label) var(--font-display); }
+.xi-count { color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
+.xi-rows { container: xi-rows / size; display: flex; flex: 1; flex-direction: column; gap: var(--xi-row-gap); min-height: 0; }
+.xi-row-group { display: flex; flex-direction: column; gap: var(--xi-label-gap); }
+.xi-row-label { flex: none; height: var(--xi-label-height); color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
+.xi-row { display: flex; justify-content: center; gap: var(--xi-gap); }
+.xi-slot {
+  --xi-card-w: min(calc((100cqw - 3 * var(--xi-gap)) / 4), calc((100cqh - 2 * var(--xi-row-gap) - 3 * (var(--xi-label-height) + var(--xi-label-gap))) / 3 * 5 / 7));
+  position: relative; display: grid; flex: none; width: var(--xi-card-w); aspect-ratio: var(--card-aspect); min-width: 0;
+}
 
-/* The XI: three batting rows. The cards take whatever height the rows give them. */
-.xi-board { display: flex; flex-direction: column; gap: var(--space-1h); min-width: 0; min-height: 0; }
-.xi-board-heading { display: flex; flex: none; flex-wrap: wrap; align-items: baseline; gap: 0 var(--space-3); }
-.drafting .xi-board-heading h2 { margin: 0; font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); }
-.xi-count { color: var(--color-action); font-size: var(--type-small); line-height: var(--leading-small); }
-.xi-rows { container-type: size; display: grid; flex: 1; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: var(--space-1h); min-height: 0; }
-.xi-row-group { --xi-portrait: clamp(var(--xi-portrait-min), calc((100cqh - var(--xi-portrait-floor)) * 0.4), var(--card-portrait-slot)); display: flex; flex-direction: column; gap: var(--space-1); min-height: 0; }
-.xi-row-label { flex: none; color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
-.xi-row { display: flex; flex: 1; justify-content: center; gap: var(--space-2); min-height: 0; }
-.xi-slot { position: relative; display: grid; flex: 0 0 calc((100% - 3 * var(--space-2)) / 4); min-width: 0; min-height: 0; }
+/* Slot cards fill the slot. On desktop each is a size container and never grows: the extras drop out whole as it shrinks
+   (stats, then the role), measured against what each needs at the type scale's sizes. */
+.xi-slot .player-card-slot { min-height: 0; }
+.drafting-split .xi-slot .player-card-slot { container: slot-card / size; height: 100%; }
+.drafting-split .xi-slot .player-card-slot .player-card-body { height: 100%; }
+.drafting-split .xi-slot .player-card-slot .player-card-content { overflow: hidden; }
+/* The monogram gives way first: it shrinks to whatever a two-line name or fit leaves, so text is never cut. */
+.drafting-split .xi-slot .player-card-slot .player-card-content { padding-top: calc(var(--space-6) + var(--space-1)); }
+.drafting-split .xi-slot .player-card-slot .player-card-portrait { flex: 0 1 auto; width: auto; height: var(--card-portrait-slot-share); min-height: 0; margin-top: 0; overflow: hidden; }
+.xi-slot .player-card-slot .player-card-stats { flex: none; gap: 0 var(--space-1h); font-size: var(--type-small); line-height: var(--leading-small); }
+.xi-slot .player-card-slot :is(.player-card-team, .player-card-name, .player-card-note) { flex: none; }
+.xi-slot .player-card .player-card-fit { flex: 0 1 auto; max-width: 100%; }
+.xi-slot .player-card .player-card-fit .fit-badge { min-width: 0; text-align: center; white-space: normal; }
+@container slot-card (max-height: 182px) {
+  .xi-slot .player-card-slot :is(.player-card-stats, .player-card-note) { display: none; }
+  .xi-slot .player-card.player-card-slot .player-card-name { font-size: var(--type-label-compact); }
+}
+@container slot-card (max-height: 170px) { .xi-slot .player-card-slot .player-card-role { display: none; } }
+@container slot-card (max-height: 140px) { .xi-slot .player-card-slot .player-card-team { display: none; } }
 
-/* Slot cards fill the slot; the number and lock sit over the portrait's row so the card can shrink. */
-.xi-slot .player-card-slot { height: 100%; min-height: 0; }
-.xi-slot .player-card-slot .player-card-body { height: 100%; min-height: 0; }
-.xi-slot .player-card-slot .player-card-content { position: relative; height: 100%; min-height: 0; gap: var(--space-1); overflow: hidden; padding: var(--space-1h) var(--space-2) var(--space-2); }
-.xi-slot .player-card-slot .player-card-top { position: absolute; top: var(--space-1h); right: var(--space-1h); left: var(--space-1h); z-index: 1; width: auto; }
-.xi-slot .player-card-slot .player-card-portrait { flex: none; width: var(--xi-portrait); height: var(--xi-portrait); font-size: calc(var(--xi-portrait) * 0.5); }
-.xi-slot .player-card-slot .player-card-name { flex: none; }
-.xi-slot .player-card-slot .player-card-tags { margin-top: auto; }
-.xi-slot .player-card-slot .player-card-team { flex: none; }
-/* Stats never shrink into a cut line: the height tiers below drop them whole. */
-.xi-slot .player-card-slot .player-card-stats { flex: none; font-size: var(--type-small); line-height: var(--leading-small); }
-.xi-slot .player-card-slot .player-card-note { flex: none; }
-.xi-slot .player-card-fit .fit-badge { text-align: center; white-space: normal; }
-
-/* Open slots. Quiet until a player can go there: then a solid ivory outline with the number and its fit. */
-.gameplay-shell .xi-open-slot { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-1); width: 100%; height: 100%; min-height: 0; padding: var(--space-1h); overflow: hidden; border: 1px solid var(--color-divider); border-radius: var(--card-radius-slot); background: var(--wash-faint); color: var(--color-text-muted); text-align: center; }
+/* Open slots. Unlit until a player can go there. Lit slots are quiet; Natural is the brightest. */
+.gameplay-shell .xi-open-slot { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-1); width: 100%; height: 100%; min-height: 0; padding: var(--space-1h); overflow: hidden; border: 1px solid var(--color-divider); border-radius: var(--card-radius-slot); background: var(--wash-faint); color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); text-align: center; }
 .xi-open-number { position: absolute; top: var(--space-1h); left: var(--space-2); font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); }
-.gameplay-shell .xi-slot-active:not(:disabled) { border: var(--card-state-edge) solid var(--color-action); background: var(--wash-ivory); color: var(--color-text); cursor: pointer; }
-.gameplay-shell .xi-slot-active:hover:not(:disabled) { background: var(--wash-ivory-strong); }
-.gameplay-shell .xi-open-slot .fit-badge { color: inherit; }
-.xi-open-reason { font-size: var(--type-small); line-height: var(--leading-small); overflow-wrap: anywhere; }
+.gameplay-shell .xi-open-slot .fit-badge { color: inherit; font-weight: var(--weight-medium); }
+.gameplay-shell .xi-open-slot .fit-percent-loss { display: block; }
+.gameplay-shell .xi-slot-active:not(:disabled) { border-color: var(--slot-lit-edge); background: var(--slot-lit-wash); color: var(--slot-lit-text); cursor: pointer; }
+.gameplay-shell .xi-slot-active:not(:disabled) .xi-open-number { color: var(--slot-lit-number); }
+.gameplay-shell .xi-slot-natural:not(:disabled) { border: var(--slot-natural-edge-width) solid var(--slot-natural-edge); background: var(--slot-natural-wash); color: var(--color-text); }
+.gameplay-shell .xi-slot-natural:not(:disabled) :is(.xi-open-number, .fit-badge) { color: var(--color-text); font-weight: var(--weight-strong); }
+.gameplay-shell .xi-slot-active:hover:not(:disabled) { background: var(--slot-lit-wash-hover); }
+.gameplay-shell .xi-slot-unlit, .gameplay-shell .xi-slot-blocked { cursor: default; }
+/* Not available here: says so in words; the reason shows on focus or after a tap, never on hover alone. */
+.xi-open-unavailable { color: var(--color-text-muted); font-size: var(--type-small); font-weight: var(--weight-medium); line-height: var(--leading-small); }
+.xi-open-reason { display: none; color: var(--color-text); font-size: var(--type-small); line-height: var(--leading-small); overflow-wrap: anywhere; }
+.xi-slot-blocked:focus-visible .xi-open-reason, .xi-slot-revealed .xi-open-reason { display: block; }
 
 /* Fit: the label always says it; a loss adds its percentage in coral. Never colour alone. */
 .gameplay-shell .fit-badge-percent { position: relative; color: var(--color-text); }
 .fit-percent-loss { color: var(--color-loss); font-weight: var(--weight-strong); white-space: nowrap; }
 
-/* Short windows: the portrait shrinks first, then the extras go. Never below 12px, never the name or the fit. */
-@container (max-height: 560px) { .xi-slot .player-card-slot .player-card-stats { display: none; } }
-@container (max-height: 520px) { .xi-slot .player-card-slot :is(.player-card-role, .player-card-note) { display: none; } }
-
-/* Lock: the card travels from the dock, with a tiny overshoot; then the ivory edge fades in. */
+/* Lock: the card travels from the stage, with a tiny overshoot; then the ivory edge fades in. */
 .xi-slot-travelling { z-index: 5; transform-origin: 0 0; animation: var(--anim-lock-travel) var(--motion-lock) var(--ease-lock) backwards; }
 .xi-slot-settling { z-index: 5; animation: var(--anim-lock-settle) var(--motion-lock) var(--ease-lock) backwards; }
 :is(.xi-slot-travelling, .xi-slot-settling) .player-card-state-edge { animation-delay: var(--motion-lock-edge-delay); animation-fill-mode: backwards; }
@@ -144,8 +189,23 @@ body:has(.drafting) .third-party-notices-link { display: none; }
 @keyframes lock-highlight { from { opacity: 1; } to { opacity: 0; } }
 @keyframes squad-row-in { from { opacity: 0; transform: translateY(var(--motion-squad-offset)); } }
 
+/* 960 to 1200 wide: two columns, the squad with the stage under it | the XI. The spin and the finish sit above the squad. */
+@media (max-width: 1199px) {
+  .drafting-split { grid-template-columns: var(--drafting-fallback-left) minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; grid-template-areas: "head xi" "left xi" "stage xi"; gap: var(--space-3) var(--drafting-gutter); }
+  .drafting-split:is(.drafting-stage-spin, .drafting-stage-complete) { grid-template-rows: auto auto minmax(0, 1fr); grid-template-areas: "head xi" "stage xi" "left xi"; }
+  .drafting-stage-empty .drafting-stage { display: none; }
+  .drafting-stage { container-type: normal; align-items: stretch; }
+  .drafting-stage::before { display: none; }
+  .gameplay-shell .drafting-split .spin-stage .spin-reel { width: 100%; }
+  .drafting-dock { flex-direction: row; align-items: flex-start; gap: var(--space-4); }
+  .drafting-dock-card { flex: none; width: var(--dock-card-fallback-width); }
+  .drafting-dock-actions { flex: 1; width: auto; padding-top: var(--space-1); text-align: left; }
+  .drafting-dock-links { justify-content: flex-start; }
+}
+
 /* Phones: the screen follows the step. */
 .drafting-small { display: flex; flex-direction: column; min-height: 0; }
+.drafting-small .spin-area { min-height: 0; }
 .drafting-screen { display: flex; flex: 1; flex-direction: column; gap: var(--space-1h); min-height: 0; padding-block: var(--space-1) var(--space-2); }
 .drafting-step-forward { animation: var(--anim-step-forward) var(--motion-step-slide) var(--ease-standard) backwards; }
 .drafting-step-back { animation: var(--anim-step-back) var(--motion-step-slide) var(--ease-standard) backwards; }
@@ -153,25 +213,19 @@ body:has(.drafting) .third-party-notices-link { display: none; }
 @keyframes step-in-back { from { opacity: 0; transform: translateX(calc(var(--motion-step-distance) * -1)); } }
 .drafting-screen-board { overflow: hidden; }
 .drafting-screen-board .xi-board { flex: 1; }
+/* Phone XI: 5:7 cards four to a row; a row grows a little only when a long name and fit need the room. */
+.drafting-small .xi-rows { container: xi-rows / inline-size; flex: none; }
 .drafting-small .xi-row-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-.drafting-small .xi-row-group { display: grid; --xi-portrait: var(--xi-portrait-phone); }
-.drafting-small .xi-row { gap: var(--space-1h); }
-.drafting-small .xi-slot { flex: 1 1 0; }
+.drafting-small .xi-row { gap: var(--xi-gap-phone); }
+.drafting-small .xi-slot { --xi-card-w: calc((100cqw - 3 * var(--xi-gap-phone)) / 4); }
 .drafting-small .xi-slot .player-card-slot .player-card-content { gap: var(--card-plate-pad); padding: var(--space-1) var(--space-1) var(--space-1h); }
-.drafting-small .xi-slot .player-card-slot .player-card-top { position: static; flex: none; flex-wrap: wrap; width: 100%; gap: var(--card-plate-pad); justify-content: space-between; min-height: 0; }
-.drafting-small .xi-slot .player-card-slot .player-card-portrait { display: none; }
+.drafting-small .xi-slot .player-card-slot .player-card-top { position: static; flex: none; flex-wrap: wrap; width: 100%; gap: var(--card-plate-pad); justify-content: space-between; }
+.drafting-small .xi-slot .player-card-slot :is(.player-card-portrait, .player-card-stats, .player-card-role) { display: none; }
 .drafting-small .xi-slot .player-card-slot .player-card-tags { flex-direction: column; flex-wrap: nowrap; gap: var(--card-plate-pad); }
 .drafting-small .xi-slot .player-card-fit .fit-badge { display: block; }
 .drafting-small :is(.xi-slot .player-card-fit, .xi-open-slot) .fit-percent-loss { display: block; }
-/* Tall enough for the monogram, or too short for everything: drop the extras, never the name or the fit. */
-@container (min-height: 660px) { .drafting-small .xi-slot .player-card-slot .player-card-portrait { display: grid; } }
-@container (max-height: 600px) { .drafting-small .xi-slot .player-card-slot .player-card-stat + .player-card-stat { display: none; } }
-@container (max-height: 560px) { .drafting-small .xi-slot .player-card-slot .player-card-stats { display: flex; } }
-@container (max-height: 540px) { .drafting-small .xi-slot .player-card-slot .player-card-stats { display: none; } }
-@container (max-height: 600px) { .drafting-small .xi-slot .player-card-slot .player-card-role { display: none; } }
 @media (max-width: 959px) and (max-height: 700px) {
   .drafting-screen-board { overflow-y: auto; }
-  .drafting-screen-board .xi-rows { flex: none; height: var(--xi-phone-min-height); }
 }
 .drafting-small .drafting-title { font-size: var(--type-label); line-height: var(--leading-label); }
 .drafting-screen-board > .drafting-title, .drafting-screen-board > .drafting-hero { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
@@ -186,11 +240,16 @@ body:has(.drafting) .third-party-notices-link { display: none; }
 .xi-strip-filled.tier-emerald { border-color: var(--tier-c); background: var(--tier-c); color: var(--tier-c-ink); }
 .xi-strip-filled.tier-slate { border-color: var(--tier-d); background: var(--tier-d); color: var(--tier-d-ink); }
 
-/* The flash: the card expands out of its row. Swiping down on it dismisses, so it takes the gesture. */
-.squad-flash { padding: var(--space-2); border-bottom: 1px solid var(--color-divider); background: var(--color-row-selected); transform-origin: 50% 0; animation: var(--anim-card-expand) var(--motion-level-1) var(--ease-standard) backwards; --card-portrait-big: var(--dock-portrait-width); --card-portrait-big-tall: var(--dock-portrait-height); --card-monogram-big: var(--dock-monogram); }
+/* The flash: the portrait card expands out of its row, with its actions beside it. Swiping down on it dismisses. */
+.squad-flash { container: squad-flash / inline-size; display: grid; grid-template-columns: var(--flash-card-width) minmax(0, 1fr); align-items: end; gap: var(--space-3); padding: var(--space-2); border-bottom: 1px solid var(--color-divider); background: var(--color-row-selected); transform-origin: 50% 0; animation: var(--anim-card-expand) var(--motion-level-1) var(--ease-standard) backwards; }
 .squad-flash-card { border-radius: var(--card-radius-big); touch-action: none; }
-.squad-flash-actions { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding-top: var(--space-1h); }
+.squad-flash-actions { display: flex; flex-direction: column; align-items: stretch; gap: var(--space-2); }
 .gameplay-shell .drafting .drafting-place { flex: none; }
+@container squad-flash (max-width: 330px) {
+  .squad-flash { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+  .squad-flash-card { width: var(--flash-card-width); }
+  .squad-flash-actions { flex-direction: row; justify-content: center; width: 100%; }
+}
 @keyframes squad-flash-in { from { opacity: 0; transform: scaleY(var(--flash-expand-scale)); } }
 
 /* The bottom bar. It never covers the XI: the cards give up the height. */
@@ -204,6 +263,7 @@ body:has(.drafting) .third-party-notices-link { display: none; }
 .drafting-bar-detail { flex: 1 1 100%; color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
 .drafting-bar-detail :is(p, .eyebrow) { margin: 0; }
 .drafting-bar-detail .eyebrow, .drafting-bar-detail .room-complete p:last-child { display: none; }
+.drafting-bar .drafting-slot-note { justify-content: flex-start; }
 
 /* The respin reel plays over the squad; the first spin plays over the XI, with Spin still in the bar. */
 .drafting-reel-overlay { position: absolute; top: 30%; right: 0; left: 0; z-index: 6; display: flex; padding: var(--space-4) 0; background: var(--color-scrim); }
@@ -221,11 +281,12 @@ body:has(.drafting) .third-party-notices-link { display: none; }
 }
 
 /* Too short to fit the XI at any size (a phone on its side): the page scrolls instead. */
-@media (max-height: 540px) {
+@media (max-height: 580px) {
   body:has(.drafting) .third-party-notices-link { display: block; }
   .gameplay-shell:has(.drafting) { display: block; height: auto; min-height: 100dvh; overflow: visible; }
-  .drafting-split { grid-template-columns: minmax(0, 1fr); }
-  .xi-rows { height: var(--xi-short-screen-height); }
+  .drafting-split { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "head" "left" "stage" "xi"; }
+  .drafting-split .xi-rows { height: var(--xi-short-screen-height); }
+  .drafting-stage { container-type: normal; }
   .squad-panel { min-height: var(--xi-short-screen-squad); }
 }
 
@@ -249,13 +310,10 @@ body:has(.drafting) .third-party-notices-link { display: none; }
 .xi-strip-pinned { display: flex; flex: none; flex-direction: column; gap: var(--space-1); }
 .drafting-small .xi-limits-compact .xi-limit { padding-inline: var(--space-1h); }
 
-/* Can't pick: dimmed, the short reason always visible. Tapping still opens the card, without its flash. */
-.gameplay-shell .squad-row[aria-disabled="true"] .squad-monogram { opacity: 0.55; }
-
-/* Optimistic lock: the card has left the dock for its slot; a rejection snaps it back. */
+/* Optimistic lock: the card has left the stage for its slot; a rejection snaps it back. */
 .drafting-card-sent { visibility: hidden; }
 .drafting-card-returned { animation: var(--anim-snap-back) var(--motion-level-1) var(--ease-out); }
 @keyframes snap-back { from { opacity: 0.4; transform: translateX(var(--motion-snap-distance)); } }
-.drafting .drafting-rejected { flex: 1 1 12ch; margin: 0; color: var(--color-error-text); font-size: var(--type-small); font-weight: var(--weight-medium); line-height: var(--leading-small); text-align: right; }
+.drafting .drafting-rejected { margin: 0; color: var(--color-error-text); font-size: var(--type-small); font-weight: var(--weight-medium); line-height: var(--leading-small); }
 .drafting-bar .drafting-rejected { text-align: left; }
 .xi-slot[tabindex]:focus-visible { border-radius: var(--card-radius-slot); }

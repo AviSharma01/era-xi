@@ -30,6 +30,8 @@ button.player-card-slot:hover .player-card-body { transform: translateY(var(--mo
 .tier-violet .player-card-finish { right: auto; width: var(--card-holo-width); background: var(--finish-s-holo); transform: translateX(var(--card-holo-rest-x)); }
 .tier-violet.player-card-shimmer .player-card-edge { animation: var(--anim-card-edge) var(--motion-card-edge) var(--ease-linear) infinite; }
 .tier-violet.player-card-shimmer .player-card-finish { animation: var(--anim-card-holo) var(--motion-card-holo) var(--ease-in-out) infinite alternate; }
+/* S slot cards at rest: a rainbow sweep, stronger than A's glint. The cards on a board take turns, one after another. */
+.tier-violet.player-card-slot .player-card-sheen { background: var(--finish-s-rest-sweep); animation: var(--anim-sheen-s) var(--motion-sheen-s) var(--ease-in-out) infinite; animation-delay: calc(var(--sheen-turn, var(--card-order, 0)) * var(--motion-sheen-s) / var(--sheen-turns, var(--card-sheen-s-turns))); }
 
 /* A: mirror foil on a still gold edge. */
 .tier-gold .player-card-edge { background: var(--finish-a-edge); }
@@ -71,21 +73,36 @@ button.player-card-slot:hover .player-card-body { transform: translateY(var(--mo
 .player-card-meta > span + span::before { content: "· "; }
 .player-card-ribbon { position: absolute; top: 0; left: 50%; z-index: 2; transform: translateX(-50%); }
 
-/* Big */
-.player-card-big .player-card-content { gap: var(--space-4); padding: var(--space-4); }
-.player-card-big .player-card-portrait { width: var(--card-portrait-big); height: var(--card-portrait-big-tall); font-size: var(--card-monogram-big); }
-.player-card-big .player-card-copy { gap: var(--space-1); }
-.player-card-big .player-card-top:empty { display: none; }
-.player-card.player-card-big .player-card-name { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); letter-spacing: var(--tracking-headline); }
-.player-card-big .player-card-team, .player-card-big .player-card-era-best { font-size: var(--type-body); line-height: var(--leading-body); }
-.player-card-big .player-card-stats { margin-top: var(--space-1); }
+/* Big and slot are 5:7 portraits: a centred column, monogram first. */
+.player-card:is(.player-card-big, .player-card-slot) .player-card-body { display: flex; flex-direction: column; aspect-ratio: var(--card-aspect); }
+.player-card:is(.player-card-big, .player-card-slot) .player-card-content { flex: 1 1 auto; flex-direction: column; align-items: center; text-align: center; }
+.player-card:is(.player-card-big, .player-card-slot) .player-card-portrait { aspect-ratio: 1; height: auto; }
+:is(.player-card-big, .player-card-slot) :is(.player-card-stats, .player-card-meta, .player-card-tags) { justify-content: center; }
 
-/* Slot */
-.player-card-slot .player-card-body { min-height: var(--card-slot-min-height); }
-.player-card-slot .player-card-content { min-height: inherit; flex-direction: column; align-items: center; gap: var(--space-1); padding: var(--space-2) var(--space-2) var(--space-3); text-align: center; }
-.player-card-slot .player-card-top { width: 100%; min-height: var(--space-6); }
-.player-card-slot .player-card-portrait { width: var(--card-portrait-slot); height: var(--card-portrait-slot); font-size: var(--card-monogram-slot); }
-.player-card-slot .player-card-stats, .player-card-slot .player-card-tags { justify-content: center; }
+/* Big. Sizes follow the card's width; a long name makes it taller rather than clipped. */
+.player-card.player-card-big { container: player-card-big / inline-size; }
+.player-card-big .player-card-content { gap: var(--space-1h); padding: var(--card-big-pad); }
+.player-card-big .player-card-portrait { width: var(--card-portrait-big-share); margin-top: var(--space-2); font-size: var(--card-monogram-big-share); }
+.player-card-big .player-card-copy { flex: none; align-items: center; gap: var(--space-1); width: 100%; margin-top: var(--space-1); }
+.player-card-big .player-card-top { width: 100%; }
+.player-card-big .player-card-top:empty { display: none; }
+/* Narrow big cards (a phone's flash, the fallback dock) step their type down with the card, never below the small size. */
+.player-card.player-card-big .player-card-name { font: var(--weight-title) var(--card-big-name-size)/var(--leading-title) var(--font-display); letter-spacing: var(--tracking-headline); }
+.player-card-big :is(.player-card-team, .player-card-era-best, .player-card-meta) { font-size: var(--card-big-text-size); line-height: var(--leading-secondary); }
+.player-card-big .player-card-stats { margin-top: var(--space-1); font-size: var(--card-big-text-size); }
+.player-card-big .player-card-fit, .player-card-big .player-card-note { margin-top: auto; }
+.player-card-big .player-card-fit + .player-card-note { margin-top: 0; }
+.player-card.player-card-big .player-card-fit { align-self: center; }
+/* Can't pick: a banner across the top, in full-contrast text on its own dark ground. */
+.player-card.player-card-big .player-card-banner { display: flex; align-items: center; justify-content: center; gap: var(--space-1h); align-self: stretch; margin: calc(var(--card-big-pad) * -1) calc(var(--card-big-pad) * -1) 0; padding: var(--space-2) var(--space-3); border-radius: var(--card-radius) var(--card-radius) 0 0; background: var(--card-scrim); color: var(--color-text); font-size: var(--type-secondary); font-weight: var(--weight-strong); line-height: var(--leading-secondary); }
+.no-entry-icon { flex: none; width: var(--no-entry-icon); height: var(--no-entry-icon); stroke-width: var(--no-entry-stroke); }
+
+/* Slot. The number and lock sit in the top corners over the portrait's margin. A board that sizes its slots
+   (the XI) makes each card a size container, so the extras drop out whole as the card shrinks. */
+.player-card.player-card-slot { container: player-card-slot / inline-size; }
+.player-card-slot .player-card-content { gap: var(--card-slot-gap); padding: var(--space-2) var(--space-1h) var(--space-2); }
+.player-card-slot .player-card-top { position: absolute; top: var(--space-1h); right: var(--space-1h); left: var(--space-1h); z-index: 1; }
+.player-card-slot .player-card-portrait { width: var(--card-portrait-slot-share); margin-top: var(--card-portrait-slot-offset); font-size: var(--card-monogram-slot); }
 .player-card-slot .player-card-tags { margin-top: auto; }
 .player-card-slot .player-card-tags .player-card-fit { align-self: auto; }
 
@@ -105,10 +122,11 @@ button.player-card-slot:hover .player-card-body { transform: translateY(var(--mo
 .player-card-state-preview .player-card-face { inset: 0; border-radius: inherit; background: color-mix(in srgb, var(--tier-fill) var(--card-preview-wash), var(--color-panel)); }
 /* Pending: no lock edge until the server confirms. The pulse sits under the text and moves away from the ink. */
 .player-card-pulse { position: absolute; inset: 0; background: var(--card-pending-veil, var(--card-scrim)); opacity: var(--card-pending-rest-opacity); animation: var(--anim-card-pending) var(--motion-card-pending) var(--ease-in-out) infinite; }
-.player-card.player-card-state-unavailable { --card-ink: var(--color-text-muted); }
-.player-card-state-unavailable .player-card-sheen { display: none; }
-.player-card-state-unavailable .player-card-finish { background: none; }
-.player-card-state-unavailable .player-card-face::after { content: ""; position: absolute; inset: 0; background: var(--card-scrim); }
+/* Unavailable: view only. Desaturated with a hint of the tier kept; no prismatic edge, finish or sweep. */
+.player-card-state-unavailable .player-card-surface { filter: saturate(var(--card-unavailable-saturation)); }
+.player-card-state-unavailable .player-card-edge { inset: 0; width: auto; aspect-ratio: auto; transform: none; background: var(--card-unavailable-edge); animation: none; }
+.player-card-state-unavailable :is(.player-card-finish, .player-card-sheen) { display: none; }
+.player-card-state-unavailable .player-card-face::after { content: ""; position: absolute; inset: 0; background: var(--card-unavailable-veil); }
 .player-card .player-card-reason { color: var(--color-text); font-weight: var(--weight-medium); }
 
 /* Selection flash. Each layer rests invisible; a new flashKey remounts the body to replay it. */
