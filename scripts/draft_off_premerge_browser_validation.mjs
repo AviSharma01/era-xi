@@ -8,7 +8,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { startRuntime } from '../backend/stage-d/runtime.mjs';
 const { chromium } = await import(process.env.DRAFT_OFF_PLAYWRIGHT_MODULE ?? 'playwright');
-const root=fileURLToPath(new URL('../',import.meta.url)),frontend='http://127.0.0.1:5286';
+const root=fileURLToPath(new URL('../',import.meta.url)),frontend='http://127.0.0.1:5286',directRoom='0123456789AB';
 const out=process.env.DRAFT_OFF_BROWSER_OUTPUT??mkdtempSync(join(tmpdir(),'draft-off-premerge-browser-'));
 mkdirSync(out,{recursive:true});
 const state=mkdtempSync(join(tmpdir(),'draft-off-premerge-state-'));
@@ -69,7 +69,7 @@ async function soloRecovery(base){
   assert.equal(new URL(page.url()).pathname,base);assert.equal(await page.evaluate(()=>localStorage.getItem('era-draft-ui-save/v1')),null);
   // New Start remains usable after canceling the obsolete generation.
   await page.locator('.era-card').first().click();await page.locator('.start-draft-action').click();await page.getByRole('button',{name:/^Spin franchise/}).waitFor();
-  await page.getByRole('button',{name:/^Spin franchise/}).click();await page.locator('.candidate-card').first().waitFor();
+  await page.getByRole('button',{name:/^Spin franchise/}).click();await page.locator('.squad-row').first().waitFor();
   const save=await page.evaluate(()=>localStorage.getItem('era-draft-ui-save/v1'));assert.ok(save);
   await page.getByRole('button',{name:'Exit draft',exact:true}).click();await page.locator(`a[href="${base}draft-off"]`).click();await page.locator('.draft-off-shell').waitFor();
   await page.getByRole('link',{name:'Solo Era Draft',exact:true}).click();await page.reload();await page.locator('.landing-continue').waitFor();
@@ -78,7 +78,7 @@ async function soloRecovery(base){
   await page.locator(`a[href="${base}draft-off"]`).click();await page.locator('.draft-off-shell').waitFor();held.resolve();
   await page.unrouteAll({behavior:'wait'});await page.waitForTimeout(200);await frame(page);
   assert.equal(new URL(page.url()).pathname,base+'draft-off');assert.equal(await page.evaluate(()=>localStorage.getItem('era-draft-ui-save/v1')),save);
-  await page.getByRole('link',{name:'Solo Era Draft',exact:true}).click();await page.locator('.landing-continue').click();await page.locator('.candidate-card').first().waitFor();
+  await page.getByRole('link',{name:'Solo Era Draft',exact:true}).click();await page.locator('.landing-continue').click();await page.locator('.squad-row').first().waitFor();
   assert.equal(await page.evaluate(()=>localStorage.getItem('era-draft-ui-save/v1')),save);
   await page.screenshot({path:join(out,base==='/'?'solo-root-continue.png':'solo-nested-continue.png')});
   evidence.checks.push({base,delayedStartCanceled:true,awayAndBack:true,delayedContinueCanceled:true,originalSavePreserved:true,normalStartSpinContinue:true});await context.close();
@@ -86,16 +86,19 @@ async function soloRecovery(base){
 try{
   browser=await chromium.launch({executablePath:process.env.CHROME_BIN,headless:true});evidence.browser=browser.version();
   for(const base of ['/','/games/'])for(const enabled of [false,true]){
-    await buildAndServe(base,enabled);const context=await newContext(),page=await context.newPage();let requests=0;
-    page.on('request',request=>{if(request.url().startsWith(runtime.url.origin))requests++;});
+    await buildAndServe(base,enabled);const context=await newContext(),page=await context.newPage();let requests=0,invitePreviews=0;
+    // The join form previews the room's public invite (ce9ad59). That one GET, for the direct room only, is expected;
+    // anything else to the API, including a different method or room, still fails the check.
+    const invitePreview=request=>request.method()==='GET'&&new URL(request.url()).pathname===`/api/draft-off/v1/rooms/${directRoom}/invite`;
+    page.on('request',request=>{if(!request.url().startsWith(runtime.url.origin))return;if(enabled&&invitePreview(request))invitePreviews++;else requests++;});
     await page.goto(frontend+base);await page.locator('.era-picker').waitFor();assert.equal(await page.locator(`a[href="${base}draft-off"]`).count(),enabled?1:0);
-    for(const path of ['draft-off','draft-off/rooms/0123456789AB']){
+    for(const path of ['draft-off',`draft-off/rooms/${directRoom}`]){
       await page.goto(frontend+base+path);
       if(enabled)await page.locator('.draft-off-shell form').waitFor();else{await page.getByRole('heading',{name:'That route is outside the boundary.'}).waitFor();assert.equal(await page.locator('.draft-off-shell').count(),0);}
     }
-    assert.equal(requests,0);await page.screenshot({path:join(out,`${base==='/'?'root':'nested'}-${enabled?'enabled':'disabled'}.png`)});
+    assert.equal(requests,0);assert.equal(invitePreviews,enabled?1:0,"exactly the one invite preview, and only when enabled");await page.screenshot({path:join(out,`${base==='/'?'root':'nested'}-${enabled?'enabled':'disabled'}.png`)});
     await page.goto(frontend+base+'classic');await page.waitForFunction(()=>document.querySelector('#app').textContent.includes('2016'));
-    evidence.checks.push({base,enabled,apiOriginConfigured:true,directLanding:true,directRoom:true,navigation:enabled,classic:true,activationRequests:requests});await context.close();
+    evidence.checks.push({base,enabled,apiOriginConfigured:true,directLanding:true,directRoom:true,navigation:enabled,classic:true,activationRequests:requests,invitePreviews});await context.close();
     if(enabled){await soloRecovery(base);if(base==='/games/'){await enrollmentTabs(base,false);await enrollmentTabs(base,true);}}
     console.log(JSON.stringify({base,enabled,passed:true}));
   }

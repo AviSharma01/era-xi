@@ -1,0 +1,40 @@
+/* Self-hosted Latin subsets; see src/assets/fonts/README.md. */
+@font-face {
+  font-family: "Big Shoulders Display";
+  src: url("../assets/fonts/BigShouldersDisplay-Variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Big Shoulders Text";
+  src: url("../assets/fonts/BigShouldersText-Variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sofia Sans";
+  src: url("../assets/fonts/SofiaSans-Variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 1 1000;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sancreek";
+  src: url("../assets/fonts/Sancreek-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cinzel";
+  src: url("../assets/fonts/Cinzel-Variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+}

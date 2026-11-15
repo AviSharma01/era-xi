@@ -77,7 +77,7 @@ try {
     await players[0].page.getByRole('button', { name: 'Start 15-minute draft', exact: true }).click();
     // First offers are compared only in Mirror; Varied offers may coincide.
     for (const { page } of players) await page.getByRole('button', { name: 'Spin franchise', exact: true }).click();
-    for (const { page } of players) await page.locator('.candidate-card').first().waitFor();
+    for (const { page } of players) await page.locator('.squad-row').first().waitFor();
     if (format === 'MIRROR') {
       const first = await Promise.all(players.map(async ({ entry }) => (await call(entry)).view.myDraft.currentSpin.teamSeasonId));
       assert.equal(first[0], first[1]);
@@ -87,13 +87,15 @@ try {
       await page.getByText('Respin used', { exact: true }).waitFor();
       for (let pick = 1; pick <= 11; pick++) {
         if (pick > 1) await page.getByRole('button', { name: 'Spin franchise', exact: true }).click();
-        await page.locator('.candidate-card').first().waitFor();
-        if (pick === 2) { await page.reload(); await page.locator('.candidate-card').first().waitFor(); }
-        const choices = page.locator('.candidate-card:not([aria-disabled="true"]):enabled');
+        await page.locator('.squad-row').first().waitFor();
+        if (pick === 2) { await page.reload(); await page.locator('.squad-row').first().waitFor(); }
+        const choices = page.locator('.squad-row:not([aria-disabled="true"]):enabled');
         await (i ? choices.last() : choices.first()).click();
-        const positions = page.locator('.room-position-option:not(:disabled)');
+        // The second player is on a phone, where placing is its own step.
+        if (i) await page.getByRole('button', { name: 'Place in XI', exact: true }).click();
+        const positions = page.locator('.xi-slot-active:not(:disabled)');
         await (i ? positions.last() : positions.first()).click();
-        await page.getByRole('button', { name: /Confirm pick · Slot/ }).click();
+        await page.getByRole('button', { name: /^Lock in \d\d$/ }).click();
         await page.getByRole('button', { name: pick < 11 ? 'Spin franchise' : 'Submit XI', exact: true }).waitFor();
       }
       await page.getByRole('button', { name: 'Submit XI', exact: true }).click();

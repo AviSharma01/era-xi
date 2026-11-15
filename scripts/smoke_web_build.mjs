@@ -42,7 +42,7 @@ try {
   const noticeFiles = filesUnder(dist).filter((path) => /THIRD_PARTY_NOTICES.*\.txt$/.test(path));
   assert(noticeFiles.length === 1, "production bundle must contain one third-party notices file");
   const notices = readFileSync(noticeFiles[0], "utf8");
-  for (const required of ["Cricsheet", "Space Grotesk", "Geist Project Authors", "SIL OPEN FONT LICENSE Version 1.1"]) {
+  for (const required of ["Cricsheet", "Big Shoulders Project Authors", "Sofia Sans Project Authors", "Sancreek Project Authors", "Cinzel Project Authors", "SIL OPEN FONT LICENSE Version 1.1"]) {
     assert(notices.includes(required), `third-party notices are missing ${required}`);
   }
 

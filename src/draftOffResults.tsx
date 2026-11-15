@@ -3,11 +3,15 @@ import type { ResultsInningsView, ResultsMatchView, ResultsPlayerView, ResultsSu
 import type { ResultsIdentity } from "./draftOffResultsClient.js";
 import { ResultsClientError } from "./draftOffResultsClient.js";
 import { FitBadge, PlayerInspector, friendly } from "./eraDraftPlayerPresentation.js";
+import { PlayerCard, playerCardName } from "./components/PlayerCard.js";
+import { ERA_COPY, rosterLabel } from "./copy.js";
 import type { ReactNode } from "react";
 import type { DraftTierAppearance } from "./eraDraftTypes.js";
 
 export type ResultsLoader = (participantId: string, signal?: AbortSignal) => Promise<ResultsSuccess>;
 const appearance: Record<ResultsPlayerView["qualityTier"], DraftTierAppearance> = { S: "violet", A: "gold", B: "cobalt", C: "emerald", D: "slate" };
+const cardPlayer = (player: ResultsPlayerView) => ({ ...player, tierAppearance: appearance[player.qualityTier] });
+const rosterNote = (player: ResultsPlayerView) => `${rosterLabel(player.rosterStatus)}${player.keeperCapability === "CONFIRMED" ? " · WK" : ""}`;
 const rating = (value: number | null) => value === null ? "—" : value.toFixed(1);
 const noSubscription = () => () => {};
 const noCooldown = () => 0;
@@ -82,7 +86,7 @@ export function DraftOffResultsBrowser(props: ResultsResourceProps & { displayNa
         <section className="draft-off-panel room-revealed-team" aria-labelledby="submitted-xi-title"><p className="eyebrow">Batting order locked at submission</p><h3 id="submitted-xi-title">Submitted XI</h3>
           <ol className="room-revealed-list">{result.players.map(player => <li key={player.playerTeamSeasonId} className={`room-revealed-player revealed-tier-${player.qualityTier.toLowerCase()}`}>
             <span className="room-result-position">{String(player.battingPosition).padStart(2, "0")}</span>
-            <button className="room-result-player-name" onClick={() => setInspected(player)} aria-label={`Inspect ${player.playerName}, position ${player.battingPosition}`}><strong>{player.playerName}</strong><small>{player.teamName} · {player.seasonYear}</small><small>{friendly(player.displayRole)} · {player.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}{player.keeperCapability === "CONFIRMED" ? " · WK" : ""}</small></button>
+            <PlayerCard size="mini" player={cardPlayer(player)} order={player.battingPosition - 1} note={rosterNote(player)} className="room-result-player-name" onClick={() => setInspected(player)} label={`Inspect ${playerCardName(cardPlayer(player))}, position ${player.battingPosition}`} />
             <div className="room-result-ratings"><strong aria-label={`Overall ${rating(player.overallRating)}`}>{rating(player.overallRating)} <small>{player.qualityTier}</small></strong><span>BAT {rating(player.displayRole === "BOWLER" ? null : player.battingRating)} · BOWL {rating(player.displayRole === "BATTER" || player.displayRole === "WICKETKEEPER_BATTER" ? null : player.bowlingRating)}</span></div>
             <FitBadge fit={player.presentationFit} />
           </li>)}</ol>
@@ -95,7 +99,7 @@ export function DraftOffResultsBrowser(props: ResultsResourceProps & { displayNa
         <ol className="room-campaign-matches">{result.campaign.matches.map(match => <li key={match.matchId}><CampaignMatch match={match} entryName={result.displayName} /></li>)}</ol>
       </section>
     </>}
-    {result && inspected && <PlayerInspector player={{ ...inspected, tierAppearance: appearance[inspected.qualityTier] }} onClose={() => setInspected(null)} />}
+    {result && inspected && <PlayerInspector player={cardPlayer(inspected)} eraTitle={ERA_COPY[props.identity.eraId].title} onClose={() => setInspected(null)} />}
   </section>;
 }
 
@@ -170,7 +174,7 @@ export function DraftOffComparison({ identity, entries, loadResults, retryAtMs, 
           const other = b.players.find(p => p.battingPosition === player.battingPosition)!;
           return <li key={player.battingPosition} data-position={player.battingPosition}>
             {pair(`Position ${String(player.battingPosition).padStart(2, "0")}`, [player, other].map((p, i) => <div className="room-comparison-player">
-              <button className="room-result-player-name" aria-label={`Inspect ${p.playerName}, position ${p.battingPosition}, ${entries[i].displayName}`} onClick={() => setInspection({ player: p, result: results[i] })}><strong>{p.playerName}</strong><small>{p.teamName} · {p.seasonYear}</small><small>{friendly(p.displayRole)} · {p.rosterStatus === "OVERSEAS" ? "Overseas" : "Indian"}{p.keeperCapability === "CONFIRMED" ? " · WK" : ""}</small></button>
+              <PlayerCard size="mini" player={cardPlayer(p)} order={p.battingPosition - 1} note={rosterNote(p)} className="room-result-player-name" label={`Inspect ${playerCardName(cardPlayer(p))}, position ${p.battingPosition}, ${entries[i].displayName}`} onClick={() => setInspection({ player: p, result: results[i] })} />
               <span>Overall {rating(p.overallRating)} · {p.qualityTier}</span><span>BAT {rating(p.displayRole === "BOWLER" ? null : p.battingRating)} · BOWL {rating(p.displayRole === "BATTER" || p.displayRole === "WICKETKEEPER_BATTER" ? null : p.bowlingRating)}</span><FitBadge fit={p.presentationFit} />
               {i === 0 && <small>{p.playerTeamSeasonId === other.playerTeamSeasonId ? "Same player-season" : p.playerId === other.playerId ? "Same player, different season" : "Different players"}</small>}
             </div>) as [ReactNode, ReactNode])}
@@ -191,6 +195,6 @@ export function DraftOffComparison({ identity, entries, loadResults, retryAtMs, 
       </section>
     </>}
     {results && aligned && <a className="quiet-button" href="#comparison-selection">Change compared XIs ↑</a>}
-    {aligned && inspection && results?.includes(inspection.result) && <PlayerInspector player={{ ...inspection.player, tierAppearance: appearance[inspection.player.qualityTier] }} onClose={() => setInspection(null)} />}
+    {aligned && inspection && results?.includes(inspection.result) && <PlayerInspector player={cardPlayer(inspection.player)} eraTitle={ERA_COPY[identity.eraId].title} onClose={() => setInspection(null)} />}
   </section>;
 }

@@ -15,13 +15,14 @@ import { DRAFT_OFF_RESULTS_MAX_BYTES } from "./draftOffResultsTypes.js";
 import type { DraftOffCampaignResult } from "./draftOffTypes.js";
 
 test("M5.3 extraction preserves pre-change solo reveal JSON and rendered markup in all five eras", () => {
-  // Captured from committed V1 dist before extracting the projection helper.
+  // JSON hashes captured from committed V1 dist before extracting the projection helper; they guard the
+  // projection and never change for presentation work. Markup hashes re-baselined when PlayerCard replaced the reveal rows.
   const expected = [
-    ["69686257765f31e5157dde2a94975407f3d7674342408f5bcd817d560bfcdcbe", "783a921eb1e0f84e30a7c6a4870ca595137324f0c7538854a4a933bcd6261a09"],
-    ["1aced79625d8819e1bf6e186253dc688c50cf495ed7f4bd50f0ee06cb01658f5", "e677bd87d0be31c9b5c78914e035eb505b45782f467665b7298d2602fcf57501"],
-    ["d6e8ebfa4f5a1f9df1dc136bce5da11d9f3ca24280c9a8c769ba74366c6adcf2", "4026a119fc0ceb0474c7b2388abf88aee4ca79edf1c712ce4d8ea0a2636c361f"],
-    ["b71206ac4d80b14485b204ccee88bbb17d347a2b894b5d820192daa9ed4202c9", "953a1d35147b8b2a27f3a194f19b7a06d4236250a47c26ff8caa9d7c15c73ce0"],
-    ["4ac9240c91a25aa6d29446cf16de73efcb48e956318e3dad406b62947a686ae7", "438b4909071e753201aca942871036b7008eba30a3642c0e3d52a7316782a8c3"],
+    ["69686257765f31e5157dde2a94975407f3d7674342408f5bcd817d560bfcdcbe", "28db23aee9d2e5878a836ecab44d2b2c76b6c08f4297722a99e583dea41450eb"],
+    ["1aced79625d8819e1bf6e186253dc688c50cf495ed7f4bd50f0ee06cb01658f5", "f7361e370ee66b24cde7ad2c0b68d8f050f06e086636bb61c5fc2e704c9535a9"],
+    ["d6e8ebfa4f5a1f9df1dc136bce5da11d9f3ca24280c9a8c769ba74366c6adcf2", "18e8c2b145bb90f11888b482099a8f9b058c010cf20291845ba566bc248a880a"],
+    ["b71206ac4d80b14485b204ccee88bbb17d347a2b894b5d820192daa9ed4202c9", "59b518860b12781035fd1016e0b5333baf2b080407b4be5d4aa11b4e8ed42244"],
+    ["4ac9240c91a25aa6d29446cf16de73efcb48e956318e3dad406b62947a686ae7", "1d65ca2be51e3513b2744a219f98960f92275cd3f07f1a1c819e7fc796df3ca6"],
   ];
   catalog.getEraIds().forEach((eraId, index) => {
     const state = revealEraXi(catalog, "m53-solo-parity", eraId);

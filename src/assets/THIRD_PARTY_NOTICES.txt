@@ -13,15 +13,25 @@ Cricsheet is not affiliated with this project and is not responsible for its
 processing, ratings, gameplay, or simulations. The original Cricsheet source
 files are not relicensed by this project.
 
-Space Grotesk
---------------
-Copyright 2020 The Space Grotesk Project Authors
-(https://github.com/floriankarsten/space-grotesk)
+Big Shoulders Display and Big Shoulders Text
+--------------------------------------------
+Copyright 2019 The Big Shoulders Project Authors
+(https://github.com/xotypeco/big_shoulders)
 
-Geist Sans and Geist Mono
--------------------------
-Copyright 2024 The Geist Project Authors
-(https://github.com/vercel/geist-font)
+Sofia Sans
+----------
+Copyright 2019 The Sofia Sans Project Authors
+(https://github.com/lettersoup/Sofia-Sans)
+
+Sancreek
+--------
+Copyright 2011 The Sancreek Project Authors
+(https://github.com/googlefonts/sancreek)
+
+Cinzel
+------
+Copyright 2020 The Cinzel Project Authors
+(https://github.com/NDISCOVER/Cinzel)
 
 The font software above is licensed under the SIL Open Font License,
 Version 1.1. The complete license follows.
