@@ -139,25 +139,33 @@ body:has(.drafting) .third-party-notices-link { display: none; }
   position: relative; display: grid; flex: none; width: var(--xi-card-w); aspect-ratio: var(--card-aspect); min-width: 0;
 }
 
-/* Slot cards fill the slot. On desktop each is a size container and never grows: the extras drop out whole as it shrinks
-   (stats, then the role), measured against what each needs at the type scale's sizes. */
+/* Slot cards fill the slot. On desktop each is a size container and never grows: when its content overflows, the
+   extras give way whole, one step at a time (useSlotSqueeze sets data-squeeze), and the fit chip is never cut. */
 .xi-slot .player-card-slot { min-height: 0; }
 .drafting-split .xi-slot .player-card-slot { container: slot-card / size; height: 100%; }
 .drafting-split .xi-slot .player-card-slot .player-card-body { height: 100%; }
 .drafting-split .xi-slot .player-card-slot .player-card-content { overflow: hidden; }
-/* The monogram gives way first: it shrinks to whatever a two-line name or fit leaves, so text is never cut. */
 .drafting-split .xi-slot .player-card-slot .player-card-content { padding-top: calc(var(--space-6) + var(--space-1)); }
-.drafting-split .xi-slot .player-card-slot .player-card-portrait { flex: 0 1 auto; width: auto; height: var(--card-portrait-slot-share); min-height: 0; margin-top: 0; overflow: hidden; }
+.drafting-split .xi-slot .player-card-slot .player-card-portrait { flex: none; width: auto; height: var(--card-portrait-slot-share); min-height: 0; margin-top: 0; overflow: hidden; }
 .xi-slot .player-card-slot .player-card-stats { flex: none; gap: 0 var(--space-1h); font-size: var(--type-small); line-height: var(--leading-small); }
 .xi-slot .player-card-slot :is(.player-card-team, .player-card-name, .player-card-note) { flex: none; }
 .xi-slot .player-card .player-card-fit { flex: 0 1 auto; max-width: 100%; }
 .xi-slot .player-card .player-card-fit .fit-badge { min-width: 0; text-align: center; white-space: normal; }
-@container slot-card (max-height: 182px) {
-  .xi-slot .player-card-slot :is(.player-card-stats, .player-card-note) { display: none; }
-  .xi-slot .player-card.player-card-slot .player-card-name { font-size: var(--type-label-compact); }
-}
-@container slot-card (max-height: 170px) { .xi-slot .player-card-slot .player-card-role { display: none; } }
-@container slot-card (max-height: 140px) { .xi-slot .player-card-slot .player-card-team { display: none; } }
+@container slot-card (max-height: 182px) { .xi-slot .player-card.player-card-slot .player-card-name { font-size: var(--type-label-compact); } }
+/* The name keeps two lines at most, stepping down to the Label floor before it would be cut, and ends in an ellipsis
+   only as a last resort; the full name stays in the slot's accessible name and on the stage card. */
+.drafting-split .xi-slot .player-card-slot .player-card-name { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; }
+.drafting-split .xi-slot .player-card-slot .player-card-tags { flex: none; }
+/* Out of room, in order: stats (and the note), the role, the monogram shrinks then goes, team · season, the name to one line. */
+.drafting-split .xi-slot .player-card-slot[data-squeeze~="name-floor"] .player-card-name { font-size: var(--type-label-compact); }
+.drafting-split .xi-slot .player-card-slot[data-squeeze~="stats"] :is(.player-card-stats, .player-card-note) { display: none; }
+.drafting-split .xi-slot .player-card-slot[data-squeeze~="role"] .player-card-role { display: none; }
+.drafting-split .xi-slot .player-card-slot[data-squeeze~="monogram"] .player-card-portrait { flex: 0 1 auto; min-height: var(--space-6); }
+.drafting-split .xi-slot .player-card-slot[data-squeeze~="no-monogram"] .player-card-portrait { display: none; }
+/* With the monogram gone the name comes up to the corner plates, so the top clears them in full. */
+.drafting-split .xi-slot .player-card-slot[data-squeeze~="no-monogram"] .player-card-content { padding-top: calc(var(--space-1h) + max(var(--space-6), var(--type-label) * var(--leading-label) + 2 * var(--card-plate-pad)) + var(--space-1)); }
+.drafting-split .xi-slot .player-card-slot[data-squeeze~="team"] .player-card-team { display: none; }
+.drafting-split .xi-slot .player-card-slot[data-squeeze~="name-line"] .player-card-name { -webkit-line-clamp: 1; line-clamp: 1; }
 
 /* Open slots. Unlit until a player can go there. Lit slots are quiet; Natural is the brightest. */
 .gameplay-shell .xi-open-slot { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-1); width: 100%; height: 100%; min-height: 0; padding: var(--space-1h); overflow: hidden; border: 1px solid var(--color-divider); border-radius: var(--card-radius-slot); background: var(--wash-faint); color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); text-align: center; }

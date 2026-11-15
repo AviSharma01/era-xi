@@ -1,10 +1,10 @@
-import type { CSSProperties, ReactElement, ReactNode, RefObject } from "react";
+import { useRef, type CSSProperties, type ReactElement, type ReactNode, type RefObject } from "react";
 
 import { FitBadge, monogram, PlayerCard, playerCardName } from "../../components/PlayerCard.js";
 import { DRAFTING_COPY as COPY, fitDisplay, REJECTION_COPY, rejectionReason, slotLabel } from "../../copy.js";
 import type { DraftCandidateIdentityView, DraftPickView } from "../../eraDraftTypes.js";
 import type { EraDraftTierCaps } from "../../eraDraftTierCaps.js";
-import type { ActiveDraft } from "./behaviour.js";
+import { useSlotSqueeze, type ActiveDraft } from "./behaviour.js";
 
 export type Arrival =
   | { readonly position: number; readonly kind: "settle" }
@@ -83,6 +83,8 @@ export function XiBoard(props: {
   onArrived: () => void;
 }): ReactElement {
   const { draft, selected, preview, pending, blocked, small, arrival, blockedSelection } = props;
+  const rowsRef = useRef<HTMLDivElement>(null);
+  useSlotSqueeze(rowsRef, !small);
   // S cards on the board take turns with their resting sweep, in batting order.
   const sPicks = draft.picks.filter((pick) => pick.tierAppearance === "violet").map((pick): number => pick.battingPosition).sort((a, b) => a - b);
   const slot = (position: number): ReactElement => {
@@ -154,7 +156,7 @@ export function XiBoard(props: {
       <LimitsStrip draft={draft} caps={props.caps} compact={small} />
       <span className="xi-count">{COPY.lockedCount(draft.status.pickCount)}</span>
     </div>
-    <div className="xi-rows">
+    <div ref={rowsRef} className="xi-rows">
       {BATTING_ROWS.map((row) => <div key={row.label} className="xi-row-group" role="group" aria-label={row.label}>
         <span className="xi-row-label" aria-hidden="true">{row.label}</span>
         <div className={`xi-row xi-row-${row.positions.length}`}>{row.positions.map(slot)}</div>

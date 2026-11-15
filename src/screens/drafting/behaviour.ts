@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type TouchEvent } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type RefObject, type TouchEvent } from "react";
 
 import type { EraDraftPublicView } from "../../eraDraftTypes.js";
 import type { ReelKind } from "./reel.js";
@@ -26,6 +26,44 @@ export function useSmallScreen(): boolean {
     return () => query.removeEventListener("change", update);
   }, []);
   return small;
+}
+
+/**
+ * Desktop slot cards are a fixed size. A name that would be cut steps down to the Label floor first; then, while a
+ * card's content still overflows, it gives way one step at a time: stats, the role, the monogram shrinks, then goes,
+ * then team · season, and last the name to one line. The fit chip is never cut. Presentation only: it sets
+ * `data-squeeze` on each card for the stylesheet and re-measures on every render, resize, font load and text change.
+ */
+const SQUEEZE_STEPS = ["stats", "role", "monogram", "no-monogram", "team", "name-line"] as const;
+export function useSlotSqueeze(ref: RefObject<HTMLElement | null>, enabled: boolean): void {
+  useLayoutEffect(() => {
+    const root = ref.current;
+    if (!enabled || !root) return;
+    const squeeze = (): void => {
+      for (const card of root.querySelectorAll<HTMLElement>(".player-card-slot")) {
+        const content = card.querySelector<HTMLElement>(".player-card-content");
+        const name = card.querySelector<HTMLElement>(".player-card-name");
+        if (!content) continue;
+        const steps: string[] = [];
+        card.dataset.squeeze = "";
+        if (name && name.scrollHeight > name.clientHeight + 1) { steps.push("name-floor"); card.dataset.squeeze = steps.join(" "); }
+        for (const step of SQUEEZE_STEPS) {
+          if (content.scrollHeight <= content.clientHeight + 1) break;
+          steps.push(step);
+          card.dataset.squeeze = steps.join(" ");
+        }
+      }
+    };
+    squeeze();
+    let live = true;
+    void document.fonts?.ready.then(() => { if (live) squeeze(); });
+    const resized = typeof ResizeObserver === "function" ? new ResizeObserver(squeeze) : null;
+    resized?.observe(root);
+    // Only text and children: the attributes this writes never trigger it again.
+    const changed = typeof MutationObserver === "function" ? new MutationObserver(squeeze) : null;
+    changed?.observe(root, { childList: true, characterData: true, subtree: true });
+    return () => { live = false; resized?.disconnect(); changed?.disconnect(); };
+  });
 }
 
 /**
