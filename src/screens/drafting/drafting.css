@@ -219,6 +219,9 @@ body:has(.drafting) .third-party-notices-link { display: none; }
 .drafting-small .xi-rows { container: xi-rows / size; flex: 1 1 0; }
 .drafting-small .xi-row-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .drafting-small .xi-row { gap: var(--xi-gap-phone); }
+/* The card (and its body) keeps 5:7 as a minimum, so a long name and fit make the card and its row taller
+   instead of spilling past the face. The enamel gloss stays above the name. */
+.drafting-small .xi-slot .player-card-slot { min-height: auto; --card-gloss: var(--finish-c-gloss-compact); }
 .drafting-small .xi-slot { --xi-card-w: min(calc((100cqw - 3 * var(--xi-gap-phone)) / 4), calc((100cqh - 2 * var(--xi-row-gap)) / 3 * 5 / 7)); }
 .drafting-small .xi-slot .player-card-slot .player-card-content { gap: var(--card-plate-pad); padding: var(--space-1) var(--space-1) var(--space-1h); }
 .drafting-small .xi-slot .player-card-slot .player-card-top { position: static; flex: none; flex-wrap: wrap; width: 100%; gap: var(--card-plate-pad); justify-content: space-between; }

@@ -122,7 +122,9 @@ button.player-card-slot:hover .player-card-body { transform: translateY(var(--mo
 .player-card-state-preview .player-card-face { inset: 0; border-radius: inherit; background: color-mix(in srgb, var(--tier-fill) var(--card-preview-wash), var(--color-panel)); }
 /* Pending: no lock edge until the server confirms. The pulse sits under the text and moves away from the ink. */
 .player-card-pulse { position: absolute; inset: 0; background: var(--card-pending-veil, var(--card-scrim)); opacity: var(--card-pending-rest-opacity); animation: var(--anim-card-pending) var(--motion-card-pending) var(--ease-in-out) infinite; }
-/* Unavailable: view only. Desaturated with a hint of the tier kept; no prismatic edge, finish or sweep. */
+/* Unavailable: view only. Desaturated with a hint of the tier kept; no prismatic edge, finish or sweep.
+   Only the face dims: the text turns ivory on every tier, so it stays readable on the darker face. */
+.player-card.player-card-state-unavailable { --card-ink: var(--color-text); }
 .player-card-state-unavailable .player-card-surface { filter: saturate(var(--card-unavailable-saturation)); }
 .player-card-state-unavailable .player-card-edge { inset: 0; width: auto; aspect-ratio: auto; transform: none; background: var(--card-unavailable-edge); animation: none; }
 .player-card-state-unavailable :is(.player-card-finish, .player-card-sheen) { display: none; }
