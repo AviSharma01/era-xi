@@ -211,22 +211,21 @@ body:has(.drafting) .third-party-notices-link { display: none; }
 .drafting-step-back { animation: var(--anim-step-back) var(--motion-step-slide) var(--ease-standard) backwards; }
 @keyframes step-in-forward { from { opacity: 0; transform: translateX(var(--motion-step-distance)); } }
 @keyframes step-in-back { from { opacity: 0; transform: translateX(calc(var(--motion-step-distance) * -1)); } }
-.drafting-screen-board { overflow: hidden; }
+/* If the XI ever runs past the bar, the board scrolls rather than hiding a slot. */
+.drafting-screen-board { overflow: hidden auto; }
 .drafting-screen-board .xi-board { flex: 1; }
-/* Phone XI: 5:7 cards four to a row; a row grows a little only when a long name and fit need the room. */
-.drafting-small .xi-rows { container: xi-rows / inline-size; flex: none; }
+/* Phone and tablet XI: 5:7 cards four to a row, as wide as both the width and the height of three rows allow.
+   A row grows a little only when a long name and fit need the room. */
+.drafting-small .xi-rows { container: xi-rows / size; flex: 1 1 0; }
 .drafting-small .xi-row-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .drafting-small .xi-row { gap: var(--xi-gap-phone); }
-.drafting-small .xi-slot { --xi-card-w: calc((100cqw - 3 * var(--xi-gap-phone)) / 4); }
+.drafting-small .xi-slot { --xi-card-w: min(calc((100cqw - 3 * var(--xi-gap-phone)) / 4), calc((100cqh - 2 * var(--xi-row-gap)) / 3 * 5 / 7)); }
 .drafting-small .xi-slot .player-card-slot .player-card-content { gap: var(--card-plate-pad); padding: var(--space-1) var(--space-1) var(--space-1h); }
 .drafting-small .xi-slot .player-card-slot .player-card-top { position: static; flex: none; flex-wrap: wrap; width: 100%; gap: var(--card-plate-pad); justify-content: space-between; }
 .drafting-small .xi-slot .player-card-slot :is(.player-card-portrait, .player-card-stats, .player-card-role) { display: none; }
 .drafting-small .xi-slot .player-card-slot .player-card-tags { flex-direction: column; flex-wrap: nowrap; gap: var(--card-plate-pad); }
 .drafting-small .xi-slot .player-card-fit .fit-badge { display: block; }
 .drafting-small :is(.xi-slot .player-card-fit, .xi-open-slot) .fit-percent-loss { display: block; }
-@media (max-width: 959px) and (max-height: 700px) {
-  .drafting-screen-board { overflow-y: auto; }
-}
 .drafting-small .drafting-title { font-size: var(--type-label); line-height: var(--leading-label); }
 .drafting-screen-board > .drafting-title, .drafting-screen-board > .drafting-hero { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .gameplay-shell .drafting-small .drafting-back { flex: none; min-height: 44px; padding-inline: 0 var(--space-2); }
@@ -288,6 +287,14 @@ body:has(.drafting) .third-party-notices-link { display: none; }
   .drafting-split .xi-rows { height: var(--xi-short-screen-height); }
   .drafting-stage { container-type: normal; }
   .squad-panel { min-height: var(--xi-short-screen-squad); }
+  /* Phones on their side: the page has no fixed height for the XI, so cards take a set size; the strip and the bar stay in view. */
+  .drafting-small .xi-rows { container-type: inline-size; flex: none; }
+  .drafting-small .xi-slot { --xi-card-w: min(calc((100cqw - 3 * var(--xi-gap-phone)) / 4), var(--xi-short-screen-card)); }
+  .drafting-small .xi-strip-pinned { position: sticky; top: 0; z-index: 7; padding-block: var(--space-1); background: var(--color-night); }
+  .drafting-small .xi-strip-cell { aspect-ratio: auto; }
+  /* Whatever scrolls into view (a focused row or slot) stops clear of the strip and the bar. */
+  html:has(.drafting-small) { scroll-padding-block: calc(44px + var(--limit-chip-height) + 3 * var(--space-1)) var(--xi-short-screen-bar); }
+  .drafting-small .drafting-bar { position: sticky; bottom: 0; z-index: 7; background: var(--color-night); }
 }
 
 /* Limits: "Overseas 2/4 · WK needed · S 2/3 · S+A 4/6". At a cap a chip says "full" with an ivory outline, never red;
