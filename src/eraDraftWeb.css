@@ -100,29 +100,6 @@
 .overall-rating { color: var(--color-action); font-family: var(--font-display); font-size: var(--type-label); line-height: var(--leading-label); }
 .component-ratings { display: flex; gap: var(--space-1h); color: var(--color-text-muted); font-family: var(--font-body); }
 .component-ratings small { font-size: var(--type-small); }
-.reveal-stage { overflow-y: auto; scrollbar-color: var(--color-scrollbar) transparent; scrollbar-width: thin; }
-.reveal-stage > * { flex: 0 0 auto; }
-.reveal-intro { padding: var(--space-1h) 0 22px; border-bottom: 1px solid var(--color-divider); }
-.reveal-intro h1 { margin: 0; font-family: var(--font-display); font-size: var(--type-title); font-weight: var(--weight-label); letter-spacing: var(--tracking-headline); line-height: var(--leading-title); text-transform: uppercase; }
-.reveal-intro h1:focus { outline: 0; }
-.reveal-intro > p:not(.eyebrow) { max-width: 510px; margin: 14px 0 0; color: var(--color-text-muted); font-size: var(--type-secondary); line-height: var(--leading-secondary); }
-.strength-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: var(--space-2); margin: 17px 0; }
-.reveal-metric { min-height: 86px; display: grid; align-content: space-between; padding: var(--space-3); border: 1px solid var(--color-divider); border-radius: var(--radius-card); background: var(--wash-faint); }
-.reveal-metric span { color: var(--color-text-muted); font-family: var(--font-body); font-size: var(--type-small); letter-spacing: var(--tracking-small); text-transform: uppercase; }
-.reveal-metric strong { font-family: var(--font-display); font-size: var(--type-title); font-weight: var(--weight-title); }
-.reveal-metric-featured { border-color: var(--color-divider-strong); background: linear-gradient(140deg, var(--wash-ivory-strong), var(--color-panel)); }
-.reveal-metric-featured strong { color: var(--color-action); }
-.evaluation-summary { overflow: hidden; border: 1px solid var(--color-divider); border-radius: var(--radius-panel); background: var(--color-panel); }
-.evaluation-summary .candidate-heading { margin: 0; padding: 13px; border-bottom: 1px solid var(--color-divider); }
-.evaluation-summary .candidate-heading h2 { margin: 0; font-family: var(--font-display); font-size: var(--type-label); letter-spacing: var(--tracking-small); text-transform: uppercase; }
-.evaluation-row { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: var(--space-3); padding: var(--space-2h) 13px; border-bottom: 1px solid var(--color-divider); }
-.evaluation-row:last-child { border-bottom: 0; }
-.evaluation-row span { color: var(--color-text-muted); font-size: var(--type-small); }
-.evaluation-row strong { color: var(--color-text); font-size: var(--type-small); font-weight: var(--weight-medium); text-align: right; }
-.phase-boundary { margin-top: 17px; padding: 18px; border: 1px dashed var(--color-divider-strong); border-radius: var(--radius-panel); }
-.phase-boundary h2 { margin: 0 0 7px; font-family: var(--font-display); font-size: var(--type-label); font-weight: var(--weight-label); text-transform: uppercase; }
-.phase-boundary > p:not(.eyebrow) { margin: 0 0 14px; color: var(--color-text-muted); font-size: var(--type-small); }
-.phase-boundary .primary-action { width: 100%; }
 .centered-state { display: grid; justify-items: start; align-content: center; min-height: 520px; }
 .centered-state h1 { margin: 0 0 var(--space-3); font-family: var(--font-display); font-size: var(--type-hero); font-weight: var(--weight-label); letter-spacing: var(--tracking-headline); text-transform: uppercase; }
 .centered-state > p:not(.eyebrow) { max-width: 540px; margin: 0 0 26px; color: var(--color-text-muted); line-height: var(--leading-body); }
@@ -237,8 +214,6 @@
   .draft-era-id { display: none; }
   .draft-layout { height: auto; min-height: calc(100vh - 77px); display: flex; flex-direction: column; }
   .draft-stage { min-height: 600px; overflow: visible; padding: var(--space-7) 0 38px; border-right: 0; }
-  .reveal-stage { min-height: auto; }
-  .reveal-layout .xi-panel { min-height: 760px; }
   .season-layout { grid-template-columns: 1fr; padding-top: 38px; }
 }
 
@@ -255,10 +230,6 @@
   .overwrite-confirm > div { align-items: stretch; flex-direction: column-reverse; }
   .secondary-action { min-height: 44px; }
   .fit-badge { font-size: var(--type-small); }
-  .strength-grid { grid-template-columns: 1fr 1fr; }
-  .reveal-metric-featured { grid-column: 1 / -1; }
-  .evaluation-row { grid-template-columns: 1fr; gap: var(--space-1); }
-  .evaluation-row strong { text-align: left; }
   .season-actions, .terminal-actions { align-items: stretch; flex-direction: column; }
   .season-actions button, .terminal-actions button { width: 100%; }
   .standings-panel th, .standings-panel td { padding-inline: 7px; }
@@ -319,7 +290,6 @@
 .gameplay-shell .fit-major-stretch { color: var(--fit-major-stretch); }
 .gameplay-shell .fit-unknown { color: var(--fit-unknown); }
 .gameplay-shell .fit-badge { border: 0; background: none; border-radius: 0; padding: 0; font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); text-transform: none; letter-spacing: 0; white-space: normal; }
-.gameplay-shell.revealed-shell .reveal-layout { animation: fade-in var(--motion-screen) var(--ease-out); }
 .gameplay-shell .match-result { animation: fade-in var(--motion-screen) var(--ease-out); }
 .gameplay-shell .inspector-modal { --reveal-order: 0; overflow-x: hidden; }
 .gameplay-shell .complete-status p { font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); }
@@ -343,46 +313,6 @@
   .gameplay-shell .inspector-modal > .player-card { justify-self: center; width: var(--inspector-card-width); }
   .gameplay-shell .inspector-modal .inspector-metrics { margin-top: var(--space-4); grid-template-columns: 1fr 1fr; gap: 0 var(--space-3); }
 }
-.gameplay-shell .reveal-layout { gap: var(--space-8); }
-.gameplay-shell .reveal-intro { padding: 0; border: 0; }
-.gameplay-shell .reveal-intro h1 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); margin: var(--space-3) 0; }
-.gameplay-shell .reveal-intro p:not(.eyebrow) { font: var(--weight-regular) var(--type-body)/var(--leading-body) var(--font-body); color: var(--color-text); }
-.gameplay-shell .strength-label { margin: var(--space-6) 0 var(--space-4); }
-.gameplay-shell .strength-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0 0 var(--space-6); border: 1px solid var(--color-divider); border-radius: var(--radius-sm); padding: 0; background: var(--color-panel); }
-.gameplay-shell .strength-grid > * { min-height: 98px; gap: var(--space-2); background: none; border: 0; border-right: 1px solid var(--color-divider); border-radius: 0; padding: var(--space-4); }
-.gameplay-shell .strength-grid > :first-child { padding-left: var(--space-4); }
-.gameplay-shell .strength-grid .reveal-metric-featured { grid-column: auto; }
-.gameplay-shell .strength-grid > :last-child { border: 0; }
-.gameplay-shell .strength-grid strong { font: var(--weight-number) var(--type-number)/var(--leading-number) var(--font-display); }
-.gameplay-shell .strength-grid > :first-child strong { font: var(--weight-number) var(--type-number)/var(--leading-number) var(--font-display); color: var(--color-action); }
-.gameplay-shell .strength-grid span { font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); }
-.gameplay-shell .evaluation-summary { padding: var(--space-5); border-radius: var(--radius-sm); background: var(--color-panel); }
-.gameplay-shell .evaluation-summary p { color: var(--color-text); font-size: var(--type-small); line-height: var(--leading-small); }
-.gameplay-shell .evaluation-summary .candidate-heading { padding: 0 0 var(--space-4); }
-.gameplay-shell .evaluation-summary .candidate-heading h2 { font-size: var(--type-label); line-height: var(--leading-label); letter-spacing: 0; text-transform: none; }
-.gameplay-shell .evaluation-row { padding: var(--space-2) 0 0; border: 0; display: flex; justify-content: space-between; gap: var(--space-3); }
-.gameplay-shell .evaluation-row span { font: var(--weight-regular) var(--type-secondary)/var(--leading-secondary) var(--font-body); display: block; }
-.gameplay-shell .evaluation-row strong { font: var(--weight-regular) var(--type-secondary)/var(--leading-secondary) var(--font-body); display: block; margin: 0; text-align: right; }
-.gameplay-shell .assessment-section { margin-top: var(--space-4); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-divider); }
-.gameplay-shell .assessment-section:last-child { padding-bottom: 0; border: 0; }
-.gameplay-shell .assessment-section h3 { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); margin: 0 0 var(--space-2); }
-.gameplay-shell .assessment-section p { margin: var(--space-2) 0 0; }
-.gameplay-shell .quality-mix { display: flex; flex-wrap: wrap; gap: var(--space-3); font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); }
-.gameplay-shell .mix-s { color: var(--tier-s-bright); }.gameplay-shell .mix-a { color: var(--tier-a-bright); }.gameplay-shell .mix-b { color: var(--tier-b-bright); }.gameplay-shell .mix-c { color: var(--tier-c-bright); }.gameplay-shell .mix-d { color: var(--tier-d-bright); }
-.gameplay-shell .phase-boundary { margin-top: var(--space-6); padding: 0; border: 0; background: none; }
-.gameplay-shell .phase-boundary button { width: 100%; }
-.gameplay-shell .revealed-xi { min-width: 0; }
-.gameplay-shell .revealed-xi h2 { margin: 0 0 var(--space-4); }
-.gameplay-shell .revealed-list { background: var(--color-panel); border: 1px solid var(--color-divider); border-radius: var(--radius-sm); overflow: hidden; }
-.gameplay-shell .revealed-list-head, .gameplay-shell .revealed-player { display: grid; grid-template-columns: 32px minmax(0, 1fr) 64px 56px 56px 108px; gap: var(--space-2); align-items: center; padding: var(--space-3); }
-.gameplay-shell .revealed-list-head { min-height: 36px; padding-block: var(--space-2); font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); color: var(--color-text-muted); }
-.gameplay-shell .revealed-player { min-height: 80px; border-top: 1px solid var(--color-divider); border-left: 3px solid var(--tier-bright); background: linear-gradient(90deg, color-mix(in srgb, var(--tier-bright) 8%, transparent), transparent 70%); }
-.gameplay-shell .revealed-tier-s { --tier-bright: var(--tier-s-bright); }.gameplay-shell .revealed-tier-a { --tier-bright: var(--tier-a-bright); }.gameplay-shell .revealed-tier-b { --tier-bright: var(--tier-b-bright); }.gameplay-shell .revealed-tier-c { --tier-bright: var(--tier-c-bright); }.gameplay-shell .revealed-tier-d { --tier-bright: var(--tier-d-bright); }
-.gameplay-shell .revealed-position { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); color: var(--color-text-muted); }
-.gameplay-shell .revealed-overall { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); }
-.gameplay-shell .revealed-bat, .gameplay-shell .revealed-bowl { font: var(--weight-regular) var(--type-secondary)/var(--leading-secondary) var(--font-body); }
-.gameplay-shell .revealed-bat small, .gameplay-shell .revealed-bowl small { display: none; }
-.gameplay-shell .revealed-fit .fit-badge { font-size: var(--type-small); }
 .gameplay-shell .season-layout { display: block; width: 100%; max-width: 960px; margin: var(--space-6) auto 0; padding: 0; }
 .gameplay-shell .season-primary { padding: 0; border: 0; background: none; }
 .gameplay-shell .broadcast-match, .gameplay-shell .league-complete-panel { padding: var(--space-8); border: 1px solid var(--color-divider); border-radius: var(--radius-sm); background: var(--color-panel); }
@@ -459,19 +389,12 @@
 .gameplay-shell .terminal-actions { margin-top: var(--space-6); }
 @media (min-width: 960px) and (max-width: 1199px) {
   .gameplay-shell { padding-inline: var(--space-6); }
-  .gameplay-shell .revealed-list-head, .gameplay-shell .revealed-player { grid-template-columns: 24px minmax(0, 1fr) 48px 42px 42px 90px; gap: var(--space-1h); padding-inline: var(--space-2); }
 }
 @media (max-width: 959px) {
   .gameplay-shell { padding-inline: var(--space-6); }
   .gameplay-shell .draft-layout, .gameplay-shell .playoff-layout { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .gameplay-shell .inspector-sheet { position: fixed; inset: auto 0 0; width: 100%; max-width: none; max-height: 70dvh; margin: 0; overflow-y: auto; padding: var(--space-5) var(--space-5) calc(var(--space-5) + env(safe-area-inset-bottom)); box-shadow: 0 0 16px var(--color-shadow); }
   .gameplay-shell .inspector-sheet::backdrop { background: var(--color-scrim); }
-  .gameplay-shell .reveal-stage { display: contents; }
-  .gameplay-shell .reveal-intro { grid-row: 1; }
-  .gameplay-shell .strength-grid { margin: 0; }
-  .gameplay-shell .strength-label { margin: 0 0 -8px; }
-  .gameplay-shell .revealed-xi { grid-row: auto; }
-  .gameplay-shell .phase-boundary { order: 2; margin-top: 0; }
   .gameplay-shell .broadcast-match, .gameplay-shell .league-complete-panel { padding: var(--space-6); }
 }
 @media (max-width: 759px) {
@@ -482,17 +405,6 @@
   .gameplay-shell .game-header > .quiet-button { grid-column: 2; grid-row: 1; }
   .gameplay-shell .game-header .draft-era-id { display: none; }
   .gameplay-shell h1 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); }
-  .gameplay-shell .reveal-intro h1 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); }
-  .gameplay-shell .revealed-list-head { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-  .gameplay-shell .revealed-player { min-height: 96px; grid-template-columns: 24px minmax(0, 1fr) minmax(0, 1fr) 56px; gap: var(--space-1) var(--space-2); }
-  .gameplay-shell .revealed-position { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); grid-row: 1; grid-column: 1; align-self: start; }
-  .gameplay-shell .revealed-identity { grid-column: 2/4; grid-row: 1; }
-  .gameplay-shell .revealed-overall { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); grid-column: 4; grid-row: 1; align-self: start; text-align: right; }
-  .gameplay-shell .revealed-bat { grid-column: 2; grid-row: 2; }
-  .gameplay-shell .revealed-bowl { grid-column: 3/5; grid-row: 2; text-align: right; }
-  .gameplay-shell .revealed-bat, .gameplay-shell .revealed-bowl { font: var(--weight-regular) var(--type-secondary)/var(--leading-secondary) var(--font-body); }
-  .gameplay-shell .revealed-bat small, .gameplay-shell .revealed-bowl small { display: inline; font-size: var(--type-small); color: var(--color-text-muted); }
-  .gameplay-shell .revealed-fit { grid-column: 2/-1; grid-row: 3; }
   .gameplay-shell .broadcast-match, .gameplay-shell .league-complete-panel { padding: var(--space-5); }
   .gameplay-shell .innings-row { padding: var(--space-3) 0; }
   .gameplay-shell .innings-row b { font: var(--weight-number) var(--type-number)/var(--leading-number) var(--font-display); }

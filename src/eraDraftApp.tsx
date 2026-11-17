@@ -1,16 +1,14 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ReactElement, type RefObject } from "react";
 
-import { FitBadge, friendly, fitClass } from "./eraDraftPlayerPresentation.js";
-import { PlayerCard } from "./components/PlayerCard.js";
-import { DRAFTING_COPY, ERA_COPY } from "./copy.js";
+import { DRAFTING_COPY, ERA_COPY, REVEAL_COPY } from "./copy.js";
 import { DraftingWorkspace, type DraftingCommand } from "./screens/drafting/DraftingWorkspace.js";
+import { TeamReveal } from "./screens/reveal/TeamReveal.js";
 
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
 import { createEraDraftGame, reduceEraDraft } from "./eraDraftEngine.js";
 import { projectEraDraftGameCompleteState, projectEraDraftPublicState, projectEraDraftRevealState } from "./eraDraftProjection.js";
 import type {
-  EraDraftRevealView,
   EraDraftGameCompleteView,
   EraDraftTransitionResult,
 } from "./eraDraftTypes.js";
@@ -57,6 +55,8 @@ export function EraDraftApp(): ReactElement {
   const [landingNotice, setLandingNotice] = useState<string | null>(null);
   const [persistenceWarning, setPersistenceWarning] = useState<string | null>(null);
   const [terminalError, setTerminalError] = useState<string | null>(null);
+  // The revision Reveal team produced in this session; only that reveal flips its cards.
+  const [flipRevision, setFlipRevision] = useState<number | null>(null);
   const operationIdRef = useRef(0);
   const operationPendingRef = useRef(false);
   const routeRef = useRef(route);
@@ -257,13 +257,17 @@ export function EraDraftApp(): ReactElement {
     }
     return session.state.phase === "REVEALED"
       ? <RevealedExperience session={{ catalog: session.catalog, state: session.state }} persistenceWarning={persistenceWarning}
+          flip={flipRevision === session.state.revision} onFlipDone={() => setFlipRevision(null)}
           onBeginSeason={() => {
             const result = reduceEraDraft(session.catalog, session.state, { type: "SIMULATE_SEASON" });
             if (!result.ok || result.state.phase !== "GAME_COMPLETE") throw new Error("The season could not be simulated.");
             acceptTransition(session.catalog, result, { phase: "LEAGUE", revealedUserMatches: 1 });
           }} onExit={() => navigate("HOME")} />
       : <DraftExperience session={{ catalog: session.catalog, state: session.state }}
-          persistenceWarning={persistenceWarning} onAccepted={(result) => acceptTransition(session.catalog, result)} onExit={() => navigate("HOME")} />;
+          persistenceWarning={persistenceWarning} onAccepted={(result) => {
+            if (result.ok && result.state.phase === "REVEALED") setFlipRevision(result.state.revision);
+            return acceptTransition(session.catalog, result);
+          }} onExit={() => navigate("HOME")} />;
   }
   if (route === null) return <NotFound onExit={() => navigate("HOME")} />;
   return <Landing manifest={manifest} manifestLoading={manifestLoading} error={manifestError} loadingEra={loadingEra} selectedEra={selectedEra}
@@ -460,6 +464,9 @@ export function DraftExperience(props: {
 export function RevealedExperience(props: {
   session: { readonly catalog: EraDraftCatalog; readonly state: Extract<Phase2EraDraftState, { phase: "REVEALED" }> };
   persistenceWarning: string | null;
+  /** Straight after Reveal team: the cards flip first. Restored games open on the team sheet. */
+  flip?: boolean;
+  onFlipDone?: () => void;
   onBeginSeason: () => void;
   onExit: () => void;
 }): ReactElement {
@@ -467,54 +474,27 @@ export function RevealedExperience(props: {
     () => projectEraDraftRevealState(props.session.catalog, props.session.state),
     [props.session.catalog, props.session.state],
   );
-  const headingRef = useRef<HTMLHeadingElement>(null);
+  const entries = useMemo(() => view.players.map((player) => ({
+    player, card: view.picks.find((pick) => pick.playerTeamSeasonId === player.playerTeamSeasonId)!,
+  })), [view]);
   const beginStartedRef = useRef(false);
   const [beginStarted, setBeginStarted] = useState(false);
-  const era = ERA_COPY[view.eraId];
-  useEffect(() => headingRef.current?.focus(), []);
   return <main className="era-shell draft-shell revealed-shell gameplay-shell">
     <div className="gameplay-atmosphere" aria-hidden="true" />
     <header className="game-header draft-header">
       <button className="wordmark wordmark-button" onClick={props.onExit} aria-label="Return to era selection">
         <span className="wordmark-mark">ED</span><span>ERA DRAFT</span>
       </button>
-      <div className="draft-era-id"><span>{era.title}</span><strong>{era.years}</strong></div>
       <button className="quiet-button" onClick={props.onExit}>Exit draft</button>
     </header>
-    <div className="draft-layout reveal-layout">
-      <section className="draft-stage reveal-stage" aria-labelledby="reveal-title">
-        {props.persistenceWarning && <PersistenceWarning message={props.persistenceWarning} />}
-        <div className="reveal-intro"><p className="eyebrow">{era.title} · {era.years}</p>
-          <h1 ref={headingRef} tabIndex={-1} id="reveal-title">Your team, revealed.</h1>
-          <p>Historical player-season ratings, with team strength reflecting your batting order and bowling balance.</p></div>
-        <p className="eyebrow strength-label">Team strength</p><div className="strength-grid" aria-label="Team strength ratings">
-          <RevealMetric label="Overall" value={view.evaluation.strength.overall} featured />
-          <RevealMetric label="Batting" value={view.evaluation.strength.batting} />
-          <RevealMetric label="Bowling" value={view.evaluation.strength.bowling} />
-        </div>
-        <section className="evaluation-summary" aria-labelledby="evaluation-title">
-          <div className="candidate-heading"><h2 id="evaluation-title">Team Assessment</h2></div>
-          <div className="assessment-section"><h3>Quality mix</h3><div className="quality-mix">{(["S", "A", "B", "C", "D"] as const).filter((tier) => view.evaluation.tierCounts[tier] > 0).map((tier) =>
-            <span key={tier} className={`mix-${tier.toLowerCase()}`}>{tier} × {view.evaluation.tierCounts[tier]}</span>)}</div></div>
-          <div className="assessment-section"><h3>Batting-order fit</h3>
-            <p>{countSummary({ ...view.evaluation.fitCounts, ACCEPTABLE: view.evaluation.fitCounts.ACCEPTABLE + view.evaluation.fitCounts.UNKNOWN }, ["NATURAL", "ACCEPTABLE"])}</p>
-            {(["STRETCH", "MAJOR_STRETCH"] as const).filter((fit) => view.evaluation.fitCounts[fit] > 0).map((fit) => <div key={fit}><FitBadge fit={fit} /> <span className={`fit-${fitClass(fit)}`}>{view.evaluation.fitCounts[fit]}</span></div>)}
-            <p>Position-fit adjustments are reflected in team strength.</p></div>
-          <div className="assessment-section"><h3>Bowling balance</h3>
-            <EvaluationRow label="Deployment" value={`${formatRating(view.evaluation.construction.deployedBowlingUnits)} / ${view.evaluation.construction.requiredBowlingUnits} units`} />
-            <EvaluationRow label="Options" value={`${view.evaluation.construction.frontlineBowlers} frontline · ${view.evaluation.construction.supportBowlers} support`} /></div>
-        </section>
-        <div className="phase-boundary">
-          <button className="primary-action" disabled={beginStarted} onClick={() => {
-            if (beginStartedRef.current) return;
-            beginStartedRef.current = true;
-            setBeginStarted(true);
-            props.onBeginSeason();
-          }}>{beginStarted ? "Starting league…" : "Start League"} <span aria-hidden="true">→</span></button></div>
-        <p className="sr-status" aria-live="polite">Team revealed. Player and team ratings are now visible.</p>
-      </section>
-      <RevealedXi view={view} />
-    </div>
+    <TeamReveal eraId={view.eraId} entries={entries} evaluation={view.evaluation} flip={props.flip} onFlipDone={props.onFlipDone}
+      warning={props.persistenceWarning && <PersistenceWarning message={props.persistenceWarning} />}
+      action={(ref) => <button ref={ref} type="button" className="primary-action reveal-start" disabled={beginStarted} onClick={() => {
+        if (beginStartedRef.current) return;
+        beginStartedRef.current = true;
+        setBeginStarted(true);
+        props.onBeginSeason();
+      }}>{beginStarted ? REVEAL_COPY.startingLeague : REVEAL_COPY.startLeague} <span aria-hidden="true">→</span></button>} />
   </main>;
 }
 
@@ -752,29 +732,6 @@ function PlayoffTeam({ innings, winner }: {
   </div>;
 }
 
-function RevealMetric({ label, value, featured = false }: { label: string; value: number; featured?: boolean }): ReactElement {
-  return <div className={`reveal-metric${featured ? " reveal-metric-featured" : ""}`}><span>{label}</span><strong>{formatRating(value)}</strong></div>;
-}
-
-function EvaluationRow({ label, value }: { label: string; value: string }): ReactElement {
-  return <div className="evaluation-row"><span>{label}</span><strong>{value}</strong></div>;
-}
-
-function RevealedXi({ view }: { view: EraDraftRevealView }): ReactElement {
-  return <section className="revealed-xi" aria-labelledby="revealed-xi-title"><h2 id="revealed-xi-title">Your Revealed XI</h2>
-    <div className="revealed-list" role="table" aria-label="Revealed player ratings">
-      <div className="revealed-list-head" role="row">{["Pos", "Player", "Overall", "Batting", "Bowling", "Position fit"].map((label) => <span role="columnheader" key={label}>{label}</span>)}</div>
-      {[...view.players].sort((a, b) => a.battingPosition - b.battingPosition).map((player) => <div role="row" key={player.playerTeamSeasonId} className={`revealed-player revealed-tier-${player.qualityTier.toLowerCase()}`}>
-        <span role="cell" className="revealed-position">{String(player.battingPosition).padStart(2, "0")}</span>
-        <span role="cell" className="revealed-identity"><PlayerCard size="mini" player={view.picks.find((pick) => pick.playerTeamSeasonId === player.playerTeamSeasonId)!} order={player.battingPosition - 1} /></span>
-        <strong role="cell" className="revealed-overall" aria-label={`Overall ${formatRating(player.overallRating)}`}>{formatRating(player.overallRating)}</strong>
-        <span role="cell" className="revealed-bat"><small>BAT </small>{nullableRating(player.displayRole === "BOWLER" ? null : player.battingRating)}</span>
-        <span role="cell" className="revealed-bowl"><small>BOWL </small>{nullableRating(player.displayRole === "BATTER" || player.displayRole === "WICKETKEEPER_BATTER" ? null : player.bowlingRating)}</span>
-        <span role="cell" className="revealed-fit"><FitBadge fit={player.presentationFit} /></span>
-      </div>)}
-    </div></section>;
-}
-
 export function LoadingSession(): ReactElement {
   return <main className="era-shell centered-state" aria-live="polite" aria-busy="true"><p className="eyebrow">No active game loaded</p>
     <h1>Returning to era selection…</h1><p>Choose an era or continue a verified local save from the home screen.</p></main>;
@@ -788,22 +745,6 @@ function NotFound({ onExit }: { onExit: () => void }): ReactElement {
   return <main className="era-shell centered-state"><p className="eyebrow">404</p><h1>That route is outside the boundary.</h1>
     <button className="primary-action" onClick={onExit}>Return home</button></main>;
 }
-
-function formatRating(value: number): string {
-  return value.toFixed(1);
-}
-
-function nullableRating(value: number | null): string {
-  return value === null ? "—" : formatRating(value);
-}
-
-function countSummary<T extends string>(counts: Readonly<Record<T, number>>, order: readonly T[]): string {
-  return order.filter((key) => counts[key] > 0).map((key) => `${friendly(key)} ${counts[key]}`).join(" · ") || "None";
-}
-
-
-
-
 
 function formatInnings(runs: number, wickets: number): string { return wickets === 10 ? `${runs}` : `${runs}/${wickets}`; }
 function formatSigned(value: number): string { return `${value >= 0 ? "+" : ""}${value.toFixed(3)}`; }

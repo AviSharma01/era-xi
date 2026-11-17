@@ -50,9 +50,9 @@ test("results screen retains leaderboard, lazily loads own XI, inspection, asses
     await act(async()=>release(resultsBody(domain)));
     assert.equal(ui.document.querySelectorAll(".room-revealed-player").length,11);
     assert.equal(ui.document.querySelectorAll(".room-campaign-matches > li").length,20);
-    assert.match(ui.document.body.textContent!,/Team assessment|Bowling balance|overseas/);
+    assert.match(ui.document.body.textContent!,/Team rating/);
     assert.equal(ui.document.querySelectorAll(".room-campaign .innings-row").length,40);
-    await ui.click(".room-result-player-name"); assert.ok(ui.document.querySelector(".player-inspector[open]"));
+    await ui.click(".team-sheet-name"); assert.ok(ui.document.querySelector(".player-inspector[open]"));
     assert.match(ui.document.querySelector(".player-inspector")!.textContent!,/Player details · Slot 01/);
     await ui.click(".player-inspector button");
     const newer=structuredClone(session(domain)); Object.assign(newer.snapshot!.view,{revision:domain.revision+1});
@@ -62,7 +62,7 @@ test("results screen retains leaderboard, lazily loads own XI, inspection, asses
     await act(async()=>release(resultsBody(domain,hostId,memberId)));
     assert.match(ui.document.querySelector("#participant-results-title")!.textContent!,/Results member/);
     const expectedPicks = [...participant(domain, memberId).draftState.picks].sort((a,b) => a.battingPosition-b.battingPosition);
-    assert.deepEqual([...ui.document.querySelectorAll(".room-result-player-name strong")].map(node => node.textContent),
+    assert.deepEqual([...ui.document.querySelectorAll(".team-sheet-name strong")].map(node => node.textContent),
       expectedPicks.map(pick => catalog.getPlayer(pick.playerTeamSeasonId)!.canonicalDisplayName));
     const round = domain.rounds[0]!;
     assert.equal(round.phase, "RESOLVED"); if (round.phase !== "RESOLVED") return;

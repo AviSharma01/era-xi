@@ -395,7 +395,7 @@ test("unavailable roster rows remain keyboard reachable and expose visible reaso
   }
 });
 
-test("Start League retains the synchronous one-call guard with the redesigned reveal list", async () => {
+test("Start league retains the synchronous one-call guard on the team sheet", async () => {
   const catalog = loadEraDraftCatalog();
   let state = accepted(reduceEraDraft(catalog, createEraDraftGame({ catalog, rootSeed: "final-start-guard" }), { type: "CHOOSE_ERA", eraId: "era-foundation" }));
   while (state.phase === "AWAITING_SPIN") {
@@ -421,11 +421,11 @@ test("Start League retains the synchronous one-call guard with the redesigned re
     assert.equal(element.querySelectorAll(".revealed-player").length, 11);
     assert.equal(element.querySelector(".quality-tier"), null);
     await act(async () => {
-      const button = element.querySelector<HTMLButtonElement>(".phase-boundary button")!;
+      const button = element.querySelector<HTMLButtonElement>(".reveal-start")!;
       button.click(); button.click();
     });
     assert.equal(starts, 1);
-    assert.equal(element.querySelector<HTMLButtonElement>(".phase-boundary button")!.disabled, true);
+    assert.equal(element.querySelector<HTMLButtonElement>(".reveal-start")!.disabled, true);
     assert.match(element.textContent ?? "", /Starting league…/);
   } finally { await act(async () => root.unmount()); restoreGlobals(); dom.window.close(); }
 });

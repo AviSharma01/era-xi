@@ -106,6 +106,12 @@ button.player-card-slot:hover .player-card-body { transform: translateY(var(--mo
 .player-card-slot .player-card-tags { margin-top: auto; }
 .player-card-slot .player-card-tags .player-card-fit { align-self: auto; }
 
+/* Slot, revealed: the overall rating where the monogram was, the role's ratings under the name. */
+.player-card-slot .player-card-overall { flex: none; margin-top: var(--card-portrait-slot-offset); font: var(--weight-number) var(--card-overall-slot)/var(--leading-clock) var(--font-display); letter-spacing: var(--tracking-headline); }
+.player-card-ratings { display: flex; flex: none; flex-wrap: wrap; justify-content: center; gap: 0 var(--space-1h); font-size: var(--type-small); line-height: var(--leading-small); }
+.player-card-ratings b { font-weight: var(--weight-label); }
+.player-card-content-revealed .player-card-tags { margin-top: auto; }
+
 /* Mini */
 .player-card-mini .player-card-body { min-height: var(--card-mini-min-height); }
 .player-card-mini .player-card-content { min-height: inherit; align-items: center; gap: var(--space-2); padding: var(--space-1h) var(--space-2); }

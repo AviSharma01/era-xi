@@ -109,16 +109,7 @@
 .draft-off-shell .room-results-heading { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); margin-bottom: var(--space-5); }
 .draft-off-shell .room-results-heading h2 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); margin: 0; overflow-wrap: anywhere; }
 .draft-off-shell .room-results-heading a { flex-shrink: 0; }
-.draft-off-shell .room-result-team-layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(270px, 1fr); align-items: start; gap: var(--space-5); }
-.draft-off-shell .room-revealed-list, .draft-off-shell .room-campaign-matches { list-style: none; margin: var(--space-5) 0 0; padding: 0; }
-.draft-off-shell .room-revealed-player { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: var(--space-2) var(--space-3); align-items: center; padding: var(--space-4) 0; border-top: 1px solid var(--color-divider); }
-.draft-off-shell .room-result-position { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); color: var(--color-text-muted); }
-.draft-off-shell .room-result-ratings { text-align: right; font-family: var(--font-body); }
-.draft-off-shell .room-result-ratings strong { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); display: block; color: var(--color-action); }.draft-off-shell .room-result-ratings strong small { font-size: var(--type-label); }
-.draft-off-shell .room-result-ratings > span { display: block; margin-top: var(--space-1h); color: var(--color-text-muted); font-size: var(--type-small); }
-.draft-off-shell .room-revealed-player > .fit-badge { grid-column: 2/-1; justify-self: start; }
-.draft-off-shell .room-team-assessment .strength-grid { margin: var(--space-5) 0; }.draft-off-shell .room-team-assessment .reveal-metric { padding: var(--space-3) var(--space-2); }
-.draft-off-shell .room-team-assessment .assessment-section { margin-top: var(--space-5); padding-top: var(--space-4); border-top: 1px solid var(--color-divider); }.draft-off-shell .room-team-assessment h4 { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); margin: 0 0 var(--space-2h); }
+.draft-off-shell .room-campaign-matches { list-style: none; margin: var(--space-5) 0 0; padding: 0; }
 .draft-off-shell .room-campaign { margin-top: var(--space-5); }.draft-off-shell .room-campaign-summary { display: flex; flex-wrap: wrap; gap: var(--space-6); margin: var(--space-6) 0 var(--space-3); }
 .draft-off-shell .room-campaign-summary span { display: block; color: var(--color-text-muted); font-size: var(--type-small); margin-bottom: var(--space-1h); }.draft-off-shell .room-campaign-summary strong { font: var(--weight-number) var(--type-number)/var(--leading-number) var(--font-display); }
 .draft-off-shell .room-campaign-matches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }.draft-off-shell .room-campaign-matches > li { min-width: 0; }
@@ -126,11 +117,9 @@
 .draft-off-shell .room-match-heading > span:first-child { color: var(--color-text-muted); font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); }.draft-off-shell .room-match-heading strong { flex: 1; font-size: var(--type-small); }
 .draft-off-shell .room-campaign .innings-row { gap: var(--space-3); }.draft-off-shell .room-campaign .innings-row > span { min-width: 0; overflow-wrap: anywhere; }.draft-off-shell .room-campaign .innings-row > div { flex-shrink: 0; text-align: right; }
 .draft-off-shell .room-campaign .innings-row small { display: block; color: var(--color-text-muted); margin-top: var(--space-1); font-size: var(--type-small); }.draft-off-shell .room-campaign .match-verdict { margin-top: var(--space-3); font-size: var(--type-small); }
-@media (max-width: 999px) { .draft-off-shell .room-result-team-layout { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 699px) {
   .draft-off-shell .room-campaign-matches { grid-template-columns: minmax(0, 1fr); }.draft-off-shell .room-results-heading { align-items: flex-start; }.draft-off-shell .room-results-heading h2 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); }
   .draft-off-shell .room-participant-results .draft-off-panel { padding: var(--space-4); }.draft-off-shell .room-campaign-matches .match-result { padding: var(--space-4); }
-  .draft-off-shell .room-revealed-player { grid-template-columns: 22px minmax(0, 1fr) auto; column-gap: var(--space-2); }.draft-off-shell .room-result-ratings strong { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); }.draft-off-shell .room-result-ratings > span { max-width: 115px; line-height: var(--leading-label); }
 }
 
 .draft-off-shell .room-sheet-clock { font: var(--weight-strong) var(--type-label)/var(--leading-label) var(--font-body); margin-left: auto; color: var(--color-clock); white-space: nowrap; }

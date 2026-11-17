@@ -1,0 +1,141 @@
+/* The reveal, Solo and Draft-Off: the board flips, then the rating panel beside the team sheet.
+   Values come from tokens.css, and only transform and opacity animate. */
+
+/* The flip: the drafting board in place, with nothing else changing. A tap anywhere skips. */
+.drafting.reveal-flip { animation: none; cursor: pointer; }
+.reveal-flip .drafting-complete { align-items: center; text-align: center; }
+.gameplay-shell .reveal-flip .reveal-skip { min-width: var(--spin-stage-button-width); }
+.reveal-flip .drafting-bar .reveal-skip { flex: 1 1 auto; }
+.reveal-board .xi-board-heading h2 { margin: 0; font: var(--weight-title) var(--type-label)/var(--leading-label) var(--font-display); }
+.reveal-slot > .player-card { grid-area: 1 / 1; }
+/* Each card turns edge-on, then its back turns out: ~280ms a card, 100ms apart, in batting order. */
+.reveal-front { animation: var(--anim-reveal-front) var(--motion-reveal-flip) var(--ease-linear) calc(var(--reveal-order) * var(--motion-reveal-stagger)) both; }
+.reveal-back { animation: var(--anim-reveal-back) var(--motion-reveal-flip) var(--ease-linear) calc(var(--reveal-order) * var(--motion-reveal-stagger)) both; }
+@keyframes reveal-flip-out { from { transform: scaleX(1); animation-timing-function: ease-in; } 50%, to { transform: scaleX(0); } }
+@keyframes reveal-flip-in { from, 50% { transform: scaleX(0); animation-timing-function: ease-out; } to { transform: scaleX(1); } }
+/* Phones: the back keeps the number, the rating, the role's ratings and the fit; the name gives way first. */
+.drafting-small .reveal-back .player-card-overall { margin-top: 0; }
+.drafting-small .reveal-back .player-card-name { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; line-clamp: 1; overflow: hidden; }
+
+/* The team sheet. The screen is the viewport on desktop: the panel runs its full height, Start league at its foot. */
+.gameplay-shell:has(.reveal-sheet:not(.reveal-sheet-embedded)) { display: flex; flex-direction: column; min-height: 100dvh; padding: 0 var(--space-6); }
+.gameplay-shell:has(.reveal-sheet:not(.reveal-sheet-embedded)) .game-header { flex: none; width: 100%; max-width: var(--drafting-max-width); min-height: var(--drafting-header-height); padding-block: 0; }
+.gameplay-shell:has(.reveal-sheet) .draft-header { display: flex; }
+/* The drafting board's header too, so the flip and the sheet sit under the same bar. */
+.gameplay-shell:has(.reveal-flip) .game-header { flex: none; width: 100%; max-width: var(--drafting-max-width); min-height: var(--drafting-header-height); padding-block: 0; }
+.gameplay-shell:has(.reveal-sheet) :is(button, a) { transition: none; }
+
+.reveal-sheet {
+  display: grid; flex: 1; grid-template-columns: var(--reveal-panel-width) minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); align-items: start;
+  gap: var(--space-3) var(--drafting-gutter); width: 100%; max-width: var(--drafting-max-width); margin: 0 auto; padding-block: var(--space-3) var(--space-4);
+  animation: fade-in var(--motion-screen) var(--ease-out);
+}
+.reveal-sheet-warning { grid-column: 1 / -1; }
+.reveal-sheet > .reveal-panel { grid-row: 2; align-self: stretch; }
+.reveal-sheet > .team-sheet-wrap { grid-row: 2; }
+.reveal-sheet:not(:has(.reveal-sheet-warning)) { grid-template-rows: minmax(0, 1fr); }
+.reveal-sheet:not(:has(.reveal-sheet-warning)) > :is(.reveal-panel, .team-sheet-wrap) { grid-row: 1; }
+
+/* The panel: the team rating, exactly the number the simulation uses, with batting and bowling under it. */
+.reveal-panel { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; padding: var(--space-5); border: 1px solid var(--color-divider); border-radius: var(--radius-sm); background: var(--color-panel); }
+.reveal-era { margin: 0; color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
+.gameplay-shell .reveal-rating-title { margin: 0; color: var(--color-text); font: var(--weight-label) var(--type-small)/var(--leading-small) var(--font-body); letter-spacing: var(--tracking-caps); text-transform: uppercase; }
+.reveal-rating-title:focus { outline: 0; }
+.reveal-rating-title:focus-visible { border-radius: var(--radius-xs); }
+.reveal-rating { margin: calc(var(--space-2) * -1) 0 0; color: var(--color-action); font: var(--weight-number) var(--type-number)/var(--leading-number) var(--font-display); letter-spacing: var(--tracking-headline); }
+.reveal-rating-ticking { color: var(--color-loss); }
+/* Desktop: the panel has the room, so the answer to "is my team good?" takes the Hero size. The bar keeps Big number. */
+.reveal-panel .reveal-rating { margin-top: calc(var(--space-1) * -1); font: var(--weight-hero) var(--type-hero)/var(--leading-hero) var(--font-display); }
+.reveal-components { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin: 0; padding-block: var(--space-3); border-block: 1px solid var(--color-divider); }
+.reveal-components div { min-width: 0; }
+.reveal-components dt { color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
+.reveal-components dd { margin: 0; font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); }
+
+/* The build: one line per change from the base, in team-rating points. Losses are coral and always carry a minus. */
+.reveal-build { display: flex; flex-direction: column; gap: var(--space-2); }
+.gameplay-shell .reveal-build-line { display: block; width: 100%; min-height: 44px; padding: var(--space-2) var(--space-3); border: 1px solid var(--color-divider); border-radius: var(--radius-xs); background: transparent; color: var(--color-text); font: var(--weight-regular) var(--type-secondary)/var(--leading-secondary) var(--font-body); text-align: left; cursor: pointer; }
+.gameplay-shell .reveal-build-line:hover { background: var(--color-row-hover); }
+.gameplay-shell .reveal-build-line[aria-pressed="true"] { background: var(--color-row-selected); box-shadow: inset var(--card-state-edge-selected) 0 0 var(--color-action); }
+.reveal-build-step { white-space: nowrap; }
+.reveal-loss { color: var(--color-loss); font-weight: var(--weight-strong); white-space: nowrap; }
+.reveal-coverage { margin: 0; color: var(--color-text); font-size: var(--type-secondary); line-height: var(--leading-secondary); }
+.reveal-action { margin-top: auto; }
+.gameplay-shell .reveal-action .primary-action { width: 100%; }
+
+/* The team sheet: a real table, compact rows, all eleven visible with nothing above them. */
+.team-sheet-wrap { container: team-sheet / inline-size; min-width: 0; overflow: hidden; border: 1px solid var(--color-divider); border-radius: var(--radius-sm); background: var(--color-panel); }
+.team-sheet { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: var(--type-secondary); line-height: var(--leading-secondary); }
+.team-sheet :is(th, td) { padding: var(--space-1) var(--space-3); border-top: 1px solid var(--color-divider); text-align: left; vertical-align: middle; }
+.team-sheet thead th { padding-block: var(--space-1h); border-top: 0; color: var(--color-text-muted); font-size: var(--type-small); font-weight: var(--weight-medium); line-height: var(--leading-small); white-space: nowrap; }
+.team-sheet .team-sheet-position { width: var(--team-sheet-position-width); }
+.team-sheet .team-sheet-tier { width: var(--team-sheet-tier-width); }
+.team-sheet .team-sheet-number { width: var(--team-sheet-number-width); text-align: right; }
+.team-sheet .team-sheet-fit { width: var(--team-sheet-fit-width); }
+.team-sheet td.team-sheet-position { color: var(--color-text-muted); font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); }
+.team-sheet th.team-sheet-player { min-width: 0; font-weight: var(--weight-regular); }
+.team-sheet-name { display: flex; flex-direction: column; min-width: 0; }
+.gameplay-shell button.team-sheet-name { -webkit-tap-highlight-color: transparent; width: 100%; min-height: var(--team-sheet-name-target); padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.gameplay-shell button.team-sheet-name:hover strong { text-decoration: underline; text-decoration-color: var(--color-divider-strong); text-underline-offset: 3px; }
+.team-sheet-name strong { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-name); letter-spacing: var(--tracking-label); overflow-wrap: break-word; }
+.team-sheet-meta { color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
+.team-sheet td.team-sheet-tier { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); white-space: nowrap; }
+.team-sheet-swatch { display: inline-block; width: var(--team-sheet-swatch); height: var(--team-sheet-swatch); margin-right: var(--space-1h); border-radius: var(--radius-xs); vertical-align: baseline; }
+.team-sheet-swatch.tier-violet { background: var(--tier-s); }
+.team-sheet-swatch.tier-gold { background: var(--tier-a); }
+.team-sheet-swatch.tier-cobalt { background: var(--tier-b); }
+.team-sheet-swatch.tier-emerald { background: var(--tier-c); }
+.team-sheet-swatch.tier-slate { background: var(--tier-d); box-shadow: inset 0 0 0 1px var(--color-control-edge); }
+.team-sheet td.team-sheet-number { white-space: nowrap; }
+.team-sheet td.revealed-overall { color: var(--color-action); font: var(--weight-number) var(--type-label)/var(--leading-label) var(--font-display); }
+.gameplay-shell .team-sheet .fit-badge { font-size: var(--type-secondary); line-height: var(--leading-secondary); }
+/* The players behind a build line: a lighter row with the ivory edge. Their fit says the loss in words. */
+.team-sheet tr.team-sheet-highlight > * { background: var(--color-row-selected); }
+.team-sheet tr.team-sheet-highlight > :first-child { box-shadow: inset var(--card-state-edge-selected) 0 0 var(--color-action); }
+
+/* Phones and tablets: one rating bar above the table, the build in a sheet, Start league always on screen. */
+.reveal-sheet-small { display: flex; flex-direction: column; align-items: stretch; gap: var(--space-2); max-width: none; padding-block: var(--space-2) 0; }
+.reveal-bar {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "title title build" "rating parts loss";
+  align-items: center; gap: 0 var(--space-3); padding: var(--space-2) var(--space-3); border: 1px solid var(--color-divider); border-radius: var(--radius-sm); background: var(--color-panel);
+}
+.reveal-bar .reveal-rating-title { grid-area: title; }
+.reveal-bar .reveal-rating { grid-area: rating; margin: 0; }
+.reveal-bar-components { grid-area: parts; color: var(--color-text-muted); font-size: var(--type-secondary); line-height: var(--leading-secondary); }
+.reveal-bar-components b { color: var(--color-text); font-weight: var(--weight-label); }
+.reveal-bar-loss { grid-area: loss; font-size: var(--type-secondary); line-height: var(--leading-secondary); }
+.gameplay-shell .reveal-bar .reveal-build-open { grid-area: build; justify-self: end; min-height: 44px; margin-block: calc(var(--space-2) * -1) 0; padding: 0 0 0 var(--space-2); color: var(--color-text); text-decoration: underline; text-decoration-color: var(--color-divider-strong); text-underline-offset: 3px; }
+.team-sheet-small :is(th, td) { padding-inline: var(--space-2); }
+.team-sheet-small .team-sheet-position { width: var(--team-sheet-position-width-phone); }
+.team-sheet-small .team-sheet-tier { width: var(--team-sheet-tier-width-phone); }
+.team-sheet-small .team-sheet-number { width: var(--team-sheet-number-width-phone); }
+.team-sheet-small .team-sheet-fit { width: var(--team-sheet-fit-width-phone); }
+.gameplay-shell .team-sheet-small .fit-badge { font-size: var(--type-small); line-height: var(--leading-small); }
+.team-sheet-small .fit-percent-loss { display: block; }
+.team-sheet-small td.team-sheet-tier .team-sheet-swatch { margin-right: var(--space-1); }
+.gameplay-shell .team-sheet-small button.team-sheet-name { min-height: 44px; justify-content: center; }
+.team-sheet-detail { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--space-3); padding-bottom: var(--space-1); color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
+.team-sheet-detail b { color: var(--color-text); font-weight: var(--weight-label); }
+.gameplay-shell .team-sheet-detail .quiet-button { min-height: 44px; padding: 0; color: var(--color-text); text-decoration: underline; text-underline-offset: 3px; }
+.reveal-dock { position: sticky; bottom: 0; z-index: 5; display: flex; flex-direction: column; gap: var(--space-2); margin-top: auto; padding-block: var(--space-2) calc(var(--space-2) + env(safe-area-inset-bottom)); border-top: 1px solid var(--color-divider-strong); background: var(--color-night); }
+.reveal-dock .reveal-action { margin-top: 0; }
+.reveal-build-sheet { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-3); border: 1px solid var(--color-divider-strong); border-radius: var(--radius-sm); background: var(--color-panel-raised); animation: fade-in var(--motion-level-1) var(--ease-out); }
+.reveal-build-sheet:focus { outline: 0; }
+.reveal-build-sheet-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
+.gameplay-shell .reveal-build-sheet-head h2 { margin: 0; font: var(--weight-label) var(--type-small)/var(--leading-small) var(--font-body); letter-spacing: var(--tracking-caps); text-transform: uppercase; }
+.gameplay-shell .reveal-build-sheet-head .quiet-button { padding-inline: var(--space-2); }
+
+/* Draft-Off results: the same panel and sheet inside the page. */
+.reveal-sheet-embedded { margin-top: var(--space-6); padding-block: 0; }
+.reveal-sheet-embedded.reveal-sheet-small { margin-top: var(--space-4); }
+@media (max-width: 1199px) { .reveal-sheet { gap: var(--space-3) var(--space-6); } }
+/* A narrow table (small phones, or Draft-Off inside its panel): tighter columns, so names keep whole words. */
+@container team-sheet (max-width: 340px) {
+  .team-sheet-small :is(th, td) { padding-inline: var(--space-1h); }
+  .team-sheet-small .team-sheet-position { width: var(--team-sheet-position-width-narrow); }
+  .team-sheet-small .team-sheet-tier { width: var(--team-sheet-tier-width-narrow); }
+  .team-sheet-small .team-sheet-number { width: var(--team-sheet-number-width-narrow); }
+  .team-sheet-small .team-sheet-fit { width: var(--team-sheet-fit-width-narrow); }
+}
+@media (max-width: 959px) {
+  .gameplay-shell:has(.reveal-sheet:not(.reveal-sheet-embedded)) { padding-inline: var(--space-4); }
+}

@@ -316,6 +316,23 @@
   --xi-short-screen-squad: 320px;
   --xi-short-screen-card: 7.5rem;
   --xi-short-screen-bar: 9.5rem;
+  /* Reveal: the board flips, then a narrow rating panel beside the team sheet (a bar above it on phones). */
+  --card-overall-slot: min(var(--type-number), 26cqw);
+  --reveal-panel-width: clamp(15rem, 21vw, 18.5rem);
+  --team-sheet-position-width: 3rem;
+  --team-sheet-tier-width: 4.25rem;
+  --team-sheet-number-width: 4.25rem;
+  --team-sheet-fit-width: 10.5rem;
+  --team-sheet-position-width-phone: 2.25rem;
+  --team-sheet-tier-width-phone: 2.75rem;
+  --team-sheet-number-width-phone: 3rem;
+  --team-sheet-fit-width-phone: 6.5rem;
+  --team-sheet-position-width-narrow: 1.875rem;
+  --team-sheet-tier-width-narrow: 2.25rem;
+  --team-sheet-number-width-narrow: 2.75rem;
+  --team-sheet-fit-width-narrow: 4.75rem;
+  --team-sheet-swatch: 12px;
+  --team-sheet-name-target: 24px;
   --reel-height: 5.25rem;
   --spin-stage-reel-width: 34rem;
   --spin-stage-reel-height: 6rem;
@@ -357,6 +374,7 @@
   --motion-lock: 320ms;
   --motion-reveal-flip: 280ms;
   --motion-reveal-stagger: 100ms;
+  --motion-reveal-hold: 600ms; /* the whole revealed XI, together, before the sheet */
   --motion-league-match: 700ms;
   --motion-pip-fill: 150ms;
   --motion-standings-slide: 300ms;
@@ -389,6 +407,9 @@
   --lock-settle-scale: 1.06;
   --flash-expand-scale: 0.9;
   --anim-reveal: reveal-card;
+  /* Reveal flips: each card turns edge-on and its back turns out (transform only). */
+  --anim-reveal-front: reveal-flip-out;
+  --anim-reveal-back: reveal-flip-in;
   --anim-slot-pulse: slot-pulse;
   --anim-spinner: load-turn;
   --anim-sheen: card-light-sweep;

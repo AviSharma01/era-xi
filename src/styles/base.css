@@ -32,6 +32,9 @@ button:disabled { cursor: not-allowed; }
     --motion-lift: 0px;
     --motion-nudge: 0px;
     --anim-reveal: fade-in;
+    /* Reveal flips: each back fades in place over its front, still in sequence. */
+    --anim-reveal-front: none;
+    --anim-reveal-back: fade-in;
     --anim-slot-pulse: none;
     --anim-spinner: none;
     --anim-sheen: none;

@@ -192,6 +192,49 @@ export const DRAFTING_COPY = {
   lockDraftChanged: "Your draft changed in another tab",
 } as const;
 
+/** The reveal, shared by Solo and Draft-Off. Team numbers are the original ratings, never rescaled. */
+export const REVEAL_COPY = {
+  revealing: "Revealing your XI",
+  revealingStatus: "Revealing your XI in batting order. Skip to see the team sheet.",
+  skip: "Skip",
+  tapToSkip: "Tap to skip",
+  teamRating: "Team rating",
+  batting: "Batting",
+  bowling: "Bowling",
+  bat: "Bat",
+  bowl: "Bowl",
+  base: "Base",
+  battingOrder: "Batting order",
+  build: "Build",
+  buildTitle: "Rating build",
+  close: "Close",
+  /** Highlights the players behind a line; their names are read with it. */
+  buildPlayers: (names: readonly string[]) => `Players behind it: ${names.join(", ")}.`,
+  buildLabel: (base: string, loss: string, final: string) => `Base ${base}, batting order minus ${loss}, team rating ${final}`,
+  bowlingCovered: (covered: string, required: number) => `${covered} of ${required} bowling slots covered`,
+  startLeague: "Start league",
+  startingLeague: "Starting league…",
+  sheetCaption: "Your XI, in batting order",
+  sheetCaptionFor: (name: string) => `${name}’s XI, in batting order`,
+  columnPosition: "#",
+  columnPositionName: "Batting position",
+  columnPlayer: "Player",
+  columnTier: "Tier",
+  columnOverall: "OVR",
+  columnOverallName: "Overall",
+  columnBatting: "BAT",
+  columnBattingName: "Batting",
+  columnBowling: "BWL",
+  columnBowlingName: "Bowling",
+  columnFit: "Fit",
+  noRating: "—",
+  noRatingName: "No rating",
+  showRatings: ", show batting and bowling",
+  inspect: "Inspect ",
+  inspectSeason: "Inspect season",
+  revealedStatus: "Team revealed. Player and team ratings are now visible.",
+} as const;
+
 /** Short, always-visible reasons for each engine rejection code. The engine's own sentences are never shown. */
 export const REJECTION_COPY: Readonly<Record<EraDraftSelectionRejectionCode, string>> = {
   DUPLICATE_CANONICAL_PLAYER: "Already in your XI",

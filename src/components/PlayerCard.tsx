@@ -36,6 +36,8 @@ export type PlayerCardProps = {
   flashKey?: string | number | null;
   /** Empty by default; future player tags hang here from the top edge. */
   ribbon?: ReactNode;
+  /** Slot cards after the reveal: the overall rating takes the portrait's place, with the role's ratings under the name. */
+  revealed?: PlayerCardRatings;
   /** Renders the whole card as a button. */
   onClick?: MouseEventHandler<HTMLButtonElement>;
   /** Accessible name. Defaults to playerCardName; null when an enclosing control names it. */
@@ -43,6 +45,11 @@ export type PlayerCardProps = {
   pressed?: boolean;
   nameId?: string;
   className?: string;
+};
+
+export type PlayerCardRatings = {
+  readonly overall: string;
+  readonly ratings: readonly { readonly label: string; readonly value: string }[];
 };
 
 const TIER_LETTERS: Readonly<Record<DraftTierAppearance, string>> = { violet: "S", gold: "A", cobalt: "B", emerald: "C", slate: "D" };
@@ -136,7 +143,7 @@ function StateMarker({ state }: { state: PlayerCardState }): ReactElement | null
 }
 
 export function PlayerCard(props: PlayerCardProps): ReactElement {
-  const { player, size, state = "default", slotNumber, fit, fitPercent, eraTitle, note, flashKey = null, ribbon, onClick, nameId } = props;
+  const { player, size, state = "default", slotNumber, fit, fitPercent, eraTitle, note, flashKey = null, ribbon, onClick, nameId, revealed } = props;
   const isS = player.tierAppearance === "violet";
   const finishShowing = state !== "preview" && state !== "unavailable";
   const [engaged, setEngaged] = useState(false);
@@ -193,7 +200,7 @@ export function PlayerCard(props: PlayerCardProps): ReactElement {
       </span>
       {fitTag}{noteLine}
     </span>}
-    {size === "slot" && <span className="player-card-content">
+    {size === "slot" && !revealed && <span className="player-card-content">
       <span className="player-card-top">{number}<StateMarker state={state} /></span>
       {portrait}
       {name}
@@ -201,6 +208,13 @@ export function PlayerCard(props: PlayerCardProps): ReactElement {
       <Stats stats={stats} size={size} seasonYear={player.seasonYear} />
       <span className="player-card-tags"><span className="player-card-role">{shortRole(player.displayRole)}</span>{fitTag}</span>
       {noteLine}{reasonLine}
+    </span>}
+    {size === "slot" && revealed && <span className="player-card-content player-card-content-revealed">
+      <span className="player-card-top">{number}<StateMarker state={state} /></span>
+      <span className="player-card-overall">{revealed.overall}</span>
+      {name}
+      <span className="player-card-ratings">{revealed.ratings.map((rating) => <span key={rating.label}>{rating.label} <b>{rating.value}</b></span>)}</span>
+      <span className="player-card-tags">{fitTag}</span>
     </span>}
     {size === "mini" && <span className="player-card-content">
       {number}{portrait}

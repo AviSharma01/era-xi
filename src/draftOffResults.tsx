@@ -5,6 +5,7 @@ import { ResultsClientError } from "./draftOffResultsClient.js";
 import { FitBadge, PlayerInspector, friendly } from "./eraDraftPlayerPresentation.js";
 import { PlayerCard, playerCardName } from "./components/PlayerCard.js";
 import { ERA_COPY, rosterLabel } from "./copy.js";
+import { TeamReveal } from "./screens/reveal/TeamReveal.js";
 import type { ReactNode } from "react";
 import type { DraftTierAppearance } from "./eraDraftTypes.js";
 
@@ -82,17 +83,9 @@ export function DraftOffResultsBrowser(props: ResultsResourceProps & { displayNa
     <header className="room-results-heading"><div><p className="eyebrow">Submitted XI · Twenty-match campaign</p><h2 id="participant-results-title" tabIndex={-1}>{displayName}’s results</h2></div><a className="quiet-button" href="#final-leaderboard">Leaderboard ↑</a></header>
     <ResultsLoading resource={resource} name={displayName} />
     {result && <>
-      <div className="room-result-team-layout">
-        <section className="draft-off-panel room-revealed-team" aria-labelledby="submitted-xi-title"><p className="eyebrow">Batting order locked at submission</p><h3 id="submitted-xi-title">Submitted XI</h3>
-          <ol className="room-revealed-list">{result.players.map(player => <li key={player.playerTeamSeasonId} className={`room-revealed-player revealed-tier-${player.qualityTier.toLowerCase()}`}>
-            <span className="room-result-position">{String(player.battingPosition).padStart(2, "0")}</span>
-            <PlayerCard size="mini" player={cardPlayer(player)} order={player.battingPosition - 1} note={rosterNote(player)} className="room-result-player-name" onClick={() => setInspected(player)} label={`Inspect ${playerCardName(cardPlayer(player))}, position ${player.battingPosition}`} />
-            <div className="room-result-ratings"><strong aria-label={`Overall ${rating(player.overallRating)}`}>{rating(player.overallRating)} <small>{player.qualityTier}</small></strong><span>BAT {rating(player.displayRole === "BOWLER" ? null : player.battingRating)} · BOWL {rating(player.displayRole === "BATTER" || player.displayRole === "WICKETKEEPER_BATTER" ? null : player.bowlingRating)}</span></div>
-            <FitBadge fit={player.presentationFit} />
-          </li>)}</ol>
-        </section>
-        <TeamAssessment result={result} />
-      </div>
+      <TeamReveal embedded headingLevel={3} eraId={props.identity.eraId} ownerName={displayName} rowClassName="room-revealed-player"
+        entries={result.players.map(player => ({ player, card: cardPlayer(player) }))} evaluation={result.evaluation}
+        onInspect={id => setInspected(result.players.find(player => player.playerTeamSeasonId === id) ?? null)} />
       <section className="draft-off-panel room-campaign" aria-labelledby="campaign-title"><p className="eyebrow">Same shared fixtures · Authoritative results</p><h3 id="campaign-title">Twenty-match campaign</h3>
         <div className="room-campaign-summary"><div><span>Record</span><strong>{result.campaign.aggregate.won}–{result.campaign.aggregate.lost}</strong></div><div><span>Points</span><strong>{result.campaign.aggregate.points}</strong></div><div><span>Net run rate</span><strong>{result.campaign.aggregate.netRunRate >= 0 ? "+" : ""}{result.campaign.aggregate.netRunRate.toFixed(3)}</strong></div></div>
         <p className="draft-off-footnote">20 played. NRR uses the backend’s full precision and all-out ball accounting.</p>
@@ -103,16 +96,6 @@ export function DraftOffResultsBrowser(props: ResultsResourceProps & { displayNa
   </section>;
 }
 
-function TeamAssessment({ result }: { result: ResultsSuccess }) {
-  const { strength, tierCounts, fitCounts, construction: c } = result.evaluation;
-  return <section className="draft-off-panel room-team-assessment" aria-labelledby="team-assessment-title"><p className="eyebrow">Ratings revealed</p><h3 id="team-assessment-title">Team assessment</h3>
-    <div className="strength-grid" aria-label="Team strength ratings">{(["overall", "batting", "bowling"] as const).map(key => <div key={key} className={`reveal-metric${key === "overall" ? " reveal-metric-featured" : ""}`}><span>{friendly(key)}</span><strong>{rating(strength[key])}</strong></div>)}</div>
-    <div className="assessment-section"><h4>Quality mix</h4><div className="quality-mix">{(["S", "A", "B", "C", "D"] as const).filter(tier => tierCounts[tier] > 0).map(tier => <span key={tier} className={`mix-${tier.toLowerCase()}`}>{tier} × {tierCounts[tier]}</span>)}</div></div>
-    <div className="assessment-section"><h4>Batting-order fit</h4><p>{fitCounts.NATURAL} natural · {fitCounts.ACCEPTABLE + fitCounts.UNKNOWN} acceptable</p>{(["STRETCH", "MAJOR_STRETCH"] as const).filter(fit => fitCounts[fit] > 0).map(fit => <p key={fit}><FitBadge fit={fit} /> × {fitCounts[fit]}</p>)}<p className="draft-off-footnote">Position-fit adjustments are reflected in team strength.</p></div>
-    <div className="assessment-section"><h4>Bowling balance</h4><p>{c.deployedBowlingUnits.toFixed(1)} / {c.requiredBowlingUnits} deployed units</p><p>{c.frontlineBowlers} frontline · {c.supportBowlers} support</p></div>
-    <div className="assessment-section"><h4>Team construction</h4><p>{c.overseasCount} / {c.overseasLimit} overseas · {c.hasWicketkeeper ? "Wicketkeeper confirmed" : "No confirmed wicketkeeper"}</p></div>
-  </section>;
-}
 function CampaignMatch({ match, entryName }: { match: ResultsMatchView; entryName: string }) {
   const opponent = `${match.opponent.teamName} ${match.opponent.seasonYear}`;
   const winner = match.outcome === "WIN" ? entryName : opponent;
