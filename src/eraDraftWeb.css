@@ -126,43 +126,11 @@
 .match-verdict strong { font-size: var(--type-small); font-weight: var(--weight-medium); }
 .match-result-win .match-verdict { box-shadow: inset 3px 0 0 var(--color-win); }
 .match-result-loss .match-verdict { box-shadow: inset 3px 0 0 var(--color-loss); }
-.season-progress-summary { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 14px; border: 1px solid var(--color-divider); border-radius: var(--radius-card); }
-.season-progress-summary > div { display: grid; gap: var(--space-1); padding: 13px; border-right: 1px solid var(--color-divider); }
-.season-progress-summary > div:last-child { border-right: 0; }
-.season-progress-summary span, .terminal-summary span { color: var(--color-text-muted); font-family: var(--font-body); font-size: var(--type-small); letter-spacing: var(--tracking-small); text-transform: uppercase; }
-.season-progress-summary strong { font-family: var(--font-display); font-size: var(--type-label); }
-.season-progress-summary small { color: var(--color-text-muted); font-size: var(--type-small); }
-.league-progress-strip { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: var(--space-1); margin: 14px 0 0; padding: 0; list-style: none; }
-.league-progress-strip li { min-width: 0; display: grid; place-items: center; gap: 2px; padding: 5px 2px; border: 1px solid var(--color-divider); border-radius: var(--radius-sm); color: var(--color-text-muted); background: var(--wash-faint); font-family: var(--font-body); }
-.league-progress-strip li span { font-size: var(--type-small); }
-.league-progress-strip li strong { font-size: var(--type-small); }
-.league-progress-strip .progress-w { border-color: var(--color-win-edge); color: var(--color-win); background: var(--color-win-tint); }
-.league-progress-strip .progress-l { border-color: var(--color-loss-edge); color: var(--color-loss); background: var(--color-loss-tint); }
-.league-progress-strip .progress-current { box-shadow: inset 0 -2px 0 var(--color-action); }
+.terminal-summary span { color: var(--color-text-muted); font-family: var(--font-body); font-size: var(--type-small); letter-spacing: var(--tracking-small); text-transform: uppercase; }
 .season-actions, .terminal-actions { display: flex; flex-wrap: wrap; gap: var(--space-2h); margin-top: var(--space-5); }
-.season-layout-progress { width: min(820px, 100%); grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
-.league-standings-disclosure { overflow: hidden; border: 1px solid var(--color-divider); border-radius: var(--radius-panel); background: var(--color-panel); }
-.league-standings-disclosure > summary { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 13px var(--space-4); color: var(--color-text-muted); cursor: pointer; font-family: var(--font-body); font-size: var(--type-small); letter-spacing: var(--tracking-small); text-transform: uppercase; }
-.league-standings-disclosure > summary strong { color: var(--color-action); font-weight: var(--weight-medium); }
-.league-standings-disclosure > .standings-panel { border: 0; border-top: 1px solid var(--color-divider); border-radius: 0; }
-.standings-panel, .playoff-bracket { min-width: 0; overflow: hidden; border: 1px solid var(--color-divider); border-radius: var(--radius-panel); background: var(--color-panel); }
-.standings-panel .candidate-heading, .playoff-bracket .candidate-heading { margin: 0; padding: 14px var(--space-4); border-bottom: 1px solid var(--color-divider); }
-.standings-panel .candidate-heading h2, .playoff-bracket .candidate-heading h2 { margin: 0; font-family: var(--font-display); font-size: var(--type-label); letter-spacing: var(--tracking-small); text-transform: uppercase; }
-.standings-scroll { overflow-x: auto; }
-.standings-panel table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-.standings-panel th, .standings-panel td { padding: var(--space-2h) var(--space-2); border-bottom: 1px solid var(--color-divider); font-size: var(--type-small); text-align: right; white-space: nowrap; }
-.standings-panel thead th { color: var(--color-text-muted); font-family: var(--font-body); font-size: var(--type-small); letter-spacing: var(--tracking-small); text-transform: uppercase; }
-.standings-panel th:nth-child(2), .standings-panel td:nth-child(2) { width: 100%; text-align: left; }
-.standings-panel tbody th { max-width: 210px; overflow: hidden; font-weight: var(--weight-medium); text-overflow: ellipsis; }
-.standings-panel tbody th small { display: block; margin-top: 2px; color: var(--color-action); font-family: var(--font-body); font-size: var(--type-small); text-transform: uppercase; }
-.standings-panel tbody tr:last-child th, .standings-panel tbody tr:last-child td { border-bottom: 0; }
-.user-standing { background: var(--wash-ivory); box-shadow: inset 3px 0 0 var(--color-action); }
-.league-complete-panel { display: grid; justify-items: start; align-content: start; }
-.season-outcome-copy { max-width: 500px; margin: 0 0 var(--space-5); color: var(--color-text-muted); line-height: var(--leading-body); }
-.qualification-state { width: 100%; display: grid; gap: 5px; margin-bottom: var(--space-5); padding: 14px; border: 1px solid var(--color-divider-strong); border-radius: var(--radius-card); }
-.qualification-state span { color: var(--color-action); font-family: var(--font-body); font-size: var(--type-small); letter-spacing: var(--tracking-caps); text-transform: uppercase; }
-.qualification-state strong { font-size: var(--type-small); font-weight: var(--weight-medium); }
-.qualification-state.eliminated { border-color: var(--color-loss-edge); }
+.playoff-bracket { min-width: 0; overflow: hidden; border: 1px solid var(--color-divider); border-radius: var(--radius-panel); background: var(--color-panel); }
+.playoff-bracket .candidate-heading { margin: 0; padding: 14px var(--space-4); border-bottom: 1px solid var(--color-divider); }
+.playoff-bracket .candidate-heading h2 { margin: 0; font-family: var(--font-display); font-size: var(--type-label); letter-spacing: var(--tracking-small); text-transform: uppercase; }
 .playoff-bracket ol { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
 .playoff-stage { min-width: 0; display: grid; gap: var(--space-2h); position: relative; padding: 13px var(--space-4) 14px; border-bottom: 1px solid var(--color-divider); }
 .playoff-stage:last-child { border-bottom: 0; }
@@ -232,8 +200,6 @@
   .fit-badge { font-size: var(--type-small); }
   .season-actions, .terminal-actions { align-items: stretch; flex-direction: column; }
   .season-actions button, .terminal-actions button { width: 100%; }
-  .standings-panel th, .standings-panel td { padding-inline: 7px; }
-  .standings-panel tbody th { max-width: 150px; }
   .terminal-summary { grid-template-columns: 1fr; }
   .terminal-summary > div { border-right: 0; border-bottom: 1px solid var(--color-divider); }
   .terminal-summary > div:last-child { border-bottom: 0; }
@@ -315,11 +281,10 @@
 }
 .gameplay-shell .season-layout { display: block; width: 100%; max-width: 960px; margin: var(--space-6) auto 0; padding: 0; }
 .gameplay-shell .season-primary { padding: 0; border: 0; background: none; }
-.gameplay-shell .broadcast-match, .gameplay-shell .league-complete-panel { padding: var(--space-8); border: 1px solid var(--color-divider); border-radius: var(--radius-sm); background: var(--color-panel); }
+.gameplay-shell .broadcast-match { padding: var(--space-8); border: 1px solid var(--color-divider); border-radius: var(--radius-sm); background: var(--color-panel); }
 .gameplay-shell .season-primary h1 { margin: var(--space-3) 0 var(--space-6); }
 .gameplay-shell .season-kicker { font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); }
 .gameplay-shell .season-kicker > span { font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); color: var(--color-text); letter-spacing: 0; text-transform: none; }
-.gameplay-shell .qualification-state span { font-size: var(--type-small); line-height: var(--leading-small); }
 .gameplay-shell .match-result { box-shadow: none; background: none; border-radius: 0; border: 0; border-top: 1px solid var(--color-divider); }
 .gameplay-shell .innings-row { min-height: 72px; padding: var(--space-3) 0; gap: var(--space-4); }
 .gameplay-shell .innings-row small { display: block; font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); letter-spacing: 0; text-transform: none; }
@@ -331,28 +296,7 @@
 .gameplay-shell .match-verdict { justify-content: space-between; align-items: flex-end; gap: var(--space-3) var(--space-6); }
 .gameplay-shell .match-verdict > strong { flex: 1 1 220px; color: var(--color-text); }
 .gameplay-shell .match-verdict .match-outcome { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); margin-left: auto; text-align: right; }
-.gameplay-shell .league-progress-strip { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: var(--space-1h); margin: var(--space-6) 0; }
-.gameplay-shell .league-progress-strip li { min-height: 44px; border-radius: var(--radius-xs); font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); }
-.gameplay-shell .league-progress-strip li :is(span, strong) { font-size: var(--type-small); }
-.gameplay-shell .league-progress-strip .progress-current { outline: 1px solid var(--color-action); outline-offset: 2px; box-shadow: none; }
-.gameplay-shell .league-progress-strip .progress-w { color: var(--color-win); }.gameplay-shell .league-progress-strip .progress-l { color: var(--color-loss); }
-.gameplay-shell .season-progress-summary { display: flex; gap: var(--space-12); margin: var(--space-6) 0; background: transparent; border: 0; padding: 0; }
-.gameplay-shell .season-progress-summary > div { border: 0; padding: 0; }
-.gameplay-shell .season-progress-summary span { text-transform: none; letter-spacing: 0; }
-.gameplay-shell .season-progress-summary strong { font: var(--weight-number) var(--type-number)/var(--leading-number) var(--font-display); }
-.gameplay-shell .season-progress-summary span, .gameplay-shell .season-progress-summary small { font-size: var(--type-small); line-height: var(--leading-small); }
 .gameplay-shell .season-actions { margin: var(--space-6) 0 0; gap: var(--space-3); }
-.gameplay-shell .league-standings-disclosure, .gameplay-shell .standings-panel { margin-top: var(--space-6); background: var(--color-panel); border-radius: var(--radius-sm); }
-.gameplay-shell .league-standings-disclosure .standings-panel { margin-top: 0; }
-.gameplay-shell .league-standings-disclosure summary { min-height: 48px; font: var(--weight-regular) var(--type-secondary)/var(--leading-secondary) var(--font-body); padding: var(--space-3) var(--space-4); text-transform: none; letter-spacing: 0; }
-.gameplay-shell .league-standings-disclosure summary > span::before { content: "▸ "; }
-.gameplay-shell .league-standings-disclosure[open] summary > span::before { content: "▾ "; }
-.gameplay-shell .league-standings-disclosure summary strong { font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); color: var(--color-text); }
-.gameplay-shell .standings-panel { padding: var(--space-5); }
-.gameplay-shell .standings-panel :is(td, th) { font: var(--weight-regular) var(--type-secondary)/var(--leading-secondary) var(--font-body); min-height: 44px; height: 44px; padding: var(--space-2); }
-.gameplay-shell .standings-panel tbody th { max-width: none; white-space: normal; }
-.gameplay-shell .standings-panel .user-standing { background: var(--color-row-selected); box-shadow: inset 3px 0 0 var(--color-action); }
-.gameplay-shell .standings-panel small { font-size: var(--type-small); }
 .gameplay-shell .playoff-layout { max-width: 1200px; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--space-6); align-items: start; }
 .gameplay-shell .playoff-bracket { background: var(--color-panel); border-radius: var(--radius-sm); }
 .gameplay-shell .playoff-bracket > .candidate-heading { padding: var(--space-4); }
@@ -395,7 +339,7 @@
   .gameplay-shell .draft-layout, .gameplay-shell .playoff-layout { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .gameplay-shell .inspector-sheet { position: fixed; inset: auto 0 0; width: 100%; max-width: none; max-height: 70dvh; margin: 0; overflow-y: auto; padding: var(--space-5) var(--space-5) calc(var(--space-5) + env(safe-area-inset-bottom)); box-shadow: 0 0 16px var(--color-shadow); }
   .gameplay-shell .inspector-sheet::backdrop { background: var(--color-scrim); }
-  .gameplay-shell .broadcast-match, .gameplay-shell .league-complete-panel { padding: var(--space-6); }
+  .gameplay-shell .broadcast-match { padding: var(--space-6); }
 }
 @media (max-width: 759px) {
   .gameplay-shell { padding-inline: var(--space-4); }
@@ -405,26 +349,13 @@
   .gameplay-shell .game-header > .quiet-button { grid-column: 2; grid-row: 1; }
   .gameplay-shell .game-header .draft-era-id { display: none; }
   .gameplay-shell h1 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); }
-  .gameplay-shell .broadcast-match, .gameplay-shell .league-complete-panel { padding: var(--space-5); }
+  .gameplay-shell .broadcast-match { padding: var(--space-5); }
   .gameplay-shell .innings-row { padding: var(--space-3) 0; }
   .gameplay-shell .innings-row b { font: var(--weight-number) var(--type-number)/var(--leading-number) var(--font-display); }
   .gameplay-shell .innings-row strong { font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); }
   .gameplay-shell .match-verdict { padding: var(--space-3) 0; }
-  .gameplay-shell .league-progress-strip { grid-template-columns: repeat(7, minmax(0, 1fr)); }
   .gameplay-shell .season-actions, .gameplay-shell .terminal-actions { display: flex; flex-direction: column; }
   .gameplay-shell .season-actions button, .gameplay-shell .terminal-actions button { width: 100%; }
-  .gameplay-shell .standings-panel { padding: var(--space-3); }
-  .gameplay-shell .standings-scroll { overflow: visible; }
-  .gameplay-shell .standings-panel table { min-width: 0; width: 100%; }
-  .gameplay-shell .standings-panel thead { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
-  .gameplay-shell .standings-panel tbody, .gameplay-shell .standings-panel tr { display: block; }
-  .gameplay-shell .standings-panel tbody tr { display: grid; grid-template-columns: 28px repeat(3, minmax(0, 1fr)) 68px; padding: var(--space-2) 0; border-top: 1px solid var(--color-divider); }
-  .gameplay-shell .standings-panel :is(td, th) { font: var(--weight-regular) var(--type-secondary)/var(--leading-secondary) var(--font-body); height: auto; min-height: 0; border: 0; padding: var(--space-1); }
-  .gameplay-shell .standings-panel tbody th { grid-column: 2/5; grid-row: 1; }
-  .gameplay-shell .standings-panel td:nth-child(6) { grid-column: 5; grid-row: 1; }
-  .gameplay-shell .standings-panel td:nth-child(3) { grid-column: 2; }.gameplay-shell .standings-panel td:nth-child(4) { grid-column: 3; }.gameplay-shell .standings-panel td:nth-child(5) { grid-column: 4; }.gameplay-shell .standings-panel td:nth-child(7) { grid-column: 5; }
-  .gameplay-shell .standings-panel td:nth-child(3)::before { content: "P "; }.gameplay-shell .standings-panel td:nth-child(4)::before { content: "W "; }.gameplay-shell .standings-panel td:nth-child(5)::before { content: "L "; }.gameplay-shell .standings-panel td:nth-child(6)::before { content: "Pts "; }.gameplay-shell .standings-panel td:nth-child(7)::before { content: "NRR "; }
-  .gameplay-shell .standings-panel td:nth-child(7) { font-size: var(--type-small); }
   .gameplay-shell .terminal-summary { grid-template-columns: 1fr; }
   .gameplay-shell .terminal-screen .playoff-teams { grid-template-columns: minmax(0, 1fr); gap: var(--space-1); }
   .gameplay-shell .terminal-screen .playoff-team { display: grid; grid-template-columns: minmax(0, 1fr) auto; }

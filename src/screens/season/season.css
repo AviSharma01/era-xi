@@ -1,0 +1,170 @@
+/* The Solo league: the match feed beside the live table, then league complete with the table in the centre.
+   Values come from tokens.css, and only transform and opacity animate. */
+
+.gameplay-shell:has(.league) .game-header { max-width: var(--league-max-width); }
+
+/* --- League in progress: feed and controls on the left, the table on the right, both on screen the whole league --- */
+.league-live {
+  display: grid; grid-template-columns: minmax(0, 1fr) var(--league-table-width); grid-template-rows: auto 1fr;
+  grid-template-areas: "feed table" "controls table"; align-items: start; gap: var(--space-5) var(--drafting-gutter);
+  width: 100%; max-width: var(--league-max-width); margin: var(--space-4) auto 0;
+  animation: fade-in var(--motion-screen) var(--ease-out);
+}
+.league-feed { grid-area: feed; min-width: 0; container: league-feed / inline-size; }
+.league-live > .league-controls { grid-area: controls; }
+.league-live > .league-table { grid-area: table; }
+
+.league-feed-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-3); }
+.gameplay-shell .league h1 { margin: 0; color: var(--color-text); font: var(--weight-label) var(--type-small)/var(--leading-small) var(--font-body); letter-spacing: var(--tracking-caps); text-transform: uppercase; }
+.league h1:focus { outline: 0; }
+.league h1:focus-visible { border-radius: var(--radius-xs); }
+.league-count { margin: 0; color: var(--color-text-muted); font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); }
+
+/* The latest result: one large line, W or L with its mark, then the scores. */
+.league-latest { margin-top: var(--space-5); animation: fade-in var(--motion-level-1) var(--ease-out); }
+.league-latest-line { margin: 0; color: var(--color-text); font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); letter-spacing: var(--tracking-headline); text-wrap: balance; }
+.league-latest-dot { color: var(--color-text-muted); }
+.league-latest-score { margin: var(--space-2) 0 0; color: var(--color-text-muted); font-size: var(--type-secondary); line-height: var(--leading-secondary); }
+.league-verdict { display: inline-flex; align-items: center; gap: var(--space-1); padding: 0 var(--space-2); border-radius: var(--radius-xs); font-size: 0.8em; vertical-align: 0.08em; }
+.league-verdict-win { color: var(--color-win); background: var(--color-win-tint); box-shadow: inset 0 0 0 1px var(--color-win-edge); }
+.league-verdict-loss { color: var(--color-loss); background: var(--color-loss-tint); box-shadow: inset 0 0 0 1px var(--color-loss-edge); }
+.league-icon { flex: none; width: 0.72em; height: 0.72em; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.league-icon-fill { fill: currentColor; stroke: none; }
+
+.league-summary { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-10); margin: var(--space-5) 0 0; }
+.league-summary div { min-width: 0; }
+.league-summary dt { color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
+.league-summary dd { margin: 0; font: var(--weight-number) var(--type-number)/var(--leading-number) var(--font-display); }
+.league-summary small { margin-left: var(--space-1h); color: var(--color-text-muted); font: var(--weight-regular) var(--type-small)/var(--leading-small) var(--font-body); }
+
+/* Controls: always there while the league runs. Resume is the main action when paused. */
+.league-controls { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.gameplay-shell .league-controls button { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); min-width: 8.5rem; }
+.league-control-icon { display: inline-flex; }
+.league-paused { color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); letter-spacing: var(--tracking-caps); text-transform: uppercase; }
+
+/* --- The 14 pips: W mint with a tick, L coral with a cross, upcoming dim; one row, or two of 7 when narrow --- */
+.league-pips-wrap { position: relative; container: league-pips / inline-size; }
+.league-pips { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: var(--space-1h); margin: 0; padding: 0; list-style: none; }
+@container league-pips (max-width: 620px) { .league-pips { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
+.league-pips li { min-width: 0; }
+.league-pip {
+  position: relative; display: flex; align-items: center; justify-content: center; gap: 2px; width: 100%; height: var(--league-pip-size); padding: 0;
+  border: 1px solid var(--color-divider); border-radius: var(--radius-xs); background: var(--wash-faint); color: var(--color-text-muted);
+  font: var(--weight-label) var(--type-label)/1 var(--font-display);
+}
+.gameplay-shell button.league-pip { min-height: 0; cursor: pointer; }
+.league-pip-upcoming { border-style: dashed; font: var(--weight-regular) var(--type-small)/1 var(--font-body); }
+.league-pip-win { border-color: var(--color-win-edge); background: var(--color-win-tint); color: var(--color-win); }
+.league-pip-loss { border-color: var(--color-loss-edge); background: var(--color-loss-tint); color: var(--color-loss); }
+.gameplay-shell button.league-pip:hover { border-color: currentColor; }
+.league-pip[aria-expanded="true"] { border-color: var(--color-action); box-shadow: inset 0 0 0 1px var(--color-action); }
+/* A close match keeps a small ivory diamond; the legend under the strip names it. */
+.league-pip-marker { width: var(--league-pip-marker); height: var(--league-pip-marker); border-radius: 1px; background: var(--color-action); transform: rotate(45deg); }
+.league-pip > .league-pip-marker { position: absolute; top: 4px; right: 4px; }
+.league-pips-legend, .league-details-close { display: flex; align-items: center; gap: var(--space-2); margin: var(--space-2) 0 0; color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); }
+
+/* Revealed live: the pip fills (~150ms); a close win then bursts in mint, a close loss flashes coral, within ~600ms. */
+.league-pip-fresh { animation: var(--anim-pip-fill) var(--motion-pip-fill) var(--ease-out) both; }
+.league-pip-burst::before, .league-pip-burst::after, .league-pip-flash::after { content: ""; position: absolute; pointer-events: none; opacity: 0; }
+.league-pip-burst::before { inset: -2px; border: 2px solid var(--color-win); border-radius: inherit;
+  animation: var(--anim-close-burst) calc(var(--motion-close-match) - var(--motion-pip-fill)) var(--ease-out) var(--motion-pip-fill) both; }
+.league-pip-burst::after { inset: 18%; border-radius: var(--radius-round); background: var(--color-win-edge);
+  animation: var(--anim-close-burst) calc(var(--motion-close-match) - var(--motion-pip-fill)) var(--ease-out) var(--motion-pip-fill) both; }
+.league-pip-flash::after { inset: 0; border-radius: inherit; background: var(--color-loss-tint);
+  animation: var(--anim-close-flash) calc(var(--motion-close-match) - var(--motion-pip-fill)) var(--ease-in-out) var(--motion-pip-fill) both; }
+@keyframes pip-fill { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: none; } }
+@keyframes close-burst { from { opacity: 0.95; transform: scale(1); } to { opacity: 0; transform: scale(var(--close-burst-scale)); } }
+@keyframes close-flash { 0% { opacity: 0; } 35% { opacity: 1; } 100% { opacity: 0; } }
+
+/* --- Match details: a popover under the strip on desktop, a bottom sheet on phones --- */
+.league-popover {
+  position: absolute; top: calc(100% + var(--space-2)); z-index: 10; width: min(var(--league-popover-width), 100%);
+  padding: var(--space-3) var(--space-4) var(--space-4); border: 1px solid var(--color-divider-strong); border-radius: var(--radius-sm);
+  background: var(--color-panel-raised); box-shadow: 0 12px 32px var(--color-shadow); animation: fade-in var(--motion-level-1) var(--ease-out);
+}
+.league-popover:focus, .league-sheet:focus { outline: 0; }
+.league-sheet-scrim { position: fixed; inset: 0; z-index: 20; background: var(--color-scrim); animation: fade-in var(--motion-level-1) var(--ease-out); }
+.league-sheet {
+  position: fixed; right: 0; bottom: 0; left: 0; z-index: 21; padding: var(--space-3) var(--space-4) calc(var(--space-5) + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--color-divider-strong); border-radius: var(--radius-lg) var(--radius-lg) 0 0; background: var(--color-panel-raised);
+  animation: var(--anim-sheet-rise) var(--motion-level-1) var(--ease-out);
+}
+@keyframes sheet-rise { from { opacity: 0; transform: translateY(var(--motion-step-distance)); } to { opacity: 1; transform: none; } }
+.league-details-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-1); }
+.gameplay-shell .league-details-head h2 { margin: 0; font: var(--weight-label) var(--type-label)/var(--leading-label) var(--font-display); }
+.gameplay-shell .league-details-head .quiet-button { flex: none; padding-inline: var(--space-2); text-decoration: underline; text-decoration-color: var(--color-divider-strong); text-underline-offset: 3px; }
+.league-innings { display: grid; grid-template-columns: minmax(0, 1fr) auto 3.5rem; align-items: baseline; gap: var(--space-3); padding-block: var(--space-2); border-top: 1px solid var(--color-divider); }
+.league-innings-team { min-width: 0; font-size: var(--type-secondary); line-height: var(--leading-secondary); }
+.league-innings-user .league-innings-team { font-weight: var(--weight-strong); }
+.league-innings-score { font: var(--weight-number) var(--type-label)/var(--leading-label) var(--font-display); }
+.league-innings-overs { color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); text-align: right; }
+.league-details-result { margin: 0; padding-top: var(--space-2); border-top: 1px solid var(--color-divider); font-size: var(--type-secondary); line-height: var(--leading-secondary); }
+.league-details-result .league-verdict { margin-right: var(--space-2); font: var(--weight-label) var(--type-small)/var(--leading-small) var(--font-body); }
+
+/* --- The table: a real table, your row lit with the ivory edge --- */
+.league-table { container: league-table / inline-size; min-width: 0; overflow: hidden; border: 1px solid var(--color-divider); border-radius: var(--radius-sm); background: var(--color-panel); }
+.gameplay-shell .league-table-title { margin: 0; padding: var(--space-2h) var(--space-4); border-bottom: 1px solid var(--color-divider); color: var(--color-text); font: var(--weight-label) var(--type-small)/var(--leading-small) var(--font-body); letter-spacing: var(--tracking-caps); text-transform: uppercase; }
+.league-table table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: var(--type-secondary); line-height: var(--leading-secondary); font-variant-numeric: tabular-nums; }
+.league-table :is(th, td) { height: var(--league-row-height); padding: 0 var(--space-2); border-top: 1px solid var(--color-divider); text-align: right; white-space: nowrap; }
+.league-table thead th { height: var(--league-head-height); border-top: 0; color: var(--color-text-muted); font-size: var(--type-small); font-weight: var(--weight-medium); line-height: var(--leading-small); }
+.league-table thead th, .league-table td { width: var(--league-col-number); }
+.league-table .league-col-pos { width: var(--league-col-pos); padding-left: var(--space-4); text-align: left; }
+.league-table .league-col-team { width: auto; text-align: left; white-space: normal; }
+.league-table .league-col-pts { width: var(--league-col-points); font-weight: var(--weight-strong); }
+.league-table .league-col-nrr { width: var(--league-col-nrr); padding-right: var(--space-4); }
+.league-table tbody th { padding-block: var(--space-1); font-weight: var(--weight-medium); overflow-wrap: break-word; }
+.league-table td.league-col-pos { color: var(--color-text-muted); font: var(--weight-label) var(--type-label)/1 var(--font-display); }
+.league-table tr.league-row-user > * { background: var(--color-row-selected); }
+.league-table tr.league-row-user > :first-child { box-shadow: inset var(--card-state-edge-selected) 0 0 var(--color-action); color: var(--color-action); }
+.league-table tr.league-row-user th { color: var(--color-action); font-weight: var(--weight-strong); }
+/* League complete: a dashed ivory line and its label between 4th and 5th. */
+/* Team-seasons in full; abbreviated ("MI 2013") when the table is narrow, the full name kept for screen readers. */
+.league-name-short { display: none; }
+@container league-table (max-width: 440px) {
+  .league-name-full { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+  .league-name-short { display: inline; }
+}
+/* Drawn as a background: a collapsed dashed border restarts its dashes at every column edge. */
+.league-table tr.league-playoff-line td {
+  height: auto; padding: var(--space-1h) var(--space-4) var(--space-1); border-top: 0; color: var(--color-text-muted); font-size: var(--type-small); line-height: var(--leading-small); text-align: left; white-space: normal;
+  background: linear-gradient(90deg, var(--color-action) 0 var(--league-playoff-dash), transparent 0) 0 0 / calc(var(--league-playoff-dash) * 2) 1px repeat-x;
+}
+.league-table tr.league-playoff-line + tr > * { border-top: 0; }
+
+/* --- League complete: pips compressed above, the table in the centre and wider, the next step below --- */
+.league-complete {
+  display: flex; flex-direction: column; align-items: stretch; gap: var(--space-4);
+  width: 100%; max-width: var(--league-complete-width); margin: var(--space-4) auto 0;
+}
+.league-complete-head { display: flex; flex-direction: column; align-items: center; gap: var(--space-1); text-align: center; }
+.gameplay-shell .league-complete h1 { font: var(--weight-title) var(--type-title)/var(--leading-title) var(--font-display); letter-spacing: var(--tracking-headline); text-transform: none; }
+.league-outcome { margin: 0; color: var(--color-text); font-size: var(--type-body); line-height: var(--leading-body); }
+.league-pips-compact .league-pips { grid-template-columns: repeat(14, minmax(0, var(--league-pip-compact-width))); justify-content: center; gap: var(--space-1); }
+@container league-pips (max-width: 560px) { .league-pips-compact .league-pips { grid-template-columns: repeat(7, minmax(0, var(--league-pip-compact-width))); } }
+.league-pips-compact .league-pip { height: var(--league-pip-compact); font-size: var(--type-secondary); }
+.league-pips-compact .league-pip > .league-pip-marker { top: 2px; right: 2px; width: calc(var(--league-pip-marker) - 1px); height: calc(var(--league-pip-marker) - 1px); }
+.league-pips-compact .league-pips-legend { justify-content: center; margin-top: var(--space-1); }
+.league-complete-action { display: flex; justify-content: center; }
+.gameplay-shell .league-complete-action .primary-action { min-width: var(--spin-stage-button-width); }
+
+/* --- Phones and tablets: pips, the latest result and the controls on top (controls stay pinned), the table below --- */
+@media (max-width: 959px) {
+  .gameplay-shell:has(.league) { padding-inline: var(--space-4); }
+  .league-live { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "feed" "controls" "table"; gap: var(--space-3); margin-top: var(--space-2); }
+  .league-feed-head { margin-bottom: var(--space-2); }
+  .league-latest { margin-top: var(--space-3); }
+  .league-summary { margin-top: var(--space-3); }
+  .league-summary dd { font-size: var(--type-label); line-height: var(--leading-label); }
+  .league-live > .league-controls {
+    position: sticky; top: 0; z-index: 5; flex-wrap: nowrap; margin-inline: calc(var(--space-4) * -1); padding: var(--space-2) var(--space-4);
+    border-block: 1px solid var(--color-divider); background: var(--color-night);
+  }
+  .gameplay-shell .league-controls button { flex: 1 1 0; min-width: 0; }
+  .league-paused { display: none; }
+  .league-complete { margin-top: var(--space-2); gap: var(--space-3); }
+  .gameplay-shell .league-complete-action .primary-action { width: 100%; min-width: 0; }
+  .league-complete-action { position: sticky; bottom: 0; z-index: 5; margin-inline: calc(var(--space-4) * -1); padding: var(--space-2) var(--space-4) calc(var(--space-2) + env(safe-area-inset-bottom)); border-top: 1px solid var(--color-divider-strong); background: var(--color-night); }
+  .league-table .league-col-pos { width: var(--league-col-number); padding-left: var(--space-3); }
+  .league-table .league-col-nrr { padding-right: var(--space-3); }
+}

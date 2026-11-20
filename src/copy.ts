@@ -265,3 +265,79 @@ export const CLOCK_COPY = {
   checking: "Checking…",
   label: (time: string, checking: boolean) => (checking ? "Time’s up. Checking with the server" : `${time} remaining`),
 } as const;
+
+export function ordinal(value: number): string {
+  const suffix = value % 100 >= 11 && value % 100 <= 13 ? "th"
+    : value % 10 === 1 ? "st" : value % 10 === 2 ? "nd" : value % 10 === 3 ? "rd" : "th";
+  return `${value}${suffix}`;
+}
+
+/** A team-season in short: the standard abbreviation plus the season ("MI 2013"); the full name when there is none. */
+export function shortTeamSeasonName(teamId: string, teamName: string, seasonYear: number): string {
+  return `${teamAbbreviation(teamId, teamName)} ${seasonYear}`;
+}
+
+type LeagueMargin = { readonly kind: "RUNS" | "WICKETS"; readonly value: number } | { readonly kind: "SUPER_OVER" };
+const marginWords = (margin: LeagueMargin): string => margin.kind === "SUPER_OVER" ? "in a Super Over"
+  : margin.kind === "RUNS" ? `by ${margin.value} ${margin.value === 1 ? "run" : "runs"}`
+    : `by ${margin.value} ${margin.value === 1 ? "wicket" : "wickets"}`;
+const pad = (value: number): string => String(value).padStart(2, "0");
+
+/** Solo league: auto-play, the match feed and the standings. */
+export const LEAGUE_COPY = {
+  yourXi: "Your XI",
+  title: "League stage",
+  completeTitle: "League complete",
+  matchOf: (played: number, total: number) => `Match ${pad(played)} of ${total}`,
+  win: "W",
+  loss: "L",
+  winName: "Win",
+  lossName: "Loss",
+  /** "Your XI beat Mumbai Indians 2013 by 6 wickets" / "Mumbai Indians 2013 beat Your XI by 12 runs". */
+  resultLine: (won: boolean, opponent: string, margin: LeagueMargin) =>
+    `${won ? "Your XI" : opponent} beat ${won ? opponent : "Your XI"} ${marginWords(margin)}`,
+  record: "Record",
+  position: "Position",
+  movement: (movement: "UP" | "DOWN" | "SAME" | "FIRST", previous: number | null) =>
+    movement === "UP" ? `Up from ${ordinal(previous!)}` : movement === "DOWN" ? `Down from ${ordinal(previous!)}`
+      : movement === "SAME" ? "No change" : "First match",
+  pause: "Pause",
+  resume: "Resume",
+  skip: "Skip to end",
+  paused: "Paused",
+  pipsLabel: (played: number) => `League matches, ${played} of 14 played`,
+  pipLabel: (matchNumber: number, line: string, won: boolean, close: boolean) =>
+    `Match ${matchNumber}, ${won ? "win" : "loss"}: ${line}${close ? ". Close match" : ""}. Show scores`,
+  pipUpcoming: (matchNumber: number) => `Match ${matchNumber}, still to play`,
+  closeMatch: "Close match",
+  detailsTitle: (matchNumber: number, opponent: string) => `Match ${matchNumber} · v ${opponent}`,
+  overs: (overs: string) => `${overs} ov`,
+  oversName: (overs: string) => `${overs} overs`,
+  close: "Close",
+  tableTitle: "Table",
+  finalTableTitle: "Final table",
+  tableCaption: "League table",
+  columnPosition: "Pos",
+  columnPositionName: "Position",
+  columnTeam: "Team",
+  columnPlayed: "P",
+  columnPlayedName: "Played",
+  columnWon: "W",
+  columnWonName: "Won",
+  columnLost: "L",
+  columnLostName: "Lost",
+  columnPoints: "Pts",
+  columnPointsName: "Points",
+  columnNetRunRate: "NRR",
+  columnNetRunRateName: "Net run rate",
+  playoffLine: "Playoff line · top four go through",
+  qualified: "Qualified",
+  outcomeQualified: (position: number, won: number, lost: number) => `Your XI finished ${ordinal(position)} at ${won}–${lost}. Into the playoffs.`,
+  outcomeOut: (position: number, won: number, lost: number) => `Your XI finished ${ordinal(position)} at ${won}–${lost}, outside the top four.`,
+  beginPlayoffs: "Begin playoffs",
+  seeSeason: "See your season",
+  status: (matchNumber: number, line: string, won: number, lost: number, position: number) =>
+    `Match ${matchNumber}. ${line}. Record ${won}–${lost}, ${ordinal(position)} in the table.`,
+  completeStatus: (position: number, qualified: boolean) =>
+    `League complete. Your XI finished ${ordinal(position)} and ${qualified ? "reached the playoffs" : "missed the playoffs"}.`,
+} as const;

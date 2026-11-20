@@ -78,6 +78,11 @@ button:disabled { cursor: not-allowed; }
     --motion-step-slide: var(--motion-screen);
     --anim-card-expand: fade-in;
     --anim-snap-back: fade-in;
+    /* League: pips fade in; close matches keep only their marker; the sheet fades. */
+    --anim-pip-fill: fade-in;
+    --anim-close-burst: none;
+    --anim-close-flash: none;
+    --anim-sheet-rise: fade-in;
   }
   *, *::before, *::after {
     scroll-behavior: auto !important;

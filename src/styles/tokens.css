@@ -346,6 +346,23 @@
   --reel-streaks: repeating-linear-gradient(180deg, transparent 0 7px, rgba(230, 236, 245, 0.09) 7px 8px), linear-gradient(90deg, transparent, rgba(230, 236, 245, 0.06) 30%, rgba(230, 236, 245, 0.06) 70%, transparent);
   --reel-fade: linear-gradient(90deg, var(--color-night-deep) 0, transparent 22%, transparent 78%, var(--color-night-deep) 100%);
   --reel-speed-dim: 0.55;
+  /* Solo league: the match feed beside the live table; at league complete the table widens in the centre. */
+  --league-max-width: 1280px;
+  --league-table-width: clamp(24rem, 36vw, 32rem);
+  --league-complete-width: 44rem;
+  --league-pip-size: 44px;
+  --league-pip-compact: 28px;
+  --league-pip-compact-width: 2.5rem;
+  --league-pip-marker: 6px;
+  --league-row-height: 38px;
+  --league-head-height: 30px;
+  --league-col-pos: 2.75rem;
+  --league-col-number: 2.25rem;
+  --league-col-points: 2.75rem;
+  --league-col-nrr: 4.5rem;
+  --league-popover-width: 19rem;
+  --close-burst-scale: 1.7;
+  --league-playoff-dash: 5px;
 
   /* Motion ladder: only levels 3 and 4 may be loud. */
   --motion-level-0: 200ms;   /* State: fades only */
@@ -437,4 +454,9 @@
   --anim-step-back: step-in-back;
   --anim-card-expand: squad-flash-in;
   --anim-snap-back: snap-back;
+  /* League: a revealed pip fills in; a close win bursts in mint, a close loss flashes coral; the details sheet rises. */
+  --anim-pip-fill: pip-fill;
+  --anim-close-burst: close-burst;
+  --anim-close-flash: close-flash;
+  --anim-sheet-rise: sheet-rise;
 }

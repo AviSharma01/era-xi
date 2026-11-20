@@ -1,8 +1,10 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ReactElement, type RefObject } from "react";
 
-import { DRAFTING_COPY, ERA_COPY, REVEAL_COPY } from "./copy.js";
+import { DRAFTING_COPY, ERA_COPY, REVEAL_COPY, ordinal } from "./copy.js";
 import { DraftingWorkspace, type DraftingCommand } from "./screens/drafting/DraftingWorkspace.js";
 import { TeamReveal } from "./screens/reveal/TeamReveal.js";
+import { LeagueScreen } from "./screens/season/LeagueScreen.js";
+import { opponentShortNames } from "./screens/season/names.js";
 
 import type { EraDraftCatalog } from "./eraDraftData.js";
 import { TEAM_EVALUATION_V3_VERSION } from "./teamEvaluationV3.js";
@@ -57,6 +59,8 @@ export function EraDraftApp(): ReactElement {
   const [terminalError, setTerminalError] = useState<string | null>(null);
   // The revision Reveal team produced in this session; only that reveal flips its cards.
   const [flipRevision, setFlipRevision] = useState<number | null>(null);
+  // The revision Start league produced in this session; only that league auto-plays from its first match.
+  const [liveLeagueRevision, setLiveLeagueRevision] = useState<number | null>(null);
   const operationIdRef = useRef(0);
   const operationPendingRef = useRef(false);
   const routeRef = useRef(route);
@@ -251,6 +255,7 @@ export function EraDraftApp(): ReactElement {
       if (!session.presentationCursor) throw new Error("Completed season is missing its presentation cursor.");
       return <SeasonExperience session={{ catalog: session.catalog, state: session.state, cursor: session.presentationCursor }}
         persistenceWarning={persistenceWarning} onCursor={setSeasonCursor} onExit={() => navigate("HOME")}
+        live={liveLeagueRevision === session.state.revision} onLiveShown={() => setLiveLeagueRevision(null)}
         restartPending={pendingOperation?.kind === "START" && pendingOperation.source === "TERMINAL"}
         restartError={terminalError} onSameEra={() => void startDraft(session.state.eraId, "TERMINAL")}
         onNewEra={chooseNewEra} />;
@@ -261,6 +266,7 @@ export function EraDraftApp(): ReactElement {
           onBeginSeason={() => {
             const result = reduceEraDraft(session.catalog, session.state, { type: "SIMULATE_SEASON" });
             if (!result.ok || result.state.phase !== "GAME_COMPLETE") throw new Error("The season could not be simulated.");
+            setLiveLeagueRevision(result.state.revision);
             acceptTransition(session.catalog, result, { phase: "LEAGUE", revealedUserMatches: 1 });
           }} onExit={() => navigate("HOME")} />
       : <DraftExperience session={{ catalog: session.catalog, state: session.state }}
@@ -505,6 +511,9 @@ export function SeasonExperience(props: {
     readonly cursor: EraDraftPresentationCursor;
   };
   persistenceWarning: string | null;
+  /** Straight after Start league: the league auto-plays. A restored or revisited season opens paused. */
+  live?: boolean;
+  onLiveShown?: () => void;
   restartPending?: boolean;
   restartError?: string | null;
   onCursor: (cursor: EraDraftPresentationCursor) => void;
@@ -515,8 +524,13 @@ export function SeasonExperience(props: {
   const view = useMemo(() => projectEraDraftGameCompleteState(props.session.catalog, props.session.state),
     [props.session.catalog, props.session.state]);
   const { cursor } = props.session;
+  const shortNames = useMemo(() => opponentShortNames(props.session.catalog, view.eraId), [props.session.catalog, view.eraId]);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  useEffect(() => headingRef.current?.focus(), [cursor]);
+  // Focus follows screen changes. The league runs on one screen, so auto-play's steps never move focus.
+  const focusKey = cursor.phase === "PLAYOFFS" ? `PLAYOFFS:${cursor.revealedPlayoffMatches}` : cursor.phase;
+  useEffect(() => headingRef.current?.focus(), [focusKey]);
+  // Live play is for this visit only: leaving and coming back resumes paused, like a restored save.
+  useEffect(() => { if (props.live) props.onLiveShown?.(); }, []);
   const era = ERA_COPY[view.eraId];
   return <main className={`era-shell season-shell gameplay-shell season-phase-${cursor.phase.toLowerCase()}`}>
     <div className="gameplay-atmosphere" aria-hidden="true" />
@@ -528,15 +542,8 @@ export function SeasonExperience(props: {
       <button className="quiet-button" onClick={props.onExit}>Exit season</button>
     </header>
     {props.persistenceWarning && <PersistenceWarning message={props.persistenceWarning} />}
-    {cursor.phase === "LEAGUE" && <LeagueCheckpoint view={view} revealed={cursor.revealedUserMatches}
-      headingRef={headingRef} onNext={() => props.onCursor(cursor.revealedUserMatches < 14
-        ? { phase: "LEAGUE", revealedUserMatches: cursor.revealedUserMatches + 1 }
-        : { phase: "LEAGUE_COMPLETE" })}
-      onSimRemaining={() => props.onCursor({ phase: "LEAGUE_COMPLETE" })} />}
-    {cursor.phase === "LEAGUE_COMPLETE" && <LeagueComplete view={view} headingRef={headingRef}
-      onContinue={() => props.onCursor(view.league.qualified
-        ? { phase: "PLAYOFFS", revealedPlayoffMatches: 1 }
-        : { phase: "COMPLETE" })} />}
+    {(cursor.phase === "LEAGUE" || cursor.phase === "LEAGUE_COMPLETE") && <LeagueScreen view={view} cursor={cursor}
+      live={props.live ?? false} shortNames={shortNames} headingRef={headingRef} onCursor={props.onCursor} />}
     {cursor.phase === "PLAYOFFS" && <PlayoffExperience view={view} revealed={cursor.revealedPlayoffMatches}
       headingRef={headingRef} onNext={() => props.onCursor(cursor.revealedPlayoffMatches < view.playoffs.userMatches.length
         ? { phase: "PLAYOFFS", revealedPlayoffMatches: cursor.revealedPlayoffMatches + 1 }
@@ -546,81 +553,6 @@ export function SeasonExperience(props: {
       restartPending={props.restartPending ?? false} restartError={props.restartError ?? null}
       onSameEra={props.onSameEra} onNewEra={props.onNewEra} />}
   </main>;
-}
-
-function LeagueCheckpoint(props: {
-  view: EraDraftGameCompleteView;
-  revealed: number;
-  headingRef: RefObject<HTMLHeadingElement | null>;
-  onNext: () => void;
-  onSimRemaining: () => void;
-}): ReactElement {
-  const checkpoint = props.view.league.userMatches[props.revealed - 1]!;
-  return <div className="season-layout season-layout-progress">
-    <section className="season-primary" aria-labelledby="season-match-title">
-      <div className="broadcast-match">
-      <div className="season-kicker"><p className="eyebrow">League stage</p><span>Match {String(checkpoint.matchNumber).padStart(2, "0")} / 14</span></div>
-      <h1 ref={props.headingRef} tabIndex={-1} id="season-match-title">{checkpoint.match.opponent?.teamName}</h1>
-      <MatchResult match={checkpoint.match} />
-      </div>
-      <LeagueProgressStrip matches={props.view.league.userMatches} revealed={props.revealed} />
-      <div className="season-progress-summary">
-        <div><span>Season record</span><strong>{checkpoint.record.won}–{checkpoint.record.lost}</strong></div>
-        <div><span>League position</span><strong>{ordinal(checkpoint.position)}</strong>
-          <small>{movementLabel(checkpoint.movement, checkpoint.previousPosition)}</small></div>
-      </div>
-      <div className="season-actions">
-        <button className="primary-action" onClick={props.onNext}>{props.revealed === 14 ? "View final table" : "Next match"}<span aria-hidden="true">→</span></button>
-        {props.revealed < 14 && <button className="secondary-action" onClick={props.onSimRemaining}>Sim remaining</button>}
-      </div>
-      <p className="sr-status" aria-live="polite">Match {checkpoint.matchNumber} revealed. {checkpoint.match.resultLabel}. Record {checkpoint.record.won} wins and {checkpoint.record.lost} losses. Position {checkpoint.position}.</p>
-    </section>
-    {checkpoint.matchNumber < 14
-      ? <details className="league-standings-disclosure"><summary><span>Provisional standings</span>
-          <strong>Your XI · {ordinal(checkpoint.position)}</strong></summary>
-          <StandingsTable rows={checkpoint.standings} provisional />
-        </details>
-      : <StandingsTable rows={checkpoint.standings} provisional={false} />}
-  </div>;
-}
-
-function LeagueProgressStrip(props: {
-  matches: EraDraftGameCompleteView["league"]["userMatches"];
-  revealed: number;
-}): ReactElement {
-  return <ol className="league-progress-strip" aria-label={`League progress: ${props.revealed} of 14 matches revealed`}>
-    {props.matches.map((checkpoint, index) => {
-      const visible = index < props.revealed;
-      const result = checkpoint.match.result === "WIN" ? "W" : "L";
-      const current = index === props.revealed - 1;
-      return <li key={checkpoint.match.matchId} className={visible ? `progress-${result.toLowerCase()}${current ? " progress-current" : ""}` : "progress-upcoming"}
-        aria-label={visible ? `Match ${index + 1}: ${result === "W" ? "win" : "loss"}` : `Match ${index + 1}: upcoming`}
-        aria-current={current ? "step" : undefined}>
-        <span>{String(index + 1).padStart(2, "0")}</span><strong>{visible ? result : "·"}</strong>
-      </li>;
-    })}
-  </ol>;
-}
-
-function LeagueComplete(props: {
-  view: EraDraftGameCompleteView;
-  headingRef: RefObject<HTMLHeadingElement | null>;
-  onContinue: () => void;
-}): ReactElement {
-  return <div className="season-layout">
-    <section className="season-primary league-complete-panel" aria-labelledby="league-complete-title">
-      <p className="eyebrow">League complete</p>
-      <h1 ref={props.headingRef} tabIndex={-1} id="league-complete-title">{props.view.league.qualified ? "Playoffs secured." : "Season ends here."}</h1>
-      <p className="season-outcome-copy">Your XI finished {ordinal(props.view.league.userFinalPosition)} with a {props.view.league.userRecord.won}–{props.view.league.userRecord.lost} record.</p>
-      <div className={`qualification-state ${props.view.league.qualified ? "qualified" : "eliminated"}`}>
-        <span>{props.view.league.qualified ? "Qualified" : "Not qualified"}</span>
-        <strong>{props.view.league.qualified ? "The playoff route is ready." : `Eventual champion: ${props.view.champion.teamName}`}</strong>
-      </div>
-      <button className="primary-action" onClick={props.onContinue}>{props.view.league.qualified ? "Begin playoffs" : "View season result"}<span aria-hidden="true">→</span></button>
-      <p className="sr-status" aria-live="polite">Final league standings revealed. Your XI finished position {props.view.league.userFinalPosition} and {props.view.league.qualified ? "qualified" : "did not qualify"}.</p>
-    </section>
-    <StandingsTable rows={props.view.league.finalStandings} provisional={false} />
-  </div>;
 }
 
 function PlayoffExperience(props: {
@@ -684,17 +616,6 @@ function MatchResult({ match }: { match: EraDraftGameCompleteView["league"]["use
   </article>;
 }
 
-function StandingsTable({ rows, provisional }: { rows: EraDraftGameCompleteView["league"]["finalStandings"]; provisional: boolean }): ReactElement {
-  return <section className="standings-panel" aria-labelledby="standings-title">
-    <div className="candidate-heading"><h2 id="standings-title">{provisional ? "Provisional table" : "Final standings"}</h2><span>{provisional ? "In progress" : "14 matches"}</span></div>
-    <div className="standings-scroll"><table><thead><tr><th scope="col">Pos</th><th scope="col">Team</th><th scope="col">P</th><th scope="col">W</th><th scope="col">L</th><th scope="col">Pts</th><th scope="col">NRR</th></tr></thead>
-      <tbody>{rows.map((row) => <tr key={row.teamId} className={row.isUser ? "user-standing" : undefined}>
-        <td>{row.position}</td><th scope="row">{row.teamName}{row.isUser && <small>Your XI</small>}{row.qualified === true && <small>Qualified</small>}</th>
-        <td>{row.played}</td><td>{row.won}</td><td>{row.lost}</td><td>{row.points}</td><td>{formatSigned(row.netRunRate)}</td>
-      </tr>)}</tbody></table></div>
-  </section>;
-}
-
 function PlayoffBracket({ matches, revealedThrough, activeMatchId }: {
   matches: EraDraftGameCompleteView["playoffs"]["allMatches"];
   revealedThrough: number;
@@ -747,17 +668,6 @@ function NotFound({ onExit }: { onExit: () => void }): ReactElement {
 }
 
 function formatInnings(runs: number, wickets: number): string { return wickets === 10 ? `${runs}` : `${runs}/${wickets}`; }
-function formatSigned(value: number): string { return `${value >= 0 ? "+" : ""}${value.toFixed(3)}`; }
-function ordinal(value: number): string {
-  const suffix = value % 100 >= 11 && value % 100 <= 13 ? "th"
-    : value % 10 === 1 ? "st" : value % 10 === 2 ? "nd" : value % 10 === 3 ? "rd" : "th";
-  return `${value}${suffix}`;
-}
-function movementLabel(movement: "UP" | "DOWN" | "SAME" | "FIRST", previous: number | null): string {
-  if (movement === "FIRST") return "Opening position";
-  if (movement === "SAME") return "No movement";
-  return `${movement === "UP" ? "Up" : "Down"} from ${ordinal(previous!)}`;
-}
 function stageLabel(stage: "LEAGUE" | "QUALIFIER_1" | "ELIMINATOR" | "QUALIFIER_2" | "FINAL"): string {
   if (stage === "QUALIFIER_1") return "Qualifier 1";
   if (stage === "QUALIFIER_2") return "Qualifier 2";
